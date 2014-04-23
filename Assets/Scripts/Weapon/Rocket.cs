@@ -1,0 +1,22 @@
+﻿using UnityEngine;
+using System.Collections;
+
+abstract public class Rocket : WeaponObject 
+{
+    public abstract bool LaunchButton
+    { get; set; }
+    public void TargetUpdatePosition(Vector3 targetPosition)
+    {
+        Target = targetPosition;
+    }
+    public void Launch(Vector3 targetPosition, UnitSqript.GOODorEVIL friendOrfoe)
+    {
+        if (!LaunchButton)
+        {
+            LaunchButton = true;
+            Target = targetPosition;
+            this.GoodOrEvil = friendOrfoe;
+        }
+    }
+
+}
