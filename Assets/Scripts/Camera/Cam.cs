@@ -12,7 +12,7 @@ public class Cam : MonoBehaviour {
 
     public GUIScript mainGUI;
     public float ORTHOGRAFIC_Y_HEIGHT = 50f;
-    public float PERSPECTIVE_VIEW_SIZE = 20f;
+    public float PERSPECTIVE_VIEW_SIZE = 5f;
     public float Orthografic_View_Size = 500f;
     public CAMERAMODE qamMode = CAMERAMODE.ORTHOGRAFIC;
 
