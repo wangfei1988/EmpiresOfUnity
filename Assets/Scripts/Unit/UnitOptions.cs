@@ -62,6 +62,7 @@ abstract public class UnitOptions : MonoBehaviour
     { get; protected set; }
     public bool IsUnderAttack
     { get; set; }
+    //private bool _isMouseEventsRecieving;
     
     //-----------------------------------------------------Orders and Interaction...
     virtual internal string[] GetUnitsMenuOptions()
@@ -152,14 +153,14 @@ abstract public class UnitOptions : MonoBehaviour
     {
         if (!gameObject.GetComponent<Focus>()) gameObject.AddComponent<Focus>();
         gameObject.GetComponent<Focus>().Lock();
-        _isMouseEventsRecieving = true;
+        //_isMouseEventsRecieving = true;
     }
     protected void UnlockFocus()
     {
-        _isMouseEventsRecieving = false;
+        //_isMouseEventsRecieving = false;
         MouseEvents.LEFTRELEASE += MouseEvents_LEFTRELEASE;
     }
-    private bool _isMouseEventsRecieving;
+
     private void MouseEvents_LEFTRELEASE()
     {
         gameObject.GetComponent<Focus>().Unlock(gameObject);

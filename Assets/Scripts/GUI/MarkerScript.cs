@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MarkerSqript : MonoBehaviour {
+public class MarkerScript : MonoBehaviour {
 
     public UnitAnimation animationSqrips;
     [SerializeField]

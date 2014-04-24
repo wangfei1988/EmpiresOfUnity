@@ -32,7 +32,7 @@ public class FocusRectangleObject : MonoBehaviour {
         {
             if (gameObject.renderer.enabled != value)
             {
-                foreach (GameObject marker in Focus.Marker) marker.GetComponent<MarkerSqript>().Visible = value;
+                foreach (GameObject marker in Focus.Marker) marker.GetComponent<MarkerScript>().Visible = value;
                 gameObject.renderer.enabled = value;
             }
         }
@@ -59,7 +59,7 @@ public class FocusRectangleObject : MonoBehaviour {
     private void faceDirections()
     {
         gameObject.GetComponent<FaceDirection>().DoUpdate();
-        foreach (GameObject marker in Focus.Marker) marker.GetComponent<MarkerSqript>().DoUpdate();
+        foreach (GameObject marker in Focus.Marker) marker.GetComponent<MarkerScript>().DoUpdate();
     }
 
     //public void SetTo(Transform to)
