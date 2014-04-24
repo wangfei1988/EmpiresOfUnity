@@ -6,11 +6,10 @@ using System.Collections.Generic;
 
 
 
-[AddComponentMenu("Camera-Control/GUISqript")]
-public class GUISqript : MonoBehaviour
+[AddComponentMenu("Camera-Control/GUIScript")]
+public class GUIScript : MonoBehaviour
 {
 
-    
     public static GameObject mainGUI;
     private static List<string> StaticTextLines = new List<string>();
     public static void AddTextLine(string line)
@@ -20,23 +19,24 @@ public class GUISqript : MonoBehaviour
 
     public Vector2 scrollSpeed = new Vector2(1f, 1f);
 
-    public UnitSqript.GOODorEVIL PlayerSide;
-    public UnitGroup SellectedGroup;
+    public UnitScript.GOODorEVIL PlayerSide;
+    public UnitGroup SelectedGroup;
     public int groupCount;
-    private Quomponent animatedCursor;
+    private UnitComponent animatedCursor;
     public RightClickMenu RightclickGUI;
 
-    public GameObject SellectionSprite;
+    public GameObject SelectionSprite;
     public GUITexture SellectionGUITexture;
-    private Rect sellectangle;
+    private Rect selectionRectangle;
 
     public GameObject lastClickedUnit;
 
-  //  public Qlick MouseEvents;
+    private bool scrolling = true;
+    private string TextField = "";
+    public bool Debug = false;
 
 
     new public Camera camera;
- //   private camScript QamAcsess;
 
     public Rect MapViewArea;
     public Rect MainGuiArea;
@@ -47,7 +47,7 @@ public class GUISqript : MonoBehaviour
     {
         get 
         {
-            if (mousePosition == null) return (mousePosition = (Vector2)Qlick.State.Position).Value;
+            if (mousePosition == null) return (mousePosition = (Vector2)MouseEvents.State.Position).Value;
             else return mousePosition.Value;
         }
     }
@@ -56,11 +56,32 @@ public class GUISqript : MonoBehaviour
 
     public List<GUIContent> mainGUIContent;
 
+
+
+    public Rect SelectionRectangle
+    {
+        get { return selectionRectangle; }
+        set
+        {
+            selectionRectangle = value;
+            //    RightclickGUI.Pannel.guiTexture.pixelInset = new Rect(value.x-Camera.main.pixelWidth / 2f,value.y- Camera.main.pixelHeight / 2f, -value.width, -value.height);
+            SellectionGUITexture.pixelInset = new Rect(value.x - Camera.main.pixelWidth / 2f, value.y - Camera.main.pixelHeight / 2f, -value.width, -value.height);
+            //    RightclickGUI.guiTexture.pixelInset = new Rect(value.x, value.y - guiTexture.pixelInset.height, value.width, value.height);
+            Vector3 w1, w2;
+            w1 = Camera.main.ScreenToWorldPoint(new Vector3(value.x, value.y, Camera.main.transform.position.y - 75));
+            w2 = Camera.main.ScreenToWorldPoint(new Vector3(value.x + value.width, value.y + value.height, Camera.main.transform.position.y - 75));
+            //   Sellection.transform.position = w1;
+            SelectionSprite.transform.position = new Vector3(w1.x, 75, w1.z);
+            SelectionSprite.transform.localScale = new Vector3(-(w2.x - w1.x), (w2.z - w1.z), 1f);
+        }
+    }
+
+
     private bool NoUnitFoqussed
     {
         get 
         {
-            if (FoQus.masterGameObject) return !FoQus.masterGameObject.GetComponent<FoQus>();
+            if (Focus.masterGameObject) return !Focus.masterGameObject.GetComponent<Focus>();
             else return true;
         }
     }
@@ -76,11 +97,11 @@ public class GUISqript : MonoBehaviour
         mainGUI = this.gameObject;
 
 
-      //  MouseEvents = ScriptableObject.CreateInstance<Qlick>();
-        Qlick.Setup(gameObject);
+      //  MouseEvents = ScriptableObject.CreateInstance<MouseEvents>();
+        MouseEvents.Setup(gameObject);
 
-        SellectedGroup = ScriptableObject.CreateInstance<UnitGroup>();
-        SellectedGroup.startGroup();
+        SelectedGroup = ScriptableObject.CreateInstance<UnitGroup>();
+        SelectedGroup.startGroup();
 
         animatedCursor = (GetComponent<AnimatedMouseCursors>())?GetComponent<AnimatedMouseCursors>():null;
         
@@ -108,16 +129,16 @@ public class GUISqript : MonoBehaviour
 
     //    QamAcsess = Camera.main.GetComponent<camScript>();
 
-        Qlick.LEFTQLICK += Qlick_LEFTQLICK;
-        Qlick.RIGHTQLICK += Qlick_RIGHTQLICK;
-        Qlick.LEFTRELEASE += Qlick_LEFTRELEASE;
+        MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
+        MouseEvents.RIGHTCLICK += MouseEvents_RIGHTCLICK;
+        MouseEvents.LEFTRELEASE += MouseEvents_LEFTRELEASE;
 
         scrolling = false;
     }
 
 
 
-
+    /* TODO MouseEvents */
     private GameObject ClickHitUnit(Ray ray)
     {
         RaycastHit hit;
@@ -127,29 +148,38 @@ public class GUISqript : MonoBehaviour
     }
 
 
-    void Qlick_LEFTQLICK(Ray qamRay, bool hold)
+    void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
     {
         if (hold)
         {
-            Sellectangle = new Rect(Sellectangle.x, Sellectangle.y, Sellectangle.xMin - MousePosition.x, Sellectangle.y - MousePosition.y);
+            SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, SelectionRectangle.xMin - MousePosition.x, SelectionRectangle.y - MousePosition.y);
         }
         else
         {
-            Sellectangle = new Rect(MousePosition.x, MousePosition.y, 0, 0);
-            if(NoUnitFoqussed) ClickHitUnit(qamRay).AddComponent<FoQus>();
+            SelectionRectangle = new Rect(MousePosition.x, MousePosition.y, 0, 0);
+
+
+
+            if (NoUnitFoqussed)
+            {
+                GameObject obj = ClickHitUnit(qamRay);
+                if(obj != null)
+                    obj.AddComponent<Focus>();
+            }
         }
     }
-    void Qlick_LEFTRELEASE()
+    void MouseEvents_LEFTRELEASE()
     {
         SnapSellectangle();
     }
 
-    void Qlick_RIGHTQLICK(Ray qamRay, bool hold)
+    void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
     {
         if (NoUnitFoqussed)
         {
                 GameObject clickedUnit = ClickHitUnit(qamRay);
-                if (clickedUnit) clickedUnit.AddComponent<FoQus>();
+                if (clickedUnit)
+                    clickedUnit.AddComponent<Focus>();
         }
     }
 
@@ -169,50 +199,19 @@ public class GUISqript : MonoBehaviour
         }
         if (GUI.Button(new Rect((100 * Scale.x), (60 * Scale.y), (80 * Scale.x), (40 * Scale.y)), mainGUIContent[2])) 
         {
-            Camera.main.GetComponent<QamSqript>().SwitchQam();
+            Camera.main.GetComponent<Cam>().SwitchQam();
         }
 
         GUI.enabled = true;
         GUI.EndGroup();
     }
 
-
-
-
-
-
-
     private void SnapSellectangle()
     {
-        SellectedGroup = SellectionSprite.GetComponent<SellectorSqript>().SnapSellection();
-        Sellectangle = new Rect(Sellectangle.x, Sellectangle.y, 0f, 0f);
+        SelectedGroup = SelectionSprite.GetComponent<SelectorScript>().SnapSelection();
+        SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, 0f, 0f);
     }
 
-
-    
-
-    public Rect Sellectangle
-    {
-        get { return sellectangle; }
-        set
-        {
-            sellectangle = value;
-        //    RightclickGUI.Pannel.guiTexture.pixelInset = new Rect(value.x-Camera.main.pixelWidth / 2f,value.y- Camera.main.pixelHeight / 2f, -value.width, -value.height);
-            SellectionGUITexture.pixelInset = new Rect(value.x - Camera.main.pixelWidth / 2f, value.y - Camera.main.pixelHeight / 2f, -value.width, -value.height);
-        //    RightclickGUI.guiTexture.pixelInset = new Rect(value.x, value.y - guiTexture.pixelInset.height, value.width, value.height);
-            Vector3 w1, w2;
-            w1 = Camera.main.ScreenToWorldPoint(new Vector3(value.x, value.y, Camera.main.transform.position.y - 75));
-            w2 = Camera.main.ScreenToWorldPoint(new Vector3(value.x + value.width, value.y + value.height, Camera.main.transform.position.y - 75));
-            //   Sellection.transform.position = w1;
-            SellectionSprite.transform.position = new Vector3(w1.x, 75, w1.z);
-            SellectionSprite.transform.localScale = new Vector3(-(w2.x - w1.x), (w2.z - w1.z), 1f);
-        }
-    }
-  //  public string MouseButtons;
-
-
-
-    private bool scrolling=true;
     private void CheckForScrolling()
     {
         if (scrolling)
@@ -231,7 +230,6 @@ public class GUISqript : MonoBehaviour
     }
 
 
-    private string TextField = "";
     private string TextUpdate()
     {
         TextField = guiText.text;
@@ -244,14 +242,17 @@ public class GUISqript : MonoBehaviour
         return TextField;
     }
 
+
     void Update()
     {
         mousePosition = null;
-        Qlick.DoUpdate();
-        groupCount = SellectedGroup.Count;
+        MouseEvents.DoUpdate();
+        groupCount = SelectedGroup.Count;
 
         if (animatedCursor) animatedCursor.DoUpdate();
         CheckForScrolling();
-        guiText.text = TextUpdate();
+
+        if (Debug)
+            guiText.text = TextUpdate();
     }
 }

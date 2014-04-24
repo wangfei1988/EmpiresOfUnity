@@ -1,23 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class QamSqript : MonoBehaviour {
+public class Cam : MonoBehaviour {
 
-    public enum QAMERAMODE : byte
+    public enum CAMERAMODE : byte
     {
         ORTHOGRAFIC,
         PERSPECTIVE,
         FIRSTPERSON,
     }
-    public GUISqript mainGUI;
+    public GUIScript mainGUI;
     private Quaternion Perspective_Rotation;
     private Quaternion Orthografic_Rotation;
     public float ORTHOGRAFIC_Y_HEIGHT = 50f;
     public float PERSPECTIVE_VIEW_SIZE = 20f;
     public float Orthografic_View_Size = 500f;
     private float Perspective_Y_Height = 50f;
-    public QAMERAMODE qamMode = QAMERAMODE.ORTHOGRAFIC;
-    private QAMERAMODE QamMode
+    public CAMERAMODE qamMode = CAMERAMODE.ORTHOGRAFIC;
+    private CAMERAMODE QamMode
     {
         get { return qamMode; }
         set
@@ -25,7 +25,7 @@ public class QamSqript : MonoBehaviour {
             if(qamMode!=value)
                 switch (value)
                 {
-                    case QAMERAMODE.ORTHOGRAFIC:
+                    case CAMERAMODE.ORTHOGRAFIC:
                         {
                             if (!gameObject.camera.isOrthoGraphic) { Perspective_Y_Height = gameObject.transform.position.y; Perspective_Rotation = gameObject.transform.rotation; }
                             gameObject.camera.enabled = false;
@@ -36,7 +36,7 @@ public class QamSqript : MonoBehaviour {
                             gameObject.camera.enabled = true;
                             break;
                         }
-                    case QAMERAMODE.PERSPECTIVE:
+                    case CAMERAMODE.PERSPECTIVE:
                         {
                             if (gameObject.camera.isOrthoGraphic) { Orthografic_View_Size = gameObject.camera.orthographicSize; Orthografic_Rotation = gameObject.transform.rotation; }
                             gameObject.camera.enabled = false;
@@ -47,7 +47,7 @@ public class QamSqript : MonoBehaviour {
                             gameObject.camera.enabled = true;
                             break;
                         }
-                    case QAMERAMODE.FIRSTPERSON:
+                    case CAMERAMODE.FIRSTPERSON:
                         {
                             break;
                         }
@@ -59,7 +59,7 @@ public class QamSqript : MonoBehaviour {
 
 	void Start () 
     {
-        Qlick.MQUSEWHEEL += Qlick_MQUSEWHEEL;
+        MouseEvents.MOUSEWHEEL += MouseEvents_MQUSEWHEEL;
   //      angelFactor = 1300f / 90f;
         Perspective_Rotation = new Quaternion(0.258819f, 0f, 0f, 0.9659258f);
         Orthografic_Rotation = new Quaternion(0.7071068f, 0f, 0f, 0.7071068f);
@@ -68,13 +68,13 @@ public class QamSqript : MonoBehaviour {
      
     public 
 
-    void Qlick_MQUSEWHEEL(Qlick.MOUSEWHEELSTATE wheelstate)
+    void MouseEvents_MQUSEWHEEL(MouseEvents.MOUSEWHEELSTATE wheelstate)
     {
-        if (QamMode==QAMERAMODE.ORTHOGRAFIC)
+        if (QamMode==CAMERAMODE.ORTHOGRAFIC)
         {
             gameObject.camera.orthographicSize -= (int)wheelstate * (camera.orthographicSize / 120f);
         }
-        else if (QamMode == QAMERAMODE.PERSPECTIVE)
+        else if (QamMode == CAMERAMODE.PERSPECTIVE)
         {
             Vector3 buffer = gameObject.transform.position;
             buffer.y -= (int)wheelstate * (gameObject.transform.position.y / 120f);
@@ -90,10 +90,10 @@ public class QamSqript : MonoBehaviour {
         }
     }
 
-    public QAMERAMODE SwitchQam()
+    public CAMERAMODE SwitchQam()
     {
-        if (QamMode == QAMERAMODE.ORTHOGRAFIC) QamMode = QAMERAMODE.PERSPECTIVE;
-        else if (QamMode == QAMERAMODE.PERSPECTIVE) QamMode = QAMERAMODE.ORTHOGRAFIC;
+        if (QamMode == CAMERAMODE.ORTHOGRAFIC) QamMode = CAMERAMODE.PERSPECTIVE;
+        else if (QamMode == CAMERAMODE.PERSPECTIVE) QamMode = CAMERAMODE.ORTHOGRAFIC;
 
         return QamMode;
     }

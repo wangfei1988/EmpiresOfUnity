@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SellectorSqript : MonoBehaviour {
+public class SelectorScript : MonoBehaviour {
 
     
     public UnitGroup group;
@@ -17,7 +17,7 @@ public class SellectorSqript : MonoBehaviour {
         gameObject.collider.enabled = false;
 	}
 
-    public UnitGroup SnapSellection()
+    public UnitGroup SnapSelection()
     {
         gameObject.collider.enabled = true;
         group.ResetGroup();

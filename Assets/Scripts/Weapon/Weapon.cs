@@ -47,7 +47,7 @@ abstract public class Weapon : MonoBehaviour
         RayGun,
         RocketLauncher,
     }
-    public WeaponObject preefabSlot;
+    public WeaponObject prefabSlot;
     public bool HasArsenal = false;
 
     public WeaponArsenal arsenal

@@ -8,7 +8,7 @@ public class WeaponArsenal : MonoBehaviour
     private List<WeaponObject> Arsenal = new List<WeaponObject>();
     public Weapon weapon
     {
-        get { return this.gameObject.GetComponent<UnitSqript>().weapon; }
+        get { return this.gameObject.GetComponent<UnitScript>().weapon; }
     }
     public bool HasArsenal
     {

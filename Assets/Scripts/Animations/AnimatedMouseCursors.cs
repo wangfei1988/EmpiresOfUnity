@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class AnimatedMouseCursors : Quomponent
+public class AnimatedMouseCursors : UnitComponent
 {
     public enum CURSORS : int
     {
@@ -16,7 +16,7 @@ public class AnimatedMouseCursors : Quomponent
         RESIZE_LR,
         RESIZE_TD
     }
-    private GUISqript mainGUI;
+    private GUIScript mainGUI;
     public CURSORS CurrentCursor;
     public CURSORS cursor;
     public Vector2 CurrentClickPoint = new Vector2(1f, 1f);
@@ -36,7 +36,7 @@ public class AnimatedMouseCursors : Quomponent
 
     void Start () 
     {
-        mainGUI = GameObject.FindGameObjectWithTag("MainGUI").GetComponent<GUISqript>();
+        mainGUI = GameObject.FindGameObjectWithTag("MainGUI").GetComponent<GUIScript>();
 	}
 
     private Rect MapViewArea
@@ -56,7 +56,7 @@ public class AnimatedMouseCursors : Quomponent
         get { return CursorSellector; }
         set
         {
-            if (Qlick.State.Hold) CursorSellector = cursor = CURSORS.CLICK;
+            if (MouseEvents.State.Hold) CursorSellector = cursor = CURSORS.CLICK;
             else if (value == CURSORS.CLICK) CursorSellector = cursor = CURSORS.STANDARD;
             else CursorSellector = cursor = value;
         }
@@ -82,18 +82,18 @@ public class AnimatedMouseCursors : Quomponent
     }
     private void CheckWhatsUnderCursor()
     {
-        if (MapViewArea.Contains((Vector2)Qlick.State.Position))
+        if (MapViewArea.Contains((Vector2)MouseEvents.State.Position))
         {
             RaycastHit what;
-            if (Physics.Raycast(Qlick.State.Position, out what))
+            if (Physics.Raycast(MouseEvents.State.Position, out what))
             {
                 cursor = AnimatedMouseCursors.CURSORS.OVER_CLICKABLE_OBJECT;
-                guiText.text = what.collider.gameObject.name + " at: " + Qlick.State.Position.AsWorldPointOnMap.ToString() + "\nID: " + what.collider.gameObject.GetInstanceID().ToString();
+                guiText.text = what.collider.gameObject.name + " at: " + MouseEvents.State.Position.AsWorldPointOnMap.ToString() + "\nID: " + what.collider.gameObject.GetInstanceID().ToString();
             }
             else
             {
                 cursor = AnimatedMouseCursors.CURSORS.CLICK;
-                guiText.text = Qlick.State.Position.AsWorldPointOnMap.ToString();
+                guiText.text = MouseEvents.State.Position.AsWorldPointOnMap.ToString();
             }
         }
         else guiText.text = "";

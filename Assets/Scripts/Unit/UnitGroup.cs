@@ -27,7 +27,7 @@ public class UnitGroup : ScriptableObject
             if (groupState != value)
             {
                 if (value == GROUPSTATE.Waiting)
-                    foreach (GameObject groupMember in MemberUnit) groupMember.GetComponent<UnitQptions>().GiveOrder(groupMember.GetComponent<UnitQptions>().GetUnitsMenuOptions().Length - 2);
+                    foreach (GameObject groupMember in MemberUnit) groupMember.GetComponent<UnitOptions>().GiveOrder(groupMember.GetComponent<UnitOptions>().GetUnitsMenuOptions().Length - 2);
             }
             groupState = value;
         }
@@ -43,7 +43,7 @@ public class UnitGroup : ScriptableObject
     }
     public Rect groupRect;
     public int Count;
-    public UnitSqript.GOODorEVIL GoodOrEvil;
+    public UnitScript.GOODorEVIL GoodOrEvil;
     public Vector3 Position
     {
         get { return position; }
@@ -78,10 +78,10 @@ public class UnitGroup : ScriptableObject
     {
             if (MemberUnit.Count == 0)
             {
-                this.GoodOrEvil = newGroupMember.GetComponent<UnitSqript>().GoodOrEvil;
+                this.GoodOrEvil = newGroupMember.GetComponent<UnitScript>().GoodOrEvil;
                 position = newGroupMember.transform.position;
             }
-        if (newGroupMember.GetComponent<UnitSqript>().GoodOrEvil == this.GoodOrEvil)
+        if (newGroupMember.GetComponent<UnitScript>().GoodOrEvil == this.GoodOrEvil)
         {
             MemberUnit.Add(newGroupMember);
             if (GroupState != GROUPSTATE.UnderConstruction) CalculateSize();
@@ -90,7 +90,7 @@ public class UnitGroup : ScriptableObject
     }
     public void AddUnits(List<GameObject> units)
     {
-        BeginGroupFill(units[0].GetComponent<UnitSqript>().GoodOrEvil);
+        BeginGroupFill(units[0].GetComponent<UnitScript>().GoodOrEvil);
         fillGroup(units);
         EndGroupFill();
     }
@@ -99,7 +99,7 @@ public class UnitGroup : ScriptableObject
         ResetGroup();
         AddUnits(units);
     }
-    public void BeginGroupFill(UnitSqript.GOODorEVIL side)
+    public void BeginGroupFill(UnitScript.GOODorEVIL side)
     {
         if (this.GoodOrEvil != side) ResetGroup();
         GroupState = GROUPSTATE.UnderConstruction;
@@ -120,14 +120,14 @@ public class UnitGroup : ScriptableObject
     internal void fillGroup(GameObject unit)
     {
         if (GroupState == GROUPSTATE.UnderConstruction)
-            if (unit.GetComponent<UnitSqript>().GoodOrEvil == this.GoodOrEvil)
+            if (unit.GetComponent<UnitScript>().GoodOrEvil == this.GoodOrEvil)
                 MemberUnit.Add(unit);
     }
     private void fillGroup(List<GameObject> units)
     {
         for (int i = units.Count-1; i >= 0; i++)
         {
-            if (units[i].GetComponent<UnitSqript>().GoodOrEvil != this.GoodOrEvil) units.RemoveAt(i);
+            if (units[i].GetComponent<UnitScript>().GoodOrEvil != this.GoodOrEvil) units.RemoveAt(i);
         }
         MemberUnit.AddRange(units);
     }
@@ -142,10 +142,10 @@ public class UnitGroup : ScriptableObject
     {
         foreach (GameObject rectangle in GameObject.FindGameObjectsWithTag("Rectangles"))
         {
-            if (rectangle.GetComponent<GroupRectangleSqript>())
+            if (rectangle.GetComponent<GroupRectangleScript>())
             {
                 gameObject = rectangle;
-                gameObject.GetComponent<GroupRectangleSqript>().SetToGUI(GUISqript.mainGUI.GetComponent<GUISqript>());
+                gameObject.GetComponent<GroupRectangleScript>().SetToGUI(GUIScript.mainGUI.GetComponent<GUIScript>());
             }
         }
 
@@ -154,12 +154,12 @@ public class UnitGroup : ScriptableObject
 
     public void GroupedLeftOnGround()
     {
-        for (int i = 1; i < MemberUnit.Count; i++) MemberUnit[i].GetComponent<UnitQptions>().MoveAsGroup(MemberUnit[0]);
-        MemberUnit[0].GetComponent<UnitSqript>().Options.FoqussedLeftOnGround(Qlick.State.Position.AsWorldPointOnMap);
+        for (int i = 1; i < MemberUnit.Count; i++) MemberUnit[i].GetComponent<UnitOptions>().MoveAsGroup(MemberUnit[0]);
+        MemberUnit[0].GetComponent<UnitScript>().Options.FocussedLeftOnGround(MouseEvents.State.Position.AsWorldPointOnMap);
         GroupState = GROUPSTATE.Moving;
     }
     public void GoupedLeftOnEnemy(GameObject enemy)
     {
-        foreach (GameObject unit in MemberUnit) unit.GetComponent<UnitSqript>().Options.FoqussedLeftOnEnemy(enemy);
+        foreach (GameObject unit in MemberUnit) unit.GetComponent<UnitScript>().Options.FocussedLeftOnEnemy(enemy);
     }
 }

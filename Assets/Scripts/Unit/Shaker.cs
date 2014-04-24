@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class Shaker : AnimaQuion
+public class Shaker : UnitAnimation
 {
     public enum ROOTING : byte
     {

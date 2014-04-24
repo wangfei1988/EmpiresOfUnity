@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class Qlick
+public class MouseEvents
 {
 
 
@@ -133,27 +133,30 @@ public class Qlick
         { get { return buttons[2]; } set { buttons[2] = value; } }
     }
 
-    public delegate void LeftQlick(Ray qamRay, bool hold);
-    public delegate void RightQlick(Ray qamRay, bool hold);
-    public delegate void MiddleQlick(Ray qamRay, bool hold);
+    public delegate void LeftClick(Ray qamRay, bool hold);
+    public delegate void RightClick(Ray qamRay, bool hold);
+    public delegate void MiddleClick(Ray qamRay, bool hold);
     public delegate void MouseWheelUPDOWN(MOUSEWHEELSTATE state);
     public delegate void LeftRelease();
-    public delegate void RiqhtRelease();
-    public delegate void MiddleRelease();
-    public static event LeftQlick LEFTQLICK;
-    public static event RightQlick RIGHTQLICK;
-    public static event MiddleQlick MIDDLEQLICK;
+    public delegate void RightRelease();
+    public delegate void MiddleRelease()
+        ;
+    public static event LeftClick LEFTCLICK;
+    public static event MiddleClick MIDDLECLICK;
+    public static event RightClick RIGHTCLICK;
+
     public static event LeftRelease LEFTRELEASE;
-    public static event RiqhtRelease RIQHTRRELEASE;
     public static event MiddleRelease MIDDLERELEASE;
-    public static event MouseWheelUPDOWN MQUSEWHEEL;
+    public static event RightRelease RIGHTRELEASE;
+
+    public static event MouseWheelUPDOWN MOUSEWHEEL;
 
 
 
 
     public static MouseState State = new MouseState();
 
-    static private GUISqript gameObject;
+    static private GUIScript gameObject;
     static private bool MapClick;
     static private bool[] ButtonDown = new bool[3];
     static private bool[] hold = new bool[3];
@@ -162,7 +165,7 @@ public class Qlick
 
     static internal void Setup(GameObject parrent)
     {
-        gameObject = parrent.GetComponent<GUISqript>();
+        gameObject = parrent.GetComponent<GUIScript>();
         State.Position = new MousePosition();
     }
 
@@ -211,9 +214,9 @@ public class Qlick
         if (pressed)
             switch (number)
             {
-                case 0: { return (LEFTQLICK != null); }
-                case 1: { return (RIGHTQLICK != null); }
-                case 2: { return (MIDDLEQLICK != null); }
+                case 0: { return (LEFTCLICK != null); }
+                case 1: { return (RIGHTCLICK != null); }
+                case 2: { return (MIDDLECLICK != null); }
                 default: return false;
             }
         else
@@ -221,7 +224,7 @@ public class Qlick
             switch (number)
             {
                 case 0: { return (LEFTRELEASE != null); }
-                case 1: { return (RIQHTRRELEASE != null); }
+                case 1: { return (RIGHTRELEASE != null); }
                 case 2: { return (MIDDLERELEASE != null); }
                 default: return false;
             }
@@ -230,13 +233,13 @@ public class Qlick
 
     static private void triggerEvents(bool[] trigger)
     {
-        if (trigger[0] && ButtonDown[0] && MapClick) LEFTQLICK(State.Position, hold[0]);
+        if (trigger[0] && ButtonDown[0] && MapClick) LEFTCLICK(State.Position, hold[0]);
         else if (release[0] && LEFTRELEASE != null) LEFTRELEASE();
-        if (trigger[1] && ButtonDown[1] && MapClick) RIGHTQLICK(State.Position, hold[1]);
-        else if (release[1] && RIQHTRRELEASE != null) RIQHTRRELEASE();
-        if (trigger[2] && ButtonDown[2] && MapClick) MIDDLEQLICK(State.Position, hold[2]);
+        if (trigger[1] && ButtonDown[1] && MapClick) RIGHTCLICK(State.Position, hold[1]);
+        else if (release[1] && RIGHTRELEASE != null) RIGHTRELEASE();
+        if (trigger[2] && ButtonDown[2] && MapClick) MIDDLECLICK(State.Position, hold[2]);
         else if (release[2] && MIDDLERELEASE != null) MIDDLERELEASE();
-        if ((State.WHEEL != MOUSEWHEELSTATE.NONE) && (MQUSEWHEEL != null)) MQUSEWHEEL(State.WHEEL);
+        if ((State.WHEEL != MOUSEWHEELSTATE.NONE) && (MOUSEWHEEL != null)) MOUSEWHEEL(State.WHEEL);
     }
 
     static public void DoUpdate()

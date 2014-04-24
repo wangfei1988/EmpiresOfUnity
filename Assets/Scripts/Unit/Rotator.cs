@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Rotator : AnimaQuion 
+public class Rotator : UnitAnimation 
 {
 
     public float RotationModifierA;

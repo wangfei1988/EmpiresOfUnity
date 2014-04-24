@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SimpleRotator : AnimaQuion
+public class SimpleRotator : UnitAnimation
 {
     public Transform Target;
     public float X,Y,Z;

@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LaserSpriteSqript : WeaponObject 
+public class LaserSpriteScript : WeaponObject 
 
 {
     public enum dir : byte
     {
         forward,
-        right,
+        Right,
         up
     }
     private Vector3 YAxis = new Vector3(0f,1f,0f);
@@ -80,7 +80,7 @@ public class LaserSpriteSqript : WeaponObject
 
     internal override void StartUp()
     {
-        amunition = AMUNITON.Laser;
+        ammunition = AMMUNITON.Laser;
         count = (int)SPEED;
         Visible = false;
         Direction = this.gameObject.transform.forward;
@@ -125,12 +125,12 @@ public class LaserSpriteSqript : WeaponObject
 
     void OnTriggerEnter(Collider other)
     {
-        if ((other.gameObject.layer != 2) && (other.gameObject.GetInstanceID() != UNIT.gameObject.GetInstanceID()) && (other.gameObject.layer!=8) && (other.GetComponent<UnitSqript>().GoodOrEvil!=GoodOrEvil))
+        if ((other.gameObject.layer != 2) && (other.gameObject.GetInstanceID() != UNIT.gameObject.GetInstanceID()) && (other.gameObject.layer!=8) && (other.GetComponent<UnitScript>().GoodOrEvil!=GoodOrEvil))
         {
             this.gameObject.GetComponent<AudioSource>().PlayOneShot(sound2);
-            Camera.main.GetComponent<QamSqript>().mainGUI.guiText.text = other.gameObject.name + other.gameObject.GetInstanceID().ToString();
+            Camera.main.GetComponent<Cam>().mainGUI.guiText.text = other.gameObject.name + other.gameObject.GetInstanceID().ToString();
             HIT = true;
-            other.GetComponent<UnitSqript>().Options.Hit(this.Power); 
+            other.GetComponent<UnitScript>().Options.Hit(this.Power); 
         }
     }
 

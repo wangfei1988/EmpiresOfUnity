@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 
 [AddComponentMenu("Character/Unit Options (Production Building)")]
-public class ProductionBuildingOptions : UnitQptions
+public class ProductionBuildingOptions : UnitOptions
 {
     public enum OPTIONS : int
     {
@@ -60,8 +60,8 @@ public class ProductionBuildingOptions : UnitQptions
                         }
                     case OPTIONS.LaunchRocket:
                         {
-                            LockOnFoqus();
-                            Qlick.LEFTQLICK+=Qlick_LEFTQLICK;
+                            LockOnFocus();
+                            MouseEvents.LEFTCLICK+=MouseEvents_LEFTMouseEvents;
                                 break;
                         }
                     case OPTIONS.StopProduction:
@@ -71,7 +71,7 @@ public class ProductionBuildingOptions : UnitQptions
                 }
         }
     }
-    internal override void FoqussedLeftOnGround(Vector3 worldPoint)
+    internal override void FocussedLeftOnGround(Vector3 worldPoint)
     {
         SetMoveToPoint(worldPoint);
     }
@@ -91,15 +91,15 @@ public class ProductionBuildingOptions : UnitQptions
         MoveToPoint = point;
     }
 
-    protected override void Qlick_LEFTQLICK(Ray qamRay, bool hold)
+    protected override void MouseEvents_LEFTMouseEvents(Ray qamRay, bool hold)
     {
         if (!hold)
         {
             if (unitState == OPTIONS.LaunchRocket)
             {
-                GetComponent<Weapon>().Engage(Qlick.State.Position.AsWorldPointOnMap);
-                UnlockFoqus();
-                Qlick.LEFTQLICK -= Qlick_LEFTQLICK;
+                GetComponent<Weapon>().Engage(MouseEvents.State.Position.AsWorldPointOnMap);
+                UnlockFocus();
+                MouseEvents.LEFTCLICK -= MouseEvents_LEFTMouseEvents;
             }
         }
     }

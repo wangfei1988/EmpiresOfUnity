@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 
 [AddComponentMenu("Character/Unit Options (Building)")]
-public class BuildingOptions : UnitQptions
+public class BuildingOptions : UnitOptions
 {
     public enum OPTIONS : int
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Follower : AnimaQuion 
+public class Follower : UnitAnimation 
 {
     public Transform targetTransform;
     public bool faceForward;

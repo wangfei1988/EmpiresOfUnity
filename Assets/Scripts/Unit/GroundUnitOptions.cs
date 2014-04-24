@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 [AddComponentMenu("Character/Unit Options (Standard GroundUnit)")]
-class GroundUnitOptions : UnitQptions
+class GroundUnitOptions : UnitOptions
 {
-    public UnitSqript UNIT;
+    public UnitScript UNIT;
     new public enum OPTIONS : int
     {
 
@@ -38,16 +38,16 @@ class GroundUnitOptions : UnitQptions
                             {
                                 SetKinematic();
                                 WayPoints.Clear();
-                                LockOnFoqus();
-                                Qlick.LEFTQLICK += Qlick_LEFTQLICK;
+                                LockOnFocus();
+                                MouseEvents.LEFTCLICK += MouseEvents_LEFTMouseEvents;
                                 break; 
                             }
                         case OPTIONS.Patrol:
                             {
                                 SetKinematic();
-                                LockOnFoqus();
-                                Qlick.LEFTQLICK += Qlick_LEFTQLICK;
-                                Qlick.RIGHTQLICK += Qlick_RIGHTQLICK;
+                                LockOnFocus();
+                                MouseEvents.LEFTCLICK += MouseEvents_LEFTMouseEvents;
+                                MouseEvents.RIGHTCLICK += MouseEvents_RIGHTCLICK;
                                 WayPoints.Add(gameObject.transform.position);
                                 break; 
                             }
@@ -55,14 +55,14 @@ class GroundUnitOptions : UnitQptions
                             {
                                 SetKinematic();
                                 WayPoints.Clear();
-                                LockOnFoqus();
-                                Qlick.LEFTQLICK += Qlick_LEFTQLICK; 
+                                LockOnFocus();
+                                MouseEvents.LEFTCLICK += MouseEvents_LEFTMouseEvents; 
                                 break; 
                             }
                         case OPTIONS.Stay:
                             {
                                 SetKinematic();
-                                UnlockFoqus();
+                                UnlockFocus();
                                 WayPoints.Clear();
                                 IsAttacking = false;
                                 SetMoveToPoint(gameObject.transform.position);
@@ -71,9 +71,9 @@ class GroundUnitOptions : UnitQptions
                         case OPTIONS.Guard:
                             {
                                 SetKinematic();
-                                LockOnFoqus();
+                                LockOnFocus();
                                 WayPoints.Clear();
-                                Qlick.LEFTQLICK += Qlick_LEFTQLICK; 
+                                MouseEvents.LEFTCLICK += MouseEvents_LEFTMouseEvents; 
                                 break; 
                             }
                              
@@ -99,19 +99,19 @@ class GroundUnitOptions : UnitQptions
            return UNIT.weapon.GetMaximumRange();
        }
    }
-   protected override void Qlick_LEFTQLICK(Ray qamRay, bool hold)
+   protected override void MouseEvents_LEFTMouseEvents(Ray qamRay, bool hold)
    {
        if (!hold)
        {
-           if (gameObject.GetComponent<FoQus>())
+           if (gameObject.GetComponent<Focus>())
            {
                if (unitState == OPTIONS.MoveTo)
                {
-                   SetMoveToPoint(Qlick.State.Position.AsWorldPointOnMap);
+                   SetMoveToPoint(MouseEvents.State.Position.AsWorldPointOnMap);
                    movingDirection = GetMovingDirection();
                    IsMoving = true;
-                   Qlick.LEFTQLICK -= Qlick_LEFTQLICK;
-                   UnlockFoqus();
+                   MouseEvents.LEFTCLICK -= MouseEvents_LEFTMouseEvents;
+                   UnlockFocus();
                }
                else if (unitState == OPTIONS.Guard)
                {
@@ -120,21 +120,21 @@ class GroundUnitOptions : UnitQptions
                    {
                        if (TargetIsAllied(Hit.collider.gameObject))
                        {
-                           Target = Hit.collider.gameObject.GetComponent<UnitSqript>().SetInteracting(this.gameObject);
+                           Target = Hit.collider.gameObject.GetComponent<UnitScript>().SetInteracting(this.gameObject);
                            SetMoveToPoint(Target.transform.position);
                            IsMoving = true;
                        }
                    }
-                   Qlick.LEFTQLICK -= Qlick_LEFTQLICK;
-                   UnlockFoqus();
+                   MouseEvents.LEFTCLICK -= MouseEvents_LEFTMouseEvents;
+                   UnlockFocus();
                }
                else if (unitState == OPTIONS.Patrol)
                {
-                   WayPoints.Add(Qlick.State.Position.AsWorldPointOnMap);
+                   WayPoints.Add(MouseEvents.State.Position.AsWorldPointOnMap);
                    IsMoving = true;
-                   Qlick.LEFTQLICK -= Qlick_LEFTQLICK;
-                   Qlick.RIGHTQLICK -= Qlick_RIGHTQLICK;
-                   UnlockFoqus();
+                   MouseEvents.LEFTCLICK -= MouseEvents_LEFTMouseEvents;
+                   MouseEvents.RIGHTCLICK -= MouseEvents_RIGHTCLICK;
+                   UnlockFocus();
                }
                else if (unitState == OPTIONS.Atack)
                {
@@ -149,22 +149,22 @@ class GroundUnitOptions : UnitQptions
                            IsAttacking = true;
                        }
                    }
-                   Qlick.LEFTQLICK -= Qlick_LEFTQLICK;
-                   UnlockFoqus();
+                   MouseEvents.LEFTCLICK -= MouseEvents_LEFTMouseEvents;
+                   UnlockFocus();
                }
            }
        }
    }
-   protected override void Qlick_RIGHTQLICK(Ray qamRay, bool hold)
+   protected override void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
    {
        if (!hold)
        {
-           if (gameObject.GetComponent<FoQus>())
+           if (gameObject.GetComponent<Focus>())
            {
                if (unitState == OPTIONS.Patrol)
                {
-                   if (WayPoints.Count >= 2) WayPoints.Insert(WayPoints.Count - 1, Qlick.State.Position.AsWorldPointOnMap);
-                   else WayPoints.Add(Qlick.State.Position.AsWorldPointOnMap);
+                   if (WayPoints.Count >= 2) WayPoints.Insert(WayPoints.Count - 1, MouseEvents.State.Position.AsWorldPointOnMap);
+                   else WayPoints.Add(MouseEvents.State.Position.AsWorldPointOnMap);
                    movingDirection = GetMovingDirection();
                    IsMoving = true;
                }
@@ -173,7 +173,7 @@ class GroundUnitOptions : UnitQptions
    }
 
 
-   internal override void FoqussedLeftOnEnemy(GameObject enemy)
+   internal override void FocussedLeftOnEnemy(GameObject enemy)
    {
        standardOrder = true;
        unitState = OPTIONS.Atack;
@@ -259,7 +259,7 @@ class GroundUnitOptions : UnitQptions
 
         if(unitState==OPTIONS.Guard)
         {
-            if (gameObject.GetComponent<Pilot>()) Quomponent.Destroy(gameObject.GetComponent<Pilot>());
+            if (gameObject.GetComponent<Pilot>()) UnitComponent.Destroy(gameObject.GetComponent<Pilot>());
             SetMoveToPoint(Target.transform.position);  
             
             GetMovingDirection();
@@ -297,7 +297,7 @@ class GroundUnitOptions : UnitQptions
             gameObject.transform.position = MoveToPoint;
             //        gameObject.rigidbody.isKinematic = false;
 
-            if (IsGroupLeader) GUISqript.mainGUI.GetComponent<GUISqript>().SellectedGroup.GroupState = UnitGroup.GROUPSTATE.Waiting;
+            if (IsGroupLeader) GUIScript.mainGUI.GetComponent<GUIScript>().SelectedGroup.GroupState = UnitGroup.GROUPSTATE.Waiting;
             if (unitState == OPTIONS.Patrol)
             {
                 WayPoints.RemoveAt(0);
@@ -340,7 +340,7 @@ class GroundUnitOptions : UnitQptions
         MoveToPoint = gameObject.transform.position;
         unitState = OPTIONS.Stay;
         UnitState = unitState;
-        UNIT = gameObject.GetComponent<UnitSqript>();
+        UNIT = gameObject.GetComponent<UnitScript>();
     }
 
     internal override void DoUpdate()

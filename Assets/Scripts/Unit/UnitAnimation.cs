@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-abstract public class AnimaQuion : MonoBehaviour {
+abstract public class UnitAnimation : MonoBehaviour {
 
     public bool IsActive = true;
-    public AnimaQuion anotherAnimaquion;
+    public UnitAnimation anotherUnitAnimation;
 
     abstract internal void Animate();
 
     internal void DoUpdate()
     {
         if (IsActive) Animate();
-        if(anotherAnimaquion) anotherAnimaquion.DoUpdate();
+        if(anotherUnitAnimation) anotherUnitAnimation.DoUpdate();
     }
 	
 

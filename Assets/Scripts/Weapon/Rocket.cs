@@ -9,7 +9,7 @@ abstract public class Rocket : WeaponObject
     {
         Target = targetPosition;
     }
-    public void Launch(Vector3 targetPosition, UnitSqript.GOODorEVIL friendOrfoe)
+    public void Launch(Vector3 targetPosition, UnitScript.GOODorEVIL friendOrfoe)
     {
         if (!LaunchButton)
         {

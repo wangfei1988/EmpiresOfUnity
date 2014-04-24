@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public abstract class Quomponent : MonoBehaviour
+public abstract class UnitComponent : MonoBehaviour
 {
 
     abstract internal void DoUpdate();

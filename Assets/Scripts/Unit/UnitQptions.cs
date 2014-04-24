@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 
 
-abstract public class UnitQptions : MonoBehaviour
+abstract public class UnitOptions : MonoBehaviour
 {
     
 
@@ -28,7 +28,7 @@ abstract public class UnitQptions : MonoBehaviour
     }
     virtual public float AttackRange
     {
-        get { return gameObject.GetComponent<UnitSqript>().weapon.GetMaximumRange(); }
+        get { return gameObject.GetComponent<UnitScript>().weapon.GetMaximumRange(); }
 
     }
 
@@ -75,7 +75,7 @@ abstract public class UnitQptions : MonoBehaviour
     protected bool standardOrder = false;
     abstract public System.Enum UnitState
     { get; set; }
-    virtual internal void FoqussedLeftOnGround(Vector3 worldPoint)
+    virtual internal void FocussedLeftOnGround(Vector3 worldPoint)
     {
         standardOrder = true;
         IsMovingAsGroup = true;
@@ -88,17 +88,17 @@ abstract public class UnitQptions : MonoBehaviour
         Target = null;
         standardOrder = false;
     }
-    virtual internal void FoqussedRightOnGround(Vector3 worldPoint)
+    virtual internal void FocussedRightOnGround(Vector3 worldPoint)
     {
-        Component.Destroy(gameObject.GetComponent<FoQus>());
+        Component.Destroy(gameObject.GetComponent<Focus>());
     }
-    virtual internal void FoqussedLeftOnEnemy(GameObject enemy)
-    { enemy.AddComponent<FoQus>(); }
-    virtual internal void FoqussedRightOnEnemy(GameObject enemy)
+    virtual internal void FocussedLeftOnEnemy(GameObject enemy)
+    { enemy.AddComponent<Focus>(); }
+    virtual internal void FocussedRightOnEnemy(GameObject enemy)
     { }
-    virtual internal void FoqussedLeftOnAllied(GameObject friend)
-    { friend.AddComponent<FoQus>(); }
-    virtual internal void FoqussedRightOnAllied(GameObject friend)
+    virtual internal void FocussedLeftOnAllied(GameObject friend)
+    { friend.AddComponent<Focus>(); }
+    virtual internal void FocussedRightOnAllied(GameObject friend)
     { }
     abstract internal void MoveAsGroup(GameObject leader);
     
@@ -148,35 +148,35 @@ abstract public class UnitQptions : MonoBehaviour
     }
     private int kinematicFrames;
     
-    protected void LockOnFoqus()
+    protected void LockOnFocus()
     {
-        if (!gameObject.GetComponent<FoQus>()) gameObject.AddComponent<FoQus>();
-        gameObject.GetComponent<FoQus>().Lock();
-        _isQlickRecieving = true;
+        if (!gameObject.GetComponent<Focus>()) gameObject.AddComponent<Focus>();
+        gameObject.GetComponent<Focus>().Lock();
+        _isMouseEventsRecieving = true;
     }
-    protected void UnlockFoqus()
+    protected void UnlockFocus()
     {
-        _isQlickRecieving = false;
-        Qlick.LEFTRELEASE += Qlick_LEFTRELEASE;
+        _isMouseEventsRecieving = false;
+        MouseEvents.LEFTRELEASE += MouseEvents_LEFTRELEASE;
     }
-    private bool _isQlickRecieving;
-    private void Qlick_LEFTRELEASE()
+    private bool _isMouseEventsRecieving;
+    private void MouseEvents_LEFTRELEASE()
     {
-        gameObject.GetComponent<FoQus>().Unlock(gameObject);
-        Qlick.LEFTRELEASE -= Qlick_LEFTRELEASE;
+        gameObject.GetComponent<Focus>().Unlock(gameObject);
+        MouseEvents.LEFTRELEASE -= MouseEvents_LEFTRELEASE;
     }
 
-    virtual protected void Qlick_LEFTQLICK(Ray qamRay, bool hold) { }
-    virtual protected void Qlick_RIGHTQLICK(Ray qamRay, bool hold) { }
+    virtual protected void MouseEvents_LEFTMouseEvents(Ray qamRay, bool hold) { }
+    virtual protected void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold) { }
 
     protected bool TargetIsEnemy(GameObject target)
     {
-        return target.GetComponent<UnitSqript>().GoodOrEvil != gameObject.GetComponent<UnitSqript>().GoodOrEvil;
+        return target.GetComponent<UnitScript>().GoodOrEvil != gameObject.GetComponent<UnitScript>().GoodOrEvil;
     }
     protected bool TargetIsAllied(GameObject target)
     {
         if (target.GetInstanceID() != gameObject.GetInstanceID())
-            return target.GetComponent<UnitSqript>().GoodOrEvil == gameObject.GetComponent<UnitSqript>().GoodOrEvil;
+            return target.GetComponent<UnitScript>().GoodOrEvil == gameObject.GetComponent<UnitScript>().GoodOrEvil;
         else return false;
     }
     abstract internal void Hit(int power);

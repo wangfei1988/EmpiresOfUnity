@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class FoQus : MonoBehaviour
+public class Focus : MonoBehaviour
 {
     public enum MARKERS : byte
     {
@@ -14,11 +14,11 @@ public class FoQus : MonoBehaviour
     public static GameObject[] Marker = new GameObject[3];
     public static GameObject masterGameObject;
     private static GameObject Key;
-    public static GameObject Foqusrectangle;
+    public static GameObject Focusrectangle;
     private static bool firststart = true;
-    private UnitSqript UNIT
+    private UnitScript UNIT
     {
-        get { return gameObject.GetComponent<UnitSqript>(); }
+        get { return gameObject.GetComponent<UnitScript>(); }
     }
     private bool UnitMenuIsOn
     {
@@ -33,22 +33,22 @@ public class FoQus : MonoBehaviour
     {
         if (firststart)
         {
-            Foqusrectangle = gameObject;
+            Focusrectangle = gameObject;
             Marker[0] = transform.FindChild("MoveToPoint").gameObject;
             Marker[1] = transform.FindChild("WayPoint").gameObject;
             Marker[2] = transform.FindChild("AttackPoint").gameObject;
             transform.DetachChildren();
-            Component.Destroy(gameObject.GetComponent<FoQus>());
-        }
+            Component.Destroy(gameObject.GetComponent<Focus>());
+        }   
         else
         {
             masterGameObject = gameObject;
-            Qlick.RIGHTQLICK += Qlick_RIGHTQLICK;
-            Qlick.LEFTQLICK += Qlick_LEFTQLICK;
+            MouseEvents.RIGHTCLICK += MouseEvents_RIGHTCLICK;
+            MouseEvents.LEFTCLICK += MouseEvents_LEFTMouseEvents;
         }
     }
 
-    void Qlick_LEFTQLICK(Ray qamRay, bool hold)
+    void MouseEvents_LEFTMouseEvents(Ray qamRay, bool hold)
     {
         if (!IsLocked)
         {
@@ -65,28 +65,28 @@ public class FoQus : MonoBehaviour
                             Marker[(int)MARKERS.AttackPoint].GetComponent<Follower>().targetTransform = ClickedUnit.transform;
                             Marker[(int)MARKERS.AttackPoint].GetComponent<FaceDirection>().TransformToFace = gameObject.transform;
                             Marker[(int)MARKERS.AttackPoint].renderer.enabled = true;
-                            UNIT.Options.FoqussedLeftOnEnemy(ClickedUnit); 
+                            UNIT.Options.FocussedLeftOnEnemy(ClickedUnit); 
                         }
                         else if (IsOtherUnit(ClickedUnit))
                         {
                             Marker[(int)MARKERS.WayPoint].GetComponent<Follower>().targetTransform = ClickedUnit.transform;
                             Marker[(int)MARKERS.WayPoint].GetComponent<FaceDirection>().TransformToFace = gameObject.transform;
                             Marker[(int)MARKERS.WayPoint].renderer.enabled = true;
-                            UNIT.Options.FoqussedLeftOnAllied(ClickedUnit);
+                            UNIT.Options.FocussedLeftOnAllied(ClickedUnit);
                         }
                     }
                     else
                     {
                         Marker[(int)MARKERS.MoveToPoint].transform.position = groundHit;
                         Marker[(int)MARKERS.MoveToPoint].renderer.enabled = true;
-                        UNIT.Options.FoqussedLeftOnGround(groundHit);
+                        UNIT.Options.FocussedLeftOnGround(groundHit);
                     }
                 }
             }
         }
     }
 
-    void Qlick_RIGHTQLICK(Ray qamRay, bool hold)
+    void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
     {
         if (!IsLocked)
         {
@@ -95,10 +95,10 @@ public class FoQus : MonoBehaviour
                 GameObject ClickedUnit = RayHittenUnit(qamRay);
                 if (ClickedUnit)
                 {
-                    if (IsOtherUnit(ClickedUnit)) ClickedUnit.AddComponent<FoQus>();
+                    if (IsOtherUnit(ClickedUnit)) ClickedUnit.AddComponent<Focus>();
                     else RightClickMenu.PopUpGUI(UNIT);
                 }
-                else GameObject.Destroy(gameObject.GetComponent<FoQus>());
+                else GameObject.Destroy(gameObject.GetComponent<Focus>());
             }
         }
     }
@@ -116,7 +116,7 @@ public class FoQus : MonoBehaviour
     }
     private bool IsEnemy(GameObject otherUnit)
     {
-        return otherUnit.GetComponent<UnitSqript>().GoodOrEvil != this.UNIT.GoodOrEvil;
+        return otherUnit.GetComponent<UnitScript>().GoodOrEvil != this.UNIT.GoodOrEvil;
     }
     private bool IsOtherUnit(GameObject unit)
     {
@@ -136,7 +136,7 @@ public class FoQus : MonoBehaviour
     private void TryRelease()
     {
         if (masterGameObject.GetInstanceID() != gameObject.GetInstanceID())
-            Component.Destroy(gameObject.GetComponent<FoQus>());
+            Component.Destroy(gameObject.GetComponent<Focus>());
     }
 
     void Update()
@@ -149,8 +149,8 @@ public class FoQus : MonoBehaviour
     {
         if (!firststart)
         {
-            Qlick.RIGHTQLICK -= Qlick_RIGHTQLICK;
-            Qlick.LEFTQLICK -= Qlick_LEFTQLICK;
+            MouseEvents.RIGHTCLICK -= MouseEvents_RIGHTCLICK;
+            MouseEvents.LEFTCLICK -= MouseEvents_LEFTMouseEvents;
         }
         else firststart = false;
     }

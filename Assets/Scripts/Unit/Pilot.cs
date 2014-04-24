@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Pilot : Quomponent 
+public class Pilot : UnitComponent 
 {
-    private const float MIN_LOOKAHEAD = 50;
+    private const float MIN_LOOKAHEAD = 0.5f;
     private float MAX_LOOKAHEAD
     { get {return Vector3.Distance(My.Options.MoveToPoint,My.transform.position); } }
     [SerializeField]
@@ -28,7 +28,7 @@ public class Pilot : Quomponent
         }
     }
     private SphereCollider mySpace;
-    private UnitSqript My;
+    private UnitScript My;
     private bool Triggerd
     {
         get
@@ -64,7 +64,7 @@ public class Pilot : Quomponent
 	void Start() 
     {
        triggerd = 0;
-       My = gameObject.GetComponent<UnitSqript>();
+       My = gameObject.GetComponent<UnitScript>();
        mySpace = this.gameObject.AddComponent<SphereCollider>();
        mySpace.isTrigger = true;
        SetRadius(MIN_LOOKAHEAD);
@@ -91,7 +91,7 @@ public class Pilot : Quomponent
     {
         if ((other.gameObject.layer != 2)&&(!My.InteractingUnits.Contains(other.gameObject.GetInstanceID())))
         {
-            GUISqript.AddTextLine(this.gameObject.name + " " + this.gameObject.GetInstanceID() + " TriggerEnter-> " + other.gameObject.name + " " + other.gameObject.GetInstanceID());
+            GUIScript.AddTextLine(this.gameObject.name + " " + this.gameObject.GetInstanceID() + " TriggerEnter-> " + other.gameObject.name + " " + other.gameObject.GetInstanceID());
             My.Options.movingDirection += ((My.transform.position - other.transform.position).normalized / mySpace.radius);
             My.Options.movingDirection.Normalize();
             Triggerd = true;
@@ -103,7 +103,7 @@ public class Pilot : Quomponent
         
         if ((other.gameObject.layer != 2)&&(!My.InteractingUnits.Contains(other.gameObject.GetInstanceID())))
         {
-            GUISqript.AddTextLine(this.gameObject.name+" "+this.gameObject.GetInstanceID()+" TriggerStay-> "+other.gameObject.name+" "+other.gameObject.GetInstanceID());
+            GUIScript.AddTextLine(this.gameObject.name+" "+this.gameObject.GetInstanceID()+" TriggerStay-> "+other.gameObject.name+" "+other.gameObject.GetInstanceID());
 
       //      float factor = (lookAheadDistance - Vector3.Distance(My.transform.position, other.gameObject.transform.position)) / lookAheadDistance;
         //    My.Options.movingDirection += ((My.transform.position - other.transform.position).normalized / Vector3.Distance(My.transform.position+(other.transform.position - My.transform.position).normalized*3,other.transform.position));
@@ -119,7 +119,7 @@ public class Pilot : Quomponent
     {
         if (other.gameObject.layer != 2)
         {
-            GUISqript.AddTextLine(this.gameObject.name + " " + this.gameObject.GetInstanceID() + " TriggerExit-> " + other.gameObject.name + " " + other.gameObject.GetInstanceID());
+            GUIScript.AddTextLine(this.gameObject.name + " " + this.gameObject.GetInstanceID() + " TriggerExit-> " + other.gameObject.name + " " + other.gameObject.GetInstanceID());
             My.Options.movingDirection = (My.Options.MoveToPoint - My.transform.position).normalized;
         }
      

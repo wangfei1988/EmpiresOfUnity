@@ -1,29 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FaceDirection : AnimaQuion
+public class FaceDirection : UnitAnimation
 {
 
     public enum FACEDIRECTION : byte
     {
         forward,
         left,
-        right,
+        Right,
         backward,
         up,
         down
-
     }
+
     public Transform TransformToFace;
     public bool faceMovingDirection, faceQamera,faceOtherTransform;
     public FACEDIRECTION forwardIs;
     public Vector3 direction;
-    private UnitSqript UNIT;
+    private UnitScript UNIT;
     private Vector3 qamDirection
     {
         get
         {
-            if (Camera.main.GetComponent<QamSqript>().qamMode == QamSqript.QAMERAMODE.PERSPECTIVE)
+            if (Camera.main.GetComponent<Cam>().qamMode == Cam.CAMERAMODE.PERSPECTIVE)
             {
                 forwardIs = FACEDIRECTION.backward;
                 return (Camera.main.transform.position - gameObject.transform.position).normalized;
@@ -37,34 +37,44 @@ public class FaceDirection : AnimaQuion
         }
     }
     
-	void Start () 
-    {
-        if (this.gameObject.GetComponent<UnitQptions>()) UNIT = this.gameObject.GetComponent<UnitSqript>();
+	void Start ()
+	{
+	    TransformToFace = Camera.main.transform;
+        if (this.gameObject.GetComponent<UnitOptions>()) UNIT = this.gameObject.GetComponent<UnitScript>();
 	}
 
     internal override void Animate()
     {
-        if (faceMovingDirection) direction = UNIT.Options.movingDirection;
-        else if (faceOtherTransform) direction = TransformToFace.position - this.gameObject.transform.position;
-        else if (faceQamera) direction = qamDirection;
+        if (faceMovingDirection)
+            direction = UNIT.Options.movingDirection;
+        else if (faceOtherTransform)
+            direction = TransformToFace.position - this.gameObject.transform.position;
+        else if (faceQamera)
+            direction = qamDirection;
 
-        switch (forwardIs)
+        if (direction != Vector3.zero)
         {
-            case FACEDIRECTION.forward:
-                { gameObject.transform.forward = direction; break; }
-            case FACEDIRECTION.right:
-                { gameObject.transform.right = direction; break; }
-            case FACEDIRECTION.up:
-                { gameObject.transform.up = direction; break; }
-            case FACEDIRECTION.backward:
-                { gameObject.transform.forward = -direction; break; }
-            case FACEDIRECTION.left:
-                { gameObject.transform.right = -direction; break; }
-            case FACEDIRECTION.down:
-                { gameObject.transform.up = -direction; break; }
+            switch (forwardIs)
+            {
+                case FACEDIRECTION.forward:
+                    gameObject.transform.forward = direction;
+                    break;
+                case FACEDIRECTION.Right:
+                    gameObject.transform.right = direction;
+                    break;
+                case FACEDIRECTION.up:
+                    gameObject.transform.up = direction;
+                    break;
+                case FACEDIRECTION.backward:
+                    gameObject.transform.forward = -direction;
+                    break;
+                case FACEDIRECTION.left:
+                    gameObject.transform.right = -direction;
+                    break;
+                case FACEDIRECTION.down:
+                    gameObject.transform.up = -direction;
+                    break;
+            }
         }
     }
-
-    //void Update()
-    //{ Animate(); }
 }

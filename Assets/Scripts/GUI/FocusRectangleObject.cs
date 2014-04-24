@@ -2,17 +2,17 @@
 using System.Collections;
 
 
-public class FoqusRectangleObject : MonoBehaviour {
+public class FocusRectangleObject : MonoBehaviour {
 
 
     public Quaternion rotary;
     public float focusScaling;
 
-    private bool MasterHasFoqus
+    private bool MasterHasFocus
     {
         get 
         {
-            if (FoQus.masterGameObject) return FoQus.masterGameObject.GetComponent<FoQus>();
+            if (Focus.masterGameObject) return Focus.masterGameObject.GetComponent<Focus>();
             else return false;        
         }   
     }
@@ -20,7 +20,7 @@ public class FoqusRectangleObject : MonoBehaviour {
     {
         get 
         {
-            if (FoQus.masterGameObject) return FoQus.masterGameObject.transform;
+            if (Focus.masterGameObject) return Focus.masterGameObject.transform;
             else return null;
         }
     }
@@ -32,7 +32,7 @@ public class FoqusRectangleObject : MonoBehaviour {
         {
             if (gameObject.renderer.enabled != value)
             {
-                foreach (GameObject marker in FoQus.Marker) marker.GetComponent<MarkerSqript>().Visible = value;
+                foreach (GameObject marker in Focus.Marker) marker.GetComponent<MarkerSqript>().Visible = value;
                 gameObject.renderer.enabled = value;
             }
         }
@@ -46,7 +46,7 @@ public class FoqusRectangleObject : MonoBehaviour {
 
     public void Equalize()
     {
-        if (MasterHasFoqus)
+        if (MasterHasFocus)
         {
             Visible = true;
             gameObject.transform.localScale = new Vector3(MasterTransform.lossyScale.x * focusScaling, MasterTransform.lossyScale.z * focusScaling, 1f);
@@ -59,7 +59,7 @@ public class FoqusRectangleObject : MonoBehaviour {
     private void faceDirections()
     {
         gameObject.GetComponent<FaceDirection>().DoUpdate();
-        foreach (GameObject marker in FoQus.Marker) marker.GetComponent<MarkerSqript>().DoUpdate();
+        foreach (GameObject marker in Focus.Marker) marker.GetComponent<MarkerSqript>().DoUpdate();
     }
 
     //public void SetTo(Transform to)

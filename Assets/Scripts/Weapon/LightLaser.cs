@@ -10,7 +10,7 @@ public class LightLaser : Weapon
     public const int MINIMUM_POWER = 33;
     public const float MAXIMUM_DISTANCE = 500;
 
-    private LaserSpriteSqript laser;
+    private LaserSpriteScript laser;
   //  public Object preefab;
     public int LaserEnergie;
     private int frameCounter;
@@ -45,9 +45,9 @@ public class LightLaser : Weapon
                 LaserEnergie -= MAXIMUM_POWER;
             }
 
-            laser = (GameObject.Instantiate(preefabSlot, gameObject.transform.position, gameObject.transform.rotation) as WeaponObject).GetComponent<LaserSpriteSqript>();
+            laser = (GameObject.Instantiate(prefabSlot, gameObject.transform.position, gameObject.transform.rotation) as WeaponObject).GetComponent<LaserSpriteScript>();
             laser.gameObject.name = "Laser " + this.gameObject.GetInstanceID();
-            laser.GoodOrEvil = this.gameObject.GetComponent<UnitSqript>().GoodOrEvil;
+            laser.GoodOrEvil = this.gameObject.GetComponent<UnitScript>().GoodOrEvil;
             IsLoadedt = laser.Load((targetPoint-this.gameObject.transform.position).normalized, Power, MAXIMUM_DISTANCE);
             
             

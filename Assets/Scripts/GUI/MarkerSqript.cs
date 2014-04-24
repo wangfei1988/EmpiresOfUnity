@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MarkerSqript : MonoBehaviour {
 
-    public AnimaQuion animationSqrips;
+    public UnitAnimation animationSqrips;
     [SerializeField]
     private bool visible;
     public bool Visible

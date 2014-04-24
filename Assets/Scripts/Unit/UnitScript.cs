@@ -4,18 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 [AddComponentMenu("Character/Unit Sqript")]
-public class UnitSqript : MonoBehaviour 
+public class UnitScript : MonoBehaviour 
 {
     public enum UNITTYPE : int
     {
         Tank,
-        GroundUnit,
-        GroundBuilder,
-        GroundHarvester,
         Airport,
-        Building,
-        Flaptbrik,
-        SpzialUnit
+        Fabrik,
     }
 
     public int life;
@@ -27,26 +22,14 @@ public class UnitSqript : MonoBehaviour
     public GOODorEVIL GoodOrEvil;
     public bool IsBuilding;
     public Weapon weapon;
-    public AnimaQuion unitAnimator;
+    public UnitAnimation unitAnimator;
     public UNITTYPE unitType;
-    public UnitQptions Options;
+    public UnitOptions Options;
 	void Start () 
     {
      //   gameObject.name = gameObject.name + " " + gameObject.GetInstanceID();
         switch (unitType)
         {
-            case UNITTYPE.GroundUnit:
-                {
-                    IsBuilding = false;
-                    if (!gameObject.GetComponent<GroundUnitOptions>()) gameObject.AddComponent<GroundUnitOptions>();
-                    Options = gameObject.GetComponent<GroundUnitOptions>();
-               //     if (!gameObject.GetComponent<LightLaser>()) gameObject.AddComponent<LightLaser>();
-              //      weapon = gameObject.GetComponent<LightLaser>();
-                    Options.SetUp(2000, 0.9f);
-                    
-                    
-                    break;
-                }
             case UNITTYPE.Tank:
                 {
                     IsBuilding = false;
@@ -54,15 +37,15 @@ public class UnitSqript : MonoBehaviour
                     Options = gameObject.GetComponent<GroundUnitOptions>();
                 //    if (!gameObject.GetComponent<LightLaser>()) gameObject.AddComponent<LightLaser>();
                     weapon = gameObject.GetComponent<LightLaser>();
-                    Options.SetUp(800, 1.2f);
+                    Options.SetUp(800, 0.2f);
                     break;
                 }
-            case UNITTYPE.Building:
+            case UNITTYPE.Fabrik:
                 {
-                    if (gameObject.GetComponent<BuildingOptions>() == null) gameObject.AddComponent<BuildingOptions>();
-                    Options = gameObject.GetComponent<BuildingOptions>();
+                    if (gameObject.GetComponent<ProductionBuildingOptions>() == null) gameObject.AddComponent<BuildingOptions>();
+                    Options = gameObject.GetComponent<ProductionBuildingOptions>();
                 //    if (!gameObject.GetComponent<NoWeapon>()) gameObject.AddComponent<NoWeapon>();
-                    weapon = gameObject.GetComponent<NoWeapon>();
+                    weapon = gameObject.GetComponent<RocketLauncher>();
                     IsBuilding = true;
                     Options.SetUp(20000, 0f);
                     break;
@@ -90,12 +73,12 @@ public class UnitSqript : MonoBehaviour
     }
     public GameObject SetInteracting(GameObject unit)
     {
-        if (unit.GetComponent<UnitSqript>().GoodOrEvil == this.GoodOrEvil)
+        if (unit.GetComponent<UnitScript>().GoodOrEvil == this.GoodOrEvil)
         {
             if (!interactingUnits.Contains(unit.gameObject.GetInstanceID()))
             {
                 interactingUnits.Add(unit.gameObject.GetInstanceID());
-                return unit.GetComponent<UnitSqript>().SetInteracting(this.gameObject);
+                return unit.GetComponent<UnitScript>().SetInteracting(this.gameObject);
             }
             else return this.gameObject;
         }

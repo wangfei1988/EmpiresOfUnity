@@ -51,7 +51,7 @@ AudioSource:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 851c2eee0517b344d97509114e30afc2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4d344511b75934b45b75dd01c8b6fe59, type: 3}
   m_PlayOnAwake: 1
   m_Volume: .842999995
   m_Pitch: 1
@@ -147,14 +147,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64344f77d48d06943988204bd0d572b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amunition: 0
+  ammunition: 0
   GoodOrEvil: 0
   Target: {x: 0, y: 0, z: 0}
   richtung: 0
   t: {x: 0, y: 0, z: 0}
   sound2: {fileID: 8300000, guid: 851c2eee0517b344d97509114e30afc2, type: 3}
   Step: 0
-  Hitflare: {fileID: 0}
+  Hitflare: {fileID: 12100000, guid: e977ad2ff6f4cc847988f72c7fe6eae9, type: 2}
   rotation: 90
   beamPosition: 20
   hit: 0
