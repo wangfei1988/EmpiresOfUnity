@@ -95,7 +95,7 @@ public class Pilot : UnitComponent
             My.Options.movingDirection += ((My.transform.position - other.transform.position).normalized / mySpace.radius);
             My.Options.movingDirection.Normalize();
             Triggerd = true;
-            ShrinkRradius(Vector3.Distance(other.transform.position, gameObject.transform.position)*0.99f);
+            ShrinkRradius(Vector3.Distance(other.transform.position, gameObject.transform.position)*0.8f);
         }
     }
     void OnTriggerStay(Collider other)

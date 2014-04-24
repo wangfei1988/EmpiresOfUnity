@@ -37,7 +37,7 @@ public class UnitScript : MonoBehaviour
                     Options = gameObject.GetComponent<GroundUnitOptions>();
                 //    if (!gameObject.GetComponent<LightLaser>()) gameObject.AddComponent<LightLaser>();
                     weapon = gameObject.GetComponent<LightLaser>();
-                    Options.SetUp(800, 0.2f);
+                    Options.SetUp(800, 0.1f);
                     break;
                 }
             case UNITTYPE.Fabrik:

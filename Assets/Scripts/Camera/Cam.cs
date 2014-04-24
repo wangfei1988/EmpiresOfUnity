@@ -13,7 +13,7 @@ public class Cam : MonoBehaviour {
     private Quaternion Perspective_Rotation;
     private Quaternion Orthografic_Rotation;
     public float ORTHOGRAFIC_Y_HEIGHT = 50f;
-    public float PERSPECTIVE_VIEW_SIZE = 20f;
+    public float PERSPECTIVE_VIEW_SIZE = 5f;
     public float Orthografic_View_Size = 500f;
     private float Perspective_Y_Height = 50f;
     public CAMERAMODE qamMode = CAMERAMODE.ORTHOGRAFIC;
