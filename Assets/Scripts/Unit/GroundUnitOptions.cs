@@ -227,7 +227,7 @@ class GroundUnitOptions : UnitOptions
 
     
 
-    public List<Vector3> WayPoints;
+    public List<Vector3> WayPoints = new List<Vector3>();
 
     private bool attacking=false;
     public override bool IsAttacking

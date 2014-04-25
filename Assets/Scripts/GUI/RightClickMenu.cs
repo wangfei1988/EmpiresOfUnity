@@ -100,7 +100,7 @@ public class RightClickMenu : MonoBehaviour {
             if (Unit.weapon.HasArsenal)
             {
                 guiposition = new Rect(1718 * ScaleX, (210 * ScaleY) - 3 * guiStyle.fontSize, 202 * ScaleX, 360 * ScaleY);
-                GUI.BeginGroup(guiposition,Unit.name+":\nSellect active Weapon" , guiSIDEstyle);
+                GUI.BeginGroup(guiposition,Unit.name+":\nSelect active Weapon" , guiSIDEstyle);
                 for (int i = 0; i < Unit.weapon.arsenal; i++)
                 {
                     if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + i * (btnHeight + zwischenbuttonraum), (180 * ScaleX), btnHeight), Unit.weapon.arsenal[i].ammunition.ToString()))

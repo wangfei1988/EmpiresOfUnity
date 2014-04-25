@@ -4,8 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-
-
 [AddComponentMenu("Camera-Control/GUIScript")]
 public class GUIScript : MonoBehaviour
 {
@@ -47,8 +45,10 @@ public class GUIScript : MonoBehaviour
     {
         get 
         {
-            if (mousePosition == null) return (mousePosition = (Vector2)MouseEvents.State.Position).Value;
-            else return mousePosition.Value;
+            if (mousePosition == null)
+                return (mousePosition = (Vector2)MouseEvents.State.Position).Value;
+            else
+                return mousePosition.Value;
         }
     }
 
