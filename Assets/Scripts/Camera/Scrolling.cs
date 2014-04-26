@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Scrolling : UnitComponent
+public class Scrolling : MonoBehaviour
 {
     /* Member */
     public Vector2 scrollSpeed = new Vector2(0.5f, 0.5f);
@@ -16,9 +16,10 @@ public class Scrolling : UnitComponent
     void Start()
     {
         mainGUI = this.GetComponent<GUIScript>();
+        UpdateHandler.OnUpdate += DoUpdate;
     }
 
-    internal override void DoUpdate()
+    void DoUpdate()
     {
         if (scrollingAllowed)
             CheckForScrolling();

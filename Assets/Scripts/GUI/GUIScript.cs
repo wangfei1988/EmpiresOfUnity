@@ -29,9 +29,7 @@ public class GUIScript : MonoBehaviour
     private string TextField = "";
     public bool Debug = false;
 
-    /* TODO UPDATE EVENT MANAGER */
-    private UnitComponent animatedCursor;
-    private UnitComponent scrolling;
+    private Scrolling scrolling;
 
     new public Camera camera;
 
@@ -102,7 +100,6 @@ public class GUIScript : MonoBehaviour
         SelectedGroup = ScriptableObject.CreateInstance<UnitGroup>();
         SelectedGroup.startGroup();
 
-        animatedCursor = (GetComponent<AnimatedCursor>()) ? GetComponent<AnimatedCursor>() : null;
         scrolling = (GetComponent<Scrolling>()) ? GetComponent<Scrolling>() : null;
         
         
@@ -134,6 +131,21 @@ public class GUIScript : MonoBehaviour
         MouseEvents.RIGHTCLICK += MouseEvents_RIGHTCLICK;
         MouseEvents.LEFTRELEASE += MouseEvents_LEFTRELEASE;
 
+        UpdateHandler.OnUpdate += DoUpdate;
+    }
+
+    void DoUpdate()
+    {
+        mousePosition = null;
+
+        MouseEvents.DoUpdate();
+        groupCount = SelectedGroup.Count;
+
+        //if (animatedCursor) animatedCursor.DoUpdate();
+        //if (scrolling) scrolling.DoUpdate();
+
+        if (Debug)
+            guiText.text = TextUpdate();
     }
 
 
@@ -192,9 +204,7 @@ public class GUIScript : MonoBehaviour
         
         if (GUI.Button(new Rect((0 * Scale.x), (60 * Scale.y), (80 * Scale.x), (40 * Scale.y)), mainGUIContent[1])) 
         {
-            Scrolling scr = scrolling as Scrolling;
-            scr.SwitchScrollingStatus();
-
+            scrolling.SwitchScrollingStatus();
         }
         if (GUI.Button(new Rect((100 * Scale.x), (60 * Scale.y), (80 * Scale.x), (40 * Scale.y)), mainGUIContent[2])) 
         {
@@ -222,21 +232,5 @@ public class GUIScript : MonoBehaviour
             if (i > 6) StaticTextLines.RemoveAt(i);
         }
         return TextField;
-    }
-
-
-    void Update()
-    {
-        mousePosition = null;
-
-        MouseEvents.DoUpdate();
-        groupCount = SelectedGroup.Count;
-
-        /* TODO DoUpdate*/
-        if (animatedCursor) animatedCursor.DoUpdate();
-        if (scrolling) scrolling.DoUpdate();
-
-        if (Debug)
-            guiText.text = TextUpdate();
     }
 }

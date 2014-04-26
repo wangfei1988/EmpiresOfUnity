@@ -68,8 +68,19 @@ public class Pilot : UnitComponent
        mySpace = this.gameObject.AddComponent<SphereCollider>();
        mySpace.isTrigger = true;
        SetRadius(MIN_LOOKAHEAD);
-
+       UpdateHandler.OnUpdate += DoUpdate;
 	}
+    internal void DoUpdate()
+    {
+        if (Triggerd == false)
+        {
+            if (LookAheadDistance < MAX_LOOKAHEAD)
+                SetRadius(LookAheadDistance + 1f);
+            else
+                SetRadius(MAX_LOOKAHEAD);
+            Triggerd = false;
+        }
+    }
 
 
 
@@ -131,14 +142,5 @@ public class Pilot : UnitComponent
     {
         mySpace = null;
         Component.Destroy(gameObject.GetComponent<SphereCollider>());
-    }
-    internal override void DoUpdate()
-    {
-        if (!Triggerd)
-        {
-            if (LookAheadDistance < MAX_LOOKAHEAD) SetRadius(LookAheadDistance + 1f);
-            else SetRadius(MAX_LOOKAHEAD);
-        }
-        Triggerd = false;
     }
 }

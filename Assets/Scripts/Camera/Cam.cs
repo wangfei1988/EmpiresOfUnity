@@ -101,9 +101,4 @@ public class Cam : MonoBehaviour {
 
         return QamMode;
     }
-
-	void Update () 
-    {
-	    
-	}
 }

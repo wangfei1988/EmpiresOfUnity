@@ -255,7 +255,7 @@ class GroundUnitOptions : UnitOptions
 
     virtual protected bool MoveTo()
     {
-        if (gameObject.GetComponent<Pilot>()) gameObject.GetComponent<Pilot>().DoUpdate();
+        //if (gameObject.GetComponent<Pilot>()) gameObject.GetComponent<Pilot>().DoUpdate();
 
         if(unitState==OPTIONS.Guard)
         {
@@ -346,8 +346,10 @@ class GroundUnitOptions : UnitOptions
     internal override void DoUpdate()
     {
 
-        if (IsAttacking) SetMoveToPoint(Target.transform.position);
-        if (IsMoving) IsMoving = MoveTo();
+        if (IsAttacking)
+            SetMoveToPoint(Target.transform.position);
+        if (IsMoving)
+            IsMoving = MoveTo();
 
     }
 

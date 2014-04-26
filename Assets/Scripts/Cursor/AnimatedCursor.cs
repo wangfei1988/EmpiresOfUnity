@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class AnimatedCursor : UnitComponent
+public class AnimatedCursor : MonoBehaviour
 {
     /* Member */
     public float AnimationFps = 3; // x Frages per Second
@@ -70,9 +70,10 @@ public class AnimatedCursor : UnitComponent
     {
         mainGUI = this.GetComponent<GUIScript>();
         this.CurrentCursor = CURSOR.STANDARD;
+        UpdateHandler.OnUpdate += DoUpdate;
     }
 
-    internal override void DoUpdate()
+    void DoUpdate()
     {
         SetCursor();
     }

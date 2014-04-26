@@ -15,7 +15,13 @@ public class GroupRectangleScript : MonoBehaviour {
         IsSignedIn = false;
         gameObject.renderer.enabled = false;
 
+        UpdateHandler.OnUpdate += DoUpdate;
 	}
+
+    void DoUpdate()
+    {
+        Equalize();
+    }
     
     private void SignIn()
     {
@@ -74,9 +80,4 @@ public class GroupRectangleScript : MonoBehaviour {
     {
           mainGUI = gui;
     }
-	// Update is called once per frame
-	void Update () 
-    {
-        Equalize();
-	}
 }

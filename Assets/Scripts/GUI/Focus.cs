@@ -46,6 +46,16 @@ public class Focus : MonoBehaviour
             MouseEvents.RIGHTCLICK += MouseEvents_RIGHTCLICK;
             MouseEvents.LEFTCLICK += MouseEvents_LEFTMouseEvents;
         }
+
+        UpdateHandler.OnUpdate += DoUpdate;
+    }
+
+    void DoUpdate()
+    {
+        if (IsLocked)
+            masterGameObject = gameObject;
+        else
+            TryRelease();
     }
 
     void MouseEvents_LEFTMouseEvents(Ray qamRay, bool hold)
@@ -135,14 +145,9 @@ public class Focus : MonoBehaviour
     }
     private void TryRelease()
     {
-        if (masterGameObject.GetInstanceID() != gameObject.GetInstanceID())
-            Component.Destroy(gameObject.GetComponent<Focus>());
-    }
-
-    void Update()
-    {
-        if (IsLocked) masterGameObject = gameObject;
-        else TryRelease();
+        if (masterGameObject != null && gameObject != null)
+            if (masterGameObject.GetInstanceID() != gameObject.GetInstanceID())
+                Component.Destroy(gameObject.GetComponent<Focus>());
     }
 
     void OnDestroy()

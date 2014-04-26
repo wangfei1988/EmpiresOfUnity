@@ -40,8 +40,11 @@ public class FocusRectangleObject : MonoBehaviour {
 
     void Start()
     {
-
-
+        UpdateHandler.OnUpdate += DoUpdate;
+    }
+    void DoUpdate()
+    {
+        Equalize();
     }
 
     public void Equalize()
@@ -69,10 +72,6 @@ public class FocusRectangleObject : MonoBehaviour {
     //    transform.localScale = new Vector3((to.localScale.x / 4f) * 3f, (to.localScale.z / 4f) * 3f, 1f);
     //}
 
-    void Update()
-    {
-        Equalize();   
-    }
 
 }
 

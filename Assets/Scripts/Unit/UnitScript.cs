@@ -22,7 +22,7 @@ public class UnitScript : MonoBehaviour
     public GOODorEVIL GoodOrEvil;
     public bool IsBuilding;
     public Weapon weapon;
-    public UnitAnimation unitAnimator;
+    //public UnitAnimation unitAnimator;
     public UNITTYPE unitType;
     public UnitOptions Options;
 	void Start () 
@@ -31,39 +31,41 @@ public class UnitScript : MonoBehaviour
         switch (unitType)
         {
             case UNITTYPE.Tank:
-                {
-                    IsBuilding = false;
-                    if (!gameObject.GetComponent<GroundUnitOptions>()) gameObject.AddComponent<GroundUnitOptions>();
-                    Options = gameObject.GetComponent<GroundUnitOptions>();
-                //    if (!gameObject.GetComponent<LightLaser>()) gameObject.AddComponent<LightLaser>();
-                    weapon = gameObject.GetComponent<LightLaser>();
-                    Options.SetUp(800, 0.1f);
-                    break;
-                }
+                IsBuilding = false;
+                if (!gameObject.GetComponent<GroundUnitOptions>()) gameObject.AddComponent<GroundUnitOptions>();
+                Options = gameObject.GetComponent<GroundUnitOptions>();
+                //if (!gameObject.GetComponent<LightLaser>()) gameObject.AddComponent<LightLaser>();
+                weapon = gameObject.GetComponent<LightLaser>();
+                Options.SetUp(800, 0.1f);
+                break;
             case UNITTYPE.Fabrik:
-                {
-                    if (gameObject.GetComponent<ProductionBuildingOptions>() == null) gameObject.AddComponent<BuildingOptions>();
-                    Options = gameObject.GetComponent<ProductionBuildingOptions>();
-                //    if (!gameObject.GetComponent<NoWeapon>()) gameObject.AddComponent<NoWeapon>();
-                    weapon = gameObject.GetComponent<RocketLauncher>();
-                    IsBuilding = true;
-                    Options.SetUp(20000, 0f);
-                    break;
-                }
+                if (gameObject.GetComponent<ProductionBuildingOptions>() == null) gameObject.AddComponent<BuildingOptions>();
+                Options = gameObject.GetComponent<ProductionBuildingOptions>();
+                //if (!gameObject.GetComponent<NoWeapon>()) gameObject.AddComponent<NoWeapon>();
+                weapon = gameObject.GetComponent<RocketLauncher>();
+                IsBuilding = true;
+                Options.SetUp(20000, 0f);
+                break;
             case UNITTYPE.Airport:
-                {
-                    if (gameObject.GetComponent<ProductionBuildingOptions>() == null) gameObject.AddComponent<ProductionBuildingOptions>();
-                    Options = gameObject.GetComponent<ProductionBuildingOptions>();
-                //    if (!gameObject.GetComponent<NoWeapon>()) gameObject.AddComponent<NoWeapon>();
-                    weapon = gameObject.GetComponent<RocketLauncher>();
-                    IsBuilding = true;
-                    Options.SetUp(20000, 0f);
-                    break;
-                }
+                if (gameObject.GetComponent<ProductionBuildingOptions>() == null) gameObject.AddComponent<ProductionBuildingOptions>();
+                Options = gameObject.GetComponent<ProductionBuildingOptions>();
+                //if (!gameObject.GetComponent<NoWeapon>()) gameObject.AddComponent<NoWeapon>();
+                weapon = gameObject.GetComponent<RocketLauncher>();
+                IsBuilding = true;
+                Options.SetUp(20000, 0f);
+                break;
         }
-  
-        
+        UpdateHandler.OnUpdate += DoUpdate;
 	}
+
+    void DoUpdate()
+    {
+        //if (unitAnimator) unitAnimator.DoUpdate();
+        if (weapon) weapon.Reloade();
+        Options.OptionsUpdate();
+        life = Options.Life;
+        if (life < 0) GameObject.Destroy(this.gameObject);
+    }
 
     [SerializeField]
     private List<int> interactingUnits = new List<int>();
@@ -96,12 +98,4 @@ public class UnitScript : MonoBehaviour
         private set;
     }
 
-	void Update () 
-    {
-        if (unitAnimator) unitAnimator.DoUpdate();
-        if (weapon) weapon.Reloade();
-        Options.OptionsUpdate();
-        life = Options.Life;
-        if (life < 0) GameObject.Destroy(this.gameObject);
-	}
 }
