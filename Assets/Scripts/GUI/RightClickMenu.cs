@@ -9,7 +9,7 @@ public class RightClickMenu : MonoBehaviour {
     private static UnitScript Unit;
     new public Camera camera;
     public GUITexture Pannel;
- //   bool hold = false;
+    //bool hold = false;
     public float ScaleX, ScaleY;
     public Rect view;
     public static bool showGUI = false;
@@ -19,7 +19,7 @@ public class RightClickMenu : MonoBehaviour {
     public GUIStyle buttonStyle;
     public GUIStyle guiStyle;
 
-   public GUIStyle guiSIDEstyle;
+    public GUIStyle guiSIDEstyle;
     public GUIStyle buttonSIDEstyle;
     public Texture2D dieGruehnePower;
 
@@ -73,20 +73,12 @@ public class RightClickMenu : MonoBehaviour {
     //            BuildButtons[i]
     //        }
     //    }
-
     //}
-
-
-
-
-
 
     //private static string[] GetUnitsMenuOptions()
     //{
     //    return System.Enum.GetNames(Unit.Options.UnitState.GetType());
     //}
-
-
 
     void OnGUI()
     {

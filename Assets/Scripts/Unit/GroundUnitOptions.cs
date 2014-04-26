@@ -201,7 +201,7 @@ class GroundUnitOptions : UnitOptions
 
     
     
-    private float distance;
+    private float distance = 0;
     public override float Distance
     {
         get 

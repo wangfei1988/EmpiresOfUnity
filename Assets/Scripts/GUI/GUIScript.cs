@@ -103,7 +103,7 @@ public class GUIScript : MonoBehaviour
         SelectedGroup = ScriptableObject.CreateInstance<UnitGroup>();
         SelectedGroup.startGroup();
 
-        animatedCursor = (GetComponent<AnimatedMouseCursors>())?GetComponent<AnimatedMouseCursors>():null;
+        animatedCursor = (GetComponent<AnimatedCursor>()) ? GetComponent<AnimatedCursor>() : null;
         
         //if (camera.name == null)
         //{

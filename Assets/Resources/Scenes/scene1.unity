@@ -397,7 +397,7 @@ GUITexture:
   m_GameObject: {fileID: 358951600}
   m_Enabled: 1
   m_Texture: {fileID: 2800000, guid: a031db5fc7190264ca0171e446fe4b87, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_Color: {r: .426470578, g: .156790644, b: .156790644, a: .501960814}
   m_PixelInset:
     serializedVersion: 2
     x: 0
@@ -738,10 +738,10 @@ GUIText:
   m_GameObject: {fileID: 358951600}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: asda dsaasd
+  m_Text: 
   m_Anchor: 0
   m_Alignment: 0
-  m_PixelOffset: {x: -440.279999, y: 271.559998}
+  m_PixelOffset: {x: 0, y: 0}
   m_LineSpacing: 1
   m_TabSize: 4
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -764,17 +764,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6837ccc8c529b7c4bbdadba300896110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentCursor: 0
-  cursor: 0
-  CurrentClickPoint: {x: 1, y: 1}
-  cursorList:
-  - {fileID: 2800000, guid: 3030daf6a4d5e6f40853b4d4ca22137d, type: 3}
-  - {fileID: 2800000, guid: d63998c64de043940926b1cd4ca92d83, type: 3}
-  - {fileID: 2800000, guid: e5afbfdafc3dbf443bae4459eeab3ed6, type: 3}
-  ranges:
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 1, y: 1, z: 0, w: 0}
-  - {x: 2, y: 2, z: 0, w: 0}
+  CursorList:
+  - {fileID: 11400000, guid: 78a2483ac84fb9442aed26cd4caf9553, type: 2}
+  - {fileID: 11400000, guid: aad0f5b812f6d764d8f02a6184c87961, type: 2}
+  - {fileID: 11400000, guid: da923dc1ac0bd0244a718abb5cc7cacf, type: 2}
 --- !u!1 &494533239
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,7 +2139,7 @@ Transform:
   m_GameObject: {fileID: 1868955438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -.100000001, z: 0}
-  m_LocalScale: {x: 30, y: .200000003, z: 30}
+  m_LocalScale: {x: 100, y: .200000003, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1001 &1917687853
