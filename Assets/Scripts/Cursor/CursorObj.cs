@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+/*
+ * CursorObj
+ * Used for Animated Cursor Component
+ * Usage: Create an Asset of this ScriptableObject
+ * @date 2014-04-26
+ */
 public class CursorObj : ScriptableObject
 {
     public AnimatedCursor.CURSOR CursorType;

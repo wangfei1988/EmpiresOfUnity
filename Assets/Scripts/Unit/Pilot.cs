@@ -2,13 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/*
+ * AI to move Objects
+ */
 public class Pilot : UnitComponent 
 {
     private const float MIN_LOOKAHEAD = 0.5f;
     private float MAX_LOOKAHEAD
     { get {return Vector3.Distance(My.Options.MoveToPoint,My.transform.position); } }
+
     [SerializeField]
     private float lookAheadDistance;
+
     public float LookAheadDistance
     {
         get 
@@ -43,8 +48,10 @@ public class Pilot : UnitComponent
             
         }
     }
+
     [SerializeField]
     private int triggerd;
+
     private bool IsMovingForward
     { get { return My.transform.forward == My.Options.movingDirection; } }
     private bool? isAForwarder;
@@ -61,6 +68,7 @@ public class Pilot : UnitComponent
         }
     }
 
+    /* Start & Update */
 	void Start() 
     {
        triggerd = 0;
@@ -81,8 +89,6 @@ public class Pilot : UnitComponent
             Triggerd = false;
         }
     }
-
-
 
     private void ShrinkRradius(float lookAhead)
     {
@@ -142,5 +148,6 @@ public class Pilot : UnitComponent
     {
         mySpace = null;
         Component.Destroy(gameObject.GetComponent<SphereCollider>());
+        UpdateHandler.OnUpdate -= DoUpdate;
     }
 }

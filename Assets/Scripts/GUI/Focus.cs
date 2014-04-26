@@ -158,6 +158,7 @@ public class Focus : MonoBehaviour
             MouseEvents.LEFTCLICK -= MouseEvents_LEFTMouseEvents;
         }
         else firststart = false;
+        UpdateHandler.OnUpdate -= DoUpdate;
     }
 
 }

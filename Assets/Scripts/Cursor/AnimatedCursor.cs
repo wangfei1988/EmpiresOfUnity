@@ -2,6 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/*
+ * Animated Cursor Component
+ * Set a List of [CursorObj]
+ * @date 2014-04-26
+ */
 public class AnimatedCursor : MonoBehaviour
 {
     /* Member */

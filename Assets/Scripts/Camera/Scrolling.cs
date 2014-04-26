@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+ * Scrolling of Camera
+ * @date 2014-04-26
+ */
 public class Scrolling : MonoBehaviour
 {
     /* Member */
@@ -32,7 +36,10 @@ public class Scrolling : MonoBehaviour
 
     private void CheckForScrolling()
     {
-        /* TODO LUCAS 2014-04-26 -> Check WASD or Arrow-Keys for Scrolling */
+        /* TODO LUCAS 2014-04-26 (by Dario)
+         * -> Check WASD or Arrow-Keys for Scrolling
+         * -> Check Q & E Key to rotate Camera left / right (like Banished)
+         */
 
         Vector2 MousePosition = MouseEvents.State.Position;
 
