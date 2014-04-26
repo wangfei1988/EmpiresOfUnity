@@ -27,6 +27,8 @@ public class AnimatedCursor : UnitComponent
     {
         get { return mainGUI.MapViewArea; }
     }
+
+    /* Get Count of Texture2D's at current Cursor, used for Animations */
     private int MaxFrame
     {
         get
@@ -35,12 +37,12 @@ public class AnimatedCursor : UnitComponent
         }
     }
 
-    private CURSOR cursor;
+    /* Cursor Property, don't use cursor to save, but use CurrentCursor as a Setter */
     public CURSOR CurrentCursor
     {
         get
         {
-            return this.cursor;
+            return this.CurrentCursor;
         }
         set
         {
@@ -56,7 +58,7 @@ public class AnimatedCursor : UnitComponent
             if (newIndex != -1 && this.listIndex != newIndex)
             {
                 this.listIndex = newIndex;
-                this.cursor = value;
+                this.CurrentCursor = value;
                 this.frameIndex = 0;
             }
         }
@@ -71,10 +73,32 @@ public class AnimatedCursor : UnitComponent
 
     internal override void DoUpdate()
     {
-        AnimateCursor();
+        SetCursor();
     }
 
     /* Methods */
+    private void SetCursor()
+    {
+        /* Check Cursor */
+        if (MouseEvents.State.Hold)
+        {
+            this.CurrentCursor = CURSOR.CLICK;
+        }
+        else
+        {
+            CURSOR underMouse = CheckWhatIsUnderCursor();
+            this.CurrentCursor = underMouse;
+        }
+
+        /* Set Cursor */
+        Cursor.SetCursor(
+            AnimateCursor(),
+            this.CursorList[this.listIndex].ClickPoint,
+            CursorMode.Auto
+        );
+    }
+
+    /* Check if an Building / Unit or Nothing [Standard] is at Mouse */
     private CURSOR CheckWhatIsUnderCursor()
     {
         if (MapViewArea.Contains((Vector2)MouseEvents.State.Position))
@@ -97,29 +121,8 @@ public class AnimatedCursor : UnitComponent
         return CURSOR.STANDARD;
     }
 
-    private void AnimateCursor()
-    {
-        /* Check Cursor */
-        if(MouseEvents.State.Hold)
-        {
-            this.CurrentCursor = CURSOR.CLICK;
-        }
-        else
-        {
-            CURSOR underMouse = CheckWhatIsUnderCursor();
-            this.CurrentCursor = underMouse;
-        }
-
-        /* Set Cursor */
-        Cursor.SetCursor(
-            GetNextFrame(),
-            this.CursorList[this.listIndex].ClickPoint,
-            CursorMode.Auto
-        );
-    }
-
     /* Do Animation for Cursor */
-    public Texture2D GetNextFrame()
+    public Texture2D AnimateCursor()
     {
         this.time += Time.deltaTime;
         if (this.time >= 1 / this.AnimationFps)
@@ -131,6 +134,5 @@ public class AnimatedCursor : UnitComponent
         }
         return this.CursorList[this.listIndex].TextureList[this.frameIndex];
     }
-
 
 }
