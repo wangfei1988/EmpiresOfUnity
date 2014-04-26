@@ -23,7 +23,7 @@ public class FaceDirection : UnitAnimation
     {
         get
         {
-            if (Camera.main.GetComponent<Cam>().qamMode == Cam.CAMERAMODE.PERSPECTIVE)
+            if (Camera.main.GetComponent<Cam>().GetCamMode() == Cam.CAMERAMODE.PERSPECTIVE)
             {
                 forwardIs = FACEDIRECTION.backward;
                 return (Camera.main.transform.position - gameObject.transform.position).normalized;

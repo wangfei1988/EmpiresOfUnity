@@ -2143,9 +2143,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainGUI: {fileID: 358951603}
   ORTHOGRAFIC_Y_HEIGHT: 50
-  PERSPECTIVE_VIEW_SIZE: 5
+  PERSPECTIVE_VIEW_SIZE: 12
   Orthografic_View_Size: 500
-  qamMode: 0
 --- !u!1001 &1843499676
 Prefab:
   m_ObjectHideFlags: 0

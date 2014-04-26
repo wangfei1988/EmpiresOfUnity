@@ -16,6 +16,7 @@ public class AnimatedCursor : MonoBehaviour
     /* Cursor ENUM */
     public enum CURSOR
     {
+        NONE,
         STANDARD,
         CLICK,
         OVER_CLICKABLE_OBJECT,
@@ -24,7 +25,7 @@ public class AnimatedCursor : MonoBehaviour
 
     /* Vars */
     private GUIScript mainGUI;
-    private int listIndex = 0;
+    private int listIndex = -1;
     private int frameIndex = 0;
     private float time = 0;
 
@@ -44,14 +45,18 @@ public class AnimatedCursor : MonoBehaviour
     }
 
     /* Cursor Property, don't use cursor to save, but use CurrentCursor as a Setter */
+    private CURSOR cursor = CURSOR.NONE;
     public CURSOR CurrentCursor
     {
         get
         {
-            return this.CurrentCursor;
+            //return this.CurrentCursor;
+            return this.cursor;
         }
         set
         {
+            if (this.cursor == value)
+                return;
             int newIndex = -1;
             for(int i = 0; i < CursorList.Count; i++)
             {
@@ -64,7 +69,7 @@ public class AnimatedCursor : MonoBehaviour
             if (newIndex != -1 && this.listIndex != newIndex)
             {
                 this.listIndex = newIndex;
-                this.CurrentCursor = value;
+                this.cursor = value;
                 this.frameIndex = 0;
             }
         }

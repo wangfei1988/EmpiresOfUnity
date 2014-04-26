@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14eea4f7616775546b9fcc7dc898fe89, type: 3}
   m_Name: Cursor Default
   m_EditorClassIdentifier: 
-  CursorType: 0
+  CursorType: 1
   ClickPoint: {x: 0, y: 0}
   TextureList:
   - {fileID: 2800000, guid: 3030daf6a4d5e6f40853b4d4ca22137d, type: 3}

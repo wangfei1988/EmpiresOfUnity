@@ -208,7 +208,7 @@ public class GUIScript : MonoBehaviour
         }
         if (GUI.Button(new Rect((100 * Scale.x), (60 * Scale.y), (80 * Scale.x), (40 * Scale.y)), mainGUIContent[2])) 
         {
-            Camera.main.GetComponent<Cam>().SwitchQam();
+            Camera.main.GetComponent<Cam>().SwitchCam();
         }
 
         GUI.enabled = true;
