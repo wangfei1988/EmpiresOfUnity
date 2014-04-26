@@ -382,6 +382,7 @@ GameObject:
   - 114: {fileID: 358951604}
   - 132: {fileID: 358951605}
   - 114: {fileID: 358951606}
+  - 114: {fileID: 358951607}
   m_Layer: 0
   m_Name: MainGUI
   m_TagString: MainGUI
@@ -434,7 +435,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895e00f8a83ed1341a86a71f04cee50d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: {x: .5, y: .5}
   PlayerSide: 0
   SelectedGroup: {fileID: 0}
   groupCount: 0
@@ -764,10 +764,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6837ccc8c529b7c4bbdadba300896110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AnimationFps: 3
   CursorList:
   - {fileID: 11400000, guid: 78a2483ac84fb9442aed26cd4caf9553, type: 2}
   - {fileID: 11400000, guid: aad0f5b812f6d764d8f02a6184c87961, type: 2}
   - {fileID: 11400000, guid: da923dc1ac0bd0244a718abb5cc7cacf, type: 2}
+--- !u!114 &358951607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 358951600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3752a6c3cd9cd2f40914ed477df064dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: {x: .5, y: .5}
 --- !u!1 &448873551
 GameObject:
   m_ObjectHideFlags: 0

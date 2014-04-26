@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class AnimatedCursor : UnitComponent
 {
     /* Member */
+    public float AnimationFps = 3; // x Frages per Second
     public List<CursorObj> CursorList = new List<CursorObj>();
 
     /* Cursor ENUM */
@@ -16,10 +17,10 @@ public class AnimatedCursor : UnitComponent
         /*LOAD, WAIT, RESIZE, RESIZE_LR, RESIZE_TD, ... */
     }
 
+    /* Vars */
     private GUIScript mainGUI;
     private int listIndex = 0;
     private int frameIndex = 0;
-    private float AnimationFps = 3; // x Frages per Second
     private float time = 0;
 
     /* Properties */

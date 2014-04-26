@@ -15,12 +15,9 @@ public class GUIScript : MonoBehaviour
         StaticTextLines.Insert(0,line);
     }
 
-    public Vector2 scrollSpeed = new Vector2(1f, 1f);
-
     public UnitScript.GOODorEVIL PlayerSide;
     public UnitGroup SelectedGroup;
     public int groupCount;
-    private UnitComponent animatedCursor;
     public RightClickMenu RightclickGUI;
 
     public GameObject SelectionSprite;
@@ -29,10 +26,12 @@ public class GUIScript : MonoBehaviour
 
     public GameObject lastClickedUnit;
 
-    private bool scrolling = true;
     private string TextField = "";
     public bool Debug = false;
 
+    /* TODO UPDATE EVENT MANAGER */
+    private UnitComponent animatedCursor;
+    private UnitComponent scrolling;
 
     new public Camera camera;
 
@@ -104,6 +103,8 @@ public class GUIScript : MonoBehaviour
         SelectedGroup.startGroup();
 
         animatedCursor = (GetComponent<AnimatedCursor>()) ? GetComponent<AnimatedCursor>() : null;
+        scrolling = (GetComponent<Scrolling>()) ? GetComponent<Scrolling>() : null;
+        
         
         //if (camera.name == null)
         //{
@@ -133,7 +134,6 @@ public class GUIScript : MonoBehaviour
         MouseEvents.RIGHTCLICK += MouseEvents_RIGHTCLICK;
         MouseEvents.LEFTRELEASE += MouseEvents_LEFTRELEASE;
 
-        scrolling = false;
     }
 
 
@@ -147,7 +147,6 @@ public class GUIScript : MonoBehaviour
         else return null;
     }
 
-
     void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
     {
         if (hold)
@@ -157,9 +156,6 @@ public class GUIScript : MonoBehaviour
         else
         {
             SelectionRectangle = new Rect(MousePosition.x, MousePosition.y, 0, 0);
-
-
-
             if (NoUnitFoqussed)
             {
                 GameObject obj = ClickHitUnit(qamRay);
@@ -168,6 +164,7 @@ public class GUIScript : MonoBehaviour
             }
         }
     }
+
     void MouseEvents_LEFTRELEASE()
     {
         SnapSellectangle();
@@ -192,9 +189,11 @@ public class GUIScript : MonoBehaviour
 
         GUI.BeginGroup(new Rect((1718*Scale.x ), (24*Scale.y ), (180 * Scale.x), (100 * Scale.y)));
         if (GUI.Button(new Rect((0 * Scale.x), (0 * Scale.y), (180 * Scale.x), (40 * Scale.y)), mainGUIContent[0])) { Application.Quit(); }
+        
         if (GUI.Button(new Rect((0 * Scale.x), (60 * Scale.y), (80 * Scale.x), (40 * Scale.y)), mainGUIContent[1])) 
         {
-            scrolling = !scrolling;
+            Scrolling scr = scrolling as Scrolling;
+            scr.SwitchScrollingStatus();
 
         }
         if (GUI.Button(new Rect((100 * Scale.x), (60 * Scale.y), (80 * Scale.x), (40 * Scale.y)), mainGUIContent[2])) 
@@ -210,23 +209,6 @@ public class GUIScript : MonoBehaviour
     {
         SelectedGroup = SelectionSprite.GetComponent<SelectorScript>().SnapSelection();
         SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, 0f, 0f);
-    }
-
-    private void CheckForScrolling()
-    {
-        if (scrolling)
-        {
-            float x = 0;
-            float y = 0;
-
-            if (MousePosition.x < MapViewArea.xMin) x = scrollSpeed.x * -1;
-            else if (MousePosition.x > MainGuiArea.xMax) x = scrollSpeed.x;
-
-            if (MousePosition.y > MapViewArea.yMax) y = scrollSpeed.y;
-            else if (MousePosition.y < MapViewArea.yMin) y = scrollSpeed.y * -1;
-
-            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + x, Camera.main.transform.position.y, Camera.main.transform.position.z + y);
-        }
     }
 
 
@@ -246,11 +228,13 @@ public class GUIScript : MonoBehaviour
     void Update()
     {
         mousePosition = null;
+
         MouseEvents.DoUpdate();
         groupCount = SelectedGroup.Count;
 
+        /* TODO DoUpdate*/
         if (animatedCursor) animatedCursor.DoUpdate();
-        CheckForScrolling();
+        if (scrolling) scrolling.DoUpdate();
 
         if (Debug)
             guiText.text = TextUpdate();
