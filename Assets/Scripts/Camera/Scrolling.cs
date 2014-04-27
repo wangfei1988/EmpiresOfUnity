@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.IO;
-
 /*
  * Scrolling of Camera
  * @date 2014-04-26

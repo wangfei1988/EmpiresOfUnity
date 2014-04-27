@@ -12,6 +12,7 @@ public class MouseEvents
         WHEEL_UP = 1,
         WHEEL_DOWN = -1
     }
+
     public class MouseButtonState
     {
         public readonly bool Pressed;
@@ -26,6 +27,7 @@ public class MouseEvents
             return This.Pressed;
         }
     }
+
     public class MousePosition
     {
         private Collider Ground;
@@ -34,6 +36,7 @@ public class MouseEvents
         public RaycastHit[] CursorRayHit;
         public NavMeshHit NMhit;
         private Ray? qamRay;
+
         public Ray AsRay
         {
             get
@@ -107,6 +110,7 @@ public class MouseEvents
             return (int)This.state;
         }
     }
+
     public class MouseState
     {
         public MousePosition Position;

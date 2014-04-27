@@ -21,6 +21,7 @@ public class Cam : MonoBehaviour {
     private float Perspective_Y_MaxHeight = 400f;
 
     private CAMERAMODE camMode = CAMERAMODE.ORTHOGRAFIC;
+
     private CAMERAMODE CamMode
     {
         get { return camMode; }
@@ -41,6 +42,7 @@ public class Cam : MonoBehaviour {
                         gameObject.camera.orthographicSize = Orthografic_View_Size;
                         gameObject.camera.enabled = true;
                         break;
+
                     case CAMERAMODE.PERSPECTIVE:
                         if (gameObject.camera.isOrthoGraphic) {
                             Orthografic_View_Size = gameObject.camera.orthographicSize;
