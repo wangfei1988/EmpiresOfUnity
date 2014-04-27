@@ -22,12 +22,11 @@ public class GUIScript : MonoBehaviour
 
     public GameObject SelectionSprite;
     public GUITexture SellectionGUITexture;
-    private Rect selectionRectangle;
 
     public GameObject lastClickedUnit;
 
     private string TextField = "";
-    public bool Debug = false;
+    public bool DebugText = false;
 
     private Scrolling scrolling;
 
@@ -54,23 +53,62 @@ public class GUIScript : MonoBehaviour
 
     public List<GUIContent> mainGUIContent;
 
-
-
+    /* Selection 3D Rectangle */
+    private Rect selectionRectangle;
     public Rect SelectionRectangle
     {
         get { return selectionRectangle; }
         set
         {
             selectionRectangle = value;
-            //    RightclickGUI.Pannel.guiTexture.pixelInset = new Rect(value.x-Camera.main.pixelWidth / 2f,value.y- Camera.main.pixelHeight / 2f, -value.width, -value.height);
+
+            /*
             SellectionGUITexture.pixelInset = new Rect(value.x - Camera.main.pixelWidth / 2f, value.y - Camera.main.pixelHeight / 2f, -value.width, -value.height);
-            //    RightclickGUI.guiTexture.pixelInset = new Rect(value.x, value.y - guiTexture.pixelInset.height, value.width, value.height);
-            Vector3 w1, w2;
-            w1 = Camera.main.ScreenToWorldPoint(new Vector3(value.x, value.y, Camera.main.transform.position.y - 75));
-            w2 = Camera.main.ScreenToWorldPoint(new Vector3(value.x + value.width, value.y + value.height, Camera.main.transform.position.y - 75));
-            //   Sellection.transform.position = w1;
+            Vector3 w1 = Camera.main.ScreenToWorldPoint(new Vector3(value.x, value.y, Camera.main.transform.position.y - 75));
+            Vector3 w2 = Camera.main.ScreenToWorldPoint(new Vector3(value.x + value.width, value.y + value.height, Camera.main.transform.position.y - 75));
             SelectionSprite.transform.position = new Vector3(w1.x, 75, w1.z);
             SelectionSprite.transform.localScale = new Vector3(-(w2.x - w1.x), (w2.z - w1.z), 1f);
+             */
+
+            // by DARIO ->
+            
+            //RightclickGUI.Pannel.guiTexture.pixelInset = value;
+
+            /* Position From */
+            Vector3 screenPoint = Camera.main.WorldToScreenPoint(SelectionSprite.transform.position);
+            Vector3 w1 = Camera.main.ScreenToWorldPoint(new Vector3(value.x, value.y, screenPoint.z));
+            w1.y = SelectionSprite.transform.position.y;
+            SelectionSprite.transform.position = w1;
+
+
+            //Vector3 w2 = Camera.main.ScreenToWorldPoint(new Vector3(value.x + value.width, value.y + value.height, Camera.main.transform.position.y - 75));
+
+            /* Position To */
+            screenPoint = Camera.main.WorldToScreenPoint(w1);
+            //Vector2 screenWidth = Camera.main.WorldToScreenPoint(SellectionSprite.transform.localScale);
+            Vector3 w2 = Camera.main.ScreenToWorldPoint(new Vector3(value.width, value.height, screenPoint.z));
+            w2.y = SelectionSprite.transform.position.y;
+
+
+            //Debug.Log(w2);
+
+            /* Ray */
+            Ray ray = Camera.main.ScreenPointToRay(new Vector3(value.width, value.height, 1f));
+            //Plane plane = new Plane(transform.up, w2);
+            float dist = Vector3.Distance(Camera.main.transform.position, w2);
+            w2 = ray.GetPoint(dist);
+
+
+
+            //Vector3 localScale = new Vector3(-(w2.x - w1.x), w2.z - w1.z, 1);
+            Vector3 localScale = new Vector3((w2.x - w1.x), -(w2.z - w1.z), 1);
+
+            //SellectionSprite.transform.localScale = new Vector3(-(w2.x - w1.x), (w2.z - w1.z), 1);
+            SelectionSprite.transform.localScale = localScale;
+
+            //SellectionSprite.transform.position = w2;
+            
+
         }
     }
 
@@ -146,7 +184,7 @@ public class GUIScript : MonoBehaviour
         //if (animatedCursor) animatedCursor.DoUpdate();
         //if (scrolling) scrolling.DoUpdate();
 
-        if (Debug)
+        if (DebugText)
             guiText.text = TextUpdate();
     }
 
@@ -165,7 +203,8 @@ public class GUIScript : MonoBehaviour
     {
         if (hold)
         {
-            SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, SelectionRectangle.xMin - MousePosition.x, SelectionRectangle.y - MousePosition.y);
+            //SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, SelectionRectangle.xMin - MousePosition.x, SelectionRectangle.y - MousePosition.y);
+            SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, MousePosition.x, MousePosition.y);
         }
         else
         {
@@ -194,6 +233,12 @@ public class GUIScript : MonoBehaviour
         }
     }
 
+    private void SnapSellectangle()
+    {
+        SelectedGroup = SelectionSprite.GetComponent<SelectorScript>().SnapSelection();
+        SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, 0f, 0f);
+    }
+
     void OnGUI()
     {
         //GUI.BeginGroup(new Rect((1718 / Scale.x), (24 / Scale.y), (180 / Scale.x), (100 / Scale.y)));
@@ -215,12 +260,6 @@ public class GUIScript : MonoBehaviour
 
         GUI.enabled = true;
         GUI.EndGroup();
-    }
-
-    private void SnapSellectangle()
-    {
-        SelectedGroup = SelectionSprite.GetComponent<SelectorScript>().SnapSelection();
-        SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, 0f, 0f);
     }
 
 
