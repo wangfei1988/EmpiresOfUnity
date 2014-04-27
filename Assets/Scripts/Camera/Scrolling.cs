@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.IO;
 
 /*
  * Scrolling of Camera
@@ -39,6 +40,7 @@ public class Scrolling : MonoBehaviour
         /* TODO LUCAS 2014-04-26 (by Dario)
          * -> Check WASD or Arrow-Keys for Scrolling
          * -> Check Q & E Key to rotate Camera left / right (like Banished)
+         * -> Check R & F for zoom in / zoom out
          */
 
         Vector2 MousePosition = MouseEvents.State.Position;
@@ -46,14 +48,14 @@ public class Scrolling : MonoBehaviour
         float x = 0;
         float y = 0;
 
-        if (MousePosition.x < mainGUI.MapViewArea.xMin)
+        if (MousePosition.x < mainGUI.MapViewArea.xMin || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             x = scrollSpeed.x * -1;
-        else if (MousePosition.x > mainGUI.MainGuiArea.xMax)
+        else if (MousePosition.x > mainGUI.MainGuiArea.xMax || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             x = scrollSpeed.x;
 
-        if (MousePosition.y > mainGUI.MapViewArea.yMax)
+        if (MousePosition.y > mainGUI.MapViewArea.yMax || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             y = scrollSpeed.y;
-        else if (MousePosition.y < mainGUI.MapViewArea.yMin)
+        else if (MousePosition.y < mainGUI.MapViewArea.yMin || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             y = scrollSpeed.y * -1;
 
         Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + x, Camera.main.transform.position.y, Camera.main.transform.position.z + y);
