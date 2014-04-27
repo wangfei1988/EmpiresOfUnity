@@ -441,7 +441,7 @@ MonoBehaviour:
   SelectionSprite: {fileID: 494533239}
   SellectionGUITexture: {fileID: 138113751}
   lastClickedUnit: {fileID: 0}
-  Debug: 0
+  DebugText: 0
   camera: {fileID: 1647307441}
   MapViewArea:
     serializedVersion: 2
