@@ -30,10 +30,8 @@ public class RightClickMenu : MonoBehaviour {
         ScaleY = camera.pixelRect.height / gameObject.guiTexture.texture.height;
     }
 
-	void Start () 
+	void Start ()
     {
-
-
         view = camera.pixelRect;
 
         buttonSIDEstyle.fontSize = buttonStyle.fontSize = (int)((float)buttonStyle.fontSize * ScaleX);
@@ -42,26 +40,28 @@ public class RightClickMenu : MonoBehaviour {
         guiStyle.padding.top = (int)(-64*ScaleX);
         buttonSIDEstyle.fixedWidth *= ScaleX;
         buttonSIDEstyle.fixedHeight *= ScaleY;
-        
 
+        UnitPosition = new Vector2(GUIScript.ScreenSize.x - 100, 130);
 	}
-
-
 
     //private static Texture[] BuildButtons;
     //private static string[] options;
     public static void PopUpGUI(UnitScript forUnit)
     {
-        if (forUnit.gameObject.GetInstanceID() != Focus.masterGameObject.GetInstanceID()) forUnit.gameObject.AddComponent<Focus>();
+        if (forUnit.gameObject.GetInstanceID() != Focus.masterGameObject.GetInstanceID())
+            forUnit.gameObject.AddComponent<Focus>();
+
         Unit = forUnit;
-        UnitPosition = MouseEvents.State.Position;
+        //UnitPosition = MouseEvents.State.Position;
+        showGUI = true;
+
         //if (Unit.IsBuilding)
         //{
         //    options = Unit.Options.GetUnitsMenuOptions();
         //    BuildButtons = Unit.GetComponent<ProductionBuildingOptions>().GetButtons();
         //    MouseEvents.LEFTCLICK += MouseEvents_LEFTMouseEvents;   
         //}
-        showGUI = true;
+
     }
 
     //static void MouseEvents_LEFTMouseEvents(Ray qamRay, bool hold)

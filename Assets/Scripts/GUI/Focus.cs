@@ -43,11 +43,13 @@ public class Focus : MonoBehaviour
         else
         {
             masterGameObject = gameObject;
-            MouseEvents.RIGHTCLICK += MouseEvents_RIGHTCLICK;
-            MouseEvents.LEFTCLICK += MouseEvents_LEFTMouseEvents;
+            MouseEvents.LEFTCLICK += MouseEvents_CancelFocus;
+            MouseEvents.RIGHTCLICK += MouseEvents_MoveUnit;
         }
 
         UpdateHandler.OnUpdate += DoUpdate;
+
+        RightClickMenu.PopUpGUI(UNIT);
     }
 
     void DoUpdate()
@@ -58,7 +60,7 @@ public class Focus : MonoBehaviour
             TryRelease();
     }
 
-    void MouseEvents_LEFTMouseEvents(Ray qamRay, bool hold)
+    void MouseEvents_MoveUnit(Ray qamRay, bool hold)
     {
         if (!IsLocked)
         {
@@ -66,7 +68,6 @@ public class Focus : MonoBehaviour
             {
                 if (!hold)
                 {
-                    
                     GameObject ClickedUnit = RayHittenUnit(qamRay);
                     if (ClickedUnit)
                     {
@@ -96,7 +97,7 @@ public class Focus : MonoBehaviour
         }
     }
 
-    void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
+    void MouseEvents_CancelFocus(Ray qamRay, bool hold)
     {
         if (!IsLocked)
         {
@@ -105,10 +106,15 @@ public class Focus : MonoBehaviour
                 GameObject ClickedUnit = RayHittenUnit(qamRay);
                 if (ClickedUnit)
                 {
-                    if (IsOtherUnit(ClickedUnit)) ClickedUnit.AddComponent<Focus>();
-                    else RightClickMenu.PopUpGUI(UNIT);
+                    if (IsOtherUnit(ClickedUnit))
+                    {
+                        ClickedUnit.AddComponent<Focus>();
+                    }
                 }
-                else GameObject.Destroy(gameObject.GetComponent<Focus>());
+                else
+                {
+                    GameObject.Destroy(gameObject.GetComponent<Focus>());
+                }
             }
         }
     }
@@ -154,8 +160,8 @@ public class Focus : MonoBehaviour
     {
         if (!firststart)
         {
-            MouseEvents.RIGHTCLICK -= MouseEvents_RIGHTCLICK;
-            MouseEvents.LEFTCLICK -= MouseEvents_LEFTMouseEvents;
+            MouseEvents.LEFTCLICK -= MouseEvents_CancelFocus;
+            MouseEvents.RIGHTCLICK -= MouseEvents_MoveUnit;
         }
         else firststart = false;
         UpdateHandler.OnUpdate -= DoUpdate;

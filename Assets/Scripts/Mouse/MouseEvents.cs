@@ -5,7 +5,6 @@ using System.Collections;
 public class MouseEvents
 {
 
-
     public enum MOUSEWHEELSTATE : sbyte
     {
         NONE = 0,
@@ -138,25 +137,20 @@ public class MouseEvents
     }
 
     public delegate void LeftClick(Ray qamRay, bool hold);
-    public delegate void RightClick(Ray qamRay, bool hold);
     public delegate void MiddleClick(Ray qamRay, bool hold);
-    public delegate void MouseWheelUPDOWN(MOUSEWHEELSTATE state);
+    public delegate void RightClick(Ray qamRay, bool hold);
     public delegate void LeftRelease();
+    public delegate void MiddleRelease();
     public delegate void RightRelease();
-    public delegate void MiddleRelease()
-        ;
+    public delegate void MouseWheelUPDOWN(MOUSEWHEELSTATE state);
+
     public static event LeftClick LEFTCLICK;
     public static event MiddleClick MIDDLECLICK;
     public static event RightClick RIGHTCLICK;
-
     public static event LeftRelease LEFTRELEASE;
     public static event MiddleRelease MIDDLERELEASE;
     public static event RightRelease RIGHTRELEASE;
-
     public static event MouseWheelUPDOWN MOUSEWHEEL;
-
-
-
 
     public static MouseState State = new MouseState();
 
@@ -187,13 +181,13 @@ public class MouseEvents
 
                 if (ButtonDown[i])
                 {
+                    //hold
                     hold[i] = true;
-                    //////////////////////////////////////////----------------------hold
                 }
                 else
                 {
+                    //click
                     ButtonDown[i] = true;
-                    //////////////////////////////////////////----------------------click
                 }
 
             }
@@ -237,13 +231,28 @@ public class MouseEvents
 
     static private void triggerEvents(bool[] trigger)
     {
-        if (trigger[0] && ButtonDown[0] && MapClick) LEFTCLICK(State.Position, hold[0]);
-        else if (release[0] && LEFTRELEASE != null) LEFTRELEASE();
-        if (trigger[1] && ButtonDown[1] && MapClick) RIGHTCLICK(State.Position, hold[1]);
-        else if (release[1] && RIGHTRELEASE != null) RIGHTRELEASE();
-        if (trigger[2] && ButtonDown[2] && MapClick) MIDDLECLICK(State.Position, hold[2]);
-        else if (release[2] && MIDDLERELEASE != null) MIDDLERELEASE();
-        if ((State.WHEEL != MOUSEWHEELSTATE.NONE) && (MOUSEWHEEL != null)) MOUSEWHEEL(State.WHEEL);
+        /* Left Click */
+        if (trigger[0] && ButtonDown[0] && MapClick)
+            LEFTCLICK(State.Position, hold[0]);
+        else if (release[0] && LEFTRELEASE != null)
+            LEFTRELEASE();
+
+        /* Middle Click */
+        if (trigger[2] && ButtonDown[2] && MapClick)
+            MIDDLECLICK(State.Position, hold[2]);
+        else if (release[2] && MIDDLERELEASE != null)
+            MIDDLERELEASE();
+
+        /* Right Click */
+        if (trigger[1] && ButtonDown[1] && MapClick)
+            RIGHTCLICK(State.Position, hold[1]);
+        else if (release[1] && RIGHTRELEASE != null)
+            RIGHTRELEASE();
+
+        /* Mouse Wheel */
+        if (MOUSEWHEEL != null && State.WHEEL != MOUSEWHEELSTATE.NONE)
+            MOUSEWHEEL(State.WHEEL);
+
     }
 
     static public void DoUpdate()

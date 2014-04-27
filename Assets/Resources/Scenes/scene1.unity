@@ -382,6 +382,7 @@ GameObject:
   - 132: {fileID: 358951605}
   - 114: {fileID: 358951606}
   - 114: {fileID: 358951607}
+  - 114: {fileID: 358951608}
   m_Layer: 0
   m_Name: MainGUI
   m_TagString: MainGUI
@@ -780,6 +781,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: {x: .200000003, y: .200000003}
+--- !u!114 &358951608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 358951600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c928cdc2c0fd8ff44a870246aa0723d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon_wood: {fileID: 2800000, guid: 0d725a64ee4d943449d142fd27cdf080, type: 3}
+  icon_stone: {fileID: 2800000, guid: 364c991a2376e674e8213cf6bdf3cc30, type: 3}
+  icon_gold: {fileID: 2800000, guid: 0655c0e8b699112418865c69ecaace67, type: 3}
 --- !u!1 &448873551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,6 +1124,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 553428809}
   - 114: {fileID: 553428808}
+  - 114: {fileID: 553428810}
   m_Layer: 0
   m_Name: ScriptContainer
   m_TagString: Untagged
@@ -1138,6 +1154,17 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &553428810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 553428807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e90f6317c3a6a45840d2ced190b190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &577705933
 Prefab:
   m_ObjectHideFlags: 0
@@ -1954,12 +1981,12 @@ MonoBehaviour:
   MoveToPointMarker: {fileID: 0}
   AttackPointMarker: {fileID: 0}
   WayPointMarker: {fileID: 0}
-  unitState: 2
   typename: Fabrik
   Fabrikat:
   - {fileID: 100000, guid: 5cb8f7ad601d5af4286a144411871f68, type: 2}
   - {fileID: 100000, guid: 5cb8f7ad601d5af4286a144411871f68, type: 2}
   menuButtons: []
+  unitState: 2
 --- !u!114 &1380594710
 MonoBehaviour:
   m_ObjectHideFlags: 0

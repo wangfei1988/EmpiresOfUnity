@@ -48,6 +48,7 @@ public class GUIScript : MonoBehaviour
                 return mousePosition.Value;
         }
     }
+    public static Vector2 ScreenSize = new Vector2(Screen.width, Screen.height);
 
     public Vector2 Scale;
 
@@ -73,13 +74,14 @@ public class GUIScript : MonoBehaviour
         }
     }
 
-
-    private bool NoUnitFoqussed
+    private bool NoUnitFocused
     {
         get 
         {
-            if (Focus.masterGameObject) return !Focus.masterGameObject.GetComponent<Focus>();
-            else return true;
+            if (Focus.masterGameObject)
+                return !Focus.masterGameObject.GetComponent<Focus>();
+            else
+                return true;
         }
     }
 
@@ -168,7 +170,7 @@ public class GUIScript : MonoBehaviour
         else
         {
             SelectionRectangle = new Rect(MousePosition.x, MousePosition.y, 0, 0);
-            if (NoUnitFoqussed)
+            if (NoUnitFocused)
             {
                 GameObject obj = ClickHitUnit(qamRay);
                 if(obj != null)
@@ -184,11 +186,11 @@ public class GUIScript : MonoBehaviour
 
     void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
     {
-        if (NoUnitFoqussed)
+        if (NoUnitFocused)
         {
-                GameObject clickedUnit = ClickHitUnit(qamRay);
-                if (clickedUnit)
-                    clickedUnit.AddComponent<Focus>();
+            GameObject clickedUnit = ClickHitUnit(qamRay);
+            if (clickedUnit)
+                clickedUnit.AddComponent<Focus>();
         }
     }
 

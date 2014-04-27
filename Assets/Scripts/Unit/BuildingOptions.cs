@@ -6,7 +6,7 @@ using System.Collections.Generic;
 [AddComponentMenu("Character/Unit Options (Building)")]
 public class BuildingOptions : UnitOptions
 {
-    public enum OPTIONS : int
+    new public enum OPTIONS : int
     {
         Produce,
         StopProduction

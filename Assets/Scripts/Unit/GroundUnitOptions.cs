@@ -8,9 +8,8 @@ class GroundUnitOptions : UnitOptions
     public UnitScript UNIT;
     new public enum OPTIONS : int
     {
-
         MoveTo,
-        Atack,
+        Attack,
         Guard,
         Patrol,
         Hide,
@@ -19,7 +18,7 @@ class GroundUnitOptions : UnitOptions
     }
 
     public OPTIONS unitState;
-   public override System.Enum UnitState
+    public override System.Enum UnitState
     {
         get
         {
@@ -39,8 +38,8 @@ class GroundUnitOptions : UnitOptions
                                 SetKinematic();
                                 WayPoints.Clear();
                                 LockOnFocus();
-                                MouseEvents.LEFTCLICK += MouseEvents_LEFTMouseEvents;
-                                break; 
+                                MouseEvents.RIGHTCLICK += MouseEvents_RIGHTCLICK;
+                                break;
                             }
                         case OPTIONS.Patrol:
                             {
@@ -51,7 +50,7 @@ class GroundUnitOptions : UnitOptions
                                 WayPoints.Add(gameObject.transform.position);
                                 break; 
                             }
-                        case OPTIONS.Atack:
+                        case OPTIONS.Attack:
                             {
                                 SetKinematic();
                                 WayPoints.Clear();
@@ -105,15 +104,7 @@ class GroundUnitOptions : UnitOptions
        {
            if (gameObject.GetComponent<Focus>())
            {
-               if (unitState == OPTIONS.MoveTo)
-               {
-                   SetMoveToPoint(MouseEvents.State.Position.AsWorldPointOnMap);
-                   movingDirection = GetMovingDirection();
-                   IsMoving = true;
-                   MouseEvents.LEFTCLICK -= MouseEvents_LEFTMouseEvents;
-                   UnlockFocus();
-               }
-               else if (unitState == OPTIONS.Guard)
+               if (unitState == OPTIONS.Guard)
                {
                    RaycastHit Hit;
                    if (Physics.Raycast(qamRay, out Hit, Camera.main.transform.position.y))
@@ -136,7 +127,7 @@ class GroundUnitOptions : UnitOptions
                    MouseEvents.RIGHTCLICK -= MouseEvents_RIGHTCLICK;
                    UnlockFocus();
                }
-               else if (unitState == OPTIONS.Atack)
+               else if (unitState == OPTIONS.Attack)
                {
                    RaycastHit Hit;
                    if (Physics.Raycast(qamRay, out Hit, Camera.main.transform.position.y))
@@ -155,28 +146,43 @@ class GroundUnitOptions : UnitOptions
            }
        }
    }
+
    protected override void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
    {
        if (!hold)
        {
            if (gameObject.GetComponent<Focus>())
            {
-               if (unitState == OPTIONS.Patrol)
+               switch (unitState)
                {
-                   if (WayPoints.Count >= 2) WayPoints.Insert(WayPoints.Count - 1, MouseEvents.State.Position.AsWorldPointOnMap);
-                   else WayPoints.Add(MouseEvents.State.Position.AsWorldPointOnMap);
-                   movingDirection = GetMovingDirection();
-                   IsMoving = true;
+                   case OPTIONS.MoveTo:
+                       {
+                           SetMoveToPoint(MouseEvents.State.Position.AsWorldPointOnMap);
+                           movingDirection = GetMovingDirection();
+                           IsMoving = true;
+                           MouseEvents.RIGHTCLICK -= MouseEvents_RIGHTCLICK;
+                           UnlockFocus();
+                           break;
+                       }
+                   case OPTIONS.Patrol:
+                       {
+                           if (WayPoints.Count >= 2)
+                               WayPoints.Insert(WayPoints.Count - 1, MouseEvents.State.Position.AsWorldPointOnMap);
+                           else
+                               WayPoints.Add(MouseEvents.State.Position.AsWorldPointOnMap);
+                           movingDirection = GetMovingDirection();
+                           IsMoving = true;
+                           break;
+                       }
                }
            }
        }
    }
 
-
    internal override void FocussedLeftOnEnemy(GameObject enemy)
    {
        standardOrder = true;
-       unitState = OPTIONS.Atack;
+       unitState = OPTIONS.Attack;
        SetMoveToPoint(enemy.transform.position);
        Target = enemy;
        IsAttacking = true;
@@ -241,7 +247,7 @@ class GroundUnitOptions : UnitOptions
         }
         protected set
         {
-            if (unitState == OPTIONS.Atack) attacking = value;
+            if (unitState == OPTIONS.Attack) attacking = value;
             else attacking = false;
 
         }
