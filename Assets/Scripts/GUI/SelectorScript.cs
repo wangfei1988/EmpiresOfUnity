@@ -29,17 +29,4 @@ public class SelectorScript : MonoBehaviour {
         gameObject.collider.enabled = false;
         return group;
     }
-
-
-
-
-    //void OnTriggerExit(Collider other)
-    //{
-    //    group.AddUnit(other.gameObject);
-    //}
-
-	public void DoUpdate() 
-    {
-	
-	}
 }

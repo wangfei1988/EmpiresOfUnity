@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/*
+ * AI to move Objects
+ */
 public class Pilot : UnitComponent 
 {
     private const float MIN_LOOKAHEAD = 3f;
@@ -18,8 +21,10 @@ public class Pilot : UnitComponent
             else return lah.Value;
         }
     }
+	
     [SerializeField]
     private float lookAheadDistance;
+
     public float LookAheadDistance
     {
         get 
@@ -54,11 +59,14 @@ public class Pilot : UnitComponent
             
         }
     }
+
     [SerializeField]
     private int triggerd;
+	
     public bool IsAForwarder;
     private bool IsAiming = false;
 
+    /* Start & Update */
 	void Start() 
     {
        triggerd = 0;
@@ -66,11 +74,25 @@ public class Pilot : UnitComponent
        mySpace = this.gameObject.AddComponent<SphereCollider>();
        mySpace.isTrigger = true;
        SetRadius(MIN_LOOKAHEAD);
+
        if (My.GetComponent<FaceDirection>()) IsAForwarder = My.GetComponent<FaceDirection>().faceMovingDirection;
        else IsAForwarder = false;
+	   
+       UpdateHandler.OnUpdate += DoUpdate;
 	}
 
+    internal void DoUpdate()
+    {
+        if (IsAiming) IsAiming = Aim();
+        if (!Triggerd)
+        {
+            if (LookAheadDistance > LOOKAHEAD) SetRadius(LOOKAHEAD);
+            else SetRadius(LookAheadDistance + 0.1f);
+        }
+        Triggerd = false;
+        lah = null;
 
+    }
 
     private void ShrinkRradius(float lookAhead)
     {
@@ -141,17 +163,7 @@ public class Pilot : UnitComponent
     {
         mySpace = null;
         Component.Destroy(gameObject.GetComponent<SphereCollider>());
-    }
-
-    internal override void DoUpdate()
-    {
-        if (IsAiming) IsAiming = Aim();
-        if (!Triggerd)
-        {
-            if (LookAheadDistance > LOOKAHEAD) SetRadius(LOOKAHEAD);
-            else SetRadius(LookAheadDistance + 0.1f);
-        }
-        Triggerd = false;
-        lah = null;
+		
+        UpdateHandler.OnUpdate -= DoUpdate;
     }
 }

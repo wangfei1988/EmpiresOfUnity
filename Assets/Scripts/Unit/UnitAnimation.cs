@@ -8,10 +8,17 @@ abstract public class UnitAnimation : MonoBehaviour {
 
     abstract internal void Animate();
 
+    void Start()
+    {
+        UpdateHandler.OnUpdate += DoUpdate;
+    }
+
     internal void DoUpdate()
     {
-        if (IsActive) Animate();
-        if(anotherUnitAnimation) anotherUnitAnimation.DoUpdate();
+        if (IsActive)
+            Animate();
+        if(anotherUnitAnimation)
+            anotherUnitAnimation.DoUpdate();
     }
 	
 

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14eea4f7616775546b9fcc7dc898fe89, type: 3}
+  m_Name: Cursor Default
+  m_EditorClassIdentifier: 
+  CursorType: 1
+  ClickPoint: {x: 0, y: 0}
+  TextureList:
+  - {fileID: 2800000, guid: 3030daf6a4d5e6f40853b4d4ca22137d, type: 3}

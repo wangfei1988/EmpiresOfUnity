@@ -9,7 +9,7 @@ public class RightClickMenu : MonoBehaviour {
     private static UnitScript Unit;
     new public Camera camera;
     public GUITexture Pannel;
- //   bool hold = false;
+    //bool hold = false;
     public float ScaleX, ScaleY;
     public Rect view;
     public static bool showGUI = false;
@@ -32,7 +32,7 @@ public class RightClickMenu : MonoBehaviour {
     public GUIStyle buttonStyle;
     public GUIStyle guiStyle;
 
-   public GUIStyle guiSIDEstyle;
+    public GUIStyle guiSIDEstyle;
     public GUIStyle buttonSIDEstyle;
     public Texture2D dieGruehnePower;
 
@@ -43,10 +43,8 @@ public class RightClickMenu : MonoBehaviour {
         ScaleY = camera.pixelRect.height / gameObject.guiTexture.texture.height;
     }
 
-	void Start () 
+	void Start ()
     {
-
-
         view = camera.pixelRect;
 
         buttonSIDEstyle.fontSize = buttonStyle.fontSize = (int)((float)buttonStyle.fontSize * ScaleX);
@@ -55,26 +53,28 @@ public class RightClickMenu : MonoBehaviour {
         guiStyle.padding.top = (int)(-64*ScaleX);
         buttonSIDEstyle.fixedWidth *= ScaleX;
         buttonSIDEstyle.fixedHeight *= ScaleY;
-        
 
+        UnitPosition = new Vector2(GUIScript.ScreenSize.x - 100, 130);
 	}
-
-   
 
     //private static Texture[] BuildButtons;
     //private static string[] options;
     public static void PopUpGUI(UnitScript forUnit)
     {
-        if (forUnit.gameObject.GetInstanceID() != Focus.masterGameObject.GetInstanceID()) forUnit.gameObject.AddComponent<Focus>();
+        if (forUnit.gameObject.GetInstanceID() != Focus.masterGameObject.GetInstanceID())
+            forUnit.gameObject.AddComponent<Focus>();
+
         Unit = forUnit;
         UnitPosition = MouseEvents.State.Position;
+        showGUI = true;
+
         //if (Unit.IsBuilding)
         //{
         //    options = Unit.Options.GetUnitsMenuOptions();
         //    BuildButtons = Unit.GetComponent<ProductionBuildingOptions>().GetButtons();
         //    MouseEvents.LEFTCLICK += MouseEvents_LEFTMouseEvents;   
         //}
-        showGUI = true;
+
     }
 
     //static void MouseEvents_LEFTMouseEvents(Ray qamRay, bool hold)
@@ -86,20 +86,12 @@ public class RightClickMenu : MonoBehaviour {
     //            BuildButtons[i]
     //        }
     //    }
-
     //}
-
-
-
-
-
 
     //private static string[] GetUnitsMenuOptions()
     //{
     //    return System.Enum.GetNames(Unit.Options.UnitState.GetType());
     //}
-
-
 
     void OnGUI()
     {
@@ -115,11 +107,22 @@ public class RightClickMenu : MonoBehaviour {
             GUI.BeginGroup(guiposition, "Build Options for:\n" + Unit.name, guiSIDEstyle);
             for (int i = 0; i < SIDEmenuOptions.Length; i++)
             {
+
+
+
                 if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + i * (btnHeight + zwischenbuttonraum), (180 * ScaleX), btnHeight), SIDEmenuOptions[i]))
-                //   if (GUI.Button(new Rect(0, guiStyle.fontSize + i * btnHeight, Pannel.texture.width * ScaleX, btnHeight), menuOptions[i], buttonStyle))
                 {
                     Unit.Options.SetSIDEOption(i);
                 }
+                //   if (GUI.Button(new Rect(0, guiStyle.fontSize + i * btnHeight, Pannel.texture.width * ScaleX, btnHeight), menuOptions[i], buttonStyle))
+
+				
+                /*guiposition = new Rect(1718 * ScaleX, (210 * ScaleY) - 3 * guiStyle.fontSize, 202 * ScaleX, 360 * ScaleY);
+					GUI.BeginGroup(guiposition,Unit.name+":\nSelect active Weapon" , guiSIDEstyle);
+					for (int i = 0; i < Unit.weapon.arsenal; i++)
+					{
+						
+					}*/
             }
             if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + SIDEmenuOptions.Length * (btnHeight + zwischenbuttonraum), (180 * ScaleX), btnHeight), "Cancel..."))
             //   if (GUI.Button(new Rect(0, guiStyle.fontSize + menuOptions.Length * btnHeight, Pannel.texture.width * ScaleX, btnHeight), "Cancel...", buttonStyle))
@@ -134,10 +137,30 @@ public class RightClickMenu : MonoBehaviour {
         if (showGUI)
         {
             float btnHeight = (40 * ScaleY);
-     //       float zwischenbuttonraum=(20*ScaleY);
+            //       float zwischenbuttonraum=(20*ScaleY);
             string[] menuOptions = Unit.Options.GetUnitsMenuOptions();
-            
+
             Rect guiposition;
+
+            guiposition = new Rect(UnitPosition.x, view.height - UnitPosition.y, Pannel.texture.width * ScaleX, (menuOptions.Length + 1) * btnHeight + guiStyle.fontSize);
+            GUI.BeginGroup(guiposition, "Orders for:\n " + Unit.name, guiStyle);
+
+            for (int i = 0; i < menuOptions.Length; i++)
+            {
+                if (GUI.Button(new Rect(0, guiStyle.fontSize + i * btnHeight, Pannel.texture.width * ScaleX, btnHeight), menuOptions[i], buttonStyle))
+                {
+                    //           System.Enum.Format(typeof(ProductionBuildingOptions.OPTIONS),Unit.Options.UnitState,"test");
+                    Unit.Options.GiveOrder(i);
+                    showGUI = false;
+                }
+            }
+            if (GUI.Button(new Rect(0, guiStyle.fontSize + menuOptions.Length * btnHeight, Pannel.texture.width * ScaleX, btnHeight), "Cancel...", buttonStyle))
+            {
+                showGUI = false;
+            }
+            GUI.EndGroup();
+        }
+    }
             //if (Unit.weapon.HasArsenal)
             //{
             //    guiposition = new Rect(1718 * ScaleX, (210 * ScaleY) - 3 * guiStyle.fontSize, 202 * ScaleX, 360 * ScaleY);
@@ -181,29 +204,8 @@ public class RightClickMenu : MonoBehaviour {
           //      GUI.EndGroup();
           //  }
          //   else
-            {
-       
-                
-                guiposition = new Rect(UnitPosition.x,view.height - UnitPosition.y, Pannel.texture.width * ScaleX, (menuOptions.Length + 1) * btnHeight + guiStyle.fontSize);
-                GUI.BeginGroup(guiposition, "Orders for:\n "+Unit.name, guiStyle);
+        
 
-                for (int i = 0; i < menuOptions.Length; i++)
-                {
-                    if (GUI.Button(new Rect(0, guiStyle.fontSize + i * btnHeight, Pannel.texture.width * ScaleX, btnHeight), menuOptions[i], buttonStyle))
-                    {
-             //           System.Enum.Format(typeof(ProductionBuildingOptions.OPTIONS),Unit.Options.UnitState,"test");
-                        Unit.Options.GiveOrder(i);
-                        showGUI = false;
-                    }
-                }
-                if (GUI.Button(new Rect(0, guiStyle.fontSize + menuOptions.Length * btnHeight, Pannel.texture.width * ScaleX, btnHeight), "Cancel...", buttonStyle))
-                {
-                    showGUI = false;
-                }
-                GUI.EndGroup();
-            }
-        }
-    }
 	
 	
 

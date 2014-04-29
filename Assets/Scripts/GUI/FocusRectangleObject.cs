@@ -43,6 +43,11 @@ public class FocusRectangleObject : MonoBehaviour {
     {
         directionFacer = this.gameObject.GetComponent<FaceDirection>();
 
+        UpdateHandler.OnUpdate += DoUpdate;
+    }
+    void DoUpdate()
+    {
+        Equalize();
     }
 
     public void Equalize()
@@ -64,10 +69,6 @@ public class FocusRectangleObject : MonoBehaviour {
     }
 
 
-    public void DoUpdate()
-    {
-        Equalize();   
-    }
 
 }
 

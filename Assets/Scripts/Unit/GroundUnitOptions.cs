@@ -89,7 +89,6 @@ class GroundUnitOptions : MovingUnitOptions
    }
 
 
-
    internal override void FocussedLeftOnEnemy(GameObject enemy)
    {
        standardOrder = true;
@@ -133,7 +132,6 @@ class GroundUnitOptions : MovingUnitOptions
 
     internal override void DoUpdate()
     {
-     
         if (IsAttacking) MoveToPoint = Target.transform.position;
         base.DoUpdate();
 

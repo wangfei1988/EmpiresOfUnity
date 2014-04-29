@@ -1046,6 +1046,8 @@ GameObject:
   - 114: {fileID: 358951604}
   - 132: {fileID: 358951605}
   - 114: {fileID: 358951606}
+  - 114: {fileID: 358951607}
+  - 114: {fileID: 358951608}
   m_Layer: 0
   m_Name: MainGUI
   m_TagString: MainGUI
@@ -1061,7 +1063,7 @@ GUITexture:
   m_GameObject: {fileID: 358951600}
   m_Enabled: 1
   m_Texture: {fileID: 2800000, guid: a031db5fc7190264ca0171e446fe4b87, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_Color: {r: .426470578, g: .156790644, b: .156790644, a: .501960814}
   m_PixelInset:
     serializedVersion: 2
     x: 0
@@ -1085,7 +1087,6 @@ Transform:
   - {fileID: 176181307}
   - {fileID: 863830383}
   - {fileID: 138113750}
-  - {fileID: 494533241}
   m_Father: {fileID: 0}
 --- !u!114 &358951603
 MonoBehaviour:
@@ -1098,14 +1099,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895e00f8a83ed1341a86a71f04cee50d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: {x: .5, y: .5}
   PlayerSide: 0
   SelectedGroup: {fileID: 0}
   groupCount: 0
   RightclickGUI: {fileID: 358951604}
   SellectionGUITexture: {fileID: 138113751}
   lastClickedUnit: {fileID: 0}
-  Debug: 1
+  DebugText: 0
   camera: {fileID: 1647307441}
   MapViewArea:
     serializedVersion: 2
@@ -1401,10 +1401,10 @@ GUIText:
   m_GameObject: {fileID: 358951600}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: asda dsaasd
+  m_Text: 
   m_Anchor: 0
   m_Alignment: 0
-  m_PixelOffset: {x: -440.279999, y: 271.559998}
+  m_PixelOffset: {x: 0, y: 0}
   m_LineSpacing: 1
   m_TabSize: 4
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -1424,21 +1424,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 358951600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6837ccc8c529b7c4bbdadba300896110, type: 3}
+  m_Script: {fileID: 11500000, guid: f396201e917fe1e43b9c54645906a72e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentCursor: 0
-  cursor: 0
-  CurrentClickPoint: {x: 1, y: 1}
-  cursorList:
-  - {fileID: 2800000, guid: 3030daf6a4d5e6f40853b4d4ca22137d, type: 3}
-  - {fileID: 2800000, guid: d63998c64de043940926b1cd4ca92d83, type: 3}
-  - {fileID: 2800000, guid: e5afbfdafc3dbf443bae4459eeab3ed6, type: 3}
-  ranges:
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 1, y: 1, z: 0, w: 0}
-  - {x: 2, y: 2, z: 0, w: 0}
-  UnitUnderCursor: {fileID: 0}
+  AnimationFps: 3
+  CursorList:
+  - {fileID: 11400000, guid: 78a2483ac84fb9442aed26cd4caf9553, type: 2}
+  - {fileID: 11400000, guid: aad0f5b812f6d764d8f02a6184c87961, type: 2}
+  - {fileID: 11400000, guid: da923dc1ac0bd0244a718abb5cc7cacf, type: 2}
+--- !u!114 &358951607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 358951600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c928cdc2c0fd8ff44a870246aa0723d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon_wood: {fileID: 2800000, guid: 0d725a64ee4d943449d142fd27cdf080, type: 3}
+  icon_stone: {fileID: 2800000, guid: 364c991a2376e674e8213cf6bdf3cc30, type: 3}
+  icon_gold: {fileID: 2800000, guid: 0655c0e8b699112418865c69ecaace67, type: 3}
+--- !u!114 &358951608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 358951600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3752a6c3cd9cd2f40914ed477df064dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: {x: .5, y: .5}
 --- !u!1 &494533239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,7 +1497,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: ecd01387a8d35404595523b52fe66fe7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 52851d6724bc42440907d01b7c077b5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &494533241
 Transform:
@@ -1486,11 +1505,11 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 494533239}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 20.4008636}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
+  m_LocalPosition: {x: 0, y: .00999999978, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 0}
   m_Children: []
-  m_Father: {fileID: 358951602}
+  m_Father: {fileID: 0}
 --- !u!114 &494533242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2740,6 +2759,56 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!1 &1113168586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1113168589}
+  - 114: {fileID: 1113168588}
+  - 114: {fileID: 1113168587}
+  m_Layer: 0
+  m_Name: ScriptContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1113168587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1113168586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e90f6317c3a6a45840d2ced190b190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1113168588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1113168586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 163d43043a6c71946a2fd15fd02edc62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1113168589
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1113168586}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 49.7405701, y: -6.26150751, z: 12.8262262}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1001 &1135287165
 Prefab:
   m_ObjectHideFlags: 0
@@ -3333,10 +3402,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: .300000012
-  far clip plane: 1000
-  field of view: 60
+  far clip plane: 2000
+  field of view: 55.4000015
   orthographic: 1
-  orthographic size: 20
+  orthographic size: 12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3369,9 +3438,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainGUI: {fileID: 358951603}
   ORTHOGRAFIC_Y_HEIGHT: 50
-  PERSPECTIVE_VIEW_SIZE: 5
+  PERSPECTIVE_VIEW_SIZE: 20
   Orthografic_View_Size: 500
-  qamMode: 0
 --- !u!1 &1665781127
 GameObject:
   m_ObjectHideFlags: 0

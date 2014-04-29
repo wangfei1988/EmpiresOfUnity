@@ -66,12 +66,30 @@ public class Focus : MonoBehaviour
             UNIT = this.gameObject.GetComponent<UnitScript>();
             UNIT.Options.FocusFlag = HANDLING.HasFocus;
             masterGameObject = this.gameObject;
-            MouseEvents.RIGHTCLICK += MouseEvents_RIGHTCLICK;
+            MouseEvents.RIGHTCLICK += MouseEvents_CancelFocus;
             MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
+			
+            //MouseEvents.LEFTCLICK += MouseEvents_CancelFocus;
+            //MouseEvents.RIGHTCLICK += MouseEvents_MoveUnit;
+
+            RightClickMenu.PopUpGUI(UNIT);
         }
+
+        UpdateHandler.OnUpdate += DoUpdate;
+
+        
+    }
+
+    void DoUpdate()
+    {
+        if (IsLocked)
+            masterGameObject = gameObject;
+        else
+            TryRelease();
     }
 
     void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
+    //void MouseEvents_MoveUnit(Ray qamRay, bool hold)
     {
         if (!IsLocked)
         {
@@ -80,7 +98,7 @@ public class Focus : MonoBehaviour
                 if (!hold)
                 {
 
-                    GameObject ClickedUnit = GUIScript.main.UnitUnderCursor;
+                    GameObject ClickedUnit = AnimatedCursor.UnitUnderCursor;
                     if (ClickedUnit)
                     {
                         if (IsEnemy(ClickedUnit)) 
@@ -109,39 +127,27 @@ public class Focus : MonoBehaviour
         }
     }
 
-    void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
+    void MouseEvents_CancelFocus(Ray qamRay, bool hold)
     {
         if (!IsLocked)
         {
             if (!hold)
             {
-                GameObject ClickedUnit = GUIScript.main.UnitUnderCursor;
+                GameObject ClickedUnit = AnimatedCursor.UnitUnderCursor;
                 if (ClickedUnit)
                 {
-                    if (IsOtherUnit(ClickedUnit)) ClickedUnit.AddComponent<Focus>();
-                    else RightClickMenu.PopUpGUI(UNIT);
+                    if (IsOtherUnit(ClickedUnit))
+                    {
+                        ClickedUnit.AddComponent<Focus>();
+                    }
                 }
-                else GameObject.Destroy(gameObject.GetComponent<Focus>());
+                else
+                {
+                    GameObject.Destroy(gameObject.GetComponent<Focus>());
+                }
             }
         }
     }
-
-    //private GameObject RayHittenUnit(Ray clickRay)
-    //{
-    //    //RaycastHit clicked;
-    //    //if (Physics.Raycast(clickRay, out clicked)) return clicked.collider.gameObject;
-    //    //else
-    //    //{
-    //    //    GameObject.FindGameObjectWithTag("Ground").collider.Raycast(clickRay, out clicked, 3000f);
-    //    //    groundHit = clicked.point;
-    //    //}
-    //    //return null;
-    //    if (GUIScript.main.UnitUnderCursor)
-    //    {
-    //        return GUIScript.main.UnitUnderCursor;
-    //    }
-    //    else
-    //}
 
     private bool IsEnemy(GameObject otherUnit)
     {
@@ -181,11 +187,15 @@ public class Focus : MonoBehaviour
     {
         if (!firststart)
         {
-            MouseEvents.RIGHTCLICK -= MouseEvents_RIGHTCLICK;
+            MouseEvents.RIGHTCLICK -= MouseEvents_CancelFocus;
             MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
+            //MouseEvents.LEFTCLICK -= MouseEvents_CancelFocus;
+            //MouseEvents.RIGHTCLICK -= MouseEvents_MoveUnit;
+			
             UNIT.Options.FocusFlag = HANDLING.None;
         }
         else firststart = false;
+        UpdateHandler.OnUpdate -= DoUpdate;
     }
 
 }

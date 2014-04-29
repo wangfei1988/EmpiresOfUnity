@@ -46,34 +46,87 @@ public class ProductionBuildingOptions : UnitOptions
      }
 
 
+/*
+    string[] fabrikatNames;
+
+    private int CurrentFabrikat;
+    public string typename;
+    public List<GameObject> Fabrikat;
+    public List<Texture> menuButtons;
+
+    void Start()
+    {
+        fabrikatNames = new string[Fabrikat.Count + 1];
+        Life = 1000;
+        for (int i = 0; i < Fabrikat.Count; i++)
+            fabrikatNames[i] = Fabrikat[i].name;
+        fabrikatNames[Fabrikat.Count] = "StopProduction";
+        UnitState = unitState = OPTIONS.StopProduction;
+        MoveToPoint = new Vector3(gameObject.transform.position.x, 0f, gameObject.transform.position.z - 120f);
+    }
+
+    internal override void DoUpdate()
+    {
+
+    }
+
+    internal override string[] GetUnitsMenuOptions()
+    {
+        return fabrikatNames;
+    }
+
+    internal Texture[] GetButtons()
+    {
+        return menuButtons.ToArray();
+    }
+
+    public override void GiveOrder(int orderNumber)
+    {
+        if (orderNumber < fabrikatNames.Length - 1)
+        {
+            CurrentFabrikat = orderNumber;
+            UnitState = (OPTIONS)orderNumber;
+        }
+        else
+        {
+            UnitState = OPTIONS.StopProduction;
+        }
+    }
+
+    internal override void Hit(int power)
+    {
+         
+    }
+
+    public OPTIONS unitState;*/
     public override System.Enum UnitState
     {
         get
         {
-            return  unitState;
+            return unitState;
         }
         set
         {
             unitState = (OPTIONS)value;
             switch (unitState)
-                {
-                    case OPTIONS.Produce:
-                        {
-                            
-                            GameObject.Instantiate(Fabrikat[CurrentFabrikat], MoveToPoint, Fabrikat[CurrentFabrikat].transform.rotation);
-                            break;
-                        }
-                    case OPTIONS.StopProduction:
-                        {
-                            break;
-                        }
-                    case OPTIONS.MoveUnitsTo:
-                        {
-                            LockOnFocus();
-                            MouseEvents.LEFTCLICK+=MouseEvents_LEFTCLICK;
-                            break;
-                        }
-                }
+			{
+				case OPTIONS.Produce:
+					{
+						
+						GameObject.Instantiate(Fabrikat[CurrentFabrikat], MoveToPoint, Fabrikat[CurrentFabrikat].transform.rotation);
+						break;
+					}
+				case OPTIONS.StopProduction:
+					{
+						break;
+					}
+				case OPTIONS.MoveUnitsTo:
+					{
+						LockOnFocus();
+						MouseEvents.LEFTCLICK+=MouseEvents_LEFTCLICK;
+						break;
+					}
+			}
         }
     }
 
@@ -100,17 +153,9 @@ public class ProductionBuildingOptions : UnitOptions
     public string typename;
     public List<GameObject> Fabrikat;
 
-
-
-
- 
-
-
-
     
     internal override void DoUpdate()
     {
-
     }
 }
 

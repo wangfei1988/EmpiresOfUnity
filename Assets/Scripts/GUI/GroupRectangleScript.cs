@@ -15,7 +15,13 @@ public class GroupRectangleScript : MonoBehaviour {
         IsSignedIn = false;
         gameObject.renderer.enabled = false;
 
+        UpdateHandler.OnUpdate += DoUpdate;
 	}
+
+    void DoUpdate()
+    {
+        Equalize();
+    }
     
     private void SignIn()
     {
@@ -44,9 +50,15 @@ public class GroupRectangleScript : MonoBehaviour {
         if (Physics.Raycast(qamRay, out hit))
         {
             if (hit.collider.gameObject.GetComponent<UnitScript>().GoodOrEvil != mainGUI.SelectedGroup.GoodOrEvil)
+            {
                 mainGUI.SelectedGroup.GoupedLeftOnEnemy(hit.collider.gameObject);
+            }
         }
-        else mainGUI.SelectedGroup.GroupedLeftOnGround();
+        else
+        {
+            mainGUI.SelectedGroup.GroupedLeftOnGround();
+        }
+        
     }
     void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
     {
@@ -76,8 +88,4 @@ public class GroupRectangleScript : MonoBehaviour {
     }
 
 
-	public void DoUpdate() 
-    {
-        Equalize();
-	}
 }

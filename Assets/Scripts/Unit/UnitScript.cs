@@ -33,6 +33,8 @@ public class UnitScript : MonoBehaviour
             else return false;
         }
     }
+
+
     public UnitOptions Options;
     public O OptionsAs<O>() where O : UnitOptions
     {
@@ -77,11 +79,9 @@ public class UnitScript : MonoBehaviour
                     break;
                 }
         }
-
+		//UpdateHandler.OnUpdate += DoUpdate;
         UpdateManager.UNITUPDATE += UpdateManager_UNITUPDATE;
 	}
-
-
 
     [SerializeField]
     private int life;
@@ -117,11 +117,21 @@ public class UnitScript : MonoBehaviour
     }
     private void Die()
     {
-        //todo:  ------------------------------>>>>>>>>>>>>>   code for dieing (explosion etc.)
+        //todo: code for dieing (explosion etc.)
         UpdateManager.UNITUPDATE -= UpdateManager_UNITUPDATE;
         foreach (Component component in this.gameObject.GetComponents<Component>()) 
             Component.Destroy(component);
         GameObject.Destroy(this.gameObject);
+	}
+
+    void DoUpdate()
+    {
+        //if (unitAnimator) unitAnimator.DoUpdate();
+        if (weapon) weapon.Reloade();
+        Options.OptionsUpdate();
+
+        if (life < 0)
+			GameObject.Destroy(this.gameObject);
     }
 
     [SerializeField]
@@ -146,7 +156,7 @@ public class UnitScript : MonoBehaviour
 
     public void AskForOrder()
     {
-        RightClickMenu.PopUpGUI(this);
+        //RightClickMenu.PopUpGUI(this);
     }
 
     public string[] Orders
