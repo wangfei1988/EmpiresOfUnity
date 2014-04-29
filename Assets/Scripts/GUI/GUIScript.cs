@@ -12,7 +12,8 @@ public class GUIScript : MonoBehaviour
     private static List<string> StaticTextLines = new List<string>();
     public static void AddTextLine(string line)
     {
-        StaticTextLines.Insert(0,line);
+        if (StaticTextLines != null)
+            StaticTextLines.Insert(0,line);
     }
 
     public UnitScript.GOODorEVIL PlayerSide;
@@ -25,7 +26,7 @@ public class GUIScript : MonoBehaviour
 
     public GameObject lastClickedUnit;
 
-    private string TextField = "";
+    private string textField = "";
     public bool DebugText = false;
 
     private Scrolling scrolling;
@@ -61,7 +62,6 @@ public class GUIScript : MonoBehaviour
         set
         {
             selectionRectangle = value;
-
             /*
             SellectionGUITexture.pixelInset = new Rect(value.x - Camera.main.pixelWidth / 2f, value.y - Camera.main.pixelHeight / 2f, -value.width, -value.height);
             Vector3 w1 = Camera.main.ScreenToWorldPoint(new Vector3(value.x, value.y, Camera.main.transform.position.y - 75));
@@ -89,6 +89,8 @@ public class GUIScript : MonoBehaviour
             Vector3 w2 = Camera.main.ScreenToWorldPoint(new Vector3(value.width, value.height, screenPoint.z));
             w2.y = SelectionSprite.transform.position.y;
 
+
+            //Debug.Log(value);
 
             //Debug.Log(w2);
 
@@ -196,7 +198,7 @@ public class GUIScript : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
             return hit.collider.gameObject;
-        else return null;
+        return null;
     }
 
     void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
@@ -265,13 +267,13 @@ public class GUIScript : MonoBehaviour
 
     private string TextUpdate()
     {
-        TextField = guiText.text;
+        textField = guiText.text;
         int listlength = StaticTextLines.Count - 1;
         for (int i = listlength; i >= 0; i--)
         {
-            TextField += StaticTextLines[i] + "\n";
+            textField += StaticTextLines[i] + "\n";
             if (i > 6) StaticTextLines.RemoveAt(i);
         }
-        return TextField;
+        return textField;
     }
 }

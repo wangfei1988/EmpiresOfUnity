@@ -26,6 +26,12 @@ public class UpdateHandler : MonoBehaviour
     {
         if (OnUpdate != null)
         {
+            /* TODO: Sortierung
+             * 1. MouseEvents
+             * 2. Cursor
+             * 3. ...
+             * OnUpdate.GetInvocationList()
+             */
             OnUpdate();
         }
     }
