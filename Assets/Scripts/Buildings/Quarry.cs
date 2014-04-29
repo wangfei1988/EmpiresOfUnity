@@ -11,36 +11,36 @@ public class Quarry : MonoBehaviour
 
 
     //Methods
-    //void Start()
-    //{
-        
-    //}
+    void Start()
+    {
 
-    //private void QuarryWork()
-    //{
-    //    while (false)
-    //    {
-    //        if (quarryLevel == 1)
-    //        {
-    //            stone = stone + 10;
-    //        }
-    //        if (quarryLevel == 2)
-    //        {
-    //            stone = stone + 10;
-    //        }
-    //        if (quarryLevel == 3)
-    //        {
-    //            stone = stone + 10;
-    //        }
-    //        if (quarryLevel == 4)
-    //        {
+    }
 
-    //        }
-    //        if (quarryLevel == 5)
-    //        {
+    private void QuarryWork()
+    {
+        while (false)
+        {
+            if (quarryLevel == 1)
+            {
+                stone = stone + 10;
+            }
+            if (quarryLevel == 2)
+            {
+                stone = stone + 15;
+            }
+            if (quarryLevel == 3)
+            {
+                stone = stone + 20;
+            }
+            if (quarryLevel == 4)
+            {
+                stone = stone + 25;
+            }
+            if (quarryLevel == 5)
+            {
+                stone = stone + 30;
+            }
+        }
 
-    //        }
-    //    }
-
-    //}
+    }
 }
