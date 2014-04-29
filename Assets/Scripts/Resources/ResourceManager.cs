@@ -28,4 +28,27 @@ public class ResourceManager : MonoBehaviour
         return value;
     }
 
+    /*
+     * USEAGE EXAMPLE
+     * -  ResourceManager.SubtractResouce(Resource.GOLD, 5);
+     * -  ResourceManager.AddResouce(Resource.STONE, 6);
+     */
+    public static bool AddResouce(Resource resourceType, uint addValue )
+    {
+        resourceList[resourceType] += addValue;
+        return true;
+    }
+
+    public static bool SubtractResouce(Resource resourceType, uint subtractValue )
+    {
+        uint count = GetResourceCount(resourceType);
+        if (count >= subtractValue)
+        {
+            resourceList[resourceType] -= subtractValue;
+            return true;
+        }
+
+        return false;
+    }
+
 }
