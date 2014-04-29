@@ -35,8 +35,7 @@ public class Scrolling : MonoBehaviour
 
     private void CheckForScrolling()
     {
-        /* TODO LUCAS 2014-04-26 (by Dario)
-         * -> Check WASD or Arrow-Keys for Scrolling
+        /* 
          * -> Check Q & E Key to rotate Camera left / right (like Banished)
          * -> Check R & F for zoom in / zoom out
          */
@@ -46,15 +45,23 @@ public class Scrolling : MonoBehaviour
         float x = 0;
         float y = 0;
 
+        //Srolling Left
         if (MousePosition.x < mainGUI.MapViewArea.xMin || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             x = scrollSpeed.x * -1;
+        //Scrolling Right
         else if (MousePosition.x > mainGUI.MainGuiArea.xMax || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             x = scrollSpeed.x;
-
+        //Scrolling Up
         if (MousePosition.y > mainGUI.MapViewArea.yMax || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             y = scrollSpeed.y;
+        //Scrolling Down
         else if (MousePosition.y < mainGUI.MapViewArea.yMin || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             y = scrollSpeed.y * -1;
+        //Space Key Switch Camera
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Camera.main.GetComponent<Cam>().SwitchCam();
+        }
 
         Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + x, Camera.main.transform.position.y, Camera.main.transform.position.z + y);
     }
