@@ -35,8 +35,12 @@ public class ResourceManager : MonoBehaviour
      */
     public static bool AddResouce(Resource resourceType, uint addValue )
     {
-        resourceList[resourceType] += addValue;
-        return true;
+        if (resourceList != null)
+        {
+            resourceList[resourceType] += addValue;
+            return true;
+        }
+        return false;
     }
 
     public static bool SubtractResouce(Resource resourceType, uint subtractValue )
