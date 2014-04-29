@@ -11,7 +11,7 @@ public class ResourceManager : MonoBehaviour
         GOLD
     }
 
-    private static Dictionary<Resource, uint> resourceList = new Dictionary<Resource, uint>();
+    public static Dictionary<Resource, uint> resourceList = new Dictionary<Resource, uint>();
 
     //static ResourceManager()
     void Start()
