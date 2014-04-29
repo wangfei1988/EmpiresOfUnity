@@ -7,13 +7,22 @@ public class Quarry : MonoBehaviour
     //Stats
     public float quarryLife = 1;
     public int quarryLevel = 1;
-    private int stone = 0;
+    
 
+
+    //Timer
+    private Timer workTimer;
 
     //Methods
     void Start()
     {
+        QuarryWork();
 
+    }
+
+    void Update()
+    {
+        QuarryWork();
     }
 
     private void QuarryWork()
@@ -22,23 +31,20 @@ public class Quarry : MonoBehaviour
         {
             if (quarryLevel == 1)
             {
-                stone = stone + 10;
+                ResourceManager.AddResouce(ResourceManager.Resource.STONE, 10);
             }
             if (quarryLevel == 2)
             {
-                stone = stone + 15;
             }
             if (quarryLevel == 3)
             {
-                stone = stone + 20;
             }
             if (quarryLevel == 4)
             {
-                stone = stone + 25;
             }
             if (quarryLevel == 5)
             {
-                stone = stone + 30;
+
             }
         }
 
