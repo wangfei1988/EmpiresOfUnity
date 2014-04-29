@@ -57,8 +57,28 @@ public class Scrolling : MonoBehaviour
         //Scrolling Down
         else if (MousePosition.y < mainGUI.MapViewArea.yMin || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             y = scrollSpeed.y * -1;
+        //Rotate Left
+        if (Input.GetKey(KeyCode.Q))
+        {
+            
+        }
+        //Rotate Rigth
+        if (Input.GetKey(KeyCode.E))
+        {
+            
+        }
+        //Zoom in
+        if (Input.GetKey(KeyCode.R))
+        {
+            
+        }
+        //Zoom out
+        if (Input.GetKey(KeyCode.F))
+        {
+            
+        }
         //Space Key Switch Camera
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Camera.main.GetComponent<Cam>().SwitchCam();
         }
