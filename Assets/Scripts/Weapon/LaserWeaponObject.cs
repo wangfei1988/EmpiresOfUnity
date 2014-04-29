@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LaserSpriteScript : WeaponObject 
+public class LaserWeaponObject : WeaponObject 
 
 {
     public enum dir : byte
@@ -27,7 +27,7 @@ public class LaserSpriteScript : WeaponObject
     public Flare Hitflare;
     public float rotation = 90f;
     private Vector3 originPosition;
-    public float beamPosition = 20;
+    public float beamPosition = 0.5f;
     [SerializeField]
     private bool hit = false;
     public bool HIT
@@ -85,7 +85,7 @@ public class LaserSpriteScript : WeaponObject
         Visible = false;
         Direction = this.gameObject.transform.forward;
         originPosition = this.gameObject.transform.position;
-        beamPosition = 10;
+        beamPosition = 0.5f;
 
     }
 
@@ -101,7 +101,7 @@ public class LaserSpriteScript : WeaponObject
         {
             Power = power;
             MAX_POSITION = maximumdistance;
-            this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 11f, this.gameObject.transform.position.z);
+            this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 0.9f, this.gameObject.transform.position.z);
             this.gameObject.transform.up = direction;
             Direction = this.gameObject.transform.forward;
             Step = MAX_POSITION / SPEED;
@@ -119,18 +119,18 @@ public class LaserSpriteScript : WeaponObject
             this.gameObject.transform.localScale = GetBeamPositionScale(BeamPosition);
             this.gameObject.transform.position = originPosition + (this.beamPosition * this.gameObject.transform.up);
             this.gameObject.transform.Rotate(YAxis, rotation);
-           if(++count >=102)GameObject.Destroy(this.gameObject);
+            if(++count >=102)GameObject.Destroy(this.gameObject);
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if ((other.gameObject.layer != 2) && (other.gameObject.GetInstanceID() != UNIT.gameObject.GetInstanceID()) && (other.gameObject.layer!=8) && (other.GetComponent<UnitScript>().GoodOrEvil!=GoodOrEvil))
+        if ((!other.collider.isTrigger) && (other.gameObject.GetComponent<UnitScript>()) && (other.collider.GetComponent<UnitScript>().GoodOrEvil != this.GoodOrEvil))
         {
             this.gameObject.GetComponent<AudioSource>().PlayOneShot(sound2);
-            Camera.main.GetComponent<Cam>().mainGUI.guiText.text = other.gameObject.name + other.gameObject.GetInstanceID().ToString();
+            GUIScript.AddTextLine(other.gameObject.name + other.gameObject.GetInstanceID().ToString());
             HIT = true;
-            other.GetComponent<UnitScript>().Options.Hit(this.Power); 
+            other.collider.GetComponent<UnitScript>().Hit(this.Power); 
         }
     }
 

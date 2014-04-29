@@ -6,7 +6,7 @@ using System.Collections.Generic;
 [AddComponentMenu("Character/Unit Options (Building)")]
 public class BuildingOptions : UnitOptions
 {
-    public enum OPTIONS : int
+    new public enum OPTIONS : int
     {
         Produce,
         StopProduction
@@ -55,39 +55,31 @@ public class BuildingOptions : UnitOptions
         }
     }
 
-    internal override void Hit(int power)
-    {
-        
-    }
+
     private int CurrentFabrikat;
 
     public string typename;
     public List<GameObject> Fabrikat;
 
 
-    public override void SetMoveToPoint(Vector3 point)
-    {
 
-    }
 
     internal override void MoveAsGroup(GameObject leader)
     {
         
     }
 
-    void Start()
+    internal override void DoStart()
     {
-        
- 
-        fabrikatNames = new string[Fabrikat.Count+1];
+        fabrikatNames = new string[Fabrikat.Count + 1];
 
-        Life = 1000;
 
-        for (int i = 0; i < Fabrikat.Count; i++) fabrikatNames[i]=Fabrikat[i].name;
-        fabrikatNames[Fabrikat.Count]="StopProduction";
+        for (int i = 0; i < Fabrikat.Count; i++) fabrikatNames[i] = Fabrikat[i].name;
+        fabrikatNames[Fabrikat.Count] = "StopProduction";
         UnitState = unitState = OPTIONS.StopProduction;
-
     }
+
+
     
     internal override void DoUpdate()
     {

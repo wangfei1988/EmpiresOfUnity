@@ -1,97 +1,115 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using System.Reflection.Emit;
+using System;
 
 
 abstract public class UnitOptions : MonoBehaviour
 {
-    
 
+    protected SortedDictionary<int, string> OPTIONSlist = new SortedDictionary<int, string>();
     public enum OPTIONS : int
     {
-        Sellect,
-        Cancel
+        SellectedOption = 0,
+        Cancel=10000
     }
 
-    //--------------------------------------- Values...
-
-    virtual public int Life
-    {
-        get;
-        protected set;
-    }
-    public float Speed
-    {
-        get;
-        set;
-    }
-    virtual public float AttackRange
-    {
-        get { return gameObject.GetComponent<UnitScript>().weapon.GetMaximumRange(); }
-
-    }
-
+    public UnitScript UNIT;
 
     //---------------------------------------- State Flags...
+    
+    public virtual bool IsAttacking
+    { get { return false; } protected set { } }
+    public bool IsUnderAttack
+    { get; set; }
     public virtual bool IsMoving
     {
         get
         {
-            return _mooving;
+            return __moving;
         }
         protected set
         {
             if (!value) _groupmove = false;
-            _mooving = value;
+            __moving = value;
         }
     }
-    protected bool _mooving;
+    private bool __moving = false;
     public bool IsMovingAsGroup
     {
         get { return _groupmove; }
         protected set
         {
-            if (value) _mooving = true; 
+            if (value) IsMoving = true;
             _groupmove = value;
         }
     }
+    private bool _groupmove = false;
     public bool IsGroupLeader;
-    protected bool _groupmove;
-    public virtual bool IsAttacking
-    { get; protected set; }
-    public bool IsUnderAttack
-    { get; set; }
-    //private bool _isMouseEventsRecieving;
     
     //-----------------------------------------------------Orders and Interaction...
     virtual internal string[] GetUnitsMenuOptions()
     {
-        return System.Enum.GetNames(UnitState.GetType());
+    //    return System.Enum.GetNames(UnitState.GetType());
+        string[] buffer = new string[OPTIONSlist.Count];
+        int i = 0;
+        foreach (KeyValuePair<int, string> entry in OPTIONSlist)
+        {
+            buffer[i] = entry.Value;
+            i++;
+        }
+        return buffer;
+    }
+    virtual internal string[] GetUnitsSIDEMenuOptions()
+    {
+        if (UNIT.weapon.HasArsenal)
+        {
+            string[] weaponNames = new string[UNIT.weapon.arsenal];
+            for (int i = 0; i < UNIT.weapon.arsenal; i++)
+                weaponNames[i] = UNIT.weapon.arsenal[i].name;
+            return weaponNames;
+        }
+        else return new string[0];
     }
     virtual public void GiveOrder(int orderNumber)
     {
-        UnitState = (OPTIONS)orderNumber;
+        int i=0;
+        foreach (int key in OPTIONSlist.Keys)
+        {
+            if (i == orderNumber)
+                UnitState = (OPTIONS)key;
+            i++;
+        }
+    }
+    virtual public void SetSIDEOption(int SIDEoptionNumber)
+    {
+        if (UNIT.weapon.HasArsenal)
+            UNIT.weapon.prefabSlot = UNIT.weapon.arsenal[SIDEoptionNumber];
     }
     protected bool standardOrder = false;
+
     abstract public System.Enum UnitState
     { get; set; }
     virtual internal void FocussedLeftOnGround(Vector3 worldPoint)
     {
-        standardOrder = true;
-        IsMovingAsGroup = true;
-        gameObject.rigidbody.isKinematic = true;
-        UnitState = (OPTIONS)0;
-        SetMoveToPoint(worldPoint);
-        movingDirection = (MoveToPoint - gameObject.transform.position).normalized;
-        gameObject.transform.position += movingDirection*Speed;
-        IsAttacking = false;
-        Target = null;
-        standardOrder = false;
+        if (this.gameObject.GetComponent<Focus>())
+        {
+            if (Focus.IsLocked)
+                gameObject.GetComponent<Focus>().Unlock(gameObject);
+
+            Component.Destroy(gameObject.GetComponent<Focus>());
+        }
     }
     virtual internal void FocussedRightOnGround(Vector3 worldPoint)
     {
-        Component.Destroy(gameObject.GetComponent<Focus>());
+        if (this.gameObject.GetComponent<Focus>())
+        {
+            if (Focus.IsLocked)
+                gameObject.GetComponent<Focus>().Unlock(gameObject);
+
+            Component.Destroy(gameObject.GetComponent<Focus>());
+        }
     }
     virtual internal void FocussedLeftOnEnemy(GameObject enemy)
     { enemy.AddComponent<Focus>(); }
@@ -105,80 +123,97 @@ abstract public class UnitOptions : MonoBehaviour
     
 
     //------------------------------------------------- Navigation..
+    [SerializeField]
+    private Vector3 moveToPoint = Vector3.zero;
     virtual public Vector3 MoveToPoint
-    { get; set; }
-    virtual public float Distance
     {
-        get;
-        protected set;
+        get { return moveToPoint; }
+        protected set { moveToPoint = value; }
     }
-    virtual public void SetMoveToPoint(Vector3 point)
-    {
-        MoveToPoint = point;
-    }
-    public Vector3 movingDirection;
+
+
+
+    
     public GameObject Target;
 
-    public GameObject MoveToPointMarker;
-    public GameObject AttackPointMarker;
-    public GameObject WayPointMarker;
+    //public GameObject MoveToPointMarker;
+    //public GameObject AttackPointMarker;
+    //public GameObject WayPointMarker;
 
     //---------------------------------------- Enginal stuff and functions...
+    void Start()
+    {
+        
+        DoStart();
+   //     OPTIONSlist.Add(10000,"Cancel");
+        testlist.AddRange(OPTIONSlist.Values);
+        UNIT = gameObject.GetComponent<UnitScript>();
+    }
+    public List<string> testlist = new List<string>();
+    abstract internal void DoStart();
     abstract internal void DoUpdate();
     internal void OptionsUpdate()
     {
-        checkKinematic();
         DoUpdate();
     }
-    virtual internal void SetUp(int life,float speed)
+
+    internal Focus.HANDLING FocusFlag = Focus.HANDLING.None;
+    protected bool IsLockedOnFocus
     {
-        Life = life;
-        Speed = speed;
-    //    gameObject.transform.DetachChildren();
+        get
+        {
+            return FocusFlag==Focus.HANDLING.IsLocked;
+        }
     }
-    protected void SetKinematic()
+    protected bool HasFocus
     {
-        gameObject.rigidbody.isKinematic = true;
-        kinematicFrames=2;
+        get
+        {
+            return ((FocusFlag == Focus.HANDLING.HasFocus) | IsLockedOnFocus);
+        }
     }
-    private void checkKinematic()
-    {
-        if (gameObject.rigidbody.isKinematic)
-            if (kinematicFrames <= 0) gameObject.rigidbody.isKinematic = false;
-            else --kinematicFrames;
-    }
-    private int kinematicFrames;
-    
     protected void LockOnFocus()
     {
-        if (!gameObject.GetComponent<Focus>()) gameObject.AddComponent<Focus>();
-        gameObject.GetComponent<Focus>().Lock();
-        //_isMouseEventsRecieving = true;
+        if (!IsLockedOnFocus)
+        {
+            if (!(FocusFlag == Focus.HANDLING.HasFocus))
+                gameObject.AddComponent<Focus>();
+            gameObject.GetComponent<Focus>().Lock(); 
+        }
     }
     protected void UnlockFocus()
     {
-        //_isMouseEventsRecieving = false;
-        MouseEvents.LEFTRELEASE += MouseEvents_LEFTRELEASE;
+        MouseEvents.LEFTRELEASE += abstract_LEFTRELEASE;
+    }
+    protected void UnlockFocus(Focus.HANDLING andDestroyIt)
+    {
+        if (IsLockedOnFocus)
+        {
+            UnlockFocus();
+            if (andDestroyIt == Focus.HANDLING.DestroyFocus) FocusFlag = andDestroyIt;
+        }
+        else if (FocusFlag == Focus.HANDLING.HasFocus) Component.Destroy(gameObject.GetComponent<Focus>());
     }
 
-    private void MouseEvents_LEFTRELEASE()
+    private void abstract_LEFTRELEASE()
     {
         gameObject.GetComponent<Focus>().Unlock(gameObject);
-        MouseEvents.LEFTRELEASE -= MouseEvents_LEFTRELEASE;
+        if (FocusFlag<=0)
+            Component.Destroy(gameObject.GetComponent<Focus>());
+        MouseEvents.LEFTRELEASE -= abstract_LEFTRELEASE;
     }
 
-    virtual protected void MouseEvents_LEFTMouseEvents(Ray qamRay, bool hold) { }
+    virtual protected void MouseEvents_LEFTCLICK(Ray qamRay, bool hold) { }
     virtual protected void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold) { }
 
     protected bool TargetIsEnemy(GameObject target)
     {
-        return target.GetComponent<UnitScript>().GoodOrEvil != gameObject.GetComponent<UnitScript>().GoodOrEvil;
+        return target.GetComponent<UnitScript>().GoodOrEvil != UNIT.GoodOrEvil;
     }
     protected bool TargetIsAllied(GameObject target)
     {
         if (target.GetInstanceID() != gameObject.GetInstanceID())
-            return target.GetComponent<UnitScript>().GoodOrEvil == gameObject.GetComponent<UnitScript>().GoodOrEvil;
+            return target.GetComponent<UnitScript>().GoodOrEvil == UNIT.GoodOrEvil;
         else return false;
     }
-    abstract internal void Hit(int power);
 }

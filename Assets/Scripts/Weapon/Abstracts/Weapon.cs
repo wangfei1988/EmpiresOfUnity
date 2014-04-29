@@ -3,25 +3,7 @@ using System.Collections;
 
 abstract public class Weapon : MonoBehaviour
 {
-    public class None : Weapon
-    {
-        public override void Engage(GameObject targetUnit)
-        {
 
-        }
-        public override void Engage(Vector3 targetPoint)
-        {
-
-        }
-        public override float GetMaximumRange()
-        {
-            return 0f;
-        }
-        public override void Reloade()
-        {
-
-        }
-    }
 
     public class Status
     {

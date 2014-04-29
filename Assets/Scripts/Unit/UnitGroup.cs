@@ -145,7 +145,7 @@ public class UnitGroup : ScriptableObject
             if (rectangle.GetComponent<GroupRectangleScript>())
             {
                 gameObject = rectangle;
-                gameObject.GetComponent<GroupRectangleScript>().SetToGUI(GUIScript.mainGUI.GetComponent<GUIScript>());
+                gameObject.GetComponent<GroupRectangleScript>().SetToGUI(GUIScript.main.GetComponent<GUIScript>());
             }
         }
 

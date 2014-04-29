@@ -89,22 +89,31 @@ public class AnimatedMouseCursors : UnitComponent
             {
                 cursor = AnimatedMouseCursors.CURSORS.OVER_CLICKABLE_OBJECT;
                 guiText.text = what.collider.gameObject.name + " at: " + MouseEvents.State.Position.AsWorldPointOnMap.ToString() + "\nID: " + what.collider.gameObject.GetInstanceID().ToString();
+                UnitUnderCursor = what.collider.gameObject;
             }
             else
             {
                 cursor = AnimatedMouseCursors.CURSORS.CLICK;
                 guiText.text = MouseEvents.State.Position.AsWorldPointOnMap.ToString();
+                UnitUnderCursor = null;
             }
         }
-        else guiText.text = "";
+        else
+        {
+            guiText.text = "";
+            UnitUnderCursor = null;
+        }
     }
+
+    public GameObject UnitUnderCursor;
+
     private void AnimateCursor()
     {
         CheckWhatsUnderCursor(); 
         Cursors = cursor;
         Cursor.SetCursor(GetNextFrame(), CurrentClickPoint, CursorMode.Auto);
     }
-
+    
     internal override void DoUpdate()
     {
         AnimateCursor();

@@ -74,8 +74,9 @@ public class GroupRectangleScript : MonoBehaviour {
     {
           mainGUI = gui;
     }
-	// Update is called once per frame
-	void Update () 
+
+
+	public void DoUpdate() 
     {
         Equalize();
 	}

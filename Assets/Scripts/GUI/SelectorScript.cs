@@ -38,7 +38,7 @@ public class SelectorScript : MonoBehaviour {
     //    group.AddUnit(other.gameObject);
     //}
 
-	void Update () 
+	public void DoUpdate() 
     {
 	
 	}

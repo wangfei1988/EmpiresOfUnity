@@ -27,9 +27,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0120611191, y: 22.6413422, z: -10.9673615}
-  m_LocalScale: {x: .399999976, y: .400000006, z: 20}
+  m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
+  m_LocalPosition: {x: 20.8657112, y: 1, z: .300000012}
+  m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!23 &2300000
@@ -44,7 +44,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: da55d1137412cf848a17b34ad16371fb, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -70,8 +70,8 @@ Light:
   serializedVersion: 3
   m_Type: 2
   m_Color: {r: .0758621693, g: 1, b: 0, a: 1}
-  m_Intensity: 2
-  m_Range: 30
+  m_Intensity: .5
+  m_Range: 5
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsActive: 1
-  anotherAnimaquion: {fileID: 0}
+  anotherUnitAnimation: {fileID: 11400002}
   TransformToFace: {fileID: 0}
   faceMovingDirection: 0
   faceQamera: 0
@@ -126,18 +126,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsActive: 1
-  anotherAnimaquion: {fileID: 11400000}
-  target: {fileID: 0}
-  lockPosition: 0
-  position: {x: 0, y: 0, z: 0}
-  Position: 
+  anotherUnitAnimation: {fileID: 0}
+  lockPosition: 1
+  position: {x: 0, y: .100000001, z: 0}
+  PositionX: 0
+  PositionY: 1
+  PositionZ: 0
   lockRotation: 0
   rotation: {x: 0, y: 0, z: 0}
   rotationW: 0
-  Rotation: 
-  lockScale: 0
-  scale: {x: 0, y: 0, z: 0}
-  Scale: 
+  RotationX: 0
+  RotationY: 0
+  RotationZ: 0
+  RotationW: 0
+  lockScale: 1
+  scale: {x: 1, y: 1, z: 1}
+  ScaleX: 1
+  ScaleY: 1
+  ScaleZ: 1
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

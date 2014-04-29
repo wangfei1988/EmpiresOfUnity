@@ -7,6 +7,7 @@ TagManager:
   - MainGUI
   - Rectangles
   - Clickable
+  - Weapon
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   Builtin Layer 6: 
   Builtin Layer 7: 
   User Layer 8: Rectangles
-  User Layer 9: 
-  User Layer 10: 
+  User Layer 9: Weapons
+  User Layer 10: Units
   User Layer 11: 
   User Layer 12: 
   User Layer 13: 
