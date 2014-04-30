@@ -10,7 +10,7 @@ public class ResourceGUI : MonoBehaviour
 
 	/* Reflection */
 	void Start () {
-        UpdateHandler.OnUpdate += DoUpdate;
+        UpdateManager.OnUpdate += DoUpdate;
 	}
 
     void DoUpdate()
@@ -19,9 +19,9 @@ public class ResourceGUI : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Box(new Rect(12, 12, 70, 30), new GUIContent(" " + ResourceManager.GetResourceCount(ResourceManager.Resource.WOOD), icon_wood));
-        GUI.Box(new Rect(88, 12, 70, 30), new GUIContent(" " + ResourceManager.GetResourceCount(ResourceManager.Resource.STONE), icon_stone));
-        GUI.Box(new Rect(164, 12, 70, 30), new GUIContent(" " + ResourceManager.GetResourceCount(ResourceManager.Resource.GOLD), icon_gold));
+        GUI.Box(new Rect(12, 12, 70, 30), new GUIContent(" " + ResourceManager.GetResourceCount(ResourceManager.Resource.NANITEN), icon_wood));
+        GUI.Box(new Rect(88, 12, 70, 30), new GUIContent(" " + ResourceManager.GetResourceCount(ResourceManager.Resource.MATTER), icon_stone));
+        GUI.Box(new Rect(164, 12, 70, 30), new GUIContent(" " + ResourceManager.GetResourceCount(ResourceManager.Resource.ENERGY), icon_gold));
     }
 
     /* Methods */

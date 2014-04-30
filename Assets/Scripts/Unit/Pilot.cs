@@ -77,8 +77,8 @@ public class Pilot : UnitComponent
 
        if (My.GetComponent<FaceDirection>()) IsAForwarder = My.GetComponent<FaceDirection>().faceMovingDirection;
        else IsAForwarder = false;
-	   
-       UpdateHandler.OnUpdate += DoUpdate;
+
+       UpdateManager.OnUpdate += DoUpdate;
 	}
 
     internal void DoUpdate()
@@ -163,7 +163,7 @@ public class Pilot : UnitComponent
     {
         mySpace = null;
         Component.Destroy(gameObject.GetComponent<SphereCollider>());
-		
-        UpdateHandler.OnUpdate -= DoUpdate;
+
+        UpdateManager.OnUpdate -= DoUpdate;
     }
 }

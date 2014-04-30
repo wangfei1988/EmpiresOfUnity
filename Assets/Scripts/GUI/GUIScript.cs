@@ -66,55 +66,22 @@ public class GUIScript : MonoBehaviour
         set
         {
             selectionRectangle = value;
-            /*
-            SellectionGUITexture.pixelInset = new Rect(value.x - Camera.main.pixelWidth / 2f, value.y - Camera.main.pixelHeight / 2f, -value.width, -value.height);
-            Vector3 w1 = Camera.main.ScreenToWorldPoint(new Vector3(value.x, value.y, Camera.main.transform.position.y - 75));
-            Vector3 w2 = Camera.main.ScreenToWorldPoint(new Vector3(value.x + value.width, value.y + value.height, Camera.main.transform.position.y - 75));
-            SelectionSprite.transform.position = new Vector3(w1.x, 75, w1.z);
-            SelectionSprite.transform.localScale = new Vector3(-(w2.x - w1.x), (w2.z - w1.z), 1f);
-             */
-
-            // by DARIO ->
-            
-            //RightclickGUI.Pannel.guiTexture.pixelInset = value;
-
-            /* Position From */
-            Vector3 screenPoint = Camera.main.WorldToScreenPoint(SelectionSprite.transform.position);
-            Vector3 w1 = Camera.main.ScreenToWorldPoint(new Vector3(value.x, value.y, screenPoint.z));
-            w1.y = SelectionSprite.transform.position.y;
-            SelectionSprite.transform.position = w1;
-
-
-            //Vector3 w2 = Camera.main.ScreenToWorldPoint(new Vector3(value.x + value.width, value.y + value.height, Camera.main.transform.position.y - 75));
-
-            /* Position To */
-            screenPoint = Camera.main.WorldToScreenPoint(w1);
-            //Vector2 screenWidth = Camera.main.WorldToScreenPoint(SellectionSprite.transform.localScale);
-            Vector3 w2 = Camera.main.ScreenToWorldPoint(new Vector3(value.width, value.height, screenPoint.z));
-            w2.y = SelectionSprite.transform.position.y;
-
-
-            //Debug.Log(value);
-
-            //Debug.Log(w2);
-
-            /* Ray */
-            Ray ray = Camera.main.ScreenPointToRay(new Vector3(value.width, value.height, 1f));
-            //Plane plane = new Plane(transform.up, w2);
-            float dist = Vector3.Distance(Camera.main.transform.position, w2);
-            w2 = ray.GetPoint(dist);
-
-
-
-            //Vector3 localScale = new Vector3(-(w2.x - w1.x), w2.z - w1.z, 1);
+            Vector3 w1;
+            /* Get Mouse Position At Start (Left/Top Corner of Rect) */
+            if (value.width == 0 && value.height == 0)
+            {
+                w1 = MouseEvents.State.Position.AsWorldPointOnMap;
+                w1.y = SelectionSprite.transform.position.y;
+                SelectionSprite.transform.position = w1;
+            }
+            else
+            {
+                w1 = SelectionSprite.transform.position;
+            }
+            /* Get Mouse Position At End (Width/Height of Rect) */
+            Vector3 w2 = MouseEvents.State.Position.AsWorldPointOnMap;
             Vector3 localScale = new Vector3((w2.x - w1.x), -(w2.z - w1.z), 1);
-
-            //SellectionSprite.transform.localScale = new Vector3(-(w2.x - w1.x), (w2.z - w1.z), 1);
             SelectionSprite.transform.localScale = localScale;
-
-            //SellectionSprite.transform.position = w2;
-            
-
         }
     }
 
@@ -137,7 +104,7 @@ public class GUIScript : MonoBehaviour
 
     void Start()
     {
-        this.gameObject.AddComponent<UpdateManager>();
+        //this.gameObject.AddComponent<UpdateManager>();
         main = this.gameObject.GetComponent<GUIScript>();
         foreach (GameObject rectangle in GameObject.FindGameObjectsWithTag("Rectangles"))
         {
@@ -183,7 +150,7 @@ public class GUIScript : MonoBehaviour
         MouseEvents.RIGHTCLICK += MouseEvents_RIGHTCLICK;
         MouseEvents.LEFTRELEASE += MouseEvents_LEFTRELEASE;
         UpdateManager.GUIUPDATE += UpdateManager_GUIUPDATE;
-  //      UpdateHandler.OnUpdate += DoUpdate;
+  //      UpdateManager.OnUpdate += DoUpdate;
     }
 
     void UpdateManager_GUIUPDATE()

@@ -6,9 +6,9 @@ public class ResourceManager : MonoBehaviour
 
     public enum Resource
     {
-        WOOD,
-        STONE,
-        GOLD
+        NANITEN,
+        MATTER,
+        ENERGY
     }
 
     public static Dictionary<Resource, uint> resourceList = new Dictionary<Resource, uint>();
@@ -16,9 +16,9 @@ public class ResourceManager : MonoBehaviour
     //static ResourceManager()
     void Start()
     {
-        resourceList.Add(Resource.WOOD, 100);
-        resourceList.Add(Resource.STONE, 100);
-        resourceList.Add(Resource.GOLD, 100);
+        resourceList.Add(Resource.NANITEN, 0);
+        resourceList.Add(Resource.MATTER, 0);
+        resourceList.Add(Resource.ENERGY, 0);
     }
 
     public static uint GetResourceCount(Resource resourceType)

@@ -19,7 +19,7 @@ public class Scrolling : MonoBehaviour
     void Start()
     {
         mainGUI = this.GetComponent<GUIScript>();
-        UpdateHandler.OnUpdate += DoUpdate;
+        UpdateManager.OnUpdate += DoUpdate;
     }
 
     void DoUpdate()

@@ -15,7 +15,7 @@ public class GroupRectangleScript : MonoBehaviour {
         IsSignedIn = false;
         gameObject.renderer.enabled = false;
 
-        UpdateHandler.OnUpdate += DoUpdate;
+        UpdateManager.OnUpdate += DoUpdate;
 	}
 
     void DoUpdate()
