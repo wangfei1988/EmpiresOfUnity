@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public class NoWeapon : Weapon {
 
-
-    public class NoWeapon : Weapon
-    {
 
         public override void Engage(GameObject targetUnit)
         {
@@ -22,5 +20,5 @@ using System.Collections;
         {
 
         }
-    }
 
+}

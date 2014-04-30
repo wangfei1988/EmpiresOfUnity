@@ -8,6 +8,7 @@ public class FocusRectangleObject : MonoBehaviour {
     public Quaternion rotary;
     public float focusScaling;
 
+    private FaceDirection directionFacer;
     private bool MasterHasFocus
     {
         get 
@@ -20,7 +21,7 @@ public class FocusRectangleObject : MonoBehaviour {
     {
         get 
         {
-            if (Focus.masterGameObject) return Focus.masterGameObject.transform;
+            if (MasterHasFocus) return Focus.masterGameObject.transform;
             else return null;
         }
     }
@@ -32,7 +33,7 @@ public class FocusRectangleObject : MonoBehaviour {
         {
             if (gameObject.renderer.enabled != value)
             {
-                foreach (GameObject marker in Focus.Marker) marker.GetComponent<MarkerScript>().Visible = value;
+                foreach (MarkerScript marker in Focus.Marker) marker.Visible = value;
                 gameObject.renderer.enabled = value;
             }
         }
@@ -40,6 +41,8 @@ public class FocusRectangleObject : MonoBehaviour {
 
     void Start()
     {
+        directionFacer = this.gameObject.GetComponent<FaceDirection>();
+
         UpdateHandler.OnUpdate += DoUpdate;
     }
     void DoUpdate()
@@ -52,8 +55,8 @@ public class FocusRectangleObject : MonoBehaviour {
         if (MasterHasFocus)
         {
             Visible = true;
-            gameObject.transform.localScale = new Vector3(MasterTransform.lossyScale.x * focusScaling, MasterTransform.lossyScale.z * focusScaling, 1f);
-            gameObject.transform.position = new Vector3(MasterTransform.position.x - MasterTransform.lossyScale.x, MasterTransform.position.y + MasterTransform.localScale.y, MasterTransform.position.z + MasterTransform.lossyScale.z);
+            gameObject.transform.localScale = new Vector3(MasterTransform.localScale.x * focusScaling, MasterTransform.localScale.z * focusScaling, 1f);
+            gameObject.transform.position = new Vector3(MasterTransform.position.x, MasterTransform.position.y+MasterTransform.localScale.y, MasterTransform.position.z);
             faceDirections();
         }
         else Visible = false;
@@ -61,16 +64,10 @@ public class FocusRectangleObject : MonoBehaviour {
 
     private void faceDirections()
     {
-        gameObject.GetComponent<FaceDirection>().DoUpdate();
-        foreach (GameObject marker in Focus.Marker) marker.GetComponent<MarkerScript>().DoUpdate();
+        directionFacer.DoUpdate();
+        foreach (MarkerScript marker in Focus.Marker) marker.DoUpdate();
     }
 
-    //public void SetTo(Transform to)
-    //{
-    //    MasterTransform = to;
-    //    transform.position = new Vector3(to.position.x, to.localScale.y/2f, to.position.z);
-    //    transform.localScale = new Vector3((to.localScale.x / 4f) * 3f, (to.localScale.z / 4f) * 3f, 1f);
-    //}
 
 
 }

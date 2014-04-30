@@ -11,12 +11,12 @@ GameObject:
   - 33: {fileID: 3300000}
   - 65: {fileID: 6500000}
   - 23: {fileID: 2300000}
+  - 54: {fileID: 5400000}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
-  - 54: {fileID: 5400000}
   m_Layer: 0
   m_Name: Fabrik
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46ac2a8b63984e4d84e97691c91bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UNIT: {fileID: 0}
   IsGroupLeader: 0
   movingDirection: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
@@ -109,7 +110,6 @@ MonoBehaviour:
   Fabrikat:
   - {fileID: 100000, guid: 5cb8f7ad601d5af4286a144411871f68, type: 2}
   - {fileID: 100000, guid: 5cb8f7ad601d5af4286a144411871f68, type: 2}
-  menuButtons: []
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,13 +121,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbf96ea742e5eb45b1c852aedfaa2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 0
-  GoodOrEvil: 0
-  IsBuilding: 1
-  weapon: {fileID: 0}
-  unitAnimator: {fileID: 0}
   unitType: 2
+  GoodOrEvil: 0
+  weapon: {fileID: 0}
+  unitAnimation: {fileID: 0}
   Options: {fileID: 11400000}
+  life: 0
+  speed: 0
   interactingUnits: 
 --- !u!1001 &100100000
 Prefab:

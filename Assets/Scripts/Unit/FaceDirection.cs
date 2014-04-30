@@ -46,7 +46,7 @@ public class FaceDirection : UnitAnimation
     internal override void Animate()
     {
         if (faceMovingDirection)
-            direction = UNIT.Options.movingDirection;
+            direction = UNIT.MovingDirection;
         else if (faceOtherTransform)
             direction = TransformToFace.position - this.gameObject.transform.position;
         else if (faceQamera)

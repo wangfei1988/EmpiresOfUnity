@@ -1,31 +1,51 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System;
 
 public class Focus : MonoBehaviour
 {
+    [Flags]
+    public enum HANDLING : int
+    {
+        UnlockFocus = -2,
+        LockFocus = 2,
+        DestroyFocus = -1,
+        None = 0,
+        HasFocus = 1,
+        IsLocked = 3,
+    }
     public enum MARKERS : byte
     {
         MoveToPoint = 0,
         WayPoint = 1,
         AttackPoint = 2
     }
-    public bool IsLocked = false;
-    public static GameObject[] Marker = new GameObject[3];
-    public static GameObject masterGameObject;
-    private static GameObject Key;
-    public static GameObject Focusrectangle;
-    private static bool firststart = true;
-    private UnitScript UNIT
+    public static bool IsLocked
     {
-        get { return gameObject.GetComponent<UnitScript>(); }
+        get { return Key; }
     }
+    public static MarkerScript[] Marker = new MarkerScript[3];
+    public static GameObject masterGameObject = null;
+    private static GameObject Key = null;
+    public static GameObject Focusrectangle = null;
+    private static bool firststart = true;
+
+    private UnitScript UNIT;
+
     private bool UnitMenuIsOn
     {
         get { return RightClickMenu.showGUI; }
         set { RightClickMenu.showGUI = value; }
     }
-    
+    public bool IsLockedToThis
+    {
+        get
+        {
+            if (IsLocked)
+                return this.gameObject.GetInstanceID() == Key.GetInstanceID();
+            else return false;
+        }
+    }
 
     private Vector3 groundHit;
 
@@ -33,23 +53,31 @@ public class Focus : MonoBehaviour
     {
         if (firststart)
         {
-            Focusrectangle = gameObject;
-            Marker[0] = transform.FindChild("MoveToPoint").gameObject;
-            Marker[1] = transform.FindChild("WayPoint").gameObject;
-            Marker[2] = transform.FindChild("AttackPoint").gameObject;
+            Focusrectangle = this.gameObject;
+            Marker[0] = transform.FindChild("MoveToPoint").gameObject.GetComponent<MarkerScript>();
+            Marker[1] = transform.FindChild("WayPoint").GetComponent<MarkerScript>();
+            Marker[2] = transform.FindChild("AttackPoint").GetComponent<MarkerScript>();
             transform.DetachChildren();
+            foreach (MarkerScript marker in Marker) marker.Visible = false;
             Component.Destroy(gameObject.GetComponent<Focus>());
         }   
         else
         {
-            masterGameObject = gameObject;
-            MouseEvents.LEFTCLICK += MouseEvents_CancelFocus;
-            MouseEvents.RIGHTCLICK += MouseEvents_MoveUnit;
+            UNIT = this.gameObject.GetComponent<UnitScript>();
+            UNIT.Options.FocusFlag = HANDLING.HasFocus;
+            masterGameObject = this.gameObject;
+            MouseEvents.RIGHTCLICK += MouseEvents_CancelFocus;
+            MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
+			
+            //MouseEvents.LEFTCLICK += MouseEvents_CancelFocus;
+            //MouseEvents.RIGHTCLICK += MouseEvents_MoveUnit;
+
+            RightClickMenu.PopUpGUI(UNIT);
         }
 
         UpdateHandler.OnUpdate += DoUpdate;
 
-        RightClickMenu.PopUpGUI(UNIT);
+        
     }
 
     void DoUpdate()
@@ -60,7 +88,8 @@ public class Focus : MonoBehaviour
             TryRelease();
     }
 
-    void MouseEvents_MoveUnit(Ray qamRay, bool hold)
+    void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
+    //void MouseEvents_MoveUnit(Ray qamRay, bool hold)
     {
         if (!IsLocked)
         {
@@ -68,7 +97,8 @@ public class Focus : MonoBehaviour
             {
                 if (!hold)
                 {
-                    GameObject ClickedUnit = RayHittenUnit(qamRay);
+
+                    GameObject ClickedUnit = AnimatedCursor.UnitUnderCursor;
                     if (ClickedUnit)
                     {
                         if (IsEnemy(ClickedUnit)) 
@@ -88,9 +118,9 @@ public class Focus : MonoBehaviour
                     }
                     else
                     {
-                        Marker[(int)MARKERS.MoveToPoint].transform.position = groundHit;
+                        Marker[(int)MARKERS.MoveToPoint].transform.position = MouseEvents.State.Position.AsWorldPointOnMap;
                         Marker[(int)MARKERS.MoveToPoint].renderer.enabled = true;
-                        UNIT.Options.FocussedLeftOnGround(groundHit);
+                        UNIT.Options.FocussedLeftOnGround(MouseEvents.State.Position.AsWorldPointOnMap);
                     }
                 }
             }
@@ -103,7 +133,7 @@ public class Focus : MonoBehaviour
         {
             if (!hold)
             {
-                GameObject ClickedUnit = RayHittenUnit(qamRay);
+                GameObject ClickedUnit = AnimatedCursor.UnitUnderCursor;
                 if (ClickedUnit)
                 {
                     if (IsOtherUnit(ClickedUnit))
@@ -119,17 +149,6 @@ public class Focus : MonoBehaviour
         }
     }
 
-    private GameObject RayHittenUnit(Ray clickRay)
-    {
-        RaycastHit clicked;
-        if (Physics.Raycast(clickRay, out clicked)) return clicked.collider.gameObject;
-        else
-        {
-            GameObject.FindGameObjectWithTag("Ground").collider.Raycast(clickRay, out clicked, 3000f);
-            groundHit = clicked.point;
-        }
-        return null;
-    }
     private bool IsEnemy(GameObject otherUnit)
     {
         return otherUnit.GetComponent<UnitScript>().GoodOrEvil != this.UNIT.GoodOrEvil;
@@ -141,27 +160,39 @@ public class Focus : MonoBehaviour
 
     public void Lock()
     {
-        Key = gameObject;
-        IsLocked = true;
+        if (UNIT.Options.FocusFlag == HANDLING.HasFocus)
+        {
+            Key = this.gameObject;
+            UNIT.Options.FocusFlag |= HANDLING.LockFocus;
+        }
     }
     public bool Unlock(GameObject key)
     {
-        if (key == Key) { Key = null; IsLocked = false; }
-        return IsLocked;
+        if (key.GetInstanceID() == Key.GetInstanceID()) { key.GetComponent<UnitScript>().Options.FocusFlag |= HANDLING.UnlockFocus; Key = null; }
+        return IsLockedToThis;
     }
     private void TryRelease()
     {
-        if (masterGameObject != null && gameObject != null)
-            if (masterGameObject.GetInstanceID() != gameObject.GetInstanceID())
-                Component.Destroy(gameObject.GetComponent<Focus>());
+        if (masterGameObject.GetInstanceID() != gameObject.GetInstanceID())
+            Component.Destroy(gameObject.GetComponent<Focus>());
+    }
+
+    void Update()
+    {
+        if (IsLockedToThis) masterGameObject = gameObject;
+        else TryRelease();
     }
 
     void OnDestroy()
     {
         if (!firststart)
         {
-            MouseEvents.LEFTCLICK -= MouseEvents_CancelFocus;
-            MouseEvents.RIGHTCLICK -= MouseEvents_MoveUnit;
+            MouseEvents.RIGHTCLICK -= MouseEvents_CancelFocus;
+            MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
+            //MouseEvents.LEFTCLICK -= MouseEvents_CancelFocus;
+            //MouseEvents.RIGHTCLICK -= MouseEvents_MoveUnit;
+			
+            UNIT.Options.FocusFlag = HANDLING.None;
         }
         else firststart = false;
         UpdateHandler.OnUpdate -= DoUpdate;

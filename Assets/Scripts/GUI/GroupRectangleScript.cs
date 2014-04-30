@@ -86,4 +86,6 @@ public class GroupRectangleScript : MonoBehaviour {
     {
           mainGUI = gui;
     }
+
+
 }

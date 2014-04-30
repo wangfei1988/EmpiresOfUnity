@@ -11,8 +11,8 @@ public class Cam : MonoBehaviour {
     }
 
     public GUIScript mainGUI;
-    public float ORTHOGRAFIC_Y_HEIGHT = 50f;
-    public float PERSPECTIVE_VIEW_SIZE = 12f;
+    public float ORTHOGRAFIC_Y_HEIGHT = 75f;
+    public float PERSPECTIVE_VIEW_SIZE = 25f;
     public float Orthografic_View_Size = 500f;
 
     private Quaternion Perspective_Rotation;

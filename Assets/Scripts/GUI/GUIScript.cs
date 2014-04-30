@@ -8,7 +8,7 @@ using System.Collections.Generic;
 public class GUIScript : MonoBehaviour
 {
 
-    public static GameObject mainGUI;
+    public static GUIScript main;
     private static List<string> StaticTextLines = new List<string>();
     public static void AddTextLine(string line)
     {
@@ -17,11 +17,15 @@ public class GUIScript : MonoBehaviour
     }
 
     public UnitScript.GOODorEVIL PlayerSide;
+    private UpdateManager Updater;
     public UnitGroup SelectedGroup;
     public int groupCount;
     public RightClickMenu RightclickGUI;
 
-    public GameObject SelectionSprite;
+    private SelectorScript SelectionSprite;
+    private FocusRectangleObject FocusSprite;
+    private GroupRectangleScript GroupSprite;
+
     public GUITexture SellectionGUITexture;
 
     public GameObject lastClickedUnit;
@@ -133,10 +137,19 @@ public class GUIScript : MonoBehaviour
 
     void Start()
     {
-        mainGUI = this.gameObject;
-
-
-      //  MouseEvents = ScriptableObject.CreateInstance<MouseEvents>();
+        this.gameObject.AddComponent<UpdateManager>();
+        main = this.gameObject.GetComponent<GUIScript>();
+        Updater = this.gameObject.GetComponent<UpdateManager>();
+        foreach (GameObject rectangle in GameObject.FindGameObjectsWithTag("Rectangles"))
+        {
+            if (rectangle.gameObject.name == "FocusRectangle")
+                FocusSprite = rectangle.GetComponent<FocusRectangleObject>();
+            else if (rectangle.gameObject.name == "SelectionRectangle")
+                SelectionSprite = rectangle.GetComponent<SelectorScript>();
+            else if (rectangle.gameObject.name == "GroupRectangle")
+                GroupSprite = rectangle.GetComponent<GroupRectangleScript>();
+        }
+        
         MouseEvents.Setup(gameObject);
 
         SelectedGroup = ScriptableObject.CreateInstance<UnitGroup>();
@@ -147,9 +160,7 @@ public class GUIScript : MonoBehaviour
         
         //if (camera.name == null)
         //{
-            foreach (Camera qam in UnityEngine.Object.FindObjectsOfType<Camera>())
-                if (qam.name == "Main Camera")
-                    camera = qam;
+        camera = Camera.main;
         //}
         Scale = new Vector2((camera.pixelRect.width / gameObject.guiTexture.texture.width), (camera.pixelRect.height / gameObject.guiTexture.texture.height));
 
@@ -192,15 +203,32 @@ public class GUIScript : MonoBehaviour
 
 
 
-    /* TODO MouseEvents */
-    private GameObject ClickHitUnit(Ray ray)
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-            return hit.collider.gameObject;
-        return null;
-    }
 
+    //private GameObject ClickHitUnit(Ray ray)
+    //{
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(ray, out hit))
+    //        return hit.collider.gameObject;
+    //    else return null;
+    //}
+
+  //  public static UnitScript GetUnitUnderCursor()
+  //  {
+  /////      return main.animatedCursor.UnitUnderCursor.GetComponent<UnitScript>(); 
+  //     /* RaycastHit hit;
+  //      if (Physics.Raycast(ray, out hit))
+  //          return hit.collider.gameObject;
+  //      return null;*/
+  //  }
+
+    //public GameObject UnitUnderCursor
+    //{
+    //    get
+    //    {
+    //        return animatedCursor.UnitUnderCursor;
+    //    }
+    //}
+    
     void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
     {
         if (hold)
@@ -211,12 +239,9 @@ public class GUIScript : MonoBehaviour
         else
         {
             SelectionRectangle = new Rect(MousePosition.x, MousePosition.y, 0, 0);
-            if (NoUnitFocused)
-            {
-                GameObject obj = ClickHitUnit(qamRay);
-                if(obj != null)
-                    obj.AddComponent<Focus>();
-            }
+
+            if ((NoUnitFocused) && (AnimatedCursor.UnitUnderCursor))
+                AnimatedCursor.UnitUnderCursor.AddComponent<Focus>();
         }
     }
 
@@ -227,12 +252,8 @@ public class GUIScript : MonoBehaviour
 
     void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
     {
-        if (NoUnitFocused)
-        {
-            GameObject clickedUnit = ClickHitUnit(qamRay);
-            if (clickedUnit)
-                clickedUnit.AddComponent<Focus>();
-        }
+        if ((!hold) && (NoUnitFocused) && (AnimatedCursor.UnitUnderCursor))
+          AnimatedCursor.UnitUnderCursor.AddComponent<Focus>();
     }
 
     private void SnapSellectangle()
@@ -275,5 +296,30 @@ public class GUIScript : MonoBehaviour
             if (i > 6) StaticTextLines.RemoveAt(i);
         }
         return textField;
+    }
+
+    private void UpdateRectangles()
+    {
+        //SelectionSprite.DoUpdate();
+        //FocusSprite.DoUpdate();
+        //GroupSprite.DoUpdate();
+    }
+
+
+    void Update()
+    {
+        groupCount = SelectedGroup.Count;
+        mousePosition = null;
+        MouseEvents.DoUpdate();
+
+    //    if (animatedCursor) animatedCursor.DoUpdate();
+
+  //      CheckForScrolling();
+
+        Updater.UpdateUnits();
+        UpdateRectangles();
+
+        //if (Debug)
+           guiText.text = TextUpdate();
     }
 }

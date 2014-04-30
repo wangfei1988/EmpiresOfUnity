@@ -6,6 +6,7 @@ public class Shaker : UnitAnimation
 {
     public enum ROOTING : byte
     {
+        None=0,
         mainPosition,
         mainRotation,
         mainScale,
@@ -44,6 +45,7 @@ public class Shaker : UnitAnimation
     {
         switch (rooting)
         {
+            case ROOTING.None: break;
             case ROOTING.mainPosition:
                 {
                     mainTargetTransform.position = SetOrAdd(setOrAdd, mainTargetTransform.position, waveFrame);

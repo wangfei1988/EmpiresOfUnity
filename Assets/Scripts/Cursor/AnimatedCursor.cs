@@ -29,6 +29,9 @@ public class AnimatedCursor : MonoBehaviour
     private int frameIndex = 0;
     private float time = 0;
 
+    /* RayCast for UnderCursor */
+    public static GameObject UnitUnderCursor;
+
     /* Properties */
     private Rect MapViewArea
     {
@@ -119,19 +122,24 @@ public class AnimatedCursor : MonoBehaviour
             if (Physics.Raycast(MouseEvents.State.Position, out rayHit))
             {
                 this.guiText.text = rayHit.collider.gameObject.name + " at: " + MouseEvents.State.Position.AsWorldPointOnMap.ToString() + "\nID: " + rayHit.collider.gameObject.GetInstanceID().ToString();
+                UnitUnderCursor = rayHit.collider.gameObject;
                 return CURSOR.OVER_CLICKABLE_OBJECT;
             }
             else
             {
                 this.guiText.text = MouseEvents.State.Position.AsWorldPointOnMap.ToString();
+                UnitUnderCursor = null;
             }
         }
         else
         {
             this.guiText.text = "";
+            UnitUnderCursor = null;
         }
         return CURSOR.STANDARD;
     }
+
+
 
     /* Do Animation for Cursor */
     public Texture2D AnimateCursor()

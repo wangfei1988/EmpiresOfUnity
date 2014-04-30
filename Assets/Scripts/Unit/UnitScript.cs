@@ -6,56 +6,122 @@ using System.Collections.Generic;
 [AddComponentMenu("Character/Unit Sqript")]
 public class UnitScript : MonoBehaviour 
 {
+    public UNITTYPE unitType;
     public enum UNITTYPE : int
     {
         Tank,
-        Airport,
+        Worker,
+        Airport = 1000,
         Fabrik,
     }
 
-    public int life;
     public enum GOODorEVIL : byte
     {
         Good = 0,
         Evil = 1
     }
     public GOODorEVIL GoodOrEvil;
-    public bool IsBuilding;
     public Weapon weapon;
-    //public UnitAnimation unitAnimator;
-    public UNITTYPE unitType;
+    public UnitAnimation unitAnimation;
+    
+    public bool IsBuilding
+    {
+        get
+        {
+            if ((int)unitType >= 1000)
+                return true;
+            else return false;
+        }
+    }
+
+
     public UnitOptions Options;
+    public O OptionsAs<O>() where O : UnitOptions
+    {
+        return (Options as O);
+    }
+    public System.Type OptionTypeFor(UNITTYPE type) 
+    {
+        switch (type)
+        {
+            case UNITTYPE.Tank: return typeof(GroundUnitOptions);
+            case UNITTYPE.Fabrik: return typeof(ProductionBuildingOptions);
+            default: return Options.GetType();
+        }
+    }
 	void Start () 
     {
      //   gameObject.name = gameObject.name + " " + gameObject.GetInstanceID();
         switch (unitType)
         {
+            case UNITTYPE.Worker:
+                {
+                    Options = gameObject.GetComponent<GroundBuilderOptions>();
+                    weapon = gameObject.AddComponent<NoWeapon>();
+                    break;
+                }
             case UNITTYPE.Tank:
-                IsBuilding = false;
-                if (!gameObject.GetComponent<GroundUnitOptions>()) gameObject.AddComponent<GroundUnitOptions>();
-                Options = gameObject.GetComponent<GroundUnitOptions>();
-                //if (!gameObject.GetComponent<LightLaser>()) gameObject.AddComponent<LightLaser>();
-                weapon = gameObject.GetComponent<LightLaser>();
-                Options.SetUp(800, 0.1f);
-                break;
+                {
+                    Options = gameObject.GetComponent<GroundUnitOptions>();
+                    weapon = gameObject.GetComponent<LightLaser>();
+                    break;
+                }
             case UNITTYPE.Fabrik:
-                if (gameObject.GetComponent<ProductionBuildingOptions>() == null) gameObject.AddComponent<BuildingOptions>();
-                Options = gameObject.GetComponent<ProductionBuildingOptions>();
-                //if (!gameObject.GetComponent<NoWeapon>()) gameObject.AddComponent<NoWeapon>();
-                weapon = gameObject.GetComponent<RocketLauncher>();
-                IsBuilding = true;
-                Options.SetUp(20000, 0f);
-                break;
+                {
+                    Options = gameObject.GetComponent<ProductionBuildingOptions>();
+                    weapon = gameObject.AddComponent<NoWeapon>();
+                    break;
+                }
             case UNITTYPE.Airport:
-                if (gameObject.GetComponent<ProductionBuildingOptions>() == null) gameObject.AddComponent<ProductionBuildingOptions>();
-                Options = gameObject.GetComponent<ProductionBuildingOptions>();
-                //if (!gameObject.GetComponent<NoWeapon>()) gameObject.AddComponent<NoWeapon>();
-                weapon = gameObject.GetComponent<RocketLauncher>();
-                IsBuilding = true;
-                Options.SetUp(20000, 0f);
-                break;
+                {
+                    Options = gameObject.GetComponent<ProductionBuildingOptions>();
+                    weapon = gameObject.GetComponent<RocketLauncher>();
+                    break;
+                }
         }
-        UpdateHandler.OnUpdate += DoUpdate;
+		//UpdateHandler.OnUpdate += DoUpdate;
+        UpdateManager.UNITUPDATE += UpdateManager_UNITUPDATE;
+	}
+
+    [SerializeField]
+    private int life;
+    public int Life
+    {
+        get { return life; }
+        private set
+        {
+            if (life != value)
+            {
+                if (value < 0) Die();
+                life = value;
+            }
+        }
+    }
+    [SerializeField]
+    private float speed;
+    public float Speed
+    {
+        get { return speed; }
+        private set { speed = value; }
+    }
+    virtual public float AttackRange
+    {
+        get { return weapon.GetMaximumRange(); }
+    }
+
+    public Vector3 MovingDirection=Vector3.zero;
+
+    public void Hit(int power)
+    {
+        Life -= power;
+    }
+    private void Die()
+    {
+        //todo: code for dieing (explosion etc.)
+        UpdateManager.UNITUPDATE -= UpdateManager_UNITUPDATE;
+        foreach (Component component in this.gameObject.GetComponents<Component>()) 
+            Component.Destroy(component);
+        GameObject.Destroy(this.gameObject);
 	}
 
     void DoUpdate()
@@ -63,8 +129,9 @@ public class UnitScript : MonoBehaviour
         //if (unitAnimator) unitAnimator.DoUpdate();
         if (weapon) weapon.Reloade();
         Options.OptionsUpdate();
-        life = Options.Life;
-        if (life < 0) GameObject.Destroy(this.gameObject);
+
+        if (life < 0)
+			GameObject.Destroy(this.gameObject);
     }
 
     [SerializeField]
@@ -89,7 +156,7 @@ public class UnitScript : MonoBehaviour
 
     public void AskForOrder()
     {
-        RightClickMenu.PopUpGUI(this);
+        //RightClickMenu.PopUpGUI(this);
     }
 
     public string[] Orders
@@ -98,4 +165,10 @@ public class UnitScript : MonoBehaviour
         private set;
     }
 
+    void UpdateManager_UNITUPDATE()
+    {
+        if (unitAnimation) unitAnimation.DoUpdate();
+        weapon.Reloade();
+        Options.OptionsUpdate();
+    }
 }

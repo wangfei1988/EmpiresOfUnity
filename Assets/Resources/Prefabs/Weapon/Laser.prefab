@@ -13,9 +13,9 @@ GameObject:
   - 108: {fileID: 10800000}
   - 114: {fileID: 11400000}
   - 82: {fileID: 8200000}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Laser
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,8 +27,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -3.09086232e-08, y: -.707106829, z: -.707106829, w: 3.09086232e-08}
-  m_LocalPosition: {x: 55.5, y: 11, z: 223}
-  m_LocalScale: {x: -2.32999992, y: 10, z: 1}
+  m_LocalPosition: {x: 20, y: .75, z: 1.5}
+  m_LocalScale: {x: .25, y: -1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!65 &6500000
@@ -111,8 +111,8 @@ Light:
   serializedVersion: 3
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .379999995
-  m_Range: 10
+  m_Intensity: .209999993
+  m_Range: .319999993
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -125,7 +125,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_ActuallyLightmapped: 0
-  m_Flare: {fileID: 12100000, guid: e977ad2ff6f4cc847988f72c7fe6eae9, type: 2}
+  m_Flare: {fileID: 12100000, guid: fb17ea099659acc42b63b577cbaf7bce, type: 2}
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64344f77d48d06943988204bd0d572b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammunition: 0
+  ammunition: 3
   GoodOrEvil: 0
   Target: {x: 0, y: 0, z: 0}
   richtung: 0
@@ -156,10 +156,10 @@ MonoBehaviour:
   Step: 0
   Hitflare: {fileID: 12100000, guid: e977ad2ff6f4cc847988f72c7fe6eae9, type: 2}
   rotation: 90
-  beamPosition: 20
+  beamPosition: .5
   hit: 0
-  Direction: {x: 0, y: 0, z: 0}
-  MAX_POSITION: 0
+  Direction: {x: 0, y: 0, z: 1}
+  MAX_POSITION: 100
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -181,7 +181,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: a3ca35c5b1e796b4e9da3f1acb619210, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 24dd6a1703cc372438a0a283851a8c49, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
