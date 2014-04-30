@@ -12,6 +12,7 @@ public class NaniteMine : AbstractBuilding
         Life = (uint) SettingFile.Life;
         Level = (uint) SettingFile.Level;
         ViewDistance = (uint) SettingFile.ViewDistance;
+        ProductionTime = (uint) SettingFile.ProductionTime;
         Level1Resource = (uint) SettingFile.Level1Resource;
         Level2Resource = (uint) SettingFile.Level2Resource;
         Level3Resource = (uint) SettingFile.Level3Resource;
@@ -37,7 +38,7 @@ public class NaniteMine : AbstractBuilding
     void DoUpdate()
     {
         workTimer += Time.deltaTime;
-        if (workTimer >= 5)
+        if (workTimer >= ProductionTime)
         {
             workTimer = 0;
             NaniteMineWork();

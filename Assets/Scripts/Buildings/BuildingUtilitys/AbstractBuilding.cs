@@ -6,6 +6,7 @@ public abstract class AbstractBuilding : MonoBehaviour
     public uint Life;
     public uint Level;
     public uint ViewDistance;
+    public uint EnergyConsumption;
     public uint ProductionTime;
     public uint Level1Resource;
     public uint Level2Resource;
@@ -14,5 +15,4 @@ public abstract class AbstractBuilding : MonoBehaviour
     public uint Level5Resource;
 
     public BuildingSetting SettingFile;
-
 }

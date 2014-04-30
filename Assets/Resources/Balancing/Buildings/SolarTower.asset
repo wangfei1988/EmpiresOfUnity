@@ -9,15 +9,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 131e2660297140f43940f53fd68028eb, type: 3}
-  m_Name: NaniteMine
+  m_Name: SolarTower
   m_EditorClassIdentifier: 
   Life: 1
   Level: 1
   ViewDistance: 1
-  EnergyConsumption: 10
-  ProductionTime: 5
-  Level1Resource: 10
-  Level2Resource: 20
-  Level3Resource: 30
-  Level4Resource: 40
-  Level5Resource: 50
+  EnergyConsumption: 0
+  ProductionTime: 0
+  Level1Resource: 100
+  Level2Resource: 140
+  Level3Resource: 180
+  Level4Resource: 220
+  Level5Resource: 260

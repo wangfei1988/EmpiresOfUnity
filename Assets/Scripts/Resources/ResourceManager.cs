@@ -16,9 +16,9 @@ public class ResourceManager : MonoBehaviour
     //static ResourceManager()
     void Start()
     {
-        resourceList.Add(Resource.NANITEN, 100);
-        resourceList.Add(Resource.MATTER, 100);
-        resourceList.Add(Resource.ENERGY, 100);
+        resourceList.Add(Resource.NANITEN, 0);
+        resourceList.Add(Resource.MATTER, 0);
+        resourceList.Add(Resource.ENERGY, 0);
     }
 
     public static uint GetResourceCount(Resource resourceType)
