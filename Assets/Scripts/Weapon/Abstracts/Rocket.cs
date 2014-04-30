@@ -13,8 +13,8 @@ abstract public class Rocket : WeaponObject
     {
         if (!LaunchButton)
         {
-            LaunchButton = true;
             Target = targetPosition;
+            LaunchButton = true;
             this.GoodOrEvil = friendOrfoe;
         }
     }

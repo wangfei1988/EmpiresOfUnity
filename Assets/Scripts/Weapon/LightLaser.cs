@@ -11,7 +11,6 @@ public class LightLaser : Weapon
     public const float MAXIMUM_DISTANCE = 100;
 
     private LaserWeaponObject laser;
-  //  public Object preefab;
     public int LaserEnergie;
     private int frameCounter;
     private bool IsLoadedt;
@@ -25,7 +24,6 @@ public class LightLaser : Weapon
 
     public override void Engage(GameObject targetUnit)
     {
-
         Engage(targetUnit.transform.position);
     }
     public override void Engage(Vector3 targetPoint)
@@ -44,15 +42,11 @@ public class LightLaser : Weapon
                 Power = MAXIMUM_POWER;
                 LaserEnergie -= MAXIMUM_POWER;
             }
-
             laser = (GameObject.Instantiate(prefabSlot, gameObject.transform.position, gameObject.transform.rotation) as WeaponObject).GetComponent<LaserWeaponObject>();
             laser.gameObject.name = "Laser " + this.gameObject.GetInstanceID();
             laser.GoodOrEvil = this.gameObject.GetComponent<UnitScript>().GoodOrEvil;
-            IsLoadedt = laser.Load((targetPoint-this.gameObject.transform.position).normalized, Power, MAXIMUM_DISTANCE);
-            
-            
+            IsLoadedt = laser.Load((targetPoint-this.gameObject.transform.position).normalized, Power, MAXIMUM_DISTANCE);  
         }
-
         laser.Engage();
     }
 
@@ -68,7 +62,6 @@ public class LightLaser : Weapon
            if(LaserEnergie<MAX_LASER_ENERGY)  LaserEnergie++;
             frameCounter = 0;
         }
-        if (laser != null) laser.DoUpdate();
-        else IsLoadedt = false;
+        if (laser == null) IsLoadedt = false;
     }
 }

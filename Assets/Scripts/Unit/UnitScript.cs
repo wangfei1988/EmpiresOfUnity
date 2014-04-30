@@ -11,6 +11,7 @@ public class UnitScript : MonoBehaviour
     {
         Tank,
         Worker,
+        RocketMan,
         Airport = 1000,
         Fabrik,
     }
@@ -75,6 +76,12 @@ public class UnitScript : MonoBehaviour
             case UNITTYPE.Airport:
                 {
                     Options = gameObject.GetComponent<ProductionBuildingOptions>();
+                    weapon = gameObject.AddComponent<NoWeapon>();
+                    break;
+                }
+            case UNITTYPE.RocketMan:
+                {
+                    Options = gameObject.GetComponent<GroundUnitOptions>();
                     weapon = gameObject.GetComponent<RocketLauncher>();
                     break;
                 }

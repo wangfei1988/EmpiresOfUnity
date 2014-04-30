@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class WeaponObject : MonoBehaviour 
+public abstract class WeaponObject : MonoBehaviour
 {
-    public enum AMMUNITON : byte
+    public enum AMUNITON : byte
     {
         None = 0,
         Missiles = 1,
@@ -11,8 +11,8 @@ public abstract class WeaponObject : MonoBehaviour
         Laser = 3,
         PowerLaser = 4
     }
-    public AMMUNITON ammunition;
-
+    public AMUNITON amunition
+      { get; protected set; }
     public virtual Weapon.WEAPON WEAPON
     {
         get { return Weapon.WEAPON.None; }
@@ -31,11 +31,10 @@ public abstract class WeaponObject : MonoBehaviour
     {
         StartUp();
     }
-
     abstract internal void StartUp();
 
     abstract internal void Engage();
 
-    abstract internal void DoUpdate();
+
 
 }

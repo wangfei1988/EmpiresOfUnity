@@ -16,7 +16,7 @@ public class LaserWeaponObject : WeaponObject
     private const float SPEED = 50f;
     public AudioClip sound2;
     private int count;
-    public float Step;
+    private float Step;
     public override Weapon.WEAPON WEAPON
     {
         get
@@ -25,9 +25,9 @@ public class LaserWeaponObject : WeaponObject
         }
     }
     public Flare Hitflare;
-    public float rotation = 90f;
+    private float rotation = 90f;
     private Vector3 originPosition;
-    public float beamPosition = 0.5f;
+    private float beamPosition = 0.5f;
     [SerializeField]
     private bool hit = false;
     public bool HIT
@@ -43,7 +43,7 @@ public class LaserWeaponObject : WeaponObject
             hit = value;
         }
     }
-    public float BeamPosition
+    private float BeamPosition
     {
         get 
         {
@@ -70,7 +70,7 @@ public class LaserWeaponObject : WeaponObject
         get { return (this.gameObject.renderer.enabled & this.gameObject.light.enabled); }
         set { this.gameObject.renderer.enabled = this.gameObject.light.enabled = this.collider.enabled=value; }
     }
-    public float MAX_POSITION;
+    private float MAX_POSITION;
     private int Power;
 
     private Vector3 GetBeamPositionScale(float beampos)
@@ -80,14 +80,16 @@ public class LaserWeaponObject : WeaponObject
 
     internal override void StartUp()
     {
-        ammunition = AMMUNITON.Laser;
+        amunition = AMUNITON.Laser;
         count = (int)SPEED;
         Visible = false;
         Direction = this.gameObject.transform.forward;
         originPosition = this.gameObject.transform.position;
         beamPosition = 0.5f;
-
+        UpdateManager.UNITUPDATE += UpdateManager_UNITUPDATE;
     }
+
+
 
     internal override void Engage()
     {
@@ -119,13 +121,17 @@ public class LaserWeaponObject : WeaponObject
             this.gameObject.transform.localScale = GetBeamPositionScale(BeamPosition);
             this.gameObject.transform.position = originPosition + (this.beamPosition * this.gameObject.transform.up);
             this.gameObject.transform.Rotate(YAxis, rotation);
-            if(++count >=102)GameObject.Destroy(this.gameObject);
+            if (++count >= SPEED * 2)
+            {
+                UpdateManager.UNITUPDATE -= UpdateManager_UNITUPDATE;
+                GameObject.Destroy(this.gameObject);
+            }
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if ((!other.collider.isTrigger) && (other.gameObject.GetComponent<UnitScript>()) && (other.collider.GetComponent<UnitScript>().GoodOrEvil != this.GoodOrEvil))
+        if ((!other.collider.isTrigger) && (other.gameObject.GetComponent<UnitScript>()) && (other.gameObject.GetComponent<UnitScript>().GoodOrEvil != this.GoodOrEvil))
         {
             this.gameObject.GetComponent<AudioSource>().PlayOneShot(sound2);
             GUIScript.AddTextLine(other.gameObject.name + other.gameObject.GetInstanceID().ToString());
@@ -134,10 +140,9 @@ public class LaserWeaponObject : WeaponObject
         }
     }
 
-    internal override void DoUpdate()
+    void UpdateManager_UNITUPDATE()
     {
         Beam();
     }
-
 
 }

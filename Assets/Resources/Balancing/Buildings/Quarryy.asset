@@ -9,14 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5605b99aded85744db56924add79ff31, type: 3}
-  m_Name: NaniteMine
+  m_Name: Quarryy
   m_EditorClassIdentifier: 
-  Life: 32
-  Level: 54
-  ViewDistance: 42
-  productionTime: 48
-  Level1: 33
-  Level2: 38
-  Level3: 51
-  Level4: 50
-  Level5: 50
+  Life: 0
+  Level: 0

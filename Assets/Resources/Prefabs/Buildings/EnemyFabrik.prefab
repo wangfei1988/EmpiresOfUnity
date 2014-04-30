@@ -10,11 +10,9 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  - 64: {fileID: 6400000}
-  - 54: {fileID: 5400000}
-  - 114: {fileID: 11400004}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
+  - 64: {fileID: 6400000}
   m_Layer: 10
   m_Name: EnemyFabrik
   m_TagString: Clickable
@@ -61,21 +59,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: 0aaf575707a4cfc4fae53b1d9eeb122b, type: 3}
---- !u!54 &5400000
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 14
-  m_CollisionDetection: 0
 --- !u!64 &6400000
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -86,7 +69,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_SmoothSphereCollisions: 0
+  m_SmoothSphereCollisions: 1
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 0aaf575707a4cfc4fae53b1d9eeb122b, type: 3}
 --- !u!114 &11400000
@@ -102,11 +85,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitType: 1001
   GoodOrEvil: 1
-  weapon: {fileID: 11400004}
+  weapon: {fileID: 0}
   unitAnimation: {fileID: 0}
   Options: {fileID: 11400002}
   life: 10000
   speed: 0
+  MovingDirection: {x: 0, y: 0, z: 0}
   interactingUnits: 
 --- !u!114 &11400002
 MonoBehaviour:
@@ -121,26 +105,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400000}
   IsGroupLeader: 0
-  MoveToPoint: {x: 0, y: 0, z: 0}
-  movingDirection: {x: 0, y: 0, z: 0}
+  moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
-  unitState: 1
+  testlist: []
+  unitState: 100
   typename: Fabrik
   Fabrikat:
   - {fileID: 100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
---- !u!114 &11400004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3701264ada3f61d4bb63312229efdef8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 0}
-  HasArsenal: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

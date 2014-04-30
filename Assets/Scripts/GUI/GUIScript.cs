@@ -17,7 +17,7 @@ public class GUIScript : MonoBehaviour
     }
 
     public UnitScript.GOODorEVIL PlayerSide;
-    private UpdateManager Updater;
+
     public UnitGroup SelectedGroup;
     public int groupCount;
     public RightClickMenu RightclickGUI;
@@ -139,7 +139,6 @@ public class GUIScript : MonoBehaviour
     {
         this.gameObject.AddComponent<UpdateManager>();
         main = this.gameObject.GetComponent<GUIScript>();
-        Updater = this.gameObject.GetComponent<UpdateManager>();
         foreach (GameObject rectangle in GameObject.FindGameObjectsWithTag("Rectangles"))
         {
             if (rectangle.gameObject.name == "FocusRectangle")
@@ -183,22 +182,31 @@ public class GUIScript : MonoBehaviour
         MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
         MouseEvents.RIGHTCLICK += MouseEvents_RIGHTCLICK;
         MouseEvents.LEFTRELEASE += MouseEvents_LEFTRELEASE;
+        UpdateManager.GUIUPDATE += UpdateManager_GUIUPDATE;
+  //      UpdateHandler.OnUpdate += DoUpdate;
+    }
 
-        UpdateHandler.OnUpdate += DoUpdate;
+    void UpdateManager_GUIUPDATE()
+    {
+        mousePosition = null;
+        groupCount = SelectedGroup.Count;
+
+        UpdateRectangles();
+        if (DebugText)
+            guiText.text = TextUpdate();
     }
 
     void DoUpdate()
     {
-        mousePosition = null;
 
-        MouseEvents.DoUpdate();
-        groupCount = SelectedGroup.Count;
+
+
+
 
         //if (animatedCursor) animatedCursor.DoUpdate();
         //if (scrolling) scrolling.DoUpdate();
 
-        if (DebugText)
-            guiText.text = TextUpdate();
+
     }
 
 
@@ -306,20 +314,6 @@ public class GUIScript : MonoBehaviour
     }
 
 
-    void Update()
-    {
-        groupCount = SelectedGroup.Count;
-        mousePosition = null;
-        MouseEvents.DoUpdate();
 
-    //    if (animatedCursor) animatedCursor.DoUpdate();
 
-  //      CheckForScrolling();
-
-        Updater.UpdateUnits();
-        UpdateRectangles();
-
-        //if (Debug)
-           guiText.text = TextUpdate();
-    }
 }

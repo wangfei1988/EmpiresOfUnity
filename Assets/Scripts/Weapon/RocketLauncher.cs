@@ -27,15 +27,11 @@ public class RocketLauncher : Weapon {
     }
     public override void Reloade()
     {
-
         if (!rocket)
         {
-            rocket = (GameObject.Instantiate(prefabSlot, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 100f, this.gameObject.transform.position.z), this.gameObject.transform.rotation) as Rocket).GetComponent<Rocket>();
+            rocket = (GameObject.Instantiate(prefabSlot, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 10f, this.gameObject.transform.position.z), this.gameObject.transform.rotation) as Rocket).GetComponent<Rocket>();
             rocket.transform.up = new Vector3(0, -1, 0);
         }
-        
-        rocket.DoUpdate();
-        
     }
     public override float GetMaximumRange()
     {
