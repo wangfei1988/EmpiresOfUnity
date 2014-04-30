@@ -24,8 +24,6 @@ public class SolarTower : AbstractBuilding
         SolarWork.Add(4, Level4Resource);
         SolarWork.Add(5, Level5Resource);
 
-        SolarTowerWork();
-        
         UpdateManager.OnUpdate += DoUpdate;
     }
 
