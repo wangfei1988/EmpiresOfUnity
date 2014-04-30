@@ -86,7 +86,7 @@ public class UnitScript : MonoBehaviour
                     break;
                 }
         }
-		//UpdateHandler.OnUpdate += DoUpdate;
+		//UpdateManager.OnUpdate += DoUpdate;
         UpdateManager.UNITUPDATE += UpdateManager_UNITUPDATE;
 	}
 

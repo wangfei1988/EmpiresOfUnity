@@ -43,7 +43,7 @@ public class FocusRectangleObject : MonoBehaviour {
     {
         directionFacer = this.gameObject.GetComponent<FaceDirection>();
 
-        UpdateHandler.OnUpdate += DoUpdate;
+        UpdateManager.OnUpdate += DoUpdate;
     }
     void DoUpdate()
     {

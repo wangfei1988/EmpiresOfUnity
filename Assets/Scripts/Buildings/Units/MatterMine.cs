@@ -9,7 +9,7 @@ public class MatterMine : AbstractBuilding
         Level = (uint) SettingFile.Level;
         ViewDistance = (uint)SettingFile.ViewDistance;
 
-        UpdateHandler.OnUpdate += DoUpdate;
+        UpdateManager.OnUpdate += DoUpdate;
     }
 
 
@@ -20,6 +20,6 @@ public class MatterMine : AbstractBuilding
 
     void OnDestroy()
     {
-        UpdateHandler.OnUpdate -= DoUpdate;
+        UpdateManager.OnUpdate -= DoUpdate;
     }
 }

@@ -23,8 +23,8 @@ public class NaniteMine : AbstractBuilding
         NaniteWork.Add(3, Level3Resource);
         NaniteWork.Add(4, Level4Resource);
         NaniteWork.Add(5, Level5Resource);
-                                
-        UpdateHandler.OnUpdate += DoUpdate;
+
+        UpdateManager.OnUpdate += DoUpdate;
     }
 
     private void NaniteMineWork()
@@ -46,6 +46,6 @@ public class NaniteMine : AbstractBuilding
 
     void OnDestroy()
     {
-        UpdateHandler.OnUpdate -= DoUpdate;
+        UpdateManager.OnUpdate -= DoUpdate;
     }
 }

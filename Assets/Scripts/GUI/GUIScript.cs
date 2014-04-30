@@ -137,7 +137,7 @@ public class GUIScript : MonoBehaviour
 
     void Start()
     {
-        this.gameObject.AddComponent<UpdateManager>();
+        //this.gameObject.AddComponent<UpdateManager>();
         main = this.gameObject.GetComponent<GUIScript>();
         foreach (GameObject rectangle in GameObject.FindGameObjectsWithTag("Rectangles"))
         {
@@ -183,7 +183,7 @@ public class GUIScript : MonoBehaviour
         MouseEvents.RIGHTCLICK += MouseEvents_RIGHTCLICK;
         MouseEvents.LEFTRELEASE += MouseEvents_LEFTRELEASE;
         UpdateManager.GUIUPDATE += UpdateManager_GUIUPDATE;
-  //      UpdateHandler.OnUpdate += DoUpdate;
+  //      UpdateManager.OnUpdate += DoUpdate;
     }
 
     void UpdateManager_GUIUPDATE()

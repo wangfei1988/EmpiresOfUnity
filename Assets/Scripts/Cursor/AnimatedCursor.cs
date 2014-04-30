@@ -83,7 +83,7 @@ public class AnimatedCursor : MonoBehaviour
     {
         mainGUI = this.GetComponent<GUIScript>();
         this.CurrentCursor = CURSOR.STANDARD;
-        UpdateHandler.OnUpdate += DoUpdate;
+        UpdateManager.OnUpdate += DoUpdate;
     }
 
     void DoUpdate()

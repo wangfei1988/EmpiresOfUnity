@@ -75,7 +75,7 @@ public class Focus : MonoBehaviour
             RightClickMenu.PopUpGUI(UNIT);
         }
 
-        UpdateHandler.OnUpdate += DoUpdate;
+        UpdateManager.OnUpdate += DoUpdate;
 
         
     }
@@ -195,7 +195,7 @@ public class Focus : MonoBehaviour
             UNIT.Options.FocusFlag = HANDLING.None;
         }
         else firststart = false;
-        UpdateHandler.OnUpdate -= DoUpdate;
+        UpdateManager.OnUpdate -= DoUpdate;
     }
 
 }

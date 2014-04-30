@@ -16,7 +16,7 @@ public class Quarry : MonoBehaviour
     // Reflection
     //void Start()
     //{
-    //    UpdateHandler.OnUpdate += DoUpdate;
+    //    UpdateManager.OnUpdate += DoUpdate;
     //    stoneWork.Add(1, 10);
     //    stoneWork.Add(2, 15);
     //    stoneWork.Add(3, 18);
@@ -24,7 +24,7 @@ public class Quarry : MonoBehaviour
 
     //void OnDestroy()
     //{
-    //   UpdateHandler.OnUpdate -= DoUpdate;
+    //   UpdateManager.OnUpdate -= DoUpdate;
     //}
 
     //void DoUpdate()

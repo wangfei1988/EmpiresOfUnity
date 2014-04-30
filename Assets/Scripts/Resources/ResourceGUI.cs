@@ -10,7 +10,7 @@ public class ResourceGUI : MonoBehaviour
 
 	/* Reflection */
 	void Start () {
-        UpdateHandler.OnUpdate += DoUpdate;
+        UpdateManager.OnUpdate += DoUpdate;
 	}
 
     void DoUpdate()

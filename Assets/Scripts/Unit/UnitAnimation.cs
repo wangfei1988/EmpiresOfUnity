@@ -10,7 +10,7 @@ abstract public class UnitAnimation : MonoBehaviour {
 
     void Start()
     {
-        UpdateHandler.OnUpdate += DoUpdate;
+        UpdateManager.OnUpdate += DoUpdate;
     }
 
     internal void DoUpdate()
