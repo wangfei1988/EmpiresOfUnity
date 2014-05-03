@@ -2092,7 +2092,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3752a6c3cd9cd2f40914ed477df064dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: {x: .5, y: .5}
 --- !u!1 &392698757
 GameObject:
   m_ObjectHideFlags: 0
@@ -4651,6 +4650,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 735576565}
   m_GameObject: {fileID: 1300276926}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1338072134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1338072135}
+  m_Layer: 0
+  m_Name: LookAtPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1338072135
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1338072134}
+  m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
+  m_LocalPosition: {x: 0, y: 10, z: 50}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1647307442}
 --- !u!1 &1338601530
 GameObject:
   m_ObjectHideFlags: 0
@@ -4965,32 +4990,15 @@ GameObject:
   - 65: {fileID: 1455821495}
   - 54: {fileID: 1455821494}
   - 114: {fileID: 1455821493}
-  - 114: {fileID: 1455821492}
-  - 114: {fileID: 1455821491}
   - 114: {fileID: 1455821490}
-  - 114: {fileID: 1455821489}
+  - 114: {fileID: 1455821491}
   m_Layer: 10
-  m_Name: EnemyRocketMan
+  m_Name: RocketMan
   m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1455821489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400006, guid: f70b87d1c4dbb144ba5edff1c592ab4c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1582873334}
-  m_GameObject: {fileID: 1455821488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92d18b47915ad214eab5a0d48ada5122, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Arsenal:
-  - {fileID: 11400000, guid: 49fc66848dac4b74abb5602ed8c16f18, type: 2}
-  - {fileID: 11400002, guid: fe61ee2bf01b0224abd84f2c63b736ee, type: 2}
 --- !u!114 &1455821490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5000,12 +5008,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1455821488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e487801e6f167184b8b614c08f89a761, type: 3}
+  m_Script: {fileID: 11500000, guid: 72c5f6384aebf6a4d887dd56d54a2b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 11400000, guid: 49fc66848dac4b74abb5602ed8c16f18, type: 2}
-  hasArsenal: 1
-  countdown: 0
+  UNIT: {fileID: 1455821493}
+  IsGroupLeader: 0
+  moveToPoint: {x: 0, y: 0, z: 0}
+  Target: {fileID: 0}
+  testlist: []
+  standardYPosition: .200000003
+  WayPoints: []
+  unitstateint: 0
+  BuildableBuildings: []
+  BuildingUnderConstruction: {fileID: 0}
+  ConstructionAreaCenter: {x: 0, y: 0, z: 0}
 --- !u!114 &1455821491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5026,26 +5042,6 @@ MonoBehaviour:
   faceOtherTransform: 0
   forwardIs: 4
   direction: {x: 0, y: 0, z: 0}
---- !u!114 &1455821492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400008, guid: f70b87d1c4dbb144ba5edff1c592ab4c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1582873334}
-  m_GameObject: {fileID: 1455821488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cdbcffe449cab44286aec3139397a06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UNIT: {fileID: 1455821493}
-  IsGroupLeader: 0
-  moveToPoint: {x: 0, y: 0, z: 0}
-  Target: {fileID: 0}
-  testlist: []
-  standardYPosition: 0
-  WayPoints: []
-  unitstateint: 0
 --- !u!114 &1455821493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5058,11 +5054,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbf96ea742e5eb45b1c852aedfaa2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 2
-  goodOrEvil: -1
+  unitType: 1
+  goodOrEvil: 0
   weapon: {fileID: 0}
   unitAnimation: {fileID: 1455821491}
-  Options: {fileID: 1455821492}
+  Options: {fileID: 1455821490}
   life: 150
   speed: .200000003
   resourceFactor: 0
@@ -5096,8 +5092,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 8, z: .5}
-  m_Center: {x: 0, y: 4, z: 0}
+  m_Size: {x: .5234375, y: 1.00000024, z: .200000048}
+  m_Center: {x: 0, y: .500000119, z: 1.1920929e-07}
 --- !u!212 &1455821496
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5121,7 +5117,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 0eec08c6fb70b654f9b52f1aeacb0821, type: 3}
-  m_Color: {r: 1, g: .301470578, b: .301470578, a: 1}
+  m_Color: {r: .45588237, g: .63975668, b: 1, a: 1}
 --- !u!4 &1455821497
 Transform:
   m_ObjectHideFlags: 0
@@ -5130,7 +5126,7 @@ Transform:
   m_GameObject: {fileID: 1455821488}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
   m_LocalPosition: {x: -1, y: .200000003, z: 6}
-  m_LocalScale: {x: .5, y: .5, z: .5}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1001 &1486141639
@@ -5401,7 +5397,8 @@ Transform:
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
   m_LocalPosition: {x: 0, y: 75.283989, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1338072135}
   m_Father: {fileID: 0}
 --- !u!114 &1647307443
 MonoBehaviour:
