@@ -48,8 +48,6 @@ public class Scrolling : MonoBehaviour
 
         Vector2 MousePosition = MouseEvents.State.Position;
 
-        float x = 0;
-        float y = 0;
 
         Vector3 direction = Vector3.zero;
         
@@ -75,7 +73,6 @@ public class Scrolling : MonoBehaviour
 
 
 
-        direction = Vector3.zero;
 
         float z = 0f;
         //Scrolling Up
