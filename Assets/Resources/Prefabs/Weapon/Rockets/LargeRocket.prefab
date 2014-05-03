@@ -155,7 +155,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 3bea185546f11804891ca759416c85f3, type: 2}
+  - {fileID: 2100000, guid: 1b6cc8fcbc1932b4f8200b4166db7489, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -201,7 +201,6 @@ MonoBehaviour:
   visible: 0
   MAXIMUM_SPEED: 0
   launch: 0
-  counter: 0
   timer: 0
   ticker: 0
 --- !u!136 &13600000
@@ -1281,7 +1280,7 @@ ParticleSystemRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: f89a53f13e64bbbd73bd6eb9f8509a09, type: 2}
+  - {fileID: 2100000, guid: 5a7a6f716fde32949afdfd747b4965d8, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1323,7 +1322,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: 90df3c15df752784bb269cf959f14793, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 07095ec7cc731394b822e26850d4e5ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21200002
 SpriteRenderer:
@@ -1346,7 +1345,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: 90df3c15df752784bb269cf959f14793, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 07095ec7cc731394b822e26850d4e5ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21200004
 SpriteRenderer:
@@ -1369,7 +1368,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: 90df3c15df752784bb269cf959f14793, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 07095ec7cc731394b822e26850d4e5ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

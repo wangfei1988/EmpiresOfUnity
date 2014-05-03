@@ -30,7 +30,7 @@ public class AnimatedCursor : MonoBehaviour
     private float time = 0;
 
     /* RayCast for UnderCursor */
-    public static GameObject UnitUnderCursor;
+  //  public static GameObject UnitUnderCursor;
 
     /* Properties */
     private Rect MapViewArea
@@ -113,28 +113,25 @@ public class AnimatedCursor : MonoBehaviour
         );
     }
 
-    /* Check if an Building / Unit or Nothing [Standard] is at Mouse */
+    /* Check if an Building / Unit or Nothing [Standard] is at Mouse*/
     private CURSOR CheckWhatIsUnderCursor()
     {
         if (MapViewArea.Contains((Vector2)MouseEvents.State.Position))
         {
-            RaycastHit rayHit;
-            if (Physics.Raycast(MouseEvents.State.Position, out rayHit))
+           
+            if (UnitUnderCursor.gameObject)
             {
-                this.guiText.text = rayHit.collider.gameObject.name + " at: " + MouseEvents.State.Position.AsWorldPointOnMap.ToString() + "\nID: " + rayHit.collider.gameObject.GetInstanceID().ToString();
-                UnitUnderCursor = rayHit.collider.gameObject;
+                this.guiText.text = UnitUnderCursor.gameObject.name + " at: " + MouseEvents.State.Position.AsWorldPointOnMap.ToString() + "\nID: " + UnitUnderCursor.gameObject.GetInstanceID().ToString();
                 return CURSOR.OVER_CLICKABLE_OBJECT;
             }
             else
             {
                 this.guiText.text = MouseEvents.State.Position.AsWorldPointOnMap.ToString();
-                UnitUnderCursor = null;
             }
         }
         else
         {
             this.guiText.text = "";
-            UnitUnderCursor = null;
         }
         return CURSOR.STANDARD;
     }

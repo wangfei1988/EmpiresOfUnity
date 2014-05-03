@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -3.09086232e-08, y: -.707106829, z: -.707106829, w: 3.09086232e-08}
-  m_LocalPosition: {x: 20, y: .75, z: 1.5}
+  m_LocalPosition: {x: -49.2920685, y: 0, z: 12.1123743}
   m_LocalScale: {x: .25, y: -1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -147,19 +147,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64344f77d48d06943988204bd0d572b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammunition: 3
-  GoodOrEvil: 0
   Target: {x: 0, y: 0, z: 0}
   richtung: 0
   t: {x: 0, y: 0, z: 0}
   sound2: {fileID: 8300000, guid: 851c2eee0517b344d97509114e30afc2, type: 3}
-  Step: 0
   Hitflare: {fileID: 12100000, guid: e977ad2ff6f4cc847988f72c7fe6eae9, type: 2}
-  rotation: 90
-  beamPosition: .5
   hit: 0
   Direction: {x: 0, y: 0, z: 1}
-  MAX_POSITION: 100
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

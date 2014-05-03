@@ -8,18 +8,22 @@ class GroundUnitOptions : MovingUnitOptions
 {
     new public enum OPTIONS : int
     {
- //       MoveTo = MovingUnitOptions.OPTIONS.MoveTo,
-        Attack = 1,
- //       Guard = MovingUnitOptions.OPTIONS.Guard,
- //       Patrol = MovingUnitOptions.OPTIONS.Patrol,
- //       Hide = MovingUnitOptions.OPTIONS.Hide,
-        Seek=35,
-//        Stay = MovingUnitOptions.OPTIONS.Stay,
- //       Cancel = MovingUnitOptions.OPTIONS.Cancel
+        Attack = EnumProvider.ORDERSLIST.Attack,
+        Seek = EnumProvider.ORDERSLIST.Seek,
     }
 
      private OPTIONS unitState;
-
+     protected override bool GotToDoPrimaryOrders
+     {
+         get
+         {
+             return !standardOrder;
+         }
+         set
+         {
+             
+         }
+     }
    public override System.Enum UnitState
     {
         get
@@ -64,30 +68,47 @@ class GroundUnitOptions : MovingUnitOptions
    {
        if (!hold)
        {
+           if ((standardOrder) && (!gameObject.GetComponent<Focus>()))
+               gameObject.AddComponent<Focus>();
+
            if (gameObject.GetComponent<Focus>())
            {
-               base.MouseEvents_LEFTCLICK(qamRay, hold);
+                
+               if(!standardOrder) base.MouseEvents_LEFTCLICK(qamRay, hold);
 
                if (unitState == OPTIONS.Attack)
                {
-                   RaycastHit Hit;
-                   if (Physics.Raycast(qamRay, out Hit, Camera.main.transform.position.y))
+                   if (TargetIsEnemy(UnitUnderCursor.gameObject))
                    {
-                       if (TargetIsEnemy(Hit.collider.gameObject))
-                       {
-                           Target = Hit.collider.gameObject;
-                           MoveToPoint = Target.transform.position;
-                           IsMoving = true;
-                           IsAttacking = true;
-                       }
+                       Target = UnitUnderCursor.gameObject;
+                       MoveToPoint = standardOrder ? ActionPoint ?? gameObject.transform.position : Target.transform.position;
+                       IsMoving = true;
+                       IsAttacking = true;
                    }
-                   MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
+                   else if (TargetIsAllied(UnitUnderCursor.gameObject))
+                   {
+                        //Target = UnitUnderCursor.UNIT.SetInteracting(this.gameObject);
+                        //if (UnitUnderCursor.UNIT.Options.IsAttacking) Target = UnitUnderCursor.UNIT.Options.Target;
+                        //IsAttacking = true;
+                        //MoveAsGroup(UnitUnderCursor.gameObject);
+                   }
+                   if(!standardOrder) MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
                    UnlockFocus();
                }
            }
        }
    }
 
+   protected bool toDoToDo;
+   protected override bool ProcessAllOrders()
+   {
+       bool toDoToDo = base.ProcessAllOrders();
+       if (stillWorkDoDo)
+       {
+           if (ActionPoint != null) MouseEvents_LEFTCLICK(MouseEvents.State.Position.AsRay, false);
+       }
+       return toDoToDo;
+   }
 
    internal override void FocussedLeftOnEnemy(GameObject enemy)
    {
@@ -105,18 +126,30 @@ class GroundUnitOptions : MovingUnitOptions
     {
         get
         {
-            if (__attacking) { CalculateDirection(); return IsMoving = true; }
-
+            if (__attacking) 
+            {
+                if (Target == null) 
+                    __attacking = false;
+                else 
+                    CalculateDirection();
+                if (Distance < UNIT.AttackRange)
+                {
+                    UNIT.weapon.Reloade();
+                    UNIT.weapon.Engage(Target);
+                }
+                return IsMoving = true; 
+            }
             else { return false; }
 
         }
         protected set
         {
-            if (unitState == OPTIONS.Attack) __attacking = value;
+            if ((Target!=null)&&(unitState == OPTIONS.Attack)) __attacking = value;
             else __attacking = false;
 
         }
     }
+
 
 
     internal override void DoStart()

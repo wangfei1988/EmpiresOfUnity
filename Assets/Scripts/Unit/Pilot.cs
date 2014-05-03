@@ -10,12 +10,12 @@ public class Pilot : UnitComponent
     private const float MIN_LOOKAHEAD = 3f;
     private const float MAX_LOOKAHEAD = 20f;
 
-    private float? lah;
+    private float? lah=0;
     private float LOOKAHEAD
     {
         get
         {
-            if (lah == null) lah = Vector3.Distance(My.Options.MoveToPoint, My.transform.position);
+            if ((lah == null)) lah = Vector3.Distance(My.Options.MoveToPoint, My.gameObject.transform.position);
             if (lah > MAX_LOOKAHEAD) return MAX_LOOKAHEAD;
             else if (lah < MIN_LOOKAHEAD) return MIN_LOOKAHEAD;
             else return lah.Value;
@@ -23,7 +23,7 @@ public class Pilot : UnitComponent
     }
 	
     [SerializeField]
-    private float lookAheadDistance;
+    private float lookAheadDistance=MIN_LOOKAHEAD;
 
     public float LookAheadDistance
     {
@@ -66,19 +66,22 @@ public class Pilot : UnitComponent
     public bool IsAForwarder;
     private bool IsAiming = false;
 
-    /* Start & Update */
+    void Awake()
+    {
+        My = gameObject.GetComponent<UnitScript>();
+        mySpace = this.gameObject.AddComponent<SphereCollider>();
+    }
 	void Start() 
     {
        triggerd = 0;
-       My = gameObject.GetComponent<UnitScript>();
-       mySpace = this.gameObject.AddComponent<SphereCollider>();
+
        mySpace.isTrigger = true;
        SetRadius(MIN_LOOKAHEAD);
 
        if (My.GetComponent<FaceDirection>()) IsAForwarder = My.GetComponent<FaceDirection>().faceMovingDirection;
        else IsAForwarder = false;
 
-       UpdateManager.OnUpdate += DoUpdate;
+  //     UpdateManager.OnUpdate += DoUpdate;
 	}
 
     internal void DoUpdate()
@@ -104,7 +107,7 @@ public class Pilot : UnitComponent
     private void SetRadius(float radius)
     {
         LookAheadDistance = radius;
-        mySpace.radius = lookAheadDistance / gameObject.transform.localScale.x;
+        mySpace.radius = lookAheadDistance / My.gameObject.transform.localScale.x;
    //     if (IsAForwarder) mySpace.center = new Vector3(mySpace.center.x, mySpace.center.y, mySpace.radius - 0.5f);
     }
 
@@ -164,6 +167,6 @@ public class Pilot : UnitComponent
         mySpace = null;
         Component.Destroy(gameObject.GetComponent<SphereCollider>());
 
-        UpdateManager.OnUpdate -= DoUpdate;
+    //    UpdateManager.OnUpdate -= DoUpdate;
     }
 }

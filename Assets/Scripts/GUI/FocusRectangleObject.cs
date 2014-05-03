@@ -43,9 +43,9 @@ public class FocusRectangleObject : MonoBehaviour {
     {
         directionFacer = this.gameObject.GetComponent<FaceDirection>();
 
-        UpdateManager.OnUpdate += DoUpdate;
+    //    UpdateManager.OnUpdate += DoUpdate;
     }
-    void DoUpdate()
+   internal void DoUpdate()
     {
         Equalize();
     }
@@ -68,7 +68,10 @@ public class FocusRectangleObject : MonoBehaviour {
         foreach (MarkerScript marker in Focus.Marker) marker.DoUpdate();
     }
 
-
+    void OnDestroy()
+    {
+ //       UpdateManager.OnUpdate -= DoUpdate;
+    }
 
 }
 

@@ -8,9 +8,9 @@ public class ProductionBuildingOptions : UnitOptions
 {
     new public enum OPTIONS : int
     {
-        Produce=0,
-        StopProduction=100,
-        MoveUnitsTo=5,
+        Produce = EnumProvider.ORDERSLIST.Produce,
+        StopProduction = EnumProvider.ORDERSLIST.StopProduction,
+        MoveUnitsTo = EnumProvider.ORDERSLIST.MoveUnitsTo,
     }
 
     internal override void DoStart()
@@ -37,7 +37,15 @@ public class ProductionBuildingOptions : UnitOptions
 
      public override void GiveOrder(int orderNumber)
      {
-             UnitState = (OPTIONS)orderNumber;
+         int i = -1;
+         foreach (var entry in OPTIONSlist)
+         {
+             if (++i == orderNumber)
+             {
+                 UnitState = (OPTIONS)entry.Key;
+                 return;
+             }
+         }
      }
      public override void SetSIDEOption(int SIDEoptionNumber)
      {
@@ -45,60 +53,18 @@ public class ProductionBuildingOptions : UnitOptions
          UnitState = (OPTIONS)0;
      }
 
+     protected override bool GotToDoPrimaryOrders
+     {
+         get
+         {
+             return !standardOrder;
+         }
+         set
+         {
 
-/*
-    string[] fabrikatNames;
+         }
+     }
 
-    private int CurrentFabrikat;
-    public string typename;
-    public List<GameObject> Fabrikat;
-    public List<Texture> menuButtons;
-
-    void Start()
-    {
-        fabrikatNames = new string[Fabrikat.Count + 1];
-        Life = 1000;
-        for (int i = 0; i < Fabrikat.Count; i++)
-            fabrikatNames[i] = Fabrikat[i].name;
-        fabrikatNames[Fabrikat.Count] = "StopProduction";
-        UnitState = unitState = OPTIONS.StopProduction;
-        MoveToPoint = new Vector3(gameObject.transform.position.x, 0f, gameObject.transform.position.z - 120f);
-    }
-
-    internal override void DoUpdate()
-    {
-
-    }
-
-    internal override string[] GetUnitsMenuOptions()
-    {
-        return fabrikatNames;
-    }
-
-    internal Texture[] GetButtons()
-    {
-        return menuButtons.ToArray();
-    }
-
-    public override void GiveOrder(int orderNumber)
-    {
-        if (orderNumber < fabrikatNames.Length - 1)
-        {
-            CurrentFabrikat = orderNumber;
-            UnitState = (OPTIONS)orderNumber;
-        }
-        else
-        {
-            UnitState = OPTIONS.StopProduction;
-        }
-    }
-
-    internal override void Hit(int power)
-    {
-         
-    }
-
-    public OPTIONS unitState;*/
     public override System.Enum UnitState
     {
         get
@@ -156,6 +122,8 @@ public class ProductionBuildingOptions : UnitOptions
     
     internal override void DoUpdate()
     {
+        //todo  produce by timer...
+
     }
 }
 

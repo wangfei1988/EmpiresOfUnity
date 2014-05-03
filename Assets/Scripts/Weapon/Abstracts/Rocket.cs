@@ -5,18 +5,16 @@ abstract public class Rocket : WeaponObject
 {
     public abstract bool LaunchButton
     { get; set; }
-    public void TargetUpdatePosition(Vector3 targetPosition)
+
+    public void SetTarget(Vector3 targetPosition, FoE.GOODorEVIL foe)
     {
         Target = targetPosition;
-    }
-    public void Launch(Vector3 targetPosition, UnitScript.GOODorEVIL friendOrfoe)
-    {
-        if (!LaunchButton)
-        {
-            Target = targetPosition;
-            LaunchButton = true;
-            this.GoodOrEvil = friendOrfoe;
-        }
+        this.GoodOrEvil = new FoE(foe);
     }
 
+    virtual public Vector3 Aim(Vector3 targetPosition)
+    {
+        Target = targetPosition;
+        return ((Target - this.gameObject.transform.position).normalized / Vector3.Distance(Target, this.gameObject.transform.position)).normalized;
+    }
 }

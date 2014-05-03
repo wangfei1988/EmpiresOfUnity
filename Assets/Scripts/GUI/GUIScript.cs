@@ -16,7 +16,7 @@ public class GUIScript : MonoBehaviour
             StaticTextLines.Insert(0,line);
     }
 
-    public UnitScript.GOODorEVIL PlayerSide;
+   // public UnitScript.GOODorEVIL PlayerSide;
 
     public UnitGroup SelectedGroup;
     public int groupCount;
@@ -133,7 +133,7 @@ public class GUIScript : MonoBehaviour
 
    //     gameObject.guiTexture.pixelInset = new Rect(0, -camera.pixelHeight, camera.pixelWidth, camera.pixelHeight);
     //    if (gameObject.GetComponent<GUIText>() == null) gameObject.AddComponent<GUIText>();
-        gameObject.guiText.pixelOffset = new Vector2(-Camera.main.pixelWidth / 2 + 25 * Scale.x, Camera.main.pixelHeight/2 - 20 * Scale.y);
+        gameObject.guiText.pixelOffset = new Vector2(-Camera.main.pixelWidth / 2 + 25 * Scale.x, Camera.main.pixelHeight/2 - 80 * Scale.y);
         MapViewArea = new Rect(20 * Scale.x, 20 * Scale.y, 1675 * Scale.x, 1047 * Scale.y);
         MainGuiArea = new Rect(1716 * Scale.x, 20 * Scale.y, 184 * Scale.x, 1047 * Scale.y);
         gameObject.guiText.fontSize = (int)(40f * Scale.x + 0.5f);
@@ -215,8 +215,8 @@ public class GUIScript : MonoBehaviour
         {
             SelectionRectangle = new Rect(MousePosition.x, MousePosition.y, 0, 0);
 
-            if ((NoUnitFocused) && (AnimatedCursor.UnitUnderCursor))
-                AnimatedCursor.UnitUnderCursor.AddComponent<Focus>();
+            if ((NoUnitFocused) && (UnitUnderCursor.UNIT))
+                UnitUnderCursor.gameObject.AddComponent<Focus>();
         }
     }
 
@@ -227,8 +227,8 @@ public class GUIScript : MonoBehaviour
 
     void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
     {
-        if ((!hold) && (NoUnitFocused) && (AnimatedCursor.UnitUnderCursor))
-          AnimatedCursor.UnitUnderCursor.AddComponent<Focus>();
+        if ((!hold) && (NoUnitFocused) && (UnitUnderCursor.UNIT))
+          UnitUnderCursor.gameObject.AddComponent<Focus>();
     }
 
     private void SnapSellectangle()
@@ -268,16 +268,16 @@ public class GUIScript : MonoBehaviour
         for (int i = listlength; i >= 0; i--)
         {
             textField += StaticTextLines[i] + "\n";
-            if (i > 6) StaticTextLines.RemoveAt(i);
+            if (i < 6) StaticTextLines.RemoveAt(i);
         }
         return textField;
     }
 
     private void UpdateRectangles()
     {
-        //SelectionSprite.DoUpdate();
-        //FocusSprite.DoUpdate();
-        //GroupSprite.DoUpdate();
+      //  SelectionSprite.DoUpdate();
+        FocusSprite.DoUpdate();
+        GroupSprite.DoUpdate();
     }
 
 

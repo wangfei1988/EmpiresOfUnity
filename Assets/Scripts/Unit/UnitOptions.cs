@@ -7,8 +7,9 @@ using System;
 
 abstract public class UnitOptions : MonoBehaviour
 {
-
+    protected int CurrentSIDEMENUoption = 0;
     protected SortedDictionary<int, string> OPTIONSlist = new SortedDictionary<int, string>();
+    protected Vector3? ActionPoint;
     public enum OPTIONS : int
     {
         SellectedOption = 0,
@@ -47,8 +48,68 @@ abstract public class UnitOptions : MonoBehaviour
     }
     private bool _groupmove = false;
     public bool IsGroupLeader;
-    
+    private bool __targetunderattack = false;
+    public bool TargetUnderAttack
+    {
+        get { return CheckedAllert = __targetunderattack; }
+        set 
+        {
+            if (value)
+            {
+                if (!(UNIT.GoodOrEvil+Target.GetComponent<UnitScript>().GoodOrEvil))
+                    CheckedAllert = value;
+            }
+            __targetunderattack = value;
+        }
+    }
     //-----------------------------------------------------Orders and Interaction...
+    protected List<Orderble> ChainedOrders = new List<Orderble>();
+    protected bool GotToDo = false;
+    protected bool CheckedAllert
+    {
+        get { return IsUnderAttack | TargetUnderAttack; }
+        set 
+        {
+            if (value)
+            {
+                UNIT.TriggerAllert(3);
+            }
+        }
+    }
+    protected virtual bool ProcessAllOrders()
+    {
+        ActionPoint = null;
+        if((!CheckedAllert)&&(!GotToDoPrimaryOrders))
+        {
+            for (int i = ChainedOrders.Count-1; i >=0; i--)
+			{
+                
+                standardOrder = true;
+                UnitState = ChainedOrders[i].order;
+                switch ((int)((EnumProvider.ORDERSLIST)UnitState))
+                {
+                    case 0:  //---------------------------  OneClick Vector3 Orders
+                    case 1:
+                    case 2:
+                    case 3:
+                        {
+                            ActionPoint = ChainedOrders[i].Vector;
+                            CurrentSIDEMENUoption = ChainedOrders[i].data.Value;
+                            break; 
+                        }
+                    case 10: //---------------------------  MultiRightclick Orders;
+
+                        break;
+                    case 20:  //--------------------------  Other Unit Click Orders;
+                        break;
+                }
+ 
+			}
+            GotToDoWhatGotToDo = true;
+        }
+        return GotToDoWhatGotToDo;
+    }
+
     virtual internal string[] GetUnitsMenuOptions()
     {
     //    return System.Enum.GetNames(UnitState.GetType());
@@ -91,6 +152,15 @@ abstract public class UnitOptions : MonoBehaviour
 
     abstract public System.Enum UnitState
     { get; set; }
+    abstract protected bool GotToDoPrimaryOrders
+    { get;  set; }
+
+
+
+
+
+
+
     virtual internal void FocussedLeftOnGround(Vector3 worldPoint)
     {
         if (this.gameObject.GetComponent<Focus>())
@@ -154,6 +224,7 @@ abstract public class UnitOptions : MonoBehaviour
     abstract internal void DoUpdate();
     internal void OptionsUpdate()
     {
+        if (GotToDo) GotToDo = ProcessAllOrders();
         DoUpdate();
     }
 
@@ -194,7 +265,7 @@ abstract public class UnitOptions : MonoBehaviour
         }
         else if (FocusFlag == Focus.HANDLING.HasFocus) Component.Destroy(gameObject.GetComponent<Focus>());
     }
-
+    protected bool GotToDoWhatGotToDo = false;
     private void abstract_LEFTRELEASE()
     {
         gameObject.GetComponent<Focus>().Unlock(gameObject);
@@ -208,12 +279,12 @@ abstract public class UnitOptions : MonoBehaviour
 
     protected bool TargetIsEnemy(GameObject target)
     {
-        return target.GetComponent<UnitScript>().GoodOrEvil != UNIT.GoodOrEvil;
+        return target.gameObject.GetComponent<UnitScript>();
     }
     protected bool TargetIsAllied(GameObject target)
     {
-        if (target.GetInstanceID() != gameObject.GetInstanceID())
-            return target.GetComponent<UnitScript>().GoodOrEvil == UNIT.GoodOrEvil;
+        if (target.gameObject.GetInstanceID() != this.gameObject.GetInstanceID())
+            return !TargetIsEnemy(target);
         else return false;
     }
 }

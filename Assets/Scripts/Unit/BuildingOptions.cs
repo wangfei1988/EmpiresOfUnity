@@ -30,7 +30,17 @@ public class BuildingOptions : UnitOptions
          }
          else UnitState = OPTIONS.StopProduction;
      }
+     protected override bool GotToDoPrimaryOrders
+     {
+         get
+         {
+             return !standardOrder;
+         }
+         set
+         {
 
+         }
+     }
     public override System.Enum UnitState
     {
         get
