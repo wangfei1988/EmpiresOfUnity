@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
 public class SmallRocketObject : Rocket
 {
     private string HITinfo="";
@@ -176,3 +177,4 @@ public class SmallRocketObject : Rocket
 
 
 }
+*/

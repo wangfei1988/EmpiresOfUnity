@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Reflection.Emit;
 
+/*
 [AddComponentMenu("Character/Unit Options (Standard GroundBuilder)")]
 public class GroundBuilderOptions : MovingUnitOptions 
 {
@@ -85,3 +86,4 @@ public class GroundBuilderOptions : MovingUnitOptions
         base.DoUpdate();
     }
 }
+*/

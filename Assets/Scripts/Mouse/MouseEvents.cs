@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
+/*
 public class MouseEvents
 {
 
@@ -231,25 +231,21 @@ public class MouseEvents
 
     static private void triggerEvents(bool[] trigger)
     {
-        /* Left Click */
         if (trigger[0] && ButtonDown[0] && MapClick)
             LEFTCLICK(State.Position, hold[0]);
         else if (release[0] && LEFTRELEASE != null)
             LEFTRELEASE();
 
-        /* Middle Click */
         if (trigger[2] && ButtonDown[2] && MapClick)
             MIDDLECLICK(State.Position, hold[2]);
         else if (release[2] && MIDDLERELEASE != null)
             MIDDLERELEASE();
 
-        /* Right Click */
         if (trigger[1] && ButtonDown[1] && MapClick)
             RIGHTCLICK(State.Position, hold[1]);
         else if (release[1] && RIGHTRELEASE != null)
             RIGHTRELEASE();
 
-        /* Mouse Wheel */
         if (MOUSEWHEEL != null && State.WHEEL != MOUSEWHEELSTATE.NONE)
             MOUSEWHEEL(State.WHEEL);
 
@@ -260,6 +256,6 @@ public class MouseEvents
         GetMouseState();
     }
 }
-
+*/
 
 

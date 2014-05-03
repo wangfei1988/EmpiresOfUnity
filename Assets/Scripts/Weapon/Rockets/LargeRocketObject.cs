@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
 public class LargeRocketObject : Rocket {
 
     public ParticleSystem emission;
@@ -193,3 +194,4 @@ public class LargeRocketObject : Rocket {
 
 
 }
+*/

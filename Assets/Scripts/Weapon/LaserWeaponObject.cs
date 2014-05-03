@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
 public class LaserWeaponObject : WeaponObject 
 
 {
@@ -146,3 +147,4 @@ public class LaserWeaponObject : WeaponObject
     }
 
 }
+*/
