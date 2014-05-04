@@ -13,12 +13,13 @@ GameObject:
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
   - 64: {fileID: 6400000}
+  - 114: {fileID: 11400004}
   m_Layer: 10
   m_Name: EnemyFabrik
   m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 40
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &400000
 Transform:
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -99.3820801, y: 0, z: 129.846802}
+  m_LocalPosition: {x: -99.3820801, y: -5.30999994, z: 129.846802}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,12 +85,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitType: 1001
-  GoodOrEvil: 1
+  goodOrEvil: -1
   weapon: {fileID: 0}
-  unitAnimation: {fileID: 0}
+  unitAnimation: {fileID: 11400004}
   Options: {fileID: 11400002}
   life: 10000
-  speed: 0
+  speed: 5
+  resourceFactor: 0
+  sightWhidth: 0
   MovingDirection: {x: 0, y: 0, z: 0}
   interactingUnits: 
 --- !u!114 &11400002
@@ -108,10 +111,30 @@ MonoBehaviour:
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
   testlist: []
-  unitState: 100
+  unitState: 101
   typename: Fabrik
   Fabrikat:
+  - {fileID: 100000, guid: e7c50471ce3ecd34c8ab09871541ab7b, type: 2}
   - {fileID: 100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 366e472b6f7516b4c8483680cfab5649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 1
+  anotherUnitAnimation: {fileID: 0}
+  startYps: 0
+  targetYps: 0
+  growingFactor: 0
+  GrowingTime: 0
+  timer: 0
+  startGrowing: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

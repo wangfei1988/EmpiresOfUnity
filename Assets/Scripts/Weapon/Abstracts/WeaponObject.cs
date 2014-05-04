@@ -3,7 +3,7 @@ using System.Collections;
 
 public abstract class WeaponObject : MonoBehaviour
 {
-    public enum AMUNITON : byte
+    public enum AMUNITONTYPE : byte
     {
         None = 0,
         Missiles = 1,
@@ -11,20 +11,25 @@ public abstract class WeaponObject : MonoBehaviour
         Laser = 3,
         PowerLaser = 4
     }
-    public AMUNITON amunition
-      { get; protected set; }
+
+    public virtual AMUNITONTYPE amunition
+    { 
+      get { return AMUNITONTYPE.None; } 
+    }
     public virtual Weapon.WEAPON WEAPON
     {
         get { return Weapon.WEAPON.None; }
     }
-
-    protected GameObject UNIT;
-    public UnitScript.GOODorEVIL GoodOrEvil;
+    abstract public float MAX_RANGE
+    { get; }
+    protected UnitScript UNIT;
+    public FoE GoodOrEvil;
     public Vector3 Target;
 
     public void SetShooter(GameObject unit)
     {
-        UNIT = unit;
+        UNIT = unit.GetComponent<UnitScript>();
+        GoodOrEvil = UNIT.GoodOrEvil;
     }
 
     void Start()

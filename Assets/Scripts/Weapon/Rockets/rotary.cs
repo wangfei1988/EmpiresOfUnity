@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
 public class rotary : MonoBehaviour {
 
     public float rotation;
@@ -11,3 +12,4 @@ public class rotary : MonoBehaviour {
         this.transform.Rotate(R.x, R.y, R.z);
     }
 }
+*/

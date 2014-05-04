@@ -5,23 +5,23 @@ abstract public class Weapon : MonoBehaviour
 {
 
 
-    public class Status
-    {
-        public int RANGE=0;
-        public int MAXIMUM_POWER=0;
-        //-------------------------------   todo...
-        public bool IsLoadet=false;
-        //------------------------ ...
-        public Status()
-        { }
+    //public class Status
+    //{
+    //    public int RANGE=0;
+    //    public int MAXIMUM_POWER=0;
+    //    //-------------------------------   todo...
+    //    public bool IsLoadet=false;
+    //    //------------------------ ...
+    //    public Status()
+    //    { }
 
-        public Status(int range, int maxP, bool loadet)
-        {
-            RANGE = range;
-            MAXIMUM_POWER = maxP;
-            IsLoadet = loadet;
-        }
-    }
+    //    public Status(int range, int maxP, bool loadet)
+    //    {
+    //        RANGE = range;
+    //        MAXIMUM_POWER = maxP;
+    //        IsLoadet = loadet;
+    //    }
+    //}
 
     public enum WEAPON : byte
     {
@@ -30,11 +30,27 @@ abstract public class Weapon : MonoBehaviour
         RocketLauncher,
     }
     public WeaponObject prefabSlot;
-    public bool HasArsenal = false;
-
+    [SerializeField]
+    private bool hasArsenal = false;
+    public bool HasArsenal
+    {
+        get { return hasArsenal; }
+        set 
+        {
+            if(value!=hasArsenal)
+            {
+                if (value) this.gameObject.AddComponent<WeaponArsenal>();
+                else Component.Destroy(this.gameObject.GetComponent<WeaponArsenal>());
+            }
+    }
+    }
     public WeaponArsenal arsenal
     {
-        get {return this.gameObject.GetComponent<WeaponArsenal>(); }
+        get 
+        {
+            if (HasArsenal) return this.gameObject.GetComponent<WeaponArsenal>();
+            else return null;
+        }
     }
 
     abstract public void Engage(Vector3 targetPoint);

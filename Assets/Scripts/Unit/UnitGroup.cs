@@ -9,11 +9,11 @@ public class UnitGroup : ScriptableObject
         None,
         Ready,
         UnderConstruction,
-        Moving = Ready + 1,
-        Attacking = Ready + 2,
-        Guarding = Ready + 3,
-        Building = Ready + 4,
-        Waiting = Ready + 5
+        Moving,
+        Attacking,
+        Guarding,
+        Building,
+        Waiting
     }
     private GROUPSTATE groupState;
     public GROUPSTATE GroupState
@@ -43,7 +43,7 @@ public class UnitGroup : ScriptableObject
     }
     public Rect groupRect;
     public int Count;
-    public UnitScript.GOODorEVIL GoodOrEvil;
+    public FoE.GOODorEVIL GoodOrEvil;
     public Vector3 Position
     {
         get { return position; }
@@ -99,7 +99,7 @@ public class UnitGroup : ScriptableObject
         ResetGroup();
         AddUnits(units);
     }
-    public void BeginGroupFill(UnitScript.GOODorEVIL side)
+    public void BeginGroupFill(FoE.GOODorEVIL side)
     {
         if (this.GoodOrEvil != side) ResetGroup();
         GroupState = GROUPSTATE.UnderConstruction;

@@ -18,7 +18,7 @@ GameObject:
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400008}
   - 114: {fileID: 11400006}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyTank
   m_TagString: Clickable
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -77.4495621, y: -.157837525, z: 126.500648}
+  m_LocalPosition: {x: -45.6366882, y: -.157837525, z: 119.265236}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd8ff9797310d64b911dca02750f618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsActive: 1
+  isActive: 1
   anotherUnitAnimation: {fileID: 0}
   TransformToFace: {fileID: 0}
   faceMovingDirection: 1
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001f8323199fac945a8d60f7e8c7c3d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsActive: 1
+  isActive: 1
   anotherUnitAnimation: {fileID: 11400000}
   lockPosition: 1
   position: {x: 0, y: -.150000006, z: 0}
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552bee532e878e647bcd4ff0c948bbc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsActive: 1
+  isActive: 1
   anotherUnitAnimation: {fileID: 11400002}
   mainTargetTransform: {fileID: 400000}
   otherTargetTransform: {fileID: 0}
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabSlot: {fileID: 11400000, guid: 56065e66594229e4d8f90e582cd6ff84, type: 2}
-  HasArsenal: 0
+  hasArsenal: 0
   LaserEnergie: 1000
 --- !u!114 &11400008
 MonoBehaviour:
@@ -212,12 +212,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitType: 0
-  GoodOrEvil: 1
+  goodOrEvil: -1
   weapon: {fileID: 11400006}
   unitAnimation: {fileID: 11400004}
   Options: {fileID: 11400008}
   life: 800
   speed: .200000003
+  resourceFactor: 0
+  sightWhidth: 0
   MovingDirection: {x: 0, y: 0, z: 0}
   interactingUnits: 
 --- !u!1001 &100100000

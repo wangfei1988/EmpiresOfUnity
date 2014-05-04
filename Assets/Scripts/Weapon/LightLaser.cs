@@ -8,7 +8,8 @@ public class LightLaser : Weapon
     public const int DURATION=250;
     public const int MAXIMUM_POWER = 100;
     public const int MINIMUM_POWER = 33;
-    public const float MAXIMUM_DISTANCE = 100;
+    [SerializeField]
+    public static float MAXIMUM_DISTANCE = 50;
 
     private LaserWeaponObject laser;
     public int LaserEnergie;
@@ -28,7 +29,7 @@ public class LightLaser : Weapon
     }
     public override void Engage(Vector3 targetPoint)
     {
-        if (!IsLoadedt)
+        if ((!IsLoadedt)&&(Vector3.Distance(gameObject.transform.position,targetPoint)<MAXIMUM_DISTANCE))
         {
             int Power;
 

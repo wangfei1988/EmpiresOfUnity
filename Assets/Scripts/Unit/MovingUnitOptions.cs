@@ -8,12 +8,11 @@ abstract public class MovingUnitOptions : UnitOptions
     
     new public enum OPTIONS : int
     {
-        MoveTo=0,
-        Guard=10,
-        Patrol=20,
-        Hide=30,
-        Stay=100,
-
+        MoveTo = EnumProvider.ORDERSLIST.MoveTo,
+        Guard = EnumProvider.ORDERSLIST.Guard,
+        Patrol = EnumProvider.ORDERSLIST.Patrol,
+        Hide = EnumProvider.ORDERSLIST.Hide,
+        Stay = EnumProvider.ORDERSLIST.Stay,
     }
     
 
@@ -58,6 +57,7 @@ abstract public class MovingUnitOptions : UnitOptions
         }
     }
     public List<Vector3> WayPoints;
+
     protected Vector3 CalculateDirection()
     {
         return UNIT.MovingDirection = (MoveToPoint - gameObject.transform.position).normalized;
@@ -174,33 +174,35 @@ abstract public class MovingUnitOptions : UnitOptions
     {
         if (movingUnitState == OPTIONS.MoveTo)
         {
-            MoveToPoint = MouseEvents.State.Position.AsWorldPointOnMap;
+            MoveToPoint = standardOrder ? ActionPoint ?? gameObject.transform.position : MouseEvents.State.Position.AsWorldPointOnMap;
             CalculateDirection();
             IsMoving = true;
-            MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
-            UnlockFocus();
+            if (!standardOrder)
+            {
+                MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
+                UnlockFocus();
+            }
         }
         else if (movingUnitState == OPTIONS.Guard)
         {
-            RaycastHit Hit;
-            if (Physics.Raycast(qamRay, out Hit, Camera.main.transform.position.y))
-            {
-                if (TargetIsAllied(Hit.collider.gameObject))
+                if (TargetIsAllied(UnitUnderCursor.gameObject))
                 {
-                    Target = Hit.collider.gameObject.GetComponent<UnitScript>().SetInteracting(this.gameObject);
+                    Target = UnitUnderCursor.UNIT.SetInteracting(this.gameObject);
                     MoveToPoint = Target.transform.position;
                     IsMoving = true;
                 }
-            }
             MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
             UnlockFocus(Focus.HANDLING.DestroyFocus);
         }
         else if (movingUnitState == OPTIONS.Patrol)
         {
-            WayPoints.Add(MouseEvents.State.Position.AsWorldPointOnMap);
+            WayPoints.Add(standardOrder ? ActionPoint ?? gameObject.transform.position : MouseEvents.State.Position.AsWorldPointOnMap);
             IsMoving = true;
-            MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
-            MouseEvents.RIGHTCLICK -= MouseEvents_RIGHTCLICK;
+            if (!standardOrder)
+            {
+                MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
+                MouseEvents.RIGHTCLICK -= MouseEvents_RIGHTCLICK;
+            }
             UnlockFocus(Focus.HANDLING.DestroyFocus);
         }
     }
@@ -222,6 +224,17 @@ abstract public class MovingUnitOptions : UnitOptions
         }
     }
 
+    protected bool stillWorkDoDo = false;
+    protected override bool ProcessAllOrders()
+    {
+        stillWorkDoDo=base.ProcessAllOrders();
+        if (GotToDoWhatGotToDo)
+        {
+            if (ActionPoint != null) MouseEvents_LEFTCLICK(MouseEvents.State.Position.AsRay, false);
+        }
+        return stillWorkDoDo;
+    }
+
     virtual protected bool MoveTo()
     {
 
@@ -239,14 +252,10 @@ abstract public class MovingUnitOptions : UnitOptions
         {
             if (IsGroupLeader) IsMovingAsGroup = false;
             else Distance = Vector3.Distance(gameObject.transform.position, MoveToPoint);
-
         }
         else if (IsAttacking)
         {
-            if (Distance < UNIT.AttackRange)
-            {
-                UNIT.weapon.Engage(Target);
-            }
+
 
             if (Distance >= UNIT.AttackRange / 2)
             {
@@ -303,7 +312,7 @@ abstract public class MovingUnitOptions : UnitOptions
         //unitstateint = 20;
         //movingUnitState = (OPTIONS)unitstateint;
         //UnitState = movingUnitState;
-        //IsMoving = true;
+        IsMoving = true;
     }
 
     internal override void DoUpdate()

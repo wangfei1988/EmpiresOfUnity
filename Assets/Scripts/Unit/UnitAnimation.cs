@@ -2,8 +2,20 @@
 using System.Collections;
 
 abstract public class UnitAnimation : MonoBehaviour {
+    
+    [SerializeField]
+    private bool isActive = true;
+    public bool IsActive
+    {
+        get { return isActive; }
+        set
+        {
+            if (value != isActive)
+                if (value & GetComponent<Rigidbody>()) GetComponent<Rigidbody>().isKinematic=false;
+              
+        }
+    }
 
-    public bool IsActive = true;
     public UnitAnimation anotherUnitAnimation;
 
     abstract internal void Animate();
@@ -20,6 +32,14 @@ abstract public class UnitAnimation : MonoBehaviour {
         if(anotherUnitAnimation)
             anotherUnitAnimation.DoUpdate();
     }
-	
+
+    internal void HookOnUpdata(UnitAnimation updateter)
+    {
+        updateter.anotherUnitAnimation = this;
+    }
+    internal void HookOnUpdata(UnitScript onUnitScript)
+    {
+        onUnitScript.unitAnimation = this; //.GetComponent<UnitAnimation>();
+    }
 
 }

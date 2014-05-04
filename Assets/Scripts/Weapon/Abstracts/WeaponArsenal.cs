@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class WeaponArsenal : MonoBehaviour 
 {
     [SerializeField]
-    private List<WeaponObject> Arsenal = new List<WeaponObject>();
+    private List<WeaponObject> Arsenal = new List<WeaponObject>(2);
     public Weapon weapon
     {
         get { return this.gameObject.GetComponent<UnitScript>().weapon; }
