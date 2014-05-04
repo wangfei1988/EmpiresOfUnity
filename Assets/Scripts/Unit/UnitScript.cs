@@ -47,6 +47,8 @@ public class UnitScript : MonoBehaviour
         }
     }
 
+    private Lifebar LifebarScript;
+
 
     public UnitOptions Options;
     //public O OptionsAs<O>() where O : UnitOptions
@@ -65,6 +67,7 @@ public class UnitScript : MonoBehaviour
 	void Awake () 
     {
         GoodOrEvil = new FoE(goodOrEvil);
+        LifebarScript = ScriptableObject.CreateInstance<Lifebar>();
         switch (unitType)
         {
             case UNITTYPE.Worker:
@@ -227,5 +230,11 @@ public class UnitScript : MonoBehaviour
         if (unitAnimation) unitAnimation.DoUpdate();
         
         Options.OptionsUpdate();
+    }
+
+    public void ShowLifebar()
+    {
+        LifebarScript.Position = gameObject.transform.position + new Vector3(0, 2f, 0);
+        LifebarScript.Activated = true;
     }
 }

@@ -58,6 +58,9 @@ public class GUIScript : MonoBehaviour
 
     public List<GUIContent> mainGUIContent;
 
+    /* Lifebar Prefab */
+    public Transform Prefab_Lifebar;
+
     /* Selection 3D Rectangle */
     private Rect selectionRectangle;
     public Rect SelectionRectangle
@@ -165,15 +168,8 @@ public class GUIScript : MonoBehaviour
 
     void DoUpdate()
     {
-
-
-
-
-
         //if (animatedCursor) animatedCursor.DoUpdate();
         //if (scrolling) scrolling.DoUpdate();
-
-
     }
 
 
@@ -222,7 +218,7 @@ public class GUIScript : MonoBehaviour
 
     void MouseEvents_LEFTRELEASE()
     {
-        SnapSellectangle();
+        SnapSelectionRectangle();
     }
 
     void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
@@ -231,10 +227,21 @@ public class GUIScript : MonoBehaviour
           UnitUnderCursor.gameObject.AddComponent<Focus>();
     }
 
-    private void SnapSellectangle()
+    private void SnapSelectionRectangle()
     {
+
+        // Get group of selected elements
         SelectedGroup = SelectionSprite.GetComponent<SelectorScript>().SnapSelection();
+
+        // Activate Lifebar at all selected units
+        for (int i = 0; i < SelectedGroup.Count; i++)
+        {
+            SelectedGroup[i].GetComponent<UnitScript>().ShowLifebar();
+        }
+
+        // Hide selection rectangle
         SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, 0f, 0f);
+
     }
 
     void OnGUI()

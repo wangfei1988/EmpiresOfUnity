@@ -5,24 +5,18 @@ public class GroupRectangleScript : MonoBehaviour {
 
     public GUIScript mainGUI;
     private bool IsSignedIn;
-    //public UnitGroup Group
-    //{
-    //    get { return qui}
-    //}
 
 	void Start () 
     {
         IsSignedIn = false;
         gameObject.renderer.enabled = false;
-
-    //    UpdateManager.OnUpdate += DoUpdate;
 	}
 
     public void DoUpdate()
     {
         Equalize();
     }
-    
+
     private void SignIn()
     {
         if (!IsSignedIn)
@@ -65,7 +59,6 @@ public class GroupRectangleScript : MonoBehaviour {
 
     }
 
-
     private void Equalize()
     {
         if (mainGUI.SelectedGroup.Count > 0)
@@ -78,7 +71,6 @@ public class GroupRectangleScript : MonoBehaviour {
         else
         {
             SignOut();
-            
         }
     }
 
