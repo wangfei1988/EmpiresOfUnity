@@ -4,6 +4,7 @@ using  System.Collections.Generic;
 
 public class NaniteMine : AbstractBuilding
 {
+    private  Dictionary<uint, uint> NaniteMineUpgrade = new Dictionary<uint, uint>(); 
     private  Dictionary<uint, uint> NaniteWork = new Dictionary<uint, uint>();
     private float workTimer;
 
@@ -25,6 +26,11 @@ public class NaniteMine : AbstractBuilding
         NaniteWork.Add(4, Level4Resource);
         NaniteWork.Add(5, Level5Resource);
 
+        NaniteMineUpgrade.Add(2, 50);
+        NaniteMineUpgrade.Add(3, 100);
+        NaniteMineUpgrade.Add(4, 150);
+        NaniteMineUpgrade.Add(5, 200);
+
         UpdateManager.OnUpdate += DoUpdate;
     }
 
@@ -33,6 +39,11 @@ public class NaniteMine : AbstractBuilding
         uint resValue = 0;
         NaniteWork.TryGetValue(Level, out resValue);
         ResourceManager.AddResouce(ResourceManager.Resource.NANITEN, resValue);
+    }
+
+    private void Upgrade()
+    {
+
     }
 
     void DoUpdate()

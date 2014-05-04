@@ -7,6 +7,8 @@ public class SolarTower : AbstractBuilding
 {
     private Dictionary<uint, uint> SolarWork = new Dictionary<uint, uint>();
 
+    private Dictionary<uint, uint> SolarTowerUpgrade = new Dictionary<uint, uint>(); 
+
     private void Start()
     {
         Life = (uint)SettingFile.Life;
@@ -24,6 +26,11 @@ public class SolarTower : AbstractBuilding
         SolarWork.Add(4, Level4Resource);
         SolarWork.Add(5, Level5Resource);
 
+        SolarTowerUpgrade.Add(2, 50);
+        SolarTowerUpgrade.Add(3, 100);
+        SolarTowerUpgrade.Add(4, 150);
+        SolarTowerUpgrade.Add(5, 200);
+
         UpdateManager.OnUpdate += DoUpdate;
     }
 
@@ -34,9 +41,17 @@ public class SolarTower : AbstractBuilding
         ResourceManager.AddResouce(ResourceManager.Resource.ENERGY, resValue);
     }
 
+    private void Upgrade()
+    {
+        if (useGUILayout)
+        {
+            
+        }
+    }
+
     private void DoUpdate()
     {
-
+            SolarTowerWork();
     }
 
     private void OnDestroy()
