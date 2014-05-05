@@ -152,7 +152,6 @@ MonoBehaviour:
   goodOrEvil: -1
   weapon: {fileID: 33863554}
   unitAnimation: {fileID: 33863559}
-  LifebarScript: {fileID: 0}
   Options: {fileID: 33863555}
   life: 800
   speed: .200000003
@@ -1172,7 +1171,6 @@ MonoBehaviour:
   goodOrEvil: -1
   weapon: {fileID: 0}
   unitAnimation: {fileID: 286388419}
-  LifebarScript: {fileID: 0}
   Options: {fileID: 286388416}
   life: 10000
   speed: 5
@@ -1438,7 +1436,6 @@ MonoBehaviour:
   goodOrEvil: -1
   weapon: {fileID: 311706545}
   unitAnimation: {fileID: 311706550}
-  LifebarScript: {fileID: 0}
   Options: {fileID: 311706546}
   life: 800
   speed: .200000003
@@ -3262,7 +3259,6 @@ MonoBehaviour:
   goodOrEvil: -1
   weapon: {fileID: 0}
   unitAnimation: {fileID: 724636359}
-  LifebarScript: {fileID: 0}
   Options: {fileID: 724636357}
   life: 10000
   speed: 5
@@ -3523,7 +3519,6 @@ MonoBehaviour:
   goodOrEvil: -1
   weapon: {fileID: 0}
   unitAnimation: {fileID: 798904030}
-  LifebarScript: {fileID: 0}
   Options: {fileID: 798904031}
   life: 150
   speed: .200000003
@@ -3845,7 +3840,6 @@ MonoBehaviour:
   goodOrEvil: 1
   weapon: {fileID: 0}
   unitAnimation: {fileID: 968603419}
-  LifebarScript: {fileID: 0}
   Options: {fileID: 968603420}
   life: 150
   speed: .200000003
@@ -4855,7 +4849,6 @@ MonoBehaviour:
   goodOrEvil: -1
   weapon: {fileID: 0}
   unitAnimation: {fileID: 1366779496}
-  LifebarScript: {fileID: 0}
   Options: {fileID: 1366779497}
   life: 20000
   speed: 15
@@ -5066,7 +5059,6 @@ MonoBehaviour:
   goodOrEvil: 0
   weapon: {fileID: 0}
   unitAnimation: {fileID: 1455821491}
-  LifebarScript: {fileID: 0}
   Options: {fileID: 1455821490}
   life: 150
   speed: .200000003
@@ -5502,7 +5494,6 @@ MonoBehaviour:
   goodOrEvil: -1
   weapon: {fileID: 1665781128}
   unitAnimation: {fileID: 1665781133}
-  LifebarScript: {fileID: 0}
   Options: {fileID: 1665781129}
   life: 800
   speed: .200000003
@@ -5907,7 +5898,6 @@ MonoBehaviour:
   goodOrEvil: -1
   weapon: {fileID: 1779489596}
   unitAnimation: {fileID: 1779489601}
-  LifebarScript: {fileID: 0}
   Options: {fileID: 1779489597}
   life: 800
   speed: .200000003
@@ -6248,7 +6238,6 @@ MonoBehaviour:
   goodOrEvil: 1
   weapon: {fileID: 1803198231}
   unitAnimation: {fileID: 1803198228}
-  LifebarScript: {fileID: 0}
   Options: {fileID: 1803198229}
   life: 10000
   speed: 5
@@ -6686,7 +6675,6 @@ MonoBehaviour:
   goodOrEvil: 1
   weapon: {fileID: 1927254785}
   unitAnimation: {fileID: 1927254788}
-  LifebarScript: {fileID: 0}
   Options: {fileID: 1927254786}
   life: 800
   speed: .200000003
@@ -7142,7 +7130,6 @@ MonoBehaviour:
   goodOrEvil: -1
   weapon: {fileID: 2098280674}
   unitAnimation: {fileID: 2098280679}
-  LifebarScript: {fileID: 0}
   Options: {fileID: 2098280675}
   life: 800
   speed: .200000003

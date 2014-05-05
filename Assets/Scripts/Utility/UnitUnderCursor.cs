@@ -7,18 +7,13 @@ public class UnitUnderCursor
     public static Transform transform;
     public static UnitScript UNIT;
 
-
-
-
     public void Set(GameObject unit)
     {
-
-
         if (unit == null)
         {
+            gameObject = null;
             transform = null;
             UNIT = null;
-            gameObject = null;
         }
         else
         {
@@ -36,10 +31,8 @@ public class UnitUnderCursor
 
         if (gameObject)
             return instanceID != gameObject.GetInstanceID();
-        else return true;
-            //else
-            //    return instanceID != -2;
-      
+        else
+            return true;
     }
 
     public UnitUnderCursor()

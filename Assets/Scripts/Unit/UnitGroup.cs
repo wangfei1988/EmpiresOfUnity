@@ -150,6 +150,7 @@ public class UnitGroup : ScriptableObject
         }
         MemberUnit.AddRange(units);
     }
+
     public void ResetGroup()
     {
         GroupState = GROUPSTATE.UnderConstruction;
@@ -163,6 +164,7 @@ public class UnitGroup : ScriptableObject
         MemberUnit[0].GetComponent<UnitScript>().Options.FocussedLeftOnGround(MouseEvents.State.Position.AsWorldPointOnMap);
         GroupState = GROUPSTATE.Moving;
     }
+
     public void GoupedLeftOnEnemy(GameObject enemy)
     {
         foreach (GameObject unit in MemberUnit)
@@ -183,5 +185,7 @@ public class UnitGroup : ScriptableObject
             }
         }
     }
+
+
 
 }

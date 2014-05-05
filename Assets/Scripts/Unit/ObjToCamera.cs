@@ -16,4 +16,9 @@ public class ObjToCamera : MonoBehaviour
         transform.forward = -Camera.main.transform.up;
 	}
 
+    void OnDestroy()
+    {
+        UpdateManager.OnUpdate -= DoUpdate;
+    }
+
 }

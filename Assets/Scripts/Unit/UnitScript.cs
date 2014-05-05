@@ -104,10 +104,32 @@ public class UnitScript : MonoBehaviour
 		//UpdateManager.OnUpdate += DoUpdate;
         
 	}
+
+
+    /* START &  UPDATE */
     void Start()
     {
         UpdateManager.UNITUPDATE += UpdateManager_UNITUPDATE;
+        UpdateManager.OnUpdate += UpdateLifebar;
     }
+
+    void UpdateManager_UNITUPDATE()
+    {
+        if (unitAnimation) unitAnimation.DoUpdate();
+
+        Options.OptionsUpdate();
+    }
+
+    public void UpdateLifebar()
+    {
+        if (LifebarScript != null)
+        {
+            if(this.gameObject.transform.position != LifebarScript.Position)
+                LifebarScript.Position = gameObject.transform.position;
+        }
+    }
+
+    /* * * * * */
 
     [SerializeField]
     private int life;
@@ -144,7 +166,7 @@ public class UnitScript : MonoBehaviour
         }
     }
     [SerializeField]
-    public float sightWhidth;
+    private float sightWhidth;
     public float SightWidth
     {
         get { return sightWhidth; }
@@ -225,16 +247,22 @@ public class UnitScript : MonoBehaviour
     //    private set;
     //}
 
-    void UpdateManager_UNITUPDATE()
-    {
-        if (unitAnimation) unitAnimation.DoUpdate();
-        
-        Options.OptionsUpdate();
-    }
-
+    /* LIFEBAR START */
     public void ShowLifebar()
     {
-        LifebarScript.Position = gameObject.transform.position + new Vector3(0, 2f, 0);
-        LifebarScript.Activated = true;
+        if (LifebarScript != null)
+        {
+            LifebarScript.Position = gameObject.transform.position;
+            LifebarScript.Activated = true;
+        }
+    }
+
+    /* LIFEBAR END */
+    public void HideLifebar()
+    {
+        if (LifebarScript != null)
+        {
+            LifebarScript.Activated = false;
+        }
     }
 }
