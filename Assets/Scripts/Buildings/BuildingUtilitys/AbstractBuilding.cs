@@ -15,4 +15,12 @@ public abstract class AbstractBuilding : MonoBehaviour
     public uint Level5Resource;
 
     public BuildingSetting SettingFile;
+
+    public void DestroyTheGameObject()
+    {
+        if (Life <= 0 || Input.GetKeyDown(KeyCode.T))
+        {
+            if (gameObject != null) Destroy(gameObject);
+        }
+    }
 }

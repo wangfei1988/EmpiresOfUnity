@@ -7,9 +7,11 @@ public class NaniteMine : AbstractBuilding
     private  Dictionary<uint, uint> NaniteMineUpgrade = new Dictionary<uint, uint>(); 
     private  Dictionary<uint, uint> NaniteWork = new Dictionary<uint, uint>();
     private float workTimer;
+    private bool energyConsumptionBool = true;
 
     private void Start()
     {
+        //Add the Settings from the Setting Files(Resources/Balancing/Buildings)
         Life = (uint) SettingFile.Life;
         Level = (uint) SettingFile.Level;
         ViewDistance = (uint) SettingFile.ViewDistance;
@@ -34,6 +36,7 @@ public class NaniteMine : AbstractBuilding
         UpdateManager.OnUpdate += DoUpdate;
     }
 
+    //Main Method for Mine
     private void NaniteMineWork()
     {
         uint resValue = 0;
@@ -46,14 +49,29 @@ public class NaniteMine : AbstractBuilding
 
     }
 
+    private void NaniteMineEnergyConsumption()
+    {
+        ResourceManager.SubtractResouce(ResourceManager.Resource.ENERGY, 10);
+    }
+
     void DoUpdate()
     {
+        //Timer for Resources per Time(ProductionTime)
         workTimer += Time.deltaTime;
         if (workTimer >= ProductionTime)
         {
             workTimer = 0;
             NaniteMineWork();
         }
+        //calls the method only once
+        if (energyConsumptionBool)
+        {
+            NaniteMineEnergyConsumption();
+            energyConsumptionBool = false;
+        }
+
+        //Destroy this Gameobject if Life is 0
+        DestroyTheGameObject();
     }
 
     void OnDestroy()

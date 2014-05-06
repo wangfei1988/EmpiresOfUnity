@@ -7,7 +7,9 @@ public class SolarTower : AbstractBuilding
 {
     private Dictionary<uint, uint> SolarWork = new Dictionary<uint, uint>();
 
-    private Dictionary<uint, uint> SolarTowerUpgrade = new Dictionary<uint, uint>(); 
+    private Dictionary<uint, uint> SolarTowerUpgrade = new Dictionary<uint, uint>();
+
+    private bool isAlreadyUsed = true;
 
     private void Start()
     {
@@ -51,7 +53,11 @@ public class SolarTower : AbstractBuilding
 
     private void DoUpdate()
     {
+        if (isAlreadyUsed)
+        {
             SolarTowerWork();
+            this.isAlreadyUsed = false;
+        }
     }
 
     private void OnDestroy()
