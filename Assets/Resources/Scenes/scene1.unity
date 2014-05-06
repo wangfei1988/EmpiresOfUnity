@@ -1766,6 +1766,7 @@ MonoBehaviour:
   - m_Text: Camera
     m_Image: {fileID: 0}
     m_Tooltip: 
+  Prefab_Lifebar: {fileID: 400000, guid: 609e46aba52937c4bbc0c702e7e30664, type: 2}
 --- !u!114 &358951604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5265,6 +5266,32 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1027498801}
+--- !u!1 &1590755777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1590755778}
+  m_Layer: 0
+  m_Name: LifebarContainer
+  m_TagString: LifebarContainer
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1590755778
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1590755777}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.42456961, y: 12.7738857, z: -16.762394}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &1615654618
 GameObject:
   m_ObjectHideFlags: 0
