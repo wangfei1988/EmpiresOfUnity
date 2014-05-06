@@ -47,6 +47,8 @@ public class UnitScript : MonoBehaviour
         }
     }
 
+    private Lifebar LifebarScript;
+
 
     public UnitOptions Options;
     //public O OptionsAs<O>() where O : UnitOptions
@@ -65,6 +67,7 @@ public class UnitScript : MonoBehaviour
 	void Awake () 
     {
         GoodOrEvil = new FoE(goodOrEvil);
+        LifebarScript = ScriptableObject.CreateInstance<Lifebar>();
         switch (unitType)
         {
             case UNITTYPE.Worker:
@@ -101,10 +104,32 @@ public class UnitScript : MonoBehaviour
 		//UpdateManager.OnUpdate += DoUpdate;
         
 	}
+
+
+    /* START &  UPDATE */
     void Start()
     {
         UpdateManager.UNITUPDATE += UpdateManager_UNITUPDATE;
+        UpdateManager.OnUpdate += UpdateLifebar;
     }
+
+    void UpdateManager_UNITUPDATE()
+    {
+        if (unitAnimation) unitAnimation.DoUpdate();
+
+        Options.OptionsUpdate();
+    }
+
+    public void UpdateLifebar()
+    {
+        if (LifebarScript != null)
+        {
+            if(this.gameObject.transform.position != LifebarScript.Position)
+                LifebarScript.Position = gameObject.transform.position;
+        }
+    }
+
+    /* * * * * */
 
     [SerializeField]
     private int life;
@@ -141,7 +166,7 @@ public class UnitScript : MonoBehaviour
         }
     }
     [SerializeField]
-    public float sightWhidth;
+    private float sightWhidth;
     public float SightWidth
     {
         get { return sightWhidth; }
@@ -222,10 +247,22 @@ public class UnitScript : MonoBehaviour
     //    private set;
     //}
 
-    void UpdateManager_UNITUPDATE()
+    /* LIFEBAR START */
+    public void ShowLifebar()
     {
-        if (unitAnimation) unitAnimation.DoUpdate();
-        
-        Options.OptionsUpdate();
+        if (LifebarScript != null)
+        {
+            LifebarScript.Position = gameObject.transform.position;
+            LifebarScript.Activated = true;
+        }
+    }
+
+    /* LIFEBAR END */
+    public void HideLifebar()
+    {
+        if (LifebarScript != null)
+        {
+            LifebarScript.Activated = false;
+        }
     }
 }

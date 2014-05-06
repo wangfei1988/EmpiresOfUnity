@@ -168,7 +168,9 @@ abstract public class UnitOptions : MonoBehaviour
             if (Focus.IsLocked)
                 gameObject.GetComponent<Focus>().Unlock(gameObject);
 
-            Component.Destroy(gameObject.GetComponent<Focus>());
+
+            // Remove Focus
+            DestroyFocus();
         }
     }
     virtual internal void FocussedRightOnGround(Vector3 worldPoint)
@@ -178,7 +180,8 @@ abstract public class UnitOptions : MonoBehaviour
             if (Focus.IsLocked)
                 gameObject.GetComponent<Focus>().Unlock(gameObject);
 
-            Component.Destroy(gameObject.GetComponent<Focus>());
+            // Remove Focus
+            DestroyFocus();
         }
     }
     virtual internal void FocussedLeftOnEnemy(GameObject enemy)
@@ -215,7 +218,7 @@ abstract public class UnitOptions : MonoBehaviour
     {
         
         DoStart();
-   //     OPTIONSlist.Add(10000,"Cancel");
+        //OPTIONSlist.Add(10000,"Cancel");
         testlist.AddRange(OPTIONSlist.Values);
         UNIT = gameObject.GetComponent<UnitScript>();
     }
@@ -261,16 +264,26 @@ abstract public class UnitOptions : MonoBehaviour
         if (IsLockedOnFocus)
         {
             UnlockFocus();
-            if (andDestroyIt == Focus.HANDLING.DestroyFocus) FocusFlag = andDestroyIt;
+            if (andDestroyIt == Focus.HANDLING.DestroyFocus)
+                FocusFlag = andDestroyIt;
         }
-        else if (FocusFlag == Focus.HANDLING.HasFocus) Component.Destroy(gameObject.GetComponent<Focus>());
+        else if (FocusFlag == Focus.HANDLING.HasFocus)
+        {
+            // Remove Focus
+            DestroyFocus();
+        }
     }
     protected bool GotToDoWhatGotToDo = false;
     private void abstract_LEFTRELEASE()
     {
-        gameObject.GetComponent<Focus>().Unlock(gameObject);
-        if (FocusFlag<=0)
-            Component.Destroy(gameObject.GetComponent<Focus>());
+        if (gameObject.GetComponent<Focus>())
+        {
+            gameObject.GetComponent<Focus>().Unlock(gameObject);
+            if (FocusFlag <= 0)
+            {
+                DestroyFocus();
+            }
+        }
         MouseEvents.LEFTRELEASE -= abstract_LEFTRELEASE;
     }
 
@@ -286,5 +299,11 @@ abstract public class UnitOptions : MonoBehaviour
         if (target.gameObject.GetInstanceID() != this.gameObject.GetInstanceID())
             return !TargetIsEnemy(target);
         else return false;
+    }
+
+    protected void DestroyFocus()
+    {
+        Component.Destroy(gameObject.GetComponent<Focus>());
+        gameObject.gameObject.GetComponent<UnitScript>().HideLifebar();
     }
 }

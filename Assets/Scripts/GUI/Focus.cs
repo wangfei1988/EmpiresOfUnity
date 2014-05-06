@@ -60,6 +60,7 @@ public class Focus : MonoBehaviour
             transform.DetachChildren();
             foreach (MarkerScript marker in Marker) marker.Visible = false;
             Component.Destroy(gameObject.GetComponent<Focus>());
+            // todo Destroy other unit's focus
         }   
         else
         {
@@ -167,18 +168,26 @@ public class Focus : MonoBehaviour
     public bool Unlock(GameObject unlockKey)
     {//----------------------------------Releases the Lock to the locked Unit after its ordering process is finished, so other Units can get Focus again....
         //-------------------------------must be called by the Unit whitch has Locked the Focus,givin its own gameObject as parameter for UnlockKey, or the Focus wont be Unlocked...
-        if (unlockKey.GetInstanceID() == Key.GetInstanceID()) { unlockKey.GetComponent<UnitScript>().Options.FocusFlag |= HANDLING.UnlockFocus; Key = null; }
+        if (unlockKey.GetInstanceID() == Key.GetInstanceID())
+        {
+            unlockKey.GetComponent<UnitScript>().Options.FocusFlag |= HANDLING.UnlockFocus;
+            Key = null;
+        }
         return IsLockedToThis;
     }
     private void TryRelease()
     {
         if (masterGameObject.GetInstanceID() != gameObject.GetInstanceID())
+        {
             Component.Destroy(gameObject.GetComponent<Focus>());
+            gameObject.gameObject.GetComponent<UnitScript>().HideLifebar();
+        }
     }
 
     void Update()
     {
-        if (IsLockedToThis) masterGameObject = gameObject; //----gets back the Focus to the LockedUnit if it was mistakenly taken by another Unit 
+        if (IsLockedToThis)
+            masterGameObject = gameObject; //----gets back the Focus to the LockedUnit if it was mistakenly taken by another Unit 
         else TryRelease();//----handels the Focus to another Unit, if another Unit will be clicked
     }
 
@@ -191,8 +200,10 @@ public class Focus : MonoBehaviour
             UpdateManager.OnUpdate -= DoUpdate;
             UNIT.Options.FocusFlag = HANDLING.None;
         }
-        else 
+        else
+        {
             firststart = false;
+        }
 
         
     }
