@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 131e2660297140f43940f53fd68028eb, type: 3}
+  m_Name: BuildingSetting
+  m_EditorClassIdentifier: 
+  Life: 0
+  Level: 0
+  ViewDistance: 0
+  EnergyConsumption: 0
+  ProductionTime: 0
+  Level1Resource: 0
+  Level2Resource: 0
+  Level3Resource: 0
+  Level4Resource: 0
+  Level5Resource: 0

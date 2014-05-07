@@ -16,9 +16,9 @@ public abstract class WeaponObject : MonoBehaviour
     { 
       get { return AMUNITONTYPE.None; } 
     }
-    public virtual Weapon.WEAPON WEAPON
+    public virtual UnitWeapon.WEAPON WEAPON
     {
-        get { return Weapon.WEAPON.None; }
+        get { return UnitWeapon.WEAPON.None; }
     }
     abstract public float MAX_RANGE
     { get; }

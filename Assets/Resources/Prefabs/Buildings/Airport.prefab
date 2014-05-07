@@ -2270,7 +2270,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.4772224, y: -8.86999989, z: -28.1934299}
+  m_LocalPosition: {x: 6.84067345, y: -11.5799999, z: -5.94392872}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400164}
@@ -2406,12 +2406,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  anotherUnitAnimation: {fileID: 0}
-  startYps: 0
+  NextUnitAnimation: {fileID: 0}
   targetYps: 0
-  growingFactor: 0
   GrowingTime: 0
-  timer: 0
   startGrowing: 1
 --- !u!114 &11400002
 MonoBehaviour:
@@ -2428,13 +2425,15 @@ MonoBehaviour:
   IsGroupLeader: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
-  testlist: []
-  unitState: 101
+  optionalStateStrings: []
+  optionalstateIDs: 
+  optionalStates: 
+  PluggedStateExtendingComponents: []
   typename: Airport
   Fabrikat:
   - {fileID: 100000, guid: 1c0bf5a98ada909458c5f15a283110f7, type: 2}
   - {fileID: 100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-  - {fileID: 100000, guid: f70b87d1c4dbb144ba5edff1c592ab4c, type: 2}
+  - {fileID: 100000, guid: a4f8616203b877b4da8fd4f97016251e, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2446,16 +2445,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbf96ea742e5eb45b1c852aedfaa2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 1000
-  goodOrEvil: -1
-  weapon: {fileID: 0}
-  unitAnimation: {fileID: 11400000}
+  unitType: 401
+  goodOrEvil: 1
+  ALARM: 0
   Options: {fileID: 11400002}
-  life: 20000
-  speed: 15
-  resourceFactor: .600000024
-  sightWhidth: .0299999993
-  MovingDirection: {x: 0, y: 0, z: 0}
+  unitAnimation: {fileID: 11400000}
+  weapon: {fileID: 0}
+  life: 10000
+  level: 1
+  sightWidth: 150
+  resourceFactor: 0
   interactingUnits: 
 --- !u!1001 &100100000
 Prefab:

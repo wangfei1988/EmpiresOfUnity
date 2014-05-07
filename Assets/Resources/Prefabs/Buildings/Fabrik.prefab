@@ -85,16 +85,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbf96ea742e5eb45b1c852aedfaa2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 1001
+  unitType: 402
   goodOrEvil: 1
-  weapon: {fileID: 11400004}
-  unitAnimation: {fileID: 11400008}
+  ALARM: 0
   Options: {fileID: 11400002}
-  life: 10000
-  speed: 5
+  unitAnimation: {fileID: 11400008}
+  weapon: {fileID: 11400004}
+  life: 3000
+  level: 1
+  sightWidth: 20
   resourceFactor: 0
-  sightWhidth: 0
-  MovingDirection: {x: 0, y: 0, z: 0}
   interactingUnits: 
 --- !u!114 &11400002
 MonoBehaviour:
@@ -111,8 +111,12 @@ MonoBehaviour:
   IsGroupLeader: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
-  testlist: []
-  unitState: 101
+  optionalStateStrings: []
+  optionalstateIDs: 
+  optionalStates: 
+  PluggedStateExtendingComponents: []
+  CurrentFabrikatNumber: 0
+  CurrentFabrikat: {fileID: 100000, guid: 1c0bf5a98ada909458c5f15a283110f7, type: 2}
   typename: Fabrik
   Fabrikat:
   - {fileID: 100000, guid: 1c0bf5a98ada909458c5f15a283110f7, type: 2}
@@ -142,12 +146,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  anotherUnitAnimation: {fileID: 0}
-  startYps: 0
+  NextUnitAnimation: {fileID: 0}
   targetYps: 0
-  growingFactor: -1
   GrowingTime: 10
-  timer: 0
   startGrowing: 1
 --- !u!1001 &100100000
 Prefab:

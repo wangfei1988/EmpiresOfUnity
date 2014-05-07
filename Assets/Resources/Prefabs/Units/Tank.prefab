@@ -104,10 +104,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  anotherUnitAnimation: {fileID: 0}
+  NextUnitAnimation: {fileID: 11400002}
   TransformToFace: {fileID: 0}
   faceMovingDirection: 1
-  faceQamera: 0
+  faceCamera: 0
   faceOtherTransform: 0
   forwardIs: 0
   direction: {x: 0, y: 0, z: 0}
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  anotherUnitAnimation: {fileID: 11400000}
+  NextUnitAnimation: {fileID: 0}
   lockPosition: 1
   position: {x: 0, y: -.150000006, z: 0}
   PositionX: 0
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  anotherUnitAnimation: {fileID: 11400002}
+  NextUnitAnimation: {fileID: 11400000}
   mainTargetTransform: {fileID: 400000}
   otherTargetTransform: {fileID: 0}
   sineRooting: 1
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabSlot: {fileID: 11400000, guid: 56065e66594229e4d8f90e582cd6ff84, type: 2}
   hasArsenal: 0
-  LaserEnergie: 0
+  LaserEnergie: 1000
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -194,7 +194,11 @@ MonoBehaviour:
   IsGroupLeader: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
-  testlist: []
+  optionalStateStrings: []
+  optionalstateIDs: 
+  optionalStates: 
+  PluggedStateExtendingComponents: []
+  _speed: .200000003
   standardYPosition: -.150000006
   WayPoints: []
   unitstateint: 0
@@ -209,16 +213,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbf96ea742e5eb45b1c852aedfaa2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 0
+  unitType: 1
   goodOrEvil: 1
-  weapon: {fileID: 11400006}
-  unitAnimation: {fileID: 11400004}
+  ALARM: 0
   Options: {fileID: 11400008}
+  unitAnimation: {fileID: 11400004}
+  weapon: {fileID: 11400006}
   life: 800
-  speed: .200000003
+  level: 1
+  sightWidth: 50
   resourceFactor: 0
-  sightWhidth: 0
-  MovingDirection: {x: 0, y: 0, z: 0}
   interactingUnits: 
 --- !u!1001 &100100000
 Prefab:

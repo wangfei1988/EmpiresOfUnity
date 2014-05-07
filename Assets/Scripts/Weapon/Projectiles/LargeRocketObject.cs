@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LargeRocketObject : Rocket {
+[AddComponentMenu("Program-X/Weapons/Amunition/Rockets/Lange Dünne")]
+public class LargeRocketObject : RocketObject {
 
+    private string HitInfo = "";
     public ParticleSystem emission;
-    public string HitInfo = "TESTTESTTES";
     public override float MAX_RANGE
     {
         get { return 1000f; }

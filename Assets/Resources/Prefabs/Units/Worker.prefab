@@ -71,12 +71,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  anotherUnitAnimation: {fileID: 0}
+  NextUnitAnimation: {fileID: 0}
   TransformToFace: {fileID: 0}
   faceMovingDirection: 0
-  faceQamera: 1
+  faceCamera: 1
   faceOtherTransform: 0
-  forwardIs: 4
+  forwardIs: 0
   direction: {x: 0, y: 0, z: 0}
 --- !u!114 &11400002
 MonoBehaviour:
@@ -93,7 +93,11 @@ MonoBehaviour:
   IsGroupLeader: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
-  testlist: []
+  optionalStateStrings: []
+  optionalstateIDs: 
+  optionalStates: 
+  PluggedStateExtendingComponents: []
+  _speed: .100000001
   standardYPosition: .200000003
   WayPoints: []
   unitstateint: 0
@@ -113,16 +117,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbf96ea742e5eb45b1c852aedfaa2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 1
+  unitType: 101
   goodOrEvil: 1
-  weapon: {fileID: 0}
-  unitAnimation: {fileID: 11400000}
+  ALARM: 0
   Options: {fileID: 11400002}
+  unitAnimation: {fileID: 11400000}
+  weapon: {fileID: 0}
   life: 150
-  speed: .200000003
+  level: 1
+  sightWidth: 30
   resourceFactor: 0
-  sightWhidth: 0
-  MovingDirection: {x: 0, y: 0, z: 0}
   interactingUnits: 
 --- !u!212 &21200000
 SpriteRenderer:

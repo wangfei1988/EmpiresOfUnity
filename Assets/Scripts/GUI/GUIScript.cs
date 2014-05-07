@@ -7,7 +7,7 @@ using System.Collections.Generic;
 [AddComponentMenu("Camera-Control/GUIScript")]
 public class GUIScript : MonoBehaviour
 {
-
+    
     public static GUIScript main;
     private static List<string> StaticTextLines = new List<string>();
     public static void AddTextLine(string line)
@@ -161,7 +161,11 @@ public class GUIScript : MonoBehaviour
         UpdateRectangles();
         if (DebugText)
             guiText.text = TextUpdate();
+
+
     }
+
+    
 
     void DoUpdate()
     {
@@ -243,8 +247,8 @@ public class GUIScript : MonoBehaviour
         //if (GUI.Button(new Rect((0 / Scale.x), (0 / Scale.y), (180 / Scale.x), (40 / Scale.y)), guiContent[0])) { Application.Quit(); }
         //if (GUI.Button(new Rect((0 / Scale.x), (60 / Scale.y), (80 / Scale.x), (40 / Scale.y)), guiContent[2])) { }
         //if (GUI.Button(new Rect((100 / Scale.x), (60 / Scale.y), (80 / Scale.x), (40 / Scale.y)), guiContent[4])) { }
-
-        GUI.BeginGroup(new Rect((1718*Scale.x ), (24*Scale.y ), (180 * Scale.x), (100 * Scale.y)));
+        
+        GUI.BeginGroup(new Rect((1718*Scale.x ), (24*Scale.y ), (180 * Scale.x), (160 * Scale.y)));
         if (GUI.Button(new Rect((0 * Scale.x), (0 * Scale.y), (180 * Scale.x), (40 * Scale.y)), mainGUIContent[0])) { Application.Quit(); }
         
         if (GUI.Button(new Rect((0 * Scale.x), (60 * Scale.y), (80 * Scale.x), (40 * Scale.y)), mainGUIContent[1])) 
@@ -256,10 +260,49 @@ public class GUIScript : MonoBehaviour
             Camera.main.GetComponent<Cam>().SwitchCam();
         }
 
+        if (GUI.Button(new Rect((0 * Scale.x), (120 * Scale.y), (47 * Scale.x), (40 * Scale.y)), mainGUIContent[3]))
+        {
+            Camera.main.transform.position = GroundSwitch(Camera.main.transform.position, GROUND.ZERO);
+        }
+        if (GUI.Button(new Rect((68 * Scale.x), (120 * Scale.y), (47 * Scale.x), (40 * Scale.y)), mainGUIContent[4]))
+        {
+            Camera.main.transform.position = GroundSwitch(Camera.main.transform.position, GROUND.ONE);
+        }
+        if (GUI.Button(new Rect((134 * Scale.x), (120 * Scale.y), (47 * Scale.x), (40 * Scale.y)), mainGUIContent[5]))
+        {
+            Camera.main.transform.position = GroundSwitch(Camera.main.transform.position, GROUND.TWO);
+        }
         GUI.enabled = true;
         GUI.EndGroup();
     }
 
+    public enum GROUND : int
+    {
+        ZERO = 0,
+        ONE = 1,
+        TWO = 2,
+    }
+    public static GROUND CurrentGround = GROUND.ZERO;
+    private float GetGroundOffSet(GROUND ground)
+    {
+        switch (ground)
+        {
+            case GROUND.ZERO:
+                return 0f;
+            case GROUND.ONE:
+                return -1000;
+            case GROUND.TWO:
+                return 1000;
+        }
+        return 2000;
+    }
+
+    private Vector3 GroundSwitch(Vector3 actualCamPosition, GROUND newGround)
+    {
+        actualCamPosition.x += GetGroundOffSet(newGround) - GetGroundOffSet(CurrentGround);
+        CurrentGround = newGround;
+        return actualCamPosition;
+    }
 
     private string TextUpdate()
     {

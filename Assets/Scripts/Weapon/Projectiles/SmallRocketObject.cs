@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SmallRocketObject : Rocket
+[AddComponentMenu("Program-X/Weapons/Amunition/Rockets/Kurze Dicke")]
+public class SmallRocketObject : RocketObject
 {
-    private string HITinfo=":::::::::::::::::::";
+    private string HITinfo="";
     public const int DAMAGE = 500;
-    public const float EXPLOSION_RADIUS = 100f;
+    public const float EXPLOSION_RADIUS = 10f;
     public override float MAX_RANGE
     {
         get { return 100f; }
@@ -20,7 +21,8 @@ public class SmallRocketObject : Rocket
     private bool IsExploading = false;
     public Vector3 A,B;
     public float Z,z;
-    
+    public AudioClip BOOMsound;
+
     public override bool LaunchButton
     {
         get 
@@ -117,9 +119,9 @@ public class SmallRocketObject : Rocket
     }
     private UnitScript Ground(Collider hit)
     {
-        return (hit.gameObject.layer == ((int)EnumProvider.LAYERNAMES.Ignore_Raycast)) ? null : hit.GetComponent<UnitScript>();
+        UnitScript returner = (hit.gameObject.layer == ((int)EnumProvider.LAYERNAMES.Ignore_Raycast)) ? null : hit.GetComponent<UnitScript>();
         GUIScript.AddTextLine(HITinfo);
-        if ((hit.gameObject.layer==(int)EnumProvider.LAYERNAMES.Units)&&(!hit.isTrigger)&&(hit.gameObject.GetInstanceID()!=this.gameObject.GetInstanceID())) 
+        if ((returner==null)&&(!hit.isTrigger)&&(returner.IsMySelf(this.gameObject))) 
             return hit.gameObject.GetComponent<UnitScript>();
         else if(hit.gameObject.layer==(int)EnumProvider.LAYERNAMES.Ignore_Raycast)
         {
@@ -140,7 +142,7 @@ public class SmallRocketObject : Rocket
 
     void OnTriggerEnter(Collider hit)
     {
-    //  if(!hit.isTrigger)  HITinfo = hit.name + hit.gameObject.GetInstanceID() + " Hit at: " + this.gameObject.transform.position.ToString();
+      if(!hit.isTrigger)  HITinfo = hit.name + hit.gameObject.GetInstanceID() + " Hit at: " + this.gameObject.transform.position.ToString();
         if (!IsExploading)
         {
             if (IsEnemy(HitUNIT = Ground(hit)))
@@ -149,14 +151,17 @@ public class SmallRocketObject : Rocket
 
 
             }
-        }
-
-        //      
+        }       
     }
 
     private float Exploade(float radius)
     {
-        IsExploading = true;
+        if (!IsExploading)
+        {
+            gameObject.GetComponent<AudioSource>().PlayOneShot(BOOMsound);
+            IsExploading = true;
+        }
+
         if (radius <= 0f) GameObject.Destroy(this.gameObject);
         else if (radius < 0.01f)
         {
@@ -181,7 +186,7 @@ public class SmallRocketObject : Rocket
             if (IsEnemy(Ground(hit)))
             {
                 HITinfo = HitUNIT.name + " " + HitUNIT.gameObject.GetInstanceID() + " Hit at: " + hit.collider.ClosestPointOnBounds(this.gameObject.transform.position);
-                HitUNIT.Options.IsUnderAttack = true;
+                
                 HitUNIT.Hit((int)(DAMAGE / ((EXPLOSION_RADIUS / this.gameObject.transform.localScale.x) - (this.gameObject.collider as SphereCollider).radius)));
             }
         }
@@ -213,11 +218,11 @@ public class SmallRocketObject : Rocket
     public Vector3 RotatorAmount;
 
 
-    public override Weapon.WEAPON WEAPON
+    public override UnitWeapon.WEAPON WEAPON
     {
         get
         {
-            return Weapon.WEAPON.RocketLauncher;
+            return UnitWeapon.WEAPON.RocketLauncher;
         }
     }
 

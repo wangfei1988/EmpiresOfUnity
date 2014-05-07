@@ -73,17 +73,17 @@ public class RightClickMenu : MonoBehaviour {
     {
         if (showSIDEgui)
         {                          //            --------------------------------------Menü  an der Seite...
-            string[] SIDEmenuOptions = Unit.Options.GetUnitsSIDEMenuOptions();
+            Object[] SIDEmenuOptions = Unit.Options.GetUnitsSIDEMenuObjects();
             float btnHeight = (40 * ScaleY);
             float zwischenbuttonraum = (20 * ScaleY);
             Rect guiposition;
             guiposition = new Rect(1718 * ScaleX, (210 * ScaleY) - 3 * guiStyle.fontSize, 202 * ScaleX, 360 * ScaleY);
-            GUI.BeginGroup(guiposition, "Build Options for:\n" + Unit.name, guiSIDEstyle);
+            GUI.BeginGroup(guiposition, Unit.name+"'s Objects:", guiSIDEstyle);
             for (int i = 0; i < SIDEmenuOptions.Length; i++)
             {               
-                if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + i * (btnHeight + zwischenbuttonraum), (180 * ScaleX), btnHeight), SIDEmenuOptions[i]))
+                if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + i * (btnHeight + zwischenbuttonraum), (180 * ScaleX), btnHeight), SIDEmenuOptions[i].name))
                 {
-                    Unit.Options.SetSIDEOption(i);
+                    Unit.Options.SetSIDEObject(SIDEmenuOptions[i]);
                 }
             }
             if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + SIDEmenuOptions.Length * (btnHeight + zwischenbuttonraum), (180 * ScaleX), btnHeight), "Cancel..."))
@@ -97,18 +97,20 @@ public class RightClickMenu : MonoBehaviour {
         if (showGUI)
         {                    //--------------------------------PopUp Menu...
             float btnHeight = (40 * ScaleY);
-            string[] menuOptions = Unit.Options.GetUnitsMenuOptions();
-            Rect guiposition = new Rect(UnitPosition.x, view.height - UnitPosition.y, Pannel.texture.width * ScaleX, (menuOptions.Length + 1) * btnHeight + guiStyle.fontSize);
+       //     string[] menuOptions = Unit.RightClickMenuOptions;
+            EnumProvider.ORDERSLIST[] selected = new EnumProvider.ORDERSLIST[1];
+            EnumProvider.ORDERSLIST[] options = Unit.RightClickMenuOptionStates;
+            Rect guiposition = new Rect(UnitPosition.x, view.height - UnitPosition.y, Pannel.texture.width * ScaleX, (options.Length + 1) * btnHeight + guiStyle.fontSize);
             GUI.BeginGroup(guiposition, "Orders for:\n " + Unit.name, guiStyle);
-            for (int i = 0; i < menuOptions.Length; i++)
+            for (int i = 0; i < options.Length; i++)
             {
-                if (GUI.Button(new Rect(0, guiStyle.fontSize + i * btnHeight, Pannel.texture.width * ScaleX, btnHeight), menuOptions[i], buttonStyle))
+                if (GUI.Button(new Rect(0, guiStyle.fontSize + i * btnHeight, Pannel.texture.width * ScaleX, btnHeight), options[i].ToString(), buttonStyle))
                 {
-                    Unit.Options.GiveOrder(i);
+                    Unit.Options.GiveOrder(options[i]);
                     showGUI = false;
                 }
             }
-            if (GUI.Button(new Rect(0, guiStyle.fontSize + menuOptions.Length * btnHeight, Pannel.texture.width * ScaleX, btnHeight), "Cancel...", buttonStyle))
+            if (GUI.Button(new Rect(0, guiStyle.fontSize + options.Length * btnHeight, Pannel.texture.width * ScaleX, btnHeight), "Cancel...", buttonStyle))
             {
                 showGUI = false;
             }

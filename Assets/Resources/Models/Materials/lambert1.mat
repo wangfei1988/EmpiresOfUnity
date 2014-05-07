@@ -104,7 +104,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .499567479, g: .617647052, b: .612761021, a: 1}
+        second: {r: .0758619308, g: 0, b: 1, a: 1}
       data:
         first:
           name: _FractionColor
@@ -112,7 +112,7 @@ Material:
       data:
         first:
           name: _SpecColor
-        second: {r: .470588207, g: .418613523, b: .128027678, a: 1}
+        second: {r: .558823526, g: .519320488, b: .390354663, a: 1}
       data:
         first:
           name: _ReflectColor

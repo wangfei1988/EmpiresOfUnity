@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400008}
   - 114: {fileID: 11400004}
+  - 114: {fileID: 11400010}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400006}
   m_Layer: 10
@@ -30,7 +31,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -1, y: .200000003, z: 6}
+  m_LocalPosition: {x: -1, y: .200000003, z: 44.4199982}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -47,7 +48,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!65 &6500000
 BoxCollider:
@@ -74,14 +75,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitType: 2
   goodOrEvil: -1
-  weapon: {fileID: 0}
-  unitAnimation: {fileID: 11400004}
+  ALARM: 0
   Options: {fileID: 11400008}
+  unitAnimation: {fileID: 11400004}
+  weapon: {fileID: 11400002}
   life: 150
-  speed: .200000003
+  level: 0
+  sightWidth: 30
   resourceFactor: 0
-  sightWhidth: 0
-  MovingDirection: {x: 0, y: 0, z: 0}
   interactingUnits: 
 --- !u!114 &11400002
 MonoBehaviour:
@@ -109,10 +110,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  anotherUnitAnimation: {fileID: 0}
+  NextUnitAnimation: {fileID: 11400010}
   TransformToFace: {fileID: 0}
   faceMovingDirection: 0
-  faceQamera: 1
+  faceCamera: 1
   faceOtherTransform: 0
   forwardIs: 4
   direction: {x: 0, y: 0, z: 0}
@@ -145,10 +146,44 @@ MonoBehaviour:
   IsGroupLeader: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
-  testlist: []
-  standardYPosition: 0
+  optionalStateStrings: []
+  optionalstateIDs: 
+  optionalStates: 
+  PluggedStateExtendingComponents: []
+  _speed: .100000001
+  standardYPosition: .200000003
   WayPoints: []
-  unitstateint: 0
+  unitstateint: 100
+--- !u!114 &11400010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001f8323199fac945a8d60f7e8c7c3d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 1
+  NextUnitAnimation: {fileID: 0}
+  lockPosition: 1
+  position: {x: 0, y: .200000003, z: 0}
+  PositionX: 0
+  PositionY: 1
+  PositionZ: 0
+  lockRotation: 0
+  rotation: {x: 0, y: 0, z: 0}
+  rotationW: 0
+  RotationX: 0
+  RotationY: 0
+  RotationZ: 0
+  RotationW: 0
+  lockScale: 0
+  scale: {x: 0, y: 0, z: 0}
+  ScaleX: 0
+  ScaleY: 0
+  ScaleZ: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -11,9 +11,12 @@ GameObject:
   - 212: {fileID: 21200000}
   - 65: {fileID: 6500000}
   - 54: {fileID: 5400000}
-  - 114: {fileID: 11400000}
-  - 114: {fileID: 11400002}
+  - 114: {fileID: 11400008}
+  - 114: {fileID: 11400006}
   - 114: {fileID: 11400004}
+  - 114: {fileID: 11400010}
+  - 114: {fileID: 11400002}
+  - 114: {fileID: 11400000}
   m_Layer: 10
   m_Name: RocketMan
   m_TagString: Clickable
@@ -28,8 +31,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -14.8924131, y: 0, z: 78.6219788}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: -1.09000003, y: .200000003, z: 26.1000004}
+  m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!54 &5400000
@@ -45,7 +48,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!65 &6500000
 BoxCollider:
@@ -57,8 +60,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .5234375, y: 1.00000024, z: .200000048}
-  m_Center: {x: 0, y: .500000119, z: 1.1920929e-07}
+  m_Size: {x: 4, y: 8, z: .5}
+  m_Center: {x: 0, y: 4, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,18 +70,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edbf96ea742e5eb45b1c852aedfaa2ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 92d18b47915ad214eab5a0d48ada5122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 1
-  GoodOrEvil: 0
-  weapon: {fileID: 0}
-  unitAnimation: {fileID: 11400004}
-  Options: {fileID: 11400002}
-  life: 150
-  speed: .200000003
-  MovingDirection: {x: 0, y: 0, z: 0}
-  interactingUnits: 
+  Arsenal:
+  - {fileID: 11400000, guid: 49fc66848dac4b74abb5602ed8c16f18, type: 2}
+  - {fileID: 11400002, guid: fe61ee2bf01b0224abd84f2c63b736ee, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -87,17 +84,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72c5f6384aebf6a4d887dd56d54a2b52, type: 3}
+  m_Script: {fileID: 11500000, guid: e487801e6f167184b8b614c08f89a761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UNIT: {fileID: 11400000}
-  IsGroupLeader: 0
-  moveToPoint: {x: 0, y: 0, z: 0}
-  Target: {fileID: 0}
-  testlist: []
-  standardYPosition: .200000003
-  WayPoints: []
-  unitstateint: 0
+  prefabSlot: {fileID: 11400000, guid: 49fc66848dac4b74abb5602ed8c16f18, type: 2}
+  hasArsenal: 1
+  countdown: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,14 +101,89 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd8ff9797310d64b911dca02750f618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsActive: 1
-  anotherUnitAnimation: {fileID: 0}
+  isActive: 1
+  NextUnitAnimation: {fileID: 11400010}
   TransformToFace: {fileID: 0}
   faceMovingDirection: 0
-  faceQamera: 1
+  faceCamera: 1
   faceOtherTransform: 0
   forwardIs: 4
   direction: {x: 0, y: 0, z: 0}
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cdbcffe449cab44286aec3139397a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UNIT: {fileID: 11400008}
+  IsGroupLeader: 0
+  moveToPoint: {x: 0, y: 0, z: 0}
+  Target: {fileID: 0}
+  optionalStateStrings: []
+  optionalstateIDs: 
+  optionalStates: 
+  PluggedStateExtendingComponents: []
+  _speed: .100000001
+  standardYPosition: .200000003
+  WayPoints: []
+  unitstateint: 0
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbf96ea742e5eb45b1c852aedfaa2ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitType: 2
+  goodOrEvil: 1
+  ALARM: 0
+  Options: {fileID: 11400006}
+  unitAnimation: {fileID: 11400004}
+  weapon: {fileID: 11400002}
+  life: 150
+  level: 1
+  sightWidth: 30
+  resourceFactor: 0
+  interactingUnits: 
+--- !u!114 &11400010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001f8323199fac945a8d60f7e8c7c3d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 1
+  NextUnitAnimation: {fileID: 0}
+  lockPosition: 1
+  position: {x: 0, y: .200000003, z: 0}
+  PositionX: 0
+  PositionY: 1
+  PositionZ: 0
+  lockRotation: 0
+  rotation: {x: 0, y: 0, z: 0}
+  rotationW: 0
+  RotationX: 0
+  RotationY: 0
+  RotationZ: 0
+  RotationW: 0
+  lockScale: 0
+  scale: {x: 0, y: 0, z: 0}
+  ScaleX: 0
+  ScaleY: 0
+  ScaleZ: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -139,7 +206,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 0eec08c6fb70b654f9b52f1aeacb0821, type: 3}
-  m_Color: {r: .45588237, g: .63975668, b: 1, a: 1}
+  m_Color: {r: 0, g: .337931156, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NoWeapon : Weapon {
+public class NoWeapon : UnitWeapon {
 
 
         public override void Engage(GameObject targetUnit)

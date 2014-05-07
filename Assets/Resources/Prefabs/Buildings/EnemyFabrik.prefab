@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -99.3820801, y: -5.30999994, z: 129.846802}
+  m_LocalPosition: {x: -20.7671795, y: -5.38000011, z: 107.469536}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,16 +84,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbf96ea742e5eb45b1c852aedfaa2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 1001
+  unitType: 402
   goodOrEvil: -1
-  weapon: {fileID: 0}
-  unitAnimation: {fileID: 11400004}
+  ALARM: 0
   Options: {fileID: 11400002}
-  life: 10000
-  speed: 5
+  unitAnimation: {fileID: 11400004}
+  weapon: {fileID: 0}
+  life: 3000
+  level: 1
+  sightWidth: 20
   resourceFactor: 0
-  sightWhidth: 0
-  MovingDirection: {x: 0, y: 0, z: 0}
   interactingUnits: 
 --- !u!114 &11400002
 MonoBehaviour:
@@ -110,8 +110,10 @@ MonoBehaviour:
   IsGroupLeader: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
-  testlist: []
-  unitState: 101
+  optionalStateStrings: []
+  optionalstateIDs: 
+  optionalStates: 
+  PluggedStateExtendingComponents: []
   typename: Fabrik
   Fabrikat:
   - {fileID: 100000, guid: e7c50471ce3ecd34c8ab09871541ab7b, type: 2}
@@ -128,12 +130,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  anotherUnitAnimation: {fileID: 0}
-  startYps: 0
+  NextUnitAnimation: {fileID: 0}
   targetYps: 0
-  growingFactor: 0
   GrowingTime: 0
-  timer: 0
   startGrowing: 1
 --- !u!1001 &100100000
 Prefab:
