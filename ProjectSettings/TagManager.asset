@@ -12,6 +12,8 @@ TagManager:
   - MainGUI
   - Ground
   - Weapon
+  - LifebarContainer
+  - GridObject
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -21,10 +23,10 @@ TagManager:
   Builtin Layer 5: 
   Builtin Layer 6: 
   Builtin Layer 7: 
-  User Layer 8: Weapons
-  User Layer 9: Units
-  User Layer 10: 
-  User Layer 11: 
+  User Layer 8: Rectangles
+  User Layer 9: Weapons
+  User Layer 10: Units
+  User Layer 11: Map
   User Layer 12: 
   User Layer 13: 
   User Layer 14: 
