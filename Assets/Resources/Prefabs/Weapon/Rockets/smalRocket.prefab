@@ -11,7 +11,7 @@ GameObject:
   - 198: {fileID: 19800000}
   - 199: {fileID: 19900000}
   - 114: {fileID: 11400004}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Emission
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,9 +28,9 @@ GameObject:
   - 4: {fileID: 400002}
   - 114: {fileID: 11400000}
   - 135: {fileID: 13500000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: smalRocket
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ GameObject:
   - 212: {fileID: 21200000}
   - 114: {fileID: 11400002}
   - 65: {fileID: 6500000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,24 +108,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46e3dd50b5c811d4f982d021fc5c0832, type: 3}
+  m_Script: {fileID: 11500000, guid: ba938f97e34df484eb7ccf8dfbdcc8bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {x: -605.799988, y: 381.829987, z: 0}
+  Target: {x: 0, y: 0, z: 0}
   A: {x: 0, y: 0, z: 0}
   B: {x: 0, y: 0, z: 0}
   Z: 0
   z: 0
+  BOOMsound: {fileID: 0}
   launch: 0
   timer: 0
-  Duration: 2.5
-  speed: 1
-  SPEED_FACTOR: 1.10000002
-  MAXIMUM_SPEED: 3
-  emission: {fileID: 19800000}
-  rotation: 1.84000003
+  Duration: 0
+  speed: 0
+  SPEED_FACTOR: 0
+  MAXIMUM_SPEED: 0
+  emission: {fileID: 0}
+  rotation: 0
   THROTTLETIME: 8
-  InlineRotation: {x: 0, y: 90, z: 0}
+  InlineRotation: {x: 0, y: 0, z: 0}
   RotatorAmount: {x: 0, y: 0, z: 0}
 --- !u!114 &11400002
 MonoBehaviour:

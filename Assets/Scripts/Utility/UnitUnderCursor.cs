@@ -9,16 +9,15 @@ public class UnitUnderCursor
 
 
 
-    //------------------------------------Non-static stuff, used by an instance which is for updating the statics... 
+
+//------------------------------------Non-static stuff, used by an instance which is for updating the statics... 
     public void Set(GameObject unit)
     {
-
-
         if (unit == null)
         {
+            gameObject = null;
             transform = null;
             UNIT = null;
-            gameObject = null;
         }
         else
         {
@@ -36,10 +35,8 @@ public class UnitUnderCursor
 
         if (gameObject)
             return instanceID != gameObject.GetInstanceID();
-        else return true;
-            //else
-            //    return instanceID != -2;
-      
+        else
+            return true;
     }
 
     public UnitUnderCursor()

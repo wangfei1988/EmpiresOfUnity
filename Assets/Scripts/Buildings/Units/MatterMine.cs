@@ -6,9 +6,11 @@ public class MatterMine : AbstractBuilding
 {
     private Dictionary<uint, uint> MatterWork = new Dictionary<uint, uint>();
     private float workTimer;
+    private bool energyConsumptionBool = true;
 
     private void Start()
     {
+        //Add the Settings from the Setting Files(Resources/Balancing/Buildings)
         Life = (uint)SettingFile.Life;
         Level = (uint)SettingFile.Level;
         ViewDistance = (uint)SettingFile.ViewDistance;
@@ -28,6 +30,7 @@ public class MatterMine : AbstractBuilding
         UpdateManager.OnUpdate += DoUpdate;
     }
 
+    //Main Method for Mine
     private void MatterMineWork()
     {
         uint resValue = 0;
@@ -35,14 +38,30 @@ public class MatterMine : AbstractBuilding
         ResourceManager.AddResouce(ResourceManager.Resource.MATTER, resValue);
     }
 
+    private void MatterMineEnergyConsumption()
+    {
+        ResourceManager.SubtractResouce(ResourceManager.Resource.ENERGY, 10);
+    }
+
+
     void DoUpdate()
     {
+        //Timer for Resources per Time(ProductionTime)
         workTimer += Time.deltaTime;
         if (workTimer >= ProductionTime)
         {
             workTimer = 0;
             MatterMineWork();
         }
+        //calls the method only once
+        if (energyConsumptionBool)
+        {
+            MatterMineEnergyConsumption();
+            this.energyConsumptionBool = false;
+        }
+        
+        //Destroy this Gameobject if Life is 0
+        DestroyTheGameObject();
     }
 
     void OnDestroy()

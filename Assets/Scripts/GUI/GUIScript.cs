@@ -58,6 +58,9 @@ public class GUIScript : MonoBehaviour
 
     public List<GUIContent> mainGUIContent;
 
+    /* Lifebar Prefab */
+    public Transform Prefab_Lifebar;
+
     /* Selection 3D Rectangle */
     private Rect selectionRectangle;
     public Rect SelectionRectangle
@@ -131,8 +134,8 @@ public class GUIScript : MonoBehaviour
         Scale = new Vector2((camera.pixelRect.width / gameObject.guiTexture.texture.width), (camera.pixelRect.height / gameObject.guiTexture.texture.height));
 
 
-   //     gameObject.guiTexture.pixelInset = new Rect(0, -camera.pixelHeight, camera.pixelWidth, camera.pixelHeight);
-    //    if (gameObject.GetComponent<GUIText>() == null) gameObject.AddComponent<GUIText>();
+        //gameObject.guiTexture.pixelInset = new Rect(0, -camera.pixelHeight, camera.pixelWidth, camera.pixelHeight);
+        //if (gameObject.GetComponent<GUIText>() == null) gameObject.AddComponent<GUIText>();
         gameObject.guiText.pixelOffset = new Vector2(-Camera.main.pixelWidth / 2 + 25 * Scale.x, Camera.main.pixelHeight/2 - 80 * Scale.y);
         MapViewArea = new Rect(20 * Scale.x, 20 * Scale.y, 1675 * Scale.x, 1047 * Scale.y);
         MainGuiArea = new Rect(1716 * Scale.x, 20 * Scale.y, 184 * Scale.x, 1047 * Scale.y);
@@ -144,13 +147,13 @@ public class GUIScript : MonoBehaviour
         //guiTexture.guiTexture.border.bottom = (int)(13f * Scale.y);
 
 
-    //    QamAcsess = Camera.main.GetComponent<camScript>();
+        //QamAcsess = Camera.main.GetComponent<camScript>();
 
         MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
         MouseEvents.RIGHTCLICK += MouseEvents_RIGHTCLICK;
         MouseEvents.LEFTRELEASE += MouseEvents_LEFTRELEASE;
+
         UpdateManager.GUIUPDATE += UpdateManager_GUIUPDATE;
-  //      UpdateManager.OnUpdate += DoUpdate;
     }
 
     void UpdateManager_GUIUPDATE()
@@ -165,22 +168,12 @@ public class GUIScript : MonoBehaviour
 
     }
 
-    
+    private void UpdateRectangles()
 
-    void DoUpdate()
     {
-
-
-
-
-
-        //if (animatedCursor) animatedCursor.DoUpdate();
-        //if (scrolling) scrolling.DoUpdate();
-
-
+        FocusSprite.DoUpdate();
+        GroupSprite.DoUpdate();
     }
-
-
 
 
     //private GameObject ClickHitUnit(Ray ray)
@@ -212,33 +205,49 @@ public class GUIScript : MonoBehaviour
     {
         if (hold)
         {
-            //SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, SelectionRectangle.xMin - MousePosition.x, SelectionRectangle.y - MousePosition.y);
             SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, MousePosition.x, MousePosition.y);
         }
         else
         {
             SelectionRectangle = new Rect(MousePosition.x, MousePosition.y, 0, 0);
-
-            if ((NoUnitFocused) && (UnitUnderCursor.UNIT))
-                UnitUnderCursor.gameObject.AddComponent<Focus>();
+            if (!hold)
+                FocusUnit();
         }
     }
 
     void MouseEvents_LEFTRELEASE()
     {
-        SnapSellectangle();
+        SnapSelectionRectangle();
     }
 
     void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
     {
-        if ((!hold) && (NoUnitFocused) && (UnitUnderCursor.UNIT))
-          UnitUnderCursor.gameObject.AddComponent<Focus>();
+        if (!hold)
+            FocusUnit();
     }
 
-    private void SnapSellectangle()
+    private void FocusUnit()
     {
+        if (NoUnitFocused && UnitUnderCursor.UNIT)
+        {
+            UnitUnderCursor.gameObject.AddComponent<Focus>();
+            UnitUnderCursor.UNIT.ShowLifebar();
+        }
+    }
+
+    // Selection finished -> Now Select the Units inside the Area
+    private void SnapSelectionRectangle()
+    {
+        // Get group of selected elements
         SelectedGroup = SelectionSprite.GetComponent<SelectorScript>().SnapSelection();
+
+        // Activate Lifebar at all selected units
+        for (int i = 0; i < SelectedGroup.Count; i++)
+            SelectedGroup[i].GetComponent<UnitScript>().ShowLifebar();
+
+        // Hide selection rectangle
         SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, 0f, 0f);
+
     }
 
     void OnGUI()
@@ -262,47 +271,49 @@ public class GUIScript : MonoBehaviour
 
         if (GUI.Button(new Rect((0 * Scale.x), (120 * Scale.y), (47 * Scale.x), (40 * Scale.y)), mainGUIContent[3]))
         {
-            Camera.main.transform.position = GroundSwitch(Camera.main.transform.position, GROUND.ZERO);
+            Ground.Switch(0);
         }
         if (GUI.Button(new Rect((68 * Scale.x), (120 * Scale.y), (47 * Scale.x), (40 * Scale.y)), mainGUIContent[4]))
         {
-            Camera.main.transform.position = GroundSwitch(Camera.main.transform.position, GROUND.ONE);
+            Ground.Switch(1);
         }
         if (GUI.Button(new Rect((134 * Scale.x), (120 * Scale.y), (47 * Scale.x), (40 * Scale.y)), mainGUIContent[5]))
         {
-            Camera.main.transform.position = GroundSwitch(Camera.main.transform.position, GROUND.TWO);
+            Ground.Switch(2);
         }
         GUI.enabled = true;
         GUI.EndGroup();
     }
 
-    public enum GROUND : int
-    {
-        ZERO = 0,
-        ONE = 1,
-        TWO = 2,
-    }
-    public static GROUND CurrentGround = GROUND.ZERO;
-    private float GetGroundOffSet(GROUND ground)
-    {
-        switch (ground)
-        {
-            case GROUND.ZERO:
-                return 0f;
-            case GROUND.ONE:
-                return -1000;
-            case GROUND.TWO:
-                return 1000;
-        }
-        return 2000;
-    }
 
-    private Vector3 GroundSwitch(Vector3 actualCamPosition, GROUND newGround)
-    {
-        actualCamPosition.x += GetGroundOffSet(newGround) - GetGroundOffSet(CurrentGround);
-        CurrentGround = newGround;
-        return actualCamPosition;
-    }
+    //public enum GROUND : int
+    //{
+    //    ZERO = 0,
+    //    ONE = 1,
+    //    TWO = 2,
+    //}
+    //public static GROUND CurrentGround = GROUND.ZERO;
+    //private float GetGroundOffSet(GROUND ground)
+    //{
+    //    switch (ground)
+    //    {
+    //        case GROUND.ZERO:
+    //            return 0f;
+    //        case GROUND.ONE:
+    //            return -1000;
+    //        case GROUND.TWO:
+    //            return 1000;
+    //    }
+    //    return 2000;
+    //}
+
+    //private Vector3 GroundSwitch(Vector3 actualCamPosition, GROUND newGround)
+    //{
+    //    actualCamPosition.x += GetGroundOffSet(newGround) - GetGroundOffSet(CurrentGround);
+    //    CurrentGround = newGround;
+    //    return actualCamPosition;
+    //}
+
 
     private string TextUpdate()
     {
@@ -314,13 +325,6 @@ public class GUIScript : MonoBehaviour
             if (i < 6) StaticTextLines.RemoveAt(i);
         }
         return textField;
-    }
-
-    private void UpdateRectangles()
-    {
-      //  SelectionSprite.DoUpdate();
-        FocusSprite.DoUpdate();
-        GroupSprite.DoUpdate();
     }
 
 

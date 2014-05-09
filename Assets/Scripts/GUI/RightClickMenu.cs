@@ -73,7 +73,7 @@ public class RightClickMenu : MonoBehaviour {
     {
         if (showSIDEgui)
         {                          //            --------------------------------------Menü  an der Seite...
-            Object[] SIDEmenuOptions = Unit.Options.GetUnitsSIDEMenuObjects();
+            Object[] SIDEmenuOptions = Unit.SellectableObjects;
             float btnHeight = (40 * ScaleY);
             float zwischenbuttonraum = (20 * ScaleY);
             Rect guiposition;
@@ -83,7 +83,7 @@ public class RightClickMenu : MonoBehaviour {
             {               
                 if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + i * (btnHeight + zwischenbuttonraum), (180 * ScaleX), btnHeight), SIDEmenuOptions[i].name))
                 {
-                    Unit.Options.SetSIDEObject(SIDEmenuOptions[i]);
+                    Unit.Sellect(SIDEmenuOptions[i]);
                 }
             }
             if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + SIDEmenuOptions.Length * (btnHeight + zwischenbuttonraum), (180 * ScaleX), btnHeight), "Cancel..."))

@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 
 /*
- * AI to move Objects
+ * AI to  improve the movement of MovingUnits
  */
-[AddComponentMenu("Program-X/UNIT/AI Pilot")]
+[AddComponentMenu("Program-X/UNIT/AI - Pilot")]
 public class Pilot : UnitComponent 
 {
     private const float MIN_LOOKAHEAD = 3f;
     private const float MAX_LOOKAHEAD = 20f;
-
+    private const float Accselerator = 1.0001f;
     private float? lah=0;
     private float LOOKAHEAD
     {
@@ -46,6 +46,7 @@ public class Pilot : UnitComponent
     }
     private SphereCollider mySpace;
     private UnitScript My;
+    public Movability Controlls;
     private bool Triggerd
     {
         get
@@ -60,46 +61,85 @@ public class Pilot : UnitComponent
             
         }
     }
-
     [SerializeField]
     private int triggerd;
-	
+
+
+
+
     public bool IsAForwarder;
-    private bool isAiming = false;
-    public bool IsAiming
+    private bool isHeadin = false;
+    public bool IsHeadin
     {
         get
         {
             if (My.IsAnAirUnit) return true;
-            else return isAiming;
+            else return isHeadin;
         }
         set
         {
-            isAiming = value;
+            isHeadin = value;
         }
     }
-    
+
+    public float Throttle = 0f;
+    public Vector3 Rudder = Vector3.zero;
+    public bool IsAcselerating
+    {
+        get
+        {
+            if (Controlls.IsMoving)
+                return Throttle < 1f;
+            else return false;
+        }
+        set { if (value && !this.gameObject.GetComponent<Movability>().IsMoving)
+            Controlls.IsMoving = true; }
+    }
+
+    private float? MAXIMUM_SPEED = null;
+    public float MAX_SPEED
+    {
+        get
+        {
+            if (MAXIMUM_SPEED == null)
+            {
+                float buffer = Throttle;
+                Throttle = 1f;
+                MAXIMUM_SPEED = Controlls.Speed;
+                Throttle = buffer;
+            }         
+            return MAXIMUM_SPEED.Value;    
+        }
+    }
+
+
+
     void Awake()
     {
+        Controlls = this.gameObject.GetComponent<Movability>();
+        this.ComponentExtendsTheOptionalstateOrder = false;
         My = gameObject.GetComponent<UnitScript>();
         mySpace = this.gameObject.AddComponent<SphereCollider>();
+
     }
 	void Start() 
     {
-       triggerd = 0;
 
+       triggerd = 0;
+       IsAcselerating = true;
        mySpace.isTrigger = true;
        SetRadius(MIN_LOOKAHEAD);
 
        if (My.GetComponent<FaceDirection>()) IsAForwarder = My.GetComponent<FaceDirection>().faceMovingDirection;
        else IsAForwarder = false;
-
-  //     UpdateManager.OnUpdate += DoUpdate;
+       
+       this.PflongeOnUnit();
 	}
 
     public override void DoUpdate()
     {
-        if (IsAiming) IsAiming = Aim();
+        if (IsAcselerating) IsAcselerating = ((Throttle += Accselerator)<1);
+        if (IsHeadin) IsHeadin = WatchTarget();
         if (!Triggerd)
         {
             if (LookAheadDistance > LOOKAHEAD) SetRadius(LOOKAHEAD);
@@ -138,8 +178,8 @@ public class Pilot : UnitComponent
             && (other.gameObject.layer != 9)
             && (!My.InteractingUnits.Contains(other.gameObject.GetInstanceID())))
             {
-                (My.Options as MovingUnitOptions).MovingDirection += ((My.transform.position - other.transform.position).normalized / (mySpace.radius / 2));
-                (My.Options as MovingUnitOptions).MovingDirection.Normalize();
+                Controlls.Rudder += ((My.transform.position - other.transform.position).normalized / (mySpace.radius / 2));
+            //    Controlls.MovingDirection.Normalize();
                 Triggerd = true;
                 ShrinkRradius(Vector3.Distance(other.ClosestPointOnBounds(gameObject.transform.position), gameObject.transform.position) * 0.95f);
             }
@@ -154,11 +194,11 @@ public class Pilot : UnitComponent
             && (other.gameObject.layer != 9)
             && (!My.InteractingUnits.Contains(other.gameObject.GetInstanceID())))
             {
-                (My.Options as MovingUnitOptions).MovingDirection += ((My.transform.position - other.gameObject.transform.position).normalized / (LookAheadDistance * 5));
+                Controlls.Rudder += ((My.transform.position - other.gameObject.transform.position).normalized / (LookAheadDistance * 5));
                 //      My.MovingDirection.Normalize();
                 Triggerd = true;
                 ShrinkRradius(Vector3.Distance(other.ClosestPointOnBounds(gameObject.transform.position), gameObject.transform.position));
-                IsAiming = false;
+                IsHeadin = false;
             }
         }
     }
@@ -168,21 +208,24 @@ public class Pilot : UnitComponent
         if ((other.gameObject.layer != 2))// || (My.IsAnAirUnit))
         {
             if (other.gameObject.layer != 9)
-                IsAiming = true;
+                IsHeadin = true;
         }
     }
 
-    private bool Aim()
+    private bool WatchTarget()
     {
-        Vector3 targetDirection = (My.Options.MoveToPoint - My.transform.position).normalized;
-        if (Vector3.Distance((My.Options as MovingUnitOptions).MovingDirection, targetDirection) > 0.005f)
-            (My.Options as MovingUnitOptions).MovingDirection = ((My.Options as MovingUnitOptions).MovingDirection + (targetDirection / (mySpace.radius))).normalized;
-        else 
+        Vector3 targetDirection = ((this.Controlls.MoveToPoint - My.transform.position).normalized / (mySpace.radius));
+        if (Vector3.Distance(Controlls.MovingDirection, targetDirection) > 0.0005f)
         {
-            (My.Options as MovingUnitOptions).MovingDirection = targetDirection;
-            return false;
+            this.Controlls.Rudder = targetDirection;
+            return true;
         }
-        return true;
+        else
+        {
+            Controlls.MovingDirection = Controlls.MoveToPoint;
+            Controlls.Rudder = Vector3.zero;
+        }
+            return false;
     }
 
     void OnDestroy()
@@ -191,5 +234,10 @@ public class Pilot : UnitComponent
         Component.Destroy(gameObject.GetComponent<SphereCollider>());
 
     //    UpdateManager.OnUpdate -= DoUpdate;
+    }
+
+    protected override EnumProvider.ORDERSLIST on_UnitStateChange(EnumProvider.ORDERSLIST stateorder)
+    {
+        return stateorder;
     }
 }

@@ -1,18 +1,3133 @@
 Initialize engine version: 4.3.4f1 (e444f76e01cd)
 GfxDevice: creating device client; threaded=1
 Direct3D:
-    Version:  Direct3D 9.0c [nvumdshim.dll 9.18.13.3221]
-    Renderer: Intel(R) HD Graphics 4000
+    Version:  Direct3D 9.0c [igdumd32.dll 8.15.10.2761]
+    Renderer: Intel(R) HD Graphics 3000
     Vendor:   Intel
-    VRAM:     944 MB (via DXGI)
+    VRAM:     880 MB (via DXGI)
     Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 INTZ=1 RAWZ=0 NULL=1 RESZ=1 SlowINTZ=0
 Begin MonoManager ReloadAssembly
+<<<<<<< HEAD
 Platform assembly: C:\Users\Kalle\Documents\GitHub\EmpiresOfUnity\testrun_Data\Managed\UnityEngine.dll (this message is harmless)
 Loading C:\Users\Kalle\Documents\GitHub\EmpiresOfUnity\testrun_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: C:\Users\Kalle\Documents\GitHub\EmpiresOfUnity\testrun_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\Users\Kalle\Documents\GitHub\EmpiresOfUnity\testrun_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 - Completed reload, in  0.053 seconds
+=======
+Platform assembly: C:\Users\Domi\Documents\GitHub\EmpiresOfUnity\testrun_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Domi\Documents\GitHub\EmpiresOfUnity\testrun_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Domi\Documents\GitHub\EmpiresOfUnity\testrun_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Domi\Documents\GitHub\EmpiresOfUnity\testrun_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+- Completed reload, in  0.051 seconds
+>>>>>>> b59eef1507a9f2c1aa8c00f08640d3baa945aa5f
 desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
 <RI> Initializing input.
+XInput1_3.dll not found.
 <RI> Input initialized.
+<<<<<<< HEAD
 Platform assembly: C:\Users\Kalle\Documents\GitHub\EmpiresOfUnity\testrun_Data\Managed\System.dll (this message is harmless)
+=======
+Platform assembly: C:\Users\Domi\Documents\GitHub\EmpiresOfUnity\testrun_Data\Managed\System.dll (this message is harmless)
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Focus.Unlock (UnityEngine.GameObject unlockKey) [0x00000] in <filename unknown>:0 
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Focus.Unlock (UnityEngine.GameObject unlockKey) [0x00000] in <filename unknown>:0 
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Focus.Unlock (UnityEngine.GameObject unlockKey) [0x00000] in <filename unknown>:0 
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Focus.IsEnemy (UnityEngine.GameObject otherUnit) [0x00000] in <filename unknown>:0 
+  at Focus.MouseEvents_LEFTCLICK (Ray qamRay, Boolean hold) [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) MouseEvents/LeftClick:invoke_void__this___Ray_bool (UnityEngine.Ray,bool)
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Can't destroy Transform component of 'EnemyTank'. If you want to destroy the game object, please call 'Destroy' on the game object instead. Destroying the transform component is not allowed.
+ 
+(Filename:  Line: 1113)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Can't destroy Transform component of 'EnemyTank'. If you want to destroy the game object, please call 'Destroy' on the game object instead. Destroying the transform component is not allowed.
+ 
+(Filename:  Line: 1113)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:InternalGetGameObject ()
+  at UnityEngine.Component.get_gameObject () [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.set_Visible (Boolean value) [0x00000] in <filename unknown>:0 
+  at LaserWeaponObject.Engage () [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (Vector3 targetPoint) [0x00000] in <filename unknown>:0 
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Can't destroy Transform component of 'EnemyTank'. If you want to destroy the game object, please call 'Destroy' on the game object instead. Destroying the transform component is not allowed.
+ 
+(Filename:  Line: 1113)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Can't destroy Transform component of 'EnemyTank'. If you want to destroy the game object, please call 'Destroy' on the game object instead. Destroying the transform component is not allowed.
+ 
+(Filename:  Line: 1113)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at LightLaser.Engage (UnityEngine.GameObject targetUnit) [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.get_IsAttacking () [0x00000] in <filename unknown>:0 
+  at GroundUnitOptions.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UnitOptions.OptionsUpdate () [0x00000] in <filename unknown>:0 
+  at UnitScript.UpdateManager_UNITUPDATE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at UpdateManager.UpdateUnits () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Focus.Unlock (UnityEngine.GameObject unlockKey) [0x00000] in <filename unknown>:0 
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Focus.Unlock (UnityEngine.GameObject unlockKey) [0x00000] in <filename unknown>:0 
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Focus.Unlock (UnityEngine.GameObject unlockKey) [0x00000] in <filename unknown>:0 
+  at UnitOptions.abstract_LEFTRELEASE () [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at (wrapper delegate-invoke) UpdateManager/UnitUpdates:invoke_void__this__ ()
+  at MouseEvents.triggerEvents (System.Boolean[] trigger) [0x00000] in <filename unknown>:0 
+  at MouseEvents.GetMouseState () [0x00000] in <filename unknown>:0 
+  at MouseEvents.DoUpdate () [0x00000] in <filename unknown>:0 
+  at UpdateManager.UpdateMouse () [0x00000] in <filename unknown>:0 
+  at UpdateManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+>>>>>>> b59eef1507a9f2c1aa8c00f08640d3baa945aa5f

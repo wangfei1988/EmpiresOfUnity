@@ -22,14 +22,27 @@ public class WingsAndJets : UnitComponent
     public OPTIONS flightState=OPTIONS.LandOnGround;
 
 
-
+    public Movability Movement;
     public GroundUnitOptions Options;
     public Pilot pilot;
+    [SerializeField]
+    private EnumProvider.DIRECTION face;
+    public EnumProvider.DIRECTION Face
+    {
+        get
+        {
+            return this.gameObject.GetComponent<FaceDirection>().forwardIs = face;
+        }
+        set
+        {
+                this.gameObject.GetComponent<FaceDirection>().forwardIs = face = value;
+        }
+    }
     public EnumProvider.DIRECTION Forward;
     [SerializeField]
     private float MAX_SPEED = 3f;
     [SerializeField]
-    private float START_SPEED = 0.1f;
+    private float JET_SPEED = 0.1f;
     [SerializeField]
     private float SPEED_FACTOR = 1.05f;
  //   private float speed=0.1f;
@@ -130,46 +143,104 @@ public class WingsAndJets : UnitComponent
             pilot = this.gameObject.GetComponent<Pilot>();
             if (!this.GetComponent<FaceDirection>())
                 this.gameObject.AddComponent<FaceDirection>();
+            Face = EnumProvider.DIRECTION.forward;
             Forward = this.gameObject.GetComponent<FaceDirection>().forwardIs;
-            Speed = START_SPEED;
+            Speed = JET_SPEED;
+            lastA = Forward;
+            lastB = Face;
+            timerA = timerB = 0f;
+            this.PflongeOnUnit(System.Enum.GetValues(typeof(OPTIONS)));
+            lerpTime = 2.5f;
         }
     }
     public float mische = 1;
+    private float Mische
+    {
+        get { return mische / 1000; }
+        set { mische = value * 1000; }
+    }
+
+    public float lerpTime=2.5f;
+    public bool fading
+    {
+        get { return (timerA / lerpTime < 1f)||(timerB/lerpTime < 1f); }
+    }
+    public float timerA,timerB;
+    public Vector3 A, B;
+    EnumProvider.DIRECTION lastA, lastB;
+    public float Speed_Height_Relation = 10;
+
+    public Vector3 fade(EnumProvider.DIRECTION a,bool rotationFade)
+    {
+        if (rotationFade)
+        {
+            if (lastB != a)
+            {
+                timerB = 0f;
+                lastB = a;
+            }
+            if (fading)
+            {
+                timerB += Time.deltaTime;
+                B = GetDirection(a);
+                return Vector3.Slerp(GetDirection(lastB), B, Mathf.Clamp01(timerB / lerpTime));
+            }
+            else return B;
+        }
+        else
+        {
+            if (lastA != a)
+            {
+                timerA = 0f;
+                lastA = a;
+            }
+            if (fading)
+            {
+                timerA += Time.deltaTime;
+                A = GetDirection(a);
+                return Vector3.Lerp(GetDirection(lastA), GetDirection(a), Mathf.Clamp01(timerA / lerpTime));
+            }
+            else
+                return A;
+        }
+    }
+
     public bool Throttle()
     {
         if (IsAccselerating)
         {
-            START_SPEED *= SPEED_FACTOR;
+            JET_SPEED *= SPEED_FACTOR;
        //     Options.standardYPosition = Options.Speed * 10;
 
         }
 
+       
+    //    Vector3 direction = GetDirection(this.gameObject.GetComponent<FaceDirection>().forwardIs) * mische; ;
 
-        Vector3 direction = GetDirection(this.gameObject.GetComponent<FaceDirection>().forwardIs) * mische; ;
+    this.gameObject.transform.position += (fade(Forward,false)  +  ( fade(Face,true) * Mische) ).normalized * JET_SPEED;
+        //switch (Forward)
+        //{
+        //    case EnumProvider.DIRECTION.forward:
+        //        this.gameObject.transform.position += (this.gameObject.transform.forward + direction).normalized * Options.Speed;
+        //        break;
+        //    case EnumProvider.DIRECTION.right:
+        //        this.gameObject.transform.position += (this.gameObject.transform.right + direction).normalized * Options.Speed;
+        //        break;
+        //    case EnumProvider.DIRECTION.up:
+        //        this.gameObject.transform.position += (this.gameObject.transform.up + direction).normalized * Options.Speed;
+        //        break;
+        //    case EnumProvider.DIRECTION.backward:
+        //        this.gameObject.transform.position += (-this.gameObject.transform.forward+ direction).normalized * Options.Speed;
+        //        break;
+        //    case EnumProvider.DIRECTION.left:
+        //        this.gameObject.transform.position += (-this.gameObject.transform.right+ direction).normalized * Options.Speed;
+        //        break;
+        //    case EnumProvider.DIRECTION.down:
+        //        this.gameObject.transform.position += (-this.gameObject.transform.up + direction).normalized * Options.Speed;
+        //        break;
+        //}
 
-        switch (Forward)
-        {
-            case EnumProvider.DIRECTION.forward:
-                this.gameObject.transform.position += (this.gameObject.transform.forward + direction).normalized * Options.Speed;
-                break;
-            case EnumProvider.DIRECTION.right:
-                this.gameObject.transform.position += (this.gameObject.transform.right + direction).normalized * Options.Speed;
-                break;
-            case EnumProvider.DIRECTION.up:
-                this.gameObject.transform.position += (this.gameObject.transform.up + direction).normalized * Options.Speed;
-                break;
-            case EnumProvider.DIRECTION.backward:
-                this.gameObject.transform.position += (-this.gameObject.transform.forward+ direction).normalized * Options.Speed;
-                break;
-            case EnumProvider.DIRECTION.left:
-                this.gameObject.transform.position += (-this.gameObject.transform.right+ direction).normalized * Options.Speed;
-                break;
-            case EnumProvider.DIRECTION.down:
-                this.gameObject.transform.position += (-this.gameObject.transform.up + direction).normalized * Options.Speed;
-                break;
-        }
-
-        return START_SPEED < MAX_SPEED;
+        return JET_SPEED < MAX_SPEED;
     }
 
     public Vector3 GetDirection(EnumProvider.DIRECTION direct)
@@ -194,7 +265,8 @@ public class WingsAndJets : UnitComponent
 
     public override void DoUpdate()
     {
-        Speed = START_SPEED;
+        this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, (Speed > 0) ? (Speed * Speed_Height_Relation) : (-Speed * Speed_Height_Relation), this.gameObject.transform.position.z);
+        Speed = JET_SPEED;
          IsAccselerating = Throttle();
     }
 

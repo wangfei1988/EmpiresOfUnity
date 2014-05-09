@@ -19,12 +19,12 @@ public class FlyingUnitOptions : GroundUnitOptions
 
     }
 
-    public float Speed_Height_Relation = 10;
+    
 
     internal override void DoUpdate()
     {
 
-        this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, (Speed > 0) ? (Speed * Speed_Height_Relation) : (-Speed * Speed_Height_Relation), this.gameObject.transform.position.z);
+        
         base.DoUpdate();
         Aviator.DoUpdate();
     }

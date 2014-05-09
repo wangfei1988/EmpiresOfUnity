@@ -41,13 +41,7 @@ public class MouseEvents
     //-the "State"-object's class 
     public class MouseState
     {
-        public enum GROUND : int
-        {
-            ZERO=0,
-            ONE=1,
-            TWO=2
-        }
-        public static GROUND CurrentGround;
+
         //--------Properties...
         public MousePosition Position;
         public MouseButtonState LEFT
@@ -85,18 +79,20 @@ public class MouseEvents
                 get { return UnitUnderCursor.UNIT; }
             }
 
-            private Collider[] Ground;
+    //        private Collider[] Ground;
             private Camera Qam;
             private Vector2 position = Vector2.zero;
 
-            private Ray? qamRay;
+            private Ray? camRay;
 
             public Ray AsRay
             {
                 get
                 {
-                    if (qamRay == null) qamRay = Camera.main.ScreenPointToRay(position);
-                    return qamRay.Value;
+                    if (camRay == null) 
+                        camRay = Camera.main.ScreenPointToRay(position);
+
+                    return camRay.Value;
                 }
             }
             private Vector3? worldPointOnMap;
@@ -108,7 +104,7 @@ public class MouseEvents
                     if (worldPointOnMap == null)
                     {
 
-                        if (Ground[(int)GUIScript.CurrentGround].collider.Raycast(AsRay, out groundHit, Camera.main.farClipPlane))
+                        if (Ground.Current.collider.Raycast(AsRay, out groundHit, Camera.main.farClipPlane))
                             worldPointOnMap = groundHit.point;
                     }
                     if (worldPointOnMap != null) return worldPointOnMap.Value;
@@ -119,15 +115,12 @@ public class MouseEvents
             public MousePosition()
             {
                 unitUnderCursor = new UnitUnderCursor();
-                Ground = new Collider[3];
-                Ground[0] = GameObject.FindWithTag("Ground").collider;
-                Ground[1] = GameObject.FindWithTag("SubGround1").collider;
-                Ground[2] = GameObject.FindWithTag("SubGround2").collider;
+
             }
             public void SetNewMousePosition(Vector3 mousePut)
             {
                 worldPointOnMap = null;
-                qamRay = null;
+                camRay = null;
                 position = mousePut;
                 RaycastHit CursorRayHit;
 

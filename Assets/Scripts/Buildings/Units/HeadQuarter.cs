@@ -1,11 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HQ : MonoBehaviour 
+public class HeadQuarter : MonoBehaviour 
 {
-    //Stats
-    public float headQuarterLife = 1;
-    public int headQuarterLevel = 1;
+    void Start()
+    {
 
+    }
 
+    void DoUpdate()
+    {
+
+    }
+
+    void OnDestroy()
+    {
+        
+    }
 }

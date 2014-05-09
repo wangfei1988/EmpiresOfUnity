@@ -18,7 +18,7 @@ GameObject:
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400008}
   - 114: {fileID: 11400006}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: EnemyTank
   m_TagString: Clickable
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -77.4495621, y: -.157837525, z: 126.500648}
+  m_LocalPosition: {x: -45.6366882, y: -.150000006, z: 119.265236}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -191,7 +191,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400010}
-  IsGroupLeader: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
   optionalStateStrings: []
@@ -199,10 +198,12 @@ MonoBehaviour:
   optionalStates: 
   PluggedStateExtendingComponents: []
   _speed: .200000003
+  Movement: {fileID: 0}
   standardYPosition: -.150000006
   WayPoints:
   - {x: -140, y: -.150000006, z: 140}
   - {x: 140, y: -.150000006, z: 140}
+  IsGroupLeader: 0
   unitstateint: 20
 --- !u!114 &11400010
 MonoBehaviour:

@@ -9,7 +9,7 @@ public class UnitScript : MonoBehaviour
 
     //--- Type-Handling stuff:
     //###############################################################################
-    public enum UNITTYPE : int  //----------- The List Of ALL Unit-Types in Game
+    public enum UNITTYPE : int  //-The List Of ALL Unit-Types in Game
     {
         //--- All Ground Units:
         Tank = EnumProvider.UNITCLASS.GROUND_UNIT + 1,
@@ -20,7 +20,7 @@ public class UnitScript : MonoBehaviour
 
         //--- All Flying Units:
         JetFighter = EnumProvider.UNITCLASS.AIR_UNIT + 1,
-
+        JetWing,
         //--- All Non-Production Buildings:
         NaniteMine = EnumProvider.UNITCLASS.BUILDING + 1,
         MatterMine,
@@ -167,8 +167,21 @@ public class UnitScript : MonoBehaviour
     void Start()
     {
         UpdateManager.UNITUPDATE += UpdateManager_UNITUPDATE;
+        UpdateManager.OnUpdate += UpdateLifebar;
     }
 
+    //--- Update function:  
+    //--- the Main-Entrypoint to the Units GameObject UpdateLoop.
+    //--- if everything is set correctly, It' should call all Updates in their
+    //--- right Updateorder in all Subcomponents and Childobjects.
+    //########################################################################################################
+    void UpdateManager_UNITUPDATE()
+    {
+        if (unitAnimation) unitAnimation.DoUpdate();
+
+        Options.OptionsUpdate();
+
+    }
 
     //--- Component-Slots (these Components are accsessed almost everytime, so ithink References to them are very usefull...) 
     public UnitOptions Options; //-Contains everythin whats Optional... different on every Unit-Type
@@ -191,6 +204,36 @@ public class UnitScript : MonoBehaviour
             }
         }
     }
+
+    private Lifebar LifebarScript;
+    public void UpdateLifebar()
+    {
+        if (LifebarScript != null)
+        {
+            if (this.gameObject.transform.position != LifebarScript.Position)
+                LifebarScript.Position = gameObject.transform.position;
+        }
+    }
+    
+    /* LIFEBAR START */
+    public void ShowLifebar()
+    {
+        if (LifebarScript != null)
+        {
+            LifebarScript.Position = gameObject.transform.position;
+            LifebarScript.Activated = true;
+        }
+    }
+    /* LIFEBAR END */
+    public void HideLifebar()
+    {
+        if (LifebarScript != null)
+        {
+            LifebarScript.Activated = false;
+        }
+    }
+
+
 
     [SerializeField]
     private int level;
@@ -299,20 +342,5 @@ public class UnitScript : MonoBehaviour
             else return this.gameObject;
         }
         else return unit;
-    }
-
-
-
-
-    //--- Update function:  
-    //--- the Main-Entrypoint to the Units GameObject UpdateLoop.
-    //--- if everything is set correctly, It' should call all Updates in their
-    //--- right Updateorder in all Subcomponents and Childobjects.
-    //########################################################################################################
-    void UpdateManager_UNITUPDATE()
-    {
-        if (unitAnimation) unitAnimation.DoUpdate();
-        
-        Options.OptionsUpdate();
     }
 }

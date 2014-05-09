@@ -191,7 +191,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400010}
-  IsGroupLeader: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
   optionalStateStrings: []
@@ -199,8 +198,10 @@ MonoBehaviour:
   optionalStates: 
   PluggedStateExtendingComponents: []
   _speed: .200000003
+  Movement: {fileID: 0}
   standardYPosition: -.150000006
   WayPoints: []
+  IsGroupLeader: 0
   unitstateint: 0
 --- !u!114 &11400010
 MonoBehaviour:

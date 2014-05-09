@@ -31,7 +31,16 @@ public class ProductionBuildingOptions : UnitOptions
         CurrentFabrikat = Fabrikat[CurrentFabrikatNumber];
     }
 
-     protected OPTIONS unitState;
+
+
+
+    internal override void DoUpdate()
+    {
+        //todo produce by timer...
+    }
+
+     public OPTIONS unitState;
+
      string[] fabrikatNames;
 
 
@@ -118,8 +127,8 @@ public class ProductionBuildingOptions : UnitOptions
    
     internal override void FocussedLeftOnGround(Vector3 worldPoint)
     {
-        UnlockFocus();
-        Component.Destroy(gameObject.GetComponent<Focus>());       
+        UnlockFocus(Focus.HANDLING.DestroyFocus);
+  //      DestroyFocus();
     }
 
     internal override void MoveAsGroup(GameObject leader)
@@ -132,11 +141,5 @@ public class ProductionBuildingOptions : UnitOptions
     public string typename;
     public List<Object> Fabrikat;
 
-    
-    internal override void DoUpdate()
-    {
-        //todo  produce by timer...
-
-    }
 }
 

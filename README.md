@@ -1,16 +1,38 @@
 Empires Of Unity
 ==============
 
-Empires Of Unity - An Epic Real Time Strategy Game
+Empires Of Unity - An Epic Real Time Strategy (RTS) Game
 
-SAE Hamburg Studyweek Project 2 :)
+Info
+======
 
-Programming (c) by
-  * Kalle Münster
-  * Lucas Novak
-  * Dario D. Müller
+* Name: Empires of Unity
+* University:	SAE Hamburg, Germany
+* Version: 		0.1
+* Date: 	    2014
+* Website: 	http://game-coding.com
+* GitHub: 	https://github.com/DarioDomiDE/EmpiresOfUnity
+* Copyright (c) 2014
 
-Unity Infos
+Credits
+======
+
+Programming by
+  * Kalle Münster (mail?)
+  * Lucas Novak (mail?)
+  * Dario D. Müller (moin@game-coding.com)
+
+Artwork by
+  * x
+  * y
+  * z
+  * w
+
+Sound-Design by
+  * ?
+
+Engine Infos
 ===
 
-Unity Version: 4.3.4
+  * Unity Engine
+  * Version 4.3.4

@@ -1,8 +1,10 @@
 fileFormatVersion: 2
-guid: 46e3dd50b5c811d4f982d021fc5c0832
+guid: ba938f97e34df484eb7ccf8dfbdcc8bb
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - BOOMsound: {fileID: 8300000, guid: 851c2eee0517b344d97509114e30afc2, type: 3}
+  - emission: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

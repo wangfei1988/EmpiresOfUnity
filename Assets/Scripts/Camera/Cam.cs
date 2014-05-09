@@ -94,7 +94,7 @@ public class Cam : MonoBehaviour {
             }
             Ray centerRay = camera.ScreenPointToRay(new Vector3(camera.pixelWidth / 2f, camera.pixelHeight / 2f, 0f));
             RaycastHit groundHit;
-            GameObject.FindGameObjectWithTag("Ground").collider.Raycast(centerRay, out groundHit, camera.farClipPlane);
+            Ground.Current.collider.Raycast(centerRay, out groundHit, camera.farClipPlane);
             gameObject.transform.position = buffer;
 
             Vector3 newDirection = (groundHit.point - gameObject.transform.position).normalized;

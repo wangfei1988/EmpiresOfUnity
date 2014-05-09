@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 64: {fileID: 6400000}
   - 114: {fileID: 11400004}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: EnemyFabrik
   m_TagString: Clickable
   m_Icon: {fileID: 0}
@@ -107,17 +107,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400000}
-  IsGroupLeader: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
   PluggedStateExtendingComponents: []
+  unitState: 101
+  CurrentFabrikatNumber: 0
+  CurrentFabrikat: {fileID: 100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
   typename: Fabrik
   Fabrikat:
-  - {fileID: 100000, guid: e7c50471ce3ecd34c8ab09871541ab7b, type: 2}
   - {fileID: 100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
+  - {fileID: 100000, guid: e7c50471ce3ecd34c8ab09871541ab7b, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

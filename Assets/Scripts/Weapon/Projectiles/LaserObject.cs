@@ -153,7 +153,7 @@ public class LaserObject : WeaponObject
             this.gameObject.GetComponent<AudioSource>().PlayOneShot(sound2);
             GUIScript.AddTextLine(other.gameObject.name + other.gameObject.GetInstanceID().ToString());
             HIT = true;
-            other.collider.GetComponent<UnitScript>().Hit(this.Power); 
+            other.gameObject.GetComponent<UnitScript>().Hit(this.Power); 
         }
     }
 
