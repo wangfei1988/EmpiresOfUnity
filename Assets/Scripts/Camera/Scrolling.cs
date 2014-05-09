@@ -10,7 +10,7 @@ public class Scrolling : MonoBehaviour
     private float SpeedScrollX = 10f;
     private float SpeedScrollY = 0.3f;
     private float SpeedZoom = 25f;
-    private float SpeedRotate = 100f;
+    //private float SpeedRotate = 100f;
 
     /* Vars */
     private bool scrollingAllowed = false;

@@ -95,11 +95,14 @@ public class RightClickMenu : MonoBehaviour {
         }
 
         if (showGUI)
-        {                    //--------------------------------PopUp Menu...
+        {
+            /* [Rightclick] PopUp Menu */
             float btnHeight = (40 * ScaleY);
-       //     string[] menuOptions = Unit.RightClickMenuOptions;
-            EnumProvider.ORDERSLIST[] selected = new EnumProvider.ORDERSLIST[1];
+
+            //string[] menuOptions = Unit.RightClickMenuOptions;
+            //EnumProvider.ORDERSLIST[] selected = new EnumProvider.ORDERSLIST[1];
             EnumProvider.ORDERSLIST[] options = Unit.RightClickMenuOptionStates;
+
             Rect guiposition = new Rect(UnitPosition.x, view.height - UnitPosition.y, Pannel.texture.width * ScaleX, (options.Length + 1) * btnHeight + guiStyle.fontSize);
             GUI.BeginGroup(guiposition, "Orders for:\n " + Unit.name, guiStyle);
             for (int i = 0; i < options.Length; i++)

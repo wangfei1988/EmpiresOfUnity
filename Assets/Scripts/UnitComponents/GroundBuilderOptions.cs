@@ -170,13 +170,13 @@ public class GroundBuilderOptions : MovingUnitOptions
     }
     public Vector3 ConstructionAreaCenter = Vector3.zero;
 
-    private bool waitngToArive = false;
+    //private bool waitngToArive = false;
     public bool IsBuildingABuildDing
     {
         get { return (bool)BuildingUnderConstruction; }
         set { if (!value) { BuildingUnderConstruction = null; UnderConstruction = value; } }
     }
-    private int BuildingPowerFactor=0;
+    //private int BuildingPowerFactor=0;
     private bool BuildDing()
     {
         if (!IsMoving)

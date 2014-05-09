@@ -121,7 +121,7 @@ public class GridSystem : MonoBehaviour {
         if(this.ShowGridCurrent != this.ShowGrid)
         {
             this.ShowGridCurrent = this.ShowGrid;
-            this.Projector.active = this.ShowGrid;
+            this.Projector.SetActive(this.ShowGrid);
         }
 	}
 

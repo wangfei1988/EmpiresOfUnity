@@ -324,7 +324,7 @@ abstract public class UnitOptions : MonoBehaviour
         for (int i = extensions.Length-1; i >= 0 ; i--)
         {
             EnumProvider.ORDERSLIST KEY = (EnumProvider.ORDERSLIST)extensions[i];
-            string VALUE = System.Enum.GetName(typeof(EnumProvider.ORDERSLIST), extensions[i]);
+            //string VALUE = System.Enum.GetName(typeof(EnumProvider.ORDERSLIST), extensions[i]);
             if (KEY != EnumProvider.ORDERSLIST.Cancel)
             {
                 OptionalStatesOrder.Remove((int)KEY);

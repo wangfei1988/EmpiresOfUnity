@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
+/*
 public class FocusRectangleObject : MonoBehaviour {
 
 
@@ -68,10 +68,6 @@ public class FocusRectangleObject : MonoBehaviour {
         foreach (MarkerScript marker in Focus.Marker) marker.DoUpdate();
     }
 
-    void OnDestroy()
-    {
- //       UpdateManager.OnUpdate -= DoUpdate;
-    }
-
 }
 
+*/

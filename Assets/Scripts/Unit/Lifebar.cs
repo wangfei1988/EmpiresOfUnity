@@ -1,9 +1,24 @@
 ﻿using System;
+using System.ComponentModel;
 using UnityEngine;
 using System.Collections;
 
 public class Lifebar : ScriptableObject
 {
+
+    private Vector3 position;
+    private Vector3 Offset = new Vector3(0, 5f, 0);
+
+    public Transform LifebarObject;
+    public static Transform Prefab;
+    public static Transform ParentContainer;
+
+    /* Camera Relative Size */
+    private Camera cam;
+    private Vector3 initialScale;
+    private float Scale = 5.0f;
+
+    /* Properties */
 
     private bool activated = false;
     public bool Activated
@@ -22,9 +37,9 @@ public class Lifebar : ScriptableObject
                     ParentContainer = GameObject.FindGameObjectWithTag("LifebarContainer").transform;
                 if (Prefab == null)
                 {
-                    Prefab = GUIScript.main.GetComponent<GUIScript>().Prefab_Lifebar;
+                    Prefab = GUIScript.main.GetComponent<GUIScript>().PrefabLifebar;
                 }
-                
+
                 if (activated == true)
                     CreateObject();
                 else
@@ -32,8 +47,7 @@ public class Lifebar : ScriptableObject
             }
         }
     }
-    private Vector3 position;
-    private Vector3 Offset = new Vector3(0, 5f, 0);
+
     public Vector3 Position
     {
         set
@@ -52,17 +66,8 @@ public class Lifebar : ScriptableObject
         }
         get { return this.position; }
     }
-    public Transform LifebarObject;
-    public static Transform Prefab;
-    public static Transform ParentContainer;
-
-    /* Camera Relative Size */
-    private Camera cam;
-    private Vector3 initialScale; 
-    private float Scale = 5.0f;
 
     /* Methods */
-
     private void CreateObject()
     {
         this.LifebarObject = GameObject.Instantiate(Prefab, Position, Quaternion.identity) as Transform;

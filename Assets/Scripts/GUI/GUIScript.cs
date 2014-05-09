@@ -1,13 +1,10 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 using System.Collections.Generic;
-
 
 [AddComponentMenu("Camera-Control/GUIScript")]
 public class GUIScript : MonoBehaviour
 {
-    
+
     public static GUIScript main;
     private static List<string> StaticTextLines = new List<string>();
     public static void AddTextLine(string line)
@@ -16,20 +13,16 @@ public class GUIScript : MonoBehaviour
             StaticTextLines.Insert(0,line);
     }
 
-   // public UnitScript.GOODorEVIL PlayerSide;
 
     public UnitGroup SelectedGroup;
-    public int groupCount;
+    public int GroupCount;
     public RightClickMenu RightclickGUI;
 
     private SelectorScript SelectionSprite;
-    private FocusRectangleObject FocusSprite;
     private GroupRectangleScript GroupSprite;
 
     public GUITexture SellectionGUITexture;
-
     public GameObject lastClickedUnit;
-
     private string textField = "";
     public bool DebugText = false;
 
@@ -48,18 +41,17 @@ public class GUIScript : MonoBehaviour
         {
             if (mousePosition == null)
                 return (mousePosition = (Vector2)MouseEvents.State.Position).Value;
-            else
-                return mousePosition.Value;
+            return mousePosition.Value;
         }
     }
     public static Vector2 ScreenSize = new Vector2(Screen.width, Screen.height);
 
     public Vector2 Scale;
 
-    public List<GUIContent> mainGUIContent;
+    public List<GUIContent> MainGuiContent;
 
     /* Lifebar Prefab */
-    public Transform Prefab_Lifebar;
+    public Transform PrefabLifebar;
 
     /* Selection 3D Rectangle */
     private Rect selectionRectangle;
@@ -111,9 +103,9 @@ public class GUIScript : MonoBehaviour
         main = this.gameObject.GetComponent<GUIScript>();
         foreach (GameObject rectangle in GameObject.FindGameObjectsWithTag("Rectangles"))
         {
-            if (rectangle.gameObject.name == "FocusRectangle")
-                FocusSprite = rectangle.GetComponent<FocusRectangleObject>();
-            else if (rectangle.gameObject.name == "SelectionRectangle")
+            //if (rectangle.gameObject.name == "FocusRectangle")
+                //FocusSprite = rectangle.GetComponent<FocusRectangleObject>();
+            if (rectangle.gameObject.name == "SelectionRectangle")
                 SelectionSprite = rectangle.GetComponent<SelectorScript>();
             else if (rectangle.gameObject.name == "GroupRectangle")
                 GroupSprite = rectangle.GetComponent<GroupRectangleScript>();
@@ -159,7 +151,7 @@ public class GUIScript : MonoBehaviour
     void UpdateManager_GUIUPDATE()
     {
         mousePosition = null;
-        groupCount = SelectedGroup.Count;
+        GroupCount = SelectedGroup.Count;
 
         UpdateRectangles();
         if (DebugText)
@@ -171,7 +163,7 @@ public class GUIScript : MonoBehaviour
     private void UpdateRectangles()
 
     {
-        FocusSprite.DoUpdate();
+        //FocusSprite.DoUpdate();
         GroupSprite.DoUpdate();
     }
 
@@ -258,62 +250,32 @@ public class GUIScript : MonoBehaviour
         //if (GUI.Button(new Rect((100 / Scale.x), (60 / Scale.y), (80 / Scale.x), (40 / Scale.y)), guiContent[4])) { }
         
         GUI.BeginGroup(new Rect((1718*Scale.x ), (24*Scale.y ), (180 * Scale.x), (160 * Scale.y)));
-        if (GUI.Button(new Rect((0 * Scale.x), (0 * Scale.y), (180 * Scale.x), (40 * Scale.y)), mainGUIContent[0])) { Application.Quit(); }
+        if (GUI.Button(new Rect((0 * Scale.x), (0 * Scale.y), (180 * Scale.x), (40 * Scale.y)), MainGuiContent[0])) { Application.Quit(); }
         
-        if (GUI.Button(new Rect((0 * Scale.x), (60 * Scale.y), (80 * Scale.x), (40 * Scale.y)), mainGUIContent[1])) 
+        if (GUI.Button(new Rect((0 * Scale.x), (60 * Scale.y), (80 * Scale.x), (40 * Scale.y)), MainGuiContent[1])) 
         {
             scrolling.SwitchScrollingStatus();
         }
-        if (GUI.Button(new Rect((100 * Scale.x), (60 * Scale.y), (80 * Scale.x), (40 * Scale.y)), mainGUIContent[2])) 
+        if (GUI.Button(new Rect((100 * Scale.x), (60 * Scale.y), (80 * Scale.x), (40 * Scale.y)), MainGuiContent[2])) 
         {
             Camera.main.GetComponent<Cam>().SwitchCam();
         }
 
-        if (GUI.Button(new Rect((0 * Scale.x), (120 * Scale.y), (47 * Scale.x), (40 * Scale.y)), mainGUIContent[3]))
+        if (GUI.Button(new Rect((0 * Scale.x), (120 * Scale.y), (47 * Scale.x), (40 * Scale.y)), MainGuiContent[3]))
         {
             Ground.Switch(0);
         }
-        if (GUI.Button(new Rect((68 * Scale.x), (120 * Scale.y), (47 * Scale.x), (40 * Scale.y)), mainGUIContent[4]))
+        if (GUI.Button(new Rect((68 * Scale.x), (120 * Scale.y), (47 * Scale.x), (40 * Scale.y)), MainGuiContent[4]))
         {
             Ground.Switch(1);
         }
-        if (GUI.Button(new Rect((134 * Scale.x), (120 * Scale.y), (47 * Scale.x), (40 * Scale.y)), mainGUIContent[5]))
+        if (GUI.Button(new Rect((134 * Scale.x), (120 * Scale.y), (47 * Scale.x), (40 * Scale.y)), MainGuiContent[5]))
         {
             Ground.Switch(2);
         }
         GUI.enabled = true;
         GUI.EndGroup();
     }
-
-
-    //public enum GROUND : int
-    //{
-    //    ZERO = 0,
-    //    ONE = 1,
-    //    TWO = 2,
-    //}
-    //public static GROUND CurrentGround = GROUND.ZERO;
-    //private float GetGroundOffSet(GROUND ground)
-    //{
-    //    switch (ground)
-    //    {
-    //        case GROUND.ZERO:
-    //            return 0f;
-    //        case GROUND.ONE:
-    //            return -1000;
-    //        case GROUND.TWO:
-    //            return 1000;
-    //    }
-    //    return 2000;
-    //}
-
-    //private Vector3 GroundSwitch(Vector3 actualCamPosition, GROUND newGround)
-    //{
-    //    actualCamPosition.x += GetGroundOffSet(newGround) - GetGroundOffSet(CurrentGround);
-    //    CurrentGround = newGround;
-    //    return actualCamPosition;
-    //}
-
 
     private string TextUpdate()
     {

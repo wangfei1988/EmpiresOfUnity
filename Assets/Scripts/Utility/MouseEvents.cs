@@ -199,15 +199,19 @@ public class MouseEvents
 
     // private functions...
     static internal void Setup(GameObject parrent)
-    {//-------------------------------------------------the startfunction for initialization at startup
+    {
+        //the startfunction for initialization at startup
         gameObject = parrent.GetComponent<GUIScript>();
         State.Position = new MouseState.MousePosition();
     }
 
     static private void GetMouseState()
-    {//--------------------------------------------------------------The main funktion which retrives the Mouseinput... 
+    {
+        // The main funktion which retrives the Mouseinput... 
         State.Position.SetNewMousePosition(Input.mousePosition);
-        MapClick = gameObject.MapViewArea.Contains(State);  //------checks if the click was on the Main-Map or if it was on other GUI elements...
+
+        // checks if the click was on the Main-Map or if it was on other GUI elements...
+        MapClick = gameObject.MapViewArea.Contains(State); 
         for (int i = 0; i < 3; i++)
         {
             trigger[i] = release[i] = false;
@@ -239,6 +243,7 @@ public class MouseEvents
         State.RIGHT = new MouseState.MouseButtonState(ButtonDown[1], hold[1]);
         State.MIDDLE = new MouseState.MouseButtonState(ButtonDown[2], hold[2]);
         State.WHEEL = new MouseState.MouseWheelState((int)(Input.GetAxis("Mouse ScrollWheel") * 100f));
+        
         triggerEvents(trigger);
     }
 
@@ -290,10 +295,9 @@ public class MouseEvents
 
     }
 
-    //-Updating...
+    // Updating...
     static public void DoUpdate()
     {
-        
         GetMouseState();
     }
 
@@ -303,6 +307,7 @@ public class MouseEvents
         WHEEL_UP = 1,
         WHEEL_DOWN = -1
     }
+
 }
 
 

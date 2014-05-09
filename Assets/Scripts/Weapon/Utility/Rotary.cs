@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class rotary : MonoBehaviour {
+public class Rotary : MonoBehaviour {
 
     public float rotation;
     void Start()

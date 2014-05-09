@@ -219,7 +219,6 @@ public class UnitScript : MonoBehaviour
     /* LIFEBAR START */
     public void ShowLifebar()
     {
-        Debug.Log(LifebarScript);
         if (LifebarScript != null)
         {
             LifebarScript.Position = gameObject.transform.position;

@@ -54,13 +54,17 @@ public class Focus : MonoBehaviour
         if (firststart)
         {
             Focusrectangle = this.gameObject;
-            Marker[0] = transform.FindChild("MoveToPoint").gameObject.GetComponent<MarkerScript>();
-            Marker[1] = transform.FindChild("WayPoint").GetComponent<MarkerScript>();
-            Marker[2] = transform.FindChild("AttackPoint").GetComponent<MarkerScript>();
-            transform.DetachChildren();
-            foreach (MarkerScript marker in Marker) marker.Visible = false;
+            Transform mainGUI = GameObject.FindGameObjectWithTag("MainGUI").transform;
+            Marker[0] = mainGUI.FindChild("MoveToPoint").gameObject.GetComponent<MarkerScript>();
+            Marker[1] = mainGUI.FindChild("WayPoint").GetComponent<MarkerScript>();
+            Marker[2] = mainGUI.FindChild("AttackPoint").GetComponent<MarkerScript>();
+            mainGUI.DetachChildren();
+
+            foreach (MarkerScript marker in Marker)
+                marker.Visible = false;
+
             Component.Destroy(gameObject.GetComponent<Focus>());
-            // todo Destroy other unit's focus
+
         }   
         else
         {
@@ -73,12 +77,19 @@ public class Focus : MonoBehaviour
         }
     }
 
+    // Check if Focus is on another gameobject -> than release old-focus
     void DoUpdate()
     {
         if (IsLocked)
+        {
+            // gets back the Focus to the LockedUnit if it was mistakenly taken by another Unit 
             masterGameObject = gameObject;
+        }
         else
+        {
+            // handels the Focus to another Unit, if another Unit will be clicked
             TryRelease();
+        }
     }
 
     void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
@@ -159,8 +170,9 @@ public class Focus : MonoBehaviour
     }
 
     public void Lock()
-    {//---------------------------Locks the Focus to This Actual Focussed Unit, till it is has finished recieving orders,so no other Units Will recive MouseData untill
-        //                        the complete ordering process is recognized...   should be called by the Unit right after an option on the RightclickPopUp has been Clicked
+    {
+        // Locks the Focus to This Actual Focussed Unit, till it is has finished recieving orders,so no other Units Will recive MouseData untill
+        // the complete ordering process is recognized...   should be called by the Unit right after an option on the RightclickPopUp has been Clicked
         if (UNIT.Options.FocusFlag == HANDLING.HasFocus)
         {
             Key = this.gameObject;
@@ -179,32 +191,29 @@ public class Focus : MonoBehaviour
     }
     private void TryRelease()
     {
-        if (masterGameObject.GetInstanceID() != gameObject.GetInstanceID())
+        if (masterGameObject == null || masterGameObject.GetInstanceID() != gameObject.GetInstanceID())
         {
             Component.Destroy(gameObject.GetComponent<Focus>());
             gameObject.gameObject.GetComponent<UnitScript>().HideLifebar();
         }
     }
 
-    void Update()
-    {
-        if (IsLockedToThis)
-            masterGameObject = gameObject; //----gets back the Focus to the LockedUnit if it was mistakenly taken by another Unit 
-        else TryRelease();//----handels the Focus to another Unit, if another Unit will be clicked
-    }
-
     void OnDestroy()
     {
-        if (!firststart)
+        if (firststart)
+        {
+            firststart = false;
+        }
+        else
         {
             MouseEvents.RIGHTCLICK -= MouseEvents_RIGHTCLICK;
             MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
             UpdateManager.OnUpdate -= DoUpdate;
             UNIT.Options.FocusFlag = HANDLING.None;
-        }
-        else
-        {
-            firststart = false;
+
+            // Release Focus
+            masterGameObject = null;
+            TryRelease();
         }
 
         

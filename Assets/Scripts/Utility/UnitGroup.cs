@@ -85,16 +85,16 @@ public class UnitGroup : ScriptableObject
         }
     }
 
-    public void AddUnit(GameObject newGroupMember)
+    public void AddUnit(GameObject newUnit)
     {
         if (MemberUnit.Count == 0)
         {
-            this.GoodOrEvil = newGroupMember.GetComponent<UnitScript>().GoodOrEvil;
-            position = newGroupMember.transform.position;
+            this.GoodOrEvil = newUnit.GetComponent<UnitScript>().GoodOrEvil;
+            position = newUnit.transform.position;
         }
-        if (newGroupMember.GetComponent<UnitScript>().GoodOrEvil == this.GoodOrEvil)
+        if (newUnit.GetComponent<UnitScript>().GoodOrEvil == this.GoodOrEvil)
         {
-            MemberUnit.Add(newGroupMember);
+            MemberUnit.Add(newUnit);
             //if (GroupState != GROUPSTATE.UnderConstruction)
             //    CalculateSize();
         }
@@ -140,10 +140,9 @@ public class UnitGroup : ScriptableObject
                 MemberUnit.Add(unit);
     }
 
-    // todo (check i >= 0) Hahaha :D
     private void fillGroup(List<GameObject> units)
     {
-        for (int i = units.Count-1; i >= 0; i++)
+        for (int i = units.Count-1; i >= 0; i--) // changes i++ to i--
         {
             if (units[i].GetComponent<UnitScript>().GoodOrEvil != this.GoodOrEvil)
                 units.RemoveAt(i);
@@ -154,6 +153,10 @@ public class UnitGroup : ScriptableObject
     public void ResetGroup()
     {
         GroupState = GROUPSTATE.UnderConstruction;
+
+        for (int i = 0; i < MemberUnit.Count; i++)
+            MemberUnit[i].GetComponent<UnitScript>().HideLifebar();
+
         MemberUnit.Clear();
     }
 
@@ -180,7 +183,7 @@ public class UnitGroup : ScriptableObject
             if (rectangle.GetComponent<GroupRectangleScript>())
             {
                 gameObject = rectangle;
-                gameObject.GetComponent<GroupRectangleScript>().SetToGUI(GUIScript.main.GetComponent<GUIScript>());
+                //gameObject.GetComponent<GroupRectangleScript>().SetToGUI(GUIScript.main.GetComponent<GUIScript>());
                 return;
             }
         }

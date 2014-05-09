@@ -6,9 +6,10 @@ public class GroupRectangleScript : MonoBehaviour {
     public GUIScript mainGUI;
     private bool IsSignedIn;
 
-	void Start () 
+	void Start ()
     {
-        IsSignedIn = false;
+        this.mainGUI = GUIScript.main.GetComponent<GUIScript>();
+        this.IsSignedIn = false;
         gameObject.renderer.enabled = false;
 	}
 
@@ -74,10 +75,9 @@ public class GroupRectangleScript : MonoBehaviour {
         }
     }
 
-    public void SetToGUI(GUIScript gui)
-    {
-          mainGUI = gui;
-    }
+    //public void SetToGUI(GUIScript gui)
+    //{
+    //}
 
 
 }

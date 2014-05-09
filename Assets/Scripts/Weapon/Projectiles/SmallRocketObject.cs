@@ -38,7 +38,7 @@ public class SmallRocketObject : RocketObject
                 Visible = true;
 
                 emission.Play();
-                movingDirection = this.gameObject.transform.forward;
+                this.movingDirection = this.gameObject.transform.forward;
 
 
             //    Target = new Vector2(0, 0);
@@ -95,7 +95,7 @@ public class SmallRocketObject : RocketObject
 
     void UpdateManager_WEAPONUPDATES()
     {
-        this.gameObject.transform.GetChild(1).gameObject.GetComponent<rotary>().Rotation(InlineRotation);
+        this.gameObject.transform.GetChild(1).gameObject.GetComponent<Rotary>().Rotation(InlineRotation);
         this.gameObject.transform.Rotate(RotatorAmount.x, RotatorAmount.y, RotatorAmount.z);
         if (LaunchButton) Throttle();
         if (HITinfo != "")
