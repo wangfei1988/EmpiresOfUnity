@@ -720,9 +720,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b011a28e60904684b2f5ff09aeeda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotary: {x: 0, y: 0, z: 0, w: 0}
-  focusScaling: 10
-  directionFacer: {fileID: 0}
 --- !u!1 &200284095
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,9 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-using System;
-
-
-
+﻿
 public class EnumProvider
 {
     public enum UNITCLASS : int
@@ -14,8 +9,6 @@ public class EnumProvider
         BUILDING = 300,
         PRODUCTION_BUILDING = 400,
     }
-
-
 
     public enum ORDERSLIST : int
     {
@@ -34,7 +27,6 @@ public class EnumProvider
         Seek = 55,
         GlideFlight = 60,
         FullThrottle = 65,
-        
 
         Stay = 100,
         StopProduction = 101,
@@ -74,6 +66,7 @@ public class EnumProvider
         up,
         down
     }
+
 }
 
 

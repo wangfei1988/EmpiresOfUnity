@@ -97,10 +97,13 @@ public class GUIScript : MonoBehaviour
         set { RightClickMenu.showGUI = value; }
     }
 
+    void Awake()
+    {
+        main = this.gameObject.GetComponent<GUIScript>();
+    }
+
     void Start()
     {
-        //this.gameObject.AddComponent<UpdateManager>();
-        main = this.gameObject.GetComponent<GUIScript>();
         foreach (GameObject rectangle in GameObject.FindGameObjectsWithTag("Rectangles"))
         {
             //if (rectangle.gameObject.name == "FocusRectangle")

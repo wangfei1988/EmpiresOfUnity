@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class SelectorScript : MonoBehaviour {
 
-    
     public UnitGroup group;
     public Bounds SellectionBounds
     {
@@ -30,6 +28,7 @@ public class SelectorScript : MonoBehaviour {
                 group.BeginGroupFill(unit);
             }
         }
+
         group.EndGroupFill();
         gameObject.collider.enabled = false;
         return group;

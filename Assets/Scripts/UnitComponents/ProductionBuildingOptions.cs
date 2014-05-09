@@ -10,6 +10,7 @@ public class ProductionBuildingOptions : UnitOptions
     {
         get { return EnumProvider.UNITCLASS.PRODUCTION_BUILDING; }
     }
+
     new public enum OPTIONS : int
     {
         Produce = EnumProvider.ORDERSLIST.Produce,
@@ -19,7 +20,7 @@ public class ProductionBuildingOptions : UnitOptions
 
     internal override void DoStart()
     {
-    //    UNIT.Settings = ScriptableObject.CreateInstance(typename) as BuildingSetting;
+        //UNIT.Settings = ScriptableObject.CreateInstance(typename) as BuildingSetting;
         fabrikatNames = new string[Fabrikat.Count + 1];
         foreach (int option in System.Enum.GetValues(typeof(OPTIONS)))
             if (!OptionalStatesOrder.ContainsKey(option)) OptionalStatesOrder.Add(option, ((OPTIONS)option).ToString());
@@ -31,14 +32,11 @@ public class ProductionBuildingOptions : UnitOptions
         CurrentFabrikat = Fabrikat[CurrentFabrikatNumber];
     }
 
-
-
-
     internal override void DoUpdate()
     {
         //todo produce by timer...
     }
-
+    
      public OPTIONS unitState;
 
      string[] fabrikatNames;

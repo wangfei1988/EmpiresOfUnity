@@ -38,7 +38,6 @@ public class RightClickMenu : MonoBehaviour {
 
     void Awake()
     {
-        mainGUI = GameObject.FindGameObjectWithTag("MainGUI").GetComponent<GUIScript>();
         ScaleX = camera.pixelRect.width / gameObject.guiTexture.texture.width;
         ScaleY = camera.pixelRect.height / gameObject.guiTexture.texture.height;
     }
@@ -46,6 +45,7 @@ public class RightClickMenu : MonoBehaviour {
 	void Start ()
     {
         view = camera.pixelRect;
+        mainGUI = GUIScript.main.GetComponent<GUIScript>();
 
         buttonSIDEstyle.fontSize = buttonStyle.fontSize = (int)((float)buttonStyle.fontSize * ScaleX);
         guiStyle.fontSize = (int)((float)guiStyle.fontSize * ScaleX);
@@ -65,8 +65,6 @@ public class RightClickMenu : MonoBehaviour {
         Unit = forUnit;
         UnitPosition = MouseEvents.State.Position;
         showGUI = true;
-
-
     }
 
     void OnGUI()
@@ -78,7 +76,7 @@ public class RightClickMenu : MonoBehaviour {
             float zwischenbuttonraum = (20 * ScaleY);
             Rect guiposition;
             guiposition = new Rect(1718 * ScaleX, (210 * ScaleY) - 3 * guiStyle.fontSize, 202 * ScaleX, 360 * ScaleY);
-            GUI.BeginGroup(guiposition, Unit.name+"'s Objects:", guiSIDEstyle);
+            GUI.BeginGroup(guiposition, Unit.name+"'s Activities:", guiSIDEstyle);
             for (int i = 0; i < SIDEmenuOptions.Length; i++)
             {               
                 if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + i * (btnHeight + zwischenbuttonraum), (180 * ScaleX), btnHeight), SIDEmenuOptions[i].name))
