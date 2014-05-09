@@ -149,6 +149,8 @@ public class Focus : MonoBehaviour
 
     private bool IsEnemy(GameObject otherUnit)
     {
+        if (otherUnit == null)
+            return false;
         return otherUnit.GetComponent<UnitScript>().IsEnemy(UNIT.GoodOrEvil);
     }
     private bool IsOtherUnit(GameObject unit)

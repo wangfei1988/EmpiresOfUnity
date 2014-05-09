@@ -115,6 +115,7 @@ public class UnitScript : MonoBehaviour
 	void Awake() 
     {
         GoodOrEvil = new FoE(goodOrEvil);
+        LifebarScript = ScriptableObject.CreateInstance<Lifebar>();
         switch (unitType)
         {
             case UNITTYPE.Worker:
@@ -218,6 +219,7 @@ public class UnitScript : MonoBehaviour
     /* LIFEBAR START */
     public void ShowLifebar()
     {
+        Debug.Log(LifebarScript);
         if (LifebarScript != null)
         {
             LifebarScript.Position = gameObject.transform.position;
