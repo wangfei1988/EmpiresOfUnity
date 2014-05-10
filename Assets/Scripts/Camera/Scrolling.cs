@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 /*
  * Scrolling of Camera
@@ -8,15 +9,15 @@ public class Scrolling : MonoBehaviour
 {
     /* Member */
     private float SpeedScrollX = 10f;
-    private float SpeedScrollY = 0.3f;
+    private float SpeedScrollY = 10f;
     private float SpeedZoom = 25f;
-    //private float SpeedRotate = 100f;
+    private float SpeedRotate = 100f;
 
     /* Vars */
     private bool scrollingAllowed = false;
     private GUIScript mainGUI;
 
-  //  private Transform camPoint;
+    private Transform camPoint;
 
     /* Properties */
 
@@ -24,7 +25,7 @@ public class Scrolling : MonoBehaviour
     void Start()
     {
         mainGUI = this.GetComponent<GUIScript>();
-  //      camPoint = Camera.main.transform;
+        camPoint = Camera.main.transform.GetChild(0);
         UpdateManager.OnUpdate += DoUpdate;
     }
 
@@ -41,63 +42,59 @@ public class Scrolling : MonoBehaviour
 
     private void CheckForScrolling()
     {
-        /* 
-         * -> Check Q & E Key to rotate Camera left / right (like Banished)
-         * -> Check R & F for zoom in / zoom out
-         */
 
         Vector2 MousePosition = MouseEvents.State.Position;
 
 
         Vector3 direction = Vector3.zero;
-        
-        //Srolling Left
+
+        /* Srolling Left & Right */
         if (MousePosition.x < mainGUI.MapViewArea.xMin || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             direction += Vector3.left * SpeedScrollX;
-
-        //Scrolling Right
         if (MousePosition.x > mainGUI.MainGuiArea.xMax || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             direction += Vector3.right * SpeedScrollX;
 
-        //Zoom in
+        /* Zoom in & out */
         if (Input.GetKey(KeyCode.R))
             direction += Vector3.forward * SpeedZoom;
-
-        //Zoom out
         if (Input.GetKey(KeyCode.F))
             direction += Vector3.back * SpeedZoom;
-
 
         Camera.main.transform.Translate(direction * Time.deltaTime);
 
 
-
-
-
+        /* Scrolling Up & Down */
+        float x = 0f;
         float z = 0f;
-        //Scrolling Up
+        float degrees = Camera.main.transform.eulerAngles.y;
         if (MousePosition.y > mainGUI.MapViewArea.yMax || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-            //direction += Vector3.forward; //  * SpeedZoom
-            z += 1f * SpeedScrollY;
-        
-        //Scrolling Down
+        {
+            /* Calculate Sin & Cos to move Camera to this position */
+            double angle = Math.PI * degrees / 180.0;
+            x += (float)Math.Sin(angle);
+            z += (float)Math.Cos(angle);
+        }
         if (MousePosition.y < mainGUI.MapViewArea.yMin || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-            //direction += Vector3.back; //  * SpeedZoom
-            z += -1f * SpeedScrollY;
+        {
+            double angle = Math.PI * degrees / 180.0;
+            x -= (float)Math.Sin(angle);
+            z -= (float)Math.Cos(angle);
+        }
+        if (x != 0f || z != 0f)
+        {
+            x *= SpeedScrollY * Time.deltaTime;
+            z *= SpeedScrollY * Time.deltaTime;
+            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + x, Camera.main.transform.position.y, Camera.main.transform.position.z + z);
+        }
+
+        /* Rotate Left & Right */
+        if (Input.GetKey(KeyCode.Q))
+            Camera.main.transform.RotateAround(camPoint.position, new Vector3(0.0f, 1.0f, 0.0f), Time.deltaTime * this.SpeedRotate);
+        if (Input.GetKey(KeyCode.E))
+            Camera.main.transform.RotateAround(camPoint.position, new Vector3(0.0f, -1.0f, 0.0f), Time.deltaTime * this.SpeedRotate);
 
 
-        if(z != 0f)
-            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z + z);
-        
-        // Rotate Left
-        //if (Input.GetKey(KeyCode.Q))
-        //    Camera.main.transform.RotateAround(camPoint.position, new Vector3(0.0f, 1.0f, 0.0f), Time.deltaTime * this.SpeedRotate);
-        
-        //// Rotate Rigth
-        //if (Input.GetKey(KeyCode.E))
-        //    Camera.main.transform.RotateAround(camPoint.position, new Vector3(0.0f, -1.0f, 0.0f), Time.deltaTime * this.SpeedRotate);
-
-        //Space Key Switch Camera
+        /* Space Key Switch Camera */
         if (Input.GetKeyDown(KeyCode.Space))
             Camera.main.GetComponent<Cam>().SwitchCam();
 
