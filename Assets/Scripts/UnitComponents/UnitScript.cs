@@ -21,6 +21,7 @@ public class UnitScript : MonoBehaviour
         //--- All Flying Units:
         JetFighter = EnumProvider.UNITCLASS.AIR_UNIT + 1,
         JetWing,
+
         //--- All Non-Production Buildings:
         NaniteMine = EnumProvider.UNITCLASS.BUILDING + 1,
         MatterMine,
@@ -31,6 +32,7 @@ public class UnitScript : MonoBehaviour
         Fabrik,
     }
     public UNITTYPE unitType;
+
     public bool IsABuilding
     {
         get
@@ -38,6 +40,7 @@ public class UnitScript : MonoBehaviour
             return unitType > (UNITTYPE)EnumProvider.UNITCLASS.BUILDING;
         }
     }
+
     public bool IsAnAirUnit
     {
         get 
@@ -46,30 +49,29 @@ public class UnitScript : MonoBehaviour
         }
     }
 
-
-    //--- FoE-System...
+    // Friend or Enemy
     //###############################################################################
     public FoE.GOODorEVIL goodOrEvil;
     public FoE GoodOrEvil;
-
 
     public bool IsEnemy(FoE other)
     {
         return this.GoodOrEvil+other;
     }
+
     public bool IsMySelf(GameObject target)
     {
         return (target.gameObject.GetInstanceID() == this.gameObject.GetInstanceID());
     }
+
     public bool IsAllied(GameObject target)
     {
         if (!IsMySelf(target))
             return !IsEnemy(target.GetComponent<UnitScript>().GoodOrEvil);
-        else return false;
+        return false;
     }
 
-
-    //--- Alarm-System:
+    // Alarm-System:
     //###############################################################################
     public enum ALLERT_LEVEL : int
     {
@@ -162,9 +164,8 @@ public class UnitScript : MonoBehaviour
                     break;
                 }
         }
-		//UpdateManager.OnUpdate += DoUpdate;
-        
 	}
+
     void Start()
     {
         UpdateManager.UNITUPDATE += UpdateManager_UNITUPDATE;
@@ -178,10 +179,9 @@ public class UnitScript : MonoBehaviour
     //########################################################################################################
     void UpdateManager_UNITUPDATE()
     {
-        if (unitAnimation) unitAnimation.DoUpdate();
-
+        if (unitAnimation)
+            unitAnimation.DoUpdate();
         Options.OptionsUpdate();
-
     }
 
     //--- Component-Slots (these Components are accsessed almost everytime, so ithink References to them are very usefull...) 
@@ -189,8 +189,9 @@ public class UnitScript : MonoBehaviour
     public UnitAnimation unitAnimation; //- first UnitAnimation of the UnitAnimations-Chain
     public UnitWeapon weapon; //- if the Unit is a Type of Unit thats unable to fight(Constuction Units i.e.) a "NoWeapon"-component will addet automaticly... 
 
-    //--- Data Fields for properties that almost every Unit uses:
-
+    // LIFE
+    // Data Fields for properties that almost every Unit uses:
+    //#############################################################
     [SerializeField]
     private int life;
     public int Life
@@ -206,6 +207,10 @@ public class UnitScript : MonoBehaviour
         }
     }
 
+    // LIFEBAR
+    //#############################################################
+
+    /* LIFEBAR UPDATE */
     private Lifebar LifebarScript;
     public void UpdateLifebar()
     {
@@ -213,15 +218,23 @@ public class UnitScript : MonoBehaviour
         {
             if (this.gameObject.transform.position != LifebarScript.Position)
                 LifebarScript.Position = gameObject.transform.position;
+            UpdateLifebarLife();
         }
     }
-    
+    private void UpdateLifebarLife()
+    {
+        if (LifebarScript != null)
+        {
+            LifebarScript.Life = this.Life;
+        }
+    }
     /* LIFEBAR START */
     public void ShowLifebar()
     {
         if (LifebarScript != null)
         {
             LifebarScript.Position = gameObject.transform.position;
+            LifebarScript.LifeDefault = this.Life;
             LifebarScript.Activated = true;
         }
     }
@@ -307,9 +320,11 @@ public class UnitScript : MonoBehaviour
     }
     
     public void Hit(int power)
-    {//--------------------------- calld if The Unit is hitten 
+    {
+        // calld if The Unit is hitten 
         IsUnderAttack = true;
         Life -= power;
+        this.UpdateLifebarLife();
     }
     
     private void Die()

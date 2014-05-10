@@ -8,13 +8,13 @@ using System.Collections;
 public class Scrolling : MonoBehaviour
 {
     /* Member */
-    private float SpeedScrollX = 10f;
-    private float SpeedScrollY = 10f;
-    private float SpeedZoom = 25f;
-    private float SpeedRotate = 100f;
+    public float SpeedScrollX = 10f;
+    public float SpeedScrollY = 10f;
+    public float SpeedZoom = 25f;
+    public float SpeedRotate = 100f;
 
     /* Vars */
-    private bool scrollingAllowed = false;
+    public bool scrollingAllowed = true;
     private GUIScript mainGUI;
 
     private Transform camPoint;
