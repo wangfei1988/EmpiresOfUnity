@@ -92,7 +92,7 @@ GameObject:
   - 114: {fileID: 33863556}
   - 114: {fileID: 33863555}
   - 114: {fileID: 33863554}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: EnemyTank
   m_TagString: Clickable
   m_Icon: {fileID: 0}
@@ -605,6 +605,10 @@ Prefab:
     - target: {fileID: 400000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
@@ -1139,7 +1143,7 @@ GameObject:
   - 114: {fileID: 286388416}
   - 64: {fileID: 286388418}
   - 114: {fileID: 286388419}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: EnemyFabrik
   m_TagString: Clickable
   m_Icon: {fileID: 0}
@@ -1314,6 +1318,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: .5
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
   m_RootGameObject: {fileID: 1665781127}
@@ -1390,7 +1398,7 @@ GameObject:
   - 114: {fileID: 311706547}
   - 114: {fileID: 311706546}
   - 114: {fileID: 311706545}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: EnemyTank
   m_TagString: Clickable
   m_Icon: {fileID: 0}
@@ -2308,6 +2316,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: .707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e7c50471ce3ecd34c8ab09871541ab7b, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7c50471ce3ecd34c8ab09871541ab7b, type: 2}
   m_RootGameObject: {fileID: 798904029}
@@ -2840,6 +2852,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ebfadaac5ef94db48b461418d4676096, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ebfadaac5ef94db48b461418d4676096, type: 2}
   m_RootGameObject: {fileID: 724636356}
@@ -3122,6 +3138,10 @@ Prefab:
     - target: {fileID: 400000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
@@ -3599,7 +3619,7 @@ GameObject:
   - 114: {fileID: 724636357}
   - 64: {fileID: 724636361}
   - 114: {fileID: 724636359}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: EnemyFabrik
   m_TagString: Clickable
   m_Icon: {fileID: 0}
@@ -3849,7 +3869,7 @@ GameObject:
   - 114: {fileID: 798904032}
   - 114: {fileID: 798904031}
   - 114: {fileID: 798904030}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: EnemyWorker
   m_TagString: Clickable
   m_Icon: {fileID: 0}
@@ -4377,6 +4397,10 @@ Prefab:
     - target: {fileID: 400000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
@@ -5803,7 +5827,7 @@ GameObject:
   - 114: {fileID: 1665781130}
   - 114: {fileID: 1665781129}
   - 114: {fileID: 1665781128}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: EnemyTank
   m_TagString: Clickable
   m_Icon: {fileID: 0}
@@ -6056,6 +6080,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ebfadaac5ef94db48b461418d4676096, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ebfadaac5ef94db48b461418d4676096, type: 2}
   m_RootGameObject: {fileID: 286388415}
@@ -6188,6 +6216,10 @@ Prefab:
       propertyPath: unitstateint
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
   m_RootGameObject: {fileID: 1779489595}
@@ -6211,7 +6243,7 @@ GameObject:
   - 114: {fileID: 1779489598}
   - 114: {fileID: 1779489597}
   - 114: {fileID: 1779489596}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: EnemyTank
   m_TagString: Clickable
   m_Icon: {fileID: 0}
@@ -7469,7 +7501,7 @@ GameObject:
   - 114: {fileID: 2098280676}
   - 114: {fileID: 2098280675}
   - 114: {fileID: 2098280674}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: EnemyTank
   m_TagString: Clickable
   m_Icon: {fileID: 0}
