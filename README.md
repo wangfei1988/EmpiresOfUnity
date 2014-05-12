@@ -17,14 +17,14 @@ Info
 Credits
 ======
 
-Programming by
+Development by
   * Kalle Münster (mail?)
-  * Lucas Novak (mail?)
+  * Lucas Nowak (lucas.n@live.de)
   * Dario D. Müller (moin@game-coding.com)
 
 Artwork by
-  * x
-  * y
+  * artist 1	
+  * artist 2
   * z
   * w
 
