@@ -12,14 +12,14 @@ public class MovingUnitSetting : ScriptableObject
     public Component[] currentAttachedMovingrelevantComponents;
 
     public int Life;
-    public int Level;
+    public int SettingsFile.Level;
     public int ViewDistance;
     public int EnergyConsumption;
     public int ProductionTime;
     public float Speed;
     public Vector3 MoveToPoint;
-    public int Level3Resource;
-    public int Level4Resource;
-    public int Level5Resource;
+    public int SettingsFile.Level3Resource;
+    public int SettingsFile.Level4Resource;
+    public int SettingsFile.Level5Resource;
 
 }

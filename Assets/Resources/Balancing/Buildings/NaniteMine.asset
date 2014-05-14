@@ -12,12 +12,8 @@ MonoBehaviour:
   m_Name: NaniteMine
   m_EditorClassIdentifier: 
   Life: 5
-  Level: 5
   ViewDistance: 1
-  EnergyConsumption: 10
-  ProductionTime: 5
-  Level1Resource: 10
-  Level2Resource: 20
-  Level3Resource: 30
-  Level4Resource: 40
-  Level5Resource: 50
+  UsedEnergy: 0
+  UpgradeCostNanite: 
+  UpgradeCostMatter: 
+  LevelResource: 0300000006000000

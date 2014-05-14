@@ -1,17 +1,25 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+
+using UnityEngine;
 using System.Collections;
 
 public class BuildingSetting : ScriptableObject
 {
+    // Main
     public int Life;
-    public int Level;
+    public uint Level;
     public int ViewDistance;
-    public int EnergyConsumption;
-    public int ProductionTime;
-    public int Level1Resource;
-    public int Level2Resource;
-    public int Level3Resource;
-    public int Level4Resource;
-    public int Level5Resource;
+    public int UsedEnergy;
+    
+    // Build
+    public uint MatterCost;
+    public uint NaniteCost;
+    
+    // Upgrade
+    public List<int> UpgradeCostNanite = new List<int>();
+    public List<int> UpgradeCostMatter = new List<int>(); 
+
+    // Production
+    public List<int> LevelResource = new List<int>(); 
 
 }

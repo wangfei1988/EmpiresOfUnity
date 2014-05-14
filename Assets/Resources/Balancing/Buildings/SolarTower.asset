@@ -12,12 +12,8 @@ MonoBehaviour:
   m_Name: SolarTower
   m_EditorClassIdentifier: 
   Life: 1
-  Level: 1
   ViewDistance: 1
-  EnergyConsumption: 0
-  ProductionTime: 0
-  Level1Resource: 100
-  Level2Resource: 140
-  Level3Resource: 180
-  Level4Resource: 220
-  Level5Resource: 260
+  UsedEnergy: 0
+  UpgradeCostNanite: 
+  UpgradeCostMatter: 
+  LevelResource: 0a00000014000000
