@@ -30,7 +30,6 @@ public abstract class ProductionBuilding : AbstractBuilding
         // UpgradeBuilding();
 
         //Destroy this Gameobject if Life is 0
-        DestroyTheGameObject();
     }
 
     protected abstract void MineWork();

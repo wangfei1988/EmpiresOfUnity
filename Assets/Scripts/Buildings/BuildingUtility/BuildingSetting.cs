@@ -6,9 +6,9 @@ using System.Collections;
 public class BuildingSetting : ScriptableObject
 {
     // Main
-    public int Life;
+    //public int Life;
     public uint Level;
-    public int ViewDistance;
+    //ublic int ViewDistance;
     public int UsedEnergy;
     
     // Build

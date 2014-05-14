@@ -152,6 +152,7 @@ abstract public class UnitOptions : MonoBehaviour
     }
     virtual internal EnumProvider.ORDERSLIST[] GetUnitsMenuOptionIDs()
     {
+        // -> mine -> GetUnitsMenuOptionIDs()
         return optionalStates;
     }
     virtual internal Object[] GetUnitsSIDEMenuObjects()
@@ -246,9 +247,9 @@ abstract public class UnitOptions : MonoBehaviour
 
     //---------------------------------------- Enginal stuff and functions...
     protected SortedDictionary<int, string> OptionalStatesOrder = new SortedDictionary<int, string>();
-    public List<string> optionalStateStrings = new List<string>();
-    public int[] optionalstateIDs;
-    public EnumProvider.ORDERSLIST[] optionalStates;
+    protected List<string> optionalStateStrings = new List<string>();
+    protected int[] optionalstateIDs;
+    protected EnumProvider.ORDERSLIST[] optionalStates;
     
     void Start()
     {
@@ -261,6 +262,8 @@ abstract public class UnitOptions : MonoBehaviour
     {
         int index= -1;
         int[] keylist = new int[OptionalStatesOrder.Count];
+
+
         optionalStates = new EnumProvider.ORDERSLIST[OptionalStatesOrder.Count];
         optionalStateStrings.Clear();
         foreach (KeyValuePair<int, string> entry in OptionalStatesOrder)
@@ -276,7 +279,10 @@ abstract public class UnitOptions : MonoBehaviour
     abstract internal void DoUpdate();
     internal void OptionsUpdate()
     {
-        if (GotToDo) GotToDo = ProcessAllOrders();
+        if (GotToDo != null)
+        {
+            if (GotToDo) GotToDo = ProcessAllOrders();
+        }
         DoUpdate();
     }
 

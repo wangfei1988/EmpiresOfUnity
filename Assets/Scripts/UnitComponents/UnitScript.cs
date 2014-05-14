@@ -159,7 +159,19 @@ public class UnitScript : MonoBehaviour
                 }
             case UNITTYPE.MatterMine:
                 {
-                    Options = gameObject.GetComponent<BuildingOptions>();
+                    Options = gameObject.GetComponent<MatterMine>();
+                    weapon = gameObject.AddComponent<NoWeapon>();
+                    break;
+                }
+            case UNITTYPE.NaniteMine:
+                {
+                    Options = gameObject.GetComponent<NaniteMine>();
+                    weapon = gameObject.AddComponent<NoWeapon>();
+                    break;
+                }
+            case UNITTYPE.SolarTower:
+                {
+                    Options = gameObject.GetComponent<SolarTower>();
                     weapon = gameObject.AddComponent<NoWeapon>();
                     break;
                 }
@@ -300,8 +312,18 @@ public class UnitScript : MonoBehaviour
     }
     public EnumProvider.ORDERSLIST[] RightClickMenuOptionStates
     {
-        get 
+        get
         {
+            int count = Options.GetUnitsMenuOptionIDs().Length;
+            EnumProvider.ORDERSLIST[] CurrentOrder = new EnumProvider.ORDERSLIST[++count];
+
+
+            for (int i = 0; i < count-1; i++)
+            {
+                CurrentOrder[i] = Options.GetUnitsMenuOptionIDs()[i];
+            }
+            CurrentOrder[count-1] = EnumProvider.ORDERSLIST.Upgrade;
+
             return Options.GetUnitsMenuOptionIDs();
         }
         set

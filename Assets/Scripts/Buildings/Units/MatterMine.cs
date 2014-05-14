@@ -1,39 +1,73 @@
-﻿using UnityEngine;
+﻿using System;
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class MatterMine : ProductionBuilding 
+public class MatterMine : AbstractBuilding
 {
     private Dictionary<uint, uint> MatterWork = new Dictionary<uint, uint>();
+    new private enum OPTIONS { Upgrade = EnumProvider.ORDERSLIST.Upgrade }
 
+    private OPTIONS MatterMineState;
 
-    void Start()
+    public override Enum UnitState {
+        get
+        {
+            return MatterMineState;
+        }
+        set
+        {
+            MatterMineState = (OPTIONS)value;
+        } 
+    }
+
+    //internal override EnumProvider.ORDERSLIST[] GetUnitsMenuOptionIDs()
+    //{
+    //    Debug.Log("da");
+    //    return (EnumProvider.ORDERSLIST[])System.Enum.GetValues(typeof(MatterMineOptions));
+    //}
+
+    public override EnumProvider.UNITCLASS UNIT_CLASS
     {
-        UpdateManager.OnUpdate += DoUpdate;
+        get
+        {
+            return EnumProvider.UNITCLASS.BUILDING;
+        }
+    }
+
+    internal override void DoStart()
+    {
+        //base.DoStart();
+
+        foreach (int value in System.Enum.GetValues(typeof(OPTIONS)))
+        {
+            OptionalStatesOrder.Add(value, ((OPTIONS)value).ToString());
+            
+        }
+
+    }
+
+    internal override void DoUpdate()
+    {
+  
+    }
+
+
+    internal override void MoveAsGroup(GameObject leader)
+    {
     }
 
     //Main Method for Mine
-    protected override void MineWork()
+    protected void MineWork()
     {
         uint resValue = 1;
         //MatterWork.TryGetValue(Level, out resValue);
         ResourceManager.AddResouce(ResourceManager.Resource.MATTER, resValue);
     }
 
-    private void MatterMineEnergyConsumption()
-    {
-        ResourceManager.SubtractResouce(ResourceManager.Resource.ENERGY, 10);
-    }
-
-
-    void DoUpdate()
-    {
-       this.UpdateProduction();
-    }
-
-    void OnDestroy()
-    {
-        GiveEnergyBack();
-        UpdateManager.OnUpdate -= DoUpdate;
-    }
+    //void DoUpdate()
+    //{
+    ////   this.UpdateProduction();
+    //}
 }

@@ -160,7 +160,8 @@ public class GroundUnitOptions : MovingUnitOptions
     {
         base.DoStart();
         foreach (int option in System.Enum.GetValues(typeof(OPTIONS)))
-            if (!OptionalStatesOrder.ContainsKey(option)) OptionalStatesOrder.Add(option, ((OPTIONS)option).ToString());
+            if (!OptionalStatesOrder.ContainsKey(option))
+                OptionalStatesOrder.Add(option, ((OPTIONS)option).ToString());
 
         unitstateint = 20;
         IsMoving = true;
