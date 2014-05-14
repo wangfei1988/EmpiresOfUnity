@@ -42,7 +42,6 @@ public class MatterMine : AbstractBuilding
 
         foreach (int value in System.Enum.GetValues(typeof(OPTIONS)))
         {
-            Debug.Log("Hinzu " + value);
             OptionalStatesOrder.Add(value, ((OPTIONS)value).ToString());
             
         }
