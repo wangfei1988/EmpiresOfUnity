@@ -12,18 +12,22 @@ public class RightClickMenu : MonoBehaviour {
     //bool hold = false;
     public float ScaleX, ScaleY;
     public Rect view;
+
     public static bool showGUI = false;
     public static bool showSIDEgui
     {
         get
         {
-            if ((Focus.masterGameObject) && (Focus.masterGameObject.GetComponent<Focus>()))
+            if (Focus.masterGameObject != null
+                && Focus.masterGameObject.GetComponent<Focus>()
+                && Focus.masterGameObject.GetComponent<UnitScript>()
+            )
             {
-                if (showGUI == false)
+                if( (showGUI == false))
                     Unit = Focus.masterGameObject.GetComponent<UnitScript>();
                 return true;
             }
-            else return false;
+            return false;
         }
     }
     private static Vector2 UnitPosition;
@@ -36,6 +40,10 @@ public class RightClickMenu : MonoBehaviour {
     public GUIStyle buttonSIDEstyle;
     public Texture2D dieGruehnePower;
 
+    // Building Builder -> Prefabs
+    //public Object[] BuildableBuildings;
+    private BuildingBuilder buildingBuilder;
+
     void Awake()
     {
         ScaleX = camera.pixelRect.width / gameObject.guiTexture.texture.width;
@@ -46,6 +54,7 @@ public class RightClickMenu : MonoBehaviour {
     {
         view = camera.pixelRect;
         mainGUI = GUIScript.main.GetComponent<GUIScript>();
+	    buildingBuilder = GameObject.FindGameObjectWithTag("ScriptContainer").GetComponent<BuildingBuilder>();
 
         buttonSIDEstyle.fontSize = buttonStyle.fontSize = (int)((float)buttonStyle.fontSize * ScaleX);
         guiStyle.fontSize = (int)((float)guiStyle.fontSize * ScaleX);
@@ -70,7 +79,8 @@ public class RightClickMenu : MonoBehaviour {
     void OnGUI()
     {
         if (showSIDEgui)
-        {                          //            --------------------------------------Menü  an der Seite...
+        {  
+            // Menü  an der Seite...
             Object[] SIDEmenuOptions = Unit.SellectableObjects;
             float btnHeight = (40 * ScaleY);
             float zwischenbuttonraum = (20 * ScaleY);
@@ -88,6 +98,24 @@ public class RightClickMenu : MonoBehaviour {
             {
                 if (!Focus.IsLocked)
                     Component.Destroy(Focus.masterGameObject.GetComponent<Focus>());
+            }
+            GUI.EndGroup();
+        }
+        else
+        {                          //            --------------------------------------Menü  an der Seite...
+            Object[] SIDEmenuOptions = this.buildingBuilder.BuildableBuildings;
+            float btnHeight = (40 * ScaleY);
+            float zwischenbuttonraum = (20 * ScaleY);
+            Rect guiposition;
+            guiposition = new Rect(1718 * ScaleX, (210 * ScaleY) - 3 * guiStyle.fontSize, 202 * ScaleX, 360 * ScaleY);
+            GUI.BeginGroup(guiposition, guiSIDEstyle);
+            for (int i = 0; i < SIDEmenuOptions.Length; i++)
+            {
+                if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + i * (btnHeight + zwischenbuttonraum), (180 * ScaleX), btnHeight), SIDEmenuOptions[i].name))
+                {
+                    //  code for Build-Ding
+                    this.buildingBuilder.CreatePrefab(i);
+                }
             }
             GUI.EndGroup();
         }

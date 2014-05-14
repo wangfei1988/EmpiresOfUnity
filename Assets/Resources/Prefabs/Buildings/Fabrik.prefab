@@ -108,7 +108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400000}
-  IsGroupLeader: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
   optionalStateStrings: []

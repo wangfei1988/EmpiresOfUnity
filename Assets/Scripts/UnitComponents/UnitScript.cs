@@ -172,6 +172,12 @@ public class UnitScript : MonoBehaviour
         UpdateManager.OnUpdate += UpdateLifebar;
     }
 
+    void OnDestroy()
+    {
+        UpdateManager.UNITUPDATE -= UpdateManager_UNITUPDATE;
+        UpdateManager.OnUpdate -= UpdateLifebar;
+    }
+
     //--- Update function:  
     //--- the Main-Entrypoint to the Units GameObject UpdateLoop.
     //--- if everything is set correctly, It' should call all Updates in their
