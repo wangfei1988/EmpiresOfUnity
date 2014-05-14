@@ -236,9 +236,19 @@ public class GUIScript : MonoBehaviour
         // Get group of selected elements
         SelectedGroup = SelectionSprite.GetComponent<SelectorScript>().SnapSelection();
 
-        // Activate Lifebar at all selected units
-        for (int i = 0; i < SelectedGroup.Count; i++)
-            SelectedGroup[i].GetComponent<UnitScript>().ShowLifebar();
+        // if group has 1 unit -> do single focus
+        if (SelectedGroup.Count == 1)
+        {
+            GameObject unit = SelectedGroup[0];
+            SelectedGroup.ResetGroup();
+            unit.GetComponent<UnitScript>().ShowLifebar();
+        }
+        else
+        {
+            // Activate Lifebar at all selected units
+            for (int i = 0; i < SelectedGroup.Count; i++)
+                SelectedGroup[i].GetComponent<UnitScript>().ShowLifebar();
+        }
 
         // Hide selection rectangle
         SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, 0f, 0f);

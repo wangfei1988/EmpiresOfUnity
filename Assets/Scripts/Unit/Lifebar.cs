@@ -49,7 +49,6 @@ public class Lifebar : ScriptableObject
         }
         set
         {
-            //Debug.Log(value);
             if (this.activated != value)
             {
                 this.activated = value;
