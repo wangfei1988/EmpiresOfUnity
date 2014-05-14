@@ -9,7 +9,6 @@ public class GridSystem : MonoBehaviour {
      * (c) by Dario D. Müller
      * <moin@game-coding.com>
      * Functionality:
-     * -> Mouse Drag & Drop
      * -> Snap Objects
      * -> Grid Projector
      * -> Grid Lines Debug
@@ -22,11 +21,9 @@ public class GridSystem : MonoBehaviour {
 	public GameObject ProjectorPrefab;
 	public bool DebugLines = false;
 	public Vector3 objectPivot = new Vector3(0, 0, 0);
-    public bool ShowGrid = true;
+    public bool ShowGrid = false;
 	
 	private GameObject Projector = null;
-	private Transform currObject = null;
-	private bool dragging = false;
     private List<Vector3> startList = new List<Vector3>();
     private List<Vector3> endList = new List<Vector3>();
     private bool ShowGridCurrent = true;
@@ -34,8 +31,19 @@ public class GridSystem : MonoBehaviour {
 	/* Use this for initialization grid-debug & projector */
 	void Start () {
         InitGrid();
-		SpawnProjector ();
+		SpawnProjector();
+	    UpdateManager.OnUpdate += DoUpdate;
 	}
+
+    void DoUpdate()
+    {
+        // Change Grid Visibility
+        if (this.ShowGridCurrent != this.ShowGrid)
+        {
+            this.ShowGridCurrent = this.ShowGrid;
+            this.Projector.SetActive(this.ShowGrid);
+        }
+    }
 
 	/* Initialize Grid Line Debug */
 	private void InitGrid()
@@ -81,73 +89,28 @@ public class GridSystem : MonoBehaviour {
 		}
     }
 
-	/* Update Event checks mouse-down each frame -> drag object */
-    void Update()
+    /* Get grid'ed position of selected value */
+    public Vector3 DragObjectPosition(Transform currObject)
     {
-        /* Drag Grid */
-		if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit rHit;
-            if (Physics.Raycast(ray, out rHit))
-            {
-				GameObject currTarget = rHit.transform.gameObject;
-                if (currTarget != null && !dragging)
-                {
-					if(currTarget.transform.tag == GRID_TAG)
-					{
-						dragging = true;
-						currObject = currTarget.transform;
-					}
-					else if(currTarget.transform.parent != null && currTarget.transform.parent.tag == GRID_TAG)
-					{
-						dragging = true;
-						currObject = currTarget.transform.parent;
-					}
-                }
-            }
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-			currObject = null;
-            dragging = false;
-        }
-		if (dragging && currObject != null)
-		{
-			this.DragObject();
-		}
+        Vector3 mouse = MouseEvents.State.Position.AsWorldPointOnMap;
 
-        /* Change Grid Visibility */
-        if(this.ShowGridCurrent != this.ShowGrid)
-        {
-            this.ShowGridCurrent = this.ShowGrid;
-            this.Projector.SetActive(this.ShowGrid);
-        }
-	}
+        Vector3 offset = mouse - currObject.position;
 
-	/* while mouse is pressed -> snap object */
-	private void DragObject()
-	{
-		/*calculate offset*/
-		Vector3 screenPoint = Camera.main.WorldToScreenPoint(currObject.position);
-		
-		/*calculate offset from camera*/
-		Vector3 offset = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z)) - currObject.position;
-		
-		/* form the current position */
-		Vector3 newPosition = currObject.position + offset;
-		newPosition.y = currObject.position.y;
-		
-		/* grid it */
-		int x = (int)newPosition.x / gridWidth;
-		if (newPosition.x % gridWidth >= (float)gridWidth / 2)
-			x += 1;
-		int z = (int)newPosition.z / gridWidth;
-		if (newPosition.x % gridWidth >= (float)gridWidth / 2)
-			z += 1;
-		
-		/* set position*/
-		Vector3 gridPosition = new Vector3(x * gridWidth, newPosition.y, z * gridWidth);
-		currObject.position = gridPosition + objectPivot;
-	}
+        /* form the current position */
+        Vector3 newPosition = currObject.position + offset;
+        newPosition.y = currObject.position.y;
+
+        /* grid it */
+        int x = (int)newPosition.x / gridWidth;
+        if (newPosition.x % gridWidth >= (float)gridWidth / 2)
+            x += 1;
+        int z = (int)newPosition.z / gridWidth;
+        if (newPosition.x % gridWidth >= (float)gridWidth / 2)
+            z += 1;
+
+        /* set position*/
+        Vector3 gridPosition = new Vector3(x * gridWidth, newPosition.y, z * gridWidth);
+        return gridPosition + objectPivot;
+    }
+
 }

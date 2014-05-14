@@ -2315,6 +2315,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: c8842bd1dc2347c43969c2d0cd6de8b8, type: 2}
+      propertyPath: targetYps
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8842bd1dc2347c43969c2d0cd6de8b8, type: 2}
   m_RootGameObject: {fileID: 1803198227}
@@ -2499,7 +2503,7 @@ Transform:
   m_GameObject: {fileID: 494533239}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
   m_LocalPosition: {x: 0, y: .0100002289, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!114 &494533242
@@ -4624,6 +4628,8 @@ GameObject:
   - 114: {fileID: 1113168587}
   - 114: {fileID: 1113168590}
   - 114: {fileID: 1113168591}
+  - 114: {fileID: 1113168593}
+  - 114: {fileID: 1113168592}
   m_Layer: 0
   m_Name: ScriptContainer
   m_TagString: Untagged
@@ -4681,11 +4687,11 @@ MonoBehaviour:
     y: -50
     width: 150
     height: 100
-  gridWidth: 2
+  gridWidth: 4
   ProjectorPrefab: {fileID: 100000, guid: b1ca15ab859dea54391f0bd6030ca17f, type: 2}
   DebugLines: 0
   objectPivot: {x: 0, y: 0, z: 0}
-  ShowGrid: 1
+  ShowGrid: 0
 --- !u!114 &1113168591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4697,6 +4703,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c5a3470a0b98b488526d576c65e918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1113168592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1113168586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419d97947535d1f4a89635a35cee627f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SettingFile: {fileID: 11400000, guid: 3ca0758d827b1134dabd18e8871e0862, type: 2}
+  BuildMode: 1
+  MatterMine: 0
+  NaniteMine: 0
+  SolarTower: 0
+--- !u!114 &1113168593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1113168586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4735e8a374e0b43a9d8d703cb72bf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 100000, guid: c8842bd1dc2347c43969c2d0cd6de8b8, type: 2}
+  Grid: {fileID: 0}
 --- !u!1 &1145772177
 GameObject:
   m_ObjectHideFlags: 0
