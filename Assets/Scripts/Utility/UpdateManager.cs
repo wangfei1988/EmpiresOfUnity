@@ -22,6 +22,7 @@ public class UpdateManager : MonoBehaviour
 
     public delegate void UpdateEvent();
     public static event UpdateEvent OnUpdate;
+    public static event UpdateEvent OnMouseUpdate;
 
     void Update()
     {
@@ -37,6 +38,8 @@ public class UpdateManager : MonoBehaviour
     private void UpdateMouse()
     {
         MouseEvents.DoUpdate();
+        if (OnMouseUpdate != null)
+            OnMouseUpdate();
     }
 
     private void UpdateGUI()

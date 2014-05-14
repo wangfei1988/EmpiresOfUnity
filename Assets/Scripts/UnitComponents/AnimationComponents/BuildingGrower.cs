@@ -11,8 +11,8 @@ using System.Collections;
 public class BuildingGrower : UnitAnimation 
 {
 
-    private float startYps;
     public float targetYps;
+    private float startYps;
     private float growingFactor;
     [SerializeField]
     private float GrowingTime=0;
@@ -42,12 +42,10 @@ public class BuildingGrower : UnitAnimation
     private float growState;
     void Start()
     {
-
+        timer = 0f;
         startYps = gameObject.transform.position.y;
-     //   GrowingTime = gameObject.GetComponent<UnitScript>().Settings.ProductionTime;
-        
-        timer=0f;
         growingFactor = -1f;
+        //GrowingTime = gameObject.GetComponent<UnitScript>().Settings.ProductionTime;
 	}
 
     private bool Grow()
@@ -55,22 +53,23 @@ public class BuildingGrower : UnitAnimation
         if (startGrowing)
         {
             timer += Time.deltaTime;
-            growingFactor = Mathf.Clamp( (timer / GrowingTime),0f,1f);
+
+            growingFactor = Mathf.Clamp((timer / GrowingTime), 0f, 1f);
             growState = Mathf.SmoothStep(startYps, targetYps, growingFactor);
             transform.position = new Vector3(gameObject.transform.position.x,  growState, gameObject.transform.position.z);
-            if (growingFactor == 1) return false;
+            if (growingFactor == 1)
+                return false;
             return true;
         }
-        else
-        {
-
-            return false;
-        }
+        return false;
     }
 
     internal override void Animate()
     {
-        if (StartGrowing) StartGrowing = Grow();
+        if (StartGrowing)
+        {
+            StartGrowing = Grow();
+        }
         else if (growingFactor > -1)
         {
             if (!gameObject.GetComponent<Rigidbody>())
@@ -90,6 +89,7 @@ public class BuildingGrower : UnitAnimation
                 Component.Destroy(gameObject.GetComponent<BuildingGrower>());
             }
         }
+
     }
 
 }
