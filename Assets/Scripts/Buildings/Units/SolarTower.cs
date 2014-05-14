@@ -7,6 +7,18 @@ public class SolarTower : AbstractBuilding
 {
     private Dictionary<uint, uint> SolarWork = new Dictionary<uint, uint>();
 
+    public override EnumProvider.UNITCLASS UNIT_CLASS
+    {
+        get
+        {
+            return EnumProvider.UNITCLASS.BUILDING;
+        }
+    }
+
+    internal override void MoveAsGroup(GameObject leader)
+    {
+    }
+
     void Start()
     {
         UpdateManager.OnUpdate += DoUpdate;
@@ -19,15 +31,19 @@ public class SolarTower : AbstractBuilding
         ResourceManager.AddResouce(ResourceManager.Resource.ENERGY, resValue);
     }
 
+    internal override void DoStart()
+    {
+       
+    }
+
     private void DoUpdate()
     {
         SolarTowerWork();
 
         //Check for Upgrade
-        UpgradeBuilding();
 
         //Destroy this Gameobject if Life is 0
-        DestroyTheGameObject();
+
     }
 
     private void OnDestroy()

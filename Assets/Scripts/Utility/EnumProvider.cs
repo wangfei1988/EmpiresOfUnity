@@ -32,6 +32,7 @@ public class EnumProvider
         StopProduction = 101,
         LandOnGround = 102,
 
+        Upgrade = 1000,
         Cancel = 10000
     }
 

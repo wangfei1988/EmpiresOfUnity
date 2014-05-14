@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using UnityEngine;
 using System.Collections;
 
-public abstract class AbstractBuilding : MonoBehaviour
+public abstract class AbstractBuilding : UnitOptions
 {
     /// <summary>
     /// Main
@@ -32,17 +33,6 @@ public abstract class AbstractBuilding : MonoBehaviour
         }
     }
 
-    public void DestroyTheGameObject()
-    {
-        if (SettingFile.Life <= 0 || Input.GetKeyDown(KeyCode.T))
-        {
-            if (gameObject != null)
-            {
-                Destroy(gameObject);
-            }
-        }
-    }
-
     /// <summary>
     /// The building cost.
     /// Subtract the building cost from resources.
@@ -63,18 +53,49 @@ public abstract class AbstractBuilding : MonoBehaviour
         ResourceManager.AddResouce(ResourceManager.Resource.ENERGY, (uint)this.SettingFile.UsedEnergy);
     }
 
+
+    private EnumProvider.ORDERSLIST unitState;
+    public override Enum UnitState
+    {
+        get
+        {
+            return unitState;
+        } 
+        set
+        {
+            switch ((EnumProvider.ORDERSLIST)value)
+            {
+                    
+            }
+            unitState = (EnumProvider.ORDERSLIST)value;
+        }
+    }
+
+    /*internal override void DoStart()
+    {
+
+        Debug.Log("Abstract UnitOption");
+    }*/
+
+    internal override void DoUpdate()
+    {
+
+
+    }
+
+
     /// <summary>
     /// The upgrade building
     /// This method can be used to upgrade a building.
     /// The method checks the resources and the max level to deside about to upgrade or not to upgrade.
     /// </summary>
-    public void UpgradeBuilding()
-    {
-        /*if (this.Level == 1 && this.Level != this.MaxLevel && ResourceManager.Resource.MATTER - (ResourceManager.Resource)this.MatterUpgradeCostLvl1 >= 0 && ResourceManager.Resource.NANITEN - (ResourceManager.Resource) this.NaniteUpgradeCostLvl1 >= 0 /*&&Button Upgrade pressed*/
-        /*{
-            this.Level = 2;
-            ResourceManager.SubtractResouce(ResourceManager.Resource.MATTER, this.MatterUpgradeCostLvl1);
-            ResourceManager.SubtractResouce(ResourceManager.Resource.NANITEN, this.NaniteUpgradeCostLvl1);
-        }*/
-    }
+    //public void UpgradeBuilding()
+    //{
+    //    if (this.Level == 1 && this.Level != this.MaxLevel && ResourceManager.Resource.MATTER - (ResourceManager.Resource)this.MatterUpgradeCostLvl1 >= 0 && ResourceManager.Resource.NANITEN - (ResourceManager.Resource) this.NaniteUpgradeCostLvl1 >= 0 /*&&Button Upgrade pressed*/
+    //    {
+    //        this.Level = 2;
+    //        ResourceManager.SubtractResouce(ResourceManager.Resource.MATTER, this.MatterUpgradeCostLvl1);
+    //        ResourceManager.SubtractResouce(ResourceManager.Resource.NANITEN, this.NaniteUpgradeCostLvl1);
+    //    }
+    //}
 }

@@ -6,6 +6,20 @@ public class LivingHouse : AbstractBuilding
     private Dictionary<uint, uint> LivingHouseDic = new Dictionary<uint, uint>(); 
     private bool isAlreadyUsed = true;
 
+
+
+    public override EnumProvider.UNITCLASS UNIT_CLASS
+    {
+        get
+        {
+            return EnumProvider.UNITCLASS.BUILDING;
+        }
+    }
+
+    internal override void MoveAsGroup(GameObject leader)
+    {
+    }
+
     void Start()
     {
         UpdateManager.OnUpdate += DoUpdate;
@@ -18,6 +32,11 @@ public class LivingHouse : AbstractBuilding
         ResourceManager.AddResouce(ResourceManager.Resource.LABORER, resValue);
     }
 
+    internal override void DoStart()
+    {
+        
+    }
+
     void DoUpdate()
     {
         if (isAlreadyUsed)
@@ -26,7 +45,6 @@ public class LivingHouse : AbstractBuilding
             this.isAlreadyUsed = false;
         }
 
-        DestroyTheGameObject();
     }
 
     void OnDestroy()
