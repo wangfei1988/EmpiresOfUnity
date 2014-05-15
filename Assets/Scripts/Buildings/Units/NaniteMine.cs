@@ -32,7 +32,6 @@ public class NaniteMine : ProductionBuilding
     void Start()
     {
         NaniteMineCount++;
-        UpdateManager.OnUpdate += DoUpdate;
     }
 
     public override void BuildFinished()
@@ -60,13 +59,12 @@ public class NaniteMine : ProductionBuilding
   
     }
 
-    void DoUpdate()
+    internal override void DoUpdate()
     {
         this.UpdateProduction(UnitScript.UNITTYPE.NaniteMine);
     }
 
     void OnDestroy()
     {
-        UpdateManager.OnUpdate -= DoUpdate;
     }
 }

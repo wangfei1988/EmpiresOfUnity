@@ -1,11 +1,9 @@
-﻿using System.Security.Cryptography;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class BuildingBuilder : MonoBehaviour
 {
-    private Focus.HANDLING focusHandling = Focus.HANDLING.None;
+    //private Focus.HANDLING focusHandling = Focus.HANDLING.None;
     //public GameObject Prefab;
     public GridSystem Grid;
     public Object[] BuildableBuildings;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class MatterMine : ProductionBuilding
 {
-    private Dictionary<uint, uint> MatterWork = new Dictionary<uint, uint>();
+    //private Dictionary<uint, uint> MatterWork = new Dictionary<uint, uint>();
     new private enum OPTIONS { Upgrade = EnumProvider.ORDERSLIST.Upgrade }
 
     private OPTIONS MatterMineState;
@@ -31,7 +31,7 @@ public class MatterMine : ProductionBuilding
     internal override void DoStart()
     {
         MatterMineCount++;
-        UpdateManager.OnUpdate += DoUpdate;
+        //UpdateManager.OnUpdate += DoUpdate;
         //base.DoStart();
 
         foreach (int value in System.Enum.GetValues(typeof(OPTIONS)))
@@ -46,9 +46,7 @@ public class MatterMine : ProductionBuilding
         this.BuildingCost();
     }
    
-
-    //internal override void DoUpdate()
-    void DoUpdate()
+    internal override void DoUpdate()
     {
         this.UpdateProduction(UnitScript.UNITTYPE.MatterMine);
     }
@@ -64,6 +62,6 @@ public class MatterMine : ProductionBuilding
 
     void OnDestroy()
     {
-        UpdateManager.OnUpdate -= DoUpdate;
+        //UpdateManager.OnUpdate -= DoUpdate;
     }
 }

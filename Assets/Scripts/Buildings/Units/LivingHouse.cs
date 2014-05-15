@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class LivingHouse : AbstractBuilding
 {
-    private Dictionary<uint, uint> LivingHouseDic = new Dictionary<uint, uint>(); 
+    //private Dictionary<uint, uint> LivingHouseDic = new Dictionary<uint, uint>(); 
     //private bool isAlreadyUsed = true;
     private uint currentResidentHuman;
 
@@ -32,7 +32,6 @@ public class LivingHouse : AbstractBuilding
     void Start()
     {
         //LivingHouseWork();
-        UpdateManager.OnUpdate += DoUpdate;
     }
 
     public override void BuildFinished()
@@ -46,6 +45,10 @@ public class LivingHouse : AbstractBuilding
 
     }
 
+    internal override void DoUpdate()
+    {
+        
+    }
 
     internal override void MoveAsGroup(GameObject leader)
     {
@@ -58,10 +61,6 @@ public class LivingHouse : AbstractBuilding
         currentResidentHuman = resValue;
     }
 
-    void DoUpdate()
-    {
-    }
-
     public void SubtractLaborer()
     {
         ResourceManager.SubtractResouce(ResourceManager.Resource.LABORER, currentResidentHuman);
@@ -70,6 +69,5 @@ public class LivingHouse : AbstractBuilding
     void OnDestroy()
     {
         this.SubtractLaborer();
-        UpdateManager.OnUpdate -= DoUpdate;
     }
 }

@@ -19,11 +19,6 @@ public class SolarTower : AbstractBuilding
     {
     }
 
-    void Start()
-    {
-        UpdateManager.OnUpdate += DoUpdate;
-    }
-
     private void SolarTowerWork()
     {
         uint resValue = 0;
@@ -41,12 +36,11 @@ public class SolarTower : AbstractBuilding
         this.BuildingCost();
     }
 
-    private void DoUpdate()
+    internal override void DoUpdate()
     {
         SolarTowerWork();
 
         //Check for Upgrade
-
         //Destroy this Gameobject if Life is 0
 
     }
@@ -54,6 +48,5 @@ public class SolarTower : AbstractBuilding
     private void OnDestroy()
     {
         //ResourceManager.AddResouce(ResourceManager.Resource.ENERGY, (int)SettingFile.UsedEnergy);
-        UpdateManager.OnUpdate -= DoUpdate;
     }
 }

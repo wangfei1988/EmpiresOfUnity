@@ -37,17 +37,16 @@ public abstract class AbstractBuilding : UnitOptions
         } 
         set
         {
-            switch ((EnumProvider.ORDERSLIST)value)
-            {
-                    
-            }
+            //switch ((EnumProvider.ORDERSLIST)value)
+            //{    
+            //}
             unitState = (EnumProvider.ORDERSLIST)value;
         }
     }
 
-    internal override void DoUpdate()
-    {
-    }
+    //internal override void DoUpdate()
+    //{
+    //}
 
     public abstract void BuildFinished();
 

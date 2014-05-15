@@ -280,7 +280,8 @@ abstract public class UnitOptions : MonoBehaviour
     {
         if (GotToDo != null)
         {
-            if (GotToDo) GotToDo = ProcessAllOrders();
+            if (GotToDo)
+                GotToDo = ProcessAllOrders();
         }
         DoUpdate();
     }
