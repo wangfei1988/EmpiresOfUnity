@@ -14,7 +14,7 @@ public class Cam : MonoBehaviour {
     public float ORTHOGRAFIC_Y_HEIGHT = 75f;
     public float PERSPECTIVE_VIEW_SIZE = 25f;
     public float Orthografic_View_Size = 500f;
-    public float Orthografic_Y_MaxHeight = 400f;
+    public float Orthografic_Y_MaxSize = 70f;
 
     private Quaternion Perspective_Rotation;
     private Quaternion Orthografic_Rotation;
@@ -85,13 +85,9 @@ public class Cam : MonoBehaviour {
         {
             gameObject.camera.orthographicSize -= (int)wheelstate * (camera.orthographicSize / 120f);
 
-            Vector3 buffer = gameObject.transform.position;
-            buffer.y -= (int)wheelstate * (gameObject.transform.position.y / 120f);
-            if (buffer.y > Orthografic_Y_MaxHeight)
-            {
-                buffer.y = Orthografic_Y_MaxHeight;
-            }
-            gameObject.transform.position = buffer;
+            if (gameObject.camera.orthographicSize >= this.Orthografic_Y_MaxSize)
+                gameObject.camera.orthographicSize = this.Orthografic_Y_MaxSize;
+
         }
         else if (CamMode == CAMERAMODE.PERSPECTIVE)
         {

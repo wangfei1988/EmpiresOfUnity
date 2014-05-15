@@ -76,8 +76,9 @@ public class BuildingBuilder : MonoBehaviour
 
     private void DragObject()
     {
-        
-        Vector3 pos = this.Grid.DragObjectPosition(this.Transform);
+
+        //Vector3 pos = this.Grid.DragObjectPosition(this.Transform);
+        Vector3 pos = MouseEvents.State.Position.AsWorldPointOnMap;
 
         this.Transform.position = pos;
     }
