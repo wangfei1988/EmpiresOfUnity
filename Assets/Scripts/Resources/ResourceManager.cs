@@ -9,8 +9,7 @@ public class ResourceManager : MonoBehaviour
         NANITEN,
         MATTER,
         ENERGY,
-        LABORER,
-        SECRETENERGY
+        LABORER // Einheiten-Count
     }
 
     public static Dictionary<Resource, uint> resourceList = new Dictionary<Resource, uint>();
@@ -22,7 +21,6 @@ public class ResourceManager : MonoBehaviour
         resourceList.Add(Resource.MATTER, 0);
         resourceList.Add(Resource.ENERGY, 0);
         resourceList.Add(Resource.LABORER, 0);
-        resourceList.Add(Resource.SECRETENERGY, 0);
     }
 
     public static uint GetResourceCount(Resource resourceType)

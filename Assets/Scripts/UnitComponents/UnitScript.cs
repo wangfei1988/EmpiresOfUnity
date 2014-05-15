@@ -26,6 +26,7 @@ public class UnitScript : MonoBehaviour
         NaniteMine = EnumProvider.UNITCLASS.BUILDING + 1,
         MatterMine,
         SolarTower,
+        LivingHouse,
 
         //--- All Production-Buildings:
         Airport = EnumProvider.UNITCLASS.PRODUCTION_BUILDING + 1,
@@ -172,6 +173,12 @@ public class UnitScript : MonoBehaviour
             case UNITTYPE.SolarTower:
                 {
                     Options = gameObject.GetComponent<SolarTower>();
+                    weapon = gameObject.AddComponent<NoWeapon>();
+                    break;
+                }
+            case UNITTYPE.LivingHouse:
+                {
+                    Options = gameObject.GetComponent<LivingHouse>();
                     weapon = gameObject.AddComponent<NoWeapon>();
                     break;
                 }

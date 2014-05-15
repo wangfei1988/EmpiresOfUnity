@@ -6,6 +6,19 @@ public class LivingHouse : AbstractBuilding
     private Dictionary<uint, uint> LivingHouseDic = new Dictionary<uint, uint>(); 
     private bool isAlreadyUsed = true;
 
+    private enum OPTIONS { Upgrade = EnumProvider.ORDERSLIST.Upgrade }
+
+    public override System.Enum UnitState
+    {
+        get
+        {
+            return UnitState;
+        }
+        set
+        {
+            UnitState = (OPTIONS)value;
+        }
+    }
 
 
     public override EnumProvider.UNITCLASS UNIT_CLASS
