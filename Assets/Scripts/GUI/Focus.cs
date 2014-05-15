@@ -68,8 +68,11 @@ public class Focus : MonoBehaviour
         }   
         else
         {
-            UNIT = this.gameObject.GetComponent<UnitScript>();
-            UNIT.Options.FocusFlag = HANDLING.HasFocus;
+            if (this.gameObject.GetComponent<UnitScript>())
+            {
+                UNIT = this.gameObject.GetComponent<UnitScript>();
+                UNIT.Options.FocusFlag = HANDLING.HasFocus;
+            }
             masterGameObject = this.gameObject;
             MouseEvents.RIGHTCLICK += MouseEvents_RIGHTCLICK;
             MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
@@ -173,18 +176,18 @@ public class Focus : MonoBehaviour
     {
         // Locks the Focus to This Actual Focussed Unit, till it is has finished recieving orders,so no other Units Will recive MouseData untill
         // the complete ordering process is recognized...   should be called by the Unit right after an option on the RightclickPopUp has been Clicked
-        if (UNIT.Options.FocusFlag == HANDLING.HasFocus)
-        {
+        //if (UNIT.Options.FocusFlag == HANDLING.HasFocus)
+        //{
             Key = this.gameObject;
-            UNIT.Options.FocusFlag |= HANDLING.LockFocus;
-        }
+          //  UNIT.Options.FocusFlag |= HANDLING.LockFocus;
+      //  }
     }
     public bool Unlock(GameObject unlockKey)
     {//----------------------------------Releases the Lock to the locked Unit after its ordering process is finished, so other Units can get Focus again....
         //-------------------------------must be called by the Unit whitch has Locked the Focus,givin its own gameObject as parameter for UnlockKey, or the Focus wont be Unlocked...
         if (unlockKey.GetInstanceID() == Key.GetInstanceID())
         {
-            unlockKey.GetComponent<UnitScript>().Options.FocusFlag |= HANDLING.UnlockFocus;
+          //  unlockKey.GetComponent<UnitScript>().Options.FocusFlag |= HANDLING.UnlockFocus;
             Key = null;
         }
         return IsLockedToThis;
@@ -194,7 +197,8 @@ public class Focus : MonoBehaviour
         if (masterGameObject == null || masterGameObject.GetInstanceID() != gameObject.GetInstanceID())
         {
             Component.Destroy(gameObject.GetComponent<Focus>());
-            gameObject.gameObject.GetComponent<UnitScript>().HideLifebar();
+            if (gameObject.GetComponent<UnitScript>())
+                gameObject.GetComponent<UnitScript>().HideLifebar();
         }
     }
 
@@ -209,7 +213,8 @@ public class Focus : MonoBehaviour
             MouseEvents.RIGHTCLICK -= MouseEvents_RIGHTCLICK;
             MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
             UpdateManager.OnUpdate -= DoUpdate;
-            UNIT.Options.FocusFlag = HANDLING.None;
+            if(masterGameObject.GetComponent<UnitScript>())
+                UNIT.Options.FocusFlag = HANDLING.None;
 
             // Release Focus
             masterGameObject = null;
