@@ -6,10 +6,7 @@ using System.Collections;
 
 public abstract class AbstractBuilding : UnitOptions
 {
-    /// <summary>
-    /// Main
-    /// Contains the Mainstats of a Building.
-    /// </summary>
+    public BuildingSetting SettingFile;
 
     public uint MaxLevel
     {
@@ -19,12 +16,6 @@ public abstract class AbstractBuilding : UnitOptions
         }
     }
 
-
-    public BuildingSetting SettingFile;
-
-    /// <summary>
-    /// Gets the current resource.
-    /// </summary>
     protected uint CurrentResource
     {
         get
@@ -33,26 +24,11 @@ public abstract class AbstractBuilding : UnitOptions
         }
     }
 
-    /// <summary>
-    /// The building cost.
-    /// Subtract the building cost from resources.
-    /// Call only once!
-    /// </summary>
     public void BuildingCost()
     {
         ResourceManager.SubtractResouce(ResourceManager.Resource.MATTER, this.SettingFile.MatterCost);
         ResourceManager.SubtractResouce(ResourceManager.Resource.NANITEN, this.SettingFile.NaniteCost);
     }
-
-    /// <summary>
-    /// The give energy back.
-    /// Add the current energyconsumption to the resource energy if the gameobject get destroyed.
-    /// </summary>
-    public void GiveEnergyBack()
-    {
-        ResourceManager.AddResouce(ResourceManager.Resource.ENERGY, (uint)this.SettingFile.UsedEnergy);
-    }
-
 
     private EnumProvider.ORDERSLIST unitState;
     public override Enum UnitState

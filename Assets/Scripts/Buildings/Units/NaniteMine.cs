@@ -55,7 +55,6 @@ public class NaniteMine : ProductionBuilding
 
     void OnDestroy()
     {
-        GiveEnergyBack();
         UpdateManager.OnUpdate -= DoUpdate;
     }
 }
