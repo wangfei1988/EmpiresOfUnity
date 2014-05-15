@@ -85,11 +85,11 @@ public class LargeRocketObject : RocketObject {
 
     }
 
-    public override AMUNITONTYPE amunition
+    public override WeaponObject.AMUNITONTYPE amunition
     {
         get
         {
-            return AMUNITONTYPE.Rocket;
+            return WeaponObject.AMUNITONTYPE.Rocket;
         }
     }
 

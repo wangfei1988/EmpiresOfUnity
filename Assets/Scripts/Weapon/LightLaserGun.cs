@@ -23,6 +23,7 @@ public class LightLaserGun : UnitWeapon
 
 
     private LaserObject laser;      //----------------------- variable that will hold the fired "Laser"-Projectile...
+
     public int LaserEnergie;          
     private int frameCounter;
     private bool IsLoadedt;
