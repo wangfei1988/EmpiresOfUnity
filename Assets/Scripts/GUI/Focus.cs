@@ -213,7 +213,7 @@ public class Focus : MonoBehaviour
             MouseEvents.RIGHTCLICK -= MouseEvents_RIGHTCLICK;
             MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
             UpdateManager.OnUpdate -= DoUpdate;
-            if(masterGameObject.GetComponent<UnitScript>())
+            if(gameObject.GetComponent<UnitScript>())
                 UNIT.Options.FocusFlag = HANDLING.None;
 
             // Release Focus

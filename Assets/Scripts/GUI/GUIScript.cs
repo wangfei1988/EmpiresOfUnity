@@ -241,6 +241,7 @@ public class GUIScript : MonoBehaviour
         {
             GameObject unit = SelectedGroup[0];
             SelectedGroup.ResetGroup();
+            unit.AddComponent<Focus>();
             unit.GetComponent<UnitScript>().ShowLifebar();
         }
         else
