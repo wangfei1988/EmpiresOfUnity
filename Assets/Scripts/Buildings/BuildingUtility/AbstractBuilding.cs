@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Collections;
 
 public abstract class AbstractBuilding : UnitOptions
 {
@@ -30,6 +27,7 @@ public abstract class AbstractBuilding : UnitOptions
     }
 
     private EnumProvider.ORDERSLIST unitState;
+
     public override Enum UnitState
     {
         get
@@ -50,17 +48,11 @@ public abstract class AbstractBuilding : UnitOptions
     {
     }
 
-    public void SubtractLaborer()
+    public void BuildFinished()
     {
-
+        this.BuildingCost();
     }
 
-
-    /// <summary>
-    /// The upgrade building
-    /// This method can be used to upgrade a building.
-    /// The method checks the resources and the max level to deside about to upgrade or not to upgrade.
-    /// </summary>
     //public void UpgradeBuilding()
     //{
     //    if (this.Level == 1 && this.Level != this.MaxLevel && ResourceManager.Resource.MATTER - (ResourceManager.Resource)this.MatterUpgradeCostLvl1 >= 0 && ResourceManager.Resource.NANITEN - (ResourceManager.Resource) this.NaniteUpgradeCostLvl1 >= 0 /*&&Button Upgrade pressed*/

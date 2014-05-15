@@ -85,6 +85,11 @@ public class BuildingBuilder : MonoBehaviour
 
     private void DragFinished()
     {
+
+        // -> activate res
+        if(this.gameObject.GetComponent<AbstractBuilding>())
+            this.gameObject.GetComponent<AbstractBuilding>().BuildFinished();
+
         // Unlock Focus
         this.gameObject.GetComponent<Focus>().Unlock(this.gameObject);
         Component.Destroy(this.gameObject.GetComponent<Focus>());

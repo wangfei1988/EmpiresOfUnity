@@ -1,7 +1,5 @@
 ﻿using System;
-
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public class MatterMine : AbstractBuilding
@@ -22,12 +20,6 @@ public class MatterMine : AbstractBuilding
         } 
     }
 
-    //internal override EnumProvider.ORDERSLIST[] GetUnitsMenuOptionIDs()
-    //{
-    //    Debug.Log("da");
-    //    return (EnumProvider.ORDERSLIST[])System.Enum.GetValues(typeof(MatterMineOptions));
-    //}
-
     public override EnumProvider.UNITCLASS UNIT_CLASS
     {
         get
@@ -45,14 +37,13 @@ public class MatterMine : AbstractBuilding
             OptionalStatesOrder.Add(value, ((OPTIONS)value).ToString());
             
         }
-
     }
+
+   
 
     internal override void DoUpdate()
     {
-  
     }
-
 
     internal override void MoveAsGroup(GameObject leader)
     {
@@ -65,9 +56,4 @@ public class MatterMine : AbstractBuilding
         //MatterWork.TryGetValue(Level, out resValue);
         ResourceManager.AddResouce(ResourceManager.Resource.MATTER, resValue);
     }
-
-    //void DoUpdate()
-    //{
-    ////   this.UpdateProduction();
-    //}
 }

@@ -53,6 +53,7 @@ public class LivingHouse : AbstractBuilding
 
     void OnDestroy()
     {
+        this.SubtractLaborer();
         UpdateManager.OnUpdate -= DoUpdate;
     }
 }
