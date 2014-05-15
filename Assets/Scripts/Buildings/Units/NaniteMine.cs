@@ -1,12 +1,25 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using  System.Collections.Generic;
 
 public class NaniteMine : ProductionBuilding
 {
-    private  Dictionary<uint, uint> NaniteWork = new Dictionary<uint, uint>();
+    private Dictionary<uint, uint> NaniteWork = new Dictionary<uint, uint>();
 
-    private enum MatterMineOptions { Upgrade = EnumProvider.ORDERSLIST.Upgrade}
+    private enum OPTIONS { Upgrade = EnumProvider.ORDERSLIST.Upgrade }
+
+    public override Enum UnitState
+    {
+        get
+        {
+            return UnitState;
+        }
+        set
+        {
+            UnitState = (OPTIONS)value;
+        }
+    }
 
     public override EnumProvider.UNITCLASS UNIT_CLASS
     {
@@ -46,11 +59,6 @@ public class NaniteMine : ProductionBuilding
     {
 
         this.UpdateProduction();
-    }
-
-    internal override EnumProvider.ORDERSLIST[] GetUnitsMenuOptionIDs()
-    {
-       return (EnumProvider.ORDERSLIST[])System.Enum.GetValues(typeof(MatterMineOptions));
     }
 
     void OnDestroy()

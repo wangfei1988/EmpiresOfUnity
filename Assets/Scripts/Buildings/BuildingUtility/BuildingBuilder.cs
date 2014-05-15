@@ -77,7 +77,6 @@ public class BuildingBuilder : MonoBehaviour
     private void DragObject()
     {
 
-        //Vector3 pos = this.Grid.DragObjectPosition(this.Transform);
         Vector3 pos = MouseEvents.State.Position.AsWorldPointOnMap;
 
         this.Transform.position = pos;
@@ -85,10 +84,16 @@ public class BuildingBuilder : MonoBehaviour
 
     private void DragFinished()
     {
+<<<<<<< HEAD
 
         // -> activate res
         if(this.gameObject.GetComponent<AbstractBuilding>())
             this.gameObject.GetComponent<AbstractBuilding>().BuildFinished();
+=======
+        // Grid Building
+        Vector3 pos = this.Grid.DragObjectPosition(this.Transform);
+        this.Transform.position = pos;
+>>>>>>> ee805443944d8daaf1edcfd37ba5c53c71af79bb
 
         // Unlock Focus
         this.gameObject.GetComponent<Focus>().Unlock(this.gameObject);

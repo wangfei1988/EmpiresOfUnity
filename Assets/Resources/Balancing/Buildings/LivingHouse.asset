@@ -11,23 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131e2660297140f43940f53fd68028eb, type: 3}
   m_Name: LivingHouse
   m_EditorClassIdentifier: 
-  Life: 1
-  Level: 1
-  ViewDistance: 1
-  EnergyConsumption: 0
-  MatterCost: 0
-  NaniteCost: 0
-  NaniteUpgradeCostLvl1: 0
-  NaniteUpgradeCostLvl2: 0
-  NaniteUpgradeCostLvl3: 0
-  NaniteUpgradeCostLvl4: 0
-  MatterUpgradeCostLvl1: 0
-  MatterUpgradeCostLvl2: 0
-  MatterUpgradeCostLvl3: 0
-  MatterUpgradeCostLvl4: 0
-  ProductionTime: 0
-  Level1Resource: 10
-  Level2Resource: 20
-  Level3Resource: 30
-  Level4Resource: 40
-  Level5Resource: 50
+  UsedEnergy: 0
+  UpgradeCostNanite: 
+  UpgradeCostMatter: 
+  LevelResource: 0a0000000f00000014000000

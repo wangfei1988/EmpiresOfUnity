@@ -10,15 +10,15 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  - 114: {fileID: 11400000}
-  - 114: {fileID: 11400002}
-  - 64: {fileID: 6400000}
   - 114: {fileID: 11400004}
-  m_Layer: 9
-  m_Name: EnemyFabrik
+  - 114: {fileID: 11400002}
+  - 114: {fileID: 11400000}
+  - 64: {fileID: 6400000}
+  m_Layer: 10
+  m_Name: NaniteMine
   m_TagString: Clickable
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 1
+  m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &400000
@@ -27,9 +27,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.7671795, y: -5.38000011, z: 107.469536}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106829}
+  m_LocalPosition: {x: 19.3155174, y: 0, z: -6.9445715}
+  m_LocalScale: {x: 15, y: 15, z: 15}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!23 &2300000
@@ -44,7 +44,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 1f04194afd7b50e48b2e0b25cae1722a, type: 2}
+  - {fileID: 2100000, guid: f4e170e15e19ae04da0524e85fa37ab0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -59,20 +59,20 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 4300000, guid: 0aaf575707a4cfc4fae53b1d9eeb122b, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 9c83466dcd4892c44b8f7061a311c841, type: 3}
 --- !u!64 &6400000
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Material: {fileID: 13400000, guid: 0fed898ec00a8524faee11d4098ac1a4, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_SmoothSphereCollisions: 1
+  m_SmoothSphereCollisions: 0
   m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: 0aaf575707a4cfc4fae53b1d9eeb122b, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 9c83466dcd4892c44b8f7061a311c841, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -81,46 +81,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edbf96ea742e5eb45b1c852aedfaa2ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 76c5385fe06067b4690e376ba7863c55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 402
-  goodOrEvil: -1
-  ALARM: 0
-  Options: {fileID: 11400002}
-  unitAnimation: {fileID: 11400004}
-  weapon: {fileID: 0}
-  life: 3000
-  level: 1
-  sightWidth: 20
-  resourceFactor: 0
-  interactingUnits: 
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d46ac2a8b63984e4d84e97691c91bdb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UNIT: {fileID: 11400000}
+  UNIT: {fileID: 11400004}
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
-  optionalStateStrings: []
-  optionalstateIDs: 
-  optionalStates: 
   PluggedStateExtendingComponents: []
-  unitState: 101
-  CurrentFabrikatNumber: 0
-  CurrentFabrikat: {fileID: 100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
-  typename: Fabrik
-  Fabrikat:
-  - {fileID: 100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
-  - {fileID: 100000, guid: e7c50471ce3ecd34c8ab09871541ab7b, type: 2}
---- !u!114 &11400004
+  SettingFile: {fileID: 11400000, guid: 2276d586800e2fd499ae0a12a83fb49f, type: 2}
+--- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -134,8 +103,30 @@ MonoBehaviour:
   isActive: 1
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
-  GrowingTime: 0
+  GrowingTime: 10
   startGrowing: 1
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbf96ea742e5eb45b1c852aedfaa2ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitType: 301
+  goodOrEvil: 1
+  ALARM: 0
+  Options: {fileID: 11400000}
+  unitAnimation: {fileID: 11400002}
+  weapon: {fileID: 0}
+  life: 1000
+  level: 0
+  sightWidth: 0
+  resourceFactor: 0
+  interactingUnits: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
