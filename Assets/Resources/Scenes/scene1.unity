@@ -2170,8 +2170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3752a6c3cd9cd2f40914ed477df064dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedScrollX: 10
-  SpeedScrollY: 10
+  SpeedScrollX: 20
+  SpeedScrollY: 20
   SpeedZoom: 25
   SpeedRotate: 100
   scrollingAllowed: 0
@@ -5146,32 +5146,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 735576565}
   m_GameObject: {fileID: 1300276926}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1338072134
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1338072135}
-  m_Layer: 0
-  m_Name: LookAtPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1338072135
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1338072134}
-  m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 0, y: 10, z: 50}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1647307442}
 --- !u!1 &1338601530
 GameObject:
   m_ObjectHideFlags: 0
@@ -5900,8 +5874,7 @@ Transform:
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
   m_LocalPosition: {x: 0, y: 75.283989, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1338072135}
+  m_Children: []
   m_Father: {fileID: 0}
 --- !u!114 &1647307443
 MonoBehaviour:
@@ -5916,9 +5889,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainGUI: {fileID: 358951603}
   ORTHOGRAFIC_Y_HEIGHT: 50
-  PERSPECTIVE_VIEW_SIZE: 20
   Orthografic_View_Size: 500
-  Orthografic_Y_MaxHeight: 400
+  Orthografic_Size_Inclusive: 10
+  Orthografic_Y_MaxSize: 70
+  PERSPECTIVE_VIEW_SIZE: 20
 --- !u!1 &1665781127
 GameObject:
   m_ObjectHideFlags: 0

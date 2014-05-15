@@ -8,8 +8,8 @@ using System.Collections;
 public class Scrolling : MonoBehaviour
 {
     /* Member */
-    public float SpeedScrollX = 10f;
-    public float SpeedScrollY = 10f;
+    public float SpeedScrollX = 20f;
+    public float SpeedScrollY = 20f;
     public float SpeedZoom = 25f;
     public float SpeedRotate = 100f;
 
@@ -17,15 +17,12 @@ public class Scrolling : MonoBehaviour
     public bool scrollingAllowed = true;
     private GUIScript mainGUI;
 
-    private Transform camPoint;
-
     /* Properties */
 
     /* Start & Update */
     void Start()
     {
         mainGUI = this.GetComponent<GUIScript>();
-        camPoint = Camera.main.transform.GetChild(0);
         UpdateManager.OnUpdate += DoUpdate;
     }
 
@@ -88,11 +85,24 @@ public class Scrolling : MonoBehaviour
         }
 
         /* Rotate Left & Right */
+        int status = 0;
         if (Input.GetKey(KeyCode.Q))
-            Camera.main.transform.RotateAround(camPoint.position, new Vector3(0.0f, 1.0f, 0.0f), Time.deltaTime * this.SpeedRotate);
+            status = 1;
         if (Input.GetKey(KeyCode.E))
-            Camera.main.transform.RotateAround(camPoint.position, new Vector3(0.0f, -1.0f, 0.0f), Time.deltaTime * this.SpeedRotate);
-
+            status = -1;
+        if (status != 0)
+        {
+            // Raycast to center of screen
+            int screenX = Screen.width / 2;
+            int screenY = Screen.height / 2;
+            Ray ray = Camera.main.ScreenPointToRay(new Vector3(screenX, screenY));
+            RaycastHit hit;
+            if (Ground.Current.collider.Raycast(ray, out hit, Camera.main.farClipPlane))
+            {
+                Vector3 camPoint = hit.point;
+                Camera.main.transform.RotateAround(camPoint, new Vector3(0.0f, 1.0f * status, 0.0f), Time.deltaTime * this.SpeedRotate);
+            }
+        }
 
         /* Space Key Switch Camera */
         if (Input.GetKeyDown(KeyCode.Space))
