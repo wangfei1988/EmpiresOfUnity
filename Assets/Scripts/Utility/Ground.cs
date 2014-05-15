@@ -1,10 +1,16 @@
-﻿using UnityEngine;
+﻿#define TERRAIN 
+using UnityEngine;
 using System.Collections;
 
 public class Ground : MonoBehaviour
 {
+    public delegate void LightSwitch(bool OnOff,int lightID);
+    public static event LightSwitch SWITCH;
+
     private const int MINIMUM_NUMBER_OF_GROUNGS = 3;
-    public static GameObject Current;
+
+    public static GameObject masterGround;
+    public static GroundLayer Current;
     private GameObject[] grounds = new GameObject[3];
     private bool NeedsUpdate = true;
     private static int GroundIndex = 0;
@@ -13,6 +19,8 @@ public class Ground : MonoBehaviour
     [SerializeField]
     private int numberOfGrounds;
 
+
+
     public static int NumberOfGrounds
     {
         get;
@@ -20,28 +28,32 @@ public class Ground : MonoBehaviour
     }
     private static float GroundOffset()
     {
-        return (Current.gameObject.transform.localScale.x * 1.5f) * GroundIndex;
+        return (Current.groundSize.x * 1.5f) * GroundIndex;
     }
 
 
     void Awake()
     {
-
-        Current = this.gameObject.transform.FindChild("SubGround0").gameObject;
-        grounds[0] = this.gameObject.transform.FindChild("SubGround0").gameObject;
+        masterGround = grounds[0] = this.gameObject.transform.FindChild("SubGround0").gameObject;
         grounds[1] = this.gameObject.transform.FindChild("SubGround1").gameObject;
-        grounds[2] = this.gameObject.transform.FindChild("SubGround1").gameObject;
+        grounds[2] = this.gameObject.transform.FindChild("SubGround2").gameObject;
         GroundIndex = 0;
     }
 
 
     void Start()
     {
+        Current = masterGround.GetComponent<GroundLayer>();
+        int count= -1;
+        foreach (Switch lightswitch in this.gameObject.GetComponentsInChildren<Switch>())
+        {lightswitch.SetID(++count);}
         this.gameObject.transform.DetachChildren();
         NumberOfGrounds = MINIMUM_NUMBER_OF_GROUNGS;
         if ((numberOfGrounds -= MINIMUM_NUMBER_OF_GROUNGS) > 0)
             AddGrounds(numberOfGrounds);
         numberOfGrounds = NumberOfGrounds;
+        Current.IsActiveGround = true;
+        
     }
 
     private void AddGround()
@@ -52,6 +64,7 @@ public class Ground : MonoBehaviour
         temp.name = "SubGround" + NumberOfGrounds.ToString();
         temp.tag = "Ground";
         temp.layer = 2;
+        temp.GetComponentInChildren<Switch>().SetID(GroundIndex);
         NumberOfGrounds++;
         NeedsUpdate = true;
         GroundIndex = indexbuffer;
@@ -68,10 +81,15 @@ public class Ground : MonoBehaviour
         {
             grounds = new GameObject[NumberOfGrounds];
 
+
             for (int i = 0; i < NumberOfGrounds; i++)
-                    grounds[i] = GameObject.Find("SubGround" + i.ToString());
+            {
+                grounds[i] = GameObject.Find("SubGround" + i.ToString());
+
+            }
 
             NeedsUpdate = false;
+
         }
     }
 
@@ -83,15 +101,20 @@ public class Ground : MonoBehaviour
         GroundIndex = groundnumber;
         camPosition.x += GroundOffset();
         Camera.main.transform.position = camPosition;
-        Current = Current.GetComponent<Ground>().GetGround(GroundIndex);
+        Current.IsActiveGround = false;
+        masterGround = Current.Controll.SwitchTo(groundnumber);
+        Current.IsActiveGround = true;
+        if (SWITCH != null)
+            SWITCH(true, groundnumber);
         return Current.gameObject;
     }
-    public GameObject GetCurrent()
+    public GameObject GetCurrentGround()
     {
         return grounds[GroundIndex];
     }
-    public GameObject GetGround(int index)
+    public GameObject SwitchTo(int newindex)
     {
-        return grounds[index];
+
+        return grounds[newindex];
     }
 }

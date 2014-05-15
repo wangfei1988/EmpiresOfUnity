@@ -20,6 +20,8 @@ public class AnimatedCursor : MonoBehaviour
         STANDARD,
         CLICK,
         OVER_CLICKABLE_OBJECT,
+        OVER_DISABLED_OBJECT,
+        DRAGnDROP,
         /*LOAD, WAIT, RESIZE, RESIZE_LR, RESIZE_TD, ... */
     }
 

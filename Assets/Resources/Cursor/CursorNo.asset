@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14eea4f7616775546b9fcc7dc898fe89, type: 3}
+  m_Name: CursorNo
+  m_EditorClassIdentifier: 
+  CursorType: 4
+  ClickPoint: {x: 1, y: 1}
+  TextureList:
+  - {fileID: 2800000, guid: 53a87dbc49e529f44858440ee170bb88, type: 3}
+  - {fileID: 2800000, guid: 93d3336f4b3d06d4cad7a2752c901cb6, type: 3}
+  - {fileID: 2800000, guid: b7f04bf41a7b1714ab6125ef2f59da74, type: 3}
+  - {fileID: 2800000, guid: c1d905e8e43740d4e9c11dad7b1be668, type: 3}
+  - {fileID: 2800000, guid: d757750a92cc08149b8e9465ed600ee9, type: 3}
+  - {fileID: 2800000, guid: fb93b96e6b8d15740a493fd6f34925df, type: 3}
+  - {fileID: 2800000, guid: ff899bc23dbdd2e4cbc416ccf63576fa, type: 3}
+  - {fileID: 2800000, guid: 2f524cc20e259b44c818a990535d8920, type: 3}
+  - {fileID: 2800000, guid: f450273a320372347bfee629cf95afa3, type: 3}
+  - {fileID: 2800000, guid: 64d2dc3610b21064cb707bef5d6d593b, type: 3}
+  - {fileID: 2800000, guid: b9349b3d6b0985f4fbbbc9832f511491, type: 3}
+  - {fileID: 2800000, guid: ae952b2c2b54e2748b03aa9916d27e87, type: 3}
