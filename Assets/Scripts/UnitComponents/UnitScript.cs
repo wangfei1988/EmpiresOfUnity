@@ -324,14 +324,13 @@ public class UnitScript : MonoBehaviour
             int count = Options.GetUnitsMenuOptionIDs().Length;
             EnumProvider.ORDERSLIST[] CurrentOrder = new EnumProvider.ORDERSLIST[++count];
 
-
-            for (int i = 0; i < count-1; i++)
+            for (int i = 0; i < count - 1; i++)
             {
                 CurrentOrder[i] = Options.GetUnitsMenuOptionIDs()[i];
             }
-            CurrentOrder[count-1] = EnumProvider.ORDERSLIST.Upgrade;
-
+            CurrentOrder[count - 1] = EnumProvider.ORDERSLIST.Upgrade;
             return Options.GetUnitsMenuOptionIDs();
+
         }
         set
         {

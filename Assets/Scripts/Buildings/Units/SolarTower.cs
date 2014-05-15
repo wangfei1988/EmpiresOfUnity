@@ -36,6 +36,11 @@ public class SolarTower : AbstractBuilding
        
     }
 
+    public override void BuildFinished()
+    {
+        this.BuildingCost();
+    }
+
     private void DoUpdate()
     {
         SolarTowerWork();

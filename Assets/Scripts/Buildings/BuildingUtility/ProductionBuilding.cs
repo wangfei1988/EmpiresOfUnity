@@ -1,22 +1,52 @@
-﻿using UnityEngine;
+﻿using System.Diagnostics;
+using UnityEngine;
 using System.Collections;
 
 public abstract class ProductionBuilding : AbstractBuilding
 {
     protected float workTimer;
-
     protected bool firstStart = false;
 
-    protected void UpdateProduction()
+    protected static int MatterMineCount = 0;
+    protected static int NaniteMineCount = 0;
+
+    protected static int MatterCount = 0;
+    protected static int NaniteCount = 0;
+
+    protected void UpdateProduction(UnitScript.UNITTYPE type)
     {
-
-        //Timer for Resources per Time(ProductionTime)
-        workTimer += Time.deltaTime;
-
-        if (workTimer >= (float)1 / (float)this.CurrentResource)
+        int dividier = 1;
+        bool allowed = false;
+        if (type == UnitScript.UNITTYPE.MatterMine)
         {
-            workTimer = 0;
-            this.MineWork();
+            dividier = MatterMineCount;
+            MatterCount++;
+            if (MatterCount > MatterMineCount)
+                MatterCount = 1;
+            if (MatterCount == 1)
+                allowed = true;
+        }
+        else if (type == UnitScript.UNITTYPE.NaniteMine)
+        {
+            dividier = NaniteMineCount;
+            NaniteCount++;
+            if (NaniteCount > NaniteMineCount)
+                NaniteCount = 1;
+            if (NaniteCount == 1)
+                allowed = true;
+        }
+
+        // If Player has several Miner -> only execute the first miner for counting all
+        if (allowed)
+        {
+            //Timer for Resources per Time (ProductionTime)
+            workTimer += Time.deltaTime;
+
+            if (workTimer >= (float)1 / (float)this.CurrentResource / dividier)
+            {
+                workTimer = 0;
+                this.MineWork();
+            }
         }
         //calls the method only once
         if (this.firstStart)
@@ -28,8 +58,6 @@ public abstract class ProductionBuilding : AbstractBuilding
 
         //Check for Upgrade
         // UpgradeBuilding();
-
-        //Destroy this Gameobject if Life is 0
     }
 
     protected abstract void MineWork();

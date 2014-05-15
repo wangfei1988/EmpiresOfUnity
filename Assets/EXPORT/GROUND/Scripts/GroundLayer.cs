@@ -22,7 +22,7 @@ public class GroundLayer : MonoBehaviour {
         }
     }
     new public Light light;
-    public Ground Controll;
+    public Ground Control;
 
     void Awake()
     {
@@ -34,10 +34,10 @@ public class GroundLayer : MonoBehaviour {
 
 	void Start () 
     {
-        Controll = this.gameObject.transform.parent.gameObject.GetComponent<Ground>();
+	    Control = GameObject.FindGameObjectWithTag("GroundControl").GetComponent<Ground>();
         collider = this.gameObject.transform.GetChild(0).gameObject.collider;
         light = this.gameObject.transform.GetChild(0).transform.FindChild("GroundLight").light;
-        IsActiveGround = false;
+        //IsActiveGround = false;
 	}
 	
 

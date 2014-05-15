@@ -1,4 +1,5 @@
-﻿using System;
+﻿using UnityEngine;
+using System.Diagnostics;
 
 public abstract class AbstractBuilding : UnitOptions
 {
@@ -28,7 +29,7 @@ public abstract class AbstractBuilding : UnitOptions
 
     private EnumProvider.ORDERSLIST unitState;
 
-    public override Enum UnitState
+    public override System.Enum UnitState
     {
         get
         {
@@ -48,10 +49,7 @@ public abstract class AbstractBuilding : UnitOptions
     {
     }
 
-    public void BuildFinished()
-    {
-        this.BuildingCost();
-    }
+    public abstract void BuildFinished();
 
     //public void UpgradeBuilding()
     //{

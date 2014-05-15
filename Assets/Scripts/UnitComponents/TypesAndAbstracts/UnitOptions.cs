@@ -152,7 +152,6 @@ abstract public class UnitOptions : MonoBehaviour
     }
     virtual internal EnumProvider.ORDERSLIST[] GetUnitsMenuOptionIDs()
     {
-        // -> mine -> GetUnitsMenuOptionIDs()
         return optionalStates;
     }
     virtual internal Object[] GetUnitsSIDEMenuObjects()

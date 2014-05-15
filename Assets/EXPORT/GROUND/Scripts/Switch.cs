@@ -14,7 +14,7 @@ public class Switch : MonoBehaviour
         lightSwitchID = id;
     }
 
-    void Ground_SWITCH(bool OnOff,int id)
+    void Ground_SWITCH(bool OnOff, int id)
     {
         if (lightSwitchID == id)
             this.light.enabled = OnOff;
