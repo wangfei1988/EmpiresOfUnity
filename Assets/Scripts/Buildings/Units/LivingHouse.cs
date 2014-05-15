@@ -5,8 +5,17 @@ public class LivingHouse : AbstractBuilding
 {
     private Dictionary<uint, uint> LivingHouseDic = new Dictionary<uint, uint>(); 
     private bool isAlreadyUsed = true;
+    private uint currentResidentHuman;
 
+    void Start()
+    {
+        UpdateManager.OnUpdate += DoUpdate;
+    }
 
+    internal override void DoStart()
+    {
+
+    }
 
     public override EnumProvider.UNITCLASS UNIT_CLASS
     {
@@ -20,21 +29,12 @@ public class LivingHouse : AbstractBuilding
     {
     }
 
-    void Start()
-    {
-        UpdateManager.OnUpdate += DoUpdate;
-    }
-
     private void LivingHouseWork()
     {
         uint resValue = 0;
         LivingHouseDic.TryGetValue((uint)SettingFile.Level, out resValue);
         ResourceManager.AddResouce(ResourceManager.Resource.LABORER, resValue);
-    }
-
-    internal override void DoStart()
-    {
-        
+        currentResidentHuman = resValue;
     }
 
     void DoUpdate()
@@ -44,7 +44,11 @@ public class LivingHouse : AbstractBuilding
             LivingHouseWork();
             this.isAlreadyUsed = false;
         }
+    }
 
+    public void SubtractLaborer()
+    {
+        ResourceManager.SubtractResouce(ResourceManager.Resource.LABORER, currentResidentHuman);
     }
 
     void OnDestroy()

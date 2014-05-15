@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using UnityEngine;
 using System.Collections;
 
@@ -47,15 +46,12 @@ public abstract class AbstractBuilding : UnitOptions
         }
     }
 
-    /*internal override void DoStart()
-    {
-
-        Debug.Log("Abstract UnitOption");
-    }*/
-
     internal override void DoUpdate()
     {
+    }
 
+    public void SubtractLaborer()
+    {
 
     }
 
