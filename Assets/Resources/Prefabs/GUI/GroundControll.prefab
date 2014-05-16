@@ -163,7 +163,7 @@ GameObject:
   - 114: {fileID: 11400014}
   m_Layer: 2
   m_Name: GroundControll
-  m_TagString: Ground
+  m_TagString: GroundControl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,7 +180,7 @@ GameObject:
   - 154: {fileID: 15400002}
   m_Layer: 2
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -455,7 +455,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: 2
     m_Strength: 1
     m_Bias: .0500000007

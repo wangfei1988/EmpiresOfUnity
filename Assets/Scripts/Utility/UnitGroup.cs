@@ -95,8 +95,6 @@ public class UnitGroup : ScriptableObject
         if (newUnit.GetComponent<UnitScript>().GoodOrEvil == this.GoodOrEvil)
         {
             MemberUnit.Add(newUnit);
-            //if (GroupState != GROUPSTATE.UnderConstruction)
-            //    CalculateSize();
         }
     }
 

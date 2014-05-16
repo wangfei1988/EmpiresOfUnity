@@ -23,7 +23,7 @@ public class SelectorScript : MonoBehaviour {
         // Check Selected
         foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Clickable"))
         {
-            if (gameObject.collider.bounds.Contains(unit.transform.position))
+            if (gameObject.collider.bounds.Contains(unit.transform.position) && unit.GetComponent<UnitScript>())
             {
                 group.BeginGroupFill(unit);
             }

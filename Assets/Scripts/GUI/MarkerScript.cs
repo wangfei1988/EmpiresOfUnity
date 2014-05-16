@@ -8,8 +8,8 @@ public class MarkerScript : MonoBehaviour {
     private bool visible;
     public bool Visible
     {
-        get { return gameObject.renderer.enabled = gameObject.light.enabled = visible; }
-        set {visible = gameObject.renderer.enabled = gameObject.light.enabled = value; }
+        get { return gameObject.renderer.enabled = visible; }
+        set {visible = gameObject.renderer.enabled = value; }
     }
 	void Start ()
     {

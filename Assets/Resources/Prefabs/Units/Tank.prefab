@@ -36,7 +36,7 @@ GameObject:
   - 212: {fileID: 21200000}
   m_Layer: 12
   m_Name: UnitBlib
-  m_TagString: Clickable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,7 +48,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20, y: -.150000095, z: 0}
+  m_LocalPosition: {x: -135.204193, y: -.149979338, z: -174.137711}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 400002}
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a48e92c06568649b66b011d24a5765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 11400000, guid: a6ed988b6cc86ba4dab5629a90b293fe, type: 2}
+  prefabSlot: {fileID: 0}
   hasArsenal: 0
   LaserEnergie: 1000
 --- !u!114 &11400008
@@ -222,7 +222,7 @@ MonoBehaviour:
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
   PluggedStateExtendingComponents: []
-  _speed: .200000003
+  _speed: .400000006
   standardYPosition: -.150000006
   WayPoints: []
   IsGroupLeader: 0

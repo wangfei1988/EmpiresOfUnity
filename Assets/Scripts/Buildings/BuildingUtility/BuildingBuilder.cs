@@ -86,10 +86,6 @@ public class BuildingBuilder : MonoBehaviour
     private void DragFinished()
     {
 
-        // Grid Building
-        Vector3 pos = this.Grid.DragObjectPosition(this.Transform);
-        pos.y = ((GameObject)this.BuildableBuildings[curIndex]).transform.position.y;
-        this.Transform.position = pos;
 
         // Unlock Focus
         this.gameObject.GetComponent<Focus>().Unlock(this.gameObject);
@@ -98,7 +94,15 @@ public class BuildingBuilder : MonoBehaviour
         // Config me
         if (this.Transform != null)
         {
+            // Grid & Grow Building
+            Vector3 pos = this.Grid.DragObjectPosition(this.Transform);
+            pos.y = ((GameObject)this.BuildableBuildings[curIndex]).transform.position.y;
+            this.Transform.position = pos;
+
+            // MeshCollider
             this.Transform.GetComponent<MeshCollider>().enabled = true;
+
+            // Start Grow
             this.Transform.GetComponent<BuildingGrower>().StartGrowing = true;
         }
 
