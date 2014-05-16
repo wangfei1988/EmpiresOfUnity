@@ -98,8 +98,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400010}
-  - 114: {fileID: 11400000}
   - 64: {fileID: 6400010}
+  - 114: {fileID: 11400000}
   - 114: {fileID: 11400008}
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400004}
@@ -445,7 +445,7 @@ MonoBehaviour:
   Options: {fileID: 11400006}
   unitAnimation: {fileID: 11400008}
   weapon: {fileID: 11400004}
-  life: 1000
+  life: 2000
   level: 1
   sightWidth: 100
   resourceFactor: 0

@@ -3,8 +3,6 @@ using System.Collections;
 
 abstract public class UnitWeapon : MonoBehaviour
 {
-
-
     public enum WEAPON : byte
     {
         None=0,
@@ -12,6 +10,7 @@ abstract public class UnitWeapon : MonoBehaviour
         RocketLauncher,
     }
     public WeaponObject prefabSlot;
+
     [SerializeField]
     private bool hasArsenal = false;
     public bool HasArsenal
@@ -24,8 +23,9 @@ abstract public class UnitWeapon : MonoBehaviour
                 if (value) this.gameObject.AddComponent<WeaponArsenal>();
                 else Component.Destroy(this.gameObject.GetComponent<WeaponArsenal>());
             }
+        }
     }
-    }
+
     public WeaponArsenal arsenal
     {
         get 
@@ -35,14 +35,14 @@ abstract public class UnitWeapon : MonoBehaviour
         }
     }
 
-    //------------------------------------------------Fires the weapon...
+    // Fires the weapon...
     abstract public void Engage(Vector3 targetPoint);//    ... at any Point,
     abstract public void Engage(GameObject targetUnit);//   ...at an Object
 
     abstract public float GetMaximumRange();
 
 
-    //------------------------------The Weapon's Updatefunction...
+    // The Weapon's Updatefunction...
     abstract public void Reloade();
 
 }

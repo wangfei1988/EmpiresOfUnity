@@ -170,7 +170,9 @@ public class GroundUnitOptions : MovingUnitOptions
 
     internal override void DoUpdate()
     {
-        if (IsAttacking) MoveToPoint = Target.transform.position;
+        if(Target != null)
+            if (IsAttacking)
+                MoveToPoint = Target.transform.position;
         base.DoUpdate();
 
     }

@@ -29,7 +29,6 @@ public class BuildingGrower : UnitAnimation
                 Grow();
             }
             return startGrowing;
-            
         }
         set 
         {

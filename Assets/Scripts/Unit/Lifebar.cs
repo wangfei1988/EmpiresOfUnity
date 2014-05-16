@@ -38,6 +38,7 @@ public class Lifebar : ScriptableObject
         }
     }
     private int WidthDefault;
+    public bool IsEnemy = false;
 
     /* Properties */
     private bool activated = false;
@@ -102,6 +103,13 @@ public class Lifebar : ScriptableObject
 
         this.LifebarObjectInner = this.LifebarObject.FindChild("LifebarInner").transform;
         this.WidthDefault = (int)this.LifebarObjectInner.GetComponent<GUITexture>().pixelInset.width;
+
+        // Color the Lifebar
+        if(this.IsEnemy)
+            this.LifebarObjectInner.GetComponent<GUITexture>().color = new Color(210f / 255f, 69f / 255f, 69f / 255f);
+
+        // Life Count
+        UpdateLifeCount();
     }
 
     private void DestroyObject()

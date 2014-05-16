@@ -9,8 +9,7 @@ using System.Collections;
 
 [AddComponentMenu("Program-X/Weapons/Laser Gun")]
 public class LightLaserGun : UnitWeapon 
-{//----------------------------------- 
-
+{
 
     public const int LOADINGFACTOR = 50;          //-----------millisecons the lasergun need to regain 1 Laserenergy.. 
     public const int MAX_LASER_ENERGY = 1000;    //------------Maximum amount of Laserenergy the lasergun can hold.
@@ -20,9 +19,8 @@ public class LightLaserGun : UnitWeapon
     [SerializeField]
     public static float MAXIMUM_DISTANCE = 50;  //-------------Maximum Range...
 
-
-
-    private LaserObject laser;      //----------------------- variable that will hold the fired "Laser"-Projectile...
+    // variable that will hold the fired "Laser"-Projectile...
+    private LaserObject laser;
 
     public int LaserEnergie;          
     private int frameCounter;
@@ -34,11 +32,14 @@ public class LightLaserGun : UnitWeapon
         LaserEnergie = MAX_LASER_ENERGY;
         frameCounter = 0;
     }
-    //---------------------------------------------------------- Engage functions. to fire the "Laser" - projectiles...
+
+    // Engage functions. to fire the "Laser" - projectiles...
     public override void Engage(GameObject targetUnit)
     {
-        Engage(targetUnit.transform.position);
+        if(targetUnit != null)
+            Engage(targetUnit.transform.position);
     }
+
     public override void Engage(Vector3 targetPoint)
     {
         if ((!IsLoadedt)&&(Vector3.Distance(gameObject.transform.position,targetPoint)<MAXIMUM_DISTANCE))
@@ -64,12 +65,14 @@ public class LightLaserGun : UnitWeapon
     }
 
     public override float GetMaximumRange()
-    {//-------------------------------------------This Method is called by the Units "UnitScript"-Proerty:"AttackRange"
+    {
+        // This Method is called by the Units "UnitScript"-Proerty:"AttackRange"
         return MAXIMUM_DISTANCE;
     }
 
     public override void Reloade()
-    {//-------------------------------------------The Updatefunction for updating the LightLaser component...
+    {
+        // The Updatefunction for updating the LightLaser component...
         if (++frameCounter == LOADINGFACTOR)
         {
            if(LaserEnergie<MAX_LASER_ENERGY)  LaserEnergie++;
@@ -77,4 +80,5 @@ public class LightLaserGun : UnitWeapon
         }
         if (laser == null) IsLoadedt = false;
     }
+
 }

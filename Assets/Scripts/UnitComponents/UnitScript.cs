@@ -194,6 +194,7 @@ public class UnitScript : MonoBehaviour
 
     void Start()
     {
+        DefaultLife = Life;
         UpdateManager.UNITUPDATE += UpdateManager_UNITUPDATE;
         UpdateManager.OnUpdate += UpdateLifebar;
     }
@@ -226,6 +227,7 @@ public class UnitScript : MonoBehaviour
     //#############################################################
     [SerializeField]
     private int life;
+    private int DefaultLife;
     public int Life
     {
         get { return life; }
@@ -233,8 +235,9 @@ public class UnitScript : MonoBehaviour
         {
             if (life != value)
             {
-                if (value <= 0) Die();
                 life = value;
+                if (life <= 0)
+                    Die();
             }
         }
     }
@@ -266,7 +269,10 @@ public class UnitScript : MonoBehaviour
         if (LifebarScript != null)
         {
             LifebarScript.Position = gameObject.transform.position;
-            LifebarScript.LifeDefault = this.Life;
+            LifebarScript.LifeDefault = this.DefaultLife;
+            LifebarScript.Life = this.Life;
+            if (GoodOrEvil == FoE.GOODorEVIL.Evil)
+                LifebarScript.IsEnemy = true;
             LifebarScript.Activated = true;
         }
     }
@@ -372,8 +378,12 @@ public class UnitScript : MonoBehaviour
     {
         //todo: code for dieing (explosion etc.)
         UpdateManager.UNITUPDATE -= UpdateManager_UNITUPDATE;
-        foreach (Component component in this.gameObject.GetComponents<Component>()) 
-            Component.Destroy(component);
+
+        //foreach (Component component in this.gameObject.GetComponents<Component>())
+            //Component.Destroy(component);
+        foreach (UnitComponent component in this.gameObject.GetComponents<UnitComponent>())
+            UnitComponent.Destroy(component);
+        
         GameObject.Destroy(this.gameObject);
 	}
 

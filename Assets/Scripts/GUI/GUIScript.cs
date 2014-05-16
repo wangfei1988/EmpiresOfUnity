@@ -4,7 +4,6 @@ using System.Collections.Generic;
 [AddComponentMenu("Camera-Control/GUIScript")]
 public class GUIScript : MonoBehaviour
 {
-
     public static GUIScript main;
     private static List<string> StaticTextLines = new List<string>();
     public static void AddTextLine(string line)
@@ -12,7 +11,6 @@ public class GUIScript : MonoBehaviour
         if (StaticTextLines != null)
             StaticTextLines.Insert(0,line);
     }
-
 
     public UnitGroup SelectedGroup;
     public int GroupCount;
@@ -131,10 +129,12 @@ public class GUIScript : MonoBehaviour
 
         //gameObject.guiTexture.pixelInset = new Rect(0, -camera.pixelHeight, camera.pixelWidth, camera.pixelHeight);
         //if (gameObject.GetComponent<GUIText>() == null) gameObject.AddComponent<GUIText>();
+
         gameObject.guiText.pixelOffset = new Vector2(-Camera.main.pixelWidth / 2 + 25 * Scale.x, Camera.main.pixelHeight/2 - 80 * Scale.y);
         MapViewArea = new Rect(20 * Scale.x, 20 * Scale.y, 1675 * Scale.x, 1047 * Scale.y);
         MainGuiArea = new Rect(1716 * Scale.x, 20 * Scale.y, 184 * Scale.x, 1047 * Scale.y);
         gameObject.guiText.fontSize = (int)(40f * Scale.x + 0.5f);
+
         //guiTexture.pixelInset = MapViewArea;
         //guiTexture.guiTexture.border.left = (int)(20f * Scale.x);
         //guiTexture.guiTexture.border.right = (int)(225f * Scale.x);

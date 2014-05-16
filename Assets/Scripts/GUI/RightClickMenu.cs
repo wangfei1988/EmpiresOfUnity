@@ -86,7 +86,7 @@ public class RightClickMenu : MonoBehaviour {
             float zwischenbuttonraum = (20 * ScaleY);
             Rect guiposition;
             guiposition = new Rect(1718 * ScaleX, (210 * ScaleY) - 3 * guiStyle.fontSize, 202 * ScaleX, 360 * ScaleY);
-            GUI.BeginGroup(guiposition, Unit.name+"'s Activities:", guiSIDEstyle);
+            GUI.BeginGroup(guiposition, "", guiSIDEstyle); // Unit.name+"'s Activities:"
             for (int i = 0; i < SIDEmenuOptions.Length; i++)
             {               
                 if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + i * (btnHeight + zwischenbuttonraum), (180 * ScaleX), btnHeight), SIDEmenuOptions[i].name))
@@ -94,7 +94,7 @@ public class RightClickMenu : MonoBehaviour {
                     Unit.Sellect(SIDEmenuOptions[i]);
                 }
             }
-            if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + SIDEmenuOptions.Length * (btnHeight + zwischenbuttonraum), (180 * ScaleX), btnHeight), "Cancel..."))
+            if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + SIDEmenuOptions.Length * (btnHeight + zwischenbuttonraum), (180 * ScaleX), btnHeight), "Cancel"))
             {
                 if (!Focus.IsLocked)
                     Component.Destroy(Focus.masterGameObject.GetComponent<Focus>());
@@ -102,7 +102,8 @@ public class RightClickMenu : MonoBehaviour {
             GUI.EndGroup();
         }
         else
-        {                          //            --------------------------------------Menü  an der Seite...
+        {
+            // Side-Menu
             Object[] SIDEmenuOptions = this.buildingBuilder.BuildableBuildings;
             float btnHeight = (40 * ScaleY);
             float zwischenbuttonraum = (20 * ScaleY);
@@ -113,7 +114,7 @@ public class RightClickMenu : MonoBehaviour {
             {
                 if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + i * (btnHeight + zwischenbuttonraum), (180 * ScaleX), btnHeight), SIDEmenuOptions[i].name))
                 {
-                    //  code for Build-Ding
+                    // Code for Build-Action
                     this.buildingBuilder.CreatePrefab(i);
                 }
             }
