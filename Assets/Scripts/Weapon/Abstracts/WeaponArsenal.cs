@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class WeaponArsenal : MonoBehaviour 
+public class WeaponArsenal : MonoBehaviour
 {
     [SerializeField]
     private List<WeaponObject> Arsenal = new List<WeaponObject>(2);

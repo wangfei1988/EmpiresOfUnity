@@ -73,7 +73,7 @@ abstract public class UnitOptions : MonoBehaviour
         foreach (EnumProvider.ORDERSLIST order in orders)
             OrdersInMind.AddOrder(order, Vector3.zero, ++UOID);
     }
-    protected bool GotToDo = false;
+    protected bool? GotToDo = false;
     protected bool CheckedAllert
     {
         get { return IsUnderAttack | TargetUnderAttack; }
@@ -280,7 +280,7 @@ abstract public class UnitOptions : MonoBehaviour
     {
         if (GotToDo != null)
         {
-            if (GotToDo)
+            if (GotToDo.Value)
                 GotToDo = ProcessAllOrders();
         }
         DoUpdate();

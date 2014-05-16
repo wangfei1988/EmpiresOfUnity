@@ -45,8 +45,17 @@ public class ProductionBuildingOptions : UnitOptions
 
      internal override Object[] GetUnitsSIDEMenuObjects()
      {
+         if (UNIT.weapon.HasArsenal)
+         {
+             Object[] objBuffer = new Object[Fabrikat.Count + UNIT.weapon.arsenal.Count];
+             int index = 0;
+             foreach (Object fabrikat in Fabrikat)
+                 objBuffer[index++] = fabrikat;
+             for (int i=0; i < UNIT.weapon.arsenal.Count; index++)
+                 objBuffer[index+i]=UNIT.weapon.arsenal[i];
+             return objBuffer;
+         }
          return Fabrikat.ToArray();
-      //   return fabrikatNames;
      }
 
      public override void GiveOrder(int orderNumber)
@@ -70,7 +79,10 @@ public class ProductionBuildingOptions : UnitOptions
 
      internal override void SetSIDEObject(Object returned)
      {
-         CurrentFabrikat = returned;
+         if (returned is WeaponObject)
+             UNIT.weapon.prefabSlot = returned as WeaponObject;
+         else
+             CurrentFabrikat = returned;
      }
 
      protected override bool GotToDoPrimaryOrders
