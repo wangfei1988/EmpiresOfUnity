@@ -33,10 +33,9 @@ public class BuildingGrower : UnitAnimation
         }
         set 
         {
-            if (!value) 
-            {
-                startGrowing = value;
-            }
+            startGrowing = value;
+            if (startGrowing)
+                startYps = gameObject.transform.position.y;
         }
     }
     private float growState;

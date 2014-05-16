@@ -10,20 +10,19 @@ public class BuildingBuilder : MonoBehaviour
 
     private Transform Transform;
     private bool dragNow = false;
+    private int curIndex;
+    private AnimatedCursor Cursor;
 
     /* Start & Update */
 	void Start ()
     {
         this.Grid = this.GetComponent<GridSystem>();
         UpdateManager.OnMouseUpdate += DoUpdate;
+        this.Cursor = GUIScript.main.GetComponent<AnimatedCursor>();
     }
 	
 	void DoUpdate ()
 	{
-	    //if (this.dragNow == false)
-	    //{
-	        //this.CreatePrefab();
-	    //}
 
         if (this.dragNow == true)
         {
@@ -56,6 +55,8 @@ public class BuildingBuilder : MonoBehaviour
     /* Methods */
     public void CreatePrefab(int index)
     {
+        curIndex = index;
+
         // focus on building builder
         this.gameObject.AddComponent<Focus>().Lock();
 
@@ -66,6 +67,10 @@ public class BuildingBuilder : MonoBehaviour
 
         // Config me
         this.Transform.GetComponent<MeshCollider>().enabled = false;
+
+        // Cursor
+        this.Cursor.CurrentCursor = AnimatedCursor.CURSOR.DRAGnDROP;
+        this.Cursor.LockCursor = true;
 
         // Config
         this.dragNow = true;
@@ -81,14 +86,9 @@ public class BuildingBuilder : MonoBehaviour
     private void DragFinished()
     {
 
-        // Now activate Resource Production etc.
-
-        // Build Finished
-        //if(this.gameObject.GetComponent<AbstractBuilding>())
-        //    this.gameObject.GetComponent<AbstractBuilding>().BuildFinished();
-
         // Grid Building
         Vector3 pos = this.Grid.DragObjectPosition(this.Transform);
+        pos.y = ((GameObject)this.BuildableBuildings[curIndex]).transform.position.y;
         this.Transform.position = pos;
 
         // Unlock Focus
@@ -99,8 +99,11 @@ public class BuildingBuilder : MonoBehaviour
         if (this.Transform != null)
         {
             this.Transform.GetComponent<MeshCollider>().enabled = true;
-            //this.Transform.GetComponent<BuildingGrower>().StartGrowing = true;
+            this.Transform.GetComponent<BuildingGrower>().StartGrowing = true;
         }
+
+        // Cursor
+        this.Cursor.LockCursor = false;
 
         // Config
         this.Transform = null;

@@ -10,8 +10,8 @@ using System.Collections.Generic;
 public class AnimatedCursor : MonoBehaviour
 {
     /* Member */
-    public float AnimationFps = 3; // x Frages per Second
     public List<CursorObj> CursorList = new List<CursorObj>();
+    public bool LockCursor = false;
 
     /* Cursor ENUM */
     public enum CURSOR
@@ -90,7 +90,10 @@ public class AnimatedCursor : MonoBehaviour
 
     void DoUpdate()
     {
-        SetCursor();
+        if(LockCursor == false)
+            SetCursor();
+
+        SetCursorToUnity();
     }
 
     /* Methods */
@@ -106,6 +109,9 @@ public class AnimatedCursor : MonoBehaviour
             CURSOR underMouse = CheckWhatIsUnderCursor();
             this.CurrentCursor = underMouse;
         }
+    }
+    private void SetCursorToUnity()
+    {
 
         /* Set Cursor */
         Cursor.SetCursor(
@@ -144,7 +150,7 @@ public class AnimatedCursor : MonoBehaviour
     public Texture2D AnimateCursor()
     {
         this.time += Time.deltaTime;
-        if (this.time >= 1 / this.AnimationFps)
+        if (this.time >= 1 / this.CursorList[this.listIndex].AnimationFps)
         {
             this.time = 0;
             this.frameIndex++;

@@ -13,6 +13,7 @@ GameObject:
   - 92: {fileID: 9200000}
   - 81: {fileID: 8100000}
   - 114: {fileID: 11400000}
+  - 131: {fileID: 13100000}
   m_Layer: 0
   m_Name: MiniMapCam
   m_TagString: Untagged
@@ -43,8 +44,8 @@ Camera:
   m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
+    x: .777999997
+    y: .0121999998
     width: .209999993
     height: .340000004
   near clip plane: .300000012
@@ -90,6 +91,13 @@ MonoBehaviour:
   - {fileID: 100000, guid: 42aa93ec071f64c4b995b5dba91685ef, type: 2}
   - {fileID: 100000, guid: fac8af90d70bf9c469478574521f992c, type: 2}
   - {fileID: 100000, guid: 7e57348d2c72bff41996420e31badfce, type: 2}
+  GuiTextureBuffer: {fileID: 2800000, guid: f6e1021879da8e742a84d49d7755a106, type: 3}
+  ClickableArea:
+    serializedVersion: 2
+    x: 1800
+    y: 0
+    width: 120
+    height: 80
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1
@@ -97,6 +105,25 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 0
+--- !u!131 &13100000
+GUITexture:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: bc5b48dde8c27f2428092ca3c31075ad, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
