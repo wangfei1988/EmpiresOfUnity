@@ -44,9 +44,11 @@ public class Ground : MonoBehaviour
     void Start()
     {
         Current = masterGround.GetComponent<GroundLayer>();
-        int count= -1;
+        int count = 0;
         foreach (Switch lightswitch in this.gameObject.GetComponentsInChildren<Switch>())
-        {lightswitch.SetID(++count);}
+        {
+            lightswitch.SetID(count++);
+        }
         this.gameObject.transform.DetachChildren();
         NumberOfGrounds = MINIMUM_NUMBER_OF_GROUNGS;
         if ((numberOfGrounds -= MINIMUM_NUMBER_OF_GROUNGS) > 0)
@@ -69,23 +71,23 @@ public class Ground : MonoBehaviour
         NeedsUpdate = true;
         GroundIndex = indexbuffer;
     }
+
     private void AddGrounds(int groundsToAdd)
     {
         for (int i = 0; i < groundsToAdd; i++)
             AddGround();
         ResetGroundArray();
     }
+
     private void ResetGroundArray()
     {
         if (NeedsUpdate)
         {
             grounds = new GameObject[NumberOfGrounds];
 
-
             for (int i = 0; i < NumberOfGrounds; i++)
             {
-                grounds[i] = GameObject.Find("SubGround" + i.ToString());
-
+               grounds[i] = GameObject.Find("SubGround" + i.ToString());
             }
 
             NeedsUpdate = false;
@@ -102,19 +104,20 @@ public class Ground : MonoBehaviour
         camPosition.x += GroundOffset();
         Camera.main.transform.position = camPosition;
         Current.IsActiveGround = false;
-        masterGround = Current.Controll.SwitchTo(groundnumber);
+        masterGround = Current.Control.SwitchTo(groundnumber);
         Current.IsActiveGround = true;
         if (SWITCH != null)
             SWITCH(true, groundnumber);
         return Current.gameObject;
     }
+
     public GameObject GetCurrentGround()
     {
         return grounds[GroundIndex];
     }
+
     public GameObject SwitchTo(int newindex)
     {
-
         return grounds[newindex];
     }
 }

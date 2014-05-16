@@ -38,10 +38,8 @@ public class SmallRocketObject : RocketObject
                 Visible = true;
 
                 emission.Play();
+
                 movingDirection = this.gameObject.transform.forward;
-
-
-            //    Target = new Vector2(0, 0);
 
                 HalfDistance = Vector3.Distance(Target, this.gameObject.transform.position) / 100f;
                 gameObject.GetComponent<AudioSource>().Play();
@@ -67,7 +65,7 @@ public class SmallRocketObject : RocketObject
     public float speed;
     public float SPEED_FACTOR;
     public float MAXIMUM_SPEED;
-    private Vector3 movingDirection;
+    //private Vector3 movingDirection;
     private Renderer spriteRenderer;
     private float HalfDistance;
     public ParticleSystem emission;

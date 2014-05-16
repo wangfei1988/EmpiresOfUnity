@@ -5,7 +5,7 @@ using  System.Collections.Generic;
 
 public class NaniteMine : ProductionBuilding
 {
-    private Dictionary<uint, uint> NaniteWork = new Dictionary<uint, uint>();
+    //private Dictionary<uint, uint> NaniteWork = new Dictionary<uint, uint>();
 
     private enum OPTIONS { Upgrade = EnumProvider.ORDERSLIST.Upgrade }
 
@@ -25,18 +25,22 @@ public class NaniteMine : ProductionBuilding
     {
         get
         {
-           return EnumProvider.UNITCLASS.BUILDING;
+            return EnumProvider.UNITCLASS.BUILDING;
         }
-    }
-
-    internal override void MoveAsGroup(GameObject leader)
-    {
     }
 
     void Start()
     {
-        
-        UpdateManager.OnUpdate += DoUpdate;
+        NaniteMineCount++;
+    }
+
+    public override void BuildFinished()
+    {
+        this.BuildingCost();
+    }
+
+    internal override void MoveAsGroup(GameObject leader)
+    {
     }
 
     //Main Method for Mine
@@ -55,14 +59,12 @@ public class NaniteMine : ProductionBuilding
   
     }
 
-    void DoUpdate()
+    internal override void DoUpdate()
     {
-
-        this.UpdateProduction();
+        this.UpdateProduction(UnitScript.UNITTYPE.NaniteMine);
     }
 
     void OnDestroy()
     {
-        UpdateManager.OnUpdate -= DoUpdate;
     }
 }

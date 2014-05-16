@@ -18,6 +18,7 @@ public class Cam : MonoBehaviour {
     public float Orthografic_View_Size = 500f;
     public float Orthografic_Size_Inclusive = 10f;
     public float Orthografic_Y_MaxSize = 70f;
+    private float Orthografic_Y_MinSize = 10f;
 
     // Perspective
     private Quaternion Perspective_Rotation;
@@ -94,6 +95,10 @@ public class Cam : MonoBehaviour {
 
             if (gameObject.camera.orthographicSize >= this.Orthografic_Y_MaxSize)
                 gameObject.camera.orthographicSize = this.Orthografic_Y_MaxSize;
+            if (gameObject.camera.orthographicSize <= this.Orthografic_Y_MinSize)
+            {
+                gameObject.camera.orthographicSize = this.Orthografic_Y_MinSize;
+            }
 
         }
         else if (CamMode == CAMERAMODE.PERSPECTIVE)

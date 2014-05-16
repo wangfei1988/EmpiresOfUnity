@@ -1,11 +1,9 @@
-﻿using System.Security.Cryptography;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class BuildingBuilder : MonoBehaviour
 {
-    private Focus.HANDLING focusHandling = Focus.HANDLING.None;
+    //private Focus.HANDLING focusHandling = Focus.HANDLING.None;
     //public GameObject Prefab;
     public GridSystem Grid;
     public Object[] BuildableBuildings;
@@ -76,14 +74,19 @@ public class BuildingBuilder : MonoBehaviour
 
     private void DragObject()
     {
-
         Vector3 pos = MouseEvents.State.Position.AsWorldPointOnMap;
-
         this.Transform.position = pos;
     }
 
     private void DragFinished()
     {
+
+        // Now activate Resource Production etc.
+
+        // Build Finished
+        //if(this.gameObject.GetComponent<AbstractBuilding>())
+        //    this.gameObject.GetComponent<AbstractBuilding>().BuildFinished();
+
         // Grid Building
         Vector3 pos = this.Grid.DragObjectPosition(this.Transform);
         this.Transform.position = pos;

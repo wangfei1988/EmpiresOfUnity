@@ -11,9 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131e2660297140f43940f53fd68028eb, type: 3}
   m_Name: SolarTower
   m_EditorClassIdentifier: 
-  Life: 1
-  ViewDistance: 1
   UsedEnergy: 0
   UpgradeCostNanite: 
   UpgradeCostMatter: 
-  LevelResource: 6400000014000000
+  LevelResource: 64000000c8000000

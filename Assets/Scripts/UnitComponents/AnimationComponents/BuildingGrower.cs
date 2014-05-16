@@ -70,8 +70,9 @@ public class BuildingGrower : UnitAnimation
         {
             StartGrowing = Grow();
         }
-        else if (growingFactor > -1)
+        else if (growingFactor == 1)
         {
+            growingFactor = 2;
             if (!gameObject.GetComponent<Rigidbody>())
             {
                 gameObject.AddComponent<Rigidbody>().isKinematic = true;
@@ -87,6 +88,12 @@ public class BuildingGrower : UnitAnimation
                 gameObject.GetComponent<Shaker>().HookOnUpdata(this.gameObject.GetComponent<UnitScript>());
                 gameObject.GetComponent<Shaker>().IsActive = true;
                 Component.Destroy(gameObject.GetComponent<BuildingGrower>());
+            }
+
+            // Build Finished
+            if (this.gameObject.GetComponent<AbstractBuilding>())
+            {
+                this.gameObject.GetComponent<AbstractBuilding>().BuildFinished();
             }
         }
 
