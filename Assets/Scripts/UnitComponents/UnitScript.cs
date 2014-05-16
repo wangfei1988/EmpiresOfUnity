@@ -31,6 +31,7 @@ public class UnitScript : MonoBehaviour
         //--- All Production-Buildings:
         Airport = EnumProvider.UNITCLASS.PRODUCTION_BUILDING + 1,
         Fabrik,
+        MainBuilding,
     }
     public UNITTYPE unitType;
 
@@ -180,6 +181,12 @@ public class UnitScript : MonoBehaviour
                 {
                     Options = gameObject.GetComponent<LivingHouse>();
                     weapon = gameObject.AddComponent<NoWeapon>();
+                    break;
+                }
+            case UNITTYPE.MainBuilding:
+                {
+                    Options = gameObject.GetComponent<ProductionBuildingOptions>();
+                    weapon = gameObject.GetComponent<RocketLauncher>();
                     break;
                 }
         }

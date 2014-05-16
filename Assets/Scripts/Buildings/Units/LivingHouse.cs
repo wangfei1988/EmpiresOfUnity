@@ -7,7 +7,7 @@ public class LivingHouse : AbstractBuilding
     //private bool isAlreadyUsed = true;
     private uint currentResidentHuman;
 
-    private enum OPTIONS { Upgrade = EnumProvider.ORDERSLIST.Upgrade }
+    new private enum OPTIONS { Upgrade = EnumProvider.ORDERSLIST.Upgrade }
 
     public override System.Enum UnitState
     {

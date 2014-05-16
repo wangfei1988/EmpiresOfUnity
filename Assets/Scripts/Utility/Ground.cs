@@ -104,7 +104,7 @@ public class Ground : MonoBehaviour
         camPosition.x += GroundOffset();
         Camera.main.transform.position = camPosition;
         Current.IsActiveGround = false;
-        masterGround = Current.Control.SwitchTo(groundnumber);
+        masterGround = Current.Controll.SwitchTo(groundnumber);
         Current.IsActiveGround = true;
         if (SWITCH != null)
             SWITCH(true, groundnumber);

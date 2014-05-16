@@ -39,7 +39,7 @@ public class SmallRocketObject : RocketObject
 
                 emission.Play();
 
-                movingDirection = this.gameObject.transform.forward;
+            //    movingDirection = this.gameObject.transform.forward;
 
                 HalfDistance = Vector3.Distance(Target, this.gameObject.transform.position) / 100f;
                 gameObject.GetComponent<AudioSource>().Play();
