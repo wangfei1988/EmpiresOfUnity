@@ -78,6 +78,7 @@ public class Focus : MonoBehaviour
             MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
             UpdateManager.OnUpdate += DoUpdate;
         }
+
     }
 
     // Check if Focus is on another gameobject -> than release old-focus
@@ -121,6 +122,7 @@ public class Focus : MonoBehaviour
                             Marker[(int)MARKERS.WayPoint].GetComponent<Follower>().targetTransform = ClickedUnit.transform;
                             Marker[(int)MARKERS.WayPoint].GetComponent<FaceDirection>().TransformToFace = gameObject.transform;
                             Marker[(int)MARKERS.WayPoint].renderer.enabled = true;
+                            // TODO Bug -> ClickedUnit get Focus and lost it some frames later
                             UNIT.Options.FocussedLeftOnAllied(ClickedUnit);//-------------triggers the Units StandardOrder for Clicking a friendly Unit
                         }
                     }
@@ -176,20 +178,23 @@ public class Focus : MonoBehaviour
     {
         // Locks the Focus to This Actual Focussed Unit, till it is has finished recieving orders,so no other Units Will recive MouseData untill
         // the complete ordering process is recognized...   should be called by the Unit right after an option on the RightclickPopUp has been Clicked
+        
         //if (UNIT.Options.FocusFlag == HANDLING.HasFocus)
         //{
             Key = this.gameObject;
           //  UNIT.Options.FocusFlag |= HANDLING.LockFocus;
-      //  }
+        //}
     }
     public bool Unlock(GameObject unlockKey)
-    {//----------------------------------Releases the Lock to the locked Unit after its ordering process is finished, so other Units can get Focus again....
-        //-------------------------------must be called by the Unit whitch has Locked the Focus,givin its own gameObject as parameter for UnlockKey, or the Focus wont be Unlocked...
-        if (unlockKey.GetInstanceID() == Key.GetInstanceID())
-        {
-          //  unlockKey.GetComponent<UnitScript>().Options.FocusFlag |= HANDLING.UnlockFocus;
-            Key = null;
-        }
+    {
+        // Releases the Lock to the locked Unit after its ordering process is finished, so other Units can get Focus again....
+        // must be called by the Unit whitch has Locked the Focus, given its own gameObject as parameter for UnlockKey, or the Focus wont be Unlocked...
+        if (unlockKey != null && Key != null)
+            if (unlockKey.GetInstanceID() == Key.GetInstanceID())
+            {
+              //  unlockKey.GetComponent<UnitScript>().Options.FocusFlag |= HANDLING.UnlockFocus;
+                Key = null;
+            }
         return IsLockedToThis;
     }
     private void TryRelease()

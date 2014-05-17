@@ -68,11 +68,16 @@ abstract public class MovingUnitOptions : UnitOptions
         }
         set
         {
-            if (value) { if (!gameObject.GetComponent<Pilot>()) gameObject.AddComponent<Pilot>(); }
+            if (value)
+            {
+                if (!gameObject.GetComponent<Pilot>())
+                    gameObject.AddComponent<Pilot>();
+            }
             else
             {
                 if (!UNIT.IsAnAirUnit)
-                    if (gameObject.GetComponent<Pilot>()) { Component.Destroy(gameObject.GetComponent<Pilot>()); }
+                    if (gameObject.GetComponent<Pilot>())
+                        Component.Destroy(gameObject.GetComponent<Pilot>());
             }
             _ismooving = value;
         }
@@ -118,7 +123,8 @@ abstract public class MovingUnitOptions : UnitOptions
         get { return _groupmove; }
         set
         {
-            if (value) IsMoving = true;
+            if (value)
+                IsMoving = true;
             _groupmove = value;
         }
     }
@@ -126,10 +132,18 @@ abstract public class MovingUnitOptions : UnitOptions
     public bool IsGroupLeader;
     internal override void MoveAsGroup(GameObject leader)
     {
+        //Debug.Log(this.gameObject.GetInstanceID());
+
         Target = leader;
-        MoveToPoint = leader.transform.position;
+        //MoveToPoint = leader.transform.position;
+        MoveToPoint = leader.GetComponent<UnitOptions>().MoveToPoint;
+
+        //Debug.Log(MoveToPoint);
+
         IsMovingAsGroup = true;
         IsAttacking = false;
+
+        UnitState = OPTIONS.MoveTo;
     }
 
 
@@ -338,7 +352,8 @@ abstract public class MovingUnitOptions : UnitOptions
     {
      //   Movement.DoUpdate();
         checkKinematic();
-        if (IsMoving) IsMoving = MoveTo();
+        if (IsMoving)
+            IsMoving = MoveTo();
     }
 
 }

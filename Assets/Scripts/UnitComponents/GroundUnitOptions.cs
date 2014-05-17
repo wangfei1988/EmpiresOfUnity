@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using System;
 
 [AddComponentMenu("Program-X/UNIT/UnitOptions (Standard GroundUnits)")]
@@ -28,18 +26,18 @@ public class GroundUnitOptions : MovingUnitOptions
              
          }
      }
-   public override System.Enum UnitState
+   public override Enum UnitState
     {
         get
         {
-            if (System.Enum.IsDefined(typeof(OPTIONS), (OPTIONS)unitstateint))
+            if (Enum.IsDefined(typeof(OPTIONS), (OPTIONS)unitstateint))
                 return unitState;
-            else return base.UnitState;
+            return base.UnitState;
         }
         set
         {
              OPTIONS order;
-             if (System.Enum.IsDefined(typeof(OPTIONS), (OPTIONS)value))
+             if (Enum.IsDefined(typeof(OPTIONS), (OPTIONS)value))
              {
                  order = (OPTIONS)value;
                  if (unitstateint != (int)order)
@@ -49,14 +47,14 @@ public class GroundUnitOptions : MovingUnitOptions
                      {
                          switch (order)
                          {
-                             case OPTIONS.Attack:
-                                 {
-                                     SetKinematic();
-                                     WayPoints.Clear();
-                                     LockOnFocus();
-                                     MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
-                                     break;
-                                 }
+                            case OPTIONS.Attack:
+                            {
+                                SetKinematic();
+                                WayPoints.Clear();
+                                LockOnFocus();
+                                MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
+                                break;
+                            }
                          }
                      }
                      unitstateint = (int)order;
@@ -77,8 +75,8 @@ public class GroundUnitOptions : MovingUnitOptions
 
            if (gameObject.GetComponent<Focus>())
            {
-                
-               if(!standardOrder) base.MouseEvents_LEFTCLICK(qamRay, hold);
+               if(!standardOrder)
+                   base.MouseEvents_LEFTCLICK(qamRay, hold);
 
                if (unitState == OPTIONS.Attack)
                {
@@ -96,7 +94,8 @@ public class GroundUnitOptions : MovingUnitOptions
                         //IsAttacking = true;
                         //MoveAsGroup(UnitUnderCursor.gameObject);
                    }
-                   if(!standardOrder) MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
+                   if(!standardOrder)
+                       MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
                    UnlockFocus();
                }
            }
@@ -159,7 +158,7 @@ public class GroundUnitOptions : MovingUnitOptions
     internal override void DoStart()
     {
         base.DoStart();
-        foreach (int option in System.Enum.GetValues(typeof(OPTIONS)))
+        foreach (int option in Enum.GetValues(typeof(OPTIONS)))
             if (!OptionalStatesOrder.ContainsKey(option))
                 OptionalStatesOrder.Add(option, ((OPTIONS)option).ToString());
 

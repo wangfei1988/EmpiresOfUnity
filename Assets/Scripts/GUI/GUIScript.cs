@@ -80,14 +80,13 @@ public class GUIScript : MonoBehaviour
         }
     }
 
-    private bool NoUnitFocused
+    private bool UnitFocused
     {
         get 
         {
             if (Focus.masterGameObject)
-                return !Focus.masterGameObject.GetComponent<Focus>();
-            else
-                return true;
+                return Focus.masterGameObject.GetComponent<Focus>();
+            return false;
         }
     }
 
@@ -225,7 +224,7 @@ public class GUIScript : MonoBehaviour
 
     private void FocusUnit()
     {
-        if (NoUnitFocused && UnitUnderCursor.UNIT)
+        if (UnitFocused == false && UnitUnderCursor.UNIT)
         {
             UnitUnderCursor.gameObject.AddComponent<Focus>();
             UnitUnderCursor.UNIT.ShowLifebar();

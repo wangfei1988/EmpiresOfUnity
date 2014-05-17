@@ -110,7 +110,6 @@ public class ProductionBuildingOptions : UnitOptions
 			{
 				case OPTIONS.Produce:
 					{
-						
 						GameObject.Instantiate(CurrentFabrikat, MoveToPoint, (CurrentFabrikat as GameObject).transform.rotation);
 						break;
 					}
@@ -138,7 +137,7 @@ public class ProductionBuildingOptions : UnitOptions
     internal override void FocussedLeftOnGround(Vector3 worldPoint)
     {
         UnlockFocus(Focus.HANDLING.DestroyFocus);
-  //      DestroyFocus();
+        //DestroyFocus();
     }
 
     internal override void MoveAsGroup(GameObject leader)

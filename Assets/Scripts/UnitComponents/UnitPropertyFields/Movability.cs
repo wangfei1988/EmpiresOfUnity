@@ -254,7 +254,7 @@ public class Movability : UnitComponent
         Target = leader;
         MoveToPoint = leader.transform.position;
         IsMovingAsGroup = true;
-        //     IsAttacking = false;
+        // IsAttacking = false;
     }
 
     private bool Move()

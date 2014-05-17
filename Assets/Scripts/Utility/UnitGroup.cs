@@ -160,9 +160,13 @@ public class UnitGroup : ScriptableObject
 
     public void GroupedLeftOnGround()
     {
+        Debug.Log(MemberUnit.Count);
+
+        MemberUnit[0].GetComponent<UnitScript>().Options.FocussedLeftOnGround(MouseEvents.State.Position.AsWorldPointOnMap);
+
         for (int i = 1; i < MemberUnit.Count; i++)
             MemberUnit[i].GetComponent<UnitOptions>().MoveAsGroup(MemberUnit[0]);
-        MemberUnit[0].GetComponent<UnitScript>().Options.FocussedLeftOnGround(MouseEvents.State.Position.AsWorldPointOnMap);
+
         GroupState = GROUPSTATE.Moving;
     }
 
