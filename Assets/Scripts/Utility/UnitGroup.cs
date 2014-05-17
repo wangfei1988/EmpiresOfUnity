@@ -160,7 +160,7 @@ public class UnitGroup : ScriptableObject
 
     public void GroupedLeftOnGround()
     {
-        Debug.Log(MemberUnit.Count);
+        //Debug.Log(MemberUnit.Count);
 
         MemberUnit[0].GetComponent<UnitScript>().Options.FocussedLeftOnGround(MouseEvents.State.Position.AsWorldPointOnMap);
 
