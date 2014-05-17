@@ -6,6 +6,7 @@ public class GUIScript : MonoBehaviour
 {
     public static GUIScript main;
     private static List<string> StaticTextLines = new List<string>();
+    public static MiniMapControll MiniMap;
     public static void AddTextLine(string line)
     {
         if (StaticTextLines != null)
@@ -42,6 +43,7 @@ public class GUIScript : MonoBehaviour
             return mousePosition.Value;
         }
     }
+
     public static Vector2 ScreenSize = new Vector2(Screen.width, Screen.height);
 
     public Vector2 Scale;
@@ -272,7 +274,8 @@ public class GUIScript : MonoBehaviour
         }
         if (GUI.Button(new Rect((100 * Scale.x), (60 * Scale.y), (80 * Scale.x), (40 * Scale.y)), MainGuiContent[2])) 
         {
-            Camera.main.GetComponent<Cam>().SwitchCam();
+            //Camera.main.GetComponent<Cam>().SwitchCam();
+            MiniMap.SwitchActive();
         }
 
         if (GUI.Button(new Rect((0 * Scale.x), (120 * Scale.y), (47 * Scale.x), (40 * Scale.y)), MainGuiContent[3]))

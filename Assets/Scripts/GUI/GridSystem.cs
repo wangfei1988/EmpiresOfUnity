@@ -69,12 +69,11 @@ public class GridSystem : MonoBehaviour {
 		if (ProjectorPrefab != null)
 		{
 			this.Projector = GameObject.Instantiate(ProjectorPrefab) as GameObject;
-			Projector proj = this.Projector.GetComponent<Projector>();
-			proj.orthographicSize = (float)gridWidth / 2;
+			Light proj = this.Projector.GetComponent<Light>();
+			proj.cookieSize = (float)gridWidth;
 			Vector3 pos = this.Projector.transform.position;
 			this.Projector.transform.position = new Vector3(this.world.xMin, pos.y, this.world.yMin);
 		}
-
 	}
 
 	/* Draw Debug Lines */

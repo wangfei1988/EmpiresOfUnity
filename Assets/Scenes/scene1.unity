@@ -1484,9 +1484,9 @@ MonoBehaviour:
   - m_Text: Scroll
     m_Image: {fileID: 0}
     m_Tooltip: 
-  - m_Text: Camera
+  - m_Text: MiniMap
     m_Image: {fileID: 0}
-    m_Tooltip: 
+    m_Tooltip: Activate or Disable MiniMap Camera
   - m_Text: 1
     m_Image: {fileID: 0}
     m_Tooltip: 
@@ -3924,12 +3924,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   world:
     serializedVersion: 2
-    x: -30
-    y: -50
-    width: 150
-    height: 100
+    x: -256
+    y: -256
+    width: 512
+    height: 512
   gridWidth: 4
-  ProjectorPrefab: {fileID: 100000, guid: b1ca15ab859dea54391f0bd6030ca17f, type: 2}
+  ProjectorPrefab: {fileID: 100000, guid: 91fccab0cd29c4b409b9ddf19ed94257, type: 2}
   DebugLines: 0
   objectPivot: {x: 0, y: 0, z: 0}
   ShowGrid: 0
@@ -4750,6 +4750,7 @@ MonoBehaviour:
     y: 0
     width: 120
     height: 80
+  ActiveButton: 1
 --- !u!1 &1339443135
 GameObject:
   m_ObjectHideFlags: 0

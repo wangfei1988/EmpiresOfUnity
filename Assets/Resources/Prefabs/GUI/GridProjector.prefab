@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
-  - 119: {fileID: 11900000}
+  - 108: {fileID: 10800000}
   m_Layer: 0
   m_Name: GridProjector
   m_TagString: Untagged
@@ -23,28 +23,45 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2.42482018, z: 2.89061063e-07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
---- !u!119 &11900000
-Projector:
+--- !u!108 &10800000
+Light:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  serializedVersion: 2
-  m_NearClipPlane: 0
-  m_FarClipPlane: 1.46000004
-  m_FieldOfView: 50
-  m_AspectRatio: 1
-  m_Orthographic: 1
-  m_OrthographicSize: 2.5
-  m_Material: {fileID: 2100000, guid: 76e2c657a75c77e47b64ea57415c537f, type: 2}
-  m_IgnoreLayers:
+  serializedVersion: 3
+  m_Type: 1
+  m_Color: {r: 0, g: 1, b: .131034374, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 4
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_Strength: 1
+    m_Bias: .0500000007
+    m_Softness: 4
+    m_SoftnessFade: 1
+  m_Cookie: {fileID: 2800000, guid: 909c1c30b1b30654fb5f40476959cb79, type: 3}
+  m_DrawHalo: 0
+  m_ActuallyLightmapped: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 1
+  m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967291
+    m_Bits: 4294967279
+  m_Lightmapping: 1
+  m_ShadowSamples: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_IndirectIntensity: 1
+  m_AreaSize: {x: 1, y: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
