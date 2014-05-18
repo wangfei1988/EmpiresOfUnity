@@ -34,18 +34,6 @@ public class Scrolling : MonoBehaviour
         {
             this.SwitchScrollingStatus();
         }
-        if (Input.GetKey(KeyCode.Alpha1))
-        {
-            Ground.Switch(0);
-        }
-        if (Input.GetKey(KeyCode.Alpha2))
-        {
-            Ground.Switch(1);
-        }
-        if (Input.GetKey(KeyCode.Alpha3))
-        {
-            Ground.Switch(2);
-        }
     }
 
     public void SwitchScrollingStatus()
