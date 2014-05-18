@@ -126,8 +126,14 @@ public class MouseEvents
 
                 if (Physics.Raycast(AsRay.origin, AsRay.direction, out CursorRayHit))
                 {
-                    if (unitUnderCursor.Changed(CursorRayHit.collider.gameObject.GetInstanceID()))
-                        unitUnderCursor.Set(CursorRayHit.collider.gameObject);
+                    GameObject target = CursorRayHit.transform.gameObject;
+                    if (target.transform.tag != "Clickable")
+                        target = CursorRayHit.transform.parent.gameObject;
+
+                    if (unitUnderCursor.Changed(target.collider.gameObject.GetInstanceID()))
+                    {
+                        unitUnderCursor.Set(target.collider.gameObject);
+                    }
                 }
                 else
                     if (unitUnderCursor.Changed(-2))

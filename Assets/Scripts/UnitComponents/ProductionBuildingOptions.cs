@@ -47,12 +47,18 @@ public class ProductionBuildingOptions : UnitOptions
      {
          if (UNIT.weapon.HasArsenal)
          {
+
              Object[] objBuffer = new Object[Fabrikat.Count + UNIT.weapon.arsenal.Count];
              int index = 0;
+             
+             // Add buildable Buildings
              foreach (Object fabrikat in Fabrikat)
                  objBuffer[index++] = fabrikat;
-             for (int i=0; i < UNIT.weapon.arsenal.Count; index++)
-                 objBuffer[index+i]=UNIT.weapon.arsenal[i];
+
+             // Add Weapon Arsenal
+             for (int i = 0; i < UNIT.weapon.arsenal.Count; i++)
+                 objBuffer[index + i] = UNIT.weapon.arsenal[i];
+
              return objBuffer;
          }
          return Fabrikat.ToArray();

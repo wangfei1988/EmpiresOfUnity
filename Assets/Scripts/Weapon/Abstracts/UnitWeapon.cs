@@ -18,10 +18,12 @@ abstract public class UnitWeapon : MonoBehaviour
         get { return hasArsenal; }
         set 
         {
-            if(value!=hasArsenal)
+            if(value != hasArsenal)
             {
-                if (value) this.gameObject.AddComponent<WeaponArsenal>();
-                else Component.Destroy(this.gameObject.GetComponent<WeaponArsenal>());
+                if (value)
+                    this.gameObject.AddComponent<WeaponArsenal>();
+                else
+                    Component.Destroy(this.gameObject.GetComponent<WeaponArsenal>());
             }
         }
     }
@@ -30,8 +32,9 @@ abstract public class UnitWeapon : MonoBehaviour
     {
         get 
         {
-            if (HasArsenal) return this.gameObject.GetComponent<WeaponArsenal>();
-            else return null;
+            if (HasArsenal)
+                return this.gameObject.GetComponent<WeaponArsenal>();
+            return null;
         }
     }
 

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CursorType: 4
   ClickPoint: {x: 1, y: 1}
+  AnimationFps: 12
   TextureList:
   - {fileID: 2800000, guid: 53a87dbc49e529f44858440ee170bb88, type: 3}
   - {fileID: 2800000, guid: 93d3336f4b3d06d4cad7a2752c901cb6, type: 3}
