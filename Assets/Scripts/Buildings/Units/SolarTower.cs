@@ -19,12 +19,6 @@ public class SolarTower : AbstractBuilding
     {
     }
 
-    private void SolarTowerWork()
-    {
-        uint resValue = 0;
-        SolarWork.TryGetValue(SettingFile.Level, out resValue);
-        ResourceManager.AddResouce(ResourceManager.Resource.ENERGY, resValue);
-    }
 
     internal override void DoStart()
     {
@@ -38,7 +32,6 @@ public class SolarTower : AbstractBuilding
 
     internal override void DoUpdate()
     {
-        SolarTowerWork();
 
         //Check for Upgrade
         //Destroy this Gameobject if Life is 0

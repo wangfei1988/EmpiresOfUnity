@@ -4,6 +4,7 @@ using System.Diagnostics;
 public abstract class AbstractBuilding : UnitOptions
 {
     public BuildingSetting SettingFile;
+    private EnumProvider.ORDERSLIST unitState;
 
     public uint MaxLevel
     {
@@ -21,13 +22,19 @@ public abstract class AbstractBuilding : UnitOptions
         }
     }
 
+    protected uint CurrentWorkSpeed
+    {
+        get
+        {
+            return (uint)this.SettingFile.WorkSpeedLevel[this.SettingFile.Level];
+        }
+    }
+
     public void BuildingCost()
     {
         ResourceManager.SubtractResouce(ResourceManager.Resource.MATTER, this.SettingFile.MatterCost);
         ResourceManager.SubtractResouce(ResourceManager.Resource.NANITEN, this.SettingFile.NaniteCost);
     }
-
-    private EnumProvider.ORDERSLIST unitState;
 
     public override System.Enum UnitState
     {
@@ -43,10 +50,6 @@ public abstract class AbstractBuilding : UnitOptions
             unitState = (EnumProvider.ORDERSLIST)value;
         }
     }
-
-    //internal override void DoUpdate()
-    //{
-    //}
 
     public abstract void BuildFinished();
 

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class MatterMine : ProductionBuilding
 {
-    //private Dictionary<uint, uint> MatterWork = new Dictionary<uint, uint>();
     new private enum OPTIONS { Upgrade = EnumProvider.ORDERSLIST.Upgrade }
 
     private OPTIONS MatterMineState;
@@ -31,15 +30,12 @@ public class MatterMine : ProductionBuilding
     internal override void DoStart()
     {
         MatterMineCount++;
-        //UpdateManager.OnUpdate += DoUpdate;
-        //base.DoStart();
 
         foreach (int value in System.Enum.GetValues(typeof(OPTIONS)))
         {
             OptionalStatesOrder.Add(value, ((OPTIONS)value).ToString());
         }
     }
-
 
     public override void BuildFinished()
     {
@@ -62,6 +58,5 @@ public class MatterMine : ProductionBuilding
 
     void OnDestroy()
     {
-        //UpdateManager.OnUpdate -= DoUpdate;
     }
 }

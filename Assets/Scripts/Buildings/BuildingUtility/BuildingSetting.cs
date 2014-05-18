@@ -6,9 +6,7 @@ using System.Collections;
 public class BuildingSetting : ScriptableObject
 {
     // Main
-    //public int Life;
-    public uint Level;
-    //ublic int ViewDistance;
+    public int Level;
     public int UsedEnergy;
     
     // Build
@@ -20,6 +18,6 @@ public class BuildingSetting : ScriptableObject
     public List<int> UpgradeCostMatter = new List<int>(); 
 
     // Production
-    public List<int> LevelResource = new List<int>(); 
-
+    public List<int> LevelResource = new List<int>();
+    public List<int> WorkSpeedLevel = new List<int>();
 }

@@ -120,7 +120,6 @@ public class GUIScript : MonoBehaviour
 
         scrolling = (GetComponent<Scrolling>()) ? GetComponent<Scrolling>() : null;
         
-        
         //if (camera.name == null)
         //{
         camera = Camera.main;
@@ -254,7 +253,6 @@ public class GUIScript : MonoBehaviour
 
         // Hide selection rectangle
         SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, 0f, 0f);
-
     }
 
     void OnGUI()
@@ -291,6 +289,7 @@ public class GUIScript : MonoBehaviour
         }
         GUI.enabled = true;
         GUI.EndGroup();
+       
     }
 
     private string TextUpdate()

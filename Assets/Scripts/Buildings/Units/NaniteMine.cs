@@ -5,9 +5,9 @@ using  System.Collections.Generic;
 
 public class NaniteMine : ProductionBuilding
 {
-    //private Dictionary<uint, uint> NaniteWork = new Dictionary<uint, uint>();
-
     private enum OPTIONS { Upgrade = EnumProvider.ORDERSLIST.Upgrade }
+
+    private OPTIONS NaniteMineState;
 
     public override Enum UnitState
     {
@@ -49,14 +49,14 @@ public class NaniteMine : ProductionBuilding
         ResourceManager.AddResouce(ResourceManager.Resource.NANITEN, 1);
     }
 
-    private void NaniteMineEnergyConsumption()
-    {
-        ResourceManager.SubtractResouce(ResourceManager.Resource.ENERGY, 10);
-    }
-
     internal override void DoStart()
     {
-  
+        NaniteMineCount++;
+
+        foreach (int value in System.Enum.GetValues(typeof(OPTIONS)))
+        {
+            OptionalStatesOrder.Add(value, ((OPTIONS)value).ToString());
+        }
     }
 
     internal override void DoUpdate()

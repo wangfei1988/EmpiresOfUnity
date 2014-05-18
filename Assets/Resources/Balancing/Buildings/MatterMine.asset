@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131e2660297140f43940f53fd68028eb, type: 3}
   m_Name: MatterMine
   m_EditorClassIdentifier: 
-  Life: 3
-  ViewDistance: 1
+  Level: 1
   UsedEnergy: 0
   UpgradeCostNanite: 0000000000000000
   UpgradeCostMatter: 0000000000000000
   LevelResource: 0200000004000000
+  WorkSpeedLevel: 0200000001000000

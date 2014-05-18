@@ -42,7 +42,7 @@ public abstract class ProductionBuilding : AbstractBuilding
             //Timer for Resources per Time (ProductionTime)
             workTimer += Time.deltaTime;
 
-            if (workTimer >= (float)1 / (float)this.CurrentResource / dividier)
+            if (workTimer >= (float)this.CurrentWorkSpeed / (float)this.CurrentResource / dividier)
             {
                 workTimer = 0;
                 this.MineWork();
