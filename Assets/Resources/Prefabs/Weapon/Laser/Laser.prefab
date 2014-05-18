@@ -110,9 +110,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 2
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .209999993
-  m_Range: .319999993
+  m_Color: {r: 1, g: .5, b: .5, a: 1}
+  m_Intensity: 3.4000001
+  m_Range: 50
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -151,8 +151,7 @@ MonoBehaviour:
   richtung: 0
   t: {x: 0, y: 0, z: 0}
   sound2: {fileID: 8300000, guid: 851c2eee0517b344d97509114e30afc2, type: 3}
-  Hitflare: {fileID: 12100000, guid: e977ad2ff6f4cc847988f72c7fe6eae9, type: 2}
-  hit: 0
+  ExplosionPrefab: {fileID: 100000, guid: 2f9e7030759a647e5b7ec0b46dd414f0, type: 2}
   Direction: {x: 0, y: 0, z: 1}
 --- !u!212 &21200000
 SpriteRenderer:
