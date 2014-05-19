@@ -7,15 +7,25 @@ public class MainMenu : MonoBehaviour
 
     void OnGUI()
     {
-         if (GUI.Button(new Rect(Screen.width / 3, Screen.height / 5, Screen.width / 3, Screen.height / 5), "Start"))
+        Vector2 size = new Vector2(1920, 1080);
+
+        //float left = Screen.width / 2 - Screen.width / 4;
+        float left = Screen.width/size.x*350f;
+        float top = Screen.height / size.y * 100f;
+        float topPlus = Screen.width / size.x * 100f;
+        float width = Screen.width / size.x * 400f;
+        float height = Screen.width / size.x * 80f;
+
+
+        if (GUI.Button(new Rect(left, top + topPlus *1, width, height), "Start"))
          {
              Application.LoadLevel("InGame");
          }
-         if (GUI.Button(new Rect(Screen.width / 3, Screen.height / 5 * 2, Screen.width / 3, Screen.height / 5), "Settings"))
+        if (GUI.Button(new Rect(left, top + topPlus * 2, width, height), "Settings"))
          {
              Application.LoadLevel("Settings");
          }
-         if (GUI.Button(new Rect(Screen.width / 3, Screen.height / 5 * 3, Screen.width / 3, Screen.height / 5), "Exit"))
+        if (GUI.Button(new Rect(left, top + topPlus * 3, width, height), "Exit"))
          {
              Application.Quit();
          }
