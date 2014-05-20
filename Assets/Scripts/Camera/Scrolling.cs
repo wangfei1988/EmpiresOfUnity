@@ -106,9 +106,7 @@ public class Scrolling : MonoBehaviour
             }
         }
 
-        /* Space Key Switch Camera */
-        if (Input.GetKeyDown(KeyCode.Space))
-            Camera.main.GetComponent<Cam>().SwitchCam();
+       
 
     }
 }
