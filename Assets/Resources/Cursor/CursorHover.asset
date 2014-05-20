@@ -15,19 +15,4 @@ MonoBehaviour:
   ClickPoint: {x: 1, y: 1}
   AnimationFps: 16
   TextureList:
-  - {fileID: 2800000, guid: 02587de7ee431404d9e7e33794d7754a, type: 3}
-  - {fileID: 2800000, guid: 36a3f59a680fcaa468fc366fabca6040, type: 3}
-  - {fileID: 2800000, guid: 44e72d27890e47247ad66f73857b4ac6, type: 3}
-  - {fileID: 2800000, guid: 92e21547fc5eede47a0e74d797bcd22e, type: 3}
-  - {fileID: 2800000, guid: 4659c9b8aa2250a4781df252662f125f, type: 3}
-  - {fileID: 2800000, guid: f14e8c3a883964946902ed480626e61d, type: 3}
-  - {fileID: 2800000, guid: 7be2d0eaed2030d4f902073dadad1ce1, type: 3}
-  - {fileID: 2800000, guid: 8bad2d234bd1f7949b57fa0705700fe0, type: 3}
-  - {fileID: 2800000, guid: a50b79814ab0e1b4db9f58a5088996ee, type: 3}
-  - {fileID: 2800000, guid: 56714bcd434624a479f23405a2668383, type: 3}
-  - {fileID: 2800000, guid: 7f0e99beda1c7ae4caa954febb736302, type: 3}
-  - {fileID: 2800000, guid: 144d8ad057443944eaee4c08db249dc8, type: 3}
-  - {fileID: 2800000, guid: 602c68de426158a4aa4e26c41bbd777d, type: 3}
-  - {fileID: 2800000, guid: 09ed9e35283a799488b976d32f37ad29, type: 3}
-  - {fileID: 2800000, guid: 75981790d97c4234ab14f9950eccf8e2, type: 3}
-  - {fileID: 2800000, guid: df9fef52459f8624b8990437a5855f4a, type: 3}
+  - {fileID: 2800000, guid: 8eabfad5af2f6f14a87b2c2c22835f6a, type: 3}

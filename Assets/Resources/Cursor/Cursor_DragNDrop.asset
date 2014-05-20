@@ -15,13 +15,4 @@ MonoBehaviour:
   ClickPoint: {x: 23, y: 31}
   AnimationFps: 20
   TextureList:
-  - {fileID: 2800000, guid: fd3433f6da81b904f984db0dd9d12001, type: 3}
-  - {fileID: 2800000, guid: d9a580e18be7bd941847e138a80bcb01, type: 3}
-  - {fileID: 2800000, guid: 6de96a3149546f640bf5194767dd522f, type: 3}
-  - {fileID: 2800000, guid: 8b61b689b0b9878418ac8be70ed9c36d, type: 3}
-  - {fileID: 2800000, guid: 32a888cff31299945abef93c050a4a1d, type: 3}
-  - {fileID: 2800000, guid: b302a9e715b84f84bb192aafe21beaf2, type: 3}
-  - {fileID: 2800000, guid: 85649de476bd8c649963f9ecd39156bb, type: 3}
-  - {fileID: 2800000, guid: 5572a69a28f3cd64ebca7cadbb04ff19, type: 3}
-  - {fileID: 2800000, guid: c8503287d32dd1142af44594dd3f4304, type: 3}
-  - {fileID: 2800000, guid: b5bd068c571a63f4b8e26aadcb140a93, type: 3}
+  - {fileID: 2800000, guid: 8eabfad5af2f6f14a87b2c2c22835f6a, type: 3}

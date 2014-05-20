@@ -30,7 +30,7 @@ public class Scrolling : MonoBehaviour
     {
         if (scrollingAllowed)
             CheckForScrolling();
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             this.SwitchScrollingStatus();
         }
