@@ -2,35 +2,42 @@
 using System.Collections;
 
 public class UnitUnderCursor
-{
-    // An Object that gives static accses to current hovered Unit-Object...
+{//-------------------------------------------An Object that gives static accses to current hovered Unit-Object...
     public static GameObject gameObject;
-    public static Transform transform;
-    public static UnitScript UNIT;
+    public static bool IsAUnit = false;
+    private static int ID;
+    public static UnitScript UNIT
+    {
+        get { return gameObject.GetComponent<UnitScript>(); }
+    }
 
-    // Non-static stuff, used by an instance which is for updating the statics... 
+    
+
+//------------------------------------Non-static stuff, used by an instance which is for updating the statics... 
     public void Set(GameObject unit)
     {
-        if (unit == null)
-        {
-            gameObject = null;
-            transform = null;
-            UNIT = null;
-        }
-        else
-        {
             gameObject = unit;
-            transform = unit.transform;
-            UNIT = unit.GetComponent<UnitScript>();
-        }
-        
+            if (unit.GetComponent<UnitScript>())
+                IsAUnit = true;
+
+            else
+                IsAUnit = false;
     }
+
 
     public bool Changed(int instanceID)
     {
-        if (gameObject)
-            return instanceID != gameObject.GetInstanceID();
-        return true;
+        int lastID = ID;
+        if (gameObject != null)
+        {
+            ID = instanceID;
+            return (ID != lastID);
+        }
+        else
+        {
+            return true;
+        }
+
     }
 
     public UnitUnderCursor()
@@ -39,8 +46,17 @@ public class UnitUnderCursor
     }
 
 
+    public static implicit operator bool(UnitUnderCursor cast)
+    {
+        if (gameObject)
+            return ((bool)gameObject.GetComponent<UnitScript>());
+        else
+            return false;
+    }
 
-
-
+    public static implicit operator UnitScript(UnitUnderCursor cast)
+    {
+        return UNIT;
+    }
 
 }

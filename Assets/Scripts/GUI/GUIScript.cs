@@ -55,12 +55,16 @@ public class GUIScript : MonoBehaviour
 
     /* Selection 3D Rectangle */
     private Rect selectionRectangle;
+    public bool snapingAlowed = false;
     public Rect SelectionRectangle
     {
         get { return selectionRectangle; }
         set
         {
             selectionRectangle = value;
+
+            snapingAlowed = ((selectionRectangle.width >= 10) || (selectionRectangle.height >= 10));
+
             Vector3 w1;
             /* Get Mouse Position At Start (Left/Top Corner of Rect) */
             if (value.width == 0 && value.height == 0)
@@ -85,7 +89,7 @@ public class GUIScript : MonoBehaviour
         get 
         {
             if (Focus.masterGameObject)
-                return Focus.masterGameObject.GetComponent<Focus>();
+                return (bool)Focus.masterGameObject.GetComponent<Focus>();
             return false;
         }
     }
@@ -200,19 +204,23 @@ public class GUIScript : MonoBehaviour
     {
         if (hold)
         {
-            SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, MousePosition.x, MousePosition.y);
+            SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, MousePosition.x - SelectionRectangle.x,SelectionRectangle.y - MousePosition.y);
+       
         }
         else
         {
             SelectionRectangle = new Rect(MousePosition.x, MousePosition.y, 0, 0);
-            if (!hold)
-                FocusUnit();
+            FocusUnit();
         }
     }
 
     void MouseEvents_LEFTRELEASE()
     {
-        SnapSelectionRectangle();
+        if (snapingAlowed)
+        {
+            SnapSelectionRectangle();
+            snapingAlowed = false;
+        }
     }
 
     void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
@@ -223,7 +231,7 @@ public class GUIScript : MonoBehaviour
 
     private void FocusUnit()
     {
-        if (UnitFocused == false && UnitUnderCursor.UNIT)
+        if (UnitFocused == false && MouseEvents.State.Position.AsUnitUnderCursor)
         {
             UnitUnderCursor.gameObject.AddComponent<Focus>();
             UnitUnderCursor.UNIT.ShowLifebar();

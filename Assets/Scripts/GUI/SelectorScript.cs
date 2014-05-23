@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class SelectorScript : MonoBehaviour {
+public class SelectorScript : MonoBehaviour
+{
 
     public UnitGroup group;
     public Bounds SellectionBounds
@@ -17,6 +18,7 @@ public class SelectorScript : MonoBehaviour {
 
     public UnitGroup SnapSelection()
     {
+       
         gameObject.collider.enabled = true;
         group.ResetGroup();
 

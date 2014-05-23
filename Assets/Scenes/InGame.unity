@@ -1571,6 +1571,7 @@ MonoBehaviour:
     m_Image: {fileID: 0}
     m_Tooltip: 
   PrefabLifebar: {fileID: 400000, guid: d3b97d32b44462a4faebdced0eec8a73, type: 2}
+  snapingAlowed: 0
 --- !u!114 &358951604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4004,7 +4005,6 @@ GameObject:
   - 114: {fileID: 1113168588}
   - 114: {fileID: 1113168587}
   - 114: {fileID: 1113168590}
-  - 114: {fileID: 1113168591}
   - 114: {fileID: 1113168593}
   - 114: {fileID: 1113168592}
   - 114: {fileID: 1113168594}
@@ -4070,17 +4070,6 @@ MonoBehaviour:
   DebugLines: 0
   objectPivot: {x: 0, y: 0, z: 0}
   ShowGrid: 0
---- !u!114 &1113168591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1113168586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2ac4f85f2fdda843a10dd7967f60ffa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1113168592
 MonoBehaviour:
   m_ObjectHideFlags: 0

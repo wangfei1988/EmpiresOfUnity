@@ -52,7 +52,7 @@ public class MouseEvents
         { get { return buttons[2]; } set { buttons[2] = value; } }
         public bool Hold
         {
-            get { return (buttons[0].Hold | buttons[1].Hold | buttons[2].Hold); }
+            get { return (buttons[0].Hold || buttons[1].Hold || buttons[2].Hold); }
         }
         public MouseWheelState WHEEL;
 
@@ -66,7 +66,7 @@ public class MouseEvents
         }
         public static implicit operator bool(MouseState This)
         {
-            return (This.buttons[0] | This.buttons[1] | This.buttons[2]);
+            return (This.buttons[0] || This.buttons[1] || This.buttons[2]);
         }
 
         #region//MouseState-Nested's:
@@ -77,6 +77,10 @@ public class MouseEvents
             public UnitScript AsUnitUnderCursor
             {
                 get { return UnitUnderCursor.UNIT; }
+            }
+            public GameObject AsObjectUnderCursor
+            {
+                get { return UnitUnderCursor.gameObject; }
             }
 
     //        private Collider[] Ground;
@@ -103,7 +107,6 @@ public class MouseEvents
                     RaycastHit groundHit;
                     if (worldPointOnMap == null)
                     {
-
                         if (Ground.Current.collider.Raycast(AsRay, out groundHit, Camera.main.farClipPlane))
                             worldPointOnMap = groundHit.point;
                     }
@@ -123,21 +126,18 @@ public class MouseEvents
                 camRay = null;
                 position = mousePut;
                 RaycastHit CursorRayHit;
-
+ 
                 if (Physics.Raycast(AsRay.origin, AsRay.direction, out CursorRayHit))
                 {
-                    GameObject target = CursorRayHit.transform.gameObject;
-                    if (target.transform.tag != "Clickable")
-                        target = CursorRayHit.transform.parent.gameObject;
-
-                    if (unitUnderCursor.Changed(target.collider.gameObject.GetInstanceID()))
-                    {
-                        unitUnderCursor.Set(target.collider.gameObject);
-                    }
+                    if (unitUnderCursor.Changed(CursorRayHit.collider.gameObject.GetInstanceID()))
+                        unitUnderCursor.Set(CursorRayHit.collider.gameObject);
                 }
                 else
+                {
                     if (unitUnderCursor.Changed(-2))
-                        unitUnderCursor.Set(null);
+                        unitUnderCursor.Set(Ground.Current.collider.gameObject);
+                }
+
             }
             public static implicit operator Vector2(MousePosition This)
             {
