@@ -81,19 +81,23 @@ public class GroundUnitOptions : MovingUnitOptions
 
                if (unitState == OPTIONS.Attack)
                {
-                   if (UNIT.IsEnemy(MouseEvents.State.Position.AsUnitUnderCursor.GoodOrEvil))
+                   UnitScript unit = MouseEvents.State.Position.AsUnitUnderCursor;
+                   if (unit != null)
                    {
-                       Target = MouseEvents.State.Position.AsUnitUnderCursor.gameObject;
-                       MoveToPoint = standardOrder ? ActionPoint ?? gameObject.transform.position : Target.transform.position;
-                       IsMoving = true;
-                       IsAttacking = true;
-                   }
-                   else if (UNIT.IsAllied(MouseEvents.State.Position.AsUnitUnderCursor.gameObject))
-                   {
-                        //Target = UnitUnderCursor.UNIT.SetInteracting(this.gameObject);
-                        //if (UnitUnderCursor.UNIT.Options.IsAttacking) Target = UnitUnderCursor.UNIT.Options.Target;
-                        //IsAttacking = true;
-                        //MoveAsGroup(UnitUnderCursor.gameObject);
+                       if (UNIT.IsEnemy(unit.GoodOrEvil))
+                       {
+                           Target = MouseEvents.State.Position.AsUnitUnderCursor.gameObject;
+                           MoveToPoint = standardOrder ? ActionPoint ?? gameObject.transform.position : Target.transform.position;
+                           IsMoving = true;
+                           IsAttacking = true;
+                       }
+                       else if (UNIT.IsAllied(MouseEvents.State.Position.AsUnitUnderCursor.gameObject))
+                       {
+                           //Target = UnitUnderCursor.UNIT.SetInteracting(this.gameObject);
+                           //if (UnitUnderCursor.UNIT.Options.IsAttacking) Target = UnitUnderCursor.UNIT.Options.Target;
+                           //IsAttacking = true;
+                           //MoveAsGroup(UnitUnderCursor.gameObject);
+                       }
                    }
 
                    UnlockFocus();
