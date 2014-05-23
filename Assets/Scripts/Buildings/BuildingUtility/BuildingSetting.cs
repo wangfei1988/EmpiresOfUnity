@@ -19,5 +19,4 @@ public class BuildingSetting : ScriptableObject
 
     // Production
     public List<int> LevelResource = new List<int>();
-    public List<int> WorkSpeedLevel = new List<int>();
 }

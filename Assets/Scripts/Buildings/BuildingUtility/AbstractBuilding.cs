@@ -14,19 +14,19 @@ public abstract class AbstractBuilding : UnitOptions
         }
     }
 
+    public int CurrentLevel
+    {
+        get
+        {
+            return this.SettingFile.Level;
+        }
+    }
+
     protected uint CurrentResource
     {
         get
         {
             return (uint)this.SettingFile.LevelResource[(int)SettingFile.Level];
-        }
-    }
-
-    protected uint CurrentWorkSpeed
-    {
-        get
-        {
-            return (uint)this.SettingFile.WorkSpeedLevel[this.SettingFile.Level];
         }
     }
 
@@ -52,6 +52,24 @@ public abstract class AbstractBuilding : UnitOptions
     }
 
     public abstract void BuildFinished();
+
+    public void UpGradeBuilding()
+    {
+        if (CurrentLevel != MaxLevel)
+        {
+            if (ResourceManager.Resource.MATTER - (ResourceManager.Resource)this.SettingFile.MatterCost >= 0 && ResourceManager.Resource.NANITEN - (ResourceManager.Resource)this.SettingFile.NaniteCost >= 0)
+            {
+                if (/* */false)
+                {
+                    SettingFile.Level++;
+                }   
+            }
+        }
+        else
+        {
+             //Show MaxLevel Reached
+        }
+    }
 
     //public void UpgradeBuilding()
     //{
