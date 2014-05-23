@@ -16,6 +16,7 @@ public class Scrolling : MonoBehaviour
     /* Vars */
     public bool scrollingAllowed = true;
     private GUIScript mainGUI;
+    public MouseMovement MouseMove;
 
     /* Properties */
 
@@ -23,6 +24,7 @@ public class Scrolling : MonoBehaviour
     void Start()
     {
         mainGUI = this.GetComponent<GUIScript>();
+        MouseMove = this.gameObject.AddComponent<MouseMovement>();
         UpdateManager.OnUpdate += DoUpdate;
     }
 
@@ -30,10 +32,6 @@ public class Scrolling : MonoBehaviour
     {
         if (scrollingAllowed)
             CheckForScrolling();
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            this.SwitchScrollingStatus();
-        }
     }
 
     public void SwitchScrollingStatus()
@@ -43,7 +41,9 @@ public class Scrolling : MonoBehaviour
 
     private void CheckForScrolling()
     {
+
         Vector2 MousePosition = MouseEvents.State.Position;
+
 
         Vector3 direction = Vector3.zero;
 
@@ -61,6 +61,15 @@ public class Scrolling : MonoBehaviour
 
         Camera.main.transform.Translate(direction * Time.deltaTime);
 
+
+        ///* Rotate Up & Down */
+        //if (MouseMove.Speed.y != 0)
+        //{
+        //    if (MouseMove.Speed.y > 0f)
+        //        Camera.main.transform.forward = (Camera.main.transform.forward + (Camera.main.transform.up / 100f)).normalized;
+        //    else if (MouseMove.Speed.y < 0f)
+        //        Camera.main.transform.forward = (Camera.main.transform.forward - (Camera.main.transform.up / 100f)).normalized;
+        //}
 
         /* Scrolling Up & Down */
         float x = 0f;
@@ -88,9 +97,9 @@ public class Scrolling : MonoBehaviour
 
         /* Rotate Left & Right */
         int status = 0;
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Q) || (MouseMove.Speed.x > 0))
             status = 1;
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E) || (MouseMove.Speed.x<0))
             status = -1;
         if (status != 0)
         {
@@ -106,7 +115,9 @@ public class Scrolling : MonoBehaviour
             }
         }
 
-       
+        /* Space Key Switch Camera */
+        if (Input.GetKeyDown(KeyCode.Space))
+            Camera.main.GetComponent<Cam>().SwitchCam();
 
     }
 }

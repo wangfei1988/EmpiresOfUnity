@@ -8,27 +8,33 @@
 
 using UnityEngine;
 using System.Collections;
-using System;
+//using System;
 
 [AddComponentMenu("Program-X/Weapons/Rocket Launcher")]
-public class RocketLauncher : UnitWeapon {
+public class RocketLauncher : UnitWeapon
+{
 
 
+    public int NumberOfRockets;
+    public override bool IsOutOfAmmu
+    {
+        get { return NumberOfRockets == 0; }
+    }
 
     private float Interval
-    { get { return (prefabSlot.amunition == WeaponObject.AMUNITONTYPE.Missiles) ? 2f : 15.0f; } }
+    { get { return (prefabSlot.amunition == WeaponObject.AMUNITONTYPE.Missiles) ? 0.5f : 15.0f; } }
     public float countdown=0f;
     private RocketObject rocket;
     
 	void Start ()
     {
- 
+        NumberOfRockets = (prefabSlot.amunition == WeaponObject.AMUNITONTYPE.Missiles) ? 100 : 15;
 	}
 
     public override void Engage(GameObject targetUnit)
     {
-        
-        Engage(targetUnit.gameObject.transform.position);
+        if (targetUnit)
+            Engage(targetUnit.transform.position);
      //   rocket.TargetUpdatePosition(targetUnit.gameObject.transform.position);
     }
     public override void Engage(Vector3 targetPoint)
@@ -36,6 +42,7 @@ public class RocketLauncher : UnitWeapon {
         if (rocket)
         {
             rocket.SetTarget(targetPoint, this.gameObject.GetComponent<UnitScript>().GoodOrEvil);
+     //       rocket.transform.forward = Vector3.forward;
             rocket.LaunchButton = true;
             rocket = null;
             countdown = Interval;
@@ -43,12 +50,16 @@ public class RocketLauncher : UnitWeapon {
     }
     public override void Reloade()
     {
-        if (!rocket)
+        if (!rocket&&NumberOfRockets>0)
         {
+            float offset = 1f;
+            if (prefabSlot.amunition == WeaponObject.AMUNITONTYPE.Rocket)
+                offset = 5f;
             if ((countdown -= Time.deltaTime) < 0f)
             {
-                rocket = (GameObject.Instantiate(prefabSlot, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 10f, this.gameObject.transform.position.z), this.gameObject.transform.rotation) as RocketObject).GetComponent<RocketObject>();
-                rocket.transform.up = new Vector3(0, -1, 0);
+                rocket = (GameObject.Instantiate(prefabSlot, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + offset, this.gameObject.transform.position.z), this.gameObject.transform.rotation) as RocketObject).GetComponent<RocketObject>();
+                NumberOfRockets--;
+                rocket.transform.forward = (rocket.transform.forward + new Vector3(Random.Range(-0.25f, 0.25f), 1f, Random.Range(-0.25f, 0.25f))).normalized;
             }
         }
     }

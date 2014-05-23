@@ -112,12 +112,18 @@ public class Pilot : UnitComponent
         }
     }
 
-
+    public override bool ComponentExtendsTheOptionalstateOrder
+    {
+        get
+        {
+            return false;
+        }
+    }
 
     void Awake()
     {
         Controlls = this.gameObject.GetComponent<Movability>();
-        this.ComponentExtendsTheOptionalstateOrder = false;
+        
         My = gameObject.GetComponent<UnitScript>();
         mySpace = this.gameObject.AddComponent<SphereCollider>();
 

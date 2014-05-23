@@ -95,7 +95,7 @@ public class GroundBuilderOptions : MovingUnitOptions
         UnitState = OPTIONS.Build;
     }
 
-    protected override void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
+    internal override void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
     {
         if (!hold)
         {
@@ -136,7 +136,7 @@ public class GroundBuilderOptions : MovingUnitOptions
 
         }
     }
-    protected override void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
+    internal override void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
     {
         base.MouseEvents_RIGHTCLICK(qamRay, hold);
     }

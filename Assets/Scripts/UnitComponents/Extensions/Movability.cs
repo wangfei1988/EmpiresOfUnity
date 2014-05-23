@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Movability : UnitComponent
+public class Movability : UnitExtension
 {
     
     public new enum OPTIONS : int
@@ -11,18 +11,18 @@ public class Movability : UnitComponent
         Patrol = EnumProvider.ORDERSLIST.Patrol,
         Guard = EnumProvider.ORDERSLIST.Guard,
         Hide = EnumProvider.ORDERSLIST.Hide,
-        Seek = EnumProvider.ORDERSLIST.Seek,
         Stay = EnumProvider.ORDERSLIST.Stay
     }
     public OPTIONS movingUnitState = OPTIONS.Stay;
  
 	void Start() 
     {
-        this.ComponentExtendsTheOptionalstateOrder = true;
+
         this.PflongeOnUnit(System.Enum.GetValues(typeof(OPTIONS)));
         standardYPosition = this.gameObject.transform.position.y;
         MoveToPoint = this.gameObject.transform.position;
         WayPoints = new List<Vector3>();
+        IsMoving = true;
 	}
 
     protected override EnumProvider.ORDERSLIST on_UnitStateChange(EnumProvider.ORDERSLIST stateorder)
@@ -34,29 +34,25 @@ public class Movability : UnitComponent
             {
                 case OPTIONS.MoveTo:
                     UNIT.Options.LockOnFocus();
+                    SetKinematic();
                     WayPoints.Clear();
-                    MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
                     return stateorder;
                 case OPTIONS.Patrol:
+                    SetKinematic();
                     UNIT.Options.LockOnFocus();
-                    MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
-                    MouseEvents.RIGHTCLICK += MouseEvents_RIGHTCLICK;
                     return stateorder;
                 case OPTIONS.Guard:
                     SetKinematic();
                     UNIT.Options.LockOnFocus();
                     WayPoints.Clear();
-                    MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
                     return stateorder;
                 case OPTIONS.Hide:
                     WayPoints.Clear();
-                    //todo:-----------------
-                    return stateorder;
-                case OPTIONS.Seek:
-                    WayPoints.Clear();
+                    SetKinematic();
                     //todo:-----------------
                     return stateorder;
                 case OPTIONS.Stay:
+                    SetKinematic();
                     StayOrder();
                     return stateorder;
             }
@@ -67,63 +63,63 @@ public class Movability : UnitComponent
     public void StayOrder()
     {
         SetKinematic();
-        UNIT.Options.UnlockFocus(Focus.HANDLING.UnlockFocus);
+        UNIT.Options.DestroyFocus();
         WayPoints.Clear();
         MoveToPoint = gameObject.transform.position;
         MovingDirection = MoveToPoint;
         movingUnitState = OPTIONS.Stay;
     }
 
-    public float standardYPosition;
+    public float standardYPosition=0f;
 
-    void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
+    internal override void OptionExtensions_OnLEFTCLICK(bool hold)
     {
         if (movingUnitState == OPTIONS.MoveTo)
         {
             MoveToPoint = MouseEvents.State.Position.AsWorldPointOnMap;
             MovingDirection = MoveToPoint;
-            MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
             UNIT.Options.UnlockFocus();
             SetKinematic();
             IsMoving = true;
         }
         else if (movingUnitState == OPTIONS.Guard)
         {
-            if (UNIT.IsAllied(UnitUnderCursor.gameObject))
+            if (UNIT.IsAllied(MouseEvents.State.Position.AsUnitUnderCursor.gameObject))
             {
-                Target = UnitUnderCursor.UNIT.SetInteracting(this.gameObject);
+                Target = MouseEvents.State.Position.AsUnitUnderCursor.SetInteracting(this.gameObject);
                 MoveToPoint = Target.transform.position;
                 IsMoving = true;
             }
-            MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
-            UNIT.Options.UnlockFocus(Focus.HANDLING.DestroyFocus);
+
+            UNIT.Options.DestroyFocus();
         }
         else if (movingUnitState == OPTIONS.Patrol)
         {
             WayPoints.Add(MouseEvents.State.Position.AsWorldPointOnMap);
             IsMoving = true;
-                MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
-                MouseEvents.RIGHTCLICK -= MouseEvents_RIGHTCLICK;
 
-            UNIT.Options.UnlockFocus(Focus.HANDLING.DestroyFocus);
+
+            UNIT.Options.DestroyFocus();
         }
     }
 
-    void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
+    internal override void OptionExtensions_OnRIGHTCLICK(bool hold)
     {
         if ((!hold)
             && (gameObject.GetComponent<Focus>())
                 && (movingUnitState == OPTIONS.Patrol))
         {
-            if (WayPoints.Count >= 2) 
+            if (WayPoints.Count >= 2)
                 WayPoints.Insert(WayPoints.Count - 1, MouseEvents.State.Position.AsWorldPointOnMap);
-            else 
+            else
                 WayPoints.Add(MouseEvents.State.Position.AsWorldPointOnMap);
 
             MovingDirection = MoveToPoint;
             IsMoving = true;
         }
     }
+
+
 
     private bool __moving = false;
     public virtual bool IsMoving
@@ -137,14 +133,14 @@ public class Movability : UnitComponent
             if (!value)
             {
                 _groupmove = false;
-                if (this.gameObject.GetComponent<Pilot>())
-                    Component.Destroy(gameObject.GetComponent<Pilot>());
+                //if (this.gameObject.GetComponent<Pilot>())
+                //    Component.Destroy(gameObject.GetComponent<Pilot>());
                 Throttle = 0;
             }
             else if (!__moving)
             {
                 Throttle = 1;
-                gameObject.AddComponent<Pilot>();
+       //         gameObject.AddComponent<Pilot>();
             }
             __moving = value;
         }
@@ -158,6 +154,10 @@ public class Movability : UnitComponent
         SetKinematic();
         MovingDirection = MoveToPoint;
     }
+
+
+
+
     public bool IsMovingAsGroup
     {
         get { return _groupmove; }
@@ -168,10 +168,10 @@ public class Movability : UnitComponent
         }
     }
     private bool _groupmove = false;
-    public bool IsGroupLeader;
+    public bool IsGroupLeader=false;
 
     [SerializeField]
-    private float speed;
+    private float speed=0.2f;
     private float Throttle = 1f;
     public float Speed
     {
@@ -189,7 +189,7 @@ public class Movability : UnitComponent
     }
 
     [SerializeField]
-    private Vector3 _moveToPoint;
+    private Vector3 _moveToPoint=Vector3.zero;
     public Vector3 MoveToPoint
     {
         get { return _moveToPoint; }
@@ -212,7 +212,7 @@ public class Movability : UnitComponent
             movingDirection = (value - this.gameObject.transform.position).normalized; 
         }
     }
-    protected void SetKinematic()
+    internal void SetKinematic()
     {
         gameObject.rigidbody.isKinematic = true;
         kinematicFrames = 2;
@@ -223,16 +223,16 @@ public class Movability : UnitComponent
             if (kinematicFrames <= 0) gameObject.rigidbody.isKinematic = false;
             else --kinematicFrames;
     }
-    private int kinematicFrames;
+    private int kinematicFrames=0;
 
-    protected float distance;
+    protected float distance=0f;
     public virtual float Distance
     {
         get
         {
             return Vector3.Distance(gameObject.transform.position, MoveToPoint);
         }
-        protected set
+        internal set
         {
             if (value != distance)
             {
@@ -251,10 +251,11 @@ public class Movability : UnitComponent
 
     public void MoveAsGroup(GameObject leader)
     {
+
         Target = leader;
         MoveToPoint = leader.transform.position;
         IsMovingAsGroup = true;
-        // IsAttacking = false;
+        //     IsAttacking = false;
     }
 
     private bool Move()
@@ -264,7 +265,7 @@ public class Movability : UnitComponent
 
         if (movingUnitState == OPTIONS.Guard)
         {
-            if (gameObject.GetComponent<Pilot>()) UnitComponent.Destroy(gameObject.GetComponent<Pilot>());
+         //   if (gameObject.GetComponent<Pilot>()) UnitComponent.Destroy(gameObject.GetComponent<Pilot>());
             MoveToPoint = Target.transform.position;
 
             if (Distance >= 20) gameObject.transform.position += (MovingDirection * Speed);
@@ -297,9 +298,12 @@ public class Movability : UnitComponent
         return this.gameObject.transform.position != MoveToPoint;
     }
 
+
+
+
     public override void DoUpdate()
     {
-        
+        checkKinematic();
         if (IsMoving) IsMoving = Move();
     }
 }

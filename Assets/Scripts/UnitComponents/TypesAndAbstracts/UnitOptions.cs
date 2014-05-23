@@ -11,8 +11,11 @@ abstract public class UnitOptions : MonoBehaviour
         get;
     }
     public delegate EnumProvider.ORDERSLIST Extension(EnumProvider.ORDERSLIST selection);
-    public static event Extension PRIMARY_STATE_CHANGE;
-    protected int CurrentSIDEMENUoption = 0;
+    public delegate void Extensions_On_LeftClick(bool hold);
+    public delegate void Extensions_On_RightClick(bool hold);
+    public event Extension PRIMARY_STATE_CHANGE;
+    public event Extensions_On_LeftClick Extensions_OnLEFTCLICK;
+    public event Extensions_On_RightClick Extensions_OnRIGHTCLICK;
 
     protected Vector3? ActionPoint;
     public enum OPTIONS : int
@@ -48,9 +51,39 @@ abstract public class UnitOptions : MonoBehaviour
 
 
 
- 
+    //-----------------------------------------------------Orders and Interaction...
 
+    //- Standard oneclick Orders:
+    virtual internal void FocussedLeftOnGround(Vector3 worldPoint)
+    {
+        if (this.gameObject.GetComponent<Focus>())
+        {
+            if (Focus.IsLocked)
+                gameObject.GetComponent<Focus>().Unlock(gameObject);
 
+            Component.Destroy(gameObject.GetComponent<Focus>());
+        }
+    }
+    virtual internal void FocussedRightOnGround(Vector3 worldPoint)
+    {
+        if (this.gameObject.GetComponent<Focus>())
+        {
+            if (Focus.IsLocked)
+                gameObject.GetComponent<Focus>().Unlock(gameObject);
+
+            Component.Destroy(gameObject.GetComponent<Focus>());
+        }
+    }
+    virtual internal void FocussedLeftOnEnemy(GameObject enemy)
+    { enemy.AddComponent<Focus>(); }
+    virtual internal void FocussedRightOnEnemy(GameObject enemy)
+    { }
+    virtual internal void FocussedLeftOnAllied(GameObject friend)
+    { friend.AddComponent<Focus>(); }
+    virtual internal void FocussedRightOnAllied(GameObject friend)
+    { }
+    
+    //- stateorders:
     protected EnumProvider.ORDERSLIST baseUnitState;
     virtual public System.Enum UnitState
     {
@@ -65,8 +98,58 @@ abstract public class UnitOptions : MonoBehaviour
             }
         }
     }
-    //-----------------------------------------------------Orders and Interaction...
+
+    //-- Menu functionality:_....
+    protected int CurrentSIDEMENUoption = 0;
+    virtual internal string[] GetUnitsMenuOptions()
+    {
+        string[] buffer = new string[optionalstateIDs.Length];
+        for (int i = 0; i < optionalstateIDs.Length; i++)
+            buffer[i] = OptionalStatesOrder[optionalstateIDs[i]];
+
+        return buffer;
+    }
+    virtual internal EnumProvider.ORDERSLIST[] GetUnitsMenuOptionIDs()
+    {
+        return optionalStates;
+    }
+    virtual internal Object[] GetUnitsSIDEMenuObjects()
+    {
+        if (UNIT.weapon.HasArsenal)
+        {
+            Object[] objectArray = new Object[UNIT.weapon.arsenal];
+            for (int i = 0; i < UNIT.weapon.arsenal; i++)
+                objectArray[i] = UNIT.weapon.arsenal[i];
+            return objectArray;
+        }
+        else return new Object[0];
+    }
+    virtual public void GiveOrder(int orderNumber)
+    {
+        UnitState = (EnumProvider.ORDERSLIST)optionalstateIDs[orderNumber];
+    }
+    virtual internal void GiveOrder(EnumProvider.ORDERSLIST order)
+    {
+        UnitState = order;
+    }
+    virtual public void SetSIDEOption(int SIDEoptionNumber)
+    {
+        if (UNIT.weapon.HasArsenal)
+            UNIT.weapon.prefabSlot = UNIT.weapon.arsenal[SIDEoptionNumber];
+    }
+    virtual internal void SetSIDEObject(Object returned)
+    {
+        if (UNIT.weapon.HasArsenal)
+            UNIT.weapon.prefabSlot = returned as WeaponObject;
+    }
+    protected bool standardOrder = false;
+
+    //- ChainedOrders   ...  (not in use yet, and even not tested well...)
+    //- will give posibillity to put several orders in one package.
+    //- then they will be processed after each other and could be
+    //- used for Units givin orders to other units,processing them as group e.t.c....
     protected ChainedOrders OrdersInMind = new ChainedOrders();
+    protected bool GotToDoWhatGotToDo = false;
     private int UOID = -1;
     public void GiveChainedOrder(EnumProvider.ORDERSLIST[] orders)
     {
@@ -141,90 +224,12 @@ abstract public class UnitOptions : MonoBehaviour
         }
         return GotToDoWhatGotToDo;
     }
-
-    virtual internal string[] GetUnitsMenuOptions()
-    {
-        string[] buffer = new string[optionalstateIDs.Length];
-        for (int i = 0; i < optionalstateIDs.Length; i++)
-            buffer[i] = OptionalStatesOrder[optionalstateIDs[i]];
-
-        return buffer;
-    }
-    virtual internal EnumProvider.ORDERSLIST[] GetUnitsMenuOptionIDs()
-    {
-        return optionalStates;
-    }
-    virtual internal Object[] GetUnitsSIDEMenuObjects()
-    {
-        if (UNIT.weapon.HasArsenal)
-        {
-            Object[] objectArray = new Object[UNIT.weapon.arsenal];
-            for (int i = 0; i < UNIT.weapon.arsenal; i++)
-                objectArray[i] = UNIT.weapon.arsenal[i];
-            return objectArray;
-        }
-        else return new Object[0];
-    }
-    virtual public void GiveOrder(int orderNumber)
-    {
-           UnitState = (EnumProvider.ORDERSLIST)optionalstateIDs[orderNumber];
-    }
-    virtual internal void GiveOrder(EnumProvider.ORDERSLIST order)
-    {
-        UnitState = order;
-    }
-    virtual public void SetSIDEOption(int SIDEoptionNumber)
-    {
-        if (UNIT.weapon.HasArsenal)
-            UNIT.weapon.prefabSlot = UNIT.weapon.arsenal[SIDEoptionNumber];
-    }
-    virtual internal void SetSIDEObject(Object returned)
-    {
-        if (UNIT.weapon.HasArsenal)
-            UNIT.weapon.prefabSlot = returned as WeaponObject;
-    }
-    protected bool standardOrder = false;
-
-
     virtual protected bool GotToDoPrimaryOrders
-    { get;  set; }
+    { get; set; }
 
 
 
 
-
-
-
-    virtual internal void FocussedLeftOnGround(Vector3 worldPoint)
-    {
-        if (this.gameObject.GetComponent<Focus>())
-        {
-            if (Focus.IsLocked)
-                gameObject.GetComponent<Focus>().Unlock(gameObject);
-
-            Component.Destroy(gameObject.GetComponent<Focus>());
-        }
-    }
-    virtual internal void FocussedRightOnGround(Vector3 worldPoint)
-    {
-        if (this.gameObject.GetComponent<Focus>())
-        {
-            if (Focus.IsLocked)
-                gameObject.GetComponent<Focus>().Unlock(gameObject);
-
-            Component.Destroy(gameObject.GetComponent<Focus>());
-        }
-    }
-    virtual internal void FocussedLeftOnEnemy(GameObject enemy)
-    { enemy.AddComponent<Focus>(); }
-    virtual internal void FocussedRightOnEnemy(GameObject enemy)
-    { }
-    virtual internal void FocussedLeftOnAllied(GameObject friend)
-    { friend.AddComponent<Focus>(); }
-    virtual internal void FocussedRightOnAllied(GameObject friend)
-    { }
-    abstract internal void MoveAsGroup(GameObject leader);
-    
 
     //------------------------------------------------- Navigation..
     [SerializeField]
@@ -232,17 +237,15 @@ abstract public class UnitOptions : MonoBehaviour
     virtual public Vector3 MoveToPoint
     {
         get { return moveToPoint; }
-        protected set { moveToPoint = value; }
+        internal set { moveToPoint = value; }
     }
 
-
+    abstract internal void MoveAsGroup(GameObject leader);
 
     
     public GameObject Target;
 
-    //public GameObject MoveToPointMarker;
-    //public GameObject AttackPointMarker;
-    //public GameObject WayPointMarker;
+
 
     //---------------------------------------- Enginal stuff and functions...
     protected SortedDictionary<int, string> OptionalStatesOrder = new SortedDictionary<int, string>();
@@ -257,9 +260,28 @@ abstract public class UnitOptions : MonoBehaviour
         UNIT = gameObject.GetComponent<UnitScript>();
     }
 
+
+
+    abstract internal void DoStart();
+    abstract internal void DoUpdate();
+
+    internal void OptionsUpdate()
+    {
+        //if (GotToDo != null)
+        //{
+        //    if (GotToDo.Value)
+        //        GotToDo = ProcessAllOrders();
+        foreach (UnitComponent component in PluggedStateExtendingComponents)
+        {
+            component.DoUpdate();
+        }
+        DoUpdate();
+    }
+
+    public List<UnitComponent> PluggedStateExtendingComponents;
     private int[] RefreshStatelist()
     {
-        int index= -1;
+        int index = -1;
         int[] keylist = new int[OptionalStatesOrder.Count];
 
 
@@ -273,19 +295,6 @@ abstract public class UnitOptions : MonoBehaviour
         }
         return keylist;
     }
-
-    abstract internal void DoStart();
-    abstract internal void DoUpdate();
-    internal void OptionsUpdate()
-    {
-        if (GotToDo != null)
-        {
-            if (GotToDo.Value)
-                GotToDo = ProcessAllOrders();
-        }
-        DoUpdate();
-    }
-
     public int RegisterUnitComponent(UnitComponent component, System.Enum[] stateExtensions)
     {
         bool add = true;
@@ -350,59 +359,79 @@ abstract public class UnitOptions : MonoBehaviour
         if (componentID >= 0)
             PluggedStateExtendingComponents.RemoveAt(componentID);
     }
-    public List<UnitComponent> PluggedStateExtendingComponents;
 
-    internal Focus.HANDLING FocusFlag = Focus.HANDLING.None;
-    public bool IsLockedOnFocus
-    {
-        get
-        {
-            return FocusFlag==Focus.HANDLING.IsLocked;
-        }
-    }
+
+    //- Focus-Handling..
     public bool HasFocus
     {
         get
         {
-            return ((FocusFlag == Focus.HANDLING.HasFocus) | IsLockedOnFocus);
+            return (this.gameObject.GetComponent<Focus>());
+
         }
     }
-    public void LockOnFocus()
+    public bool IsLockedOnFocus
+    {
+        get
+        {
+            return HasFocus && Focus.IsLocked;
+        }
+    }
+
+    public bool LockOnFocus()
     {
         if (!IsLockedOnFocus)
         {
-            if (!(FocusFlag == Focus.HANDLING.HasFocus))
+            if (!HasFocus)
                 gameObject.AddComponent<Focus>();
-            gameObject.GetComponent<Focus>().Lock(); 
+
+            return gameObject.GetComponent<Focus>().Lock();
         }
+        else return true;
     }
-    public void UnlockFocus()
-    {
-        MouseEvents.LEFTRELEASE += abstract_LEFTRELEASE;
-    }
-    public void UnlockFocus(Focus.HANDLING andDestroyIt)
+
+    public bool UnlockFocus()
     {
         if (IsLockedOnFocus)
         {
-            UnlockFocus();
-            if (andDestroyIt == Focus.HANDLING.DestroyFocus) FocusFlag = andDestroyIt;
+            return this.gameObject.GetComponent<Focus>().Unlock(this.gameObject);
         }
-        else if (FocusFlag == Focus.HANDLING.HasFocus) Component.Destroy(gameObject.GetComponent<Focus>());
+        else return true;
     }
-    protected bool GotToDoWhatGotToDo = false;
-    public void abstract_LEFTRELEASE()
+    public bool DestroyFocus()
     {
-        if (gameObject.GetComponent<Focus>())
+        if (UnlockFocus())
         {
-            gameObject.GetComponent<Focus>().Unlock(gameObject);
-            if (FocusFlag <= 0)
-                Component.Destroy(gameObject.GetComponent<Focus>());
+            Component.Destroy(this.gameObject.GetComponent<Focus>());
+            return true;
         }
-        MouseEvents.LEFTRELEASE -= abstract_LEFTRELEASE;
+        else return false;
     }
 
-    virtual protected void MouseEvents_LEFTCLICK(Ray qamRay, bool hold) { }
-    virtual protected void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold) { }
 
+    virtual internal void MouseEvents_LEFTCLICK(Ray qamRay, bool hold) 
+    {
+        foreach (UnitExtension extension in PluggedStateExtendingComponents)
+        {
+            extension.OptionExtensions_OnLEFTCLICK(hold);
+        }
+    }
+    virtual internal void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold) 
+    {
+        foreach (UnitExtension extension in PluggedStateExtendingComponents)
+        {
+            extension.OptionExtensions_OnRIGHTCLICK(hold);
+        }
+    }
 
+    //public void abstract_LEFTRELEASE()
+    //{
+    //    if (gameObject.GetComponent<Focus>())
+    //    {
+    //        gameObject.GetComponent<Focus>().Unlock(this.gameObject);
+
+    //        if(!IsLockedOnFocus)
+    //            Component.Destroy(gameObject.GetComponent<Focus>());
+    //    }
+    //}
 }

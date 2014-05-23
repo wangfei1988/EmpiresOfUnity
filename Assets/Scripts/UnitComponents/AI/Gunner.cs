@@ -8,9 +8,15 @@ public class Gunner : UnitComponent
 
     void Awake()
     {
-        this.ComponentExtendsTheOptionalstateOrder = false;
+        
     }
-
+    public override bool ComponentExtendsTheOptionalstateOrder
+    {
+        get
+        {
+            return false;
+        }
+    }
 	void Start () 
     {
         PflongeOnUnit();

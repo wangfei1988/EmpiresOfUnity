@@ -133,7 +133,7 @@ public class ProductionBuildingOptions : UnitOptions
         }
     }
 
-    protected override void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
+    internal override void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
     {
         MoveToPoint = MouseEvents.State.Position.AsWorldPointOnMap;
         MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
@@ -142,7 +142,7 @@ public class ProductionBuildingOptions : UnitOptions
    
     internal override void FocussedLeftOnGround(Vector3 worldPoint)
     {
-        UnlockFocus(Focus.HANDLING.DestroyFocus);
+        DestroyFocus();
         //DestroyFocus();
     }
 

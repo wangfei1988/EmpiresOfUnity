@@ -4,45 +4,49 @@ using System;
 
 public class Focus : MonoBehaviour
 {
-    [Flags]
-    public enum HANDLING : int
-    {
-        UnlockFocus = -2,
-        LockFocus = 2,
-        DestroyFocus = -1,
-        None = 0,
-        HasFocus = 1,
-        IsLocked = 3,
-    }
+    //[Flags]
+    //public enum HANDLING : int
+    //{
+    //    UnlockFocus = -2,
+    //    LockFocus = 2,
+    //    DestroyFocus = -1,
+    //    None = 0,
+    //    HasFocus = 1,
+    //    IsLocked = 3,
+    //}
     public enum MARKERS : byte
     {
         MoveToPoint = 0,
         WayPoint = 1,
         AttackPoint = 2
     }
+
+    // Static Member:
     public static bool IsLocked
     {
-        get { return (Key!=null); }
+        get { return (KeyObject!=null); }
     }
     public static MarkerScript[] Marker = new MarkerScript[3];
     public static GameObject masterGameObject = null;
-    private static GameObject Key = null;
+    private static GameObject KeyObject = null;
     public static GameObject Focusrectangle = null;
     private static bool firststart = true;
-
-    private UnitScript UNIT;   //----------------------this Focussed Unit's the UnitScript...
-
-    private bool UnitMenuIsOn
+    private static bool UnitMenuIsOn
     {
         get { return RightClickMenu.showGUI; }
         set { RightClickMenu.showGUI = value; }
     }
+
+    // Instance Member:
+    private UnitScript UNIT;   //----------------------this Focussed Unit's the UnitScript...
+    private bool SettingFocusIsComplete=false;
+
     public bool IsLockedToThis
     {
         get
         {
             if (IsLocked)
-                return this.gameObject == Key;
+                return this.gameObject == KeyObject;
             else return false;
         }
     }
@@ -51,34 +55,41 @@ public class Focus : MonoBehaviour
 
     void Start()
     {
-        if (firststart)
+        SettingFocusIsComplete = false;
+        if (!firststart)
         {
+            if ((!IsLocked) || (IsLockedToThis))
+            {
+                if (this.gameObject.GetComponent<UnitScript>())
+                    UNIT = this.gameObject.GetComponent<UnitScript>();
+                masterGameObject = this.gameObject;
+            }
+            if (!IsLocked)
+            {
+                UpdateManager.OnUpdate += DoUpdate;
+                MouseEvents.RIGHTCLICK += MouseEvents_RIGHTCLICK;
+                MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
+                SettingFocusIsComplete = true;
+            }
+        }   
+        else
+        {
+            //-Focus's first start:  
+            //-References needet by The Focus. It is called only once, at Gamestart.
+            //-when References have been copied, this childopjects will be detached
+            // and Focus will Destroy itself, keeping this references in its Static part of it's class)
+
             Focusrectangle = this.gameObject;
-            Transform mainGUI = GameObject.FindGameObjectWithTag("MainGUI").transform;
-            Marker[0] = mainGUI.FindChild("MoveToPoint").gameObject.GetComponent<MarkerScript>();
-            Marker[1] = mainGUI.FindChild("WayPoint").GetComponent<MarkerScript>();
-            Marker[2] = mainGUI.FindChild("AttackPoint").GetComponent<MarkerScript>();
-            mainGUI.DetachChildren();
+            Marker[0] = GUIScript.main.transform.FindChild("MoveToPoint").gameObject.GetComponent<MarkerScript>();
+            Marker[1] = GUIScript.main.transform.FindChild("WayPoint").GetComponent<MarkerScript>();
+            Marker[2] = GUIScript.main.transform.FindChild("AttackPoint").GetComponent<MarkerScript>();
+            GUIScript.main.transform.DetachChildren();
 
             foreach (MarkerScript marker in Marker)
                 marker.Visible = false;
 
-            Component.Destroy(gameObject.GetComponent<Focus>());
-
-        }   
-        else
-        {
-            if (this.gameObject.GetComponent<UnitScript>())
-            {
-                UNIT = this.gameObject.GetComponent<UnitScript>();
-                UNIT.Options.FocusFlag = HANDLING.HasFocus;
-            }
-            masterGameObject = this.gameObject;
-            MouseEvents.RIGHTCLICK += MouseEvents_RIGHTCLICK;
-            MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
-            UpdateManager.OnUpdate += DoUpdate;
+            Component.Destroy(this.gameObject.GetComponent<Focus>());
         }
-
     }
 
     // Check if Focus is on another gameobject -> than release old-focus
@@ -98,32 +109,31 @@ public class Focus : MonoBehaviour
 
     void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
     {
-        if (!IsLocked)
-        {
-            if (!UnitMenuIsOn)
-            {
-                if (!hold)
-                {
 
-                    GameObject ClickedUnit = UnitUnderCursor.gameObject;
+        if ((!hold)&&(!UnitMenuIsOn))
+        {
+            if (!IsLocked)
+            {
+                if (MouseEvents.State.Position.AsUnitUnderCursor)
+                {
+                    UnitScript ClickedUnit = MouseEvents.State.Position.AsUnitUnderCursor;
                     if (ClickedUnit)
                     {
-                        if (IsEnemy(ClickedUnit)) 
+                        if (IsEnemy(ClickedUnit.gameObject))
                         {
                             Marker[(int)MARKERS.AttackPoint].GetComponent<Follower>().targetTransform = ClickedUnit.transform;
                             Marker[(int)MARKERS.AttackPoint].GetComponent<FaceDirection>().TransformToFace = gameObject.transform;
                             Marker[(int)MARKERS.AttackPoint].renderer.enabled = true;
-                            UNIT.Options.FocussedLeftOnEnemy(ClickedUnit); //------------triggers the Units StandardOrder for Clicking an EnemyUnit
+                            UNIT.Options.FocussedLeftOnEnemy(ClickedUnit.gameObject); //------------triggers the Units StandardOrder for Clicking an EnemyUnit
                             //-----------------------------------------------------------(StandardOrders are Processed via this one call and do not need the unit to Lock the Focus for more specification....)
                             //------------------------------------------------------------...all other detailed nonStandard Orders are handled by the RightClickMenu and need to Lock the focus 
                         }
-                        else if (IsOtherUnit(ClickedUnit))
+                        else if (IsOtherUnit(ClickedUnit.gameObject))
                         {
                             Marker[(int)MARKERS.WayPoint].GetComponent<Follower>().targetTransform = ClickedUnit.transform;
                             Marker[(int)MARKERS.WayPoint].GetComponent<FaceDirection>().TransformToFace = gameObject.transform;
                             Marker[(int)MARKERS.WayPoint].renderer.enabled = true;
-                            // TODO Bug -> ClickedUnit get Focus and lost it some frames later
-                            UNIT.Options.FocussedLeftOnAllied(ClickedUnit);//-------------triggers the Units StandardOrder for Clicking a friendly Unit
+                            UNIT.Options.FocussedLeftOnAllied(ClickedUnit.gameObject);//-------------triggers the Units StandardOrder for Clicking a friendly Unit
                         }
                     }
                     else
@@ -134,24 +144,32 @@ public class Focus : MonoBehaviour
                     }
                 }
             }
+            else if (IsLockedToThis)
+            {
+                UNIT.Options.MouseEvents_LEFTCLICK(qamRay, hold);
+            }
         }
     }
 
     void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
     {
-        if(!hold) 
+        if ((!hold) && (!UnitMenuIsOn))
         {
-            if (!IsLocked)
+            if ((!IsLocked)||(IsLockedToThis))
             {
-                if (UnitUnderCursor.gameObject)
+                if (MouseEvents.State.Position.AsUnitUnderCursor)
                 {
-                    if (IsOtherUnit(UnitUnderCursor.gameObject))
-                    {
-                        UnitUnderCursor.gameObject.AddComponent<Focus>();
-                        RightClickMenu.PopUpGUI(UnitUnderCursor.UNIT);
+                    UnitScript ClickedUnit = MouseEvents.State.Position.AsUnitUnderCursor;
+
+                    if (IsOtherUnit(ClickedUnit.gameObject))
+                    {//--------------- I think of adding anozher Menu like InteractionMenu or what.
+                        //-------------it would contain Interaction specific comamds like Guard, GroupMove, BuildAGroup, TakeLeadership, and so on...
+                        //-------------butt now this Rightclick will handle the focus to the other Unit and call it's CommandOptionsMenu
+                        ClickedUnit.gameObject.AddComponent<Focus>();
+                        RightClickMenu.PopUpGUI(MouseEvents.State.Position.AsUnitUnderCursor);
                     }
                     else
-                    {//---------------the Focussed Unit (This unit) was Rightclicked
+                    {//---------------the Focussed Unit (This unit) was Rightclicked self.
                         RightClickMenu.PopUpGUI(UNIT);
                     }
                 }
@@ -160,43 +178,49 @@ public class Focus : MonoBehaviour
                     GameObject.Destroy(gameObject.GetComponent<Focus>());
                 }
             }
+
+            if (IsLockedToThis)
+            {
+                UNIT.Options.MouseEvents_RIGHTCLICK(qamRay,hold);
+            }
         }
     }
 
-    private bool IsEnemy(GameObject otherUnit)
+    private bool IsEnemy(GameObject other)
     {
-        if (otherUnit == null)
+        if (other == null)
             return false;
-        return otherUnit.GetComponent<UnitScript>().IsEnemy(UNIT.GoodOrEvil);
+        return other.GetComponent<UnitScript>().IsEnemy(UNIT.GoodOrEvil);
     }
-    private bool IsOtherUnit(GameObject unit)
+    private bool IsOtherUnit(GameObject other)
     {
-        return unit.GetInstanceID() != gameObject.GetInstanceID(); 
+        return other.GetInstanceID() != this.gameObject.GetInstanceID(); 
     }
 
-    public void Lock()
+
+    // Locks the Focus to This Actual Focussed Unit, till it is has finished recieving orders,so no other Units Will recive MouseData untill
+    // the complete ordering process is recognized...   should be called by the Unit right after an option on the RightclickPopUp has been Clicked
+    public bool Lock()
     {
-        // Locks the Focus to This Actual Focussed Unit, till it is has finished recieving orders,so no other Units Will recive MouseData untill
-        // the complete ordering process is recognized...   should be called by the Unit right after an option on the RightclickPopUp has been Clicked
-        
-        //if (UNIT.Options.FocusFlag == HANDLING.HasFocus)
-        //{
-            Key = this.gameObject;
-          //  UNIT.Options.FocusFlag |= HANDLING.LockFocus;
-        //}
+        if ((!IsLocked) || (IsLockedToThis))
+        {
+            KeyObject = this.gameObject;
+            return true;
+        }
+        else return false;
     }
+
+    // Releases the Lock to the locked Unit after its ordering process is finished, so other Units can get Focus again....
+    // must be called by the Unit whitch has Locked the Focus,givin its own gameObject as parameter for UnlockKey, or the Focus wont be Unlocked...
     public bool Unlock(GameObject unlockKey)
     {
-        // Releases the Lock to the locked Unit after its ordering process is finished, so other Units can get Focus again....
-        // must be called by the Unit whitch has Locked the Focus, given its own gameObject as parameter for UnlockKey, or the Focus wont be Unlocked...
-        if (unlockKey != null && Key != null)
-            if (unlockKey.GetInstanceID() == Key.GetInstanceID())
-            {
-              //  unlockKey.GetComponent<UnitScript>().Options.FocusFlag |= HANDLING.UnlockFocus;
-                Key = null;
-            }
-        return IsLockedToThis;
+        if(IsLocked)
+            if (unlockKey.GetInstanceID() == KeyObject.GetInstanceID())
+                KeyObject = null;
+
+        return !IsLocked;
     }
+    
     private void TryRelease()
     {
         if (masterGameObject == null || masterGameObject.GetInstanceID() != gameObject.GetInstanceID())
@@ -218,15 +242,6 @@ public class Focus : MonoBehaviour
             MouseEvents.RIGHTCLICK -= MouseEvents_RIGHTCLICK;
             MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
             UpdateManager.OnUpdate -= DoUpdate;
-            if(gameObject.GetComponent<UnitScript>())
-                UNIT.Options.FocusFlag = HANDLING.None;
-
-            // Release Focus
-            masterGameObject = null;
-            TryRelease();
-        }
-
-        
+        }  
     }
-
 }
