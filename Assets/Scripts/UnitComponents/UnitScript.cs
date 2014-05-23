@@ -131,7 +131,7 @@ public class UnitScript : MonoBehaviour
             case UNITTYPE.Tank:
                 {
                     Options = gameObject.GetComponent<GroundUnitOptions>();
-                    weapon = gameObject.GetComponent<LightLaserGun>();
+                    weapon = gameObject.GetComponent<UnitWeapon>();
                     break;
                 }
             case UNITTYPE.Fabrik:

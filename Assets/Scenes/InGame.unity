@@ -5104,12 +5104,12 @@ Transform:
   - {fileID: 724636364}
   - {fileID: 286388423}
   - {fileID: 379654361}
-  - {fileID: 716948108}
   - {fileID: 311706555}
-  - {fileID: 1460555424}
   - {fileID: 1874687695}
+  - {fileID: 1460555424}
   - {fileID: 48475778}
   - {fileID: 1235893387}
+  - {fileID: 716948108}
   - {fileID: 798904036}
   m_Father: {fileID: 0}
 --- !u!1 &1460555423
@@ -5568,18 +5568,18 @@ MonoBehaviour:
 --- !u!114 &1515505788
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400008, guid: 567673cbfea58614aa8ec0843ea49d51,
-    type: 2}
-  m_PrefabInternal: {fileID: 1662944514}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1515505785}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f062a04179ed6949b2580aa47ffb423, type: 3}
+  m_Script: {fileID: 11500000, guid: 08e425f0cf7c0cc4a94bf78b341d4315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 11400000, guid: 9dbbe8c28a344b448aeab0965f22eb49, type: 2}
+  prefabSlot: {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
   hasArsenal: 0
-  LaserEnergie: 1000
+  NumberOfRockets: 1000
+  countdown: 0
 --- !u!114 &1515505789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6078,7 +6078,12 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 11400010, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 1515505788}
+    m_RemovedComponents:
+    - {fileID: 11400008, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
   m_RootGameObject: {fileID: 1515505785}
   m_IsPrefabParent: 0

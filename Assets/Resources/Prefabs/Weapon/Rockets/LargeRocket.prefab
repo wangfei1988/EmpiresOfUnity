@@ -139,7 +139,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: -.894413531, y: .31201005, z: -.0926395655, w: .306744456}
-  m_LocalPosition: {x: 1.64999998, y: 4.21000004, z: 0}
+  m_LocalPosition: {x: -155.107224, y: 6.71999979, z: -202.874161}
   m_LocalScale: {x: .150000006, y: .800000012, z: .150000006}
   m_Children:
   - {fileID: 400006}
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a47a04ccd8e1ea4480f2deadd9b2c0c, type: 3}
+  m_Script: {fileID: 11500000, guid: c0a5b0fc257469e4abcd454e1731acf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {x: 0, y: 0, z: 0}
@@ -256,7 +256,7 @@ MonoBehaviour:
   - {fileID: 21200004}
   - {fileID: 21200002}
   - {fileID: 21200000}
-  visible: 0
+  visible: 1
   MAXIMUM_SPEED: 4
   launch: 0
   timer: 0
@@ -448,7 +448,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4294967295
+        rgba: 2382364671
       minMaxState: 0
     startSize:
       scalar: .319999993
@@ -676,7 +676,7 @@ ParticleSystem:
           serializedVersion: 2
           rgba: 0
         ctime0: 0
-        ctime1: 65535
+        ctime1: 21974
         ctime2: 0
         ctime3: 0
         ctime4: 0
@@ -684,7 +684,7 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
+        atime1: 5783
         atime2: 0
         atime3: 0
         atime4: 0

@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: .999999642, y: 4.3673225e-08, z: 4.3673225e-08, w: .000872717763}
-  m_LocalPosition: {x: 0, y: 0, z: -1.26999998}
+  m_LocalPosition: {x: 0, y: 0, z: -.119999997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400004}
@@ -81,8 +81,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
-  m_LocalRotation: {x: .560387552, y: .328748643, z: .749977708, w: -.124192268}
-  m_LocalPosition: {x: 89.8099976, y: 2, z: -21.3999996}
+  m_LocalRotation: {x: .0362283438, y: -.324716717, z: -.938569665, w: -.111056425}
+  m_LocalPosition: {x: -157, y: 1.79999995, z: -182}
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children:
   - {fileID: 400002}
@@ -98,7 +98,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 4d344511b75934b45b75dd01c8b6fe59, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .495999992
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -107,7 +107,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -177,26 +177,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba938f97e34df484eb7ccf8dfbdcc8bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 421838722e4d0ac4c803dbc25d871292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {x: 0, y: 0, z: 0}
-  A: {x: .469999999, y: .769999981, z: -3.67000008}
-  B: {x: 0, y: 0, z: 0}
+  A: {x: 5.48999977, y: 2.19000006, z: .330000013}
+  B: {x: -8.68999958, y: 2.0999999, z: 11.71}
   Z: 1.39999998
-  z: 0
+  z: 34.7200012
   BOOMsound: {fileID: 8300000, guid: 851c2eee0517b344d97509114e30afc2, type: 3}
+  InlineRotation: {x: 0, y: 0, z: 0}
+  RotatorAmount: {x: 0, y: 0, z: 10.5799999}
   launch: 0
   timer: 0
-  Duration: 2.5
-  speed: .200000003
+  Duration: 2
+  speed: .5
   SPEED_FACTOR: 1.04999995
-  MAXIMUM_SPEED: 3.5
+  MAXIMUM_SPEED: 2
   emission: {fileID: 19800000}
-  rotation: .850000024
+  rotation: 4.42000008
   THROTTLETIME: 6
-  InlineRotation: {x: 0, y: 0, z: 0}
-  RotatorAmount: {x: 0, y: 0, z: 90}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -381,7 +381,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: .629999995
+      scalar: .180000007
       maxCurve:
         serializedVersion: 2
         m_Curve:
