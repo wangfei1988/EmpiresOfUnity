@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class SolarTower : AbstractBuilding 
 {
-    private Dictionary<uint, uint> SolarWork = new Dictionary<uint, uint>();
+    //private Dictionary<uint, uint> SolarWork = new Dictionary<uint, uint>();
 
     public override EnumProvider.UNITCLASS UNIT_CLASS
     {
