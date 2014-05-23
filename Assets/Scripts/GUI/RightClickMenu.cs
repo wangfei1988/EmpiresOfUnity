@@ -137,6 +137,7 @@ public class RightClickMenu : MonoBehaviour {
                 if (GUI.Button(new Rect(0, guiStyle.fontSize + i * btnHeight, Pannel.texture.width * ScaleX, btnHeight), options[i].ToString(), buttonStyle))
                 {
                     Unit.Options.GiveOrder(options[i]);
+                    Debug.Log("order given to unit!");
                     showGUI = false;
                 }
             }

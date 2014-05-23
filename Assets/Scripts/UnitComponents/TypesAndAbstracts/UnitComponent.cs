@@ -13,10 +13,9 @@ public abstract class UnitComponent : MonoBehaviour
     {
         Cancel=EnumProvider.ORDERSLIST.Cancel
     }
-    virtual public string IDstring
-    {
-        get { return "NoWeapon"; }
-    }
+    abstract public string IDstring
+    { get; }
+
     public UnitScript UNIT;
     private int ID;
     
@@ -61,7 +60,7 @@ public abstract class UnitComponent : MonoBehaviour
         UNIT = this.gameObject.GetComponent<UnitScript>();
         newextensions.CopyTo(StateExtensions, 0);
         this.ID = this.gameObject.GetComponent<UnitScript>().Options.RegisterUnitComponent(this, StateExtensions);
-        SignOut();
+        SignIn();
         return this;
     }
 

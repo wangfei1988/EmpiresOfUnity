@@ -19,6 +19,8 @@ GameObject:
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400012}
   - 114: {fileID: 11400008}
+  - 135: {fileID: 13500000}
+  - 114: {fileID: 11400014}
   m_Layer: 10
   m_Name: Tank
   m_TagString: Clickable
@@ -49,7 +51,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -141.268723, y: -.149979338, z: -174.137711}
+  m_LocalPosition: {x: -128.84108, y: -.149979338, z: -174.137711}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 400002}
@@ -206,8 +208,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400010}
+  baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
+  optionalStateStrings: []
+  optionalstateIDs: 
+  optionalStates: 
   PluggedStateExtendingComponents: []
   Movement: {fileID: 11400012}
   unitstateint: 0
@@ -259,15 +265,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b777ad1154e3f68468d42820f1deb0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UNIT: {fileID: 0}
-  movingUnitState: 100
+  UNIT: {fileID: 11400010}
+  movingUnitState: 0
   standardYPosition: 0
   IsGroupLeader: 0
   speed: .200000003
-  _moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
-  WayPoints: []
+  WayPoints:
+  - {x: 0, y: 0, z: 0}
   Rudder: {x: 0, y: 0, z: 0}
+--- !u!114 &11400014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13e32734abd778843ae976acaf93ccaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UNIT: {fileID: 11400010}
+  lookAheadDistance: 3
+  mySpace: {fileID: 13500000}
+  Controlls: {fileID: 11400012}
+  triggerd: 0
+  IsAForwarder: 0
+  Throttle: 0
+  Rudder: {x: 0, y: 0, z: 0}
+--- !u!135 &13500000
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4.77995491
+  m_Center: {x: 0, y: 1.36644804, z: 1.41187}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

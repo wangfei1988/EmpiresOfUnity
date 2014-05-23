@@ -15,11 +15,13 @@ public abstract class UnitExtension : UnitComponent
     {
         UNIT.Options.Extensions_OnLEFTCLICK += OptionExtensions_OnLEFTCLICK;
         UNIT.Options.Extensions_OnRIGHTCLICK += OptionExtensions_OnRIGHTCLICK;
+        base.SignIn();
     }
     protected override void SignOut()
     {
         UNIT.Options.Extensions_OnLEFTCLICK -= OptionExtensions_OnLEFTCLICK;
         UNIT.Options.Extensions_OnRIGHTCLICK -= OptionExtensions_OnRIGHTCLICK;
+        base.SignOut();
     }
     
     internal abstract void OptionExtensions_OnLEFTCLICK(bool hold);

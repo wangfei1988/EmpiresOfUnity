@@ -62,7 +62,7 @@ public class GroundUnitOptions : MovingUnitOptions
                      unitState = order;
                  }
              }
-             else base.UnitState = value;
+             base.UnitState = value;
         }
     }
 
@@ -102,6 +102,8 @@ public class GroundUnitOptions : MovingUnitOptions
 
                    UnlockFocus();
                }
+
+               base.MouseEvents_LEFTCLICK(qamRay, hold);
            }
        }
    }

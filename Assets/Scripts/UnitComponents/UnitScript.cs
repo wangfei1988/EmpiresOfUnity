@@ -60,7 +60,12 @@ public class UnitScript : MonoBehaviour
     {
         return this.GoodOrEvil+other;
     }
-
+    public bool IsEnemy(GameObject other)
+    {
+        if (other.GetComponent<UnitScript>())
+            return IsEnemy(other.GetComponent<UnitScript>().GoodOrEvil);
+        else return false;
+    }
     public bool IsMySelf(GameObject target)
     {
         return (target.gameObject.GetInstanceID() == this.gameObject.GetInstanceID());

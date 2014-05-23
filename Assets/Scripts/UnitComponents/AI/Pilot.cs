@@ -8,6 +8,10 @@ using System.Collections.Generic;
 [AddComponentMenu("Program-X/UNIT/AI - Pilot")]
 public class Pilot : UnitComponent 
 {
+    public override string IDstring
+    {
+        get { return "Pilot"; }
+    }
     private const float MIN_LOOKAHEAD = 3f;
     private const float MAX_LOOKAHEAD = 20f;
     private const float Accselerator = 1.0001f;
@@ -44,7 +48,24 @@ public class Pilot : UnitComponent
             }
         }
     }
-    private SphereCollider mySpace;
+    public SphereCollider mySpace;
+    private bool _gunnercontrolled = false;
+    public bool PerceptionIsGunnerControlled
+    {
+        get
+        {
+            return _gunnercontrolled;
+        }
+        set
+        {
+            if (value)
+            {
+                IsAcselerating = false;
+            }
+            _gunnercontrolled = value;
+            
+        }
+    }
     private UnitScript My;
     public Movability Controlls;
     private bool Triggerd
@@ -112,20 +133,14 @@ public class Pilot : UnitComponent
         }
     }
 
-    public override bool ComponentExtendsTheOptionalstateOrder
-    {
-        get
-        {
-            return false;
-        }
-    }
+
 
     void Awake()
     {
+
         Controlls = this.gameObject.GetComponent<Movability>();
-        
         My = gameObject.GetComponent<UnitScript>();
-        mySpace = this.gameObject.AddComponent<SphereCollider>();
+        mySpace = this.gameObject.GetComponent<SphereCollider>();
 
     }
 	void Start() 
@@ -155,27 +170,38 @@ public class Pilot : UnitComponent
         lah = null;
     }
 
-
-
     private void ShrinkRradius(float lookAhead)
     {
-        if (lookAhead < LookAheadDistance)
+        if (!PerceptionIsGunnerControlled)
         {
-            SetRadius(lookAhead);
+            if (lookAhead < LookAheadDistance)
+            {
+                SetRadius(lookAhead);
+            }
         }
     }
     private void SetRadius(float radius)
     {
-        LookAheadDistance = radius;
-        mySpace.radius = lookAheadDistance / My.gameObject.transform.localScale.x;
-        if (My.IsAnAirUnit)
-            (My.Options as FlyingUnitOptions).standardYPosition = mySpace.radius*2;
-   //     if (IsAForwarder) mySpace.center = new Vector3(mySpace.center.x, mySpace.center.y, mySpace.radius - 0.5f);
+        if (PerceptionIsGunnerControlled)
+        {
+            if (radius > My.weapon.GetMaximumRange())
+            {
+                LookAheadDistance = radius;
+                mySpace.radius = lookAheadDistance / My.gameObject.transform.localScale.x;
+                if (My.IsAnAirUnit)
+                    (My.Options as FlyingUnitOptions).standardYPosition = mySpace.radius * 2;
+                //     if (IsAForwarder) mySpace.center = new Vector3(mySpace.center.x, mySpace.center.y, mySpace.radius - 0.5f);
+            }
+        }
+        else
+        {
+            LookAheadDistance = radius;
+            mySpace.radius = lookAheadDistance / My.gameObject.transform.localScale.x;
+            if (My.IsAnAirUnit)
+                (My.Options as FlyingUnitOptions).standardYPosition = mySpace.radius * 2;
+        }
     }
 
-
-
-    
     void OnTriggerEnter(Collider other)
     {
         if ((other.gameObject.layer != 2))// || (My.IsAnAirUnit))
@@ -236,8 +262,8 @@ public class Pilot : UnitComponent
 
     void OnDestroy()
     {
-        mySpace = null;
-        Component.Destroy(gameObject.GetComponent<SphereCollider>());
+   //     mySpace = null;
+   //     Component.Destroy(gameObject.GetComponent<SphereCollider>());
 
     //    UpdateManager.OnUpdate -= DoUpdate;
     }

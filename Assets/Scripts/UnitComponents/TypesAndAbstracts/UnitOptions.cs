@@ -84,6 +84,7 @@ abstract public class UnitOptions : MonoBehaviour
     { }
     
     //- stateorders:
+    [SerializeField]
     protected EnumProvider.ORDERSLIST baseUnitState;
     virtual public System.Enum UnitState
     {
@@ -93,7 +94,7 @@ abstract public class UnitOptions : MonoBehaviour
             EnumProvider.ORDERSLIST order = (EnumProvider.ORDERSLIST)value;
             if ((PRIMARY_STATE_CHANGE!=null)&&(order != baseUnitState))
             {
-
+                Debug.Log("STATE_CHANGE event triggerd");
                 baseUnitState = PRIMARY_STATE_CHANGE(order);
             }
         }
@@ -249,8 +250,11 @@ abstract public class UnitOptions : MonoBehaviour
 
     //---------------------------------------- Enginal stuff and functions...
     protected SortedDictionary<int, string> OptionalStatesOrder = new SortedDictionary<int, string>();
+    [SerializeField]
     protected List<string> optionalStateStrings = new List<string>();
+    [SerializeField]
     protected int[] optionalstateIDs;
+    [SerializeField]
     protected EnumProvider.ORDERSLIST[] optionalStates;
     
     void Start()

@@ -185,7 +185,7 @@ MonoBehaviour:
   B: {x: -8.68999958, y: 2.0999999, z: 11.71}
   Z: 1.39999998
   z: 34.7200012
-  BOOMsound: {fileID: 8300000, guid: 851c2eee0517b344d97509114e30afc2, type: 3}
+  BOOMsound: {fileID: 8300000, guid: a6628622fc5e0e44a97b8401a0f4c014, type: 3}
   InlineRotation: {x: 0, y: 0, z: 0}
   RotatorAmount: {x: 0, y: 0, z: 10.5799999}
   launch: 0

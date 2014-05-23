@@ -214,6 +214,7 @@ public class GUIScript : MonoBehaviour
         }
     }
 
+    /* if the SlectionRectangle was drawn over 10 (x or y) it will create a UnitGroup from the selection */
     void MouseEvents_LEFTRELEASE()
     {
         if (snapingAlowed)
@@ -226,16 +227,28 @@ public class GUIScript : MonoBehaviour
     void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
     {
         if (!hold)
-            FocusUnit();
+        {   /* Try Focus the unit thats clicked, or release Focus if clicked on ground...*/
+            if (!FocusUnit())
+            {
+                if ((MouseEvents.State.Position.AsObjectUnderCursor.layer == (int)EnumProvider.LAYERNAMES.Ignore_Raycast)
+                && (UnitFocused)
+                && (!Focus.IsLocked))
+                {
+                    Component.Destroy(Focus.masterGameObject.GetComponent<Focus>());
+                }
+            }
+        }
     }
 
-    private void FocusUnit()
+    private bool FocusUnit()
     {
-        if (UnitFocused == false && MouseEvents.State.Position.AsUnitUnderCursor)
+        if (!UnitFocused && MouseEvents.State.Position.AsUnitUnderCursor)
         {
             UnitUnderCursor.gameObject.AddComponent<Focus>();
             UnitUnderCursor.UNIT.ShowLifebar();
+            return true;
         }
+        return false;
     }
 
     // Selection finished -> Now Select the Units inside the Area

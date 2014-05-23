@@ -13,6 +13,10 @@ using System.Collections;
 [AddComponentMenu("Program-X/UNIT/WingsAndJets Extension")]
 public class WingsAndJets : UnitExtension
 {
+    public override string IDstring
+    {
+        get { return "WingsAndJets"; }
+    }
     new public enum OPTIONS : int
     {
         GlideFlight = EnumProvider.ORDERSLIST.GlideFlight,

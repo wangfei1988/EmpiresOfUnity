@@ -4,7 +4,10 @@ using System.Collections.Generic;
 
 public class Movability : UnitExtension
 {
-    
+    public override string IDstring
+    {
+        get { return "KingJulian"; }
+    }
     public new enum OPTIONS : int
     {
         MoveTo = EnumProvider.ORDERSLIST.MoveTo,
@@ -27,8 +30,9 @@ public class Movability : UnitExtension
 
     protected override EnumProvider.ORDERSLIST on_UnitStateChange(EnumProvider.ORDERSLIST stateorder)
     {
+        Debug.Log("OnUnitStateChange called!!!!!!!!!!!!!!!");
         movingUnitState = (OPTIONS)stateorder;
-        if (System.Enum.IsDefined(typeof(OPTIONS), stateorder))
+        if (System.Enum.IsDefined(typeof(OPTIONS), (int)stateorder))
         {
             switch (movingUnitState)
             {
@@ -63,7 +67,6 @@ public class Movability : UnitExtension
     public void StayOrder()
     {
         SetKinematic();
-        UNIT.Options.DestroyFocus();
         WayPoints.Clear();
         MoveToPoint = gameObject.transform.position;
         MovingDirection = MoveToPoint;
@@ -100,11 +103,13 @@ public class Movability : UnitExtension
 
 
             UNIT.Options.DestroyFocus();
+            Debug.Log("Units Movabilitys LeftclickHandler executed");
         }
     }
 
     internal override void OptionExtensions_OnRIGHTCLICK(bool hold)
     {
+        Debug.Log("Movebility rightclick");
         if ((!hold)
             && (gameObject.GetComponent<Focus>())
                 && (movingUnitState == OPTIONS.Patrol))
@@ -188,15 +193,14 @@ public class Movability : UnitExtension
         }
     }
 
-    [SerializeField]
-    private Vector3 _moveToPoint=Vector3.zero;
+
     public Vector3 MoveToPoint
     {
-        get { return _moveToPoint; }
+        get { return UNIT.Options.MoveToPoint; }
         set 
         {
             value.y = standardYPosition;
-            _moveToPoint = value;
+            UNIT.Options.MoveToPoint = value;
         }
     }
     public GameObject Target;

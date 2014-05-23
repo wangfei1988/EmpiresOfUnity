@@ -34,15 +34,17 @@ abstract public class MovingUnitOptions : UnitOptions
     internal override void FocussedLeftOnGround(Vector3 worldPoint)
     {
         standardOrder = true;
-        IsMovingAsGroup = true;
+     //   IsMovingAsGroup = true;
         Movement.SetKinematic();
         UnitState = OPTIONS.MoveTo;
-
+        Movement.MoveToPoint = worldPoint;
         Movement.MovingDirection = worldPoint;
-        gameObject.transform.position += (MovingDirection * Speed);
+   //     gameObject.transform.position += (Movement.MovingDirection * Movement.Speed);
         IsAttacking = false;
         Target = null;
         standardOrder = false;
+        IsMoving = true;
+        Debug.Log("MovingUnitOptions->FocussedLeftOnGround");
     }
 
 
@@ -56,11 +58,11 @@ abstract public class MovingUnitOptions : UnitOptions
     {
         get
         {
-            return Movement.MoveToPoint;
+            return base.MoveToPoint;
         }
         internal set
         {
-            Movement.MoveToPoint = new Vector3(value.x, standardYPosition, value.z);
+            base.MoveToPoint = value;
         }
     }
 
@@ -155,6 +157,7 @@ abstract public class MovingUnitOptions : UnitOptions
         }
         set
         {
+            Debug.Log("MovingUnitOIptions StateChange called!");
             base.UnitState = value;
             //OPTIONS order = (OPTIONS)value;
             //if (unitstateint != (int)order)

@@ -38,7 +38,7 @@ public class Focus : MonoBehaviour
     }
 
     // Instance Member:
-    private UnitScript UNIT;   //----------------------this Focussed Unit's the UnitScript...
+    private UnitScript UNIT;   //----------------------the Focussed Unit it's UnitScript...
     private bool SettingFocusIsComplete=false;
 
     public bool IsLockedToThis
@@ -92,9 +92,12 @@ public class Focus : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private bool _islocked = false;
     // Check if Focus is on another gameobject -> than release old-focus
     void DoUpdate()
     {
+        _islocked = IsLocked;
         if (IsLocked)
         {
             // gets back the Focus to the LockedUnit if it was mistakenly taken by another Unit 
@@ -109,7 +112,7 @@ public class Focus : MonoBehaviour
 
     void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
     {
-
+        
         if ((!hold)&&(!UnitMenuIsOn))
         {
             if (!IsLocked)
@@ -136,12 +139,14 @@ public class Focus : MonoBehaviour
                             UNIT.Options.FocussedLeftOnAllied(ClickedUnit.gameObject);//-------------triggers the Units StandardOrder for Clicking a friendly Unit
                         }
                     }
-                    else
-                    {
-                        Marker[(int)MARKERS.MoveToPoint].transform.position = MouseEvents.State.Position.AsWorldPointOnMap;
-                        Marker[(int)MARKERS.MoveToPoint].renderer.enabled = true;
-                        UNIT.Options.FocussedLeftOnGround(MouseEvents.State.Position.AsWorldPointOnMap); // StandardOrder for Clicking on Ground (its MoveTo in most cases...)
-                    }
+
+                }
+                else
+                {
+                    Marker[(int)MARKERS.MoveToPoint].transform.position = MouseEvents.State.Position.AsWorldPointOnMap;
+                    Marker[(int)MARKERS.MoveToPoint].renderer.enabled = true;
+
+                    UNIT.Options.FocussedLeftOnGround(MouseEvents.State.Position.AsWorldPointOnMap); // StandardOrder for Clicking on Ground (its MoveTo in most cases...)
                 }
             }
             else if (IsLockedToThis)
@@ -155,7 +160,7 @@ public class Focus : MonoBehaviour
     {
         if ((!hold) && (!UnitMenuIsOn))
         {
-            if ((!IsLocked)||(IsLockedToThis))
+            if (!IsLocked)
             {
                 if (MouseEvents.State.Position.AsUnitUnderCursor)
                 {
@@ -182,6 +187,7 @@ public class Focus : MonoBehaviour
             if (IsLockedToThis)
             {
                 UNIT.Options.MouseEvents_RIGHTCLICK(qamRay,hold);
+                Debug.Log("Focussed Units RightClickHandler has been called !");
             }
         }
     }
