@@ -32,7 +32,7 @@ public class LaserObject : WeaponObject
     public dir richtung;
     public Vector3 t;
     private const float SPEED = 50f;
-    public AudioClip sound2;
+    public AudioClip soundHit;
     private int count;
     private float Step;
     private float Range;
@@ -162,7 +162,7 @@ public class LaserObject : WeaponObject
     {
         if ((!other.collider.isTrigger) && (other.gameObject.layer==(int)EnumProvider.LAYERNAMES.Units) && (other.gameObject.GetComponent<UnitScript>().IsEnemy(this.GoodOrEvil)))
         {
-            this.gameObject.GetComponent<AudioSource>().PlayOneShot(sound2);
+            this.gameObject.GetComponent<AudioSource>().PlayOneShot(soundHit);
             GUIScript.AddTextLine(other.gameObject.name + other.gameObject.GetInstanceID().ToString());
             //triggerPos = other.transform.position;
             HIT = true;

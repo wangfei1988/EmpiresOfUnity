@@ -40,7 +40,8 @@ public class LightLaserGun : UnitWeapon
     //---------------------------------------------------------- Engage functions. to fire the "Laser" - projectiles...
     public override void Engage(GameObject targetUnit)
     {
-        Engage(targetUnit.transform.position);
+        if (targetUnit != null)
+            Engage(targetUnit.transform.position);
     }
     public override void Engage(Vector3 targetPoint)
     {

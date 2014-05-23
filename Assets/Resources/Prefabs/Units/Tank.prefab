@@ -246,6 +246,7 @@ MonoBehaviour:
   level: 1
   sightWidth: 50
   resourceFactor: 0
+  SoundDestroy: {fileID: 8300000, guid: a6628622fc5e0e44a97b8401a0f4c014, type: 3}
   interactingUnits: 
 --- !u!114 &11400012
 MonoBehaviour:
