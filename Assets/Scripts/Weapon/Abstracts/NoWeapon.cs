@@ -3,7 +3,10 @@ using System.Collections;
 
 public class NoWeapon : UnitWeapon {
 
-
+    public override bool IsOutOfAmmu
+    {
+        get { return true; }
+    }
         public override void Engage(GameObject targetUnit)
         {
 

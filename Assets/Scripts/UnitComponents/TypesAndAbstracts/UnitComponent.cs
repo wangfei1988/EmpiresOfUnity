@@ -5,6 +5,10 @@ using System.Collections;
 
 public abstract class UnitComponent : MonoBehaviour
 {
+    virtual public bool ComponentExtendsTheOptionalstateOrder
+    {
+        get { return false; }
+    }
     public enum OPTIONS : int
     {
         Cancel=EnumProvider.ORDERSLIST.Cancel
@@ -15,7 +19,7 @@ public abstract class UnitComponent : MonoBehaviour
     }
     public UnitScript UNIT;
     private int ID;
-    protected bool ComponentExtendsTheOptionalstateOrder = false;
+    
     private System.Enum[] StateExtensions;
 
     public UnitComponent PflongeOnUnit()
@@ -34,10 +38,22 @@ public abstract class UnitComponent : MonoBehaviour
                 StateExtensions[0] = EnumProvider.ORDERSLIST.Cancel;
             }
             this.ID = this.gameObject.GetComponent<UnitScript>().Options.RegisterUnitComponent(this, StateExtensions);
-            UnitOptions.PRIMARY_STATE_CHANGE += on_UnitStateChange;
+            SignIn();
+
             
             return this;
     }
+
+    protected virtual void SignIn()
+    {
+        UNIT.Options.PRIMARY_STATE_CHANGE += on_UnitStateChange;
+    }
+    protected virtual void SignOut()
+    {
+        UNIT.Options.PRIMARY_STATE_CHANGE -= on_UnitStateChange;
+    }
+
+
 
     public UnitComponent PflongeOnUnit(System.Array newextensions)
     {
@@ -45,7 +61,7 @@ public abstract class UnitComponent : MonoBehaviour
         UNIT = this.gameObject.GetComponent<UnitScript>();
         newextensions.CopyTo(StateExtensions, 0);
         this.ID = this.gameObject.GetComponent<UnitScript>().Options.RegisterUnitComponent(this, StateExtensions);
-        UnitOptions.PRIMARY_STATE_CHANGE += on_UnitStateChange;
+        SignOut();
         return this;
     }
 
@@ -57,9 +73,10 @@ public abstract class UnitComponent : MonoBehaviour
         {
             StateExtensions = new System.Enum[1];
             StateExtensions[0] = EnumProvider.ORDERSLIST.Cancel;
+
         }
         this.gameObject.GetComponent<UnitScript>().Options.UnRegister(this.ID, StateExtensions);
-        UnitOptions.PRIMARY_STATE_CHANGE -= on_UnitStateChange;
+        SignOut();
     }
 
     abstract protected EnumProvider.ORDERSLIST on_UnitStateChange(EnumProvider.ORDERSLIST stateorder);

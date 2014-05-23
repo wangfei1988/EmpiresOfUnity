@@ -11,7 +11,7 @@ using UnityEngine;
 using System.Collections;
 
 [AddComponentMenu("Program-X/UNIT/WingsAndJets Extension")]
-public class WingsAndJets : UnitComponent 
+public class WingsAndJets : UnitExtension
 {
     new public enum OPTIONS : int
     {
@@ -89,6 +89,15 @@ public class WingsAndJets : UnitComponent
         return stateorder;
     }
 
+    internal override void OptionExtensions_OnLEFTCLICK(bool hold)
+    {
+
+    }
+    internal override void OptionExtensions_OnRIGHTCLICK(bool hold)
+    {
+
+    }
+
     public bool IsFlying
     {
         get 
@@ -123,7 +132,7 @@ public class WingsAndJets : UnitComponent
 
     void Awake()
     {
-        ComponentExtendsTheOptionalstateOrder = true;
+
         System.Enum[] buffer = new System.Enum[3];
         buffer[0] = OPTIONS.GlideFlight;
         buffer[1] = OPTIONS.FullThrottle;
@@ -134,10 +143,9 @@ public class WingsAndJets : UnitComponent
 
     void Start()
     {
-        if (!this.gameObject.GetComponent<MovingUnitOptions>())
-            Component.Destroy(this.GetComponent<WingsAndJets>());
-        else
-        {
+      //  if (!this.gameObject.GetComponent<MovingUnitOptions>())
+      //      Component.Destroy(this.GetComponent<WingsAndJets>());
+   
             Options = this.gameObject.GetComponent<GroundUnitOptions>();
             if (!this.gameObject.GetComponent<Pilot>()) this.gameObject.AddComponent<Pilot>();
             pilot = this.gameObject.GetComponent<Pilot>();
@@ -151,7 +159,7 @@ public class WingsAndJets : UnitComponent
             timerA = timerB = 0f;
             this.PflongeOnUnit(System.Enum.GetValues(typeof(OPTIONS)));
             lerpTime = 2.5f;
-        }
+      
     }
     public float mische = 1;
     private float Mische

@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using System;
 
 [AddComponentMenu("Program-X/UNIT/UnitOptions (Standard GroundUnits)")]
@@ -26,18 +28,18 @@ public class GroundUnitOptions : MovingUnitOptions
              
          }
      }
-   public override Enum UnitState
+   public override System.Enum UnitState
     {
         get
         {
-            if (Enum.IsDefined(typeof(OPTIONS), (OPTIONS)unitstateint))
+            if (System.Enum.IsDefined(typeof(OPTIONS), (OPTIONS)unitstateint))
                 return unitState;
-            return base.UnitState;
+            else return base.UnitState;
         }
         set
         {
              OPTIONS order;
-             if (Enum.IsDefined(typeof(OPTIONS), (OPTIONS)value))
+             if (System.Enum.IsDefined(typeof(OPTIONS), (OPTIONS)value))
              {
                  order = (OPTIONS)value;
                  if (unitstateint != (int)order)
@@ -47,14 +49,13 @@ public class GroundUnitOptions : MovingUnitOptions
                      {
                          switch (order)
                          {
-                            case OPTIONS.Attack:
-                            {
-                                SetKinematic();
-                                WayPoints.Clear();
-                                LockOnFocus();
-                                MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
-                                break;
-                            }
+                             case OPTIONS.Attack:
+                                 {
+                                     this.GetComponent<Movability>().SetKinematic();
+                                     this.GetComponent<Movability>().WayPoints.Clear();
+                                     LockOnFocus();
+                                     break;
+                                 }
                          }
                      }
                      unitstateint = (int)order;
@@ -66,7 +67,7 @@ public class GroundUnitOptions : MovingUnitOptions
     }
 
 
-   protected override void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
+   internal override void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
    {
        if (!hold)
        {
@@ -75,27 +76,26 @@ public class GroundUnitOptions : MovingUnitOptions
 
            if (gameObject.GetComponent<Focus>())
            {
-               if(!standardOrder)
-                   base.MouseEvents_LEFTCLICK(qamRay, hold);
+                
+               if(!standardOrder) base.MouseEvents_LEFTCLICK(qamRay, hold);
 
                if (unitState == OPTIONS.Attack)
                {
-                   if (UNIT.IsEnemy(UnitUnderCursor.gameObject.GetComponent<UnitScript>().GoodOrEvil))
+                   if (UNIT.IsEnemy(MouseEvents.State.Position.AsUnitUnderCursor.GoodOrEvil))
                    {
-                       Target = UnitUnderCursor.gameObject;
+                       Target = MouseEvents.State.Position.AsUnitUnderCursor.gameObject;
                        MoveToPoint = standardOrder ? ActionPoint ?? gameObject.transform.position : Target.transform.position;
                        IsMoving = true;
                        IsAttacking = true;
                    }
-                   else if (UNIT.IsAllied(UnitUnderCursor.gameObject))
+                   else if (UNIT.IsAllied(MouseEvents.State.Position.AsUnitUnderCursor.gameObject))
                    {
                         //Target = UnitUnderCursor.UNIT.SetInteracting(this.gameObject);
                         //if (UnitUnderCursor.UNIT.Options.IsAttacking) Target = UnitUnderCursor.UNIT.Options.Target;
                         //IsAttacking = true;
                         //MoveAsGroup(UnitUnderCursor.gameObject);
                    }
-                   if(!standardOrder)
-                       MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
+
                    UnlockFocus();
                }
            }
@@ -131,10 +131,10 @@ public class GroundUnitOptions : MovingUnitOptions
         {
             if (__attacking) 
             {
-                if (Target == null) 
+                if (Target == null)
                     __attacking = false;
-                else 
-                    CalculateDirection();
+                else
+                    MovingDirection = MoveToPoint;
                 if (Distance < UNIT.AttackRange)
                 {
                     UNIT.weapon.Reloade();
@@ -158,7 +158,7 @@ public class GroundUnitOptions : MovingUnitOptions
     internal override void DoStart()
     {
         base.DoStart();
-        foreach (int option in Enum.GetValues(typeof(OPTIONS)))
+        foreach (int option in System.Enum.GetValues(typeof(OPTIONS)))
             if (!OptionalStatesOrder.ContainsKey(option))
                 OptionalStatesOrder.Add(option, ((OPTIONS)option).ToString());
 
@@ -169,9 +169,12 @@ public class GroundUnitOptions : MovingUnitOptions
 
     internal override void DoUpdate()
     {
-        if(Target != null)
-            if (IsAttacking)
-                MoveToPoint = Target.transform.position;
+        if (IsAttacking)
+        {
+            if(Target)
+            MoveToPoint = Target.transform.position;
+
+        }
         base.DoUpdate();
 
     }
