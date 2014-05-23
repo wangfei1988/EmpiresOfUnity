@@ -194,7 +194,8 @@ public class UnitScript : MonoBehaviour
 
     void Start()
     {
-        DefaultLife = Life;
+        this.DefaultLife = Life;
+        this.DestructionManagement = GameObject.FindGameObjectWithTag("ScriptContainer").GetComponent<UnitDestructionManagement>();
         UpdateManager.UNITUPDATE += UpdateManager_UNITUPDATE;
         UpdateManager.OnUpdate += UpdateLifebar;
     }
@@ -321,6 +322,10 @@ public class UnitScript : MonoBehaviour
         }
     }
 
+    /* Sound */
+    public AudioClip SoundDestroy;
+    private UnitDestructionManagement DestructionManagement;
+
     public float AttackRange
     {
         get { return weapon.GetMaximumRange(); }
@@ -378,6 +383,12 @@ public class UnitScript : MonoBehaviour
     {
         //todo: code for dieing (explosion etc.)
         UpdateManager.UNITUPDATE -= UpdateManager_UNITUPDATE;
+
+        // Play Destroy Sound
+        if (this.SoundDestroy != null)
+        {
+            // TODO Dario -> SoundFactory -> Create sound at Unit-Position
+        }
 
         //foreach (Component component in this.gameObject.GetComponents<Component>())
             //Component.Destroy(component);

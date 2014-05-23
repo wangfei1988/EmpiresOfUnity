@@ -271,7 +271,10 @@ public class GUIScript : MonoBehaviour
         //if (GUI.Button(new Rect((100 / Scale.x), (60 / Scale.y), (80 / Scale.x), (40 / Scale.y)), guiContent[4])) { }
         
         GUI.BeginGroup(new Rect((1718*Scale.x ), (24*Scale.y ), (180 * Scale.x), (160 * Scale.y)));
-        if (GUI.Button(new Rect((0 * Scale.x), (0 * Scale.y), (180 * Scale.x), (40 * Scale.y)), MainGuiContent[0])) { Application.LoadLevel("MainMenu"); }
+        if (GUI.Button(new Rect((0*Scale.x), (0*Scale.y), (180*Scale.x), (40*Scale.y)), MainGuiContent[0]) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.LoadLevel("MainMenu");
+        }
         
         if (GUI.Button(new Rect((0 * Scale.x), (60 * Scale.y), (80 * Scale.x), (40 * Scale.y)), MainGuiContent[1])) 
         {

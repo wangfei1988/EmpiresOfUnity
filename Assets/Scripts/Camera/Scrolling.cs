@@ -12,6 +12,7 @@ public class Scrolling : MonoBehaviour
     public float SpeedScrollY = 20f;
     public float SpeedZoom = 25f;
     public float SpeedRotate = 100f;
+    public float ShiftKeyMulti = 3f;
 
     /* Vars */
     public bool scrollingAllowed = true;
@@ -32,6 +33,8 @@ public class Scrolling : MonoBehaviour
     {
         if (scrollingAllowed)
             CheckForScrolling();
+        if (Input.GetKeyDown(KeyCode.Y))
+            this.SwitchScrollingStatus();
     }
 
     public void SwitchScrollingStatus()
@@ -59,6 +62,12 @@ public class Scrolling : MonoBehaviour
         if (Input.GetKey(KeyCode.F))
             direction += Vector3.back * SpeedZoom;
 
+        /* Multi via Shift-Press */
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            direction *= this.ShiftKeyMulti;
+        }
+
         Camera.main.transform.Translate(direction * Time.deltaTime);
 
 
@@ -71,13 +80,16 @@ public class Scrolling : MonoBehaviour
         //        Camera.main.transform.forward = (Camera.main.transform.forward - (Camera.main.transform.up / 100f)).normalized;
         //}
 
-        /* Scrolling Up & Down */
+        /*
+         * Scrolling Up & Down
+         * Calculate Sin & Cos to move Camera to this position
+         * by Dario
+         */
         float x = 0f;
         float z = 0f;
         float degrees = Camera.main.transform.eulerAngles.y;
         if (MousePosition.y > mainGUI.MapViewArea.yMax || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            /* Calculate Sin & Cos to move Camera to this position */
             double angle = Math.PI * degrees / 180.0;
             x += (float)Math.Sin(angle);
             z += (float)Math.Cos(angle);
@@ -92,6 +104,13 @@ public class Scrolling : MonoBehaviour
         {
             x *= SpeedScrollY * Time.deltaTime;
             z *= SpeedScrollY * Time.deltaTime;
+
+            /* Multi via Shift-Press */
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                x *= this.ShiftKeyMulti;
+                z *= this.ShiftKeyMulti;
+            }
             Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + x, Camera.main.transform.position.y, Camera.main.transform.position.z + z);
         }
 
@@ -99,7 +118,7 @@ public class Scrolling : MonoBehaviour
         int status = 0;
         if (Input.GetKey(KeyCode.Q) || (MouseMove.Speed.x > 0))
             status = 1;
-        if (Input.GetKey(KeyCode.E) || (MouseMove.Speed.x<0))
+        if (Input.GetKey(KeyCode.E) || (MouseMove.Speed.x < 0))
             status = -1;
         if (status != 0)
         {

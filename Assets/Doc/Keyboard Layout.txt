@@ -1,0 +1,12 @@
+
+
+		FUNCTIONALITY						PRIMARY							SECONDARY
+			Scrolling								W A S D							Arrow-Keys
+			Scrolling faster						Scrolling + ShiftLeft
+			Rotate Camera						Q E								Middle-Mouse Press & MouseMove
+			Zoom Camera							R F
+			Camera Switch						Space
+			Deactivate Scrolling					Y
+			Move Units							Left-Mouse
+			Deactivate Focus					Right-Mouse
+			ESC									Menu

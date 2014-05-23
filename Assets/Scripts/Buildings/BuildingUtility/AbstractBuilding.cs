@@ -59,10 +59,10 @@ public abstract class AbstractBuilding : UnitOptions
         {
             if (ResourceManager.Resource.MATTER - (ResourceManager.Resource)this.SettingFile.MatterCost >= 0 && ResourceManager.Resource.NANITEN - (ResourceManager.Resource)this.SettingFile.NaniteCost >= 0)
             {
-                if (/* */false)
-                {
-                    SettingFile.Level++;
-                }   
+                //if (false)
+                //{
+                //    SettingFile.Level++;
+                //}   
             }
         }
         else
