@@ -131,6 +131,14 @@ public class RightClickMenu : MonoBehaviour {
 
         if (showGUI)
         {
+
+            // If Unit of RightClickMenu was destroyed -> hide Menu
+            if (Unit == null)
+            {
+                showGUI = false;
+                return;
+            }
+
             /* [Rightclick] PopUp Menu */
             float btnHeight = (40 * ScaleY);
 

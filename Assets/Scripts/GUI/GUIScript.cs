@@ -266,8 +266,8 @@ public class GUIScript : MonoBehaviour
         else
         {
             // Activate Lifebar at all selected units
-            //for (int i = 0; i < SelectedGroup.Count; i++)
-                //SelectedGroup[i].GetComponent<UnitScript>().ShowLifebar();
+            for (int i = 0; i < SelectedGroup.Count; i++)
+                SelectedGroup[i].GetComponent<UnitScript>().ShowLifebar();
         }
 
         // Hide selection rectangle

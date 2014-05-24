@@ -93,6 +93,7 @@ public class BuildingGrower : UnitAnimation
             {
                 this.gameObject.GetComponent<AbstractBuilding>().BuildFinished();
             }
+            Component.Destroy(this);
         }
 
     }
