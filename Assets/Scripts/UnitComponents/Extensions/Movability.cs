@@ -292,6 +292,7 @@ public class Movability : UnitExtension
             if (IsGroupLeader) GUIScript.main.SelectedGroup.GroupState = UnitGroup.GROUPSTATE.Waiting;
             if (movingUnitState == OPTIONS.Patrol)
             {
+                MoveToPoint = WayPoints[0];
                 WayPoints.RemoveAt(0);
                 WayPoints.Add(gameObject.transform.position);
                 MoveToPoint = WayPoints[0];

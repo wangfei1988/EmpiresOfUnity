@@ -159,6 +159,8 @@ public class Pilot : UnitComponent
 
     public override void DoUpdate()
     {
+        if (My.IsAnAirUnit)
+            Controlls.standardYPosition = this.transform.parent.position.y;
         if (IsAcselerating) IsAcselerating = ((Throttle += Accselerator)<1);
         if (IsHeadin) IsHeadin = WatchTarget();
         if (!Triggerd)
@@ -197,8 +199,7 @@ public class Pilot : UnitComponent
         {
             LookAheadDistance = radius;
             mySpace.radius = lookAheadDistance / My.gameObject.transform.localScale.x;
-            if (My.IsAnAirUnit)
-                (My.Options as FlyingUnitOptions).standardYPosition = mySpace.radius * 2;
+
         }
     }
 

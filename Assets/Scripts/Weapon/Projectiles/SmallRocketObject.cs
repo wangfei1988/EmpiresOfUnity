@@ -99,14 +99,20 @@ public class SmallRocketObject : RocketObject
         }
         else
         {// Exploading !
+
+
             if (this.audio.isPlaying)
             {
-                //-todo:       code for explosion animation here !
+                if (emission.enableEmission)
+                    emission.enableEmission = false;
             }
             else
             {
-                GameObject.Destroy(transform.GetChild(0).gameObject);
-                GameObject.Destroy(transform.GetChild(1).gameObject);
+                if (this.transform.GetChild(1).gameObject)
+                    GameObject.Destroy(this.transform.GetChild(1).gameObject);
+                if (this.transform.GetChild(0).gameObject)
+                    GameObject.Destroy(this.transform.GetChild(0).gameObject);
+
                 GameObject.Destroy(this.gameObject);
             }
         }
