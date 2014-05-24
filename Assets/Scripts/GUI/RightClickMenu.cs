@@ -39,7 +39,7 @@ public class RightClickMenu : MonoBehaviour {
     public GUIStyle guiSIDEstyle;
     public GUIStyle buttonSIDEstyle;
     public Texture2D dieGruehnePower;
-
+    float sideMenuHeight = 0;
     // Building Builder -> Prefabs
     //public Object[] BuildableBuildings;
     private BuildingBuilder buildingBuilder;
@@ -58,12 +58,12 @@ public class RightClickMenu : MonoBehaviour {
 
         buttonSIDEstyle.fontSize = buttonStyle.fontSize = (int)((float)buttonStyle.fontSize * ScaleX);
         guiStyle.fontSize = (int)((float)guiStyle.fontSize * ScaleX);
-        guiSIDEstyle.fontSize = guiStyle.fontSize;
+        guiSIDEstyle.fontSize = (int)((float)guiSIDEstyle.fontSize * ScaleX);
         guiStyle.border.left = (int)(-1.62f * ScaleX);
         guiStyle.border.right = (int)(-3.25f * ScaleX);
-        guiStyle.border.top = (int)(19.5f * ScaleY);
-        guiStyle.border.bottom = (int)(19.5f * ScaleY);
-        guiStyle.padding.top = (int)(-32*ScaleX);
+        guiStyle.border.top = (int)(10f * ScaleY);
+        guiStyle.border.bottom = (int)(10f * ScaleY);
+        guiStyle.padding.top = (int)(-7.89f*ScaleX);
         guiStyle.padding.left = (int)(22.5f * ScaleX);
         guiStyle.overflow.top = (int)(-3.25f * ScaleY);
         guiStyle.overflow.bottom = (int)(13 * ScaleY);
@@ -86,23 +86,27 @@ public class RightClickMenu : MonoBehaviour {
 
     void OnGUI()
     {
+        
         if (showSIDEgui)
         {  
             // Menü  an der Seite...
             Object[] SIDEmenuOptions = Unit.SellectableObjects;
-            float btnHeight = (40 * ScaleY);
-            float zwischenbuttonraum = (20 * ScaleY);
+            float btnHeight = (60 * ScaleY);
+         //   float zwischenbuttonraum = (20 * ScaleY);
             Rect guiposition;
-            guiposition = new Rect(1718 * ScaleX, (210 * ScaleY) - 3 * guiStyle.fontSize, 202 * ScaleX, 360 * ScaleY);
+            sideMenuHeight = ((btnHeight ) * (SIDEmenuOptions.Length + 1));
+         //   guiposition = new Rect(1718 * ScaleX, (210 * ScaleY) - 3 * guiStyle.fontSize, 202 * ScaleX, sideMenuHeight );
+            guiposition = new Rect(1695 * ScaleX, (210 * ScaleY) - 3 * guiStyle.fontSize, 225 * ScaleX, sideMenuHeight);
             GUI.BeginGroup(guiposition, "", guiSIDEstyle); // Unit.name+"'s Activities:"
             for (int i = 0; i < SIDEmenuOptions.Length; i++)
             {               
-                if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + i * (btnHeight + zwischenbuttonraum), (180 * ScaleX), btnHeight), SIDEmenuOptions[i].name))
+           //     if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + i * (btnHeight + zwischenbuttonraum), (180 * ScaleX), btnHeight), SIDEmenuOptions[i].name))
+                if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + i * (btnHeight ), (224 * ScaleX), btnHeight), SIDEmenuOptions[i].name,buttonSIDEstyle))
                 {
                     Unit.Sellect(SIDEmenuOptions[i]);
                 }
             }
-            if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + SIDEmenuOptions.Length * (btnHeight + zwischenbuttonraum), (180 * ScaleX), btnHeight), "Cancel"))
+            if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + SIDEmenuOptions.Length * (btnHeight ), (224 * ScaleX), btnHeight), "Cancel"))
             {
                 if (!Focus.IsLocked)
                     Component.Destroy(Focus.masterGameObject.GetComponent<Focus>());
@@ -113,14 +117,16 @@ public class RightClickMenu : MonoBehaviour {
         {
             // Side-Menu
             Object[] SIDEmenuOptions = this.buildingBuilder.BuildableBuildings;
-            float btnHeight = (40 * ScaleY);
-            float zwischenbuttonraum = (20 * ScaleY);
+            float btnHeight = (60 * ScaleY);
+        //    float zwischenbuttonraum = (20 * ScaleY);
             Rect guiposition;
-            guiposition = new Rect(1718 * ScaleX, (210 * ScaleY) - 3 * guiStyle.fontSize, 202 * ScaleX, 360 * ScaleY);
+            sideMenuHeight = ((btnHeight) * (SIDEmenuOptions.Length + 1));
+         //   guiposition = new Rect(1718 * ScaleX, (210 * ScaleY) - 3 * guiStyle.fontSize, 202 * ScaleX, 360 * ScaleY);
+            guiposition = new Rect(1695 * ScaleX, (210 * ScaleY) - 3 * guiStyle.fontSize, 224 * ScaleX, sideMenuHeight);
             GUI.BeginGroup(guiposition, guiSIDEstyle);
             for (int i = 0; i < SIDEmenuOptions.Length; i++)
             {
-                if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + i * (btnHeight + zwischenbuttonraum), (180 * ScaleX), btnHeight), SIDEmenuOptions[i].name))
+                if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + i * (btnHeight ), (224 * ScaleX), btnHeight), SIDEmenuOptions[i].name,buttonSIDEstyle))
                 {
                     // Code for Build-Action
                     this.buildingBuilder.CreatePrefab(i);
@@ -137,10 +143,10 @@ public class RightClickMenu : MonoBehaviour {
             //string[] menuOptions = Unit.RightClickMenuOptions;
             //EnumProvider.ORDERSLIST[] selected = new EnumProvider.ORDERSLIST[1];
             EnumProvider.ORDERSLIST[] options = Unit.RightClickMenuOptionStates;
-
-            Rect guiposition = new Rect(1696 * ScaleX, 590 * ScaleY, 223 * ScaleX, (options.Length + 1) * btnHeight + guiStyle.fontSize);
+           // Rect guiposition = new Rect(1695 * ScaleX, 590 * ScaleY, 223 * ScaleX, (options.Length + 1) * btnHeight + guiStyle.fontSize);
+            Rect guiposition = new Rect(1695 * ScaleX, sideMenuHeight + ((210 * ScaleY) - 3 * guiStyle.fontSize), 223 * ScaleX, (options.Length + 1) * btnHeight + guiStyle.fontSize);
           //  Rect guiposition = new Rect(UnitPosition.x, view.height - UnitPosition.y, Pannel.texture.width * ScaleX, (options.Length + 1) * btnHeight + guiStyle.fontSize);
-            GUI.BeginGroup(guiposition, "Orders for:\n " + Unit.name, guiStyle);
+            GUI.BeginGroup(guiposition, "Orders:", guiStyle);
             for (int i = 0; i < options.Length; i++)
             {
                 if (GUI.Button(new Rect(22 *ScaleX, guiStyle.fontSize + i * btnHeight, 180 * ScaleX, btnHeight), options[i].ToString(), buttonStyle))

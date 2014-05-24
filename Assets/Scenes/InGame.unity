@@ -664,6 +664,14 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -.707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 13100000, guid: 27fc3bbb0e9ee6442a040865eb25acd8, type: 2}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 78c368f5a3111ab4b81a743d3b7b07c9, type: 3}
+    - target: {fileID: 11400000, guid: 27fc3bbb0e9ee6442a040865eb25acd8, type: 2}
+      propertyPath: GuiTextureBuffer
+      value: 
+      objectReference: {fileID: 2800000, guid: 0323b5dee53e1bb4190788402c984c03, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 27fc3bbb0e9ee6442a040865eb25acd8, type: 2}
   m_RootGameObject: {fileID: 1335656194}
@@ -1543,7 +1551,7 @@ GUITexture:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 358951600}
   m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: 669f653729e275a4caa1aa29cf202f0f, type: 3}
+  m_Texture: {fileID: 2800000, guid: 0323b5dee53e1bb4190788402c984c03, type: 3}
   m_Color: {r: .45588237, g: .45588237, b: .45588237, a: .501960814}
   m_PixelInset:
     serializedVersion: 2
@@ -1830,14 +1838,14 @@ MonoBehaviour:
   buttonSIDEstyle:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Background: {fileID: 2800000, guid: e0aff3713849d7d4c8952114b3c21ef1, type: 3}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Hover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Background: {fileID: 2800000, guid: fed55972f32b82941953d6d8df626347, type: 3}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Active:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Background: {fileID: 2800000, guid: c1e1527fb206fb74e91c35033c9dc313, type: 3}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Focused:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -1874,17 +1882,17 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 0
+    m_FontSize: 20
     m_FontStyle: 0
-    m_Alignment: 0
+    m_Alignment: 4
     m_WordWrap: 0
     m_RichText: 1
     m_TextClipping: 0
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 0
-    m_FixedHeight: 0
-    m_StretchWidth: 1
+    m_FixedWidth: 225
+    m_FixedHeight: 60
+    m_StretchWidth: 0
     m_StretchHeight: 0
   dieGruehnePower: {fileID: 0}
 --- !u!132 &358951605
@@ -2292,7 +2300,12 @@ Prefab:
       propertyPath: m_Name
       value: Tank
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 11400010, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 1927254786}
+    m_RemovedComponents:
+    - {fileID: 11400008, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
   m_RootGameObject: {fileID: 1927254783}
   m_IsPrefabParent: 0
@@ -4947,7 +4960,7 @@ GUITexture:
   m_PrefabInternal: {fileID: 157289659}
   m_GameObject: {fileID: 1335656194}
   m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: 239887a754fc2fc438884dc77e0e16f1, type: 3}
+  m_Texture: {fileID: 2800000, guid: 78c368f5a3111ab4b81a743d3b7b07c9, type: 3}
   m_Color: {r: .5, g: .5, b: .5, a: .5}
   m_PixelInset:
     serializedVersion: 2
@@ -4976,7 +4989,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 42aa93ec071f64c4b995b5dba91685ef, type: 2}
   - {fileID: 100000, guid: fac8af90d70bf9c469478574521f992c, type: 2}
   - {fileID: 100000, guid: 7e57348d2c72bff41996420e31badfce, type: 2}
-  GuiTextureBuffer: {fileID: 2800000, guid: 669f653729e275a4caa1aa29cf202f0f, type: 3}
+  GuiTextureBuffer: {fileID: 2800000, guid: 0323b5dee53e1bb4190788402c984c03, type: 3}
   ClickableArea:
     serializedVersion: 2
     x: 1800
@@ -6868,9 +6881,9 @@ GameObject:
   - 114: {fileID: 1927254787}
   - 114: {fileID: 1927254785}
   - 114: {fileID: 1927254795}
-  - 114: {fileID: 1927254786}
   - 135: {fileID: 1927254797}
   - 114: {fileID: 1927254796}
+  - 114: {fileID: 1927254786}
   m_Layer: 10
   m_Name: Tank
   m_TagString: Clickable
@@ -6919,18 +6932,18 @@ MonoBehaviour:
 --- !u!114 &1927254786
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400008, guid: 567673cbfea58614aa8ec0843ea49d51,
-    type: 2}
-  m_PrefabInternal: {fileID: 478543407}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1927254783}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f062a04179ed6949b2580aa47ffb423, type: 3}
+  m_Script: {fileID: 11500000, guid: 08e425f0cf7c0cc4a94bf78b341d4315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 11400000, guid: 9dbbe8c28a344b448aeab0965f22eb49, type: 2}
+  prefabSlot: {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
   hasArsenal: 0
-  LaserEnergie: 1000
+  NumberOfRockets: 1000
+  countdown: 0
 --- !u!114 &1927254787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7159,9 +7172,9 @@ GameObject:
   - 114: {fileID: 2045922289}
   - 114: {fileID: 2045922287}
   - 114: {fileID: 2045922297}
-  - 114: {fileID: 2045922288}
   - 135: {fileID: 2045922299}
   - 114: {fileID: 2045922298}
+  - 114: {fileID: 2045922288}
   m_Layer: 10
   m_Name: Tank
   m_TagString: Clickable
@@ -7206,18 +7219,18 @@ MonoBehaviour:
 --- !u!114 &2045922288
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400008, guid: 567673cbfea58614aa8ec0843ea49d51,
-    type: 2}
-  m_PrefabInternal: {fileID: 2137148468}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2045922285}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f062a04179ed6949b2580aa47ffb423, type: 3}
+  m_Script: {fileID: 11500000, guid: 08e425f0cf7c0cc4a94bf78b341d4315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 11400000, guid: 9dbbe8c28a344b448aeab0965f22eb49, type: 2}
+  prefabSlot: {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
   hasArsenal: 0
-  LaserEnergie: 1000
+  NumberOfRockets: 1000
+  countdown: 0
 --- !u!114 &2045922289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7590,7 +7603,12 @@ Prefab:
       propertyPath: m_Name
       value: Tank
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 11400010, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 2045922288}
+    m_RemovedComponents:
+    - {fileID: 11400008, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
   m_RootGameObject: {fileID: 2045922285}
   m_IsPrefabParent: 0

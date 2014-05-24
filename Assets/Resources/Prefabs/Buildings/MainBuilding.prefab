@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 64: {fileID: 6400000}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: polySurface2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ GameObject:
   - 33: {fileID: 3300002}
   - 23: {fileID: 2300002}
   - 64: {fileID: 6400002}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pCube5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - 33: {fileID: 3300004}
   - 23: {fileID: 2300004}
   - 64: {fileID: 6400004}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pCube4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   - 33: {fileID: 3300006}
   - 23: {fileID: 2300006}
   - 64: {fileID: 6400006}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pCube3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - 33: {fileID: 3300008}
   - 23: {fileID: 2300008}
   - 64: {fileID: 6400008}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pCube2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400012}
   - 212: {fileID: 21200000}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: BuildingBlib
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.14016724, y: -12.6268654, z: -.794570923}
+  m_LocalPosition: {x: -150.703949, y: -12.3800001, z: -159.595596}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400012}
@@ -421,13 +421,13 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 67db31eead11e8d6d00011d98d76c639, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
   m_Convex: 0
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300008, guid: fef0b7ecf71b7204a8df0e063a348c84, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -449,6 +449,7 @@ MonoBehaviour:
   level: 1
   sightWidth: 100
   resourceFactor: 0
+  SoundDestroy: {fileID: 0}
   interactingUnits: 
 --- !u!114 &11400002
 MonoBehaviour:
@@ -462,8 +463,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Arsenal:
-  - {fileID: 11400004, guid: 0f28174fa8406834d85485bae64db883, type: 2}
-  - {fileID: 11400008, guid: afc11b9241f4e9b4a897f495c0121836, type: 2}
+  - {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
+  - {fileID: 11400008, guid: e4d0eb844cac7ab45961c1fa3685b6e8, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -472,11 +473,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e487801e6f167184b8b614c08f89a761, type: 3}
+  m_Script: {fileID: 11500000, guid: 08e425f0cf7c0cc4a94bf78b341d4315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 11400004, guid: 0f28174fa8406834d85485bae64db883, type: 2}
+  prefabSlot: {fileID: 11400008, guid: e4d0eb844cac7ab45961c1fa3685b6e8, type: 2}
   hasArsenal: 1
+  NumberOfRockets: 100
   countdown: 0
 --- !u!114 &11400006
 MonoBehaviour:
@@ -490,8 +492,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400000}
+  baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
+  optionalStateStrings: []
+  optionalstateIDs: 
+  optionalStates: 
   PluggedStateExtendingComponents: []
   unitState: 101
   CurrentFabrikatNumber: 0
@@ -514,7 +520,7 @@ MonoBehaviour:
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
   GrowingTime: 10
-  startGrowing: 0
+  startGrowing: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
