@@ -38,7 +38,7 @@ public class LaserObject : WeaponObject
     public AudioClip soundHit;
     public AudioClip SoundDestroy;
 
-    private int count;
+    //private int count;
     private float Step;
     private float Range;
     public override UnitWeapon.WEAPON WEAPON
@@ -51,7 +51,7 @@ public class LaserObject : WeaponObject
     //public Flare Hitflare;
     public GameObject ExplosionPrefab;
     private Vector3 triggerPos;
-    private GameObject ExplosionObj;
+    //private GameObject ExplosionObj;
 
     private float rotation = 90f;
     private Vector3 originPosition;
@@ -66,7 +66,7 @@ public class LaserObject : WeaponObject
             if (value)
             {
                 this.gameObject.renderer.enabled = this.collider.enabled = this.gameObject.light.enabled = false;
-                this.ExplosionObj = GameObject.Instantiate(ExplosionPrefab, triggerPos, Quaternion.identity) as GameObject;
+                GameObject.Instantiate(ExplosionPrefab, triggerPos, Quaternion.identity);
             }
             hit = value;
         }
@@ -116,7 +116,7 @@ public class LaserObject : WeaponObject
     internal override void StartUp()
     {
         this.Range = this.gameObject.light.range;
-        count = (int)SPEED;
+        //count = (int)SPEED;
         Visible = false;
         Direction = this.gameObject.transform.forward;
         originPosition = this.gameObject.transform.position;
@@ -172,8 +172,9 @@ public class LaserObject : WeaponObject
     {
         if ((!other.collider.isTrigger) && (other.gameObject.layer==(int)EnumProvider.LAYERNAMES.Units) && (other.gameObject.GetComponent<UnitScript>().IsEnemy(this.GoodOrEvil)) && HIT == false)
         {
-       //     GUIScript.AddTextLine(other.gameObject.name + other.gameObject.GetInstanceID().ToString());
-            //triggerPos = other.transform.position;
+            //GUIScript.AddTextLine(other.gameObject.name + other.gameObject.GetInstanceID().ToString());
+
+            triggerPos = other.transform.position;
             HIT = true;
             UnitScript Unit = other.gameObject.GetComponent<UnitScript>();
             Unit.Hit(this.Power);

@@ -12,7 +12,6 @@ GameObject:
   - 65: {fileID: 6500000}
   - 54: {fileID: 5400000}
   - 114: {fileID: 11400000}
-  - 114: {fileID: 11400008}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400006}
@@ -104,7 +103,7 @@ MonoBehaviour:
   unitType: 2
   goodOrEvil: -1
   ALARM: 0
-  Options: {fileID: 11400008}
+  Options: {fileID: 0}
   unitAnimation: {fileID: 11400004}
   weapon: {fileID: 0}
   life: 150
@@ -157,28 +156,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Arsenal:
-  - {fileID: 11400004, guid: 2c761ba5dc15c4349a6325326d45f4ba, type: 2}
-  - {fileID: 11400008, guid: 2130e42db59984b48b26aa2ca8253d83, type: 2}
---- !u!114 &11400008
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cdbcffe449cab44286aec3139397a06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UNIT: {fileID: 11400000}
-  moveToPoint: {x: 0, y: 0, z: 0}
-  Target: {fileID: 0}
-  PluggedStateExtendingComponents: []
-  _speed: .100000001
-  standardYPosition: .200000003
-  WayPoints: []
-  IsGroupLeader: 0
-  unitstateint: 100
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1

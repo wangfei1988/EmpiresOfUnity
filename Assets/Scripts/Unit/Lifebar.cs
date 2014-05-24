@@ -54,7 +54,11 @@ public class Lifebar : ScriptableObject
             {
                 this.activated = value;
                 if (ParentContainer == null)
-                    ParentContainer = GameObject.FindGameObjectWithTag("LifebarContainer").transform;
+                {
+                    GameObject LifebarContainer = GameObject.FindGameObjectWithTag("LifebarContainer");
+                    if(LifebarContainer != null)
+                        ParentContainer = LifebarContainer.transform;
+                }
                 if (Prefab == null)
                 {
                     Prefab = GUIScript.main.GetComponent<GUIScript>().PrefabLifebar;
@@ -114,7 +118,8 @@ public class Lifebar : ScriptableObject
 
     private void DestroyObject()
     {
-        Destroy(this.LifebarObject.gameObject);
+        if (this.LifebarObject != null)
+            Destroy(this.LifebarObject.gameObject);
     }
 
     private void UpdateLifeCount()

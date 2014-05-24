@@ -30,7 +30,7 @@ public class RightClickMenu : MonoBehaviour {
             return false;
         }
     }
-    private static Vector2 UnitPosition;
+    //private static Vector2 UnitPosition;
 
     public GUIContent guiPannel;
     public GUIStyle buttonStyle;
@@ -71,7 +71,7 @@ public class RightClickMenu : MonoBehaviour {
         buttonSIDEstyle.fixedWidth *= ScaleX;
         buttonSIDEstyle.fixedHeight *= ScaleY;
 
-        UnitPosition = new Vector2(GUIScript.ScreenSize.x - 100, 130);
+        //UnitPosition = new Vector2(GUIScript.ScreenSize.x - 100, 130);
 	}
 
     public static void PopUpGUI(UnitScript forUnit)
@@ -80,7 +80,7 @@ public class RightClickMenu : MonoBehaviour {
             forUnit.gameObject.AddComponent<Focus>();
 
         Unit = forUnit;
-        UnitPosition = MouseEvents.State.Position;
+        //UnitPosition = MouseEvents.State.Position;
         showGUI = true;
     }
 
