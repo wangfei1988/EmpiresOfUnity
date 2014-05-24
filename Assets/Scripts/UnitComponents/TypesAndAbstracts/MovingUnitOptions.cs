@@ -263,7 +263,8 @@ abstract public class MovingUnitOptions : UnitOptions
         stillWorkDoDo=base.ProcessAllOrders();
         if (GotToDoWhatGotToDo)
         {
-            if (ActionPoint != null) MouseEvents_LEFTCLICK(MouseEvents.State.Position.AsRay, false);
+            if (ActionPoint != null)
+                MouseEvents_LEFTCLICK(MouseEvents.State.Position.AsRay, false);
         }
         return stillWorkDoDo;
     }

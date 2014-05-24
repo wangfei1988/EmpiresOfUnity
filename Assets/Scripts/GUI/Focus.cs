@@ -71,6 +71,10 @@ public class Focus : MonoBehaviour
                 MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
                 SettingFocusIsComplete = true;
             }
+
+            // Add Healthbar it not there
+            if (gameObject.GetComponent<UnitScript>())
+                gameObject.GetComponent<UnitScript>().ShowLifebar();
         }   
         else
         {

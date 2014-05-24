@@ -63,6 +63,7 @@ public class GUIScript : MonoBehaviour
         {
             selectionRectangle = value;
 
+            // TODO Width & Height isn't the size, but the position in world coordinates
             snapingAlowed = ((selectionRectangle.width >= 10) || (selectionRectangle.height >= 10));
 
             Vector3 w1;
@@ -163,12 +164,9 @@ public class GUIScript : MonoBehaviour
         UpdateRectangles();
         if (DebugText)
             guiText.text = TextUpdate();
-
-
     }
 
     private void UpdateRectangles()
-
     {
         //FocusSprite.DoUpdate();
         GroupSprite.DoUpdate();
@@ -205,7 +203,6 @@ public class GUIScript : MonoBehaviour
         if (hold)
         {
             SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, MousePosition.x - SelectionRectangle.x,SelectionRectangle.y - MousePosition.y);
-       
         }
         else
         {
@@ -227,12 +224,13 @@ public class GUIScript : MonoBehaviour
     void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
     {
         if (!hold)
-        {   /* Try Focus the unit thats clicked, or release Focus if clicked on ground...*/
+        {
+            /* Try Focus the unit thats clicked, or release Focus if clicked on ground...*/
             if (!FocusUnit())
             {
-                if ((MouseEvents.State.Position.AsObjectUnderCursor.layer == (int)EnumProvider.LAYERNAMES.Ignore_Raycast)
-                && (UnitFocused)
-                && (!Focus.IsLocked))
+                if (MouseEvents.State.Position.AsObjectUnderCursor.layer == (int)EnumProvider.LAYERNAMES.Ignore_Raycast
+                    && UnitFocused
+                    && !Focus.IsLocked)
                 {
                     Component.Destroy(Focus.masterGameObject.GetComponent<Focus>());
                 }
@@ -245,7 +243,7 @@ public class GUIScript : MonoBehaviour
         if (!UnitFocused && MouseEvents.State.Position.AsUnitUnderCursor)
         {
             UnitUnderCursor.gameObject.AddComponent<Focus>();
-            UnitUnderCursor.UNIT.ShowLifebar();
+            //UnitUnderCursor.UNIT.ShowLifebar();
             return true;
         }
         return false;
@@ -263,13 +261,13 @@ public class GUIScript : MonoBehaviour
             GameObject unit = SelectedGroup[0];
             SelectedGroup.ResetGroup();
             unit.AddComponent<Focus>();
-            unit.GetComponent<UnitScript>().ShowLifebar();
+            //unit.GetComponent<UnitScript>().ShowLifebar();
         }
         else
         {
             // Activate Lifebar at all selected units
-            for (int i = 0; i < SelectedGroup.Count; i++)
-                SelectedGroup[i].GetComponent<UnitScript>().ShowLifebar();
+            //for (int i = 0; i < SelectedGroup.Count; i++)
+                //SelectedGroup[i].GetComponent<UnitScript>().ShowLifebar();
         }
 
         // Hide selection rectangle
@@ -345,8 +343,5 @@ public class GUIScript : MonoBehaviour
         }
         return textField;
     }
-
-
-
 
 }
