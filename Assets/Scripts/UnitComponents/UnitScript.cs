@@ -388,7 +388,7 @@ public class UnitScript : MonoBehaviour
     {
         //todo: code for dieing (explosion etc.)
         UpdateManager.UNITUPDATE -= UpdateManager_UNITUPDATE;
-
+        HideLifebar();
         // Play Destroy Sound
         if (this.SoundDestroy != null)
         {
