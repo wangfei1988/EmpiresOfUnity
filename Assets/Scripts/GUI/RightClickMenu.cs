@@ -126,7 +126,7 @@ public class RightClickMenu : MonoBehaviour {
             GUI.BeginGroup(guiposition, guiSIDEstyle);
             for (int i = 0; i < SIDEmenuOptions.Length; i++)
             {
-                if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + i * (btnHeight ), (224 * ScaleX), btnHeight), SIDEmenuOptions[i].name,buttonSIDEstyle))
+                if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + i * (btnHeight), (224 * ScaleX), btnHeight), SIDEmenuOptions[i].name, buttonSIDEstyle))
                 {
                     // Code for Build-Action
                     this.buildingBuilder.CreatePrefab(i);

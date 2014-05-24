@@ -384,7 +384,7 @@ public class UnitScript : MonoBehaviour
         //todo: code for dieing (explosion etc.)
         UpdateManager.UNITUPDATE -= UpdateManager_UNITUPDATE;
         HideLifebar();
-      
+        StaticExploader.Exploade(1, this.transform.position);
         //Destruction now does the UnitDestructionsManagement...
         UnitDestructionManagement.SignInForDestruction(this.gameObject);
 	}

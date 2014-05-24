@@ -88,7 +88,7 @@ public class SmallRocketObject : RocketObject
             if (transform.GetChild(i).gameObject.name == "Sprite") spriteRenderer = transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>();
         }
     }
-
+    public bool staticExplosionStarted = false;
     void UpdateManager_WEAPONUPDATES()
     {//  Flying...
         if (!IsExploading)
@@ -105,6 +105,14 @@ public class SmallRocketObject : RocketObject
             {
                 if (emission.enableEmission)
                     emission.enableEmission = false;
+
+                // later an ID for playing an AudioClip could be addedt in the StaticExploasionsManager....
+                if (!staticExplosionStarted)
+                {
+                    StaticExploader.Exploade(0, this.gameObject.transform.position);
+                    staticExplosionStarted = true;
+                }
+
             }
             else
             {
