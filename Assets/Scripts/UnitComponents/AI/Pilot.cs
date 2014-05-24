@@ -245,9 +245,9 @@ public class Pilot : UnitComponent
     }
 
     private bool WatchTarget()
-    {
-        Vector3 targetDirection = ((this.Controlls.MoveToPoint - My.transform.position).normalized / (mySpace.radius));
-        if (Vector3.Distance(Controlls.MovingDirection, targetDirection) > 0.0005f)
+    {      
+        Vector3 targetDirection = ((this.Controlls.MoveToPoint - My.transform.position).normalized / (Vector3.Distance(My.transform.position,this.Controlls.MoveToPoint)/10));
+        if (Vector3.Distance(Controlls.MovingDirection, targetDirection) > 0.005f)
         {
             this.Controlls.Rudder = targetDirection;
             return true;
@@ -257,7 +257,8 @@ public class Pilot : UnitComponent
             Controlls.MovingDirection = Controlls.MoveToPoint;
             Controlls.Rudder = Vector3.zero;
         }
-            return false;
+          
+        return false; 
     }
 
     void OnDestroy()

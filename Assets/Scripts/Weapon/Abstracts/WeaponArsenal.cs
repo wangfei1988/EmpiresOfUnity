@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[AddComponentMenu("Program-X/Weapons/WeaponArsenal")]
 public class WeaponArsenal : MonoBehaviour
 {
     [SerializeField]

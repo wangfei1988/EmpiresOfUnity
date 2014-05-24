@@ -59,7 +59,15 @@ public class RightClickMenu : MonoBehaviour {
         buttonSIDEstyle.fontSize = buttonStyle.fontSize = (int)((float)buttonStyle.fontSize * ScaleX);
         guiStyle.fontSize = (int)((float)guiStyle.fontSize * ScaleX);
         guiSIDEstyle.fontSize = guiStyle.fontSize;
-        guiStyle.padding.top = (int)(-64*ScaleX);
+        guiStyle.border.left = (int)(-1.62f * ScaleX);
+        guiStyle.border.right = (int)(-3.25f * ScaleX);
+        guiStyle.border.top = (int)(19.5f * ScaleY);
+        guiStyle.border.bottom = (int)(19.5f * ScaleY);
+        guiStyle.padding.top = (int)(-32*ScaleX);
+        guiStyle.padding.left = (int)(22.5f * ScaleX);
+        guiStyle.overflow.top = (int)(-3.25f * ScaleY);
+        guiStyle.overflow.bottom = (int)(13 * ScaleY);
+
         buttonSIDEstyle.fixedWidth *= ScaleX;
         buttonSIDEstyle.fixedHeight *= ScaleY;
 
@@ -130,18 +138,19 @@ public class RightClickMenu : MonoBehaviour {
             //EnumProvider.ORDERSLIST[] selected = new EnumProvider.ORDERSLIST[1];
             EnumProvider.ORDERSLIST[] options = Unit.RightClickMenuOptionStates;
 
-            Rect guiposition = new Rect(UnitPosition.x, view.height - UnitPosition.y, Pannel.texture.width * ScaleX, (options.Length + 1) * btnHeight + guiStyle.fontSize);
+            Rect guiposition = new Rect(1696 * ScaleX, 590 * ScaleY, 223 * ScaleX, (options.Length + 1) * btnHeight + guiStyle.fontSize);
+          //  Rect guiposition = new Rect(UnitPosition.x, view.height - UnitPosition.y, Pannel.texture.width * ScaleX, (options.Length + 1) * btnHeight + guiStyle.fontSize);
             GUI.BeginGroup(guiposition, "Orders for:\n " + Unit.name, guiStyle);
             for (int i = 0; i < options.Length; i++)
             {
-                if (GUI.Button(new Rect(0, guiStyle.fontSize + i * btnHeight, Pannel.texture.width * ScaleX, btnHeight), options[i].ToString(), buttonStyle))
+                if (GUI.Button(new Rect(22 *ScaleX, guiStyle.fontSize + i * btnHeight, 180 * ScaleX, btnHeight), options[i].ToString(), buttonStyle))
                 {
                     Unit.Options.GiveOrder(options[i]);
                     Debug.Log("order given to unit!");
                     showGUI = false;
                 }
             }
-            if (GUI.Button(new Rect(0, guiStyle.fontSize + options.Length * btnHeight, Pannel.texture.width * ScaleX, btnHeight), "Cancel...", buttonStyle))
+            if (GUI.Button(new Rect(22 * ScaleX, guiStyle.fontSize + options.Length * btnHeight, 180 * ScaleX, btnHeight), "Cancel...", buttonStyle))
             {
                 showGUI = false;
             }

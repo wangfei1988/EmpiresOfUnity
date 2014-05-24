@@ -45,8 +45,8 @@ public class LaserObject : WeaponObject
     }
     //public Flare Hitflare;
     public GameObject ExplosionPrefab;
-    //private Vector3 triggerPos;
-    //private GameObject ExplosionObj;
+    private Vector3 triggerPos;
+    private GameObject ExplosionObj;
 
     private float rotation = 90f;
     private Vector3 originPosition;
@@ -61,10 +61,10 @@ public class LaserObject : WeaponObject
             if (value)
             {
                 this.gameObject.light.enabled = false;
-                //this.gameObject.renderer.enabled = false;
-                //this.gameObject.renderer.enabled = this.collider.enabled = this.gameObject.light.enabled = false;
+                this.gameObject.renderer.enabled = false;
+                this.gameObject.renderer.enabled = this.collider.enabled = this.gameObject.light.enabled = false;
 
-                //this.ExplosionObj = GameObject.Instantiate(ExplosionPrefab, triggerPos, Quaternion.identity) as GameObject;
+               this.ExplosionObj = GameObject.Instantiate(ExplosionPrefab, triggerPos, Quaternion.identity) as GameObject;
             }
             hit = value;
         }
@@ -163,7 +163,7 @@ public class LaserObject : WeaponObject
         if ((!other.collider.isTrigger) && (other.gameObject.layer==(int)EnumProvider.LAYERNAMES.Units) && (other.gameObject.GetComponent<UnitScript>().IsEnemy(this.GoodOrEvil)))
         {
             this.gameObject.GetComponent<AudioSource>().PlayOneShot(soundHit);
-            GUIScript.AddTextLine(other.gameObject.name + other.gameObject.GetInstanceID().ToString());
+       //     GUIScript.AddTextLine(other.gameObject.name + other.gameObject.GetInstanceID().ToString());
             //triggerPos = other.transform.position;
             HIT = true;
             other.gameObject.GetComponent<UnitScript>().Hit(this.Power);

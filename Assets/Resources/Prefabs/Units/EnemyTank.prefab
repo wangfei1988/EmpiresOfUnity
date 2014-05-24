@@ -206,8 +206,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400010}
+  baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
+  optionalStateStrings: []
+  optionalstateIDs: 
+  optionalStates: 
   PluggedStateExtendingComponents: []
   Movement: {fileID: 11400008}
   unitstateint: 0
@@ -227,7 +231,6 @@ MonoBehaviour:
   standardYPosition: -.100000001
   IsGroupLeader: 0
   speed: .200000003
-  _moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
@@ -252,6 +255,7 @@ MonoBehaviour:
   level: 1
   sightWidth: 50
   resourceFactor: 0
+  SoundDestroy: {fileID: 0}
   interactingUnits: 
 --- !u!114 &11400012
 MonoBehaviour:
@@ -264,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f062a04179ed6949b2580aa47ffb423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 0}
+  prefabSlot: {fileID: 11400000, guid: 9dbbe8c28a344b448aeab0965f22eb49, type: 2}
   hasArsenal: 0
   LaserEnergie: 0
 --- !u!212 &21200000

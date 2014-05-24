@@ -394,13 +394,9 @@ public class UnitScript : MonoBehaviour
         {
             // TODO Dario -> SoundFactory -> Create sound at Unit-Position
         }
-
-        //foreach (Component component in this.gameObject.GetComponents<Component>())
-            //Component.Destroy(component);
-        foreach (UnitComponent component in this.gameObject.GetComponents<UnitComponent>())
-            UnitComponent.Destroy(component);
-        
-        GameObject.Destroy(this.gameObject);
+      
+        //Destruction now does the UnitDestructionsManagement...
+        UnitDestructionManagement.SignInForDestruction(this.gameObject);
 	}
 
 

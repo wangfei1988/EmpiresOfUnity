@@ -88,7 +88,10 @@ public class ProductionBuildingOptions : UnitOptions
          if (returned is WeaponObject)
              UNIT.weapon.prefabSlot = returned as WeaponObject;
          else
+         {
              CurrentFabrikat = returned;
+             UnitState = EnumProvider.ORDERSLIST.Produce;
+         }
      }
 
      protected override bool GotToDoPrimaryOrders
