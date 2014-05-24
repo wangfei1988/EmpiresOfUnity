@@ -150,7 +150,9 @@ MonoBehaviour:
   Target: {x: 0, y: 0, z: 0}
   richtung: 0
   t: {x: 0, y: 0, z: 0}
+  TimeAliveAfterHit: 3
   soundHit: {fileID: 8300000, guid: a6628622fc5e0e44a97b8401a0f4c014, type: 3}
+  SoundDestroy: {fileID: 8300000, guid: d49dbddbbe00a474983e63fe52b9ee8f, type: 3}
   ExplosionPrefab: {fileID: 100000, guid: 2f9e7030759a647e5b7ec0b46dd414f0, type: 2}
   Direction: {x: 0, y: 0, z: 1}
 --- !u!212 &21200000

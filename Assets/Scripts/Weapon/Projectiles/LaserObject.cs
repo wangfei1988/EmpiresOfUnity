@@ -32,7 +32,12 @@ public class LaserObject : WeaponObject
     public dir richtung;
     public Vector3 t;
     private const float SPEED = 50f;
+    public float TimeAliveAfterHit = 3f;
+    private float timer = 0;
+    
     public AudioClip soundHit;
+    public AudioClip SoundDestroy;
+
     private int count;
     private float Step;
     private float Range;
@@ -60,11 +65,8 @@ public class LaserObject : WeaponObject
         {
             if (value)
             {
-                this.gameObject.light.enabled = false;
-                this.gameObject.renderer.enabled = false;
                 this.gameObject.renderer.enabled = this.collider.enabled = this.gameObject.light.enabled = false;
-
-               this.ExplosionObj = GameObject.Instantiate(ExplosionPrefab, triggerPos, Quaternion.identity) as GameObject;
+                this.ExplosionObj = GameObject.Instantiate(ExplosionPrefab, triggerPos, Quaternion.identity) as GameObject;
             }
             hit = value;
         }
@@ -73,21 +75,25 @@ public class LaserObject : WeaponObject
     {
         get 
         {
-            
-            if (beamPosition >= MAX_POSITION) { hit = true; Step = -Step; }
-            else if (hit == false) this.Range = beamPosition;
-
+            if (beamPosition >= MAX_POSITION)
+            {
+                hit = true;
+                Step = -Step;
+            }
+            else if (hit == false)
+            {
+                this.Range = beamPosition;
+            }
             return this.Range;
         }
         set 
         {
-            if (value <= 0f) Object.Destroy(this);
-            else if (!hit) beamPosition = value;
-            else
-            {
-                if (value < this.Range)
-                    this.Range = value;
-            }
+            if (value <= 0f)
+                Object.Destroy(this);
+            else if (!hit)
+                beamPosition = value;
+            else if (value < this.Range)
+                this.Range = value;
         }
     }
     private bool IsLoaded = false;
@@ -118,8 +124,6 @@ public class LaserObject : WeaponObject
         UpdateManager.UNITUPDATE += UpdateManager_UNITUPDATE;
     }
 
-
-
     internal override void Engage()
     {
         if (IsLoaded && Visible != true)       
@@ -145,28 +149,43 @@ public class LaserObject : WeaponObject
     {
         if (Visible)
         {
-          
             BeamPosition += Step;
             this.gameObject.transform.localScale = GetBeamPositionScale(BeamPosition);
             this.gameObject.transform.position = originPosition + (this.beamPosition * this.gameObject.transform.up);
             this.gameObject.transform.Rotate(YAxis, rotation);
-            if (++count >= SPEED * 2)
+            this.gameObject.light.enabled = false;
+
+            if (HIT)
             {
-                GameObject.Destroy(this.gameObject);
-                UpdateManager.UNITUPDATE -= UpdateManager_UNITUPDATE;
+                timer += Time.deltaTime;
+                if (timer >= TimeAliveAfterHit)
+                //if (++count >= SPEED * 2f)
+                {
+                    GameObject.Destroy(this.gameObject);
+                    UpdateManager.UNITUPDATE -= UpdateManager_UNITUPDATE;
+                }
             }
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if ((!other.collider.isTrigger) && (other.gameObject.layer==(int)EnumProvider.LAYERNAMES.Units) && (other.gameObject.GetComponent<UnitScript>().IsEnemy(this.GoodOrEvil)))
+        if ((!other.collider.isTrigger) && (other.gameObject.layer==(int)EnumProvider.LAYERNAMES.Units) && (other.gameObject.GetComponent<UnitScript>().IsEnemy(this.GoodOrEvil)) && HIT == false)
         {
-            this.gameObject.GetComponent<AudioSource>().PlayOneShot(soundHit);
        //     GUIScript.AddTextLine(other.gameObject.name + other.gameObject.GetInstanceID().ToString());
             //triggerPos = other.transform.position;
             HIT = true;
-            other.gameObject.GetComponent<UnitScript>().Hit(this.Power);
+            UnitScript Unit = other.gameObject.GetComponent<UnitScript>();
+            Unit.Hit(this.Power);
+
+            if (Unit.Life <= 0 && this.SoundDestroy != null)
+            {
+                this.gameObject.GetComponent<AudioSource>().PlayOneShot(this.SoundDestroy);
+            }
+            else
+            {
+                this.gameObject.GetComponent<AudioSource>().PlayOneShot(this.soundHit);
+            }
         }
     }
 

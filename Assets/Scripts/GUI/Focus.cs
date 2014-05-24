@@ -56,7 +56,7 @@ public class Focus : MonoBehaviour
     void Start()
     {
         SettingFocusIsComplete = false;
-        if (!firststart)
+        if (firststart == false)
         {
             if ((!IsLocked) || (IsLockedToThis))
             {
@@ -232,8 +232,6 @@ public class Focus : MonoBehaviour
         if (masterGameObject == null || masterGameObject.GetInstanceID() != gameObject.GetInstanceID())
         {
             Component.Destroy(gameObject.GetComponent<Focus>());
-            if (gameObject.GetComponent<UnitScript>())
-                gameObject.GetComponent<UnitScript>().HideLifebar();
         }
     }
 
@@ -248,6 +246,10 @@ public class Focus : MonoBehaviour
             MouseEvents.RIGHTCLICK -= MouseEvents_RIGHTCLICK;
             MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
             UpdateManager.OnUpdate -= DoUpdate;
+
+            // Destroy Lifebar if not already destroyed
+            if (gameObject.GetComponent<UnitScript>())
+                gameObject.GetComponent<UnitScript>().HideLifebar();
         }  
     }
 }
