@@ -41,7 +41,7 @@ public class SmallRocketObject : RocketObject
 
           //      this.gameObject.transform.forward = new Vector3(0f, 1f, 0f);
 
-                HalfDistance = Vector3.Distance(Target, this.gameObject.transform.position) / 2;
+                //HalfDistance = Vector3.Distance(Target, this.gameObject.transform.position) / 2;
                 gameObject.audio.Play();
             }
             return launch;
@@ -66,7 +66,7 @@ public class SmallRocketObject : RocketObject
     public float SPEED_FACTOR;
     public float MAXIMUM_SPEED;
     private Renderer spriteRenderer;
-    private float HalfDistance;
+    //private float HalfDistance;
     public ParticleSystem emission;
     private bool visible = false;
     public bool Visible

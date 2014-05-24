@@ -27,7 +27,7 @@ public class ProductionBuildingOptions : UnitOptions
         for (int i = 0; i < Fabrikat.Count; i++) fabrikatNames[i] = Fabrikat[i].name;
         fabrikatNames[Fabrikat.Count] = "StopProduction";
         UnitState = unitState = OPTIONS.StopProduction;
-        MoveToPoint = new Vector3(gameObject.transform.position.x, 0.1f, gameObject.transform.position.z - 10f);
+        MoveToPoint = new Vector3(gameObject.transform.position.x, 0.1f, gameObject.transform.position.z - 5f);
         CurrentFabrikatNumber = 0;
         CurrentFabrikat = Fabrikat[CurrentFabrikatNumber];
     }
@@ -120,7 +120,8 @@ public class ProductionBuildingOptions : UnitOptions
 				case OPTIONS.Produce:
 					{
 						GameObject.Instantiate(CurrentFabrikat, MoveToPoint, (CurrentFabrikat as GameObject).transform.rotation);
-						break;
+                        // TODO Let they Spawn within the Building and then let they so to "MoveToPoint"
+                        break;
 					}
 				case OPTIONS.StopProduction:
 					{

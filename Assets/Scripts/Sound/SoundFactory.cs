@@ -6,7 +6,7 @@ public class SoundFactory : MonoBehaviour {
 
     /* Audio */
     private AudioSource audioSource;
-    private List<GameObject> objList = new List<GameObject>();
+    //private List<GameObject> objList = new List<GameObject>();
 
     void Start()
     {

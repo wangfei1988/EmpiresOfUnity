@@ -6,7 +6,7 @@ using System.Collections.Generic;
  * AI to  improve the movement of MovingUnits
  */
 [AddComponentMenu("Program-X/UNIT/AI - Pilot")]
-public class Pilot : UnitComponent 
+public class Pilot : UnitComponent
 {
     public override string IDstring
     {
@@ -15,7 +15,7 @@ public class Pilot : UnitComponent
     private const float MIN_LOOKAHEAD = 3f;
     private const float MAX_LOOKAHEAD = 20f;
     private const float Accselerator = 1.0001f;
-    private float? lah=0;
+    private float? lah = 0;
     private float LOOKAHEAD
     {
         get
@@ -26,24 +26,28 @@ public class Pilot : UnitComponent
             else return lah.Value;
         }
     }
-	
+
     [SerializeField]
-    private float lookAheadDistance=MIN_LOOKAHEAD;
+    private float lookAheadDistance = MIN_LOOKAHEAD;
 
     public float LookAheadDistance
     {
-        get 
+        get
         {
-            if (lookAheadDistance < MIN_LOOKAHEAD) return lookAheadDistance = MIN_LOOKAHEAD;
-            else if (lookAheadDistance > LOOKAHEAD) return lookAheadDistance = LOOKAHEAD;
+            if (lookAheadDistance < MIN_LOOKAHEAD)
+                return lookAheadDistance = MIN_LOOKAHEAD;
+            else if (lookAheadDistance > LOOKAHEAD)
+                return lookAheadDistance = LOOKAHEAD;
             return lookAheadDistance;
         }
         set
         {
             if (value != lookAheadDistance)
             {
-                if (value < MIN_LOOKAHEAD) lookAheadDistance = MIN_LOOKAHEAD;
-                else if (value > LOOKAHEAD) lookAheadDistance = LOOKAHEAD;
+                if (value < MIN_LOOKAHEAD)
+                    lookAheadDistance = MIN_LOOKAHEAD;
+                else if (value > LOOKAHEAD)
+                    lookAheadDistance = LOOKAHEAD;
                 else lookAheadDistance = value;
             }
         }
@@ -63,7 +67,6 @@ public class Pilot : UnitComponent
                 IsAcselerating = false;
             }
             _gunnercontrolled = value;
-            
         }
     }
     private UnitScript My;
@@ -72,21 +75,22 @@ public class Pilot : UnitComponent
     {
         get
         {
-            if (triggerd > 0) return true;
-            else return false;
+            if (triggerd > 0)
+                return true;
+            else
+                return false;
         }
         set
         {
-            if (value && triggerd<100) triggerd++;
-            else if (triggerd > 0) triggerd--;
-            
+            if (value && triggerd < 100)
+                triggerd++;
+            else if (triggerd > 0)
+                triggerd--;
+
         }
     }
     [SerializeField]
     private int triggerd;
-
-
-
 
     public bool IsAForwarder;
     private bool isHeadin = false;
@@ -94,8 +98,10 @@ public class Pilot : UnitComponent
     {
         get
         {
-            if (My.IsAnAirUnit) return true;
-            else return isHeadin;
+            if (My.IsAnAirUnit)
+                return true;
+            else
+                return isHeadin;
         }
         set
         {
@@ -111,10 +117,14 @@ public class Pilot : UnitComponent
         {
             if (Controlls.IsMoving)
                 return Throttle < 1f;
-            else return false;
+            else
+                return false;
         }
-        set { if (value && !this.gameObject.GetComponent<Movability>().IsMoving)
-            Controlls.IsMoving = true; }
+        set
+        {
+            if (value && !this.gameObject.GetComponent<Movability>().IsMoving)
+                Controlls.IsMoving = true;
+        }
     }
 
     private float? MAXIMUM_SPEED = null;
@@ -128,13 +138,12 @@ public class Pilot : UnitComponent
                 Throttle = 1f;
                 MAXIMUM_SPEED = Controlls.Speed;
                 Throttle = buffer;
-            }         
-            return MAXIMUM_SPEED.Value;    
+            }
+            return MAXIMUM_SPEED.Value;
         }
     }
 
-
-
+    /* Start & Awake & Update */
     void Awake()
     {
 
@@ -143,36 +152,39 @@ public class Pilot : UnitComponent
         mySpace = this.gameObject.GetComponent<SphereCollider>();
 
     }
-	void Start() 
+    void Start()
     {
+        triggerd = 0;
+        IsAcselerating = true;
+        mySpace.isTrigger = true;
+        SetRadius(MIN_LOOKAHEAD);
 
-       triggerd = 0;
-       IsAcselerating = true;
-       mySpace.isTrigger = true;
-       SetRadius(MIN_LOOKAHEAD);
+        if (My.GetComponent<FaceDirection>()) IsAForwarder = My.GetComponent<FaceDirection>().faceMovingDirection;
+        else IsAForwarder = false;
 
-       if (My.GetComponent<FaceDirection>()) IsAForwarder = My.GetComponent<FaceDirection>().faceMovingDirection;
-       else IsAForwarder = false;
-       
-       this.PflongeOnUnit();
-	}
+        this.PflongeOnUnit();
+    }
 
     public override void DoUpdate()
     {
         if (My.IsAnAirUnit)
             Controlls.standardYPosition = this.transform.parent.position.y;
-        if (IsAcselerating) IsAcselerating = ((Throttle += Accselerator)<1);
-        if (IsHeadin) IsHeadin = WatchTarget();
+        if (IsAcselerating)
+            IsAcselerating = ((Throttle += Accselerator) < 1);
+        if (IsHeadin)
+            IsHeadin = WatchTarget();
         if (!Triggerd)
         {
-            if (LookAheadDistance > LOOKAHEAD) SetRadius(LOOKAHEAD);
-            else SetRadius(LookAheadDistance + 0.1f);
+            if (LookAheadDistance > LOOKAHEAD)
+                SetRadius(LOOKAHEAD);
+            else
+                SetRadius(LookAheadDistance + 0.1f);
         }
         Triggerd = false;
         lah = null;
     }
 
-    private void ShrinkRradius(float lookAhead)
+    private void ShrinkRadius(float lookAhead)
     {
         if (!PerceptionIsGunnerControlled)
         {
@@ -212,9 +224,9 @@ public class Pilot : UnitComponent
             && (!My.InteractingUnits.Contains(other.gameObject.GetInstanceID())))
             {
                 Controlls.Rudder += ((My.transform.position - other.transform.position).normalized / (mySpace.radius / 2));
-            //    Controlls.MovingDirection.Normalize();
+                //    Controlls.MovingDirection.Normalize();
                 Triggerd = true;
-                ShrinkRradius(Vector3.Distance(other.ClosestPointOnBounds(gameObject.transform.position), gameObject.transform.position) * 0.95f);
+                ShrinkRadius(Vector3.Distance(other.ClosestPointOnBounds(gameObject.transform.position), gameObject.transform.position) * 0.95f);
             }
         }
     }
@@ -230,7 +242,7 @@ public class Pilot : UnitComponent
                 Controlls.Rudder += ((My.transform.position - other.gameObject.transform.position).normalized / (LookAheadDistance * 5));
                 //      My.MovingDirection.Normalize();
                 Triggerd = true;
-                ShrinkRradius(Vector3.Distance(other.ClosestPointOnBounds(gameObject.transform.position), gameObject.transform.position));
+                ShrinkRadius(Vector3.Distance(other.ClosestPointOnBounds(gameObject.transform.position), gameObject.transform.position));
                 IsHeadin = false;
             }
         }
@@ -246,8 +258,8 @@ public class Pilot : UnitComponent
     }
 
     private bool WatchTarget()
-    {      
-        Vector3 targetDirection = ((this.Controlls.MoveToPoint - My.transform.position).normalized / (Vector3.Distance(My.transform.position,this.Controlls.MoveToPoint)/10));
+    {
+        Vector3 targetDirection = ((this.Controlls.MoveToPoint - My.transform.position).normalized / (Vector3.Distance(My.transform.position, this.Controlls.MoveToPoint) / 10));
         if (Vector3.Distance(Controlls.MovingDirection, targetDirection) > 0.005f)
         {
             this.Controlls.Rudder = targetDirection;
@@ -258,16 +270,16 @@ public class Pilot : UnitComponent
             Controlls.MovingDirection = Controlls.MoveToPoint;
             Controlls.Rudder = Vector3.zero;
         }
-          
-        return false; 
+
+        return false;
     }
 
     void OnDestroy()
     {
-   //     mySpace = null;
-   //     Component.Destroy(gameObject.GetComponent<SphereCollider>());
+        //     mySpace = null;
+        //     Component.Destroy(gameObject.GetComponent<SphereCollider>());
 
-    //    UpdateManager.OnUpdate -= DoUpdate;
+        //    UpdateManager.OnUpdate -= DoUpdate;
     }
 
     protected override EnumProvider.ORDERSLIST on_UnitStateChange(EnumProvider.ORDERSLIST stateorder)

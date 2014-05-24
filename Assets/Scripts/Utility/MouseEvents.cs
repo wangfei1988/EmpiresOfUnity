@@ -129,8 +129,15 @@ public class MouseEvents
  
                 if (Physics.Raycast(AsRay.origin, AsRay.direction, out CursorRayHit))
                 {
-                    if (unitUnderCursor.Changed(CursorRayHit.collider.gameObject.GetInstanceID()))
-                        unitUnderCursor.Set(CursorRayHit.collider.gameObject);
+                    //if (unitUnderCursor.Changed(CursorRayHit.collider.gameObject.GetInstanceID()))
+                    //    unitUnderCursor.Set(CursorRayHit.collider.gameObject);
+                    GameObject target = CursorRayHit.transform.gameObject;
+                    if (target.transform.tag != "Clickable")
+                        target = CursorRayHit.transform.parent.gameObject;
+                    if (unitUnderCursor.Changed(target.collider.gameObject.GetInstanceID()))
+                    {
+                        unitUnderCursor.Set(target.collider.gameObject);
+                    }
                 }
                 else
                 {
@@ -205,15 +212,21 @@ public class MouseEvents
 
     // private functions...
     static internal void Setup(GameObject parrent)
-    {//-------------------------------------------------the startfunction for initialization at startup
+    {
+        // the startfunction for initialization at startup
         gameObject = parrent.GetComponent<GUIScript>();
         State.Position = new MouseState.MousePosition();
     }
 
     static private void GetMouseState()
-    {//--------------------------------------------------------------The main funktion which retrives the Mouseinput... 
+    {
+        // The main funktion which retrives the Mouseinput... 
         State.Position.SetNewMousePosition(Input.mousePosition);
-        MapClick = gameObject.MapViewArea.Contains(State);  //------checks if the click was on the Main-Map or if it was on other GUI elements...
+
+        // checks if the click was on the Main-Map or if it was on other GUI elements...
+        MapClick = gameObject.MapViewArea.Contains(State);
+
+        // Each Mouse Key
         for (int i = 0; i < 3; i++)
         {
             trigger[i] = release[i] = false;
@@ -232,19 +245,24 @@ public class MouseEvents
                 }
 
             }
-            else if (ButtonDown[i] && hold[i])
+            else if (ButtonDown[i] || hold[i])
             {
                 hold[i] = ButtonDown[i] = false;
                 release[i] = true;
             }
+            else
+            {
+                release[i] = false;
+            }
             trigger[i] = checkEventForNull(i, ButtonDown[i]);
-
         }
 
         State.LEFT = new MouseState.MouseButtonState(ButtonDown[0], hold[0]);
         State.RIGHT = new MouseState.MouseButtonState(ButtonDown[1], hold[1]);
         State.MIDDLE = new MouseState.MouseButtonState(ButtonDown[2], hold[2]);
         State.WHEEL = new MouseState.MouseWheelState((int)(Input.GetAxis("Mouse ScrollWheel") * 100f));
+
+        // Fire Events to Game
         triggerEvents(trigger);
     }
 
@@ -296,10 +314,9 @@ public class MouseEvents
 
     }
 
-    //-Updating...
+    // Updating...
     static public void DoUpdate()
     {
-        
         GetMouseState();
     }
 

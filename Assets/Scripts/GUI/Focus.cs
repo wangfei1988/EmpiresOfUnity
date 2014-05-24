@@ -39,7 +39,7 @@ public class Focus : MonoBehaviour
 
     // Instance Member:
     private UnitScript UNIT;   //----------------------the Focussed Unit it's UnitScript...
-    private bool SettingFocusIsComplete=false;
+    //private bool SettingFocusIsComplete=false;
 
     public bool IsLockedToThis
     {
@@ -55,8 +55,8 @@ public class Focus : MonoBehaviour
 
     void Start()
     {
-        SettingFocusIsComplete = false;
-        if (!firststart)
+        //SettingFocusIsComplete = false;
+        if (firststart == false)
         {
             if ((!IsLocked) || (IsLockedToThis))
             {
@@ -69,8 +69,12 @@ public class Focus : MonoBehaviour
                 UpdateManager.OnUpdate += DoUpdate;
                 MouseEvents.RIGHTCLICK += MouseEvents_RIGHTCLICK;
                 MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
-                SettingFocusIsComplete = true;
+                //SettingFocusIsComplete = true;
             }
+
+            // Add Healthbar it not there
+            if (gameObject.GetComponent<UnitScript>())
+                gameObject.GetComponent<UnitScript>().ShowLifebar();
         }   
         else
         {
@@ -93,11 +97,11 @@ public class Focus : MonoBehaviour
     }
 
     [SerializeField]
-    private bool _islocked = false;
+    //private bool _islocked = false;
     // Check if Focus is on another gameobject -> than release old-focus
     void DoUpdate()
     {
-        _islocked = IsLocked;
+        //_islocked = IsLocked;
         if (IsLocked)
         {
             // gets back the Focus to the LockedUnit if it was mistakenly taken by another Unit 
@@ -232,8 +236,6 @@ public class Focus : MonoBehaviour
         if (masterGameObject == null || masterGameObject.GetInstanceID() != gameObject.GetInstanceID())
         {
             Component.Destroy(gameObject.GetComponent<Focus>());
-            if (gameObject.GetComponent<UnitScript>())
-                gameObject.GetComponent<UnitScript>().HideLifebar();
         }
     }
 
@@ -248,6 +250,10 @@ public class Focus : MonoBehaviour
             MouseEvents.RIGHTCLICK -= MouseEvents_RIGHTCLICK;
             MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
             UpdateManager.OnUpdate -= DoUpdate;
+
+            // Destroy Lifebar if not already destroyed
+            if (gameObject.GetComponent<UnitScript>())
+                gameObject.GetComponent<UnitScript>().HideLifebar();
         }  
     }
 }

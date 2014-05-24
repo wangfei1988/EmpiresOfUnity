@@ -147,7 +147,7 @@ abstract public class MovingUnitOptions : UnitOptions
     }
 
 
-    private OPTIONS movingUnitState;
+    //private OPTIONS movingUnitState;
     public int unitstateint=0;
     public override System.Enum UnitState
     {
@@ -200,7 +200,7 @@ abstract public class MovingUnitOptions : UnitOptions
             //        }
             //    }
                 unitstateint = (int)(EnumProvider.ORDERSLIST)value;
-                movingUnitState = (OPTIONS)value;
+                //movingUnitState = (OPTIONS)value;
     
         }
     }
@@ -263,7 +263,8 @@ abstract public class MovingUnitOptions : UnitOptions
         stillWorkDoDo=base.ProcessAllOrders();
         if (GotToDoWhatGotToDo)
         {
-            if (ActionPoint != null) MouseEvents_LEFTCLICK(MouseEvents.State.Position.AsRay, false);
+            if (ActionPoint != null)
+                MouseEvents_LEFTCLICK(MouseEvents.State.Position.AsRay, false);
         }
         return stillWorkDoDo;
     }

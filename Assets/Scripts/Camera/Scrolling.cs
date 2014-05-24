@@ -31,10 +31,11 @@ public class Scrolling : MonoBehaviour
 
     void DoUpdate()
     {
-        if (scrollingAllowed)
-            CheckForScrolling();
         if (Input.GetKeyDown(KeyCode.Y))
             this.SwitchScrollingStatus();
+
+        if (scrollingAllowed)
+            CheckForScrolling();
     }
 
     public void SwitchScrollingStatus()
