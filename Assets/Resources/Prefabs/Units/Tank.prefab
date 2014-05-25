@@ -18,9 +18,10 @@ GameObject:
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400012}
-  - 114: {fileID: 11400008}
   - 135: {fileID: 13500000}
   - 114: {fileID: 11400014}
+  - 114: {fileID: 11400008}
+  - 114: {fileID: 11400016}
   m_Layer: 10
   m_Name: Tank
   m_TagString: Clickable
@@ -51,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -128.84108, y: -.149979338, z: -174.137711}
+  m_LocalPosition: {x: -141.268723, y: -.149979338, z: -174.137711}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 400002}
@@ -215,7 +216,7 @@ MonoBehaviour:
   optionalstateIDs: 
   optionalStates: 
   PluggedStateExtendingComponents: []
-  Movement: {fileID: 11400012}
+  movement: {fileID: 11400012}
   unitstateint: 0
 --- !u!114 &11400008
 MonoBehaviour:
@@ -225,12 +226,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f062a04179ed6949b2580aa47ffb423, type: 3}
+  m_Script: {fileID: 11500000, guid: 08e425f0cf7c0cc4a94bf78b341d4315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 11400000, guid: 9dbbe8c28a344b448aeab0965f22eb49, type: 2}
-  hasArsenal: 0
-  LaserEnergie: 1000
+  prefabSlot: {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
+  hasArsenal: 1
+  NumberOfRockets: 1000
+  countdown: 0
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -252,7 +254,6 @@ MonoBehaviour:
   level: 1
   sightWidth: 50
   resourceFactor: 0
-  SoundDestroy: {fileID: 8300000, guid: a6628622fc5e0e44a97b8401a0f4c014, type: 3}
   interactingUnits: 
 --- !u!114 &11400012
 MonoBehaviour:
@@ -270,10 +271,11 @@ MonoBehaviour:
   standardYPosition: 0
   IsGroupLeader: 0
   speed: .200000003
+  Throttle: 1
   Target: {fileID: 0}
-  WayPoints:
-  - {x: 0, y: 0, z: 0}
+  WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
+  RudderIsNormalizised: 1
 --- !u!114 &11400014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -291,8 +293,21 @@ MonoBehaviour:
   Controlls: {fileID: 11400012}
   triggerd: 0
   IsAForwarder: 0
-  Throttle: 0
   Rudder: {x: 0, y: 0, z: 0}
+--- !u!114 &11400016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d18b47915ad214eab5a0d48ada5122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Arsenal:
+  - {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
+  - {fileID: 11400008, guid: e4d0eb844cac7ab45961c1fa3685b6e8, type: 2}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

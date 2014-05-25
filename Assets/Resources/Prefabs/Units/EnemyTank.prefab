@@ -16,9 +16,9 @@ GameObject:
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400010}
+  - 114: {fileID: 11400012}
   - 114: {fileID: 11400008}
   - 114: {fileID: 11400006}
-  - 114: {fileID: 11400012}
   m_Layer: 10
   m_Name: EnemyTank
   m_TagString: Clickable
@@ -49,7 +49,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -165.5737, y: -.357652992, z: -322.920044}
+  m_LocalPosition: {x: -56.3121643, y: -.357652992, z: 19.6552124}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 400002}
@@ -202,19 +202,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08cf720e9c3cf5c47b0186c38933b9d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f062a04179ed6949b2580aa47ffb423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UNIT: {fileID: 11400010}
-  baseUnitState: 0
-  moveToPoint: {x: 0, y: 0, z: 0}
-  Target: {fileID: 0}
-  optionalStateStrings: []
-  optionalstateIDs: 
-  optionalStates: 
-  PluggedStateExtendingComponents: []
-  Movement: {fileID: 11400008}
-  unitstateint: 0
+  prefabSlot: {fileID: 11400000, guid: 9dbbe8c28a344b448aeab0965f22eb49, type: 2}
+  hasArsenal: 0
+  LaserEnergie: 0
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,9 +224,11 @@ MonoBehaviour:
   standardYPosition: -.100000001
   IsGroupLeader: 0
   speed: .200000003
+  Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
+  RudderIsNormalizised: 1
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -248,14 +243,13 @@ MonoBehaviour:
   unitType: 1
   goodOrEvil: -1
   ALARM: 0
-  Options: {fileID: 11400006}
+  Options: {fileID: 11400012}
   unitAnimation: {fileID: 11400004}
-  weapon: {fileID: 11400012}
+  weapon: {fileID: 11400006}
   life: 800
   level: 1
   sightWidth: 50
   resourceFactor: 0
-  SoundDestroy: {fileID: 0}
   interactingUnits: 
 --- !u!114 &11400012
 MonoBehaviour:
@@ -265,12 +259,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f062a04179ed6949b2580aa47ffb423, type: 3}
+  m_Script: {fileID: 11500000, guid: 08cf720e9c3cf5c47b0186c38933b9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 11400000, guid: 9dbbe8c28a344b448aeab0965f22eb49, type: 2}
-  hasArsenal: 0
-  LaserEnergie: 0
+  UNIT: {fileID: 11400010}
+  baseUnitState: 0
+  moveToPoint: {x: 0, y: 0, z: 0}
+  Target: {fileID: 0}
+  optionalStateStrings: []
+  optionalstateIDs: 
+  optionalStates: 
+  PluggedStateExtendingComponents: []
+  movement: {fileID: 11400008}
+  unitstateint: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

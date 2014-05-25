@@ -14,6 +14,9 @@ GameObject:
   - 114: {fileID: 11400002}
   - 64: {fileID: 6400000}
   - 114: {fileID: 11400004}
+  - 114: {fileID: 11400006}
+  - 54: {fileID: 5400000}
+  - 114: {fileID: 11400008}
   m_Layer: 10
   m_Name: EnemyFabrik
   m_TagString: Clickable
@@ -44,7 +47,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.5406342, y: -5.51225901, z: 129.846802}
+  m_LocalPosition: {x: -10.8548889, y: 0, z: 31.9784851}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -88,6 +91,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: 0aaf575707a4cfc4fae53b1d9eeb122b, type: 3}
+--- !u!54 &5400000
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!64 &6400000
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -116,7 +134,7 @@ MonoBehaviour:
   goodOrEvil: -1
   ALARM: 0
   Options: {fileID: 11400002}
-  unitAnimation: {fileID: 11400004}
+  unitAnimation: {fileID: 11400006}
   weapon: {fileID: 0}
   life: 3000
   level: 1
@@ -135,8 +153,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400000}
+  baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
+  optionalStateStrings: []
+  optionalstateIDs: 
+  optionalStates: 
   PluggedStateExtendingComponents: []
   unitState: 101
   CurrentFabrikatNumber: 0
@@ -160,7 +182,47 @@ MonoBehaviour:
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
   GrowingTime: 0
+  startGrowing: 0
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 366e472b6f7516b4c8483680cfab5649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 1
+  NextUnitAnimation: {fileID: 11400004}
+  targetYps: 0
+  GrowingTime: 1
   startGrowing: 1
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552bee532e878e647bcd4ff0c948bbc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 1
+  NextUnitAnimation: {fileID: 0}
+  mainTargetTransform: {fileID: 0}
+  otherTargetTransform: {fileID: 0}
+  sineRooting: 0
+  triRooting: 0
+  speed: {x: 0, y: 0, z: 0}
+  amount: {x: 0, y: 0, z: 0}
+  crossModulate: 0
+  SinSetOrAdd: 0
+  TriSetOrAdd: 0
+  Sin: {x: 0, y: 0, z: 0}
+  Tri: {x: 0, y: 0, z: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -27,7 +27,7 @@ public class WingsAndJets : UnitExtension
 
 
     public Movability Movement;
-    public GroundUnitOptions Options;
+    public AirUnitOptions Options;
     public Pilot pilot;
     [SerializeField]
     private EnumProvider.DIRECTION face;
@@ -54,13 +54,13 @@ public class WingsAndJets : UnitExtension
     {
         get 
         {
-            return Options.Speed ; 
+            return Options.movement.Speed; 
         }
         set
         {
             if
-              (value > MAX_SPEED) Options.Speed = MAX_SPEED;
-            else Options.Speed = value;
+              (value > MAX_SPEED) Options.movement.Speed = MAX_SPEED;
+            else Options.movement.Speed = value;
         }
     }
 
@@ -72,7 +72,7 @@ public class WingsAndJets : UnitExtension
             case OPTIONS.LandOnGround:
                 flightState=OPTIONS.LandOnGround;
                 IsAccselerating = false;
-                Options.standardYPosition = 0.3f;
+                Options.movement.standardYPosition = 0.3f;
                 SPEED_FACTOR = 0.95f;
                 stateorder = EnumProvider.ORDERSLIST.Stay;
                 break;
@@ -106,11 +106,11 @@ public class WingsAndJets : UnitExtension
     {
         get 
         {
-            if ((Options.IsMoving) && ((int)((EnumProvider.ORDERSLIST)Options.UnitState) < 100))
+            if ((Options.movement.IsMoving) && ((int)((EnumProvider.ORDERSLIST)Options.UnitState) < 100))
                 return true;
             else return false;
         }
-        set { Options.IsMoving = value; if ((value) && ((int)((EnumProvider.ORDERSLIST)Options.UnitState) >= 100))Options.UnitState = (OPTIONS)99; }
+        set { Options.movement.IsMoving = value; if ((value) && ((int)((EnumProvider.ORDERSLIST)Options.UnitState) >= 100))Options.UnitState = (OPTIONS)99; }
     }
 
     private bool isAccselerating;
@@ -150,11 +150,11 @@ public class WingsAndJets : UnitExtension
       //  if (!this.gameObject.GetComponent<MovingUnitOptions>())
       //      Component.Destroy(this.GetComponent<WingsAndJets>());
    
-            Options = this.gameObject.GetComponent<GroundUnitOptions>();
-            if (!this.gameObject.GetComponent<Pilot>()) this.gameObject.AddComponent<Pilot>();
+            Options = this.gameObject.GetComponent<AirUnitOptions>();
+            //if (!this.gameObject.GetComponent<Pilot>()) this.gameObject.AddComponent<Pilot>();
             pilot = this.gameObject.GetComponent<Pilot>();
-            if (!this.GetComponent<FaceDirection>())
-                this.gameObject.AddComponent<FaceDirection>();
+            this.GetComponent<FaceDirection>();
+            
             Face = EnumProvider.DIRECTION.forward;
             Forward = this.gameObject.GetComponent<FaceDirection>().forwardIs;
             Speed = JET_SPEED;

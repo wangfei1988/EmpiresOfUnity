@@ -264,7 +264,12 @@ abstract public class UnitOptions : MonoBehaviour
         UNIT = gameObject.GetComponent<UnitScript>();
     }
 
-
+    protected void RegisterInheridedOrderStateOptions(System.Type optionsEnum)
+    {
+        foreach (int KeyValue in System.Enum.GetValues(optionsEnum))
+            if (!OptionalStatesOrder.ContainsKey(KeyValue))
+                OptionalStatesOrder.Add(KeyValue, ((EnumProvider.ORDERSLIST)KeyValue).ToString());
+    }
 
     abstract internal void DoStart();
     abstract internal void DoUpdate();

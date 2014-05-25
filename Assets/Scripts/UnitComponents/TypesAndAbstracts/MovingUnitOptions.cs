@@ -17,28 +17,28 @@ abstract public class MovingUnitOptions : UnitOptions
 
     virtual public float Speed
     {
-        get { return Movement.Speed; }
+        get { return movement.Speed; }
         set
         {
-            Movement.Speed = value;
+            movement.Speed = value;
         }
     }
     public Vector3 MovingDirection
     {
-        get { return Movement.MovingDirection; }
-        set { Movement.MovingDirection = value; }
+        get { return movement.MovingDirection; }
+        set { movement.MovingDirection = value; }
     }
 
-    public Movability Movement;
+    public Movability movement;
 
     internal override void FocussedLeftOnGround(Vector3 worldPoint)
     {
         standardOrder = true;
      //   IsMovingAsGroup = true;
-        Movement.SetKinematic();
+        movement.SetKinematic();
         UnitState = OPTIONS.MoveTo;
-        Movement.MoveToPoint = worldPoint;
-        Movement.MovingDirection = worldPoint;
+        movement.MoveToPoint = worldPoint;
+        movement.MovingDirection = worldPoint;
    //     gameObject.transform.position += (Movement.MovingDirection * Movement.Speed);
         IsAttacking = false;
         Target = null;
@@ -50,8 +50,8 @@ abstract public class MovingUnitOptions : UnitOptions
 
     public float standardYPosition
     {
-        get { return Movement.standardYPosition; }
-        set { Movement.standardYPosition = value; }
+        get { return movement.standardYPosition; }
+        set { movement.standardYPosition = value; }
     }
 
     public override Vector3 MoveToPoint
@@ -70,11 +70,11 @@ abstract public class MovingUnitOptions : UnitOptions
     {
         get
         {
-           return Movement.IsMoving;
+           return movement.IsMoving;
         }
         set
         {
-            Movement.IsMoving = value;
+            movement.IsMoving = value;
             //if (value) { if (!gameObject.GetComponent<Pilot>()) gameObject.AddComponent<Pilot>(); }
             //else
             //{
@@ -102,12 +102,12 @@ abstract public class MovingUnitOptions : UnitOptions
     {
         get
         {
-            return Movement.Distance;
+            return movement.Distance;
           //  return Vector3.Distance(gameObject.transform.position, MoveToPoint);
         }
         protected set
         {
-            Movement.Distance = value;
+            movement.Distance = value;
             //if (value != distance)
             //{
             //    if (IsMovingAsGroup)
@@ -124,10 +124,10 @@ abstract public class MovingUnitOptions : UnitOptions
     }
     public bool IsMovingAsGroup
     {
-        get { return Movement.IsMovingAsGroup; }
+        get { return movement.IsMovingAsGroup; }
         set
         {
-            Movement.IsMovingAsGroup = value;
+            movement.IsMovingAsGroup = value;
             //if (value) IsMoving = true;
             //_groupmove = value;
         }
@@ -135,14 +135,14 @@ abstract public class MovingUnitOptions : UnitOptions
 
     public bool IsGroupLeader
     {
-        get { return Movement.IsGroupLeader; }
-        set { Movement.IsGroupLeader = value; }
+        get { return movement.IsGroupLeader; }
+        set { movement.IsGroupLeader = value; }
     }
 
     internal override void MoveAsGroup(GameObject leader)
     {
 
-        Movement.MoveAsGroup(leader);
+        movement.MoveAsGroup(leader);
         IsAttacking = false;
     }
 
