@@ -2692,6 +2692,7 @@ GameObject:
   - 114: {fileID: 358951606}
   - 114: {fileID: 358951607}
   - 114: {fileID: 358951608}
+  - 114: {fileID: 358951609}
   m_Layer: 0
   m_Name: MainGUI
   m_TagString: MainGUI
@@ -3124,6 +3125,17 @@ MonoBehaviour:
   ShiftKeyMulti: 3
   scrollingAllowed: 1
   MouseMove: {fileID: 0}
+--- !u!114 &358951609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 358951600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aada68e15c3e9f44b8cc0b6779edd530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &366359039
 Prefab:
   m_ObjectHideFlags: 0
