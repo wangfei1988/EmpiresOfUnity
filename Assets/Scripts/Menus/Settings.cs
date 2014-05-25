@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Settings : MonoBehaviour 
 {
+    public ControllSettings settingsData;
+    public List<KeyCode> PrimaryControlls, SecondaryControlls;
     private void OnGUI()
     {
+        
         Vector2 size = new Vector2(1920, 1080);
 
         float left = Screen.width / size.x * 350f;
@@ -15,14 +19,22 @@ public class Settings : MonoBehaviour
 
         if (GUI.Button(new Rect(left, top + topPlus * 1, width, height), "Credits"))
         {
+
         }
-        if (GUI.Button(new Rect(left, top + topPlus * 2, width, height), "Homepage"))
+        if (GUI.Button(new Rect(left, top + topPlus * 2, width, height), "Save Settings"))
+        {
+            settingsData = ScriptableObject.CreateInstance<ControllSettings>();
+            settingsData.copyLists(PrimaryControlls, SecondaryControlls);
+            settingsData.SaveSettings();
+        }
+        if (GUI.Button(new Rect(left, top + topPlus * 3, width, height), "Homepage"))
         {
             Application.OpenURL("http://media.giphy.com/media/gU25raLP4pUu4/giphy.gif");
         }
-        if (GUI.Button(new Rect(left, top + topPlus * 3, width, height), "Back"))
+        if (GUI.Button(new Rect(left, top + topPlus * 4, width, height), "Back"))
         {
             Application.LoadLevel("MainMenu");
         }
+        
     }
 }

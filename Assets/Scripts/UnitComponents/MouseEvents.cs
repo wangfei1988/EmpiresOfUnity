@@ -133,10 +133,10 @@ public class MouseEvents
                     //    unitUnderCursor.Set(CursorRayHit.collider.gameObject);
                     GameObject target = CursorRayHit.transform.gameObject;
                     if (target.transform.tag != "Clickable")
-                        target = CursorRayHit.transform.parent.gameObject;
-                    if (unitUnderCursor.Changed(target.collider.gameObject.GetInstanceID()))
+                        target = CursorRayHit.collider.gameObject.transform.parent.gameObject;
+                    if (unitUnderCursor.Changed(target.GetInstanceID()))
                     {
-                        unitUnderCursor.Set(target.collider.gameObject);
+                        unitUnderCursor.Set(target);
                     }
                 }
                 else

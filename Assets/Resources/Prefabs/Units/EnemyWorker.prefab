@@ -119,10 +119,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400004}
+  baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
+  optionalStateStrings: []
+  optionalstateIDs: 
+  optionalStates: 
   PluggedStateExtendingComponents: []
-  Movement: {fileID: 11400006}
+  movement: {fileID: 11400006}
   unitstateint: 0
   BuildableBuildings:
   - {fileID: 100000, guid: ebfadaac5ef94db48b461418d4676096, type: 2}
@@ -167,10 +171,11 @@ MonoBehaviour:
   standardYPosition: .200000003
   IsGroupLeader: 0
   speed: .200000003
-  _moveToPoint: {x: 0, y: 0, z: 0}
+  Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
+  RudderIsNormalizised: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

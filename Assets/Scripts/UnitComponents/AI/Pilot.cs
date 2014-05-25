@@ -12,9 +12,9 @@ public class Pilot : UnitComponent
     {
         get { return "Pilot"; }
     }
-    private const float MIN_LOOKAHEAD = 3f;
+    private const float MIN_LOOKAHEAD = 4f;
     private const float MAX_LOOKAHEAD = 20f;
-    private const float Accselerator = 1.0001f;
+    private const float Accselerator = 0.01f;
     private float? lah = 0;
     private float LOOKAHEAD
     {
@@ -109,7 +109,18 @@ public class Pilot : UnitComponent
         }
     }
 
-    public float Throttle = 0f;
+    private float _throttle = 0;
+    public float Throttle
+    {
+        get
+        {
+            if (!Controlls.IsMoving) 
+                return _throttle = 0;
+            else 
+                return _throttle;
+        }
+        set { this.GetComponent<Movability>().Speed = _throttle = value; }
+    }
     public Vector3 Rudder = Vector3.zero;
     public bool IsAcselerating
     {
@@ -126,7 +137,7 @@ public class Pilot : UnitComponent
                 Controlls.IsMoving = true;
         }
     }
-
+  
     private float? MAXIMUM_SPEED = null;
     public float MAX_SPEED
     {
@@ -154,6 +165,7 @@ public class Pilot : UnitComponent
     }
     void Start()
     {
+        
         triggerd = 0;
         IsAcselerating = true;
         mySpace.isTrigger = true;
@@ -163,12 +175,13 @@ public class Pilot : UnitComponent
         else IsAForwarder = false;
 
         this.PflongeOnUnit();
+        Throttle = 0;
     }
 
     public override void DoUpdate()
     {
-        if (My.IsAnAirUnit)
-            Controlls.standardYPosition = this.transform.parent.position.y;
+        //if (My.IsAnAirUnit)
+        //    Controlls.standardYPosition = this.transform.parent.position.y;
         if (IsAcselerating)
             IsAcselerating = ((Throttle += Accselerator) < 1);
         if (IsHeadin)
@@ -191,6 +204,7 @@ public class Pilot : UnitComponent
             if (lookAhead < LookAheadDistance)
             {
                 SetRadius(lookAhead);
+          //      Throttle -= 2*Accselerator;
             }
         }
     }
@@ -204,7 +218,7 @@ public class Pilot : UnitComponent
                 mySpace.radius = lookAheadDistance / My.gameObject.transform.localScale.x;
                 if (My.IsAnAirUnit)
                     (My.Options as FlyingUnitOptions).standardYPosition = mySpace.radius * 2;
-                //     if (IsAForwarder) mySpace.center = new Vector3(mySpace.center.x, mySpace.center.y, mySpace.radius - 0.5f);
+                 //   if (IsAForwarder) mySpace.center = new Vector3(mySpace.center.x, mySpace.center.y, mySpace.radius - 0.5f);
             }
         }
         else
@@ -223,7 +237,7 @@ public class Pilot : UnitComponent
             && (other.gameObject.layer != 9)
             && (!My.InteractingUnits.Contains(other.gameObject.GetInstanceID())))
             {
-                Controlls.Rudder += ((My.transform.position - other.transform.position).normalized / (mySpace.radius / 2));
+                Controlls.Rudder += ((My.transform.position - other.transform.position).normalized / (mySpace.radius ));
                 //    Controlls.MovingDirection.Normalize();
                 Triggerd = true;
                 ShrinkRadius(Vector3.Distance(other.ClosestPointOnBounds(gameObject.transform.position), gameObject.transform.position) * 0.95f);
@@ -239,8 +253,16 @@ public class Pilot : UnitComponent
             && (other.gameObject.layer != 9)
             && (!My.InteractingUnits.Contains(other.gameObject.GetInstanceID())))
             {
-                Controlls.Rudder += ((My.transform.position - other.gameObject.transform.position).normalized / (LookAheadDistance * 5));
-                //      My.MovingDirection.Normalize();
+                Vector3 directionbuffer = (My.transform.position - other.gameObject.transform.position);
+                directionbuffer=directionbuffer/100 + this.transform.forward;
+     
+                 //   Throttle = (directionbuffer.normalized.magnitude - directionbuffer.magnitude);
+
+              //  Controlls.Rudder += directionbuffer.normalized;
+                Controlls.RudderIsNormalizised = false;
+                Controlls.Rudder += ((My.transform.position - other.gameObject.transform.position).normalized / (LookAheadDistance *2));
+            //    Controlls.Rudder.Normalize();
+                //      (My.Options as MovingUnitOptions).MovingDirection.Normalize();
                 Triggerd = true;
                 ShrinkRadius(Vector3.Distance(other.ClosestPointOnBounds(gameObject.transform.position), gameObject.transform.position));
                 IsHeadin = false;
@@ -262,7 +284,8 @@ public class Pilot : UnitComponent
         Vector3 targetDirection = ((this.Controlls.MoveToPoint - My.transform.position).normalized / (Vector3.Distance(My.transform.position, this.Controlls.MoveToPoint) / 10));
         if (Vector3.Distance(Controlls.MovingDirection, targetDirection) > 0.005f)
         {
-            this.Controlls.Rudder = targetDirection;
+            this.Controlls.Rudder += (targetDirection);
+            this.Controlls.Rudder.Normalize();
             return true;
         }
         else

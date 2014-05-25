@@ -1,4 +1,4 @@
-Empires Of Unity
+﻿Empires Of Unity
 ==============
 
 Empires Of Unity - An Epic Real Time Strategy (RTS) Game
@@ -18,7 +18,7 @@ Credits
 ======
 
 Development by
-  * Kalle Münster (mail?)
+  * Kalle Münster (kalle.muenster@gmx.de)
   * Lucas Nowak (lucas.n@live.de)
   * Dario D. Müller (moin@game-coding.com)
 

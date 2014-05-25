@@ -60,7 +60,7 @@ public class RocketLauncher : UnitWeapon
                 rocket = (GameObject.Instantiate(prefabSlot, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + offset, this.gameObject.transform.position.z), this.gameObject.transform.rotation) as RocketObject).GetComponent<RocketObject>();
                 NumberOfRockets--;
                 if (prefabSlot.amunition == WeaponObject.AMUNITONTYPE.Missiles)
-                    rocket.transform.forward = (rocket.transform.forward + new Vector3(Random.Range(-0.25f, 0.25f), 1f, Random.Range(-0.25f, 0.25f))).normalized;
+                    rocket.transform.forward = (rocket.transform.forward + new Vector3(Random.Range(-0.1f, 0.1f), 1f, Random.Range(0f, 0.1f))).normalized;
                 else if (prefabSlot.amunition == WeaponObject.AMUNITONTYPE.Rocket)
                     rocket.transform.up = -((rocket.transform.forward + new Vector3(Random.Range(-0.25f, 0.25f), 1f, Random.Range(-0.25f, 0.25f))).normalized);
             }

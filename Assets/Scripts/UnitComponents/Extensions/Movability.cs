@@ -26,6 +26,7 @@ public class Movability : UnitExtension
         MoveToPoint = this.gameObject.transform.position;
         WayPoints = new List<Vector3>();
         IsMoving = true;
+        Speed = 1;
 	}
 
     protected override EnumProvider.ORDERSLIST on_UnitStateChange(EnumProvider.ORDERSLIST stateorder)
@@ -177,7 +178,8 @@ public class Movability : UnitExtension
 
     [SerializeField]
     private float speed=0.2f;
-    private float Throttle = 1f;
+    public float Throttle;
+
     public float Speed
     {
         get
@@ -199,8 +201,13 @@ public class Movability : UnitExtension
         get { return UNIT.Options.MoveToPoint; }
         set 
         {
-            value.y = standardYPosition;
+            //if (UNIT.IsAnAirUnit)
+            //    value.y = this.transform.parent.transform.position.y;
+        //    else
+                value.y = standardYPosition;
+
             UNIT.Options.MoveToPoint = value;
+            
         }
     }
     public GameObject Target;
@@ -208,9 +215,19 @@ public class Movability : UnitExtension
 
     private Vector3 movingDirection = Vector3.zero;
     public Vector3 Rudder = Vector3.zero;
+    public bool RudderIsNormalizised = true;
     public Vector3 MovingDirection
     {
-        get { return (movingDirection + Rudder).normalized; }
+        get 
+        {
+            if (RudderIsNormalizised)
+                return (movingDirection + Rudder).normalized;
+            else
+            {
+                return movingDirection + Rudder;
+                RudderIsNormalizised = true;
+            }
+        }
         set
         { 
             movingDirection = (value - this.gameObject.transform.position).normalized; 
@@ -310,5 +327,7 @@ public class Movability : UnitExtension
     {
         checkKinematic();
         if (IsMoving) IsMoving = Move();
+        Vector3 position = this.transform.position;
+        position.y = standardYPosition;
     }
 }
