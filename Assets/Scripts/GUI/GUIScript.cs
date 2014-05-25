@@ -97,8 +97,8 @@ public class GUIScript : MonoBehaviour
 
     private bool UnitMenuIsOn
     {
-        get { return RightClickMenu.showGUI; }
-        set { RightClickMenu.showGUI = value; }
+        get { return RightClickMenu.showCommandPannel; }
+        set { RightClickMenu.showCommandPannel = value; }
     }
 
     void Awake()

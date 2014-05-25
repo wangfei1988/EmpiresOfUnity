@@ -13,8 +13,8 @@ public class RightClickMenu : MonoBehaviour {
     public float ScaleX, ScaleY;
     public Rect view;
 
-    public static bool showGUI = false;
-    public static bool showSIDEgui
+    public static bool showCommandPannel = false;
+    public static bool showObjectPannel
     {
         get
         {
@@ -23,7 +23,7 @@ public class RightClickMenu : MonoBehaviour {
                 && Focus.masterGameObject.GetComponent<UnitScript>()
             )
             {
-                if( (showGUI == false))
+                if ((showCommandPannel == false))
                     Unit = Focus.masterGameObject.GetComponent<UnitScript>();
                 return true;
             }
@@ -61,12 +61,12 @@ public class RightClickMenu : MonoBehaviour {
         guiSIDEstyle.fontSize = (int)((float)guiSIDEstyle.fontSize * ScaleX);
         guiStyle.border.left = (int)(-1.62f * ScaleX);
         guiStyle.border.right = (int)(-3.25f * ScaleX);
-        guiStyle.border.top = (int)(10f * ScaleY);
-        guiStyle.border.bottom = (int)(10f * ScaleY);
-        guiStyle.padding.top = (int)(-7.89f*ScaleX);
-        guiStyle.padding.left = (int)(22.5f * ScaleX);
-        guiStyle.overflow.top = (int)(-3.25f * ScaleY);
-        guiStyle.overflow.bottom = (int)(13 * ScaleY);
+        guiStyle.border.top = (int)(20.5f * ScaleY);
+        guiStyle.border.bottom = (int)(20.5f * ScaleY);
+        guiStyle.padding.top = (int)(-15f*ScaleX);
+        guiStyle.padding.left = (int)(23.79f * ScaleX);
+        guiStyle.overflow.top = (int)(-6.3f * ScaleY);
+        guiStyle.overflow.bottom = (int)(9.5 * ScaleY);
 
         buttonSIDEstyle.fixedWidth *= ScaleX;
         buttonSIDEstyle.fixedHeight *= ScaleY;
@@ -81,20 +81,20 @@ public class RightClickMenu : MonoBehaviour {
 
         Unit = forUnit;
         //UnitPosition = MouseEvents.State.Position;
-        showGUI = true;
+        showCommandPannel = true;
     }
 
     void OnGUI()
     {
         
-        if (showSIDEgui)
+        if (showObjectPannel)
         {  
             // Menü  an der Seite...
             Object[] SIDEmenuOptions = Unit.SellectableObjects;
             float btnHeight = (60 * ScaleY);
          //   float zwischenbuttonraum = (20 * ScaleY);
             Rect guiposition;
-            sideMenuHeight = ((btnHeight ) * (SIDEmenuOptions.Length + 1));
+            sideMenuHeight = ((btnHeight ) * (SIDEmenuOptions.Length + 2));
          //   guiposition = new Rect(1718 * ScaleX, (210 * ScaleY) - 3 * guiStyle.fontSize, 202 * ScaleX, sideMenuHeight );
             guiposition = new Rect(1695 * ScaleX, (210 * ScaleY) - 3 * guiStyle.fontSize, 225 * ScaleX, sideMenuHeight);
             GUI.BeginGroup(guiposition, "", guiSIDEstyle); // Unit.name+"'s Activities:"
@@ -106,7 +106,7 @@ public class RightClickMenu : MonoBehaviour {
                     Unit.Sellect(SIDEmenuOptions[i]);
                 }
             }
-            if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + SIDEmenuOptions.Length * (btnHeight ), (224 * ScaleX), btnHeight), "Cancel"))
+            if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + SIDEmenuOptions.Length * (btnHeight), (224 * ScaleX), btnHeight), "Cancel", buttonSIDEstyle))
             {
                 if (!Focus.IsLocked)
                     Component.Destroy(Focus.masterGameObject.GetComponent<Focus>());
@@ -135,13 +135,13 @@ public class RightClickMenu : MonoBehaviour {
             GUI.EndGroup();
         }
 
-        if (showGUI)
+        if (showCommandPannel)
         {
 
             // If Unit of RightClickMenu was destroyed -> hide Menu
             if (Unit == null)
             {
-                showGUI = false;
+                showCommandPannel = false;
                 return;
             }
 
@@ -152,7 +152,7 @@ public class RightClickMenu : MonoBehaviour {
             //EnumProvider.ORDERSLIST[] selected = new EnumProvider.ORDERSLIST[1];
             EnumProvider.ORDERSLIST[] options = Unit.RightClickMenuOptionStates;
            // Rect guiposition = new Rect(1695 * ScaleX, 590 * ScaleY, 223 * ScaleX, (options.Length + 1) * btnHeight + guiStyle.fontSize);
-            Rect guiposition = new Rect(1695 * ScaleX, sideMenuHeight + ((210 * ScaleY) - 3 * guiStyle.fontSize), 223 * ScaleX, (options.Length + 1) * btnHeight + guiStyle.fontSize);
+            Rect guiposition = new Rect(1695 * ScaleX, sideMenuHeight + ((210 * ScaleY) - 2 * guiStyle.fontSize), 223 * ScaleX, (options.Length + 1) * btnHeight + guiStyle.fontSize);
           //  Rect guiposition = new Rect(UnitPosition.x, view.height - UnitPosition.y, Pannel.texture.width * ScaleX, (options.Length + 1) * btnHeight + guiStyle.fontSize);
             GUI.BeginGroup(guiposition, "Orders:", guiStyle);
             for (int i = 0; i < options.Length; i++)
@@ -161,12 +161,12 @@ public class RightClickMenu : MonoBehaviour {
                 {
                     Unit.Options.GiveOrder(options[i]);
                     Debug.Log("order given to unit!");
-                    showGUI = false;
+                    showCommandPannel = false;
                 }
             }
             if (GUI.Button(new Rect(22 * ScaleX, guiStyle.fontSize + options.Length * btnHeight, 180 * ScaleX, btnHeight), "Cancel...", buttonStyle))
             {
-                showGUI = false;
+                showCommandPannel = false;
             }
             GUI.EndGroup();
         }

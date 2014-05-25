@@ -33,8 +33,8 @@ public class Focus : MonoBehaviour
     private static bool firststart = true;
     private static bool UnitMenuIsOn
     {
-        get { return RightClickMenu.showGUI; }
-        set { RightClickMenu.showGUI = value; }
+        get { return RightClickMenu.showCommandPannel; }
+        set { RightClickMenu.showCommandPannel = value; }
     }
 
     // Instance Member:

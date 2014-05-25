@@ -90,9 +90,9 @@ GameObject:
   - 114: {fileID: 48475772}
   - 114: {fileID: 48475771}
   - 114: {fileID: 48475770}
+  - 114: {fileID: 48475769}
   - 114: {fileID: 48475779}
   - 114: {fileID: 48475768}
-  - 114: {fileID: 48475769}
   m_Layer: 10
   m_Name: EnemyTank
   m_TagString: Clickable
@@ -109,6 +109,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 48475766}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f062a04179ed6949b2580aa47ffb423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabSlot: {fileID: 11400000, guid: 9dbbe8c28a344b448aeab0965f22eb49, type: 2}
+  hasArsenal: 0
+  LaserEnergie: 0
+--- !u!114 &48475769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400012, guid: 929dde19bee56aa4a813a0cbc8b7a75e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1365314693}
+  m_GameObject: {fileID: 48475766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08cf720e9c3cf5c47b0186c38933b9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -120,23 +135,8 @@ MonoBehaviour:
   optionalstateIDs: 
   optionalStates: 
   PluggedStateExtendingComponents: []
-  Movement: {fileID: 48475779}
+  movement: {fileID: 48475779}
   unitstateint: 0
---- !u!114 &48475769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400012, guid: 929dde19bee56aa4a813a0cbc8b7a75e,
-    type: 2}
-  m_PrefabInternal: {fileID: 1365314693}
-  m_GameObject: {fileID: 48475766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f062a04179ed6949b2580aa47ffb423, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 11400000, guid: 9dbbe8c28a344b448aeab0965f22eb49, type: 2}
-  hasArsenal: 0
-  LaserEnergie: 0
 --- !u!114 &48475770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,9 +152,9 @@ MonoBehaviour:
   unitType: 1
   goodOrEvil: -1
   ALARM: 0
-  Options: {fileID: 48475768}
+  Options: {fileID: 48475769}
   unitAnimation: {fileID: 48475773}
-  weapon: {fileID: 48475769}
+  weapon: {fileID: 48475768}
   life: 800
   level: 1
   sightWidth: 50
@@ -325,9 +325,11 @@ MonoBehaviour:
   standardYPosition: -.100000001
   IsGroupLeader: 0
   speed: .200000003
+  Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
+  RudderIsNormalizised: 1
 --- !u!1 &52351375
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,6 +462,63 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1845616791}
   m_GameObject: {fileID: 55432195}
   m_Mesh: {fileID: 4300006, guid: ba6a41dc489914734857bb5924eb70ad, type: 3}
+--- !u!1 &100630192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100006, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 100630193}
+  - 95: {fileID: 100630195}
+  - 114: {fileID: 100630194}
+  m_Layer: 10
+  m_Name: JetWing2
+  m_TagString: Clickable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &100630193
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400006, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  m_GameObject: {fileID: 100630192}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -146.808167, y: 1.00999999, z: -163.722794}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1621619106}
+  m_Father: {fileID: 0}
+--- !u!114 &100630194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: fa6b2a3ac8b5fba4ba103fb376cf0177,
+    type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  m_GameObject: {fileID: 100630192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d132f7ae90ab041b510120f679080c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landingHeight: 20
+--- !u!95 &100630195
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 9500000, guid: fa6b2a3ac8b5fba4ba103fb376cf0177,
+    type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  m_GameObject: {fileID: 100630192}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 463fcceb0b24d9647bd1def54e8f8326, type: 3}
+  m_Controller: {fileID: 9100000, guid: 4bb6a5c361be7594e8e4a8d12581515e, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 0
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1001 &140459616
 Prefab:
   m_ObjectHideFlags: 0
@@ -1861,6 +1920,64 @@ MonoBehaviour:
   faceOtherTransform: 0
   forwardIs: 0
   direction: {x: 0, y: 0, z: 0}
+--- !u!1 &187652300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 187652301}
+  - 33: {fileID: 187652303}
+  - 23: {fileID: 187652302}
+  m_Layer: 10
+  m_Name: heck
+  m_TagString: Clickable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &187652301
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  m_GameObject: {fileID: 187652300}
+  m_LocalRotation: {x: 0, y: 0, z: -.147205308, w: -.989105999}
+  m_LocalPosition: {x: 1, y: .119999997, z: 0}
+  m_LocalScale: {x: .899999976, y: .300000012, z: -.0199999996}
+  m_Children: []
+  m_Father: {fileID: 1451715952}
+--- !u!23 &187652302
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300000, guid: fa6b2a3ac8b5fba4ba103fb376cf0177,
+    type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  m_GameObject: {fileID: 187652300}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: d0083be4f04d0394383521610e8918c7, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!33 &187652303
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300000, guid: fa6b2a3ac8b5fba4ba103fb376cf0177,
+    type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  m_GameObject: {fileID: 187652300}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &217415876
 GameObject:
   m_ObjectHideFlags: 0
@@ -1888,6 +2005,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1494796926}
+  - {fileID: 1876492533}
   - {fileID: 171652146}
   m_Father: {fileID: 0}
 --- !u!114 &217415878
@@ -1904,6 +2022,11 @@ MonoBehaviour:
   Explosions:
   - {fileID: 1494796925}
   - {fileID: 171652145}
+  audioClips:
+  - {fileID: 8300000, guid: 851c2eee0517b344d97509114e30afc2, type: 3}
+  - {fileID: 8300000, guid: d49dbddbbe00a474983e63fe52b9ee8f, type: 3}
+  - {fileID: 8300000, guid: a6628622fc5e0e44a97b8401a0f4c014, type: 3}
+  ExplosionAudioObject: {fileID: 1876492532}
 --- !u!1 &248669663
 GameObject:
   m_ObjectHideFlags: 0
@@ -2096,6 +2219,9 @@ GameObject:
   - 114: {fileID: 286388416}
   - 64: {fileID: 286388418}
   - 114: {fileID: 286388419}
+  - 114: {fileID: 286388425}
+  - 54: {fileID: 286388424}
+  - 114: {fileID: 286388420}
   m_Layer: 10
   m_Name: EnemyFabrik
   m_TagString: Clickable
@@ -2146,7 +2272,7 @@ MonoBehaviour:
   goodOrEvil: -1
   ALARM: 0
   Options: {fileID: 286388416}
-  unitAnimation: {fileID: 286388419}
+  unitAnimation: {fileID: 286388425}
   weapon: {fileID: 0}
   life: 3000
   level: 1
@@ -2183,7 +2309,32 @@ MonoBehaviour:
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
   GrowingTime: 0
-  startGrowing: 1
+  startGrowing: 0
+--- !u!114 &286388420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: ebfadaac5ef94db48b461418d4676096,
+    type: 2}
+  m_PrefabInternal: {fileID: 1682481731}
+  m_GameObject: {fileID: 286388415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552bee532e878e647bcd4ff0c948bbc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 1
+  NextUnitAnimation: {fileID: 0}
+  mainTargetTransform: {fileID: 0}
+  otherTargetTransform: {fileID: 0}
+  sineRooting: 0
+  triRooting: 0
+  speed: {x: 0, y: 0, z: 0}
+  amount: {x: 0, y: 0, z: 0}
+  crossModulate: 0
+  SinSetOrAdd: 0
+  TriSetOrAdd: 0
+  Sin: {x: 0, y: 0, z: 0}
+  Tri: {x: 0, y: 0, z: 0}
 --- !u!23 &286388421
 Renderer:
   m_ObjectHideFlags: 0
@@ -2226,6 +2377,39 @@ Transform:
   m_Children:
   - {fileID: 809247234}
   m_Father: {fileID: 1438203918}
+--- !u!54 &286388424
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: ebfadaac5ef94db48b461418d4676096,
+    type: 2}
+  m_PrefabInternal: {fileID: 1682481731}
+  m_GameObject: {fileID: 286388415}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &286388425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ebfadaac5ef94db48b461418d4676096,
+    type: 2}
+  m_PrefabInternal: {fileID: 1682481731}
+  m_GameObject: {fileID: 286388415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 366e472b6f7516b4c8483680cfab5649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 1
+  NextUnitAnimation: {fileID: 286388419}
+  targetYps: 0
+  GrowingTime: 1
+  startGrowing: 1
 --- !u!1 &299760237
 GameObject:
   m_ObjectHideFlags: 0
@@ -2293,9 +2477,9 @@ GameObject:
   - 114: {fileID: 311706548}
   - 114: {fileID: 311706549}
   - 114: {fileID: 311706547}
+  - 114: {fileID: 311706546}
   - 114: {fileID: 311706557}
   - 114: {fileID: 311706545}
-  - 114: {fileID: 311706546}
   m_Layer: 10
   m_Name: EnemyTank
   m_TagString: Clickable
@@ -2312,6 +2496,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 311706544}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f062a04179ed6949b2580aa47ffb423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabSlot: {fileID: 11400000, guid: 9dbbe8c28a344b448aeab0965f22eb49, type: 2}
+  hasArsenal: 0
+  LaserEnergie: 0
+--- !u!114 &311706546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400012, guid: 929dde19bee56aa4a813a0cbc8b7a75e,
+    type: 2}
+  m_PrefabInternal: {fileID: 140459616}
+  m_GameObject: {fileID: 311706544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08cf720e9c3cf5c47b0186c38933b9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -2323,23 +2522,8 @@ MonoBehaviour:
   optionalstateIDs: 
   optionalStates: 
   PluggedStateExtendingComponents: []
-  Movement: {fileID: 311706557}
+  movement: {fileID: 311706557}
   unitstateint: 0
---- !u!114 &311706546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400012, guid: 929dde19bee56aa4a813a0cbc8b7a75e,
-    type: 2}
-  m_PrefabInternal: {fileID: 140459616}
-  m_GameObject: {fileID: 311706544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f062a04179ed6949b2580aa47ffb423, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 11400000, guid: 9dbbe8c28a344b448aeab0965f22eb49, type: 2}
-  hasArsenal: 0
-  LaserEnergie: 0
 --- !u!114 &311706547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2355,9 +2539,9 @@ MonoBehaviour:
   unitType: 1
   goodOrEvil: -1
   ALARM: 0
-  Options: {fileID: 311706545}
+  Options: {fileID: 311706546}
   unitAnimation: {fileID: 311706550}
-  weapon: {fileID: 311706546}
+  weapon: {fileID: 311706545}
   life: 800
   level: 1
   sightWidth: 50
@@ -2528,9 +2712,11 @@ MonoBehaviour:
   standardYPosition: -.100000001
   IsGroupLeader: 0
   speed: .200000003
+  Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
+  RudderIsNormalizised: 1
 --- !u!1001 &321418745
 Prefab:
   m_ObjectHideFlags: 0
@@ -2730,7 +2916,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1300276927}
-  - {fileID: 1508785379}
   - {fileID: 176181307}
   - {fileID: 863830383}
   - {fileID: 709886538}
@@ -2801,7 +2986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 1647307441}
-  Pannel: {fileID: 1508785380}
+  Pannel: {fileID: 0}
   ScaleX: .0399999991
   ScaleY: 0
   view:
@@ -3244,9 +3429,11 @@ MonoBehaviour:
   standardYPosition: -.100000001
   IsGroupLeader: 0
   speed: .200000003
+  Throttle: 0
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
+  RudderIsNormalizised: 1
 --- !u!114 &379654364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3266,7 +3453,7 @@ MonoBehaviour:
   optionalstateIDs: 
   optionalStates: 
   PluggedStateExtendingComponents: []
-  Movement: {fileID: 379654363}
+  movement: {fileID: 379654363}
   unitstateint: 0
 --- !u!114 &379654365
 MonoBehaviour:
@@ -4051,9 +4238,9 @@ GameObject:
   - 114: {fileID: 716948114}
   - 114: {fileID: 716948113}
   - 114: {fileID: 716948112}
+  - 114: {fileID: 716948109}
   - 114: {fileID: 716948111}
   - 114: {fileID: 716948110}
-  - 114: {fileID: 716948109}
   m_Layer: 10
   m_Name: EnemyTank
   m_TagString: Clickable
@@ -4082,21 +4269,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 716948107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f062a04179ed6949b2580aa47ffb423, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 11400000, guid: 9dbbe8c28a344b448aeab0965f22eb49, type: 2}
-  hasArsenal: 0
-  LaserEnergie: 0
---- !u!114 &716948110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400006, guid: 929dde19bee56aa4a813a0cbc8b7a75e,
-    type: 2}
-  m_PrefabInternal: {fileID: 1772654456}
-  m_GameObject: {fileID: 716948107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08cf720e9c3cf5c47b0186c38933b9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -4108,8 +4280,23 @@ MonoBehaviour:
   optionalstateIDs: 
   optionalStates: 
   PluggedStateExtendingComponents: []
-  Movement: {fileID: 716948111}
+  movement: {fileID: 716948111}
   unitstateint: 0
+--- !u!114 &716948110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: 929dde19bee56aa4a813a0cbc8b7a75e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1772654456}
+  m_GameObject: {fileID: 716948107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f062a04179ed6949b2580aa47ffb423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabSlot: {fileID: 11400000, guid: 9dbbe8c28a344b448aeab0965f22eb49, type: 2}
+  hasArsenal: 0
+  LaserEnergie: 0
 --- !u!114 &716948111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4127,9 +4314,11 @@ MonoBehaviour:
   standardYPosition: -.100000001
   IsGroupLeader: 0
   speed: .200000003
+  Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
+  RudderIsNormalizised: 1
 --- !u!114 &716948112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4145,9 +4334,9 @@ MonoBehaviour:
   unitType: 1
   goodOrEvil: -1
   ALARM: 0
-  Options: {fileID: 716948110}
+  Options: {fileID: 716948109}
   unitAnimation: {fileID: 716948115}
-  weapon: {fileID: 716948109}
+  weapon: {fileID: 716948110}
   life: 800
   level: 1
   sightWidth: 50
@@ -4303,6 +4492,9 @@ GameObject:
   - 114: {fileID: 724636357}
   - 64: {fileID: 724636361}
   - 114: {fileID: 724636359}
+  - 114: {fileID: 724636366}
+  - 54: {fileID: 724636365}
+  - 114: {fileID: 724636360}
   m_Layer: 10
   m_Name: EnemyFabrik
   m_TagString: Clickable
@@ -4353,7 +4545,7 @@ MonoBehaviour:
   goodOrEvil: -1
   ALARM: 0
   Options: {fileID: 724636357}
-  unitAnimation: {fileID: 724636359}
+  unitAnimation: {fileID: 724636366}
   weapon: {fileID: 0}
   life: 3000
   level: 1
@@ -4376,7 +4568,32 @@ MonoBehaviour:
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
   GrowingTime: 0
-  startGrowing: 1
+  startGrowing: 0
+--- !u!114 &724636360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: ebfadaac5ef94db48b461418d4676096,
+    type: 2}
+  m_PrefabInternal: {fileID: 569041957}
+  m_GameObject: {fileID: 724636356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552bee532e878e647bcd4ff0c948bbc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 1
+  NextUnitAnimation: {fileID: 0}
+  mainTargetTransform: {fileID: 0}
+  otherTargetTransform: {fileID: 0}
+  sineRooting: 0
+  triRooting: 0
+  speed: {x: 0, y: 0, z: 0}
+  amount: {x: 0, y: 0, z: 0}
+  crossModulate: 0
+  SinSetOrAdd: 0
+  TriSetOrAdd: 0
+  Sin: {x: 0, y: 0, z: 0}
+  Tri: {x: 0, y: 0, z: 0}
 --- !u!64 &724636361
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4433,6 +4650,39 @@ Transform:
   m_Children:
   - {fileID: 1611543688}
   m_Father: {fileID: 1438203918}
+--- !u!54 &724636365
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: ebfadaac5ef94db48b461418d4676096,
+    type: 2}
+  m_PrefabInternal: {fileID: 569041957}
+  m_GameObject: {fileID: 724636356}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &724636366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ebfadaac5ef94db48b461418d4676096,
+    type: 2}
+  m_PrefabInternal: {fileID: 569041957}
+  m_GameObject: {fileID: 724636356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 366e472b6f7516b4c8483680cfab5649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 1
+  NextUnitAnimation: {fileID: 724636359}
+  targetYps: 0
+  GrowingTime: 1
+  startGrowing: 1
 --- !u!1001 &735576565
 Prefab:
   m_ObjectHideFlags: 0
@@ -4662,7 +4912,7 @@ MonoBehaviour:
   optionalstateIDs: 
   optionalStates: 
   PluggedStateExtendingComponents: []
-  Movement: {fileID: 798904037}
+  movement: {fileID: 798904037}
   unitstateint: 0
   BuildableBuildings:
   - {fileID: 100000, guid: ebfadaac5ef94db48b461418d4676096, type: 2}
@@ -4774,9 +5024,11 @@ MonoBehaviour:
   standardYPosition: .200000003
   IsGroupLeader: 0
   speed: .200000003
+  Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
+  RudderIsNormalizised: 1
 --- !u!1 &809247233
 GameObject:
   m_ObjectHideFlags: 0
@@ -5044,6 +5296,9 @@ GameObject:
   - 114: {fileID: 963226622}
   - 64: {fileID: 963226621}
   - 114: {fileID: 963226620}
+  - 114: {fileID: 963226629}
+  - 54: {fileID: 963226628}
+  - 114: {fileID: 963226627}
   m_Layer: 10
   m_Name: EnemyFabrik
   m_TagString: Clickable
@@ -5067,7 +5322,7 @@ MonoBehaviour:
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
   GrowingTime: 0
-  startGrowing: 1
+  startGrowing: 0
 --- !u!64 &963226621
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5125,7 +5380,7 @@ MonoBehaviour:
   goodOrEvil: -1
   ALARM: 0
   Options: {fileID: 963226622}
-  unitAnimation: {fileID: 963226620}
+  unitAnimation: {fileID: 963226629}
   weapon: {fileID: 0}
   life: 3000
   level: 1
@@ -5174,6 +5429,64 @@ Transform:
   m_Children:
   - {fileID: 1161284866}
   m_Father: {fileID: 1438203918}
+--- !u!114 &963226627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: ebfadaac5ef94db48b461418d4676096,
+    type: 2}
+  m_PrefabInternal: {fileID: 321418745}
+  m_GameObject: {fileID: 963226619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552bee532e878e647bcd4ff0c948bbc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 1
+  NextUnitAnimation: {fileID: 0}
+  mainTargetTransform: {fileID: 0}
+  otherTargetTransform: {fileID: 0}
+  sineRooting: 0
+  triRooting: 0
+  speed: {x: 0, y: 0, z: 0}
+  amount: {x: 0, y: 0, z: 0}
+  crossModulate: 0
+  SinSetOrAdd: 0
+  TriSetOrAdd: 0
+  Sin: {x: 0, y: 0, z: 0}
+  Tri: {x: 0, y: 0, z: 0}
+--- !u!54 &963226628
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: ebfadaac5ef94db48b461418d4676096,
+    type: 2}
+  m_PrefabInternal: {fileID: 321418745}
+  m_GameObject: {fileID: 963226619}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &963226629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ebfadaac5ef94db48b461418d4676096,
+    type: 2}
+  m_PrefabInternal: {fileID: 321418745}
+  m_GameObject: {fileID: 963226619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 366e472b6f7516b4c8483680cfab5649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 1
+  NextUnitAnimation: {fileID: 963226620}
+  targetYps: 0
+  GrowingTime: 1
+  startGrowing: 1
 --- !u!1 &968603418
 GameObject:
   m_ObjectHideFlags: 0
@@ -5236,7 +5549,7 @@ MonoBehaviour:
   optionalstateIDs: 
   optionalStates: 
   PluggedStateExtendingComponents: []
-  Movement: {fileID: 968603426}
+  movement: {fileID: 968603426}
   unitstateint: 0
   BuildableBuildings:
   - {fileID: 100000, guid: c95fb699a4a09e1469060823fb50789c, type: 2}
@@ -5349,9 +5662,11 @@ MonoBehaviour:
   standardYPosition: .200000003
   IsGroupLeader: 0
   speed: .200000003
+  Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
+  RudderIsNormalizised: 1
 --- !u!1 &1113168586
 GameObject:
   m_ObjectHideFlags: 0
@@ -5603,9 +5918,9 @@ GameObject:
   - 114: {fileID: 1235893393}
   - 114: {fileID: 1235893392}
   - 114: {fileID: 1235893391}
+  - 114: {fileID: 1235893390}
   - 114: {fileID: 1235893399}
   - 114: {fileID: 1235893389}
-  - 114: {fileID: 1235893390}
   m_Layer: 10
   m_Name: EnemyTank
   m_TagString: Clickable
@@ -5634,6 +5949,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1235893386}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f062a04179ed6949b2580aa47ffb423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabSlot: {fileID: 11400000, guid: 9dbbe8c28a344b448aeab0965f22eb49, type: 2}
+  hasArsenal: 0
+  LaserEnergie: 0
+--- !u!114 &1235893390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400012, guid: 929dde19bee56aa4a813a0cbc8b7a75e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1626143280}
+  m_GameObject: {fileID: 1235893386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08cf720e9c3cf5c47b0186c38933b9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -5645,23 +5975,8 @@ MonoBehaviour:
   optionalstateIDs: 
   optionalStates: 
   PluggedStateExtendingComponents: []
-  Movement: {fileID: 1235893399}
+  movement: {fileID: 1235893399}
   unitstateint: 0
---- !u!114 &1235893390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400012, guid: 929dde19bee56aa4a813a0cbc8b7a75e,
-    type: 2}
-  m_PrefabInternal: {fileID: 1626143280}
-  m_GameObject: {fileID: 1235893386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f062a04179ed6949b2580aa47ffb423, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 11400000, guid: 9dbbe8c28a344b448aeab0965f22eb49, type: 2}
-  hasArsenal: 0
-  LaserEnergie: 0
 --- !u!114 &1235893391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5677,9 +5992,9 @@ MonoBehaviour:
   unitType: 1
   goodOrEvil: -1
   ALARM: 0
-  Options: {fileID: 1235893389}
+  Options: {fileID: 1235893390}
   unitAnimation: {fileID: 1235893394}
-  weapon: {fileID: 1235893390}
+  weapon: {fileID: 1235893389}
   life: 800
   level: 1
   sightWidth: 50
@@ -5838,9 +6153,11 @@ MonoBehaviour:
   standardYPosition: -.100000001
   IsGroupLeader: 0
   speed: .200000003
+  Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
+  RudderIsNormalizised: 1
 --- !u!1 &1240749559
 GameObject:
   m_ObjectHideFlags: 0
@@ -6421,6 +6738,240 @@ Transform:
   - {fileID: 716948108}
   - {fileID: 798904036}
   m_Father: {fileID: 0}
+--- !u!1 &1451715951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100002, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1451715952}
+  - 33: {fileID: 1451715963}
+  - 23: {fileID: 1451715962}
+  - 64: {fileID: 1451715961}
+  - 54: {fileID: 1451715960}
+  - 114: {fileID: 1451715959}
+  - 114: {fileID: 1451715958}
+  - 114: {fileID: 1451715957}
+  - 114: {fileID: 1451715956}
+  - 114: {fileID: 1451715955}
+  - 135: {fileID: 1451715954}
+  - 114: {fileID: 1451715953}
+  m_Layer: 10
+  m_Name: JetAndHeck
+  m_TagString: Clickable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1451715952
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400002, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  m_GameObject: {fileID: 1451715951}
+  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106829}
+  m_LocalPosition: {x: 0, y: .5, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children:
+  - {fileID: 187652301}
+  m_Father: {fileID: 1621619106}
+--- !u!114 &1451715953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400012, guid: fa6b2a3ac8b5fba4ba103fb376cf0177,
+    type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  m_GameObject: {fileID: 1451715951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33470299e89f4a040b0fe39dceae6a3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UNIT: {fileID: 1451715957}
+  baseUnitState: 0
+  moveToPoint: {x: 0, y: 0, z: 0}
+  Target: {fileID: 0}
+  optionalStateStrings: []
+  optionalstateIDs: 
+  optionalStates: 
+  PluggedStateExtendingComponents: []
+  turnDistance: 50
+  movement: {fileID: 1451715958}
+  airUnitState: 0
+--- !u!135 &1451715954
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13500000, guid: fa6b2a3ac8b5fba4ba103fb376cf0177,
+    type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  m_GameObject: {fileID: 1451715951}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.40052581
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1451715955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: fa6b2a3ac8b5fba4ba103fb376cf0177,
+    type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  m_GameObject: {fileID: 1451715951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e425f0cf7c0cc4a94bf78b341d4315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabSlot: {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
+  hasArsenal: 0
+  NumberOfRockets: 1000
+  countdown: 0
+--- !u!114 &1451715956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: fa6b2a3ac8b5fba4ba103fb376cf0177,
+    type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  m_GameObject: {fileID: 1451715951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13e32734abd778843ae976acaf93ccaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UNIT: {fileID: 1451715957}
+  lookAheadDistance: 3
+  mySpace: {fileID: 1451715954}
+  Controlls: {fileID: 1451715958}
+  triggerd: 0
+  IsAForwarder: 0
+  Rudder: {x: 0, y: 0, z: 0}
+--- !u!114 &1451715957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: fa6b2a3ac8b5fba4ba103fb376cf0177,
+    type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  m_GameObject: {fileID: 1451715951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbf96ea742e5eb45b1c852aedfaa2ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitType: 202
+  goodOrEvil: 1
+  ALARM: 0
+  Options: {fileID: 1451715953}
+  unitAnimation: {fileID: 1451715959}
+  weapon: {fileID: 1451715955}
+  life: 800
+  level: 1
+  sightWidth: 150
+  resourceFactor: 0
+  interactingUnits: 
+--- !u!114 &1451715958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: fa6b2a3ac8b5fba4ba103fb376cf0177,
+    type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  m_GameObject: {fileID: 1451715951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b777ad1154e3f68468d42820f1deb0e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UNIT: {fileID: 1451715957}
+  movingUnitState: 0
+  standardYPosition: 0
+  IsGroupLeader: 0
+  speed: 1
+  Throttle: 1
+  Target: {fileID: 0}
+  WayPoints: []
+  Rudder: {x: 0, y: 0, z: 0}
+  RudderIsNormalizised: 1
+--- !u!114 &1451715959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400010, guid: fa6b2a3ac8b5fba4ba103fb376cf0177,
+    type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  m_GameObject: {fileID: 1451715951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd8ff9797310d64b911dca02750f618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 1
+  NextUnitAnimation: {fileID: 0}
+  TransformToFace: {fileID: 0}
+  faceMovingDirection: 1
+  faceCamera: 0
+  faceOtherTransform: 0
+  forwardIs: 1
+  direction: {x: 0, y: 0, z: 0}
+--- !u!54 &1451715960
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: fa6b2a3ac8b5fba4ba103fb376cf0177,
+    type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  m_GameObject: {fileID: 1451715951}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &1451715961
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400000, guid: fa6b2a3ac8b5fba4ba103fb376cf0177,
+    type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  m_GameObject: {fileID: 1451715951}
+  m_Material: {fileID: 13400000, guid: 67db31eead11e8d6d00011d98d76c639, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 463fcceb0b24d9647bd1def54e8f8326, type: 3}
+--- !u!23 &1451715962
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300002, guid: fa6b2a3ac8b5fba4ba103fb376cf0177,
+    type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  m_GameObject: {fileID: 1451715951}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: d0083be4f04d0394383521610e8918c7, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!33 &1451715963
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300002, guid: fa6b2a3ac8b5fba4ba103fb376cf0177,
+    type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  m_GameObject: {fileID: 1451715951}
+  m_Mesh: {fileID: 4300000, guid: 463fcceb0b24d9647bd1def54e8f8326, type: 3}
 --- !u!1 &1460555423
 GameObject:
   m_ObjectHideFlags: 0
@@ -6437,9 +6988,9 @@ GameObject:
   - 114: {fileID: 1460555430}
   - 114: {fileID: 1460555429}
   - 114: {fileID: 1460555428}
+  - 114: {fileID: 1460555427}
   - 114: {fileID: 1460555436}
   - 114: {fileID: 1460555426}
-  - 114: {fileID: 1460555427}
   m_Layer: 10
   m_Name: EnemyTank
   m_TagString: Clickable
@@ -6468,6 +7019,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1460555423}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f062a04179ed6949b2580aa47ffb423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabSlot: {fileID: 11400000, guid: 9dbbe8c28a344b448aeab0965f22eb49, type: 2}
+  hasArsenal: 0
+  LaserEnergie: 0
+--- !u!114 &1460555427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400012, guid: 929dde19bee56aa4a813a0cbc8b7a75e,
+    type: 2}
+  m_PrefabInternal: {fileID: 891083190}
+  m_GameObject: {fileID: 1460555423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08cf720e9c3cf5c47b0186c38933b9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -6479,23 +7045,8 @@ MonoBehaviour:
   optionalstateIDs: 
   optionalStates: 
   PluggedStateExtendingComponents: []
-  Movement: {fileID: 1460555436}
+  movement: {fileID: 1460555436}
   unitstateint: 0
---- !u!114 &1460555427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400012, guid: 929dde19bee56aa4a813a0cbc8b7a75e,
-    type: 2}
-  m_PrefabInternal: {fileID: 891083190}
-  m_GameObject: {fileID: 1460555423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f062a04179ed6949b2580aa47ffb423, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 11400000, guid: 9dbbe8c28a344b448aeab0965f22eb49, type: 2}
-  hasArsenal: 0
-  LaserEnergie: 0
 --- !u!114 &1460555428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6511,9 +7062,9 @@ MonoBehaviour:
   unitType: 1
   goodOrEvil: -1
   ALARM: 0
-  Options: {fileID: 1460555426}
+  Options: {fileID: 1460555427}
   unitAnimation: {fileID: 1460555431}
-  weapon: {fileID: 1460555427}
+  weapon: {fileID: 1460555426}
   life: 800
   level: 1
   sightWidth: 50
@@ -6672,9 +7223,11 @@ MonoBehaviour:
   standardYPosition: -.100000001
   IsGroupLeader: 0
   speed: .200000003
+  Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
+  RudderIsNormalizised: 1
 --- !u!1001 &1486141639
 Prefab:
   m_ObjectHideFlags: 0
@@ -7817,6 +8370,62 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
+--- !u!1001 &1499501225
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400006, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -146.808167
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.00999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -163.722794
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+      propertyPath: landingHeight
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+  m_RootGameObject: {fileID: 100630192}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &1499725475
 GameObject:
   m_ObjectHideFlags: 0
@@ -7861,52 +8470,6 @@ MonoBehaviour:
   lightSwitch: 1
   light: {fileID: 260038185}
   Control: {fileID: 0}
---- !u!1 &1508785378
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1508785379}
-  - 131: {fileID: 1508785380}
-  m_Layer: 0
-  m_Name: DeckelBlech
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1508785379
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1508785378}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 1}
-  m_Children: []
-  m_Father: {fileID: 358951602}
---- !u!131 &1508785380
-GUITexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1508785378}
-  m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: f8131eb35ed9cf54497b8121e928dd48, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
-  m_PixelInset:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  m_LeftBorder: 0
-  m_RightBorder: 0
-  m_TopBorder: 0
-  m_BottomBorder: 0
 --- !u!1 &1515505785
 GameObject:
   m_ObjectHideFlags: 0
@@ -7968,7 +8531,7 @@ MonoBehaviour:
   optionalstateIDs: 
   optionalStates: 
   PluggedStateExtendingComponents: []
-  Movement: {fileID: 1515505797}
+  movement: {fileID: 1515505797}
   unitstateint: 0
 --- !u!114 &1515505788
 MonoBehaviour:
@@ -8161,9 +8724,11 @@ MonoBehaviour:
   standardYPosition: 0
   IsGroupLeader: 0
   speed: .200000003
+  Throttle: 0
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
+  RudderIsNormalizised: 1
 --- !u!114 &1515505798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8182,7 +8747,6 @@ MonoBehaviour:
   Controlls: {fileID: 1515505797}
   triggerd: 0
   IsAForwarder: 0
-  Throttle: 0
   Rudder: {x: 0, y: 0, z: 0}
 --- !u!135 &1515505799
 SphereCollider:
@@ -8288,6 +8852,33 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 5b400f9f6a7d79640adf1b3514bd4371, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &1621619105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100004, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1621619106}
+  m_Layer: 10
+  m_Name: pCubeShape1_AST
+  m_TagString: Clickable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1621619106
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400004, guid: fa6b2a3ac8b5fba4ba103fb376cf0177, type: 2}
+  m_PrefabInternal: {fileID: 1499501225}
+  m_GameObject: {fileID: 1621619105}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1451715952}
+  m_Father: {fileID: 100630193}
 --- !u!1001 &1626143280
 Prefab:
   m_ObjectHideFlags: 0
@@ -8967,9 +9558,9 @@ GameObject:
   - 114: {fileID: 1874687701}
   - 114: {fileID: 1874687700}
   - 114: {fileID: 1874687699}
+  - 114: {fileID: 1874687698}
   - 114: {fileID: 1874687707}
   - 114: {fileID: 1874687697}
-  - 114: {fileID: 1874687698}
   m_Layer: 10
   m_Name: EnemyTank
   m_TagString: Clickable
@@ -8998,6 +9589,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1874687694}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f062a04179ed6949b2580aa47ffb423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabSlot: {fileID: 11400000, guid: 9dbbe8c28a344b448aeab0965f22eb49, type: 2}
+  hasArsenal: 0
+  LaserEnergie: 0
+--- !u!114 &1874687698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400012, guid: 929dde19bee56aa4a813a0cbc8b7a75e,
+    type: 2}
+  m_PrefabInternal: {fileID: 366359039}
+  m_GameObject: {fileID: 1874687694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08cf720e9c3cf5c47b0186c38933b9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -9009,23 +9615,8 @@ MonoBehaviour:
   optionalstateIDs: 
   optionalStates: 
   PluggedStateExtendingComponents: []
-  Movement: {fileID: 1874687707}
+  movement: {fileID: 1874687707}
   unitstateint: 0
---- !u!114 &1874687698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400012, guid: 929dde19bee56aa4a813a0cbc8b7a75e,
-    type: 2}
-  m_PrefabInternal: {fileID: 366359039}
-  m_GameObject: {fileID: 1874687694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f062a04179ed6949b2580aa47ffb423, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 11400000, guid: 9dbbe8c28a344b448aeab0965f22eb49, type: 2}
-  hasArsenal: 0
-  LaserEnergie: 0
 --- !u!114 &1874687699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9041,9 +9632,9 @@ MonoBehaviour:
   unitType: 1
   goodOrEvil: -1
   ALARM: 0
-  Options: {fileID: 1874687697}
+  Options: {fileID: 1874687698}
   unitAnimation: {fileID: 1874687702}
-  weapon: {fileID: 1874687698}
+  weapon: {fileID: 1874687697}
   life: 800
   level: 1
   sightWidth: 50
@@ -9202,9 +9793,96 @@ MonoBehaviour:
   standardYPosition: -.100000001
   IsGroupLeader: 0
   speed: .200000003
+  Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
+  RudderIsNormalizised: 1
+--- !u!1 &1876492532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1876492533}
+  - 82: {fileID: 1876492534}
+  m_Layer: 0
+  m_Name: ExplosionAudioSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1876492533
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1876492532}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 217415877}
+--- !u!82 &1876492534
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1876492532}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1927254783
 GameObject:
   m_ObjectHideFlags: 0
@@ -9225,6 +9903,7 @@ GameObject:
   - 114: {fileID: 1927254795}
   - 135: {fileID: 1927254797}
   - 114: {fileID: 1927254796}
+  - 114: {fileID: 1927254798}
   - 114: {fileID: 1927254786}
   m_Layer: 10
   m_Name: Tank
@@ -9269,7 +9948,7 @@ MonoBehaviour:
   optionalstateIDs: 
   optionalStates: 
   PluggedStateExtendingComponents: []
-  Movement: {fileID: 1927254795}
+  movement: {fileID: 1927254795}
   unitstateint: 0
 --- !u!114 &1927254786
 MonoBehaviour:
@@ -9458,10 +10137,11 @@ MonoBehaviour:
   standardYPosition: 0
   IsGroupLeader: 0
   speed: .200000003
+  Throttle: 1
   Target: {fileID: 0}
-  WayPoints:
-  - {x: 0, y: 0, z: 0}
+  WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
+  RudderIsNormalizised: 1
 --- !u!114 &1927254796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9480,7 +10160,6 @@ MonoBehaviour:
   Controlls: {fileID: 1927254795}
   triggerd: 0
   IsAForwarder: 0
-  Throttle: 0
   Rudder: {x: 0, y: 0, z: 0}
 --- !u!135 &1927254797
 SphereCollider:
@@ -9495,6 +10174,21 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 4.77995491
   m_Center: {x: 0, y: 1.36644804, z: 1.41187}
+--- !u!114 &1927254798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400016, guid: 567673cbfea58614aa8ec0843ea49d51,
+    type: 2}
+  m_PrefabInternal: {fileID: 478543407}
+  m_GameObject: {fileID: 1927254783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d18b47915ad214eab5a0d48ada5122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Arsenal:
+  - {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
+  - {fileID: 11400008, guid: e4d0eb844cac7ab45961c1fa3685b6e8, type: 2}
 --- !u!1 &1941016738
 GameObject:
   m_ObjectHideFlags: 0
@@ -10590,6 +11284,7 @@ GameObject:
   - 114: {fileID: 2045922297}
   - 135: {fileID: 2045922299}
   - 114: {fileID: 2045922298}
+  - 114: {fileID: 2045922300}
   - 114: {fileID: 2045922288}
   m_Layer: 10
   m_Name: Tank
@@ -10630,7 +11325,7 @@ MonoBehaviour:
   optionalstateIDs: 
   optionalStates: 
   PluggedStateExtendingComponents: []
-  Movement: {fileID: 2045922297}
+  movement: {fileID: 2045922297}
   unitstateint: 0
 --- !u!114 &2045922288
 MonoBehaviour:
@@ -10823,10 +11518,11 @@ MonoBehaviour:
   standardYPosition: 0
   IsGroupLeader: 0
   speed: .200000003
+  Throttle: 1
   Target: {fileID: 0}
-  WayPoints:
-  - {x: 0, y: 0, z: 0}
+  WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
+  RudderIsNormalizised: 1
 --- !u!114 &2045922298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10845,7 +11541,6 @@ MonoBehaviour:
   Controlls: {fileID: 2045922297}
   triggerd: 0
   IsAForwarder: 0
-  Throttle: 0
   Rudder: {x: 0, y: 0, z: 0}
 --- !u!135 &2045922299
 SphereCollider:
@@ -10860,6 +11555,21 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 4.77995491
   m_Center: {x: 0, y: 1.36644804, z: 1.41187}
+--- !u!114 &2045922300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400016, guid: 567673cbfea58614aa8ec0843ea49d51,
+    type: 2}
+  m_PrefabInternal: {fileID: 2137148468}
+  m_GameObject: {fileID: 2045922285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d18b47915ad214eab5a0d48ada5122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Arsenal:
+  - {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
+  - {fileID: 11400008, guid: e4d0eb844cac7ab45961c1fa3685b6e8, type: 2}
 --- !u!1 &2053987663
 GameObject:
   m_ObjectHideFlags: 0
