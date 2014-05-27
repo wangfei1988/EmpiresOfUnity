@@ -23,7 +23,7 @@ public class Thruster : MonoBehaviour {
         Throttle = UNIT.GetComponent<Movability>().Throttle;
         Vector3 position = this.transform.position;
         position.y = (15 * Throttle)+landingHeight;
-        Debug.Log(position.ToString());
+        //Debug.Log(position.ToString());
         this.transform.position = position;
         this.transform.position += UNIT.GetComponent<Movability>().Speed * this.transform.forward;
     }
