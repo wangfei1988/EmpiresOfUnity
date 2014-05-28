@@ -71,5 +71,11 @@ public class MiniMapControll : MonoBehaviour
                IsActive = false;
        }
 
+       // Input -> Key M to (de)activate Map
+       if (Input.GetKeyDown(KeyCode.M))
+       {
+            SwitchActive();
+       }
+
    }
 }
