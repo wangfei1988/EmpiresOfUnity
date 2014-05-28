@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 abstract public class UnitWeapon : MonoBehaviour
 {
-
 
     public enum WEAPON : byte
     {
@@ -34,7 +32,7 @@ abstract public class UnitWeapon : MonoBehaviour
             else return null;
         }
     }
-    public abstract bool IsOutOfAmmu
+    public abstract bool IsOutOfAmmo
     { get; }
 
     //------------------------------------------------Fires the weapon...
@@ -45,6 +43,6 @@ abstract public class UnitWeapon : MonoBehaviour
 
 
     //------------------------------The Weapon's Updatefunction...
-    abstract public void Reloade();
+    abstract public void Reload();
 
 }
