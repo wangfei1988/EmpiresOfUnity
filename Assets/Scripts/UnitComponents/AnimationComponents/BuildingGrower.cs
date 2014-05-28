@@ -71,29 +71,30 @@ public class BuildingGrower : UnitAnimation
         else if (growingFactor == 1)
         {
             growingFactor = 2;
-            if (!gameObject.GetComponent<Rigidbody>())
-            {
-                gameObject.AddComponent<Rigidbody>().isKinematic = true;
-                gameObject.AddComponent<Shaker>().IsActive = false;
-            }
-            else
-            {
-                gameObject.GetComponent<Rigidbody>().useGravity = false;
-                gameObject.GetComponent<Shaker>().amount.z = 0.0001f;
-                gameObject.GetComponent<Shaker>().speed.z = 0.0001f;
-                gameObject.GetComponent<Shaker>().sineRooting = Shaker.ROOTING.mainPosition;
-                gameObject.GetComponent<Shaker>().mainTargetTransform = this.gameObject.transform;
-                gameObject.GetComponent<Shaker>().HookOnUpdata(this.gameObject.GetComponent<UnitScript>());
-                gameObject.GetComponent<Shaker>().IsActive = true;
-                Component.Destroy(gameObject.GetComponent<BuildingGrower>());
-            }
+            if(!gameObject.GetComponent<Rigidbody>())
+                gameObject.AddComponent<Rigidbody>();
+            if(!gameObject.GetComponent<Shaker>())
+                gameObject.AddComponent<Shaker>();
+
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            gameObject.GetComponent<Rigidbody>().useGravity = false;
+            gameObject.GetComponent<Shaker>().IsActive = false;
+            gameObject.GetComponent<Shaker>().amount.z = 0.0001f;
+            gameObject.GetComponent<Shaker>().speed.z = 0.0001f;
+            gameObject.GetComponent<Shaker>().sineRooting = Shaker.ROOTING.mainPosition;
+            gameObject.GetComponent<Shaker>().mainTargetTransform = this.gameObject.transform;
+            gameObject.GetComponent<Shaker>().HookOnUpdata(this.gameObject.GetComponent<UnitScript>());
+            gameObject.GetComponent<Shaker>().IsActive = true;
+            
+            
 
             // Build Finished
             if (this.gameObject.GetComponent<AbstractBuilding>())
             {
                 this.gameObject.GetComponent<AbstractBuilding>().BuildFinished();
             }
-            Component.Destroy(this);
+
+            Component.Destroy(gameObject.GetComponent<BuildingGrower>());
         }
 
     }

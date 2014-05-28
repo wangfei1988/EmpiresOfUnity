@@ -324,7 +324,7 @@ public class Movability : UnitExtension
 
     private bool Move()
     {
-        checkKinematic();
+        
         if (this.gameObject.GetComponent<Pilot>()) gameObject.GetComponent<Pilot>().DoUpdate();
 
         if (movingUnitState == OPTIONS.Guard)
@@ -367,6 +367,8 @@ public class Movability : UnitExtension
 
     public override void DoUpdate()
     {
-         if (IsMoving) IsMoving = Move();    
+         checkKinematic();
+         if (IsMoving) IsMoving = Move();
+         KeepStandardYpsPosition();
     }
 }
