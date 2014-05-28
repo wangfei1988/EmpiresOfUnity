@@ -53,7 +53,8 @@ public class UnitScript : MonoBehaviour
 
     // Friend or Enemy
     //###############################################################################
-    public FoE.GOODorEVIL goodOrEvil;
+    [SerializeField]
+    private FoE.GOODorEVIL goodOrEvil;
     public FoE GoodOrEvil;
 
     public bool IsEnemy(FoE other)
@@ -66,17 +67,29 @@ public class UnitScript : MonoBehaviour
             return IsEnemy(other.GetComponent<UnitScript>().GoodOrEvil);
         else return false;
     }
+    public bool IsEnemy(UnitScript other)
+    {
+        return IsEnemy(other.GoodOrEvil);
+    }
+    
     public bool IsMySelf(GameObject target)
     {
         return (target.gameObject.GetInstanceID() == this.gameObject.GetInstanceID());
     }
-
+    
     public bool IsAllied(GameObject target)
     {
         if (!IsMySelf(target))
             return !IsEnemy(target.GetComponent<UnitScript>().GoodOrEvil);
         return false;
     }
+    public bool IsAllied(UnitScript target)
+    {
+        if (!IsMySelf(target.gameObject))
+            return !IsEnemy(target);
+        return false;
+    }
+
 
     // Alarm-System:
     //###############################################################################
@@ -155,7 +168,7 @@ public class UnitScript : MonoBehaviour
                 {
                     Options = gameObject.GetComponent<MovingUnitOptions>();
                     weapon = gameObject.GetComponent<RocketLauncher>();
-                    this.gameObject.AddComponent<WingsAndJets>().PflongeOnUnit();
+                 //   this.gameObject.AddComponent<WingsAndJets>().PflongeOnUnit();
                     break;
                 }
             case UNITTYPE.RocketMan:
@@ -191,7 +204,7 @@ public class UnitScript : MonoBehaviour
             case UNITTYPE.MainBuilding:
                 {
                     Options = gameObject.GetComponent<ProductionBuildingOptions>();
-                    weapon = gameObject.GetComponent<RocketLauncher>();
+                    weapon = gameObject.GetComponent<UnitWeapon>();
                     break;
                 }
         }
@@ -226,6 +239,7 @@ public class UnitScript : MonoBehaviour
     public UnitOptions Options; //-Contains everythin whats Optional... different on every Unit-Type
     public UnitAnimation unitAnimation; //- first UnitAnimation of the UnitAnimations-Chain
     public UnitWeapon weapon; //- if the Unit is a Type of Unit thats unable to fight(Constuction Units i.e.) a "NoWeapon"-component will addet automaticly... 
+    
 
     // LIFE
     // Data Fields for properties that almost every Unit uses:
@@ -381,10 +395,13 @@ public class UnitScript : MonoBehaviour
     
     private void Die()
     {
-        //todo: code for dieing (explosion etc.)
+
         UpdateManager.UNITUPDATE -= UpdateManager_UNITUPDATE;
         HideLifebar();
+
+        // Explosion does the ExplosionsManager...
         StaticExploader.Exploade(1, this.transform.position);
+
         //Destruction now does the UnitDestructionsManagement...
         UnitDestructionManagement.SignInForDestruction(this.gameObject);
 	}

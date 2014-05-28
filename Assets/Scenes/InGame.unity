@@ -134,6 +134,7 @@ MonoBehaviour:
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
+  ColliderContainingChildObjects: []
   PluggedStateExtendingComponents: []
   movement: {fileID: 48475779}
   unitstateint: 0
@@ -323,13 +324,14 @@ MonoBehaviour:
   UNIT: {fileID: 48475770}
   movingUnitState: 100
   standardYPosition: -.100000001
+  AlwaysKeepStandardYpsPosition: 1
   IsGroupLeader: 0
   speed: .200000003
   Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
-  RudderIsNormalizised: 1
+  NormalizedRudder: 1
 --- !u!1 &52351375
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +464,86 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1845616791}
   m_GameObject: {fileID: 55432195}
   m_Mesh: {fileID: 4300006, guid: ba6a41dc489914734857bb5924eb70ad, type: 3}
+--- !u!1001 &66677229
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -135.204193
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -.149979338
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -174.137711
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+  m_RootGameObject: {fileID: 1927254783}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
+--- !u!1001 &112225315
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -128.84108
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -.149979338
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -174.137711
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+  m_RootGameObject: {fileID: 2045922285}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1001 &140459616
 Prefab:
   m_ObjectHideFlags: 0
@@ -2133,6 +2215,7 @@ MonoBehaviour:
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
+  ColliderContainingChildObjects: []
   PluggedStateExtendingComponents: []
   unitState: 101
   CurrentFabrikatNumber: 0
@@ -2406,6 +2489,7 @@ MonoBehaviour:
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
+  ColliderContainingChildObjects: []
   PluggedStateExtendingComponents: []
   movement: {fileID: 311706557}
   unitstateint: 0
@@ -2595,13 +2679,14 @@ MonoBehaviour:
   UNIT: {fileID: 311706547}
   movingUnitState: 100
   standardYPosition: -.100000001
+  AlwaysKeepStandardYpsPosition: 1
   IsGroupLeader: 0
   speed: .200000003
   Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
-  RudderIsNormalizised: 1
+  NormalizedRudder: 1
 --- !u!1001 &321418745
 Prefab:
   m_ObjectHideFlags: 0
@@ -2817,7 +2902,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895e00f8a83ed1341a86a71f04cee50d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectedGroup: {fileID: 0}
   GroupCount: 0
   RightclickGUI: {fileID: 358951604}
   SellectionGUITexture: {fileID: 358951601}
@@ -3312,13 +3396,14 @@ MonoBehaviour:
   UNIT: {fileID: 379654365}
   movingUnitState: 100
   standardYPosition: -.100000001
+  AlwaysKeepStandardYpsPosition: 1
   IsGroupLeader: 0
   speed: .200000003
   Throttle: 0
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
-  RudderIsNormalizised: 1
+  NormalizedRudder: 1
 --- !u!114 &379654364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3337,6 +3422,7 @@ MonoBehaviour:
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
+  ColliderContainingChildObjects: []
   PluggedStateExtendingComponents: []
   movement: {fileID: 379654363}
   unitstateint: 0
@@ -3499,55 +3585,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 379654360}
   m_Mesh: {fileID: 4300000, guid: 33856cdf0a1d9fd47a3c42fb9ca67dd9, type: 3}
---- !u!1001 &478543407
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -135.204193
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -.149979338
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -174.137711
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-      propertyPath: m_Name
-      value: Tank
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400010, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-      propertyPath: weapon
-      value: 
-      objectReference: {fileID: 1927254786}
-    m_RemovedComponents:
-    - {fileID: 11400008, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-  m_ParentPrefab: {fileID: 100100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-  m_RootGameObject: {fileID: 1927254783}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
 --- !u!1 &494533239
 GameObject:
   m_ObjectHideFlags: 0
@@ -3934,7 +3971,7 @@ MeshFilter:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100002, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-  m_PrefabInternal: {fileID: 2137148468}
+  m_PrefabInternal: {fileID: 112225315}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 708993270}
@@ -3951,7 +3988,7 @@ SpriteRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 21200000, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 2137148468}
+  m_PrefabInternal: {fileID: 112225315}
   m_GameObject: {fileID: 708993268}
   m_Enabled: 1
   m_CastShadows: 0
@@ -3974,7 +4011,7 @@ SpriteRenderer:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400002, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-  m_PrefabInternal: {fileID: 2137148468}
+  m_PrefabInternal: {fileID: 112225315}
   m_GameObject: {fileID: 708993268}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
   m_LocalPosition: {x: 0, y: .400000006, z: 0}
@@ -4164,6 +4201,7 @@ MonoBehaviour:
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
+  ColliderContainingChildObjects: []
   PluggedStateExtendingComponents: []
   movement: {fileID: 716948111}
   unitstateint: 0
@@ -4197,13 +4235,14 @@ MonoBehaviour:
   UNIT: {fileID: 716948112}
   movingUnitState: 100
   standardYPosition: -.100000001
+  AlwaysKeepStandardYpsPosition: 1
   IsGroupLeader: 0
   speed: .200000003
   Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
-  RudderIsNormalizised: 1
+  NormalizedRudder: 1
 --- !u!114 &716948112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4406,6 +4445,7 @@ MonoBehaviour:
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
+  ColliderContainingChildObjects: []
   PluggedStateExtendingComponents: []
   unitState: 101
   CurrentFabrikatNumber: 0
@@ -4796,6 +4836,7 @@ MonoBehaviour:
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
+  ColliderContainingChildObjects: []
   PluggedStateExtendingComponents: []
   movement: {fileID: 798904037}
   unitstateint: 0
@@ -4907,13 +4948,14 @@ MonoBehaviour:
   UNIT: {fileID: 0}
   movingUnitState: 100
   standardYPosition: .200000003
+  AlwaysKeepStandardYpsPosition: 1
   IsGroupLeader: 0
   speed: .200000003
   Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
-  RudderIsNormalizised: 1
+  NormalizedRudder: 1
 --- !u!1 &809247233
 GameObject:
   m_ObjectHideFlags: 0
@@ -5241,6 +5283,7 @@ MonoBehaviour:
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
+  ColliderContainingChildObjects: []
   PluggedStateExtendingComponents: []
   unitState: 101
   CurrentFabrikatNumber: 0
@@ -5433,6 +5476,7 @@ MonoBehaviour:
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
+  ColliderContainingChildObjects: []
   PluggedStateExtendingComponents: []
   movement: {fileID: 968603426}
   unitstateint: 0
@@ -5545,13 +5589,14 @@ MonoBehaviour:
   UNIT: {fileID: 968603421}
   movingUnitState: 100
   standardYPosition: .200000003
+  AlwaysKeepStandardYpsPosition: 1
   IsGroupLeader: 0
   speed: .200000003
   Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
-  RudderIsNormalizised: 1
+  NormalizedRudder: 1
 --- !u!1 &1113168586
 GameObject:
   m_ObjectHideFlags: 0
@@ -5860,6 +5905,7 @@ MonoBehaviour:
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
+  ColliderContainingChildObjects: []
   PluggedStateExtendingComponents: []
   movement: {fileID: 1235893399}
   unitstateint: 0
@@ -6037,13 +6083,14 @@ MonoBehaviour:
   UNIT: {fileID: 1235893391}
   movingUnitState: 100
   standardYPosition: -.100000001
+  AlwaysKeepStandardYpsPosition: 1
   IsGroupLeader: 0
   speed: .200000003
   Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
-  RudderIsNormalizised: 1
+  NormalizedRudder: 1
 --- !u!1 &1240749559
 GameObject:
   m_ObjectHideFlags: 0
@@ -6696,6 +6743,7 @@ MonoBehaviour:
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
+  ColliderContainingChildObjects: []
   PluggedStateExtendingComponents: []
   movement: {fileID: 1460555436}
   unitstateint: 0
@@ -6873,13 +6921,14 @@ MonoBehaviour:
   UNIT: {fileID: 1460555428}
   movingUnitState: 100
   standardYPosition: -.100000001
+  AlwaysKeepStandardYpsPosition: 1
   IsGroupLeader: 0
   speed: .200000003
   Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
-  RudderIsNormalizised: 1
+  NormalizedRudder: 1
 --- !u!1001 &1486141639
 Prefab:
   m_ObjectHideFlags: 0
@@ -8087,7 +8136,6 @@ GameObject:
   - 135: {fileID: 1515505799}
   - 114: {fileID: 1515505798}
   - 114: {fileID: 1515505788}
-  - 114: {fileID: 1515505800}
   m_Layer: 10
   m_Name: Tank
   m_TagString: Clickable
@@ -8126,6 +8174,7 @@ MonoBehaviour:
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
+  ColliderContainingChildObjects: []
   PluggedStateExtendingComponents: []
   movement: {fileID: 1515505797}
   unitstateint: 0
@@ -8141,7 +8190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabSlot: {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
-  hasArsenal: 1
+  hasArsenal: 0
   NumberOfRockets: 1000
   countdown: 0
 --- !u!114 &1515505789
@@ -8317,14 +8366,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UNIT: {fileID: 1515505789}
   movingUnitState: 0
-  standardYPosition: 0
+  standardYPosition: -1.39999998
+  AlwaysKeepStandardYpsPosition: 1
   IsGroupLeader: 0
   speed: .200000003
   Throttle: 0
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
-  RudderIsNormalizised: 1
+  NormalizedRudder: 1
 --- !u!114 &1515505798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8357,20 +8407,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 4.77995491
   m_Center: {x: 0, y: 1.36644804, z: 1.41187}
---- !u!114 &1515505800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1515505785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92d18b47915ad214eab5a0d48ada5122, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Arsenal:
-  - {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
-  - {fileID: 11400008, guid: e4d0eb844cac7ab45961c1fa3685b6e8, type: 2}
 --- !u!1 &1590755777
 GameObject:
   m_ObjectHideFlags: 0
@@ -9195,6 +9231,7 @@ MonoBehaviour:
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
+  ColliderContainingChildObjects: []
   PluggedStateExtendingComponents: []
   movement: {fileID: 1874687707}
   unitstateint: 0
@@ -9372,13 +9409,14 @@ MonoBehaviour:
   UNIT: {fileID: 1874687699}
   movingUnitState: 100
   standardYPosition: -.100000001
+  AlwaysKeepStandardYpsPosition: 1
   IsGroupLeader: 0
   speed: .200000003
   Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
-  RudderIsNormalizised: 1
+  NormalizedRudder: 1
 --- !u!1 &1876492532
 GameObject:
   m_ObjectHideFlags: 0
@@ -9468,7 +9506,7 @@ AudioSource:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-  m_PrefabInternal: {fileID: 478543407}
+  m_PrefabInternal: {fileID: 66677229}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1927254791}
@@ -9484,8 +9522,7 @@ GameObject:
   - 114: {fileID: 1927254795}
   - 135: {fileID: 1927254797}
   - 114: {fileID: 1927254796}
-  - 114: {fileID: 1927254798}
-  - 114: {fileID: 1927254786}
+  - 114: {fileID: 1927254799}
   m_Layer: 10
   m_Name: Tank
   m_TagString: Clickable
@@ -9498,7 +9535,7 @@ Rigidbody:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 5400000, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 478543407}
+  m_PrefabInternal: {fileID: 66677229}
   m_GameObject: {fileID: 1927254783}
   serializedVersion: 2
   m_Mass: 1
@@ -9514,7 +9551,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400006, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 478543407}
+  m_PrefabInternal: {fileID: 66677229}
   m_GameObject: {fileID: 1927254783}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -9522,36 +9559,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 1927254787}
-  baseUnitState: 0
+  baseUnitState: 100
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
+  ColliderContainingChildObjects: []
   PluggedStateExtendingComponents: []
   movement: {fileID: 1927254795}
   unitstateint: 0
---- !u!114 &1927254786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1927254783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e425f0cf7c0cc4a94bf78b341d4315, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
-  hasArsenal: 0
-  NumberOfRockets: 1000
-  countdown: 0
 --- !u!114 &1927254787
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400010, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 478543407}
+  m_PrefabInternal: {fileID: 66677229}
   m_GameObject: {fileID: 1927254783}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -9563,7 +9586,7 @@ MonoBehaviour:
   ALARM: 0
   Options: {fileID: 1927254785}
   unitAnimation: {fileID: 1927254788}
-  weapon: {fileID: 1927254786}
+  weapon: {fileID: 1927254799}
   life: 800
   level: 1
   sightWidth: 50
@@ -9574,7 +9597,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400004, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 478543407}
+  m_PrefabInternal: {fileID: 66677229}
   m_GameObject: {fileID: 1927254783}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -9599,7 +9622,7 @@ Renderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2300000, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 478543407}
+  m_PrefabInternal: {fileID: 66677229}
   m_GameObject: {fileID: 1927254783}
   m_Enabled: 1
   m_CastShadows: 1
@@ -9621,14 +9644,14 @@ MeshFilter:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3300000, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 478543407}
+  m_PrefabInternal: {fileID: 66677229}
   m_GameObject: {fileID: 1927254783}
   m_Mesh: {fileID: 4300000, guid: 33856cdf0a1d9fd47a3c42fb9ca67dd9, type: 3}
 --- !u!4 &1927254791
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-  m_PrefabInternal: {fileID: 478543407}
+  m_PrefabInternal: {fileID: 66677229}
   m_GameObject: {fileID: 1927254783}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -135.204193, y: -.149979338, z: -174.137711}
@@ -9641,7 +9664,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400002, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 478543407}
+  m_PrefabInternal: {fileID: 66677229}
   m_GameObject: {fileID: 1927254783}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -9672,7 +9695,7 @@ MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 6400000, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 478543407}
+  m_PrefabInternal: {fileID: 66677229}
   m_GameObject: {fileID: 1927254783}
   m_Material: {fileID: 13400000, guid: 0fed898ec00a8524faee11d4098ac1a4, type: 2}
   m_IsTrigger: 0
@@ -9686,7 +9709,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400000, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 478543407}
+  m_PrefabInternal: {fileID: 66677229}
   m_GameObject: {fileID: 1927254783}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -9706,7 +9729,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400012, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 478543407}
+  m_PrefabInternal: {fileID: 66677229}
   m_GameObject: {fileID: 1927254783}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -9714,21 +9737,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 1927254787}
-  movingUnitState: 0
-  standardYPosition: 0
+  movingUnitState: 100
+  standardYPosition: -1.5
+  AlwaysKeepStandardYpsPosition: 1
   IsGroupLeader: 0
   speed: .200000003
   Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
-  RudderIsNormalizised: 1
+  NormalizedRudder: 1
 --- !u!114 &1927254796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400014, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 478543407}
+  m_PrefabInternal: {fileID: 66677229}
   m_GameObject: {fileID: 1927254783}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -9747,7 +9771,7 @@ SphereCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 13500000, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 478543407}
+  m_PrefabInternal: {fileID: 66677229}
   m_GameObject: {fileID: 1927254783}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -9755,21 +9779,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 4.77995491
   m_Center: {x: 0, y: 1.36644804, z: 1.41187}
---- !u!114 &1927254798
+--- !u!114 &1927254799
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400016, guid: 567673cbfea58614aa8ec0843ea49d51,
+  m_PrefabParentObject: {fileID: 11400008, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 478543407}
+  m_PrefabInternal: {fileID: 66677229}
   m_GameObject: {fileID: 1927254783}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92d18b47915ad214eab5a0d48ada5122, type: 3}
+  m_Script: {fileID: 11500000, guid: 08e425f0cf7c0cc4a94bf78b341d4315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Arsenal:
-  - {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
-  - {fileID: 11400008, guid: e4d0eb844cac7ab45961c1fa3685b6e8, type: 2}
+  prefabSlot: {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
+  hasArsenal: 0
+  NumberOfRockets: 1000
+  countdown: 0
 --- !u!1 &1941016738
 GameObject:
   m_ObjectHideFlags: 0
@@ -10849,7 +10874,7 @@ Transform:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-  m_PrefabInternal: {fileID: 2137148468}
+  m_PrefabInternal: {fileID: 112225315}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2045922286}
@@ -10865,7 +10890,6 @@ GameObject:
   - 114: {fileID: 2045922297}
   - 135: {fileID: 2045922299}
   - 114: {fileID: 2045922298}
-  - 114: {fileID: 2045922300}
   - 114: {fileID: 2045922288}
   m_Layer: 10
   m_Name: Tank
@@ -10878,7 +10902,7 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-  m_PrefabInternal: {fileID: 2137148468}
+  m_PrefabInternal: {fileID: 112225315}
   m_GameObject: {fileID: 2045922285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -128.84108, y: -.149979338, z: -174.137711}
@@ -10891,7 +10915,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400006, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 2137148468}
+  m_PrefabInternal: {fileID: 112225315}
   m_GameObject: {fileID: 2045922285}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -10899,20 +10923,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 2045922289}
-  baseUnitState: 0
+  baseUnitState: 100
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
+  ColliderContainingChildObjects: []
   PluggedStateExtendingComponents: []
   movement: {fileID: 2045922297}
   unitstateint: 0
 --- !u!114 &2045922288
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabParentObject: {fileID: 11400008, guid: 567673cbfea58614aa8ec0843ea49d51,
+    type: 2}
+  m_PrefabInternal: {fileID: 112225315}
   m_GameObject: {fileID: 2045922285}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -10928,7 +10954,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400010, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 2137148468}
+  m_PrefabInternal: {fileID: 112225315}
   m_GameObject: {fileID: 2045922285}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -10951,7 +10977,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400000, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 2137148468}
+  m_PrefabInternal: {fileID: 112225315}
   m_GameObject: {fileID: 2045922285}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -10971,7 +10997,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400002, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 2137148468}
+  m_PrefabInternal: {fileID: 112225315}
   m_GameObject: {fileID: 2045922285}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -11002,7 +11028,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400004, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 2137148468}
+  m_PrefabInternal: {fileID: 112225315}
   m_GameObject: {fileID: 2045922285}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -11027,7 +11053,7 @@ Rigidbody:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 5400000, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 2137148468}
+  m_PrefabInternal: {fileID: 112225315}
   m_GameObject: {fileID: 2045922285}
   serializedVersion: 2
   m_Mass: 1
@@ -11043,7 +11069,7 @@ MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 6400000, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 2137148468}
+  m_PrefabInternal: {fileID: 112225315}
   m_GameObject: {fileID: 2045922285}
   m_Material: {fileID: 13400000, guid: 0fed898ec00a8524faee11d4098ac1a4, type: 2}
   m_IsTrigger: 0
@@ -11057,7 +11083,7 @@ Renderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2300000, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 2137148468}
+  m_PrefabInternal: {fileID: 112225315}
   m_GameObject: {fileID: 2045922285}
   m_Enabled: 1
   m_CastShadows: 1
@@ -11079,7 +11105,7 @@ MeshFilter:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3300000, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 2137148468}
+  m_PrefabInternal: {fileID: 112225315}
   m_GameObject: {fileID: 2045922285}
   m_Mesh: {fileID: 4300000, guid: 33856cdf0a1d9fd47a3c42fb9ca67dd9, type: 3}
 --- !u!114 &2045922297
@@ -11087,7 +11113,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400012, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 2137148468}
+  m_PrefabInternal: {fileID: 112225315}
   m_GameObject: {fileID: 2045922285}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -11095,21 +11121,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 2045922289}
-  movingUnitState: 0
-  standardYPosition: 0
+  movingUnitState: 100
+  standardYPosition: -1.5
+  AlwaysKeepStandardYpsPosition: 1
   IsGroupLeader: 0
   speed: .200000003
   Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
-  RudderIsNormalizised: 1
+  NormalizedRudder: 1
 --- !u!114 &2045922298
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400014, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 2137148468}
+  m_PrefabInternal: {fileID: 112225315}
   m_GameObject: {fileID: 2045922285}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -11128,7 +11155,7 @@ SphereCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 13500000, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 2137148468}
+  m_PrefabInternal: {fileID: 112225315}
   m_GameObject: {fileID: 2045922285}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -11136,21 +11163,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 4.77995491
   m_Center: {x: 0, y: 1.36644804, z: 1.41187}
---- !u!114 &2045922300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400016, guid: 567673cbfea58614aa8ec0843ea49d51,
-    type: 2}
-  m_PrefabInternal: {fileID: 2137148468}
-  m_GameObject: {fileID: 2045922285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92d18b47915ad214eab5a0d48ada5122, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Arsenal:
-  - {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
-  - {fileID: 11400008, guid: e4d0eb844cac7ab45961c1fa3685b6e8, type: 2}
 --- !u!1 &2053987663
 GameObject:
   m_ObjectHideFlags: 0
@@ -11223,7 +11235,7 @@ MonoBehaviour:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100002, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-  m_PrefabInternal: {fileID: 478543407}
+  m_PrefabInternal: {fileID: 66677229}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2096353232}
@@ -11239,7 +11251,7 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400002, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-  m_PrefabInternal: {fileID: 478543407}
+  m_PrefabInternal: {fileID: 66677229}
   m_GameObject: {fileID: 2096353231}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
   m_LocalPosition: {x: 0, y: .400000006, z: 0}
@@ -11251,7 +11263,7 @@ SpriteRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 21200000, guid: 567673cbfea58614aa8ec0843ea49d51,
     type: 2}
-  m_PrefabInternal: {fileID: 478543407}
+  m_PrefabInternal: {fileID: 66677229}
   m_GameObject: {fileID: 2096353231}
   m_Enabled: 1
   m_CastShadows: 0
@@ -11270,52 +11282,3 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: e0931c0c85e90e542bf6258eccda22bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!1001 &2137148468
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -128.84108
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -.149979338
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -174.137711
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-      propertyPath: m_Name
-      value: Tank
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400010, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-      propertyPath: weapon
-      value: 
-      objectReference: {fileID: 2045922288}
-    m_RemovedComponents:
-    - {fileID: 11400008, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-  m_ParentPrefab: {fileID: 100100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
-  m_RootGameObject: {fileID: 2045922285}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1

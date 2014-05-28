@@ -42,7 +42,7 @@ abstract public class UnitOptions : MonoBehaviour
         {
             if (value)
             {
-                if (!(UNIT.GoodOrEvil+Target.GetComponent<UnitScript>().GoodOrEvil))
+                if (!UNIT.IsEnemy(Target))
                     CheckedAllert = value;
             }
             __targetunderattack = value;
@@ -56,32 +56,48 @@ abstract public class UnitOptions : MonoBehaviour
     //- Standard oneclick Orders:
     virtual internal void FocussedLeftOnGround(Vector3 worldPoint)
     {
-        if (this.gameObject.GetComponent<Focus>())
+        if (standardOrder)
         {
-            if (Focus.IsLocked)
-                gameObject.GetComponent<Focus>().Unlock(gameObject);
-
-            Component.Destroy(gameObject.GetComponent<Focus>());
+            if (this.gameObject.GetComponent<Focus>())
+            {
+                if (Focus.IsLocked)
+                {
+                    if(gameObject.GetComponent<Focus>().Unlock(this.gameObject))
+                        Component.Destroy(gameObject.GetComponent<Focus>());
+                }
+                else
+                {
+                    Component.Destroy(gameObject.GetComponent<Focus>());
+                }
+            }
         }
     }
     virtual internal void FocussedRightOnGround(Vector3 worldPoint)
     {
-        if (this.gameObject.GetComponent<Focus>())
+        if (standardOrder)
         {
-            if (Focus.IsLocked)
-                gameObject.GetComponent<Focus>().Unlock(gameObject);
-
-            Component.Destroy(gameObject.GetComponent<Focus>());
+            if (this.gameObject.GetComponent<Focus>())
+            {
+                if (Focus.IsLocked)
+                {
+                    if (gameObject.GetComponent<Focus>().Unlock(this.gameObject))
+                        Component.Destroy(gameObject.GetComponent<Focus>());
+                }
+                else
+                {
+                    Component.Destroy(gameObject.GetComponent<Focus>());
+                }
+            }
         }
     }
     virtual internal void FocussedLeftOnEnemy(GameObject enemy)
     { enemy.AddComponent<Focus>(); }
     virtual internal void FocussedRightOnEnemy(GameObject enemy)
-    { }
+    { enemy.AddComponent<Focus>(); }
     virtual internal void FocussedLeftOnAllied(GameObject friend)
     { friend.AddComponent<Focus>(); }
     virtual internal void FocussedRightOnAllied(GameObject friend)
-    { }
+    { friend.AddComponent<Focus>(); }
     
     //- stateorders:
     [SerializeField]
@@ -92,7 +108,7 @@ abstract public class UnitOptions : MonoBehaviour
         set 
         {
             EnumProvider.ORDERSLIST order = (EnumProvider.ORDERSLIST)value;
-            if ((PRIMARY_STATE_CHANGE!=null)&&(order != baseUnitState))
+            if ((PRIMARY_STATE_CHANGE!=null))
             {
                 Debug.Log("STATE_CHANGE event triggerd");
                 baseUnitState = PRIMARY_STATE_CHANGE(order);
@@ -280,12 +296,15 @@ abstract public class UnitOptions : MonoBehaviour
         //{
         //    if (GotToDo.Value)
         //        GotToDo = ProcessAllOrders();
-        foreach (UnitComponent component in PluggedStateExtendingComponents)
-        {
-            component.DoUpdate();
-        }
+
         DoUpdate();
+
+        foreach (UnitComponent component in PluggedStateExtendingComponents)
+            component.DoUpdate();  
     }
+
+    [SerializeField]
+    internal GameObject[] ColliderContainingChildObjects = new GameObject[0];
 
     public List<UnitComponent> PluggedStateExtendingComponents;
     private int[] RefreshStatelist()
@@ -403,11 +422,11 @@ abstract public class UnitOptions : MonoBehaviour
     {
         if (IsLockedOnFocus)
         {
-            return this.gameObject.GetComponent<Focus>().Unlock(this.gameObject);
+            return GetComponent<Focus>().Unlock(this.gameObject);
         }
         else return true;
     }
-    public bool DestroyFocus()
+    public bool UnlockAndDestroyFocus()
     {
         if (UnlockFocus())
         {
@@ -418,20 +437,29 @@ abstract public class UnitOptions : MonoBehaviour
     }
 
 
-    virtual internal void MouseEvents_LEFTCLICK(Ray qamRay, bool hold) 
+    internal void OptionsBase_LEFTCLICK(Ray qamRay, bool hold)
     {
-        foreach (UnitExtension extension in PluggedStateExtendingComponents)
-        {
-            extension.OptionExtensions_OnLEFTCLICK(hold);
-        }
+        MouseEvents_LEFTCLICK(qamRay, hold);
+        if (Extensions_OnLEFTCLICK != null)
+            Extensions_OnLEFTCLICK(hold);
     }
-    virtual internal void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold) 
+    internal void OptionsBase_RIGHTCLICK(Ray qamRay, bool hold)
     {
-        foreach (UnitExtension extension in PluggedStateExtendingComponents)
-        {
-            extension.OptionExtensions_OnRIGHTCLICK(hold);
-        }
+        MouseEvents_RIGHTCLICK(qamRay, hold);
+        if (Extensions_OnRIGHTCLICK != null)
+            Extensions_OnRIGHTCLICK(hold);
     }
+
+    virtual internal void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
+    {
+
+    }
+
+    virtual internal void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
+    {
+
+    }
+
 
     //public void abstract_LEFTRELEASE()
     //{

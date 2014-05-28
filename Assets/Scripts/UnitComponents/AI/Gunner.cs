@@ -43,8 +43,8 @@ public class Gunner : UnitComponent
     public EnumProvider.ORDERSLIST BattleState = EnumProvider.ORDERSLIST.Patrol;
     void Awake()
     {
-
-        MySpace = this.gameObject.GetComponent<SphereCollider>();
+        weapon = GetComponent<UnitWeapon>();
+        MySpace = GetComponent<SphereCollider>();
     }
 
     void Start()

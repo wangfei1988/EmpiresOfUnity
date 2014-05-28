@@ -17,7 +17,7 @@ public class WingsAndJets : UnitExtension
     {
         get { return "WingsAndJets"; }
     }
-    new public enum OPTIONS : int
+    public enum OPTIONS : int
     {
         GlideFlight = EnumProvider.ORDERSLIST.GlideFlight,
         FullThrottle = EnumProvider.ORDERSLIST.FullThrottle,
@@ -134,16 +134,7 @@ public class WingsAndJets : UnitExtension
         }
     }
 
-    void Awake()
-    {
 
-        System.Enum[] buffer = new System.Enum[3];
-        buffer[0] = OPTIONS.GlideFlight;
-        buffer[1] = OPTIONS.FullThrottle;
-        buffer[2] = OPTIONS.LandOnGround;
-
-        this.PflongeOnUnit(buffer);
-    }
 
     void Start()
     {

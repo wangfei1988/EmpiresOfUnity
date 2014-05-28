@@ -43,7 +43,7 @@ public class UnitGroup : ScriptableObject
         private set;
     }
     public Rect groupRect;
-    public FoE.GOODorEVIL GoodOrEvil;
+    public FoE GoodOrEvil;
     public Vector3 Position
     {
         get { return position; }
@@ -117,7 +117,7 @@ public class UnitGroup : ScriptableObject
         AddUnit(firstUnit);
     }
     
-    public void BeginGroupFill(FoE.GOODorEVIL side)
+    public void BeginGroupFill(FoE side)
     {
         if (this.GoodOrEvil != side)
             ResetGroup();
@@ -152,8 +152,13 @@ public class UnitGroup : ScriptableObject
     {
         GroupState = GROUPSTATE.UnderConstruction;
 
-        for (int i = 0; i < MemberUnit.Count; i++)
-            MemberUnit[i].GetComponent<UnitScript>().HideLifebar();
+        foreach (GameObject member in MemberUnit)
+        {
+            UnitScript UNIT = member.GetComponent<UnitScript>();
+            UNIT.HideLifebar();
+            if (!UNIT.IsABuilding)
+                (UNIT.Options as MovingUnitOptions).IsMovingAsGroup = false;
+        }
 
         MemberUnit.Clear();
     }

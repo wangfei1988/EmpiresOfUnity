@@ -62,6 +62,7 @@ public class GroundUnitOptions : MovingUnitOptions
                      unitState = order;
                  }
              }
+
              base.UnitState = value;
         }
     }
@@ -103,9 +104,11 @@ public class GroundUnitOptions : MovingUnitOptions
                    UnlockFocus();
                }
 
-               base.MouseEvents_LEFTCLICK(qamRay, hold);
+               
            }
        }
+
+       base.MouseEvents_LEFTCLICK(qamRay, hold);
    }
 
    protected bool toDoToDo;
@@ -164,10 +167,10 @@ public class GroundUnitOptions : MovingUnitOptions
     internal override void DoStart()
     {
         base.DoStart();
-        foreach (int option in System.Enum.GetValues(typeof(OPTIONS)))
-            if (!OptionalStatesOrder.ContainsKey(option))
-                OptionalStatesOrder.Add(option, ((OPTIONS)option).ToString());
-
+        //foreach (int option in System.Enum.GetValues(typeof(OPTIONS)))
+        //    if (!OptionalStatesOrder.ContainsKey(option))
+        //        OptionalStatesOrder.Add(option, ((OPTIONS)option).ToString());
+        RegisterInheridedOrderStateOptions(typeof(OPTIONS));
         unitstateint = 20;
         IsMoving = true;
     }

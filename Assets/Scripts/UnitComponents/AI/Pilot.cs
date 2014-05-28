@@ -161,6 +161,7 @@ public class Pilot : UnitComponent
         Controlls = this.gameObject.GetComponent<Movability>();
         My = gameObject.GetComponent<UnitScript>();
         mySpace = this.gameObject.GetComponent<SphereCollider>();
+        
 
     }
     void Start()
@@ -174,9 +175,12 @@ public class Pilot : UnitComponent
         if (My.GetComponent<FaceDirection>()) IsAForwarder = My.GetComponent<FaceDirection>().faceMovingDirection;
         else IsAForwarder = false;
 
-        this.PflongeOnUnit();
+        
         Throttle = 0;
+
+        this.PflongeOnUnit();
     }
+
 
     public override void DoUpdate()
     {
@@ -259,7 +263,7 @@ public class Pilot : UnitComponent
                  //   Throttle = (directionbuffer.normalized.magnitude - directionbuffer.magnitude);
 
               //  Controlls.Rudder += directionbuffer.normalized;
-                Controlls.RudderIsNormalizised = false;
+                Controlls.NormalizedRudder = false;
                 Controlls.Rudder += ((My.transform.position - other.gameObject.transform.position).normalized / (LookAheadDistance *2));
             //    Controlls.Rudder.Normalize();
                 //      (My.Options as MovingUnitOptions).MovingDirection.Normalize();
