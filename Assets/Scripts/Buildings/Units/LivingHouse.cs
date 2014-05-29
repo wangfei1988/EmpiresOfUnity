@@ -36,7 +36,6 @@ public class LivingHouse : AbstractBuilding
 
     public override void BuildFinished()
     {
-        this.BuildingCost();
         LivingHouseWork();
     }
 

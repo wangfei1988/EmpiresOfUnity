@@ -31,7 +31,7 @@ public class Movability : UnitExtension
 
     protected override EnumProvider.ORDERSLIST on_UnitStateChange(EnumProvider.ORDERSLIST stateorder)
     {
-        Debug.Log("OnUnitStateChange called!!!!!!!!!!!!!!!");
+        //Debug.Log("OnUnitStateChange called!!!!!!!!!!!!!!!");
         movingUnitState = (OPTIONS)stateorder;
         if (System.Enum.IsDefined(typeof(OPTIONS), (int)stateorder))
         {

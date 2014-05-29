@@ -36,7 +36,7 @@ public class NaniteMine : ProductionBuilding
 
     public override void BuildFinished()
     {
-        this.BuildingCost();
+
     }
 
     internal override void MoveAsGroup(GameObject leader)

@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+
+using UnityEngine;
 using System.Collections;
 
-public class BuildingBuilder : MonoBehaviour
+using Object = UnityEngine.Object;
+
+public class BuildingBuilder : ProductionBuilding
 {
     //private Focus.HANDLING focusHandling = Focus.HANDLING.None;
     //public GameObject Prefab;
@@ -13,15 +17,39 @@ public class BuildingBuilder : MonoBehaviour
     private int curIndex;
     private AnimatedCursor Cursor;
 
+    private bool IsBuildable;
+    private int solutionMatter;
+    private int solutionNaniten;
+    private int BuildingCostMatter;
+    private int BuildingCostNanite;
+
+    private string ResourceFeedBack;
+    
     /* Start & Update */
-	void Start ()
+
+    public override EnumProvider.UNITCLASS UNIT_CLASS
+    {
+        get
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+
+    internal override void MoveAsGroup(GameObject leader)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    internal override void DoStart()
     {
         this.Grid = this.GetComponent<GridSystem>();
         UpdateManager.OnMouseUpdate += DoUpdate;
         this.Cursor = GUIScript.main.GetComponent<AnimatedCursor>();
+        //throw new System.NotImplementedException();
+       
     }
-	
-	void DoUpdate ()
+
+    internal override void DoUpdate ()
 	{
 
         if (this.dragNow == true)
@@ -33,8 +61,15 @@ public class BuildingBuilder : MonoBehaviour
                 Vector2 mouseScreen = MouseEvents.State.Position;
                 if (GUIScript.main.MapViewArea.Contains(mouseScreen))
                 {
-                    // Mouse in Map
-                    this.DragFinished();
+                        if (IsBuildable == true)
+                        {
+                            // Mouse in Map
+                            this.DragFinished();
+                        }
+                        else
+                        {
+                            Debug.Log("Need more Resources");
+                        }
                 }
                 else
                 {
@@ -48,13 +83,20 @@ public class BuildingBuilder : MonoBehaviour
                 // Cancel at Right Click
                 this.DragCancel();
             }
-
 	    }
     }
 
     /* Methods */
     public void CreatePrefab(int index)
     {
+        //Check if enough Resources to build 
+        BuildingCostMatter = ((GameObject)this.BuildableBuildings[index]).GetComponent<AbstractBuilding>().SettingFile.MatterCost;
+        BuildingCostNanite = ((GameObject)this.BuildableBuildings[index]).GetComponent<AbstractBuilding>().SettingFile.NaniteCost;
+        IsBuildable = ((GameObject)this.BuildableBuildings[index]).GetComponent<AbstractBuilding>().SettingFile.IsBuildable;
+        solutionMatter = (int)ResourceManager.GetResourceCount(ResourceManager.Resource.MATTER) -this.BuildingCostMatter;
+        solutionNaniten = (int)(ResourceManager.GetResourceCount(ResourceManager.Resource.NANITEN) - this.BuildingCostNanite);
+        this.BuildingCheck();
+
         curIndex = index;
 
         // focus on building builder
@@ -85,8 +127,6 @@ public class BuildingBuilder : MonoBehaviour
 
     private void DragFinished()
     {
-
-
         // Unlock Focus
         this.gameObject.GetComponent<Focus>().Unlock(this.gameObject);
         Component.Destroy(this.gameObject.GetComponent<Focus>());
@@ -113,6 +153,10 @@ public class BuildingBuilder : MonoBehaviour
         this.Transform = null;
         this.Grid.ShowGrid = false;
         this.dragNow = false;
+
+        this.BuildingCost();
+
+        IsBuildable = false;
     }
 
     private void DragCancel()
@@ -120,7 +164,33 @@ public class BuildingBuilder : MonoBehaviour
         Destroy(this.Transform.gameObject);
         this.Transform = null;
         this.DragFinished();
+        IsBuildable = false;
     }
 
+    private void BuildingCheck()
+    {
+        if (solutionMatter >= 0 &&  solutionNaniten >= 0)
+        {
+            IsBuildable = true;
+        }
+        else
+        {
+            IsBuildable = false;
+        }
+    }
 
+    //Subtract Resources for Building
+    public void BuildingCost()
+    {
+        ResourceManager.SubtractResouce(ResourceManager.Resource.MATTER, (uint)this.BuildingCostMatter);
+        ResourceManager.SubtractResouce(ResourceManager.Resource.NANITEN, (uint)this.BuildingCostNanite);
+    }
+
+    public override void BuildFinished()
+    {
+    }
+
+    protected override void MineWork()
+    {
+    }
 }

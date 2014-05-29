@@ -44,7 +44,7 @@ abstract public class MovingUnitOptions : UnitOptions
         Target = null;
         standardOrder = false;
         IsMoving = true;
-        Debug.Log("MovingUnitOptions->FocussedLeftOnGround");
+        //Debug.Log("MovingUnitOptions->FocussedLeftOnGround");
     }
 
 
@@ -157,7 +157,7 @@ abstract public class MovingUnitOptions : UnitOptions
         }
         set
         {
-            Debug.Log("MovingUnitOIptions StateChange called!");
+            //Debug.Log("MovingUnitOIptions StateChange called!");
             base.UnitState = value;
             //OPTIONS order = (OPTIONS)value;
             //if (unitstateint != (int)order)
