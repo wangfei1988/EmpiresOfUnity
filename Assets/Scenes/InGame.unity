@@ -5792,6 +5792,7 @@ MonoBehaviour:
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
+  ColliderContainingChildObjects: []
   PluggedStateExtendingComponents: []
   SettingFile: {fileID: 0}
   Grid: {fileID: 1113168590}
