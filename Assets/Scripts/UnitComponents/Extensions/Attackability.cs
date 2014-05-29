@@ -3,12 +3,15 @@ using System.Collections;
 
 public class Attackability : UnitExtension
 {
-    new public enum OPTIONS : int
+    public enum OPTIONS : int
     {
         Attack = EnumProvider.ORDERSLIST.Attack,
         Conquer = EnumProvider.ORDERSLIST.Conquer,
+        Defend = EnumProvider.ORDERSLIST.Defend,
         Seek = EnumProvider.ORDERSLIST.Seek
     }
+    public OPTIONS attackState = OPTIONS.Defend;
+
     public override string IDstring
     {
         get
@@ -24,53 +27,88 @@ public class Attackability : UnitExtension
         HasAmunition,
         IsConquering,
     }
+    public Vector3 AttackPoint = Vector3.zero;
 
     protected override EnumProvider.ORDERSLIST on_UnitStateChange(EnumProvider.ORDERSLIST stateorder)
     {
-        switch ((OPTIONS)stateorder)
+        if (System.Enum.IsDefined(typeof(OPTIONS), stateorder))
         {
-            case OPTIONS.Attack:
+            attackState = (OPTIONS)stateorder;
+            switch (attackState)
+            {
+                case OPTIONS.Attack:
+                    if (!UNIT.IsABuilding)
+                    {
+                        this.GetComponent<Movability>().SetKinematic();
+                        this.GetComponent<Movability>().WayPoints.Clear();
+                        UNIT.Options.MoveToPoint = this.gameObject.transform.position;
+                        this.GetComponent<Movability>().IsMoving = false;
+                    }
 
-                break;
-            case OPTIONS.Conquer:
+                    UNIT.Options.LockOnFocus();
+                    break;
+                case OPTIONS.Conquer:
+                    if (!GetComponent<Gunner>())
+                        this.gameObject.AddComponent<Gunner>();
+                    UNIT.Options.UnitState = EnumProvider.ORDERSLIST.Stay;
+                    if(!UNIT.IsABuilding)
+                        UNIT.Options.LockOnFocus();
+                    GetComponent<Gunner>().FireAtWill = true;
+                    break;
+                case OPTIONS.Seek:
+                    if (!GetComponent<Gunner>())
+                        this.gameObject.AddComponent<Gunner>();
 
-                break;
-            case OPTIONS.Seek:
-
-                break;
+                    break;
+            }
         }
         return stateorder;
     }
+    void Awake()
+    {
 
+    }
     void Start()
     {
         IsDefending = IsAttacking = IsConquering = false;
-        PflongeOnUnit(System.Enum.GetValues(typeof(OPTIONS)));
+        PflongeOnUnit(typeof(OPTIONS));
     }
 
     public bool IsAttacking
     {
         get
         {
-            if (States[(byte)STATES.IsAttacking]) 
+            if (States[(byte)STATES.IsAttacking])
             {
                 if (UNIT.Options.Target == null)
                     States[(byte)STATES.IsAttacking] = false;
                 else
+                {
                     if (!UNIT.IsABuilding)
                     {
-                        (UNIT.Options as MovingUnitOptions).MovingDirection = UNIT.Options.MoveToPoint;
+                        Movability Movement = GetComponent<Movability>();
+                        Movement.MovingDirection = UNIT.Options.MoveToPoint;
 
-                        if ((UNIT.Options as MovingUnitOptions).Distance < UNIT.AttackRange)
+                        if (Movement.Distance < UNIT.AttackRange)
                         {
-                            UNIT.weapon.Reloade();
+                            UNIT.weapon.Reload();
                             UNIT.weapon.Engage(UNIT.Options.Target);
                         }
 
-                        return (UNIT.Options as MovingUnitOptions).IsMoving = true;
+                        return Movement.IsMoving = true;
                     }
+                    else
+                    {
+                        if (Vector3.Distance(this.gameObject.transform.position, AttackPoint) <= UNIT.AttackRange)
+                        {
+                            UNIT.weapon.Reload();
+                            UNIT.weapon.Engage(UNIT.Options.Target);
+                        }
+                        return true;
+                    }
+                }
             }
-            return false; 
+            return false;
         }
         protected set
         {
@@ -93,7 +131,7 @@ public class Attackability : UnitExtension
     }
     public bool HasAmunition
     {
-        get { return States[(byte)STATES.HasAmunition] = !UNIT.weapon.IsOutOfAmmu; }
+        get { return States[(byte)STATES.HasAmunition] = !UNIT.weapon.IsOutOfAmmo; }
     }
     public bool IsConquering
     {
@@ -107,28 +145,93 @@ public class Attackability : UnitExtension
 
     internal override void OptionExtensions_OnLEFTCLICK(bool hold)
     {
-        
+        if (!hold)
+        {
+            if (attackState == OPTIONS.Attack)
+            {
+                UnitScript otherUnit = MouseEvents.State.Position.AsUnitUnderCursor;
+                if (otherUnit)
+                {
+                    if (UNIT.IsEnemy(otherUnit))
+                    {
+                        UNIT.Options.Target = otherUnit.gameObject;
+                        UNIT.Options.MoveToPoint = UNIT.Options.Target.transform.position;
+                        if (!UNIT.IsABuilding)
+                            GetComponent<Movability>().IsMoving = true;
+                        IsAttacking = true;
+                    }
+                    else if (UNIT.IsAllied(otherUnit))
+                    {
+                        this.UNIT.Options.Target = otherUnit.SetInteracting(this.gameObject);
+                        if (otherUnit.Options.IsAttacking)
+                        {
+                            this.UNIT.Options.Target = otherUnit.Options.Target;
+                            IsAttacking = true;
+                            UNIT.Options.MoveAsGroup(otherUnit.gameObject);
+                        }
+                    }
+
+                    UNIT.Options.UnlockFocus();    
+                }
+            }
+            else if (attackState == OPTIONS.Conquer)
+            {
+                UNIT.Options.MoveToPoint = MouseEvents.State.Position;
+
+                if (!GetComponent<Gunner>())
+                    this.gameObject.AddComponent<Gunner>();
+
+                if (!UNIT.IsABuilding)
+                    GetComponent<Movability>().IsMoving = true;
+
+                IsDefending = false;
+                IsAttacking = true;
+                IsConquering = true;
+                GetComponent<Gunner>().FireAtWill = true;
+
+                UNIT.Options.UnlockFocus();
+            }
+        }
     }
     internal override void OptionExtensions_OnRIGHTCLICK(bool hold)
     {
-        
+        if (!hold)
+        {
+            UNIT.Options.UnlockAndDestroyFocus();
+        }
     }
 
     public override void DoUpdate()
     {
         if (IsAttacking) IsAttacking = Attack();
+        if (IsConquering) IsDefending = Conquere();
     }
 
     private bool Attack()
     {
+        if (GetComponent<Gunner>())
+            GetComponent<Gunner>().DoUpdate();
+
         if (UNIT.Options.Target)
         { 
-            UNIT.Options.MoveToPoint = UNIT.Options.Target.transform.position;
+            AttackPoint = UNIT.Options.Target.transform.position;
             if (!UNIT.IsABuilding)
-                (UNIT.Options as MovingUnitOptions).IsMoving = true;
+                GetComponent<Movability>().IsMoving = true;
             return true;
         }
         else
             return false;
+    }
+
+    private bool Conquere()
+    {
+
+        if (UNIT.IsABuilding)
+            return true;
+        else
+        {
+            return !(GetComponent<Movability>().IsMoving = (UNIT.Options.MoveToPoint != this.transform.position));
+        }
+
     }
 }

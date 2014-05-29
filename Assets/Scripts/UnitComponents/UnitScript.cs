@@ -53,7 +53,8 @@ public class UnitScript : MonoBehaviour
 
     // Friend or Enemy
     //###############################################################################
-    public FoE.GOODorEVIL goodOrEvil;
+    [SerializeField]
+    private FoE.GOODorEVIL goodOrEvil;
     public FoE GoodOrEvil;
 
     public bool IsEnemy(FoE other)
@@ -66,17 +67,29 @@ public class UnitScript : MonoBehaviour
             return IsEnemy(other.GetComponent<UnitScript>().GoodOrEvil);
         else return false;
     }
+    public bool IsEnemy(UnitScript other)
+    {
+        return IsEnemy(other.GoodOrEvil);
+    }
+    
     public bool IsMySelf(GameObject target)
     {
         return (target.gameObject.GetInstanceID() == this.gameObject.GetInstanceID());
     }
-
+    
     public bool IsAllied(GameObject target)
     {
         if (!IsMySelf(target))
             return !IsEnemy(target.GetComponent<UnitScript>().GoodOrEvil);
         return false;
     }
+    public bool IsAllied(UnitScript target)
+    {
+        if (!IsMySelf(target.gameObject))
+            return !IsEnemy(target);
+        return false;
+    }
+
 
     // Alarm-System:
     //###############################################################################
@@ -155,7 +168,7 @@ public class UnitScript : MonoBehaviour
                 {
                     Options = gameObject.GetComponent<MovingUnitOptions>();
                     weapon = gameObject.GetComponent<RocketLauncher>();
-                    this.gameObject.AddComponent<WingsAndJets>().PflongeOnUnit();
+                    //this.gameObject.AddComponent<WingsAndJets>().PflongeOnUnit();
                     break;
                 }
             case UNITTYPE.RocketMan:
@@ -191,7 +204,7 @@ public class UnitScript : MonoBehaviour
             case UNITTYPE.MainBuilding:
                 {
                     Options = gameObject.GetComponent<ProductionBuildingOptions>();
-                    weapon = gameObject.GetComponent<RocketLauncher>();
+                    weapon = gameObject.GetComponent<UnitWeapon>();
                     break;
                 }
         }
@@ -210,10 +223,10 @@ public class UnitScript : MonoBehaviour
         UpdateManager.OnUpdate -= UpdateLifebar;
     }
 
-    //--- Update function:  
-    //--- the Main-Entrypoint to the Units GameObject UpdateLoop.
-    //--- if everything is set correctly, It' should call all Updates in their
-    //--- right Updateorder in all Subcomponents and Childobjects.
+    // Update function:  
+    // the Main-Entrypoint to the Units GameObject UpdateLoop.
+    // if everything is set correctly, It' should call all Updates in their
+    // right Updateorder in all Subcomponents and Childobjects.
     //########################################################################################################
     void UpdateManager_UNITUPDATE()
     {
@@ -222,10 +235,11 @@ public class UnitScript : MonoBehaviour
         Options.OptionsUpdate();
     }
 
-    //--- Component-Slots (these Components are accsessed almost everytime, so ithink References to them are very usefull...) 
+    // Component-Slots (these Components are accsessed almost everytime, so ithink References to them are very usefull...) 
     public UnitOptions Options; //-Contains everythin whats Optional... different on every Unit-Type
     public UnitAnimation unitAnimation; //- first UnitAnimation of the UnitAnimations-Chain
     public UnitWeapon weapon; //- if the Unit is a Type of Unit thats unable to fight(Constuction Units i.e.) a "NoWeapon"-component will addet automaticly... 
+    
 
     // LIFE
     // Data Fields for properties that almost every Unit uses:
@@ -290,8 +304,6 @@ public class UnitScript : MonoBehaviour
         }
     }
 
-
-
     [SerializeField]
     private int level;
     public int Level
@@ -335,6 +347,7 @@ public class UnitScript : MonoBehaviour
     {
         get { return Options.GetUnitsMenuOptions(); }
     }
+
     public EnumProvider.ORDERSLIST[] RightClickMenuOptionStates
     {
         get
@@ -358,14 +371,17 @@ public class UnitScript : MonoBehaviour
                 Options.GiveChainedOrder(value);
         }
     }
+
     public Object[] SellectableObjects
     {
         get { return Options.GetUnitsSIDEMenuObjects(); }
     }
+
     public void Sellect(Object returned)
     {
         Options.SetSIDEObject(returned);
     }
+
     public void AskForOrder()
     {
         RightClickMenu.PopUpGUI(this);
@@ -381,14 +397,15 @@ public class UnitScript : MonoBehaviour
     
     private void Die()
     {
-        //todo: code for dieing (explosion etc.)
         UpdateManager.UNITUPDATE -= UpdateManager_UNITUPDATE;
         HideLifebar();
+
+        // Explosion does the ExplosionsManager...
         StaticExploader.Exploade(1, this.transform.position);
+
         //Destruction now does the UnitDestructionsManagement...
         UnitDestructionManagement.SignInForDestruction(this.gameObject);
 	}
-
 
     //--- Stuff for interaction with other Units like Guarding,Seeking,GroupMove and every other kind of Groupbehaviour...
     //#####################################################################################################################
@@ -408,8 +425,9 @@ public class UnitScript : MonoBehaviour
                 interactingUnits.Add(unit.gameObject.GetInstanceID());
                 return unit.GetComponent<UnitScript>().SetInteracting(this.gameObject);
             }
-            else return this.gameObject;
+            return this.gameObject;
         }
-        else return unit;
+        return unit;
     }
+
 }

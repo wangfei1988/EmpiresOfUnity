@@ -126,8 +126,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 400014}
   - 33: {fileID: 3300004}
-  - 65: {fileID: 6500000}
   - 23: {fileID: 2300004}
+  - 65: {fileID: 6500000}
   m_Layer: 2
   m_Name: BoxGround
   m_TagString: Untagged
@@ -450,12 +450,12 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .5
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: 2
     m_Strength: 1
     m_Bias: .0500000007
@@ -559,7 +559,7 @@ MonoBehaviour:
   collider: {fileID: 6500000}
   lightSwitch: 0
   light: {fileID: 10800002}
-  Control: {fileID: 0}
+  Control: {fileID: 11400014}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -606,7 +606,7 @@ MonoBehaviour:
   collider: {fileID: 15400000}
   lightSwitch: 0
   light: {fileID: 10800004}
-  Control: {fileID: 0}
+  Control: {fileID: 11400014}
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -621,7 +621,7 @@ MonoBehaviour:
   collider: {fileID: 15400002}
   lightSwitch: 1
   light: {fileID: 10800000}
-  Control: {fileID: 0}
+  Control: {fileID: 11400014}
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1

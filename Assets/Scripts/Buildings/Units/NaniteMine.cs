@@ -5,7 +5,7 @@ using  System.Collections.Generic;
 
 public class NaniteMine : ProductionBuilding
 {
-    private enum OPTIONS { Upgrade = EnumProvider.ORDERSLIST.Upgrade }
+    new private enum OPTIONS { Upgrade = EnumProvider.ORDERSLIST.Upgrade }
 
     private OPTIONS NaniteMineState;
 

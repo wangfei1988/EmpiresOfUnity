@@ -146,13 +146,28 @@ public class ProductionBuildingOptions : UnitOptions
    
     internal override void FocussedLeftOnGround(Vector3 worldPoint)
     {
-        DestroyFocus();
+        UnlockAndDestroyFocus();
         //DestroyFocus();
     }
 
     internal override void MoveAsGroup(GameObject leader)
     {
         
+    }
+
+    internal override void FocussedLeftOnEnemy(GameObject enemy)
+    {
+        if (GetComponent<Attackability>())
+        {
+            UNIT.Options.Target = enemy;
+            GetComponent<Attackability>().AttackPoint = enemy.transform.position;
+            standardOrder = true;
+            UnitState = EnumProvider.ORDERSLIST.Attack;
+
+            standardOrder = false;
+        }
+        else
+            base.FocussedLeftOnEnemy(enemy);
     }
 
     public int CurrentFabrikatNumber;

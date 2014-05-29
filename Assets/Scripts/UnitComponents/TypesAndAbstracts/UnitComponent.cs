@@ -9,38 +9,68 @@ public abstract class UnitComponent : MonoBehaviour
     {
         get { return false; }
     }
-    public enum OPTIONS : int
-    {
-        Cancel=EnumProvider.ORDERSLIST.Cancel
-    }
+
     abstract public string IDstring
     { get; }
 
     public UnitScript UNIT;
     private int ID;
-    
-    private System.Enum[] StateExtensions;
+
+    private System.Enum[] StateExtensions = new System.Enum[1];
 
     public UnitComponent PflongeOnUnit()
     {
-        UNIT = this.gameObject.GetComponent<UnitScript>();
-            if (ComponentExtendsTheOptionalstateOrder)
-            {
-                int i = -1;
-                StateExtensions = new System.Enum[System.Enum.GetNames(typeof(OPTIONS)).Length];
-                foreach (System.Enum extension in System.Enum.GetValues(typeof(OPTIONS)))
-                    StateExtensions[++i] = extension;
-            }
-            else
-            {
-                StateExtensions = new System.Enum[1];
-                StateExtensions[0] = EnumProvider.ORDERSLIST.Cancel;
-            }
-            this.ID = this.gameObject.GetComponent<UnitScript>().Options.RegisterUnitComponent(this, StateExtensions);
+        
+        if (ComponentExtendsTheOptionalstateOrder)
+        {
+            throw new UnitComponentExeption(this.gameObject.GetInstanceID(), this.IDstring, "tryed Pflontshing on a 'UnitEtension'. It needs it's 'OPTIONS'-enum's Type as parameter !\nTry: 'PflongeOnUnit(typof(OPTIONS))'. !!!");
+        }
+        else
+        {
+            UNIT = this.gameObject.GetComponent<UnitScript>();
+            StateExtensions[0] = EnumProvider.ORDERSLIST.Cancel;
+            this.ID = UNIT.Options.RegisterUnitComponent(this, StateExtensions);
+
             SignIn();
 
+            return this;
+        }
+    }
+
+    public UnitComponent PflongeOnUnit(System.Type optionsType)
+    {
+        if (ComponentExtendsTheOptionalstateOrder)
+        {
+            UNIT = this.gameObject.GetComponent<UnitScript>();
+            StateExtensions = new System.Enum[System.Enum.GetValues(optionsType).Length];
+            System.Enum.GetValues(optionsType).CopyTo(StateExtensions, 0);
+            this.ID = UNIT.Options.RegisterUnitComponent(this, StateExtensions);
+            
+            SignIn();
             
             return this;
+        }
+        else
+        {
+            return PflongeOnUnit();
+        }
+    }
+
+    public UnitComponent PflongeOnUnit(System.Array newextensions)
+    {
+        if (ComponentExtendsTheOptionalstateOrder)
+        {
+            UNIT = this.gameObject.GetComponent<UnitScript>();
+            StateExtensions = new System.Enum[newextensions.Length];
+            newextensions.CopyTo(StateExtensions, 0);
+            this.ID = UNIT.Options.RegisterUnitComponent(this, StateExtensions);
+
+            SignIn();
+
+            return this;
+        }
+        else
+            return PflongeOnUnit();
     }
 
     protected virtual void SignIn()
@@ -54,27 +84,13 @@ public abstract class UnitComponent : MonoBehaviour
 
 
 
-    public UnitComponent PflongeOnUnit(System.Array newextensions)
-    {
-        StateExtensions = new System.Enum[newextensions.Length];
-        UNIT = this.gameObject.GetComponent<UnitScript>();
-        newextensions.CopyTo(StateExtensions, 0);
-        this.ID = this.gameObject.GetComponent<UnitScript>().Options.RegisterUnitComponent(this, StateExtensions);
-        SignIn();
-        return this;
-    }
+
 
 
 
     public void StlontshOff()
     {
-        if (!this.ComponentExtendsTheOptionalstateOrder)
-        {
-            StateExtensions = new System.Enum[1];
-            StateExtensions[0] = EnumProvider.ORDERSLIST.Cancel;
-
-        }
-        this.gameObject.GetComponent<UnitScript>().Options.UnRegister(this.ID, StateExtensions);
+        UNIT.Options.UnRegister(this.ID, StateExtensions);
         SignOut();
     }
 
@@ -83,7 +99,6 @@ public abstract class UnitComponent : MonoBehaviour
 
     void OnDestroy()
     {
-        if (ComponentExtendsTheOptionalstateOrder)
             StlontshOff();
     }
 
@@ -96,19 +111,21 @@ public abstract class UnitComponent : MonoBehaviour
         {
             public int ObjectID;
             public string UnitComponentID;
+            public string ExeptionMessage;
 
-            public UnitExeptionData(int oid, string ucid)
+            public UnitExeptionData(int oid, string ucid,string exeptionMessage)
             {
                 ObjectID = oid;
                 UnitComponentID = ucid;
+                ExeptionMessage = exeptionMessage;
             }
         }
 
         UnitExeptionData ExeptionData;
 
-        public UnitComponentExeption(int oid, string ucid)
+        public UnitComponentExeption(int oid, string ucid,string message)
         {
-            this.ExeptionData = new UnitExeptionData(oid, ucid);
+            this.ExeptionData = new UnitExeptionData(oid, ucid, message);
         }
         public override string Message
         {
@@ -119,7 +136,7 @@ public abstract class UnitComponent : MonoBehaviour
                     if (unit.GetInstanceID() == this.ExeptionData.ObjectID)
                         parentObject = unit.name + " - ID: " + this.ExeptionData.ObjectID.ToString();
 
-                return "UnitComponent-Exeption in:\n " + parentObject + "\nIn UnitComponent:\n" + ExeptionData.UnitComponentID;
+                return "UnitComponent-Exeption in:\n " + parentObject + "\nIn UnitComponent:\n" + ExeptionData.UnitComponentID+"\n..."+this.ExeptionData.ExeptionMessage;
             }
         }
     }

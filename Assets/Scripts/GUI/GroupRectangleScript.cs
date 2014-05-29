@@ -44,14 +44,14 @@ public class GroupRectangleScript : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(qamRay, out hit))
         {
-            if ((int)hit.collider.gameObject.GetComponent<UnitScript>().GoodOrEvil != (int)mainGUI.SelectedGroup.GoodOrEvil)
+            if (hit.collider.gameObject.GetComponent<UnitScript>().IsEnemy(GUIScript.SelectedGroup.GoodOrEvil))
             {
-                mainGUI.SelectedGroup.GoupedLeftOnEnemy(hit.collider.gameObject);
+                GUIScript.SelectedGroup.GoupedLeftOnEnemy(hit.collider.gameObject);
             }
         }
         else
         {
-            mainGUI.SelectedGroup.GroupedLeftOnGround();
+            GUIScript.SelectedGroup.GroupedLeftOnGround();
         }
         
     }
@@ -62,12 +62,12 @@ public class GroupRectangleScript : MonoBehaviour {
 
     private void Equalize()
     {
-        if (mainGUI.SelectedGroup.Count > 0)
+        if (GUIScript.SelectedGroup.Count > 0)
         {
             SignIn();
-            mainGUI.SelectedGroup.CalculateSize();
-            gameObject.transform.position = mainGUI.SelectedGroup.Position;
-            gameObject.transform.localScale = mainGUI.SelectedGroup.Scale;
+            GUIScript.SelectedGroup.CalculateSize();
+            gameObject.transform.position = GUIScript.SelectedGroup.Position;
+            gameObject.transform.localScale = GUIScript.SelectedGroup.Scale;
         }
         else
         {

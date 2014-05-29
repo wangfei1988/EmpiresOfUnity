@@ -1,28 +1,26 @@
-﻿///<summary>RocketLauncher
-///by: Kalle Münster
-///
-/// Add it to a Unit to make it can Fire Rockets...
-/// uses RocketObjects as Amunition...
-/// 
-///</summary>
+﻿using UnityEngine;
 
-using UnityEngine;
-using System.Collections;
-//using System;
-
+/*
+ * RocketLauncher
+ * Author: Kalle Münster
+ * Description: Add it to a Unit to make it can fire Rockets
+ *              It uses RocketObjects as Amunition...
+ */
 [AddComponentMenu("Program-X/Weapons/Rocket Launcher")]
 public class RocketLauncher : UnitWeapon
 {
 
-
     public int NumberOfRockets;
-    public override bool IsOutOfAmmu
+    public override bool IsOutOfAmmo
     {
         get { return NumberOfRockets == 0; }
     }
 
     private float Interval
-    { get { return (prefabSlot.amunition == WeaponObject.AMUNITONTYPE.Missiles) ? 0.5f : 3.0f; } }
+    {
+        get { return (prefabSlot.amunition == WeaponObject.AMUNITONTYPE.Missiles) ? 0.5f : 3.0f; }
+    }
+
     public float countdown=0f;
     private RocketObject rocket;
     
@@ -35,20 +33,20 @@ public class RocketLauncher : UnitWeapon
     {
         if (targetUnit)
             Engage(targetUnit.transform.position);
-     //   rocket.TargetUpdatePosition(targetUnit.gameObject.transform.position);
     }
+
     public override void Engage(Vector3 targetPoint)
     {
         if (rocket)
         {
             rocket.SetTarget(targetPoint, this.gameObject.GetComponent<UnitScript>().GoodOrEvil);
-     //       rocket.transform.forward = Vector3.forward;
             rocket.LaunchButton = true;
             rocket = null;
             countdown = Interval;
         }
     }
-    public override void Reloade()
+
+    public override void Reload()
     {
         if (!rocket&&NumberOfRockets>0)
         {
@@ -66,6 +64,7 @@ public class RocketLauncher : UnitWeapon
             }
         }
     }
+
     public override float GetMaximumRange()
     {
         return prefabSlot.MAX_RANGE;

@@ -44,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.3699999, y: -6.6799202, z: -.363519192}
+  m_LocalPosition: {x: -148.077591, y: -6.07999992, z: -156.481735}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_Children:
   - {fileID: 400002}
@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 0, y: .200000003, z: 0}
+  m_LocalPosition: {x: -.400000006, y: .00999999978, z: -.300000012}
   m_LocalScale: {x: 1, y: 1, z: .100000009}
   m_Children: []
   m_Father: {fileID: 400000}
@@ -128,13 +128,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46ac2a8b63984e4d84e97691c91bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UNIT: {fileID: 0}
+  UNIT: {fileID: 11400004}
+  baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
+  optionalStateStrings: []
+  optionalstateIDs: 
+  optionalStates: 
+  ColliderContainingChildObjects: []
   PluggedStateExtendingComponents: []
   unitState: 101
   CurrentFabrikatNumber: 0
-  CurrentFabrikat: {fileID: 100000, guid: 1c0bf5a98ada909458c5f15a283110f7, type: 2}
+  CurrentFabrikat: {fileID: 100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
   typename: Fabrik
   Fabrikat:
   - {fileID: 100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}

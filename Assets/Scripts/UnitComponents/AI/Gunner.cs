@@ -43,8 +43,8 @@ public class Gunner : UnitComponent
     public EnumProvider.ORDERSLIST BattleState = EnumProvider.ORDERSLIST.Patrol;
     void Awake()
     {
-
-        MySpace = this.gameObject.GetComponent<SphereCollider>();
+        weapon = GetComponent<UnitWeapon>();
+        MySpace = GetComponent<SphereCollider>();
     }
 
     void Start()
@@ -99,13 +99,12 @@ public class Gunner : UnitComponent
 
             if (FireAtWill)
             {
-                if (weapon.IsOutOfAmmu)
+                if (weapon.IsOutOfAmmo)
                 {
                     UNIT.Options.UnitState = EnumProvider.ORDERSLIST.Hide;
                     if (!UNIT.IsABuilding)
                         UNIT.Options.FocussedLeftOnGround(-(other.gameObject.transform.position - this.transform.position));
                 }
-
                 else if (UNIT.ALARM >= UnitScript.ALLERT_LEVEL.RED)
                 {
                     weapon.Engage(other.gameObject);

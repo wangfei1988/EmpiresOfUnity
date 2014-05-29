@@ -9,6 +9,7 @@ public class GroundLayer : MonoBehaviour {
         private set;
     }
     new public Collider collider;
+ //   new public Rigidbody rigidbody;
     public bool lightSwitch = false;
     public bool IsActiveGround
     {
@@ -36,6 +37,7 @@ public class GroundLayer : MonoBehaviour {
     {
         Control = GameObject.FindGameObjectWithTag("GroundControl").GetComponent<Ground>();
         collider = this.gameObject.transform.GetChild(0).gameObject.collider;
+      //  rigidbody = this.gameObject.transform.GetChild(0).gameObject.rigidbody;
         light = this.gameObject.transform.GetChild(0).transform.FindChild("GroundLight").light;
         //IsActiveGround = false;
 	}

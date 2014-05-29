@@ -4,11 +4,13 @@ using System.Collections.Generic;
 
 public class Movability : UnitExtension
 {
+
     public override string IDstring
     {
         get { return "KingJulian"; }
     }
-    public new enum OPTIONS : int
+
+    public enum OPTIONS : int
     {
         MoveTo = EnumProvider.ORDERSLIST.MoveTo,
         Patrol = EnumProvider.ORDERSLIST.Patrol,
@@ -18,11 +20,9 @@ public class Movability : UnitExtension
     }
     public OPTIONS movingUnitState = OPTIONS.Stay;
  
-	void Start() 
+	void Start()
     {
-
-        this.PflongeOnUnit(System.Enum.GetValues(typeof(OPTIONS)));
-        standardYPosition = this.gameObject.transform.position.y;
+        this.PflongeOnUnit(typeof(OPTIONS));
         MoveToPoint = this.gameObject.transform.position;
         WayPoints = new List<Vector3>();
         IsMoving = true;
@@ -38,18 +38,21 @@ public class Movability : UnitExtension
             switch (movingUnitState)
             {
                 case OPTIONS.MoveTo:
-                    UNIT.Options.LockOnFocus();
                     SetKinematic();
                     WayPoints.Clear();
+                    UNIT.InteractingUnits.Clear();
+                    UNIT.Options.LockOnFocus();
                     return stateorder;
                 case OPTIONS.Patrol:
                     SetKinematic();
+                    UNIT.InteractingUnits.Clear();
                     UNIT.Options.LockOnFocus();
                     return stateorder;
                 case OPTIONS.Guard:
                     SetKinematic();
-                    UNIT.Options.LockOnFocus();
                     WayPoints.Clear();
+                    UNIT.InteractingUnits.Clear();
+                    UNIT.Options.LockOnFocus();
                     return stateorder;
                 case OPTIONS.Hide:
                     WayPoints.Clear();
@@ -71,61 +74,74 @@ public class Movability : UnitExtension
         WayPoints.Clear();
         MoveToPoint = gameObject.transform.position;
         MovingDirection = MoveToPoint;
+        // cleard interactingunits....
+        UNIT.InteractingUnits.Clear();
         movingUnitState = OPTIONS.Stay;
     }
 
-    public float standardYPosition=0f;
+    public float standardYPosition=0.1f;
+    public bool AlwaysKeepStandardYpsPosition = true;
+    private void KeepStandardYpsPosition()
+    {
+        if (AlwaysKeepStandardYpsPosition)
+        {
+            Vector3 position = this.transform.position;
+            position.y = standardYPosition;
+            this.transform.position = position;
+        }
+    }
 
     internal override void OptionExtensions_OnLEFTCLICK(bool hold)
     {
-        if (movingUnitState == OPTIONS.MoveTo)
+        if (!hold)
         {
-            MoveToPoint = MouseEvents.State.Position.AsWorldPointOnMap;
-            MovingDirection = MoveToPoint;
-            UNIT.Options.UnlockFocus();
-            SetKinematic();
-            IsMoving = true;
-        }
-        else if (movingUnitState == OPTIONS.Guard)
-        {
-            if (UNIT.IsAllied(MouseEvents.State.Position.AsUnitUnderCursor.gameObject))
+            if (movingUnitState == OPTIONS.MoveTo)
             {
-                Target = MouseEvents.State.Position.AsUnitUnderCursor.SetInteracting(this.gameObject);
-                MoveToPoint = Target.transform.position;
+                MoveToPoint = MouseEvents.State.Position.AsWorldPointOnMap;
+                MovingDirection = MoveToPoint;
+                SetKinematic();
                 IsMoving = true;
+
+                UNIT.Options.UnlockFocus();
             }
+            else if (movingUnitState == OPTIONS.Guard)
+            {
+                if (UNIT.IsAllied(MouseEvents.State.Position.AsUnitUnderCursor.gameObject))
+                {
+                    Target = MouseEvents.State.Position.AsUnitUnderCursor.SetInteracting(this.gameObject);
+                    MoveToPoint = Target.transform.position;
+                    IsMoving = true;
 
-            UNIT.Options.DestroyFocus();
-        }
-        else if (movingUnitState == OPTIONS.Patrol)
-        {
-            WayPoints.Add(MouseEvents.State.Position.AsWorldPointOnMap);
-            IsMoving = true;
 
+                    UNIT.Options.UnlockAndDestroyFocus();
+                }
+            }
+            else if (movingUnitState == OPTIONS.Patrol)
+            {
+                WayPoints.Add(MouseEvents.State.Position.AsWorldPointOnMap);
+                IsMoving = true;
 
-            UNIT.Options.DestroyFocus();
-            Debug.Log("Units Movabilitys LeftclickHandler executed");
+                UNIT.Options.UnlockAndDestroyFocus();
+            }
         }
     }
 
     internal override void OptionExtensions_OnRIGHTCLICK(bool hold)
     {
-        Debug.Log("Movebility rightclick");
-        if ((!hold)
-            && (gameObject.GetComponent<Focus>())
-                && (movingUnitState == OPTIONS.Patrol))
+        if (!hold)
         {
-            if (WayPoints.Count >= 2)
-                WayPoints.Insert(WayPoints.Count - 1, MouseEvents.State.Position.AsWorldPointOnMap);
-            else
-                WayPoints.Add(MouseEvents.State.Position.AsWorldPointOnMap);
+            if (movingUnitState == OPTIONS.Patrol)
+            {
+                if (WayPoints.Count >= 2)
+                    WayPoints.Insert(WayPoints.Count - 1, MouseEvents.State.Position.AsWorldPointOnMap);
+                else
+                    WayPoints.Add(MouseEvents.State.Position.AsWorldPointOnMap);
 
-            MovingDirection = MoveToPoint;
-            IsMoving = true;
+                MovingDirection = MoveToPoint;
+                IsMoving = true;
+            }
         }
     }
-
-
 
     private bool __moving = false;
     public virtual bool IsMoving
@@ -146,14 +162,11 @@ public class Movability : UnitExtension
             else if (!__moving)
             {
                 Throttle = 1;
-       //         gameObject.AddComponent<Pilot>();
+                //gameObject.AddComponent<Pilot>();
             }
             __moving = value;
         }
     }
-
-
-
 
     void OnCollisionExit(Collision collision)
     {
@@ -161,15 +174,13 @@ public class Movability : UnitExtension
         MovingDirection = MoveToPoint;
     }
 
-
-
-
     public bool IsMovingAsGroup
     {
         get { return _groupmove; }
         set
         {
-            if (value) IsMoving = true;
+            if (value)
+                IsMoving = true;
             _groupmove = value;
         }
     }
@@ -186,15 +197,15 @@ public class Movability : UnitExtension
         {
             if (IsMoving)
                 return speed * Throttle;
-            else return 0;
+            return 0;
         }
         set
         {
             Throttle = Mathf.Clamp01(value);
-            if (value > 0f) IsMoving = true;
+            if (value > 0f)
+                IsMoving = true;
         }
     }
-
 
     public Vector3 MoveToPoint
     {
@@ -203,11 +214,10 @@ public class Movability : UnitExtension
         {
             //if (UNIT.IsAnAirUnit)
             //    value.y = this.transform.parent.transform.position.y;
-        //    else
+            //else
                 value.y = standardYPosition;
 
             UNIT.Options.MoveToPoint = value;
-            
         }
     }
     public GameObject Target;
@@ -215,17 +225,17 @@ public class Movability : UnitExtension
 
     private Vector3 movingDirection = Vector3.zero;
     public Vector3 Rudder = Vector3.zero;
-    public bool RudderIsNormalizised = true;
+    public bool NormalizedRudder = true;
     public Vector3 MovingDirection
     {
         get 
         {
-            if (RudderIsNormalizised)
+            if (NormalizedRudder)
                 return (movingDirection + Rudder).normalized;
             else
             {
+                NormalizedRudder = true;
                 return movingDirection + Rudder;
-                RudderIsNormalizised = true;
             }
         }
         set
@@ -233,16 +243,50 @@ public class Movability : UnitExtension
             movingDirection = (value - this.gameObject.transform.position).normalized; 
         }
     }
+
     internal void SetKinematic()
     {
-        gameObject.rigidbody.isKinematic = true;
+        if (UNIT.Options.ColliderContainingChildObjects.Length > 0)
+        {
+            foreach (GameObject subUnitPart in UNIT.Options.ColliderContainingChildObjects)
+                subUnitPart.rigidbody.isKinematic = true;
+        }
+        else
+            gameObject.rigidbody.isKinematic = true;
+
         kinematicFrames = 2;
     }
+
     private void checkKinematic()
     {
-        if (gameObject.rigidbody.isKinematic)
-            if (kinematicFrames <= 0) gameObject.rigidbody.isKinematic = false;
-            else --kinematicFrames;
+        if (UNIT.Options.ColliderContainingChildObjects.Length > 0)
+        {
+            bool ISKINEMATIC = false;
+            foreach (GameObject subUnitPart in UNIT.Options.ColliderContainingChildObjects)
+            {
+                if ((subUnitPart.rigidbody.isKinematic))
+                    ISKINEMATIC = true;
+            }
+            if (ISKINEMATIC)
+            {
+                if (kinematicFrames <= 0)
+                {
+                    foreach (GameObject subUnitPart in UNIT.Options.ColliderContainingChildObjects)
+                        subUnitPart.rigidbody.isKinematic = false;
+                }
+            }
+            else
+            {
+                --kinematicFrames;
+            }
+        }
+        else if (gameObject.rigidbody.isKinematic)
+        {
+            if (kinematicFrames <= 0)
+                gameObject.rigidbody.isKinematic = false;
+            else
+                --kinematicFrames;
+        }
     }
     private int kinematicFrames=0;
 
@@ -272,21 +316,17 @@ public class Movability : UnitExtension
 
     public void MoveAsGroup(GameObject leader)
     {
-
         Target = leader;
         MoveToPoint = leader.transform.position;
         IsMovingAsGroup = true;
-        //     IsAttacking = false;
     }
 
     private bool Move()
     {
-        checkKinematic();
         if (this.gameObject.GetComponent<Pilot>()) gameObject.GetComponent<Pilot>().DoUpdate();
 
         if (movingUnitState == OPTIONS.Guard)
         {
-         //   if (gameObject.GetComponent<Pilot>()) UnitComponent.Destroy(gameObject.GetComponent<Pilot>());
             MoveToPoint = Target.transform.position;
 
             if (Distance >= 20) gameObject.transform.position += (MovingDirection * Speed);
@@ -306,7 +346,7 @@ public class Movability : UnitExtension
             SetKinematic();
             gameObject.transform.position = MoveToPoint;
 
-            if (IsGroupLeader) GUIScript.main.SelectedGroup.GroupState = UnitGroup.GROUPSTATE.Waiting;
+            if (IsGroupLeader) GUIScript.SelectedGroup.GroupState = UnitGroup.GROUPSTATE.Waiting;
             if (movingUnitState == OPTIONS.Patrol)
             {
                 MoveToPoint = WayPoints[0];
@@ -317,17 +357,17 @@ public class Movability : UnitExtension
             }
             else { StayOrder(); }
         }
+
+        KeepStandardYpsPosition();
+
         return this.gameObject.transform.position != MoveToPoint;
     }
 
-
-
-
     public override void DoUpdate()
     {
-        checkKinematic();
-        if (IsMoving) IsMoving = Move();
-        Vector3 position = this.transform.position;
-        position.y = standardYPosition;
+         checkKinematic();
+         if (IsMoving) IsMoving = Move();
+         KeepStandardYpsPosition();
     }
+
 }

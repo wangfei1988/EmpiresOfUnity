@@ -44,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.75, y: -5.22853327, z: 1.5}
+  m_LocalPosition: {x: -122.243652, y: -5.9000001, z: -157.657562}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -113,8 +113,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400004}
+  baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
+  optionalStateStrings: []
+  optionalstateIDs: 
+  optionalStates: 
+  ColliderContainingChildObjects: []
   PluggedStateExtendingComponents: []
   SettingFile: {fileID: 11400000, guid: aca8b3e8c0c297c429e437d50e322dbc, type: 2}
 --- !u!114 &11400002

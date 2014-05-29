@@ -81,7 +81,7 @@ public class AirUnitOptions : UnitOptions
         return false;
     }
 
-    public enum OPTIONS : int
+    new public enum OPTIONS : int
     {
         MoveTo = EnumProvider.ORDERSLIST.MoveTo,
         Patrol = EnumProvider.ORDERSLIST.Patrol,

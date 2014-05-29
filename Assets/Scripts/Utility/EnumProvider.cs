@@ -22,7 +22,8 @@ public class EnumProvider
 
         Patrol = 20,
         MoveUnitsTo = 25,
-        Conquer = 30,
+        Defend = 30,
+        Conquer = 35,
 
         Hide = 50,
         Seek = 55,

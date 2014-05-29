@@ -4,16 +4,7 @@ using System;
 
 public class Focus : MonoBehaviour
 {
-    //[Flags]
-    //public enum HANDLING : int
-    //{
-    //    UnlockFocus = -2,
-    //    LockFocus = 2,
-    //    DestroyFocus = -1,
-    //    None = 0,
-    //    HasFocus = 1,
-    //    IsLocked = 3,
-    //}
+
     public enum MARKERS : byte
     {
         MoveToPoint = 0,
@@ -24,7 +15,7 @@ public class Focus : MonoBehaviour
     // Static Member:
     public static bool IsLocked
     {
-        get { return (KeyObject!=null); }
+        get { return ((bool)KeyObject); }
     }
     public static MarkerScript[] Marker = new MarkerScript[3];
     public static GameObject masterGameObject = null;
@@ -46,8 +37,9 @@ public class Focus : MonoBehaviour
         get
         {
             if (IsLocked)
-                return this.gameObject == KeyObject;
-            else return false;
+                return (this.gameObject == KeyObject);
+            else 
+                return false;
         }
     }
 
@@ -73,8 +65,8 @@ public class Focus : MonoBehaviour
             }
 
             // Add Healthbar it not there
-            if (gameObject.GetComponent<UnitScript>())
-                gameObject.GetComponent<UnitScript>().ShowLifebar();
+            if (UNIT)
+                UNIT.ShowLifebar();
         }   
         else
         {
@@ -96,12 +88,9 @@ public class Focus : MonoBehaviour
         }
     }
 
-    [SerializeField]
-    //private bool _islocked = false;
     // Check if Focus is on another gameobject -> than release old-focus
     void DoUpdate()
     {
-        //_islocked = IsLocked;
         if (IsLocked)
         {
             // gets back the Focus to the LockedUnit if it was mistakenly taken by another Unit 
@@ -155,7 +144,7 @@ public class Focus : MonoBehaviour
             }
             else if (IsLockedToThis)
             {
-                UNIT.Options.MouseEvents_LEFTCLICK(qamRay, hold);
+                UNIT.Options.OptionsBase_LEFTCLICK(qamRay, hold);
             }
         }
     }
@@ -175,7 +164,8 @@ public class Focus : MonoBehaviour
                         //-------------it would contain Interaction specific comamds like Guard, GroupMove, BuildAGroup, TakeLeadership, and so on...
                         //-------------butt now this Rightclick will handle the focus to the other Unit and call it's CommandOptionsMenu
                         ClickedUnit.gameObject.AddComponent<Focus>();
-                        RightClickMenu.PopUpGUI(MouseEvents.State.Position.AsUnitUnderCursor);
+                        RightClickMenu.PopUpGUI(ClickedUnit);
+                        GUIScript.SelectedGroup.ResetGroup();
                     }
                     else
                     {//---------------the Focussed Unit (This unit) was Rightclicked self.
@@ -187,11 +177,9 @@ public class Focus : MonoBehaviour
                     GameObject.Destroy(gameObject.GetComponent<Focus>());
                 }
             }
-
-            if (IsLockedToThis)
+            else if (IsLockedToThis)
             {
-                UNIT.Options.MouseEvents_RIGHTCLICK(qamRay,hold);
-                Debug.Log("Focussed Units RightClickHandler has been called !");
+                UNIT.Options.OptionsBase_RIGHTCLICK(qamRay,hold);
             }
         }
     }
@@ -200,11 +188,11 @@ public class Focus : MonoBehaviour
     {
         if (other == null)
             return false;
-        return other.GetComponent<UnitScript>().IsEnemy(UNIT.GoodOrEvil);
+        return UNIT.IsEnemy(other);
     }
     private bool IsOtherUnit(GameObject other)
     {
-        return other.GetInstanceID() != this.gameObject.GetInstanceID(); 
+        return ((!UNIT.IsMySelf(other)) && (other.GetComponent<UnitScript>()));
     }
 
 
@@ -215,6 +203,7 @@ public class Focus : MonoBehaviour
         if ((!IsLocked) || (IsLockedToThis))
         {
             KeyObject = this.gameObject;
+            Debug.Log("FOCUS HAS LOCKED !!!");
             return true;
         }
         else return false;
@@ -224,9 +213,14 @@ public class Focus : MonoBehaviour
     // must be called by the Unit whitch has Locked the Focus,givin its own gameObject as parameter for UnlockKey, or the Focus wont be Unlocked...
     public bool Unlock(GameObject unlockKey)
     {
-        if(IsLocked)
+        if (IsLocked)
+        {
             if (unlockKey.GetInstanceID() == KeyObject.GetInstanceID())
+            {
                 KeyObject = null;
+                Debug.Log("FOCUS UNLOCKED !!!");
+            }
+        }
 
         return !IsLocked;
     }
@@ -252,8 +246,8 @@ public class Focus : MonoBehaviour
             UpdateManager.OnUpdate -= DoUpdate;
 
             // Destroy Lifebar if not already destroyed
-            if (gameObject.GetComponent<UnitScript>())
-                gameObject.GetComponent<UnitScript>().HideLifebar();
+            if (UNIT)
+                UNIT.HideLifebar();
         }  
     }
 }

@@ -25,6 +25,7 @@ public class Cam : MonoBehaviour {
     public float PERSPECTIVE_VIEW_SIZE = 25f;
     private float Perspective_Y_Height = 47f;
     private float Perspective_Y_MaxHeight = 400f;
+    private float Perspective_Y_MinHeight = 20f;
 
     private CAMERAMODE camMode = CAMERAMODE.ORTHOGRAFIC;
 
@@ -103,14 +104,14 @@ public class Cam : MonoBehaviour {
         }
         else if (CamMode == CAMERAMODE.PERSPECTIVE)
         {
-            //float oldY = gameObject.transform.position.y;
-
             Vector3 buffer = gameObject.transform.position;
             buffer.y -= (int)wheelstate * (gameObject.transform.position.y / 120f);
+
             if (buffer.y > Perspective_Y_MaxHeight)
-            {
                 buffer.y = Perspective_Y_MaxHeight;
-            }
+            if (buffer.y < Perspective_Y_MinHeight)
+                buffer.y = Perspective_Y_MinHeight;
+
             Ray centerRay = camera.ScreenPointToRay(new Vector3(camera.pixelWidth / 2f, camera.pixelHeight / 2f, 0f));
             RaycastHit groundHit;
             Ground.Current.collider.Raycast(centerRay, out groundHit, camera.farClipPlane);

@@ -36,7 +36,8 @@ abstract public class MovingUnitOptions : UnitOptions
         standardOrder = true;
      //   IsMovingAsGroup = true;
         movement.SetKinematic();
-        UnitState = OPTIONS.MoveTo;
+   //     UnitState = OPTIONS.MoveTo;
+        unitstateint = (int)OPTIONS.MoveTo;
         movement.MoveToPoint = worldPoint;
         movement.MovingDirection = worldPoint;
    //     gameObject.transform.position += (Movement.MovingDirection * Movement.Speed);
@@ -274,11 +275,11 @@ abstract public class MovingUnitOptions : UnitOptions
 
     internal override void DoStart()
     {
-
-        foreach (int KeyValue in System.Enum.GetValues(typeof(OPTIONS)))
-            if (!OptionalStatesOrder.ContainsKey(KeyValue))
-                OptionalStatesOrder.Add(KeyValue, ((OPTIONS)KeyValue).ToString());
-
+        
+        //foreach (int KeyValue in System.Enum.GetValues(typeof(OPTIONS)))
+        //    if (!OptionalStatesOrder.ContainsKey(KeyValue))
+        //        OptionalStatesOrder.Add(KeyValue, ((OPTIONS)KeyValue).ToString());
+        RegisterInheridedOrderStateOptions(typeof(OPTIONS));
         standardYPosition = gameObject.transform.position.y;
         MoveToPoint = gameObject.transform.position;
         //unitstateint = 20;

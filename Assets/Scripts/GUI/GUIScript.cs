@@ -13,7 +13,7 @@ public class GUIScript : MonoBehaviour
             StaticTextLines.Insert(0,line);
     }
 
-    public UnitGroup SelectedGroup;
+    public static UnitGroup SelectedGroup;
     public int GroupCount;
     public RightClickMenu RightclickGUI;
 
