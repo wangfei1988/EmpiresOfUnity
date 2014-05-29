@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400004}
+  SettingFile: {fileID: 11400000, guid: 08f15d20ab3da154bbf4f93729736c3d, type: 2}
   baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
@@ -136,7 +137,6 @@ MonoBehaviour:
   optionalstateIDs: 
   optionalStates: 
   ColliderContainingChildObjects: []
-  PluggedStateExtendingComponents: []
   unitState: 101
   CurrentFabrikatNumber: 0
   CurrentFabrikat: {fileID: 100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}

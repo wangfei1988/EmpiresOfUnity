@@ -17,3 +17,5 @@ MonoBehaviour:
   NaniteMineBuildingCost_Matter: 0
   SolarTowerBuildingCost_Naniten: 0
   SolarTowerBuildingCost_Matter: 0
+  TankFactoryBuildingCost_Nanitten: 0
+  TankFactoryBuildingCost_Matter: 0

@@ -92,9 +92,9 @@ public class BuildingBuilder : ProductionBuilding
     public void CreatePrefab(int index)
     {
         //Check if enough Resources to build 
-        BuildingCostMatter = ((GameObject)this.BuildableBuildings[index]).GetComponent<AbstractBuilding>().SettingFile.MatterCost;
-        BuildingCostNanite = ((GameObject)this.BuildableBuildings[index]).GetComponent<AbstractBuilding>().SettingFile.NaniteCost;
-        IsBuildable = ((GameObject)this.BuildableBuildings[index]).GetComponent<AbstractBuilding>().SettingFile.IsBuildable;
+        BuildingCostMatter = ((GameObject)this.BuildableBuildings[index]).GetComponent<UnitOptions>().SettingFile.MatterCost;
+        BuildingCostNanite = ((GameObject)this.BuildableBuildings[index]).GetComponent<UnitOptions>().SettingFile.NaniteCost;
+        IsBuildable = ((GameObject)this.BuildableBuildings[index]).GetComponent<UnitOptions>().SettingFile.IsBuildable;
         solutionMatter = (int)ResourceManager.GetResourceCount(ResourceManager.Resource.MATTER) -this.BuildingCostMatter;
         solutionNaniten = (int)(ResourceManager.GetResourceCount(ResourceManager.Resource.NANITEN) - this.BuildingCostNanite);
 

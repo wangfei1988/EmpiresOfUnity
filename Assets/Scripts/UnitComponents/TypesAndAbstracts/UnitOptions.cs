@@ -25,7 +25,7 @@ abstract public class UnitOptions : MonoBehaviour
     }
 
     public UnitScript UNIT;
-
+    public BuildingSetting SettingFile;
     //---------------------------------------- State Flags...
 
     public virtual bool IsAttacking

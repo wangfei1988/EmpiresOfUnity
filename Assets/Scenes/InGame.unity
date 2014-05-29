@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 48475770}
+  SettingFile: {fileID: 0}
   baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
@@ -2260,6 +2261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 286388417}
+  SettingFile: {fileID: 0}
   baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
@@ -2533,6 +2535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 311706547}
+  SettingFile: {fileID: 0}
   baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
@@ -3425,6 +3428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 379654365}
+  SettingFile: {fileID: 0}
   baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
@@ -4203,6 +4207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 716948112}
+  SettingFile: {fileID: 0}
   baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
@@ -4446,6 +4451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 724636358}
+  SettingFile: {fileID: 0}
   baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
@@ -4836,6 +4842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 798904032}
+  SettingFile: {fileID: 0}
   baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
@@ -6397,6 +6404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 963226623}
+  SettingFile: {fileID: 0}
   baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
@@ -6589,6 +6597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 968603421}
+  SettingFile: {fileID: 0}
   baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
@@ -6819,6 +6828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 0}
+  SettingFile: {fileID: 0}
   baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
@@ -6826,7 +6836,6 @@ MonoBehaviour:
   optionalstateIDs: 
   optionalStates: 
   ColliderContainingChildObjects: []
-  SettingFile: {fileID: 0}
   Grid: {fileID: 1113168590}
   BuildableBuildings:
   - {fileID: 100000, guid: 8f221f678db57e54092535f2917f0308, type: 2}
@@ -7066,6 +7075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 1235893391}
+  SettingFile: {fileID: 0}
   baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
@@ -7947,6 +7957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 1460555428}
+  SettingFile: {fileID: 0}
   baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
@@ -9377,6 +9388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 1515505789}
+  SettingFile: {fileID: 0}
   baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
@@ -10381,6 +10393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 1874687699}
+  SettingFile: {fileID: 0}
   baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
@@ -10714,6 +10727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 1927254787}
+  SettingFile: {fileID: 0}
   baseUnitState: 100
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
@@ -12077,6 +12091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 2045922289}
+  SettingFile: {fileID: 0}
   baseUnitState: 100
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}

@@ -11,4 +11,7 @@ public class BuildingCostBalancing : ScriptableObject
 
     public int SolarTowerBuildingCost_Naniten;
     public int SolarTowerBuildingCost_Matter;
+
+    public int TankFactoryBuildingCost_Nanitten;
+    public int TankFactoryBuildingCost_Matter;
 }

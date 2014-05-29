@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 public abstract class AbstractBuilding : UnitOptions
 {
-    public BuildingSetting SettingFile;
+  //  public BuildingSetting SettingFile;    -now in UnitOptions !
     private EnumProvider.ORDERSLIST unitState;
 
     public uint MaxLevel
