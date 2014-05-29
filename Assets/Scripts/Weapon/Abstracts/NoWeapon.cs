@@ -3,7 +3,7 @@ using System.Collections;
 
 public class NoWeapon : UnitWeapon {
 
-    public override bool IsOutOfAmmu
+    public override bool IsOutOfAmmo
     {
         get { return true; }
     }
@@ -19,7 +19,7 @@ public class NoWeapon : UnitWeapon {
         {
             return 0f;
         }
-        public override void Reloade()
+        public override void Reload()
         {
 
         }

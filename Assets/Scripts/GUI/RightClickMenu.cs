@@ -129,6 +129,9 @@ public class RightClickMenu : MonoBehaviour {
                 if (GUI.Button(new Rect(0, 3 * guiStyle.fontSize + i * (btnHeight), (224 * ScaleX), btnHeight), SIDEmenuOptions[i].name, buttonSIDEstyle))
                 {
                     // Code for Build-Action
+
+                    // TODO Lucas
+
                     this.buildingBuilder.CreatePrefab(i);
                 }
             }

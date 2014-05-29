@@ -27,7 +27,6 @@ public class SolarTower : AbstractBuilding
 
     public override void BuildFinished()
     {
-        this.BuildingCost();
     }
 
     internal override void DoUpdate()

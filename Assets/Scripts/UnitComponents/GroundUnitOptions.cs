@@ -34,7 +34,7 @@ public class GroundUnitOptions : MovingUnitOptions
         {
             if (System.Enum.IsDefined(typeof(OPTIONS), (OPTIONS)unitstateint))
                 return unitState;
-            else return base.UnitState;
+            return base.UnitState;
         }
         set
         {
@@ -77,8 +77,8 @@ public class GroundUnitOptions : MovingUnitOptions
 
            if (gameObject.GetComponent<Focus>())
            {
-                
-               if(!standardOrder) base.MouseEvents_LEFTCLICK(qamRay, hold);
+               if(!standardOrder)
+                   base.MouseEvents_LEFTCLICK(qamRay, hold);
 
                if (unitState == OPTIONS.Attack)
                {
@@ -146,7 +146,7 @@ public class GroundUnitOptions : MovingUnitOptions
                     MovingDirection = MoveToPoint;
                 if (Distance < UNIT.AttackRange)
                 {
-                    UNIT.weapon.Reloade();
+                    UNIT.weapon.Reload();
                     UNIT.weapon.Engage(Target);
                 }
                 return IsMoving = true; 

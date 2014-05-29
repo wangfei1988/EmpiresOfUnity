@@ -4,10 +4,12 @@ using System.Collections.Generic;
 
 public class Movability : UnitExtension
 {
+
     public override string IDstring
     {
         get { return "KingJulian"; }
     }
+
     public enum OPTIONS : int
     {
         MoveTo = EnumProvider.ORDERSLIST.MoveTo,
@@ -18,11 +20,9 @@ public class Movability : UnitExtension
     }
     public OPTIONS movingUnitState = OPTIONS.Stay;
  
-	void Start() 
+	void Start()
     {
-
         this.PflongeOnUnit(typeof(OPTIONS));
-      //  standardYPosition = this.gameObject.transform.position.y;
         MoveToPoint = this.gameObject.transform.position;
         WayPoints = new List<Vector3>();
         IsMoving = true;
@@ -31,6 +31,7 @@ public class Movability : UnitExtension
 
     protected override EnumProvider.ORDERSLIST on_UnitStateChange(EnumProvider.ORDERSLIST stateorder)
     {
+        //Debug.Log("OnUnitStateChange called!!!!!!!!!!!!!!!");
         movingUnitState = (OPTIONS)stateorder;
         if (System.Enum.IsDefined(typeof(OPTIONS), (int)stateorder))
         {
@@ -120,7 +121,6 @@ public class Movability : UnitExtension
                 WayPoints.Add(MouseEvents.State.Position.AsWorldPointOnMap);
                 IsMoving = true;
 
-
                 UNIT.Options.UnlockAndDestroyFocus();
             }
         }
@@ -143,8 +143,6 @@ public class Movability : UnitExtension
         }
     }
 
-
-
     private bool __moving = false;
     public virtual bool IsMoving
     {
@@ -164,12 +162,11 @@ public class Movability : UnitExtension
             else if (!__moving)
             {
                 Throttle = 1;
-       //         gameObject.AddComponent<Pilot>();
+                //gameObject.AddComponent<Pilot>();
             }
             __moving = value;
         }
     }
-
 
     void OnCollisionExit(Collision collision)
     {
@@ -182,7 +179,8 @@ public class Movability : UnitExtension
         get { return _groupmove; }
         set
         {
-            if (value) IsMoving = true;
+            if (value)
+                IsMoving = true;
             _groupmove = value;
         }
     }
@@ -199,15 +197,15 @@ public class Movability : UnitExtension
         {
             if (IsMoving)
                 return speed * Throttle;
-            else return 0;
+            return 0;
         }
         set
         {
             Throttle = Mathf.Clamp01(value);
-            if (value > 0f) IsMoving = true;
+            if (value > 0f)
+                IsMoving = true;
         }
     }
-
 
     public Vector3 MoveToPoint
     {
@@ -216,11 +214,10 @@ public class Movability : UnitExtension
         {
             //if (UNIT.IsAnAirUnit)
             //    value.y = this.transform.parent.transform.position.y;
-        //    else
+            //else
                 value.y = standardYPosition;
 
             UNIT.Options.MoveToPoint = value;
-            
         }
     }
     public GameObject Target;
@@ -246,6 +243,7 @@ public class Movability : UnitExtension
             movingDirection = (value - this.gameObject.transform.position).normalized; 
         }
     }
+
     internal void SetKinematic()
     {
         if (UNIT.Options.ColliderContainingChildObjects.Length > 0)
@@ -258,28 +256,29 @@ public class Movability : UnitExtension
 
         kinematicFrames = 2;
     }
+
     private void checkKinematic()
     {
         if (UNIT.Options.ColliderContainingChildObjects.Length > 0)
         {
-                bool ISKINEMATIC = false;
-                foreach (GameObject subUnitPart in UNIT.Options.ColliderContainingChildObjects)
+            bool ISKINEMATIC = false;
+            foreach (GameObject subUnitPart in UNIT.Options.ColliderContainingChildObjects)
+            {
+                if ((subUnitPart.rigidbody.isKinematic))
+                    ISKINEMATIC = true;
+            }
+            if (ISKINEMATIC)
+            {
+                if (kinematicFrames <= 0)
                 {
-                    if ((subUnitPart.rigidbody.isKinematic))
-                        ISKINEMATIC = true;
+                    foreach (GameObject subUnitPart in UNIT.Options.ColliderContainingChildObjects)
+                        subUnitPart.rigidbody.isKinematic = false;
                 }
-
-                if (ISKINEMATIC)
-                {
-                    if (kinematicFrames <= 0)
-                    {
-                        foreach (GameObject subUnitPart in UNIT.Options.ColliderContainingChildObjects)
-                            subUnitPart.rigidbody.isKinematic = false;
-                    }
-                }
-                else
-                    --kinematicFrames;
-
+            }
+            else
+            {
+                --kinematicFrames;
+            }
         }
         else if (gameObject.rigidbody.isKinematic)
         {
@@ -324,7 +323,6 @@ public class Movability : UnitExtension
 
     private bool Move()
     {
-        
         if (this.gameObject.GetComponent<Pilot>()) gameObject.GetComponent<Pilot>().DoUpdate();
 
         if (movingUnitState == OPTIONS.Guard)
@@ -371,4 +369,5 @@ public class Movability : UnitExtension
          if (IsMoving) IsMoving = Move();
          KeepStandardYpsPosition();
     }
+
 }

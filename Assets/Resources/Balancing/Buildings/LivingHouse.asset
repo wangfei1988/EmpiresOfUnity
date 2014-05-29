@@ -11,7 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131e2660297140f43940f53fd68028eb, type: 3}
   m_Name: LivingHouse
   m_EditorClassIdentifier: 
+  Level: 1
   UsedEnergy: 0
+  MatterCost: 10
+  NaniteCost: 10
+  IsBuildable: 0
   UpgradeCostNanite: 
   UpgradeCostMatter: 
   LevelResource: 0a0000000f00000014000000

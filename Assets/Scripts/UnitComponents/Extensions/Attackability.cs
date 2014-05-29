@@ -91,7 +91,7 @@ public class Attackability : UnitExtension
 
                         if (Movement.Distance < UNIT.AttackRange)
                         {
-                            UNIT.weapon.Reloade();
+                            UNIT.weapon.Reload();
                             UNIT.weapon.Engage(UNIT.Options.Target);
                         }
 
@@ -101,7 +101,7 @@ public class Attackability : UnitExtension
                     {
                         if (Vector3.Distance(this.gameObject.transform.position, AttackPoint) <= UNIT.AttackRange)
                         {
-                            UNIT.weapon.Reloade();
+                            UNIT.weapon.Reload();
                             UNIT.weapon.Engage(UNIT.Options.Target);
                         }
                         return true;
@@ -131,7 +131,7 @@ public class Attackability : UnitExtension
     }
     public bool HasAmunition
     {
-        get { return States[(byte)STATES.HasAmunition] = !UNIT.weapon.IsOutOfAmmu; }
+        get { return States[(byte)STATES.HasAmunition] = !UNIT.weapon.IsOutOfAmmo; }
     }
     public bool IsConquering
     {

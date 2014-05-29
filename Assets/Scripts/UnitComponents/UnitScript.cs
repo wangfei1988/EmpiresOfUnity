@@ -168,7 +168,7 @@ public class UnitScript : MonoBehaviour
                 {
                     Options = gameObject.GetComponent<MovingUnitOptions>();
                     weapon = gameObject.GetComponent<RocketLauncher>();
-                 //   this.gameObject.AddComponent<WingsAndJets>().PflongeOnUnit();
+                    //this.gameObject.AddComponent<WingsAndJets>().PflongeOnUnit();
                     break;
                 }
             case UNITTYPE.RocketMan:
@@ -223,10 +223,10 @@ public class UnitScript : MonoBehaviour
         UpdateManager.OnUpdate -= UpdateLifebar;
     }
 
-    //--- Update function:  
-    //--- the Main-Entrypoint to the Units GameObject UpdateLoop.
-    //--- if everything is set correctly, It' should call all Updates in their
-    //--- right Updateorder in all Subcomponents and Childobjects.
+    // Update function:  
+    // the Main-Entrypoint to the Units GameObject UpdateLoop.
+    // if everything is set correctly, It' should call all Updates in their
+    // right Updateorder in all Subcomponents and Childobjects.
     //########################################################################################################
     void UpdateManager_UNITUPDATE()
     {
@@ -235,7 +235,7 @@ public class UnitScript : MonoBehaviour
         Options.OptionsUpdate();
     }
 
-    //--- Component-Slots (these Components are accsessed almost everytime, so ithink References to them are very usefull...) 
+    // Component-Slots (these Components are accsessed almost everytime, so ithink References to them are very usefull...) 
     public UnitOptions Options; //-Contains everythin whats Optional... different on every Unit-Type
     public UnitAnimation unitAnimation; //- first UnitAnimation of the UnitAnimations-Chain
     public UnitWeapon weapon; //- if the Unit is a Type of Unit thats unable to fight(Constuction Units i.e.) a "NoWeapon"-component will addet automaticly... 
@@ -304,8 +304,6 @@ public class UnitScript : MonoBehaviour
         }
     }
 
-
-
     [SerializeField]
     private int level;
     public int Level
@@ -349,6 +347,7 @@ public class UnitScript : MonoBehaviour
     {
         get { return Options.GetUnitsMenuOptions(); }
     }
+
     public EnumProvider.ORDERSLIST[] RightClickMenuOptionStates
     {
         get
@@ -372,14 +371,17 @@ public class UnitScript : MonoBehaviour
                 Options.GiveChainedOrder(value);
         }
     }
+
     public Object[] SellectableObjects
     {
         get { return Options.GetUnitsSIDEMenuObjects(); }
     }
+
     public void Sellect(Object returned)
     {
         Options.SetSIDEObject(returned);
     }
+
     public void AskForOrder()
     {
         RightClickMenu.PopUpGUI(this);
@@ -395,7 +397,6 @@ public class UnitScript : MonoBehaviour
     
     private void Die()
     {
-
         UpdateManager.UNITUPDATE -= UpdateManager_UNITUPDATE;
         HideLifebar();
 
@@ -405,7 +406,6 @@ public class UnitScript : MonoBehaviour
         //Destruction now does the UnitDestructionsManagement...
         UnitDestructionManagement.SignInForDestruction(this.gameObject);
 	}
-
 
     //--- Stuff for interaction with other Units like Guarding,Seeking,GroupMove and every other kind of Groupbehaviour...
     //#####################################################################################################################
@@ -425,8 +425,9 @@ public class UnitScript : MonoBehaviour
                 interactingUnits.Add(unit.gameObject.GetInstanceID());
                 return unit.GetComponent<UnitScript>().SetInteracting(this.gameObject);
             }
-            else return this.gameObject;
+            return this.gameObject;
         }
-        else return unit;
+        return unit;
     }
+
 }
