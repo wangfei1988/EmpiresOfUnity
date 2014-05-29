@@ -138,76 +138,11 @@ public class UnitScript : MonoBehaviour
     {
         GoodOrEvil = new FoE(goodOrEvil);
         LifebarScript = ScriptableObject.CreateInstance<Lifebar>();
-        switch (unitType)
-        {
-            case UNITTYPE.Worker:
-                {
-                    Options = gameObject.GetComponent<GroundBuilderOptions>();
-                    weapon = gameObject.AddComponent<NoWeapon>();
-                    break;
-                }
-            case UNITTYPE.Tank:
-                {
-                    Options = gameObject.GetComponent<GroundUnitOptions>();
-                    weapon = gameObject.GetComponent<UnitWeapon>();
-                    break;
-                }
-            case UNITTYPE.Fabrik:
-                {
-                    Options = gameObject.GetComponent<ProductionBuildingOptions>();
-                    weapon = gameObject.AddComponent<NoWeapon>();
-                    break;
-                }
-            case UNITTYPE.Airport:
-                {
-                    Options = gameObject.GetComponent<ProductionBuildingOptions>();
-                    weapon = gameObject.AddComponent<NoWeapon>();
-                    break;
-                }
-            case UNITTYPE.JetFighter:
-                {
-                    Options = gameObject.GetComponent<MovingUnitOptions>();
-                    weapon = gameObject.GetComponent<RocketLauncher>();
-                    //this.gameObject.AddComponent<WingsAndJets>().PflongeOnUnit();
-                    break;
-                }
-            case UNITTYPE.RocketMan:
-                {
-                    Options = gameObject.GetComponent<GroundUnitOptions>();
-                    weapon = gameObject.GetComponent<RocketLauncher>();
-                    break;
-                }
-            case UNITTYPE.MatterMine:
-                {
-                    Options = gameObject.GetComponent<MatterMine>();
-                    weapon = gameObject.AddComponent<NoWeapon>();
-                    break;
-                }
-            case UNITTYPE.NaniteMine:
-                {
-                    Options = gameObject.GetComponent<NaniteMine>();
-                    weapon = gameObject.AddComponent<NoWeapon>();
-                    break;
-                }
-            case UNITTYPE.SolarTower:
-                {
-                    Options = gameObject.GetComponent<SolarTower>();
-                    weapon = gameObject.AddComponent<NoWeapon>();
-                    break;
-                }
-            case UNITTYPE.LivingHouse:
-                {
-                    Options = gameObject.GetComponent<LivingHouse>();
-                    weapon = gameObject.AddComponent<NoWeapon>();
-                    break;
-                }
-            case UNITTYPE.MainBuilding:
-                {
-                    Options = gameObject.GetComponent<ProductionBuildingOptions>();
-                    weapon = gameObject.GetComponent<UnitWeapon>();
-                    break;
-                }
-        }
+        Options = gameObject.GetComponent<UnitOptions>();
+        if (!gameObject.GetComponent<UnitWeapon>())
+            weapon = gameObject.AddComponent<NoWeapon>();
+        else
+            weapon = gameObject.GetComponent<UnitWeapon>();
 	}
 
     void Start()

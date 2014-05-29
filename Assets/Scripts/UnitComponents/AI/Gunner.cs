@@ -44,11 +44,14 @@ public class Gunner : UnitComponent
     void Awake()
     {
         weapon = GetComponent<UnitWeapon>();
-        MySpace = GetComponent<SphereCollider>();
+        if (!gameObject.GetComponent<SphereCollider>())
+            gameObject.AddComponent<SphereCollider>().isTrigger = true;
+
     }
 
     void Start()
     {
+        MySpace = GetComponent<SphereCollider>();
         PflongeOnUnit();
     }
 
@@ -63,6 +66,7 @@ public class Gunner : UnitComponent
         {
             float nearest = MAXIMUM_ATTACK_RANGE;
             Vector3 index = Vector3.zero;
+            Debug.Log("enter Fight");
             foreach (Vector3 position in Targets.Keys)
             {
                 if (nearest > Targets[position])
@@ -73,16 +77,17 @@ public class Gunner : UnitComponent
             }
             weapon.Engage(index);
         }
-        return UNIT.IsUnderAttack || UNIT.Options.IsAttacking || Targets.Count > 0;
+        return ((UNIT.IsUnderAttack) || (this.gameObject.GetComponent<Attackability>().IsAttacking) || (Targets.Count > 0));
     }
 
     private float MaximizePerseptionRadius()
     {
         if (((EnumProvider.ORDERSLIST)UNIT.Options.UnitState) != EnumProvider.ORDERSLIST.Hide)
         {
-            this.GetComponent<Pilot>().PerceptionIsGunnerControlled = true;
+            if (this.gameObject.GetComponent<Pilot>())
+                this.gameObject.GetComponent<Pilot>().PerceptionIsGunnerControlled = true;
+            
             return MySpace.radius = weapon.GetMaximumRange();
-
         }
         else
             return MySpace.radius;
@@ -93,47 +98,59 @@ public class Gunner : UnitComponent
     {
         if (UNIT.IsEnemy(other.gameObject))
         {
+            Debug.Log("Enemy entered Trigger !");
             MaximizePerseptionRadius();
+            Debug.Log(weapon.GetMaximumRange().ToString());
+
             if (UNIT.ALARM < UnitScript.ALLERT_LEVEL.A)
                 UNIT.ALARM++;
-
+            Debug.Log("Alarm ok");
+            Debug.Log(UNIT.ALARM.ToString());
             if (FireAtWill)
             {
-                if (weapon.IsOutOfAmmo)
+                Debug.Log("IfFireAtWill");
+                if (weapon.IsOutOfAmu)
                 {
+                    Debug.Log("out of amu");
                     UNIT.Options.UnitState = EnumProvider.ORDERSLIST.Hide;
                     if (!UNIT.IsABuilding)
                         UNIT.Options.FocussedLeftOnGround(-(other.gameObject.transform.position - this.transform.position));
                 }
-                else if (UNIT.ALARM >= UnitScript.ALLERT_LEVEL.RED)
+                else if (UNIT.ALARM >= UnitScript.ALLERT_LEVEL.A)
                 {
+                    Debug.Log("WeaponEngaged");
                     weapon.Engage(other.gameObject);
+                    
                 }
             }
 
             switch ((EnumProvider.ORDERSLIST)OrderState)
             {
+                    
                 case EnumProvider.ORDERSLIST.Attack:
-
+                    
                     break;
                 case EnumProvider.ORDERSLIST.Guard:
 
                     break;
                 case EnumProvider.ORDERSLIST.Patrol:
+                    Debug.Log("PatrolCase");
                     UNIT.ALARM = UnitScript.ALLERT_LEVEL.A;
                     break;
                 case EnumProvider.ORDERSLIST.Seek:
 
                     break;
                 case EnumProvider.ORDERSLIST.Hide:
+                    Debug.Log("HideCase");
                     if (!UNIT.IsABuilding)
                         UNIT.Options.FocussedLeftOnGround(-(other.gameObject.transform.position - this.transform.position));
                     break;
 
             }
-
+            Debug.Log("after switch");
         }
     }
+
     void OnTriggerStay(Collider other)
     {
         if (UNIT.IsEnemy(other.gameObject))
@@ -159,5 +176,11 @@ public class Gunner : UnitComponent
     protected override EnumProvider.ORDERSLIST on_UnitStateChange(EnumProvider.ORDERSLIST stateorder)
     {
         return stateorder;
+    }
+
+    void OnDestroy()
+    {
+        if (!this.gameObject.GetComponent<Pilot>())
+            Component.Destroy(this.gameObject.GetComponent<SphereCollider>());
     }
 }

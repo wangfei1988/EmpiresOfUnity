@@ -31,7 +31,7 @@ public class Attackability : UnitExtension
 
     protected override EnumProvider.ORDERSLIST on_UnitStateChange(EnumProvider.ORDERSLIST stateorder)
     {
-        if (System.Enum.IsDefined(typeof(OPTIONS), stateorder))
+        if (System.Enum.IsDefined(typeof(OPTIONS), (OPTIONS)stateorder))
         {
             attackState = (OPTIONS)stateorder;
             switch (attackState)
@@ -131,7 +131,7 @@ public class Attackability : UnitExtension
     }
     public bool HasAmunition
     {
-        get { return States[(byte)STATES.HasAmunition] = !UNIT.weapon.IsOutOfAmmo; }
+        get { return States[(byte)STATES.HasAmunition] = !UNIT.weapon.IsOutOfAmu; }
     }
     public bool IsConquering
     {

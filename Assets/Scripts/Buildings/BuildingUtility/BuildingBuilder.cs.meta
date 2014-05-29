@@ -2,7 +2,11 @@ fileFormatVersion: 2
 guid: 8f4735e8a374e0b43a9d8d703cb72bf9
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - UNIT: {instanceID: 0}
+  - Target: {instanceID: 0}
+  - SettingFile: {fileID: 11400000, guid: 378faccec94a83b40ae7cd6950780d7c, type: 2}
+  - Grid: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

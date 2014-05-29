@@ -32,7 +32,7 @@ abstract public class UnitWeapon : MonoBehaviour
             else return null;
         }
     }
-    public abstract bool IsOutOfAmmo
+    public abstract bool IsOutOfAmu
     { get; }
 
     //------------------------------------------------Fires the weapon...

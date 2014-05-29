@@ -22,14 +22,14 @@ public abstract class WeaponObject : MonoBehaviour
     }
     abstract public float MAX_RANGE
     { get; }
-    protected UnitScript UNIT;
+ //   protected UnitScript UNIT;
     public FoE GoodOrEvil;
     public Vector3 Target;
 
     public void SetShooter(GameObject unit)
     {
-        UNIT = unit.GetComponent<UnitScript>();
-        GoodOrEvil = UNIT.GoodOrEvil;
+     //   UNIT = unit.GetComponent<UnitScript>();
+        GoodOrEvil = unit.GetComponent<UnitScript>().GoodOrEvil;
     }
 
     void Start()

@@ -155,14 +155,15 @@ public class Movability : UnitExtension
             if (!value)
             {
                 _groupmove = false;
-                //if (this.gameObject.GetComponent<Pilot>())
-                //    Component.Destroy(gameObject.GetComponent<Pilot>());
+                if ((!UNIT.IsAnAirUnit)&&(this.gameObject.GetComponent<Pilot>()))
+                    Component.Destroy(gameObject.GetComponent<Pilot>());
                 Throttle = 0;
             }
             else if (!__moving)
             {
                 Throttle = 1;
-                //gameObject.AddComponent<Pilot>();
+                if (!gameObject.GetComponent<Pilot>())
+                    gameObject.AddComponent<Pilot>();
             }
             __moving = value;
         }

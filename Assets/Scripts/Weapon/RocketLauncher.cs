@@ -11,7 +11,7 @@ public class RocketLauncher : UnitWeapon
 {
 
     public int NumberOfRockets;
-    public override bool IsOutOfAmmo
+    public override bool IsOutOfAmu
     {
         get { return NumberOfRockets == 0; }
     }
@@ -56,9 +56,15 @@ public class RocketLauncher : UnitWeapon
             if ((countdown -= Time.deltaTime) < 0f)
             {
                 rocket = (GameObject.Instantiate(prefabSlot, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + offset, this.gameObject.transform.position.z), this.gameObject.transform.rotation) as RocketObject).GetComponent<RocketObject>();
+
                 NumberOfRockets--;
+                
                 if (prefabSlot.amunition == WeaponObject.AMUNITONTYPE.Missiles)
-                    rocket.transform.forward = (rocket.transform.forward + new Vector3(Random.Range(-0.1f, 0.1f), 1f, Random.Range(0f, 0.1f))).normalized;
+                {
+                    rocket.transform.forward = (rocket.transform.forward + new Vector3(Random.Range(-0.2f, 0.2f), 0.85f, Random.Range(-0.2f, 0.2f))).normalized;
+                }
+                //    rocket.transform.forward = (rocket.transform.forward + new Vector3(0, 1f, 0)).normalized;
+                //  rocket.transform.forward = Vector3.up;
                 else if (prefabSlot.amunition == WeaponObject.AMUNITONTYPE.Rocket)
                     rocket.transform.up = -((rocket.transform.forward + new Vector3(Random.Range(-0.25f, 0.25f), 1f, Random.Range(-0.25f, 0.25f))).normalized);
             }

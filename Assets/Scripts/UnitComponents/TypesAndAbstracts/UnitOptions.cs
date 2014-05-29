@@ -54,6 +54,7 @@ abstract public class UnitOptions : MonoBehaviour
     //-----------------------------------------------------Orders and Interaction...
 
     //- Standard oneclick Orders:
+
     virtual internal void FocussedLeftOnGround(Vector3 worldPoint)
     {
         if (standardOrder)
@@ -62,7 +63,7 @@ abstract public class UnitOptions : MonoBehaviour
             {
                 if (Focus.IsLocked)
                 {
-                    if(gameObject.GetComponent<Focus>().Unlock(this.gameObject))
+                    if (gameObject.GetComponent<Focus>().Unlock(this.gameObject))
                         Component.Destroy(gameObject.GetComponent<Focus>());
                 }
                 else
@@ -299,14 +300,14 @@ abstract public class UnitOptions : MonoBehaviour
 
         DoUpdate();
 
-        foreach (UnitComponent component in PluggedStateExtendingComponents)
+        foreach (UnitComponent component in PluggedStateExtendingComponents.Values)
             component.DoUpdate();  
     }
 
     [SerializeField]
     internal GameObject[] ColliderContainingChildObjects = new GameObject[0];
 
-    public List<UnitComponent> PluggedStateExtendingComponents;
+    public Dictionary<int, UnitComponent> PluggedStateExtendingComponents = new Dictionary<int, UnitComponent>(0);
     private int[] RefreshStatelist()
     {
         int index = -1;
@@ -327,37 +328,42 @@ abstract public class UnitOptions : MonoBehaviour
     {
         bool add = true;
         int UCcompID = -1;
-        if (PluggedStateExtendingComponents.Contains(component))
+        if (PluggedStateExtendingComponents.ContainsValue(component))
         {
-            UCcompID = PluggedStateExtendingComponents.IndexOf(component);
-            Component.Destroy(component);
-            return UCcompID;
-        }
-        foreach(System.Enum extension in stateExtensions)
-        {
-
-            EnumProvider.ORDERSLIST KEY = (EnumProvider.ORDERSLIST)extension;
-            if (KEY < EnumProvider.ORDERSLIST.Cancel)
+            foreach (int key in PluggedStateExtendingComponents.Keys)
             {
-                string VALUE = System.Enum.GetName(typeof(EnumProvider.ORDERSLIST), extension);
-                if (KEY > EnumProvider.ORDERSLIST.Stay)
-                    OptionalStatesOrder.Remove((int)KEY);
-                if (!OptionalStatesOrder.ContainsKey((int)KEY))
-                    OptionalStatesOrder.Add((int)KEY, VALUE);
-            }
-            else
-                add = false;
+                if (component == PluggedStateExtendingComponents[key])
+                {
+                    UCcompID = key;
+                    Component.Destroy(component);
+                    return UCcompID;
+                }
+            } 
         }
-        if (add)
+        else
         {
-            if (PluggedStateExtendingComponents == null) 
-                PluggedStateExtendingComponents = new List<UnitComponent>();
-            else
+            foreach (System.Enum extension in stateExtensions)
+            {
+
+                EnumProvider.ORDERSLIST KEY = (EnumProvider.ORDERSLIST)extension;
+                if (KEY < EnumProvider.ORDERSLIST.Cancel)
+                {
+                    string VALUE = System.Enum.GetName(typeof(EnumProvider.ORDERSLIST), KEY);
+                    if ((int)KEY > (int)EnumProvider.ORDERSLIST.Stay)
+                        OptionalStatesOrder.Remove((int)KEY);
+                    if (!OptionalStatesOrder.ContainsKey((int)KEY))
+                        OptionalStatesOrder.Add((int)KEY, VALUE);
+                }
+                else
+                    add = false;
+            }
+            if (add)
             {
                 UCcompID = PluggedStateExtendingComponents.Count;
-                PluggedStateExtendingComponents.Add(component);
+                PluggedStateExtendingComponents.Add(UCcompID,component);
+
+                optionalstateIDs = RefreshStatelist();
             }
-            optionalstateIDs = RefreshStatelist();
         }
         return UCcompID; 
     }
@@ -385,7 +391,8 @@ abstract public class UnitOptions : MonoBehaviour
         if (NeedRefreshList)
             optionalstateIDs = RefreshStatelist();
         if (componentID >= 0)
-            PluggedStateExtendingComponents.RemoveAt(componentID);
+            PluggedStateExtendingComponents.Remove(componentID);
+        
     }
 
 

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class StaticExploader : MonoBehaviour 
 {
     // An Aray of Instances Of Exploasions...
-   public GameObject[] Explosions = new GameObject[1];
+   public GameObject[] Explosions = new GameObject[2];
 
 
    public AudioClip[] audioClips = new AudioClip[2];
@@ -33,7 +33,8 @@ public class StaticExploader : MonoBehaviour
    {
        ExploadingExplosions.Add(location, new ExplosionAudioClipPair(-1, audioID));
    }
-   private void UpdateManager_WEAPONUPDATES()
+   
+    private void UpdateManager_WEAPONUPDATES()
    {
        int explosionID,audioID;
        foreach (Vector3 explosionLocation in ExploadingExplosions.Keys)

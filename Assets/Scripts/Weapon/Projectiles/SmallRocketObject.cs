@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[AddComponentMenu("Program-X/Weapons/Amunition/Rockets/Kurze Dicke")]
+
 public class SmallRocketObject : RocketObject
 {
-    public const int DAMAGE = 50;
+    public int DAMAGE = 50;
     public const float EXPLOSION_RADIUS = 10f;
+    public float _mAX_RANGE=100;
     public override float MAX_RANGE
     {
-        get { return 100f; }
+        get { return _mAX_RANGE; }
     }
     public override WeaponObject.AMUNITONTYPE amunition
     {
@@ -18,18 +19,19 @@ public class SmallRocketObject : RocketObject
         }
     }
     private bool IsExploading = false;
-    public Vector3 A,B;
-    public float Z,z;
+    public float wobbleFactor = 10f;
+    private Vector3 A,B;
+    private float Z,z;
     public AudioClip BOOMsound;
-    public Vector3 InlineRotation;
-    public Vector3 RotatorAmount;
+    private Vector3 InlineRotation;
+    private Vector3 RotatorAmount;
     public override bool LaunchButton
     {
         get 
         {
             if (launch&&!Visible)
             {
-                A = new Vector3(Random.Range(-5.5f, 10f), Random.Range(-5.23f, 5.2f), Random.Range(5,20));
+                A = new Vector3(Random.Range(-wobbleFactor, wobbleFactor), Random.Range(-wobbleFactor, wobbleFactor), Random.Range(5,20));
                 InlineRotation.y = 90f;
           //      z = Random.Range(-5, 5);
                B = new Vector3(0, 0, 0);
@@ -60,8 +62,8 @@ public class SmallRocketObject : RocketObject
             else speed = value;
         }
     }
-    public float timer=0f;
-    public float Duration;
+    private float timer=0f;
+    public float Duration=2;
     public float speed;
     public float SPEED_FACTOR;
     public float MAXIMUM_SPEED;
@@ -71,8 +73,8 @@ public class SmallRocketObject : RocketObject
     private bool visible = false;
     public bool Visible
     {
-        get { return spriteRenderer.enabled = this.gameObject.collider.enabled = visible; }
-        set { visible = this.gameObject.collider.enabled = spriteRenderer.enabled = value; }
+        get { return spriteRenderer.enabled = visible; }
+        set { visible = spriteRenderer.enabled = this.transform.GetChild(1).collider.enabled = value; }
     }
     public float rotation;
 
@@ -90,13 +92,12 @@ public class SmallRocketObject : RocketObject
     }
 
 
-    public bool staticExplosionStarted = false;
+ //   public bool staticExplosionStarted = false;
     void UpdateManager_WEAPONUPDATES()
     {//  Flying...
         if (!IsExploading)
         {
-            this.gameObject.transform.GetChild(1).gameObject.GetComponent<rotary>().Rotation(InlineRotation);
-            this.gameObject.transform.Rotate(RotatorAmount.x, RotatorAmount.y, RotatorAmount.z);
+            Rotation();
             if (LaunchButton) Throttle();
         }
         else
@@ -106,15 +107,11 @@ public class SmallRocketObject : RocketObject
             if (this.audio.isPlaying)
             {
                 if (emission.enableEmission)
-                    emission.enableEmission = false;
-
-                // later an ID for playing an AudioClip could be addedt in the StaticExploasionsManager....
-                if (!staticExplosionStarted)
                 {
+                    emission.enableEmission = false;
                     StaticExploader.Exploade(0, this.gameObject.transform.position);
-                    staticExplosionStarted = true;
                 }
-
+                // later an ID for playing an AudioClip could be addedt in the StaticExploasionsManager....
             }
             else
             {
@@ -127,10 +124,10 @@ public class SmallRocketObject : RocketObject
             }
         }
     }
-    
-    
 
-    private bool IsEnemy(Collider hit)
+
+
+    private bool IsEnemy(GameObject hit)
     {
         if (hit.gameObject.GetComponent<UnitScript>())
         {
@@ -143,35 +140,37 @@ public class SmallRocketObject : RocketObject
 
     public void SpriteColliderEnter(GameObject hitten)
     {
-        if (!hitten.collider.isTrigger)
+        if ((!IsExploading)
+        && (!hitten.collider.isTrigger)
+        && (IsEnemy(hitten)))
         {
-            if (!IsExploading)
+            if (IsEnemy(hitten))
             {
-                IsExploading = true;
-                hitten.gameObject.GetComponent<UnitScript>().Hit(Exploade(DAMAGE));
+                HitUNIT.Hit(Exploade(DAMAGE));
             }
+            else
+                Exploade(0);
         }
     }
 
-    void OnTriggerEnter(Collider hit)
-    {
-        if (!hit.isTrigger)
-        {
-            if (!IsExploading)
-            {
-                if (IsEnemy(hit))
-                {
-                    HitUNIT.Hit(Exploade(DAMAGE));
-                }
-            }
-        }
-    }
+    //void OnTriggerEnter(Collider hit)
+    //{
+    //    if (!hit.isTrigger)
+    //    {
+    //        if (!IsExploading)
+    //        {
+    //            if (IsEnemy(hit))
+    //            {
+    //                HitUNIT.Hit(Exploade(DAMAGE));
+    //            }
+    //        }
+    //    }
+    //}
 
     private int Exploade(int damage)
     {
         if (!IsExploading)
         {
-
             this.gameObject.audio.clip=BOOMsound;
             this.gameObject.audio.Play();
             this.IsExploading = true;
@@ -182,24 +181,20 @@ public class SmallRocketObject : RocketObject
         else return 0;
     }
 
-    //void OnTriggerExit(Collider hit)
-    //{
-    //    if (IsExploading)
-    //    {
-    //        if (IsEnemy(hit))
-    //        {
-    //            HITinfo = HitUNIT.name + " " + HitUNIT.gameObject.GetInstanceID() + " Hit at: " + hit.collider.ClosestPointOnBounds(this.gameObject.transform.position);
-                
-    //            HitUNIT.Hit((int)(DAMAGE / ((EXPLOSION_RADIUS / this.gameObject.transform.localScale.x) - (this.gameObject.collider as SphereCollider).radius)));
-    //        }
-    //    }
-    //}
+
 
     public float THROTTLETIME = 8;
 
     internal override void Engage()
     {
         
+    }
+
+
+    private void Rotation()
+    {
+        this.gameObject.transform.GetChild(1).gameObject.GetComponent<Rotary>().Rotation(InlineRotation);
+        this.gameObject.transform.Rotate(RotatorAmount.x, RotatorAmount.y, RotatorAmount.z);
     }
 
     private void Throttle()
@@ -209,11 +204,15 @@ public class SmallRocketObject : RocketObject
         if (timer > THROTTLETIME) Exploade(DAMAGE);
         RotatorAmount = Vector3.Lerp(A, B,Mathf.Clamp( timer/Duration,0,1));
      //   InlineRotation.z = Mathf.Lerp(z, Z,Mathf.Clamp( timer / Duration,0f,1f));
+        this.transform.forward += (Vector3.up / (this.transform.position.y * 10));
         this.gameObject.transform.forward += Aim(Target);
         this.transform.position += (this.transform.forward * (Speed *= SPEED_FACTOR));
         emission.startSpeed = Speed;
         if (this.transform.position.y <= 0f)
+        {
+            this.transform.position = new Vector3(this.transform.position.x,0.1f,this.transform.position.z);
             this.Exploade(DAMAGE);
+        }
     }
 
     public override Vector3 Aim(Vector3 targetPosition)

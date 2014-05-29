@@ -160,13 +160,15 @@ public class Pilot : UnitComponent
 
         Controlls = this.gameObject.GetComponent<Movability>();
         My = gameObject.GetComponent<UnitScript>();
+        if (!this.gameObject.GetComponent<SphereCollider>())
+            this.gameObject.AddComponent<SphereCollider>().isTrigger = true;
+
         mySpace = this.gameObject.GetComponent<SphereCollider>();
-        
 
     }
     void Start()
     {
-        
+      
         triggerd = 0;
         IsAcselerating = true;
         mySpace.isTrigger = true;
@@ -228,7 +230,7 @@ public class Pilot : UnitComponent
         else
         {
             LookAheadDistance = radius;
-            mySpace.radius = lookAheadDistance / My.gameObject.transform.localScale.x;
+            mySpace.radius = lookAheadDistance / this.gameObject.transform.localScale.x;
 
         }
     }
@@ -303,10 +305,8 @@ public class Pilot : UnitComponent
 
     void OnDestroy()
     {
-        //     mySpace = null;
-        //     Component.Destroy(gameObject.GetComponent<SphereCollider>());
-
-        //    UpdateManager.OnUpdate -= DoUpdate;
+        if (!this.gameObject.GetComponent<Gunner>())
+            Component.Destroy(this.gameObject.GetComponent<SphereCollider>());
     }
 
     protected override EnumProvider.ORDERSLIST on_UnitStateChange(EnumProvider.ORDERSLIST stateorder)

@@ -26,4 +26,6 @@ public abstract class UnitExtension : UnitComponent
     
     internal abstract void OptionExtensions_OnLEFTCLICK(bool hold);
     internal abstract void OptionExtensions_OnRIGHTCLICK(bool hold);
+
+
 }

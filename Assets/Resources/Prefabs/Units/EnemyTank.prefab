@@ -49,7 +49,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -56.3121643, y: -0, z: 19.6552124}
+  m_LocalPosition: {x: -165.5737, y: -.357652992, z: -322.920044}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 400002}
@@ -222,13 +222,14 @@ MonoBehaviour:
   UNIT: {fileID: 11400010}
   movingUnitState: 100
   standardYPosition: -.100000001
+  AlwaysKeepStandardYpsPosition: 1
   IsGroupLeader: 0
   speed: .200000003
   Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
-  RudderIsNormalizised: 1
+  NormalizedRudder: 1
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -269,7 +270,7 @@ MonoBehaviour:
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
-  PluggedStateExtendingComponents: []
+  ColliderContainingChildObjects: []
   movement: {fileID: 11400008}
   unitstateint: 0
 --- !u!212 &21200000

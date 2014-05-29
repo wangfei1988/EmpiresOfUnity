@@ -1,10 +1,8 @@
 fileFormatVersion: 2
-guid: 64344f77d48d06943988204bd0d572b3
+guid: bee7017a1d01c814a827eb03c70e186c
 MonoImporter:
   serializedVersion: 2
-  defaultReferences:
-  - sound2: {fileID: 8300000, guid: 851c2eee0517b344d97509114e30afc2, type: 3}
-  - Hitflare: {fileID: 12100000, guid: e977ad2ff6f4cc847988f72c7fe6eae9, type: 2}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
