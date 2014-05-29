@@ -157,7 +157,7 @@ public class UnitGroup : ScriptableObject
             UnitScript UNIT = member.GetComponent<UnitScript>();
             UNIT.HideLifebar();
             if (!UNIT.IsABuilding)
-                (UNIT.Options as MovingUnitOptions).IsMovingAsGroup = false;
+                UNIT.gameObject.GetComponent<Movability>().IsMovingAsGroup = false;
         }
 
         MemberUnit.Clear();
