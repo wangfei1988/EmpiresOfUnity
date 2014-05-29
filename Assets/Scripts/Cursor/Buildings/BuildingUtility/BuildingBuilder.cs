@@ -65,6 +65,7 @@ public class BuildingBuilder : ProductionBuilding
                         {
                             // Mouse in Map
                             this.DragFinished();
+                            this.BuildingCost();
                         }
                         else
                         {
@@ -83,7 +84,8 @@ public class BuildingBuilder : ProductionBuilding
                 // Cancel at Right Click
                 this.DragCancel();
             }
-	    }
+        }
+        this.BuildingCheck();
     }
 
     /* Methods */
@@ -95,7 +97,6 @@ public class BuildingBuilder : ProductionBuilding
         IsBuildable = ((GameObject)this.BuildableBuildings[index]).GetComponent<AbstractBuilding>().SettingFile.IsBuildable;
         solutionMatter = (int)ResourceManager.GetResourceCount(ResourceManager.Resource.MATTER) -this.BuildingCostMatter;
         solutionNaniten = (int)(ResourceManager.GetResourceCount(ResourceManager.Resource.NANITEN) - this.BuildingCostNanite);
-        this.BuildingCheck();
 
         curIndex = index;
 
@@ -154,7 +155,6 @@ public class BuildingBuilder : ProductionBuilding
         this.Grid.ShowGrid = false;
         this.dragNow = false;
 
-        this.BuildingCost();
 
         IsBuildable = false;
     }
