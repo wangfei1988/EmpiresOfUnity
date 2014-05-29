@@ -6826,7 +6826,6 @@ MonoBehaviour:
   optionalstateIDs: 
   optionalStates: 
   ColliderContainingChildObjects: []
-  PluggedStateExtendingComponents: []
   SettingFile: {fileID: 0}
   Grid: {fileID: 1113168590}
   BuildableBuildings:
@@ -7875,10 +7874,10 @@ Transform:
   - {fileID: 286388423}
   - {fileID: 379654361}
   - {fileID: 311706555}
-  - {fileID: 1235893387}
-  - {fileID: 48475778}
   - {fileID: 1460555424}
   - {fileID: 1874687695}
+  - {fileID: 48475778}
+  - {fileID: 1235893387}
   - {fileID: 716948108}
   - {fileID: 798904036}
   m_Father: {fileID: 0}

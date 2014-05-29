@@ -324,7 +324,10 @@ public class Movability : UnitExtension
 
     private bool Move()
     {
+        
         if (this.gameObject.GetComponent<Pilot>()) gameObject.GetComponent<Pilot>().DoUpdate();
+
+
 
         if (movingUnitState == OPTIONS.Guard)
         {
@@ -338,7 +341,13 @@ public class Movability : UnitExtension
             if (IsGroupLeader) IsMovingAsGroup = false;
             else Distance = Vector3.Distance(gameObject.transform.position, MoveToPoint);
         }
-        else if (Distance >= 0.5)
+        else if (UNIT.Options.IsAttacking)
+        {
+            if (Distance >= (UNIT.AttackRange / 2))
+                this.gameObject.transform.position += MovingDirection * Speed;
+    
+        }
+        else if (Distance >= 0.5f)
         {
             this.gameObject.transform.position += MovingDirection * Speed;
         }
@@ -354,7 +363,7 @@ public class Movability : UnitExtension
                 WayPoints.RemoveAt(0);
                 WayPoints.Add(gameObject.transform.position);
                 MoveToPoint = WayPoints[0];
-                MovingDirection=MoveToPoint;
+                MovingDirection = MoveToPoint;
             }
             else { StayOrder(); }
         }
