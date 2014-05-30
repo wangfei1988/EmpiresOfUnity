@@ -191,7 +191,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -150.703949, y: -12.3800001, z: -159.595596}
+  m_LocalPosition: {x: 120.434174, y: -1.52587891e-05, z: -7.45143127}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400012}
@@ -451,8 +451,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Arsenal:
-  - {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
   - {fileID: 11400008, guid: e4d0eb844cac7ab45961c1fa3685b6e8, type: 2}
+  - {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e425f0cf7c0cc4a94bf78b341d4315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
+  prefabSlot: {fileID: 11400008, guid: e4d0eb844cac7ab45961c1fa3685b6e8, type: 2}
   hasArsenal: 1
   NumberOfRockets: 100
   countdown: 0

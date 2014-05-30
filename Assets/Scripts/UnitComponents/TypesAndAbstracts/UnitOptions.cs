@@ -113,6 +113,7 @@ abstract public class UnitOptions : MonoBehaviour
             {
                 Debug.Log("STATE_CHANGE event triggerd");
                 baseUnitState = PRIMARY_STATE_CHANGE(order);
+                Debug.Log(baseUnitState.ToString());
             }
         }
     }

@@ -110,30 +110,39 @@ public class ProductionBuildingOptions : UnitOptions
     {
         get
         {
-            return unitState;
+            if (System.Enum.IsDefined(typeof(OPTIONS), (int)baseUnitState))
+                return unitState;
+            else
+                return base.UnitState;
         }
         set
         {
             unitState = (OPTIONS)value;
-            switch (unitState)
-			{
-				case OPTIONS.Produce:
-					{
-						GameObject.Instantiate(CurrentFabrikat, MoveToPoint, (CurrentFabrikat as GameObject).transform.rotation);
-                        // TODO Let they Spawn within the Building and then let they so to "MoveToPoint"
-                        break;
-					}
-				case OPTIONS.StopProduction:
-					{
-						break;
-					}
-				case OPTIONS.MoveUnitsTo:
-					{
-						LockOnFocus();
-						MouseEvents.LEFTCLICK+=MouseEvents_LEFTCLICK;
-						break;
-					}
-			}
+            if (System.Enum.IsDefined(typeof(OPTIONS), unitState))
+            {
+                
+                switch (unitState)
+                {
+                    case OPTIONS.Produce:
+                        {
+                            GameObject.Instantiate(CurrentFabrikat, MoveToPoint, (CurrentFabrikat as GameObject).transform.rotation);
+                            // TODO Let they Spawn within the Building and then let they so to "MoveToPoint"
+                            break;
+                        }
+                    case OPTIONS.StopProduction:
+                        {
+                            break;
+                        }
+                    case OPTIONS.MoveUnitsTo:
+                        {
+                            LockOnFocus();
+                            MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
+                            break;
+                        }
+                }
+                baseUnitState = (EnumProvider.ORDERSLIST)value;
+            }
+            base.UnitState = value;
         }
     }
 
@@ -146,7 +155,8 @@ public class ProductionBuildingOptions : UnitOptions
    
     internal override void FocussedLeftOnGround(Vector3 worldPoint)
     {
-        UnlockAndDestroyFocus();
+        MoveToPoint = MouseEvents.State.Position.AsWorldPointOnMap;
+     //   UnlockAndDestroyFocus();
         //DestroyFocus();
     }
 

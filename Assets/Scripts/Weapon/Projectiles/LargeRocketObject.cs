@@ -161,7 +161,7 @@ public class LargeRocketObject : RocketObject {
             this.gameObject.transform.up = -movingDirection;
             this.gameObject.transform.position += (movingDirection * Speed);
             
-            GUIScript.AddTextLine(HitInfo);
+     //       GUIScript.AddTextLine(HitInfo);
     }
 
     public override Vector3 Aim(Vector3 targetPosition)
@@ -181,11 +181,11 @@ public class LargeRocketObject : RocketObject {
     {
         if (!other.isTrigger)
         {
-            if (!(other.gameObject.layer != (int)EnumProvider.LAYERNAMES.Ignore_Raycast))
+            if (other.gameObject.GetComponent<UnitScript>())
             {
-                if (other.gameObject.GetComponent<UnitScript>().GoodOrEvil != this.GoodOrEvil)
+                if (other.gameObject.GetComponent<UnitScript>().IsEnemy(this.GoodOrEvil))
                 {
-                    HitInfo = "RocketHit at: " + other.gameObject.name + " " + other.gameObject.GetInstanceID();
+                 //   HitInfo = "RocketHit at: " + other.gameObject.name + " " + other.gameObject.GetInstanceID();
                     other.gameObject.GetComponent<UnitScript>().Hit(1000);
                     gameObject.GetComponent<TimedObjectDestructorCS>().DestroyImmideate();
                 }

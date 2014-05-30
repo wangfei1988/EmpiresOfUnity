@@ -52,7 +52,7 @@ public class RocketLauncher : UnitWeapon
         {
             float offset = 1f;
             if (prefabSlot.amunition == WeaponObject.AMUNITONTYPE.Rocket)
-                offset = 5f;
+                offset = 15f;
             if ((countdown -= Time.deltaTime) < 0f)
             {
                 rocket = (GameObject.Instantiate(prefabSlot, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + offset, this.gameObject.transform.position.z), this.gameObject.transform.rotation) as RocketObject).GetComponent<RocketObject>();

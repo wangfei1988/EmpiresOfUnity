@@ -15,6 +15,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
+  - 114: {fileID: 11400006}
   m_Layer: 10
   m_Name: Medic
   m_TagString: Clickable
@@ -33,7 +34,7 @@ GameObject:
   - 212: {fileID: 21200000}
   m_Layer: 12
   m_Name: UnitBlib
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,7 +46,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 113.53614, y: 0, z: -21.1400318}
+  m_LocalPosition: {x: 126.491699, y: -1.52587891e-05, z: -24.6469727}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 400002}
@@ -129,12 +130,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbf96ea742e5eb45b1c852aedfaa2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 101
+  unitType: 102
   goodOrEvil: 1
   ALARM: 0
   Options: {fileID: 11400002}
   unitAnimation: {fileID: 0}
-  weapon: {fileID: 0}
+  weapon: {fileID: 11400006}
   life: 150
   level: 1
   sightWidth: 30
@@ -153,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400000}
   SettingFile: {fileID: 0}
-  baseUnitState: 0
+  baseUnitState: 10000
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
   optionalStateStrings: []
@@ -177,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400000}
-  movingUnitState: 100
+  movingUnitState: 0
   standardYPosition: .200000003
   AlwaysKeepStandardYpsPosition: 1
   IsGroupLeader: 0
@@ -187,6 +188,19 @@ MonoBehaviour:
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
   NormalizedRudder: 1
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3701264ada3f61d4bb63312229efdef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabSlot: {fileID: 0}
+  hasArsenal: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -138,8 +138,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
-  m_LocalRotation: {x: -.894413531, y: .31201005, z: -.0926395655, w: .306744456}
-  m_LocalPosition: {x: -155.107224, y: 6.71999979, z: -202.874161}
+  m_LocalRotation: {x: -.251706451, y: -.148977801, z: -.865787446, w: .406031579}
+  m_LocalPosition: {x: 120.733162, y: 3.34642172, z: -11.8552685}
   m_LocalScale: {x: .150000006, y: .800000012, z: .150000006}
   m_Children:
   - {fileID: 400006}
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962dd8d5e43758142b9dddef5bda6797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeOut: 6
+  timeOut: 9
   detachChildren: 1
   Exploadet: 0
 --- !u!114 &11400008
@@ -250,14 +250,14 @@ MonoBehaviour:
   rotation: 3.0999999
   movingDirection: {x: 0, y: 0, z: 0}
   lastMovedDirection: {x: 0, y: 0, z: 0}
-  speed: .5
+  speed: .230000004
   SPEED_FACTOR: 1.04999995
   flights:
   - {fileID: 21200004}
   - {fileID: 21200002}
   - {fileID: 21200000}
   visible: 1
-  MAXIMUM_SPEED: 4
+  MAXIMUM_SPEED: 5.5
   launch: 0
   timer: 0
   ticker: 0

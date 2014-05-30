@@ -17,7 +17,7 @@ public class UnitScript : MonoBehaviour
 
         //--- All Construction Units:
         Worker = EnumProvider.UNITCLASS.CONSTRUCTION_UNIT + 1,
-
+        Medic,
         //--- All Flying Units:
         JetFighter = EnumProvider.UNITCLASS.AIR_UNIT + 1,
         JetWing,

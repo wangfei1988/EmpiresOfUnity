@@ -19,7 +19,7 @@ public class Attackability : UnitExtension
             return "Attackability";
         }
     }
-    bool[] States = new bool[4];
+    private bool[] States = new bool[4];
     private enum STATES : byte
     {
         IsAttacking,
@@ -31,22 +31,25 @@ public class Attackability : UnitExtension
 
     protected override EnumProvider.ORDERSLIST on_UnitStateChange(EnumProvider.ORDERSLIST stateorder)
     {
-        if (System.Enum.IsDefined(typeof(OPTIONS), (OPTIONS)stateorder))
+        attackState = (OPTIONS)stateorder;
+        if (System.Enum.IsDefined(typeof(OPTIONS), (int)stateorder))
         {
-            attackState = (OPTIONS)stateorder;
+
             switch (attackState)
             {
                 case OPTIONS.Attack:
                     if (!UNIT.IsABuilding)
                     {
+                        
                         this.GetComponent<Movability>().SetKinematic();
                         this.GetComponent<Movability>().WayPoints.Clear();
                         UNIT.Options.MoveToPoint = this.gameObject.transform.position;
                         this.GetComponent<Movability>().IsMoving = false;
+                       
                     }
-
+                    Debug.Log("ATTACKE!!!");
                     UNIT.Options.LockOnFocus();
-                    break;
+                    return stateorder;
                 case OPTIONS.Conquer:
                     if (!GetComponent<Gunner>())
                         this.gameObject.AddComponent<Gunner>();
@@ -54,25 +57,23 @@ public class Attackability : UnitExtension
                     if(!UNIT.IsABuilding)
                         UNIT.Options.LockOnFocus();
                     GetComponent<Gunner>().FireAtWill = true;
-                    break;
+                    return stateorder;
                 case OPTIONS.Seek:
                     if (!GetComponent<Gunner>())
                         this.gameObject.AddComponent<Gunner>();
 
-                    break;
+                    return stateorder;
             }
         }
         return stateorder;
     }
-    void Awake()
-    {
 
-    }
     void Start()
     {
-        IsDefending = IsAttacking = IsConquering = false;
-        UNIT = this.gameObject.GetComponent<UnitScript>();
+        
+     //   UNIT = this.gameObject.GetComponent<UnitScript>();
         PflongeOnUnit(typeof(OPTIONS));
+        IsDefending = IsAttacking = IsConquering = false;
     }
 
     public bool IsAttacking
