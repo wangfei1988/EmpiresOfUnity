@@ -168,11 +168,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400010}
+  SettingFile: {fileID: 0}
+  baseUnitState: 0
   moveToPoint: {x: 100.718964, y: 20, z: 43.957592}
   Target: {fileID: 0}
-  PluggedStateExtendingComponents:
-  - {fileID: 0}
-  Movement: {fileID: 0}
+  optionalStateStrings: []
+  optionalstateIDs: 
+  optionalStates: 
+  ColliderContainingChildObjects: []
+  movement: {fileID: 0}
   unitstateint: 0
   Aviator: {fileID: 11400002}
 --- !u!114 &11400010
@@ -196,7 +200,6 @@ MonoBehaviour:
   level: 1
   sightWidth: 100
   resourceFactor: 0
-  SoundDestroy: {fileID: 0}
   interactingUnits: 
 --- !u!114 &11400012
 MonoBehaviour:

@@ -11,14 +11,12 @@ GameObject:
   - 212: {fileID: 21200000}
   - 65: {fileID: 6500000}
   - 54: {fileID: 5400000}
-  - 114: {fileID: 11400008}
-  - 114: {fileID: 11400006}
   - 114: {fileID: 11400004}
-  - 114: {fileID: 11400010}
   - 114: {fileID: 11400002}
+  - 114: {fileID: 11400006}
   - 114: {fileID: 11400000}
   m_Layer: 10
-  m_Name: RocketMan
+  m_Name: Worker
   m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +33,7 @@ GameObject:
   - 212: {fileID: 21200002}
   m_Layer: 12
   m_Name: UnitBlib
-  m_TagString: Clickable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +45,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: .0238080621, y: .20000343, z: -2.48768663}
+  m_LocalPosition: {x: -152.479599, y: .200019792, z: -176.115524}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 400002}
@@ -76,7 +74,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &6500000
 BoxCollider:
@@ -88,37 +86,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 8, z: .5}
+  m_Size: {x: 4, y: 8, z: 1.5}
   m_Center: {x: 0, y: 4, z: 0}
 --- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92d18b47915ad214eab5a0d48ada5122, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Arsenal:
-  - {fileID: 0}
-  - {fileID: 0}
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e487801e6f167184b8b614c08f89a761, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 0}
-  hasArsenal: 1
-  countdown: 0
---- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -130,14 +100,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  NextUnitAnimation: {fileID: 11400010}
+  NextUnitAnimation: {fileID: 0}
   TransformToFace: {fileID: 0}
   faceMovingDirection: 0
   faceCamera: 1
   faceOtherTransform: 0
-  forwardIs: 4
+  forwardIs: 0
   direction: {x: 0, y: 0, z: 0}
---- !u!114 &11400006
+--- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -145,19 +115,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cdbcffe449cab44286aec3139397a06, type: 3}
+  m_Script: {fileID: 11500000, guid: 72c5f6384aebf6a4d887dd56d54a2b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UNIT: {fileID: 11400008}
+  UNIT: {fileID: 11400004}
+  SettingFile: {fileID: 0}
+  baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
-  PluggedStateExtendingComponents: []
-  _speed: .100000001
-  standardYPosition: .200000003
-  WayPoints: []
-  IsGroupLeader: 0
+  optionalStateStrings: []
+  optionalstateIDs: 
+  optionalStates: 
+  ColliderContainingChildObjects: []
+  movement: {fileID: 11400006}
   unitstateint: 0
---- !u!114 &11400008
+  BuildableBuildings:
+  - {fileID: 100000, guid: c95fb699a4a09e1469060823fb50789c, type: 2}
+  - {fileID: 100000, guid: 515ef07dc32f1144892024ad2261a6b3, type: 2}
+  - {fileID: 100000, guid: 153326ebac661b5408b554167b3a8f14, type: 2}
+  BuildingUnderConstruction: {fileID: 0}
+  ConstructionAreaCenter: {x: 0, y: 0, z: 0}
+--- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -168,18 +146,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbf96ea742e5eb45b1c852aedfaa2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 2
+  unitType: 101
   goodOrEvil: 1
   ALARM: 0
-  Options: {fileID: 11400006}
-  unitAnimation: {fileID: 11400004}
-  weapon: {fileID: 11400002}
+  Options: {fileID: 11400002}
+  unitAnimation: {fileID: 11400000}
+  weapon: {fileID: 0}
   life: 150
   level: 1
   sightWidth: 30
   resourceFactor: 0
   interactingUnits: 
---- !u!114 &11400010
+--- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -187,28 +165,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001f8323199fac945a8d60f7e8c7c3d9, type: 3}
+  m_Script: {fileID: 11500000, guid: b777ad1154e3f68468d42820f1deb0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isActive: 1
-  NextUnitAnimation: {fileID: 0}
-  lockPosition: 1
-  position: {x: 0, y: .200000003, z: 0}
-  PositionX: 0
-  PositionY: 1
-  PositionZ: 0
-  lockRotation: 0
-  rotation: {x: 0, y: 0, z: 0}
-  rotationW: 0
-  RotationX: 0
-  RotationY: 0
-  RotationZ: 0
-  RotationW: 0
-  lockScale: 0
-  scale: {x: 0, y: 0, z: 0}
-  ScaleX: 0
-  ScaleY: 0
-  ScaleZ: 0
+  UNIT: {fileID: 11400004}
+  movingUnitState: 100
+  standardYPosition: .200000003
+  AlwaysKeepStandardYpsPosition: 1
+  IsGroupLeader: 0
+  speed: .200000003
+  Throttle: 1
+  Target: {fileID: 0}
+  WayPoints: []
+  Rudder: {x: 0, y: 0, z: 0}
+  NormalizedRudder: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -231,7 +201,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 0eec08c6fb70b654f9b52f1aeacb0821, type: 3}
-  m_Color: {r: 0, g: .337931156, b: 1, a: 1}
+  m_Color: {r: .45588237, g: .63975668, b: 1, a: 1}
 --- !u!212 &21200002
 SpriteRenderer:
   m_ObjectHideFlags: 1

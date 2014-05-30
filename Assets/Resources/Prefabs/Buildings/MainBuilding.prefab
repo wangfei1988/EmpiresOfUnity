@@ -13,7 +13,7 @@ GameObject:
   - 64: {fileID: 6400000}
   m_Layer: 10
   m_Name: polySurface2
-  m_TagString: Clickable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ GameObject:
   - 64: {fileID: 6400002}
   m_Layer: 10
   m_Name: pCube5
-  m_TagString: Clickable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,7 +49,7 @@ GameObject:
   - 64: {fileID: 6400004}
   m_Layer: 10
   m_Name: pCube4
-  m_TagString: Clickable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,7 +67,7 @@ GameObject:
   - 64: {fileID: 6400006}
   m_Layer: 10
   m_Name: pCube3
-  m_TagString: Clickable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,7 +85,7 @@ GameObject:
   - 64: {fileID: 6400008}
   m_Layer: 10
   m_Name: pCube2
-  m_TagString: Clickable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,7 @@ GameObject:
   - 212: {fileID: 21200000}
   m_Layer: 12
   m_Name: BuildingBlib
-  m_TagString: Clickable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -500,6 +500,8 @@ MonoBehaviour:
   Fabrikat:
   - {fileID: 100000, guid: 1c0bf5a98ada909458c5f15a283110f7, type: 2}
   - {fileID: 100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
+  - {fileID: 100000, guid: a4f8616203b877b4da8fd4f97016251e, type: 2}
+  - {fileID: 100000, guid: 51482afa1dc923949b1e06457aae3b9b, type: 2}
   - {fileID: 100000, guid: a4f8616203b877b4da8fd4f97016251e, type: 2}
 --- !u!114 &11400008
 MonoBehaviour:
