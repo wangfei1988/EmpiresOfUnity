@@ -15,6 +15,7 @@ public class BuildingBuilder : ProductionBuilding
     private Transform Transform;
     private bool dragNow = false;
     private int curIndex;
+    private Collider curCollider;
     private AnimatedCursor Cursor;
 
     private bool IsBuildable;
@@ -98,7 +99,7 @@ public class BuildingBuilder : ProductionBuilding
         solutionMatter = (int)ResourceManager.GetResourceCount(ResourceManager.Resource.MATTER) -this.BuildingCostMatter;
         solutionNaniten = (int)(ResourceManager.GetResourceCount(ResourceManager.Resource.NANITEN) - this.BuildingCostNanite);
 
-        curIndex = index;
+        this.curIndex = index;
 
         // focus on building builder
         this.gameObject.AddComponent<Focus>().Lock();
@@ -109,7 +110,8 @@ public class BuildingBuilder : ProductionBuilding
         //this.Transform.GetComponent<BuildingGrower>().StartGrowing = false;
 
         // Config me
-        this.Transform.GetComponent<MeshCollider>().enabled = false;
+        this.curCollider = this.Transform.GetComponent<Collider>();
+        this.curCollider.enabled = false;
 
         // Cursor
         this.Cursor.CurrentCursor = AnimatedCursor.CURSOR.DRAGnDROP;
@@ -140,8 +142,8 @@ public class BuildingBuilder : ProductionBuilding
             pos.y = ((GameObject)this.BuildableBuildings[curIndex]).transform.position.y;
             this.Transform.position = pos;
 
-            // MeshCollider
-            this.Transform.GetComponent<MeshCollider>().enabled = true;
+            // enable Collider
+            this.curCollider.enabled = true;
 
             // Start Grow
             this.Transform.GetComponent<BuildingGrower>().StartGrowing = true;

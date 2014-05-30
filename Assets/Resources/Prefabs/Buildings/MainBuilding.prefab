@@ -480,6 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400000}
+  SettingFile: {fileID: 11400000, guid: 0c489affd746cc042ba872fa99d18e72, type: 2}
   baseUnitState: 101
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
@@ -492,7 +493,6 @@ MonoBehaviour:
   - {fileID: 100006}
   - {fileID: 100004}
   - {fileID: 100002}
-  PluggedStateExtendingComponents: []
   unitState: 101
   CurrentFabrikatNumber: 1
   CurrentFabrikat: {fileID: 100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
