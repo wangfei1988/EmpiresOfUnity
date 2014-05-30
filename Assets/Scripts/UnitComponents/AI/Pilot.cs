@@ -305,6 +305,7 @@ public class Pilot : UnitComponent
 
     void OnDestroy()
     {
+        Controlls.Rudder = Vector3.zero;
         if (!this.gameObject.GetComponent<Gunner>())
             Component.Destroy(this.gameObject.GetComponent<SphereCollider>());
     }

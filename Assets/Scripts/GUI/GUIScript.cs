@@ -233,6 +233,9 @@ public class GUIScript : MonoBehaviour
                     && !Focus.IsLocked)
                 {
                     Component.Destroy(Focus.masterGameObject.GetComponent<Focus>());
+                    if (SelectedGroup)
+                        ScriptableObject.DestroyObject(SelectedGroup);
+                    SelectedGroup = ScriptableObject.CreateInstance<UnitGroup>();
                 }
             }
         }
@@ -240,11 +243,20 @@ public class GUIScript : MonoBehaviour
 
     private bool FocusUnit()
     {
-        if (!UnitFocused && MouseEvents.State.Position.AsUnitUnderCursor)
+        if(MouseEvents.State.Position.AsUnitUnderCursor)
         {
-            UnitUnderCursor.gameObject.AddComponent<Focus>();
-            //UnitUnderCursor.UNIT.ShowLifebar();
-            return true;
+            if (!UnitFocused && GroupCount == 0)
+            {
+                if (SelectedGroup)
+                    ScriptableObject.DestroyObject(SelectedGroup);
+                SelectedGroup = ScriptableObject.CreateInstance<UnitGroup>();
+                MouseEvents.State.Position.AsObjectUnderCursor.AddComponent<Focus>();
+                //   UnitUnderCursor.gameObject.AddComponent<Focus>();
+                //UnitUnderCursor.UNIT.ShowLifebar();
+                return true;
+            }
+            else if ((GroupCount > 0) && !MouseEvents.State.Position.AsUnitUnderCursor.IsEnemy(SelectedGroup.GoodOrEvil))
+                SelectedGroup.ResetGroup();   
         }
         return false;
     }

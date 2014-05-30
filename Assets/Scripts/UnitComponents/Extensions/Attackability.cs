@@ -71,6 +71,7 @@ public class Attackability : UnitExtension
     void Start()
     {
         IsDefending = IsAttacking = IsConquering = false;
+        UNIT = this.gameObject.GetComponent<UnitScript>();
         PflongeOnUnit(typeof(OPTIONS));
     }
 

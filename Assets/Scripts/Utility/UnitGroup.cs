@@ -156,8 +156,12 @@ public class UnitGroup : ScriptableObject
         {
             UnitScript UNIT = member.GetComponent<UnitScript>();
             UNIT.HideLifebar();
+            UNIT.InteractingUnits.Clear();
             if (!UNIT.IsABuilding)
+            {
                 UNIT.gameObject.GetComponent<Movability>().IsMovingAsGroup = false;
+                UNIT.gameObject.GetComponent<Movability>().IsGroupLeader = false;
+            }
         }
 
         MemberUnit.Clear();
@@ -181,6 +185,7 @@ public class UnitGroup : ScriptableObject
             unit.GetComponent<UnitScript>().Options.FocussedLeftOnEnemy(enemy);
     }
 
+
     public void startGroup()
     {
         // Get GroupRectangle GameObject
@@ -196,6 +201,20 @@ public class UnitGroup : ScriptableObject
         }
     }
 
-
+    void OnDestroy()
+    {
+        foreach (GameObject unit in MemberUnit)
+        {
+            unit.GetComponent<UnitScript>().InteractingUnits.Clear();
+            unit.GetComponent<UnitScript>().HideLifebar();
+            if (!unit.GetComponent<UnitScript>().IsABuilding)
+            {
+                unit.GetComponent<Movability>().IsMovingAsGroup = false;
+                unit.GetComponent<Movability>().IsGroupLeader = false;
+            }
+        }
+        MemberUnit.Clear();
+            
+    }
 
 }

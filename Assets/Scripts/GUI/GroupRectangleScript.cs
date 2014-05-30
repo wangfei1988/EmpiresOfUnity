@@ -41,15 +41,19 @@ public class GroupRectangleScript : MonoBehaviour {
 
     void MouseEvents_LEFTMouseEvents(Ray qamRay, bool hold)
     {
-        RaycastHit hit;
-        if (Physics.Raycast(qamRay, out hit))
+        Debug.Log("LeftMouseEvent GROUP");
+        if (MouseEvents.State.Position.AsUnitUnderCursor)
         {
-            if (hit.collider.gameObject.GetComponent<UnitScript>().IsEnemy(GUIScript.SelectedGroup.GoodOrEvil))
+            Debug.Log("is UNIT");
+            if (MouseEvents.State.Position.AsUnitUnderCursor.IsEnemy(GUIScript.SelectedGroup.GoodOrEvil))
             {
-                GUIScript.SelectedGroup.GoupedLeftOnEnemy(hit.collider.gameObject);
+                Debug.Log("IS ENEMY");
+                GUIScript.SelectedGroup.GoupedLeftOnEnemy(MouseEvents.State.Position.AsObjectUnderCursor);
+                Debug.Log(" GROUP LeftOnENEMY called");
             }
+            Debug.Log("NoEnemY");
         }
-        else
+        else if (MouseEvents.State.Position.AsObjectUnderCursor.layer == 2)
         {
             GUIScript.SelectedGroup.GroupedLeftOnGround();
         }

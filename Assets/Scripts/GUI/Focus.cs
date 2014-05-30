@@ -30,7 +30,7 @@ public class Focus : MonoBehaviour
 
     // Instance Member:
     private UnitScript UNIT;   //----------------------the Focussed Unit it's UnitScript...
-    //private bool SettingFocusIsComplete=false;
+    private bool SettingFocusIsComplete=false;
 
     public bool IsLockedToThis
     {
@@ -47,7 +47,7 @@ public class Focus : MonoBehaviour
 
     void Start()
     {
-        //SettingFocusIsComplete = false;
+        SettingFocusIsComplete = false;
         if (firststart == false)
         {
             if ((!IsLocked) || (IsLockedToThis))
@@ -61,12 +61,17 @@ public class Focus : MonoBehaviour
                 UpdateManager.OnUpdate += DoUpdate;
                 MouseEvents.RIGHTCLICK += MouseEvents_RIGHTCLICK;
                 MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
-                //SettingFocusIsComplete = true;
+                SettingFocusIsComplete = true;
             }
 
             // Add Healthbar it not there
             if (UNIT)
                 UNIT.ShowLifebar();
+
+            if (SettingFocusIsComplete)
+            {
+                GUIScript.SelectedGroup.ResetGroup();
+            }
         }   
         else
         {

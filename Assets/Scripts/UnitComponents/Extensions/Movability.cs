@@ -231,17 +231,24 @@ public class Movability : UnitExtension
     {
         get 
         {
-            if (NormalizedRudder)
-                return (movingDirection + Rudder).normalized;
+            if (this.gameObject.GetComponent<Pilot>())
+            {
+                if (NormalizedRudder)
+                    return (movingDirection + Rudder).normalized;
+                else
+                {
+                    NormalizedRudder = true;
+                    return movingDirection + Rudder;
+                }
+            }
             else
             {
-                NormalizedRudder = true;
-                return movingDirection + Rudder;
+                return movingDirection;
             }
         }
         set
         { 
-            movingDirection = (value - this.gameObject.transform.position).normalized; 
+            movingDirection = (value - this.gameObject.transform.position).normalized;
         }
     }
 
