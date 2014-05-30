@@ -301,13 +301,14 @@ MonoBehaviour:
   UNIT: {fileID: 11400006}
   movingUnitState: 0
   standardYPosition: 0
+  AlwaysKeepStandardYpsPosition: 1
   IsGroupLeader: 0
   speed: 1
   Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
-  RudderIsNormalizised: 1
+  NormalizedRudder: 1
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -339,13 +340,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400006}
+  SettingFile: {fileID: 0}
   baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
-  PluggedStateExtendingComponents: []
+  ColliderContainingChildObjects: []
   turnDistance: 50
   movement: {fileID: 11400008}
   airUnitState: 0

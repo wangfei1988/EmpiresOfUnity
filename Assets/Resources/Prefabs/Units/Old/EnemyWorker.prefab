@@ -119,13 +119,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400004}
+  SettingFile: {fileID: 0}
   baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
-  PluggedStateExtendingComponents: []
+  ColliderContainingChildObjects: []
   movement: {fileID: 11400006}
   unitstateint: 0
   BuildableBuildings:
@@ -169,13 +170,14 @@ MonoBehaviour:
   UNIT: {fileID: 0}
   movingUnitState: 100
   standardYPosition: .200000003
+  AlwaysKeepStandardYpsPosition: 1
   IsGroupLeader: 0
   speed: .200000003
   Throttle: 1
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
-  RudderIsNormalizised: 1
+  NormalizedRudder: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
