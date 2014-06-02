@@ -83,10 +83,14 @@ public class BuildingGrower : UnitAnimation
             gameObject.GetComponent<Shaker>().speed.z = 0.0001f;
             gameObject.GetComponent<Shaker>().sineRooting = Shaker.ROOTING.mainPosition;
             gameObject.GetComponent<Shaker>().mainTargetTransform = this.gameObject.transform;
-            gameObject.GetComponent<Shaker>().HookOnUpdata(this.gameObject.GetComponent<UnitScript>());
+
+            
+            
+            this.gameObject.GetComponent<BuildingGrower>().NextUnitAnimation.HookOnUpdata(this.gameObject.GetComponent<Shaker>());
+            this.gameObject.GetComponent<Shaker>().HookOnUpdata(this.gameObject.GetComponent<UnitScript>());
             gameObject.GetComponent<Shaker>().IsActive = true;
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            this.GetComponent<BuildingGrower>().NextUnitAnimation.HookOnUpdata(gameObject.GetComponent<Shaker>());
+
 
             // Build Finished
             if (this.gameObject.GetComponent<AbstractBuilding>())

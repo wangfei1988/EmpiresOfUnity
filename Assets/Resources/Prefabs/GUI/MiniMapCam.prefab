@@ -49,7 +49,7 @@ Camera:
     width: .209999993
     height: .340000004
   near clip plane: .300000012
-  far clip plane: 1000
+  far clip plane: 500
   field of view: 60
   orthographic: 1
   orthographic size: 223
@@ -59,8 +59,8 @@ Camera:
     m_Bits: 4294965996
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_HDR: 1
-  m_OcclusionCulling: 1
+  m_HDR: 0
+  m_OcclusionCulling: 0
 --- !u!81 &8100000
 AudioListener:
   m_ObjectHideFlags: 1
@@ -91,7 +91,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 42aa93ec071f64c4b995b5dba91685ef, type: 2}
   - {fileID: 100000, guid: fac8af90d70bf9c469478574521f992c, type: 2}
   - {fileID: 100000, guid: 7e57348d2c72bff41996420e31badfce, type: 2}
-  GuiTextureBuffer: {fileID: 2800000, guid: 669f653729e275a4caa1aa29cf202f0f, type: 3}
+  GuiTextureBuffer: {fileID: 2800000, guid: 0323b5dee53e1bb4190788402c984c03, type: 3}
   ClickableArea:
     serializedVersion: 2
     x: 1800
@@ -113,7 +113,7 @@ GUITexture:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: 239887a754fc2fc438884dc77e0e16f1, type: 3}
+  m_Texture: {fileID: 2800000, guid: 78c368f5a3111ab4b81a743d3b7b07c9, type: 3}
   m_Color: {r: .5, g: .5, b: .5, a: .5}
   m_PixelInset:
     serializedVersion: 2

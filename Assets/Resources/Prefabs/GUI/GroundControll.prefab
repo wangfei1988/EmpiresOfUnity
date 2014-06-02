@@ -455,10 +455,10 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
-    m_Resolution: 2
-    m_Strength: 1
-    m_Bias: .0500000007
+    m_Type: 1
+    m_Resolution: 1
+    m_Strength: .25
+    m_Bias: 1
     m_Softness: 4
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
@@ -490,10 +490,10 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
-    m_Resolution: 3
-    m_Strength: 1
-    m_Bias: .0500000007
+    m_Type: 1
+    m_Resolution: 1
+    m_Strength: .5
+    m_Bias: 1
     m_Softness: 4
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
@@ -525,10 +525,10 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
-    m_Resolution: 2
-    m_Strength: 1
-    m_Bias: .0500000007
+    m_Type: 1
+    m_Resolution: 1
+    m_Strength: .5
+    m_Bias: 1
     m_Softness: 4
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
@@ -588,10 +588,10 @@ MonoBehaviour:
   m_ClipPlaneOffset: .0700000003
   m_ReflectLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294962927
   m_RefractLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294962927
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -639,10 +639,10 @@ MonoBehaviour:
   m_ClipPlaneOffset: .0700000003
   m_ReflectLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294962943
   m_RefractLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294962943
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1

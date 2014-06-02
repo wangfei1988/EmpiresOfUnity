@@ -50,8 +50,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -135.204193, y: -.149979338, z: -174.137711}
+  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106829}
+  m_LocalPosition: {x: 118.772781, y: -.149979338, z: -29.8454361}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 400002}
@@ -142,6 +142,7 @@ MonoBehaviour:
   faceOtherTransform: 0
   forwardIs: 0
   direction: {x: 0, y: 0, z: 0}
+  UNIT: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -208,14 +209,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400010}
-  baseUnitState: 100
+  SettingFile: {fileID: 0}
+  baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
   ColliderContainingChildObjects: []
-  PluggedStateExtendingComponents: []
   movement: {fileID: 11400012}
   unitstateint: 0
 --- !u!114 &11400008
@@ -229,6 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e425f0cf7c0cc4a94bf78b341d4315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UNIT: {fileID: 0}
   prefabSlot: {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
   hasArsenal: 0
   NumberOfRockets: 1000
@@ -267,12 +269,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400010}
-  movingUnitState: 100
-  standardYPosition: -1.5
+  movingUnitState: 0
+  standardYPosition: -1.39999998
   AlwaysKeepStandardYpsPosition: 1
   IsGroupLeader: 0
   speed: .200000003
-  Throttle: 1
+  Throttle: 0
   Target: {fileID: 0}
   WayPoints: []
   Rudder: {x: 0, y: 0, z: 0}
@@ -289,12 +291,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400010}
+  IsSlowingDown: 0
+  slopeDistance: 0
+  IsPermanent: 0
   lookAheadDistance: 3
   mySpace: {fileID: 13500000}
   Controlls: {fileID: 11400012}
   triggerd: 0
   IsAForwarder: 0
   Rudder: {x: 0, y: 0, z: 0}
+  Distance: 0
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

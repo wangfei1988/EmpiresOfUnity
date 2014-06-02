@@ -30,9 +30,11 @@ public class ProductionBuildingOptions : UnitOptions
         MoveToPoint = new Vector3(gameObject.transform.position.x, 0.1f, gameObject.transform.position.z - 5f);
         CurrentFabrikatNumber = 0;
         CurrentFabrikat = Fabrikat[CurrentFabrikatNumber];
+        AnimationReleasePoints[0]=this.gameObject.GetComponentsInChildren<ReleasePoint>()[0].gameObject;
+        AnimationReleasePoints[1]=this.gameObject.GetComponentsInChildren<ReleasePoint>()[1].gameObject;
         if (this.GetComponent<Animator>())
         {
-            this.GetComponent<Animator>().SetBool("Release", false);
+        //    this.GetComponent<Animator>().SetBool("JetWing", false);
             GetComponent<Animator>().enabled=true;
         }
     }
@@ -45,25 +47,25 @@ public class ProductionBuildingOptions : UnitOptions
      public OPTIONS unitState;
 
      string[] fabrikatNames;
-
+     public GameObject[] AnimationReleasePoints = new GameObject[2];
      void OnFabrikatReleased()
      {
-         this.GetComponent<Animator>().SetBool("Release", false);
-
-         GameObject TheNewOne = (GameObject.Instantiate(CurrentFabrikat, this.transform.GetChild(1).gameObject.GetComponent<releasePoin>().TakenOff(), Quaternion.LookRotation(Vector3.forward)) as GameObject);
-         TheNewOne.GetComponent<Movability>().Throttle=0.85f;
-         TheNewOne.GetComponent<Movability>().MoveToPoint=this.MoveToPoint;
-         TheNewOne.GetComponent<Movability>().MovingDirection = this.MoveToPoint;
-         TheNewOne.GetComponent<Movability>().IsMoving=true;
+         GameObject TheNewOne = (GameObject.Instantiate(CurrentFabrikat, AnimationReleasePoints[CurrentFabrikatNumber].GetComponent<ReleasePoint>().Release(), (CurrentFabrikat as GameObject).transform.rotation) as GameObject);
+     //    TheNewOne.GetComponent<Movability>().Throttle=0.85f;
+      //   TheNewOne.GetComponent<Movability>().MoveToPoint=this.MoveToPoint;
+      //   TheNewOne.GetComponent<Movability>().MovingDirection = this.MoveToPoint;
+      //   TheNewOne.GetComponent<Movability>().IsMoving=true;
          TheNewOne=null;
+
+         this.GetComponent<Animator>().SetBool(CurrentFabrikat.name, false);
      }
-     private int[] fabrikatReleaseHashes = new int[0];
-     private void ReleaseFabrikat(Object release)
+
+     private void ReleaseFabrikat(string fabrikatname)
      {
          if (this.GetComponent<Animator>())
          {
-             
-             this.GetComponent<Animator>().SetBool("Release", true);
+
+             this.GetComponent<Animator>().SetBool(fabrikatname, true);
          }
 
          else
@@ -152,7 +154,7 @@ public class ProductionBuildingOptions : UnitOptions
                 {
                     case OPTIONS.Produce:
                         {
-                            ReleaseFabrikat(CurrentFabrikat);
+                            ReleaseFabrikat(CurrentFabrikat.name);
                             
                             // TODO Let they Spawn within the Building and then let they so to "MoveToPoint"
                             break;
