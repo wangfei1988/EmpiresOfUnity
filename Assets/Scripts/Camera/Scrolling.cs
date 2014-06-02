@@ -34,8 +34,7 @@ public class Scrolling : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Y))
             this.SwitchScrollingStatus();
 
-        if (scrollingAllowed)
-            CheckForScrolling();
+        CheckForScrolling();
     }
 
     public void SwitchScrollingStatus()
@@ -52,9 +51,18 @@ public class Scrolling : MonoBehaviour
         Vector3 direction = Vector3.zero;
 
         /* Srolling Left & Right */
-        if (MousePosition.x < mainGUI.MapViewArea.xMin || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if (
+            (scrollingAllowed && MousePosition.x < mainGUI.MapViewArea.xMin)
+            || Input.GetKey(KeyCode.A)
+            || Input.GetKey(KeyCode.LeftArrow)
+            )
             direction += Vector3.left * SpeedScrollX;
-        if (MousePosition.x > mainGUI.MainGuiArea.xMax || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+
+        if (
+            (scrollingAllowed && MousePosition.x > mainGUI.MainGuiArea.xMax)
+            || Input.GetKey(KeyCode.D)
+            || Input.GetKey(KeyCode.RightArrow)
+            )
             direction += Vector3.right * SpeedScrollX;
 
         /* Zoom in & out */
@@ -89,13 +97,13 @@ public class Scrolling : MonoBehaviour
         float x = 0f;
         float z = 0f;
         float degrees = Camera.main.transform.eulerAngles.y;
-        if (MousePosition.y > mainGUI.MapViewArea.yMax || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        if ((scrollingAllowed && MousePosition.y > mainGUI.MapViewArea.yMax) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             double angle = Math.PI * degrees / 180.0;
             x += (float)Math.Sin(angle);
             z += (float)Math.Cos(angle);
         }
-        if (MousePosition.y < mainGUI.MapViewArea.yMin || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        if ((scrollingAllowed && MousePosition.y < mainGUI.MapViewArea.yMin) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             double angle = Math.PI * degrees / 180.0;
             x -= (float)Math.Sin(angle);
@@ -117,9 +125,9 @@ public class Scrolling : MonoBehaviour
 
         /* Rotate Left & Right */
         int status = 0;
-        if (Input.GetKey(KeyCode.Q) || (MouseMove.Speed.x > 0))
+        if (Input.GetKey(KeyCode.Q) || (MouseMove.Speed.x < 0))
             status = 1;
-        if (Input.GetKey(KeyCode.E) || (MouseMove.Speed.x < 0))
+        if (Input.GetKey(KeyCode.E) || (MouseMove.Speed.x > 0))
             status = -1;
         if (status != 0)
         {

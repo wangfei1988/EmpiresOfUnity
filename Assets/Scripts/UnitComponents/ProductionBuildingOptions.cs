@@ -50,12 +50,13 @@ public class ProductionBuildingOptions : UnitOptions
      public GameObject[] AnimationReleasePoints = new GameObject[2];
      void OnFabrikatReleased()
      {
-         GameObject TheNewOne = (GameObject.Instantiate(CurrentFabrikat, AnimationReleasePoints[CurrentFabrikatNumber].GetComponent<ReleasePoint>().Release(), (CurrentFabrikat as GameObject).transform.rotation) as GameObject);
+         GameObject.Instantiate(CurrentFabrikat, AnimationReleasePoints[CurrentFabrikatNumber].GetComponent<ReleasePoint>().Release(), (CurrentFabrikat as GameObject).transform.rotation);
+         //GameObject TheNewOne = ...
      //    TheNewOne.GetComponent<Movability>().Throttle=0.85f;
       //   TheNewOne.GetComponent<Movability>().MoveToPoint=this.MoveToPoint;
       //   TheNewOne.GetComponent<Movability>().MovingDirection = this.MoveToPoint;
       //   TheNewOne.GetComponent<Movability>().IsMoving=true;
-         TheNewOne=null;
+         //TheNewOne=null;
 
          this.GetComponent<Animator>().SetBool(CurrentFabrikat.name, false);
      }

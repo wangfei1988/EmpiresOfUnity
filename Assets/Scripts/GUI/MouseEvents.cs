@@ -51,9 +51,7 @@ public class MouseEvents
         public MouseButtonState MIDDLE
         { get { return buttons[2]; } set { buttons[2] = value; } }
         public bool Hold
-        {
-            get { return (buttons[0].Hold || buttons[1].Hold || buttons[2].Hold); }
-        }
+        { get { return (buttons[0].Hold || buttons[1].Hold || buttons[2].Hold); } }
         public MouseWheelState WHEEL;
 
         // private variables...
