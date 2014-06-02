@@ -14,6 +14,7 @@ public class FaceDirection : UnitAnimation
     public bool faceMovingDirection, faceCamera,faceOtherTransform;
     public EnumProvider.DIRECTION forwardIs;
     public Vector3 direction;
+    [SerializeField]
     private UnitScript UNIT;
     private Vector3 qamDirection
     {
@@ -37,6 +38,7 @@ public class FaceDirection : UnitAnimation
 	{
 	    TransformToFace = Camera.main.transform;
         if (this.gameObject.GetComponent<UnitOptions>()) UNIT = this.gameObject.GetComponent<UnitScript>();
+        
 	}
 
     internal override void Animate()

@@ -14,19 +14,32 @@ public class Pilot : UnitComponent
     }
     private const float MIN_LOOKAHEAD = 4f;
     private const float MAX_LOOKAHEAD = 20f;
-    private const float Accselerator = 0.01f;
-    private float? lah = 0;
+    private float Accselerator = 0.01f;
+    public bool IsSlowingDown = false;
+    public float slopeDistance;
     private float LOOKAHEAD
     {
         get
         {
-            if ((lah == null)) lah = Vector3.Distance(My.Options.MoveToPoint, My.gameObject.transform.position);
-            if (lah > MAX_LOOKAHEAD) return MAX_LOOKAHEAD;
-            else if (lah < MIN_LOOKAHEAD) return MIN_LOOKAHEAD;
-            else return lah.Value;
+            if (Controlls.Distance > MAX_LOOKAHEAD)
+                return MAX_LOOKAHEAD;
+            else
+            {
+
+
+                if (Controlls.Distance < MIN_LOOKAHEAD)
+                    return MIN_LOOKAHEAD;
+                
+            }
+                
+            return Controlls.Distance;
+        
+                
         }
     }
 
+    public bool IsPermanent = false;
+    
     [SerializeField]
     private float lookAheadDistance = MIN_LOOKAHEAD;
 
@@ -114,9 +127,13 @@ public class Pilot : UnitComponent
     {
         get
         {
-            if (!Controlls.IsMoving) 
+            if (!Controlls.IsMoving)
+            {
+                IsSlowingDown = false;
                 return _throttle = 0;
-            else 
+                
+            }
+            else
                 return _throttle;
         }
         set { this.GetComponent<Movability>().Speed = _throttle = value; }
@@ -126,15 +143,22 @@ public class Pilot : UnitComponent
     {
         get
         {
-            if (Controlls.IsMoving)
+            if (My.Options.IsAttacking)
+                return true;
+
+            if ((Controlls.IsMoving)&&(!IsSlowingDown))
                 return Throttle < 1f;
             else
                 return false;
         }
         set
         {
-            if (value && !this.gameObject.GetComponent<Movability>().IsMoving)
-                Controlls.IsMoving = true;
+            if (value)
+            {
+                IsSlowingDown = false;
+                if (!this.gameObject.GetComponent<Movability>().IsMoving)
+                    Controlls.IsMoving = true;
+            }
         }
     }
   
@@ -160,17 +184,30 @@ public class Pilot : UnitComponent
 
         Controlls = this.gameObject.GetComponent<Movability>();
         My = gameObject.GetComponent<UnitScript>();
-        if (!this.gameObject.GetComponent<SphereCollider>())
-            this.gameObject.AddComponent<SphereCollider>().isTrigger = true;
-
+        
+        if(!mySpace)
+            if ((!this.gameObject.GetComponent<SphereCollider>())&&(!this.gameObject.GetComponentInChildren<SphereCollider>()))
+               this.gameObject.AddComponent<SphereCollider>().isTrigger = true;
         mySpace = this.gameObject.GetComponent<SphereCollider>();
-
+            
+     
     }
     void Start()
     {
-      
+        if (this.gameObject.GetComponent<SphereCollider>())
+            mySpace = this.gameObject.GetComponent<SphereCollider>();
+        else
+        {
+            foreach (GameObject SubUnit in My.Options.ColliderContainingChildObjects)
+                if (SubUnit.GetComponent<SphereCollider>())
+                {
+                    mySpace = SubUnit.GetComponent<SphereCollider>();
+                    break;
+                }
+        }
         triggerd = 0;
         IsAcselerating = true;
+        IsSlowingDown = false;
         mySpace.isTrigger = true;
         SetRadius(MIN_LOOKAHEAD);
 
@@ -181,15 +218,39 @@ public class Pilot : UnitComponent
         Throttle = 0;
 
         this.PflongeOnUnit();
+
     }
 
+    private bool SlowDown(float distance)
+    {
+        if (!IsSlowingDown)
+        {
+            slopeDistance = distance;
+            IsAcselerating = false;
+        }
+        Throttle = (distance / slopeDistance);
+        return Throttle > 0f;
+    }
 
+    public float Distance;
+    
     public override void DoUpdate()
     {
+        Distance = Controlls.Distance;
+      //  Distance -= this.transform.position.y;
         //if (My.IsAnAirUnit)
+        //    Distance -= 5;
         //    Controlls.standardYPosition = this.transform.parent.position.y;
         if (IsAcselerating)
             IsAcselerating = ((Throttle += Accselerator) < 1);
+
+        
+
+        if (IsSlowingDown)
+            IsSlowingDown = SlowDown(Distance);
+        else if ((Distance < mySpace.radius) && (Distance < Controlls.Speed * 15))
+            IsSlowingDown = SlowDown(Distance);
+
         if (IsHeadin)
             IsHeadin = WatchTarget();
         if (!Triggerd)
@@ -200,7 +261,7 @@ public class Pilot : UnitComponent
                 SetRadius(LookAheadDistance + 0.1f);
         }
         Triggerd = false;
-        lah = null;
+
     }
 
     private void ShrinkRadius(float lookAhead)
@@ -223,7 +284,7 @@ public class Pilot : UnitComponent
                 LookAheadDistance = radius;
                 mySpace.radius = lookAheadDistance / My.gameObject.transform.localScale.x;
                 if (My.IsAnAirUnit)
-                    (My.Options as FlyingUnitOptions).standardYPosition = mySpace.radius * 2;
+                    Controlls.standardYPosition = mySpace.radius * 2;
                  //   if (IsAForwarder) mySpace.center = new Vector3(mySpace.center.x, mySpace.center.y, mySpace.radius - 0.5f);
             }
         }
@@ -301,6 +362,17 @@ public class Pilot : UnitComponent
         }
 
         return false;
+    }
+
+    //Destroys Pilot component if's not permanent...
+    public bool GetOff()
+    {
+        if (!IsPermanent)
+        {
+            Component.Destroy(this.GetComponent<Pilot>());
+            return true;
+        }
+        else return false;
     }
 
     void OnDestroy()

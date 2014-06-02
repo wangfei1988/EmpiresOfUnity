@@ -2,7 +2,7 @@
 
 abstract public class UnitWeapon : MonoBehaviour
 {
-
+    public UnitScript UNIT;
     public enum WEAPON : byte
     {
         None=0,

@@ -116,12 +116,11 @@ public class Gunner : UnitComponent
                     if (!UNIT.IsABuilding)
                         UNIT.Options.FocussedLeftOnGround(-(other.gameObject.transform.position - this.transform.position));
                 }
-                else if (UNIT.ALARM >= UnitScript.ALLERT_LEVEL.A)
-                {
-                    Debug.Log("WeaponEngaged");
-                    weapon.Engage(other.gameObject);
+
+                Debug.Log("WeaponEngaged");
+                weapon.Engage(other.gameObject);
                     
-                }
+              
             }
 
             switch ((EnumProvider.ORDERSLIST)OrderState)

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[AddComponentMenu("Program-X/UNIT/Extensions/Movability")]
 public class Movability : UnitExtension
 {
 
@@ -28,6 +29,17 @@ public class Movability : UnitExtension
         IsMoving = true;
         Speed = 1;
 	}
+
+    public Pilot pilot
+    {
+        get 
+        {
+            if (!this.GetComponent<Pilot>())
+                this.gameObject.AddComponent<Pilot>();
+            return this.GetComponent<Pilot>(); 
+        }
+
+    }
 
     protected override EnumProvider.ORDERSLIST on_UnitStateChange(EnumProvider.ORDERSLIST stateorder)
     {
@@ -155,16 +167,16 @@ public class Movability : UnitExtension
             if (!value)
             {
                 _groupmove = false;
-                if ((!UNIT.IsAnAirUnit)&&(this.gameObject.GetComponent<Pilot>()))
-                    Component.Destroy(gameObject.GetComponent<Pilot>());
                 Throttle = 0;
+                if (__moving)
+                    pilot.GetOff();
             }
             else if (!__moving)
             {
                 Throttle = 1;
-                if (!gameObject.GetComponent<Pilot>())
-                    gameObject.AddComponent<Pilot>();
+                
             }
+
             __moving = value;
         }
     }
@@ -231,7 +243,7 @@ public class Movability : UnitExtension
     {
         get 
         {
-            if (this.gameObject.GetComponent<Pilot>())
+            if (pilot)
             {
                 if (NormalizedRudder)
                     return (movingDirection + Rudder).normalized;
@@ -257,9 +269,11 @@ public class Movability : UnitExtension
         if (UNIT.Options.ColliderContainingChildObjects.Length > 0)
         {
             foreach (GameObject subUnitPart in UNIT.Options.ColliderContainingChildObjects)
-                subUnitPart.rigidbody.isKinematic = true;
+                if (subUnitPart.rigidbody)
+                    subUnitPart.rigidbody.isKinematic = true;
         }
-        else
+
+        if (this.gameObject.rigidbody)
             gameObject.rigidbody.isKinematic = true;
 
         kinematicFrames = 2;
@@ -267,12 +281,13 @@ public class Movability : UnitExtension
 
     private void checkKinematic()
     {
+        _distance = null;
         if (UNIT.Options.ColliderContainingChildObjects.Length > 0)
         {
             bool ISKINEMATIC = false;
             foreach (GameObject subUnitPart in UNIT.Options.ColliderContainingChildObjects)
             {
-                if ((subUnitPart.rigidbody.isKinematic))
+                if ((subUnitPart.rigidbody)&&(subUnitPart.rigidbody.isKinematic))
                     ISKINEMATIC = true;
             }
             if (ISKINEMATIC)
@@ -280,11 +295,13 @@ public class Movability : UnitExtension
                 if (kinematicFrames <= 0)
                 {
                     foreach (GameObject subUnitPart in UNIT.Options.ColliderContainingChildObjects)
-                        subUnitPart.rigidbody.isKinematic = false;
+                            subUnitPart.rigidbody.isKinematic = false;
                 }
             }
             else
             {
+                if (kinematicFrames <= 0)
+                    gameObject.rigidbody.isKinematic = false;
                 --kinematicFrames;
             }
         }
@@ -298,16 +315,17 @@ public class Movability : UnitExtension
     }
     private int kinematicFrames=0;
 
-    protected float distance=0f;
+    protected float? _distance = null;
     public virtual float Distance
     {
         get
         {
-            return Vector3.Distance(gameObject.transform.position, MoveToPoint);
+
+            return (_distance == null) ? (_distance = Vector3.Distance(gameObject.transform.position, MoveToPoint)).Value : _distance.Value;
         }
         internal set
         {
-            if (value != distance)
+            if (value != _distance)
             {
                 if (IsMovingAsGroup)
                 {
@@ -328,53 +346,72 @@ public class Movability : UnitExtension
         MoveToPoint = leader.transform.position;
         IsMovingAsGroup = true;
     }
-
+    private Vector3 attackDirection = Vector3.zero;
+    private bool anflug = false;
     private bool Move()
     {
         
-        if (this.gameObject.GetComponent<Pilot>()) gameObject.GetComponent<Pilot>().DoUpdate();
+        if (pilot) pilot.DoUpdate();
 
 
-
-        if (movingUnitState == OPTIONS.Guard)
-        {
-            MoveToPoint = Target.transform.position;
-
-            if (Distance >= 20) gameObject.transform.position += (MovingDirection * Speed);
-            else if (Distance <= 15) gameObject.transform.position -= (MovingDirection * Speed);
-        }
-        else if (IsMovingAsGroup)
-        {
-            if (IsGroupLeader) IsMovingAsGroup = false;
-            else Distance = Vector3.Distance(gameObject.transform.position, MoveToPoint);
-        }
-        else if (UNIT.Options.IsAttacking)
-        {
-            if (Distance >= (UNIT.AttackRange / 2))
-                this.gameObject.transform.position += MovingDirection * Speed;
-    
-        }
-        else if (Distance >= 0.5f)
-        {
-            this.gameObject.transform.position += MovingDirection * Speed;
-        }
-        else
-        {
-            SetKinematic();
-            gameObject.transform.position = MoveToPoint;
-
-            if (IsGroupLeader) GUIScript.SelectedGroup.GroupState = UnitGroup.GROUPSTATE.Waiting;
-            if (movingUnitState == OPTIONS.Patrol)
+       
+            if (movingUnitState == OPTIONS.Guard)
             {
-                MoveToPoint = WayPoints[0];
-                WayPoints.RemoveAt(0);
-                WayPoints.Add(gameObject.transform.position);
-                MoveToPoint = WayPoints[0];
-                MovingDirection = MoveToPoint;
-            }
-            else { StayOrder(); }
-        }
+                MoveToPoint = Target.transform.position;
 
+                if (Distance >= 20) gameObject.transform.position += (MovingDirection * Speed);
+                else if (Distance <= 15) gameObject.transform.position -= (MovingDirection * Speed);
+            }
+            else if (IsMovingAsGroup)
+            {
+                if (IsGroupLeader) IsMovingAsGroup = false;
+                else Distance = Vector3.Distance(gameObject.transform.position, MoveToPoint);
+            }
+            else if ((UNIT.Options.IsAttacking))
+            {
+                if (Distance >= (UNIT.AttackRange / 2))
+                {
+                    this.gameObject.transform.position += MovingDirection * Speed;
+                    anflug = false;
+                }
+                else
+                {
+                    if (UNIT.IsAnAirUnit)
+                    {
+                        if(Distance<10)
+                        if (!anflug)
+                        {
+                            attackDirection = MovingDirection * (Speed + 0.1f);
+                            anflug = true;
+                        }
+                        this.gameObject.transform.position += attackDirection;
+
+                    }
+                }
+                
+
+            }
+            else if (Distance >= 0.5f)
+            {
+                this.gameObject.transform.position += MovingDirection * Speed;
+            }
+            else
+            {
+                SetKinematic();
+                gameObject.transform.position = MoveToPoint;
+
+                if (IsGroupLeader) GUIScript.SelectedGroup.GroupState = UnitGroup.GROUPSTATE.Waiting;
+                if (movingUnitState == OPTIONS.Patrol)
+                {
+                    MoveToPoint = WayPoints[0];
+                    WayPoints.RemoveAt(0);
+                    WayPoints.Add(gameObject.transform.position);
+                    MoveToPoint = WayPoints[0];
+                    MovingDirection = MoveToPoint;
+                }
+                else { StayOrder(); }
+            }
+        
         KeepStandardYpsPosition();
 
         return this.gameObject.transform.position != MoveToPoint;

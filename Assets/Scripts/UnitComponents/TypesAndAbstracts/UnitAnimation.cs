@@ -37,7 +37,9 @@ abstract public class UnitAnimation : MonoBehaviour {
         set
         {
             if (value != isActive)
-                if (value && GetComponent<Rigidbody>()) GetComponent<Rigidbody>().isKinematic=false;           
+                if (value && GetComponent<Rigidbody>()) GetComponent<Rigidbody>().isKinematic=false;
+
+            isActive = value;
         }
     }
 
@@ -45,10 +47,10 @@ abstract public class UnitAnimation : MonoBehaviour {
 
     abstract internal void Animate();
 
-    void Start()
-    {
-        UpdateManager.OnUpdate += DoUpdate;
-    }
+    //void Start()
+    //{
+    //    UpdateManager.OnUpdate += DoUpdate;
+    //}
 
     internal void DoUpdate()
     {

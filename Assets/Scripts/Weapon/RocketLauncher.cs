@@ -26,6 +26,11 @@ public class RocketLauncher : UnitWeapon
     
 	void Start ()
     {
+        if (GetComponent<UnitScript>())
+            UNIT = GetComponent<UnitScript>();
+        else if (transform.parent.gameObject.GetComponent<UnitScript>())
+            UNIT = transform.parent.gameObject.GetComponent<UnitScript>();
+
         NumberOfRockets = (prefabSlot.amunition == WeaponObject.AMUNITONTYPE.Missiles) ? 100 : 15;
 	}
 
@@ -39,7 +44,7 @@ public class RocketLauncher : UnitWeapon
     {
         if (rocket)
         {
-            rocket.SetTarget(targetPoint, this.gameObject.GetComponent<UnitScript>().GoodOrEvil);
+            rocket.SetTarget(targetPoint, UNIT.GoodOrEvil);
             rocket.LaunchButton = true;
             rocket = null;
             countdown = Interval;

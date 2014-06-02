@@ -144,6 +144,7 @@ MonoBehaviour:
   Fabrikat:
   - {fileID: 100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
   - {fileID: 100000, guid: 1c0bf5a98ada909458c5f15a283110f7, type: 2}
+  - {fileID: 100008, guid: 9313e399e19946d418ca4fa5cadc95c3, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

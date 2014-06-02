@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Program-X/UNIT/Extensions/Attackability")]
 public class Attackability : UnitExtension
 {
     public enum OPTIONS : int
@@ -28,7 +29,18 @@ public class Attackability : UnitExtension
         IsConquering,
     }
     public Vector3 AttackPoint = Vector3.zero;
-
+    public GameObject Target
+    {
+        get
+        {
+            return UNIT.Options.Target;
+        }
+        set
+        {
+            UNIT.Options.Target = value;
+        }
+    }
+    
     protected override EnumProvider.ORDERSLIST on_UnitStateChange(EnumProvider.ORDERSLIST stateorder)
     {
         attackState = (OPTIONS)stateorder;
@@ -80,39 +92,13 @@ public class Attackability : UnitExtension
     {
         get
         {
-            if (States[(byte)STATES.IsAttacking])
-            {
+          
                 if (UNIT.Options.Target == null)
                     States[(byte)STATES.IsAttacking] = false;
-                else
-                {
-                    if (!UNIT.IsABuilding)
-                    {
-                        Movability Movement = GetComponent<Movability>();
-                        Movement.MovingDirection = UNIT.Options.MoveToPoint;
-
-                        if (Movement.Distance < UNIT.AttackRange)
-                        {
-                            UNIT.weapon.Reload();
-                            UNIT.weapon.Engage(UNIT.Options.Target);
-                        }
-
-                        return Movement.IsMoving = true;
-                    }
-                    else
-                    {
-                        if (Vector3.Distance(this.gameObject.transform.position, AttackPoint) <= UNIT.AttackRange)
-                        {
-                            UNIT.weapon.Reload();
-                            UNIT.weapon.Engage(UNIT.Options.Target);
-                        }
-                        return true;
-                    }
-                }
-            }
-            return false;
+             
+            return States[(byte)STATES.IsAttacking];
         }
-        protected set
+        internal set
         {
             if ((UNIT.Options.Target != null) && ((OPTIONS)UNIT.Options.UnitState == OPTIONS.Attack)) 
                 States[(byte)STATES.IsAttacking] = value;
@@ -215,11 +201,33 @@ public class Attackability : UnitExtension
             GetComponent<Gunner>().DoUpdate();
 
         if (UNIT.Options.Target)
-        { 
+        {
             AttackPoint = UNIT.Options.Target.transform.position;
             if (!UNIT.IsABuilding)
-                GetComponent<Movability>().IsMoving = true;
-            return true;
+            {
+
+                Movability Movement = GetComponent<Movability>();
+                Movement.IsMoving = true;
+                Movement.MovingDirection = UNIT.Options.MoveToPoint;
+
+                if (Movement.Distance < UNIT.AttackRange)
+                {
+                    UNIT.weapon.Reload();
+                    UNIT.weapon.Engage(UNIT.Options.Target);
+                }
+
+                return UNIT.Options.Target;
+            }
+            else
+            {
+                if (Vector3.Distance(this.gameObject.transform.position, AttackPoint) <= UNIT.AttackRange)
+                {
+                    UNIT.weapon.Reload();
+                    UNIT.weapon.Engage(UNIT.Options.Target);
+                }
+                
+            }
+            return (bool)UNIT.Options.Target;
         }
         else
             return false;

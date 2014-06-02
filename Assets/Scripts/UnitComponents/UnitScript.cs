@@ -139,10 +139,10 @@ public class UnitScript : MonoBehaviour
         GoodOrEvil = new FoE(goodOrEvil);
         LifebarScript = ScriptableObject.CreateInstance<Lifebar>();
         Options = gameObject.GetComponent<UnitOptions>();
-        if (!gameObject.GetComponent<UnitWeapon>())
+        if (!gameObject.GetComponentInChildren<UnitWeapon>())
             weapon = gameObject.AddComponent<NoWeapon>();
         else
-            weapon = gameObject.GetComponent<UnitWeapon>();
+            weapon = gameObject.GetComponentInChildren<UnitWeapon>();
 	}
 
     void Start()

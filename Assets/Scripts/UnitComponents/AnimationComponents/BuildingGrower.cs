@@ -85,8 +85,8 @@ public class BuildingGrower : UnitAnimation
             gameObject.GetComponent<Shaker>().mainTargetTransform = this.gameObject.transform;
             gameObject.GetComponent<Shaker>().HookOnUpdata(this.gameObject.GetComponent<UnitScript>());
             gameObject.GetComponent<Shaker>().IsActive = true;
-            
-            
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            this.GetComponent<BuildingGrower>().NextUnitAnimation.HookOnUpdata(gameObject.GetComponent<Shaker>());
 
             // Build Finished
             if (this.gameObject.GetComponent<AbstractBuilding>())

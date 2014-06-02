@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Program-X/UNIT/UnitOptions (Air-Flying Units)")]
 public class AirUnitOptions : UnitOptions
 {
+    public GameObject fdObj;
     public float turnDistance=50;
     public override EnumProvider.UNITCLASS UNIT_CLASS
     {
@@ -15,12 +17,15 @@ public class AirUnitOptions : UnitOptions
     {
         RegisterInheridedOrderStateOptions(typeof(OPTIONS));
         movement = this.GetComponent<Movability>();
-        this.gameObject.AddComponent<Pilot>().mySpace = this.gameObject.AddComponent<SphereCollider>();
+        this.gameObject.GetComponent<Pilot>().mySpace = this.gameObject.GetComponent<SphereCollider>();
         GetComponent<Pilot>().Controlls = movement;
-        GetComponent<SphereCollider>().isTrigger = true;
+      //  GetComponent<SphereCollider>().isTrigger = true;
+        //movement.WayPoints.Add(new Vector3(120, 0, 25));
+        //movement.WayPoints.Add(new Vector3(70, 0, -25));
     }
     internal override void DoUpdate()
     {
+        fdObj.GetComponent<FaceDirection>().IsActive = movement.IsMoving;
         if (IsFlying) IsFlying = Flight();
     }
     private bool _isflying = false;
@@ -36,45 +41,87 @@ public class AirUnitOptions : UnitOptions
     }
     private float lastYps=0;
 
+    public override bool IsAttacking
+    {
+        get
+        {
+            if (GetComponent<Attackability>())
+            {
+                if (this.GetComponent<Attackability>().IsAttacking)
+                {
+                    IsFlying = true;
+                    movement.IsMoving = true;
+                    movement.Throttle += 0.01f;
+                    return true;
+                }
+                else return false;
+            }
+
+            else
+                return base.IsAttacking;
+
+            
+        }
+        protected set
+        {
+            if (GetComponent<Attackability>())
+            {
+                GetComponent<Attackability>().IsAttacking = value;
+                IsFlying = value;
+                movement.IsMoving = value;
+                movement.Throttle += 0.01f;
+            }
+            else
+                base.IsAttacking = value;
+        }
+    }
+
     private bool Flight()
     {
         Vector2 MoveToPosition;
-        if(movement.IsMoving)
-            switch (airUnitState)
+        if (movement.IsMoving)
+        {
+
+            MoveToPosition = new Vector2(MoveToPoint.x, MoveToPoint.z);
+            //if (IsAttacking)
+            //{
+            //    if (Vector2.Distance(UnitPosition, MoveToPosition) > 20f)
+            //        UnitPosition += ((MoveToPosition - UnitPosition).normalized * movement.Speed);
+            //    else
+            //        this.gameObject.transform.position += (this.gameObject.transform.forward * movement.Speed);
+
+            //    return true;
+            //}
+            if (!IsAttacking)
             {
-            case OPTIONS.MoveTo:
-
-               MoveToPosition=new Vector2(MoveToPoint.x,MoveToPoint.z);
-
-                if (Vector2.Distance(UnitPosition, MoveToPosition) > 5)
+                if (Vector2.Distance(UnitPosition, MoveToPosition) > 0.5f)
                     UnitPosition += (MoveToPosition - UnitPosition).normalized * movement.Speed;
                 else
                     movement.IsMoving = false;
-                break;
-            case OPTIONS.Patrol:
-             //----TODO!.......
-                return true;
-            case OPTIONS.LandOnGround:
-                if (Vector3.Distance(this.transform.position, MoveToPoint) > 0.5)
-                    this.transform.position += (MoveToPoint - this.transform.position).normalized * movement.Speed;
-                else
-                {
-                    this.transform.position = MoveToPoint;
-                    return movement.IsMoving = false;
-                }
-                return true;
+
+
+                if (baseUnitState == (EnumProvider.ORDERSLIST.LandOnGround))
+                    if (Vector3.Distance(this.transform.position, MoveToPoint) > 0.5)
+                        this.transform.position += (MoveToPoint - this.transform.position).normalized * movement.Speed;
+                    else
+                    {
+                        this.transform.position = MoveToPoint;
+                        return movement.IsMoving = false;
+
+                    }
             }
+        }
         else
         {
 
-            MoveToPosition = new Vector2(movement.WayPoints[0].x,movement.WayPoints[1].z);
-            if(UnitPosition == MoveToPosition)
-                if (lastYps >= this.transform.position.y)
-                {
-                    movement.WayPoints.Add(new Vector3(movement.WayPoints[0].z, movement.WayPoints[0].y, movement.WayPoints[0].x));
-                    movement.WayPoints.RemoveAt(0);
-                }
-            lastYps = this.transform.position.y; 
+            //MoveToPosition = new Vector2(movement.WayPoints[0].x,movement.WayPoints[1].z);
+            //if(UnitPosition == MoveToPosition)
+            //    if (lastYps >= this.transform.position.y)
+            //    {
+            //        movement.WayPoints.Add(new Vector3(movement.WayPoints[0].z, movement.WayPoints[0].y, movement.WayPoints[0].x));
+            //        movement.WayPoints.RemoveAt(0);
+            //    }
+            //lastYps = this.transform.position.y; 
 
             return true;
         }
@@ -162,6 +209,27 @@ public class AirUnitOptions : UnitOptions
         base.MouseEvents_RIGHTCLICK(qamRay, hold);
     }
 
+    internal override void FocussedLeftOnEnemy(GameObject enemy)
+    {
+        if (this.gameObject.GetComponent<Attackability>())
+        {
+            standardOrder = true;
+            
+            UnitState = (this.GetComponent<Attackability>()) ? EnumProvider.ORDERSLIST.Attack : EnumProvider.ORDERSLIST.Cancel;
+            Target = enemy;
+            if (!UNIT.IsABuilding)
+            {
+                movement.SetKinematic();
+                MoveToPoint = Target.transform.position;
+                movement.IsMoving = true;
+            }
+            IsAttacking = true;
+        //    GetComponent<Movability>().IsMoving = true;
+       //     airUnitState = (OPTIONS)EnumProvider.ORDERSLIST.Attack;
+            standardOrder = false;
+        }
+    }
+
     internal override void FocussedLeftOnGround(Vector3 worldPoint)
     {
         standardOrder = true;
@@ -175,7 +243,7 @@ public class AirUnitOptions : UnitOptions
         Target = null;
         standardOrder = false;
         movement.IsMoving = true;
-        Debug.Log("MovingUnitOptions->FocussedLeftOnGround");
+ 
     }
 
     internal override void MoveAsGroup(GameObject leader)

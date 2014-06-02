@@ -30,6 +30,11 @@ public class ProductionBuildingOptions : UnitOptions
         MoveToPoint = new Vector3(gameObject.transform.position.x, 0.1f, gameObject.transform.position.z - 5f);
         CurrentFabrikatNumber = 0;
         CurrentFabrikat = Fabrikat[CurrentFabrikatNumber];
+        if (this.GetComponent<Animator>())
+        {
+            this.GetComponent<Animator>().SetBool("Release", false);
+            GetComponent<Animator>().enabled=true;
+        }
     }
 
     internal override void DoUpdate()
@@ -41,7 +46,29 @@ public class ProductionBuildingOptions : UnitOptions
 
      string[] fabrikatNames;
 
+     void OnFabrikatReleased()
+     {
+         this.GetComponent<Animator>().SetBool("Release", false);
 
+         GameObject TheNewOne = (GameObject.Instantiate(CurrentFabrikat, this.transform.GetChild(1).gameObject.GetComponent<releasePoin>().TakenOff(), Quaternion.LookRotation(Vector3.forward)) as GameObject);
+         TheNewOne.GetComponent<Movability>().Throttle=0.85f;
+         TheNewOne.GetComponent<Movability>().MoveToPoint=this.MoveToPoint;
+         TheNewOne.GetComponent<Movability>().MovingDirection = this.MoveToPoint;
+         TheNewOne.GetComponent<Movability>().IsMoving=true;
+         TheNewOne=null;
+     }
+     private int[] fabrikatReleaseHashes = new int[0];
+     private void ReleaseFabrikat(Object release)
+     {
+         if (this.GetComponent<Animator>())
+         {
+             
+             this.GetComponent<Animator>().SetBool("Release", true);
+         }
+
+         else
+             OnFabrikatReleased();
+     }
 
      internal override Object[] GetUnitsSIDEMenuObjects()
      {
@@ -125,7 +152,8 @@ public class ProductionBuildingOptions : UnitOptions
                 {
                     case OPTIONS.Produce:
                         {
-                            GameObject.Instantiate(CurrentFabrikat, MoveToPoint, (CurrentFabrikat as GameObject).transform.rotation);
+                            ReleaseFabrikat(CurrentFabrikat);
+                            
                             // TODO Let they Spawn within the Building and then let they so to "MoveToPoint"
                             break;
                         }

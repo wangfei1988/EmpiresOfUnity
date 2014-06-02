@@ -127,7 +127,7 @@ public class AnimatedCursor : MonoBehaviour
         if (MapViewArea.Contains((Vector2)MouseEvents.State.Position))
         {
            
-            if (UnitUnderCursor.gameObject)
+            if (MouseEvents.State.Position.AsUnitUnderCursor)
             {
                 //this.guiText.text = UnitUnderCursor.gameObject.name + " at: " + MouseEvents.State.Position.AsWorldPointOnMap.ToString() + "\nID: " + UnitUnderCursor.gameObject.GetInstanceID().ToString();
                 return CURSOR.OVER_CLICKABLE_OBJECT;
