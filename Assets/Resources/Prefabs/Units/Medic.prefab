@@ -112,7 +112,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: ddbd1d794f8bda247a0510f1233e1f2a, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
@@ -196,11 +196,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 3701264ada3f61d4bb63312229efdef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prefabSlot: {fileID: 0}
   hasArsenal: 0
+=======
+  m_Script: {fileID: 11500000, guid: cbd8ff9797310d64b911dca02750f618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 1
+  NextUnitAnimation: {fileID: 0}
+  TransformToFace: {fileID: 0}
+  faceMovingDirection: 0
+  faceCamera: 1
+  faceOtherTransform: 0
+  forwardIs: 0
+  direction: {x: 0, y: 0, z: 0}
+>>>>>>> 11bf2d5dd0f260ec889403cef221f3b8ebbdb385
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
