@@ -11,3 +11,7 @@
 			Deactivate Focus					Right-Mouse
 			ESC									Menu
 			Map	open/close						M
+			Plus 500 Naniten					L + U
+			Plus 500 Matter						L + I
+			Plus 500 Energy						L + O
+			Plus 500 Laborer					L + P
