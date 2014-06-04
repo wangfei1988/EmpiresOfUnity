@@ -198,10 +198,10 @@ public class BuildingBuilder : ProductionBuilding
         ResourceManager.SubtractResouce(ResourceManager.Resource.ENERGY,(uint)this.TempEnergy);
     }
 
-    public static void GiveEnergyBack()
-    {
-        ResourceManager.AddResouce(ResourceManager.Resource.ENERGY, (uint)this.TempEnergy);
-    }
+    //public static void GiveEnergyBack()
+    //{
+    //    ResourceManager.AddResouce(ResourceManager.Resource.ENERGY, (uint)TempEnergy);
+    //}
 
     public void CheckUsedEnergy()
     {

@@ -6,6 +6,9 @@ using System.Collections.Generic;
 public class SolarTower : AbstractBuilding 
 {
     //private Dictionary<uint, uint> SolarWork = new Dictionary<uint, uint>();
+    private uint CurrentEnergy = 100;
+
+    private bool firstStart = true;
 
     public override EnumProvider.UNITCLASS UNIT_CLASS
     {
@@ -31,14 +34,15 @@ public class SolarTower : AbstractBuilding
 
     internal override void DoUpdate()
     {
-
-        //Check for Upgrade
-        //Destroy this Gameobject if Life is 0
-
+        if (firstStart)
+        {
+            ResourceManager.AddResouce(ResourceManager.Resource.ENERGY, CurrentEnergy);
+            firstStart = false;
+        }
     }
 
     private void OnDestroy()
     {
-        //ResourceManager.AddResouce(ResourceManager.Resource.ENERGY, (int)SettingFile.UsedEnergy);
+        ResourceManager.SubtractResouce(ResourceManager.Resource.ENERGY, CurrentEnergy);
     }
 }
