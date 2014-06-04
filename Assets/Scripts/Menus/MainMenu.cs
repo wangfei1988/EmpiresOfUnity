@@ -38,10 +38,10 @@ public class MainMenu : MonoBehaviour
             else
                 Credits.renderer.enabled = true;
         }
-        if (GUI.Button(new Rect(left, top + topPlus * 4, width, height), "Settings"))
+        /*if (GUI.Button(new Rect(left, top + topPlus * 4, width, height), "Settings"))
         {
             Application.LoadLevel("Settings");
-        }
+        }*/
         if (GUI.Button(new Rect(left, top + topPlus * 5, width, height), "Exit"))
         {
             Application.Quit();
