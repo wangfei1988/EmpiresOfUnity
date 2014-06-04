@@ -4,7 +4,7 @@ using System.Collections;
 [AddComponentMenu("Program-X/Weapons/Amunition/Rockets/Lange Dünne")]
 public class LargeRocketObject : RocketObject {
 
-    private string HitInfo = "";
+    //private string HitInfo = "";
     public ParticleSystem emission;
     public override float MAX_RANGE
     {

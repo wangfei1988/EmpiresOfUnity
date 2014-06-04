@@ -66,6 +66,7 @@ public class ProductionBuildingOptions : UnitOptions
      public GameObject[] AnimationReleasePoints = new GameObject[2];
      void OnFabrikatReleased()
      {
+
          if (this.GetComponent<Animator>())
          {
              this.GetComponent<Animator>().SetBool(CurrentFabrikat.name, false);
@@ -73,6 +74,7 @@ public class ProductionBuildingOptions : UnitOptions
          }
          else
              GameObject.Instantiate(Fabrikat[CurrentFabrikatNumber], MoveToPoint, (Fabrikat[CurrentFabrikatNumber] as GameObject).transform.rotation);
+
      }
 
      private void ReleaseFabrikat(string fabrikatname)

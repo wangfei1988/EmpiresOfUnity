@@ -111,9 +111,9 @@ abstract public class UnitOptions : MonoBehaviour
             EnumProvider.ORDERSLIST order = (EnumProvider.ORDERSLIST)value;
             if ((PRIMARY_STATE_CHANGE!=null))
             {
-                Debug.Log("STATE_CHANGE event triggerd");
+                //Debug.Log("STATE_CHANGE event triggerd");
                 baseUnitState = PRIMARY_STATE_CHANGE(order);
-                Debug.Log(baseUnitState.ToString());
+                //Debug.Log(baseUnitState.ToString());
             }
         }
     }

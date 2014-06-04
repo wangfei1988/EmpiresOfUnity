@@ -16,6 +16,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
+  - 114: {fileID: 11400008}
   m_Layer: 10
   m_Name: Medic
   m_TagString: Clickable
@@ -34,7 +35,7 @@ GameObject:
   - 212: {fileID: 21200000}
   m_Layer: 12
   m_Name: UnitBlib
-  m_TagString: Clickable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +135,7 @@ MonoBehaviour:
   goodOrEvil: 1
   ALARM: 0
   Options: {fileID: 11400002}
-  unitAnimation: {fileID: 0}
+  unitAnimation: {fileID: 11400008}
   weapon: {fileID: 11400006}
   life: 150
   level: 1
@@ -196,13 +197,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 3701264ada3f61d4bb63312229efdef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UNIT: {fileID: 0}
   prefabSlot: {fileID: 0}
   hasArsenal: 0
-=======
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbd8ff9797310d64b911dca02750f618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -210,11 +218,11 @@ MonoBehaviour:
   NextUnitAnimation: {fileID: 0}
   TransformToFace: {fileID: 0}
   faceMovingDirection: 0
-  faceCamera: 1
+  faceCamera: 0
   faceOtherTransform: 0
   forwardIs: 0
   direction: {x: 0, y: 0, z: 0}
->>>>>>> 11bf2d5dd0f260ec889403cef221f3b8ebbdb385
+  UNIT: {fileID: 11400000}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

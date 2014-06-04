@@ -39,7 +39,7 @@ public class AirUnitOptions : UnitOptions
         get { return new Vector2(this.transform.position.x, this.transform.position.z); }
         set { this.transform.position = new Vector3(value.x, this.transform.position.y, value.y); }
     }
-    private float lastYps=0;
+    //private float lastYps=0;
 
     public override bool IsAttacking
     {
