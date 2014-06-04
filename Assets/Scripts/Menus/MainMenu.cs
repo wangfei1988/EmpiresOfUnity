@@ -11,8 +11,8 @@ public class MainMenu : MonoBehaviour
         Vector2 size = new Vector2(1920, 1080);
 
         //float left = Screen.width / 2 - Screen.width / 4;
-        float left = Screen.width/size.x*350f;
-        float top = Screen.height / size.y * 100f;
+        float left = Screen.width/size.x*1150f;
+        float top = Screen.height / size.y * 300f;
         float topPlus = Screen.width / size.x * 100f;
         float width = Screen.width / size.x * 400f;
         float height = Screen.width / size.x * 80f;
@@ -42,7 +42,7 @@ public class MainMenu : MonoBehaviour
         {
             Application.LoadLevel("Settings");
         }*/
-        if (GUI.Button(new Rect(left, top + topPlus * 5, width, height), "Exit"))
+        if (GUI.Button(new Rect(left, top + topPlus * 4, width, height), "Exit"))
         {
             Application.Quit();
         }
