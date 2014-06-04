@@ -37,7 +37,7 @@ abstract public class UnitAnimation : MonoBehaviour {
         set
         {
             if (value != isActive)
-                if (value && GetComponent<Rigidbody>()) GetComponent<Rigidbody>().isKinematic=false;
+            //    if (value && GetComponent<Rigidbody>()) GetComponent<Rigidbody>().isKinematic=false;
 
             isActive = value;
         }

@@ -143,11 +143,13 @@ public class AirUnitOptions : UnitOptions
         }
         set
         {
-            if (System.Enum.IsDefined(typeof(OPTIONS), (OPTIONS)value))
+            if (!standardOrder)
             {
-                airUnitState = (OPTIONS)value;
-                switch (airUnitState)
+                if (System.Enum.IsDefined(typeof(OPTIONS), (OPTIONS)value))
                 {
+                    airUnitState = (OPTIONS)value;
+                    switch (airUnitState)
+                    {
                     case OPTIONS.MoveTo:
                         LockOnFocus();
 
@@ -158,7 +160,9 @@ public class AirUnitOptions : UnitOptions
                     case OPTIONS.Patrol:
                         LockOnFocus();
                         break;
+                    }
                 }
+                
             }
             base.UnitState = value;
         }
@@ -214,7 +218,7 @@ public class AirUnitOptions : UnitOptions
         if (this.gameObject.GetComponent<Attackability>())
         {
             standardOrder = true;
-            
+            this.gameObject.GetComponent<Attackability>().attackState = Attackability.OPTIONS.Attack;
             UnitState = (this.GetComponent<Attackability>()) ? EnumProvider.ORDERSLIST.Attack : EnumProvider.ORDERSLIST.Cancel;
             Target = enemy;
             if (!UNIT.IsABuilding)
@@ -235,15 +239,16 @@ public class AirUnitOptions : UnitOptions
         standardOrder = true;
         //   IsMovingAsGroup = true;
         movement.SetKinematic();
-        UnitState = OPTIONS.MoveTo;
+        
         movement.MoveToPoint = worldPoint;
         movement.MovingDirection = worldPoint;
         //     gameObject.transform.position += (Movement.MovingDirection * Movement.Speed);
         IsAttacking = false;
         Target = null;
-        standardOrder = false;
+        
         movement.IsMoving = true;
- 
+        UnitState = OPTIONS.MoveTo;
+        standardOrder = false;
     }
 
     internal override void MoveAsGroup(GameObject leader)

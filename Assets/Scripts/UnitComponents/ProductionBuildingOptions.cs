@@ -27,48 +27,62 @@ public class ProductionBuildingOptions : UnitOptions
         for (int i = 0; i < Fabrikat.Count; i++) fabrikatNames[i] = Fabrikat[i].name;
         fabrikatNames[Fabrikat.Count] = "StopProduction";
         UnitState = unitState = OPTIONS.StopProduction;
-        MoveToPoint = new Vector3(gameObject.transform.position.x, 0.1f, gameObject.transform.position.z - 5f);
+        MoveToPoint = new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z - 5f);
         CurrentFabrikatNumber = 0;
         CurrentFabrikat = Fabrikat[CurrentFabrikatNumber];
-        AnimationReleasePoints[0]=this.gameObject.GetComponentsInChildren<ReleasePoint>()[0].gameObject;
-        AnimationReleasePoints[1]=this.gameObject.GetComponentsInChildren<ReleasePoint>()[1].gameObject;
-        if (this.GetComponent<Animator>())
+        if (UNIT.unitType==UnitScript.UNITTYPE.Airport)
         {
-        //    this.GetComponent<Animator>().SetBool("JetWing", false);
+            //SpawnPoints[0] = new Vector3(gameObject.transform.position.x-92.35f, 6.3f, gameObject.transform.position.z-8.413759f);
+            //SpawnPoints[1] = new Vector3(gameObject.transform.position.x-2.9717f, -0.15f, gameObject.transform.position.z -15.628006f);
+
+            AnimationReleasePoints = new GameObject[2];
+            AnimationReleasePoints[0]=this.gameObject.GetComponentsInChildren<ReleasePoint>()[0].gameObject;
+            AnimationReleasePoints[1]=this.gameObject.GetComponentsInChildren<ReleasePoint>()[1].gameObject;
+
             GetComponent<Animator>().enabled=true;
         }
     }
 
+  //  internal Vector3[] SpawnPoints = new Vector3[2];
+
     internal override void DoUpdate()
     {
-        //todo produce by timer...
+        MoveProducedUnit();
     }
-    
+
+    private void MoveProducedUnit()
+    {
+        if (TheNewOne)
+        {
+            TheNewOne.GetComponent<UnitScript>().Options.FocussedLeftOnGround(MoveToPoint);
+            TheNewOne=null;
+        }
+    }
+
+     private GameObject TheNewOne = null;
      public OPTIONS unitState;
 
      string[] fabrikatNames;
      public GameObject[] AnimationReleasePoints = new GameObject[2];
      void OnFabrikatReleased()
      {
-         GameObject.Instantiate(CurrentFabrikat, AnimationReleasePoints[CurrentFabrikatNumber].GetComponent<ReleasePoint>().Release(), (CurrentFabrikat as GameObject).transform.rotation);
-         //GameObject TheNewOne = ...
-     //    TheNewOne.GetComponent<Movability>().Throttle=0.85f;
-      //   TheNewOne.GetComponent<Movability>().MoveToPoint=this.MoveToPoint;
-      //   TheNewOne.GetComponent<Movability>().MovingDirection = this.MoveToPoint;
-      //   TheNewOne.GetComponent<Movability>().IsMoving=true;
-         //TheNewOne=null;
 
-         this.GetComponent<Animator>().SetBool(CurrentFabrikat.name, false);
+         if (this.GetComponent<Animator>())
+         {
+             this.GetComponent<Animator>().SetBool(CurrentFabrikat.name, false);
+             TheNewOne = (GameObject.Instantiate(CurrentFabrikat, AnimationReleasePoints[CurrentFabrikatNumber].GetComponent<ReleasePoint>().Release(), (CurrentFabrikat as GameObject).transform.rotation) as GameObject);
+         }
+         else
+             GameObject.Instantiate(Fabrikat[CurrentFabrikatNumber], MoveToPoint, (Fabrikat[CurrentFabrikatNumber] as GameObject).transform.rotation);
+
      }
 
      private void ReleaseFabrikat(string fabrikatname)
      {
          if (this.GetComponent<Animator>())
          {
-
              this.GetComponent<Animator>().SetBool(fabrikatname, true);
          }
-
          else
              OnFabrikatReleased();
      }
@@ -120,6 +134,7 @@ public class ProductionBuildingOptions : UnitOptions
          else
          {
              CurrentFabrikat = returned;
+             CurrentFabrikatNumber = Fabrikat.IndexOf(CurrentFabrikat);
              UnitState = EnumProvider.ORDERSLIST.Produce;
          }
      }
@@ -155,6 +170,7 @@ public class ProductionBuildingOptions : UnitOptions
                 {
                     case OPTIONS.Produce:
                         {
+                            if(UNIT.unitType==UnitScript.UNITTYPE.Airport)
                             ReleaseFabrikat(CurrentFabrikat.name);
                             
                             // TODO Let they Spawn within the Building and then let they so to "MoveToPoint"

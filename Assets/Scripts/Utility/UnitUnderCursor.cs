@@ -56,7 +56,15 @@ public class UnitUnderCursor
 
     public static implicit operator UnitScript(UnitUnderCursor cast)
     {
-        return UNIT;
+        if (UnitUnderCursor.IsAUnit)
+            return UnitUnderCursor.UNIT;
+        else
+            return null;
+    }
+
+    public static implicit operator GameObject(UnitUnderCursor cast)
+    {
+        return UnitUnderCursor.gameObject;
     }
 
 }

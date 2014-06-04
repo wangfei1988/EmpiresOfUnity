@@ -71,6 +71,37 @@ public class MouseEvents
         //-class from which the "State->Position" instance is instanciated from...
         public class MousePosition
         {
+            private int UnitLayer,BlibLayer,actualUnitLayerNumber;
+            public bool IsOverMiniMapArea
+            {
+                get 
+                {
+                    return MiniMapClick;
+                }
+                set
+                {
+                    if (value)
+                    {
+                        MapClick = GUIclick = false;
+                        actualUnitLayerNumber=BlibLayer;
+                    }
+                    MiniMapClick = value;
+
+                }
+            }
+            public bool IsOverMainMapArea
+            {
+                get { return MapClick; }
+                set
+                {
+                    if (value)
+                    {
+                        GUIclick = false;
+                        actualUnitLayerNumber=UnitLayer;
+                    }
+                    MapClick=value;
+                }
+            }
             private UnitUnderCursor unitUnderCursor;
             public UnitScript AsUnitUnderCursor
             {
@@ -86,61 +117,81 @@ public class MouseEvents
             private Vector2 position = Vector2.zero;
 
             private Ray? camRay;
-
             public Ray AsRay
             {
                 get
                 {
-                    if (camRay == null) 
-                        camRay = Camera.main.ScreenPointToRay(position);
+                    if (camRay == null)
+                        camRay = (IsOverMiniMapArea)? GUIScript.MiniMap.camera.ScreenPointToRay(position) : Camera.main.ScreenPointToRay(position);
 
                     return camRay.Value;
                 }
             }
+
             private Vector3? worldPointOnMap;
             public Vector3 AsWorldPointOnMap
             {
                 get
                 {
-                    RaycastHit groundHit;
                     if (worldPointOnMap == null)
                     {
-                        if (Ground.Current.collider.Raycast(AsRay, out groundHit, Camera.main.farClipPlane))
+                        float distance = (IsOverMiniMapArea) ? GUIScript.MiniMap.camera.farClipPlane : Camera.main.farClipPlane;
+
+                        RaycastHit groundHit;
+           
+                        Ground.Current.collider.Raycast(AsRay, out groundHit, distance);
+                   
+                 
                             worldPointOnMap = groundHit.point;
+                        
                     }
-                    if (worldPointOnMap != null) return worldPointOnMap.Value;
-                    else return Vector3.zero;
+                    if (worldPointOnMap!=null)
+                        return worldPointOnMap.Value;
+                    else
+                        return Vector3.zero;
                 }
             }
 
             public MousePosition()
             {
                 unitUnderCursor = new UnitUnderCursor();
-
+                UnitLayer = LayerMask.NameToLayer("Units");
+                BlibLayer = LayerMask.NameToLayer("MiniMapBlibs");
+                actualUnitLayerNumber=UnitLayer;
             }
             public void SetNewMousePosition(Vector3 mousePut)
             {
                 worldPointOnMap = null;
                 camRay = null;
                 position = mousePut;
-                RaycastHit CursorRayHit;
- 
-                if (Physics.Raycast(AsRay.origin, AsRay.direction, out CursorRayHit))
+                if (!(IsOverMiniMapArea = gameObject.MiniMapArea.Contains(position)))
+                    if (!(IsOverMainMapArea=gameObject.MapViewArea.Contains(position)))
+                        GUIclick=gameObject.MainGuiArea.Contains(position);
+
+                if (!GUIclick)
                 {
-                    //if (unitUnderCursor.Changed(CursorRayHit.collider.gameObject.GetInstanceID()))
-                    //    unitUnderCursor.Set(CursorRayHit.collider.gameObject);
-                    GameObject target = CursorRayHit.transform.gameObject;
-                    if (target.transform.tag != "Clickable")
-                        target = CursorRayHit.collider.gameObject.transform.parent.gameObject;
-                    if (unitUnderCursor.Changed(target.GetInstanceID()))
+                    RaycastHit CursorRayHit;
+                    GameObject target; 
+                    if (Physics.Raycast(AsRay.origin, AsRay.direction, out CursorRayHit))
                     {
-                        unitUnderCursor.Set(target);
+                        target = CursorRayHit.transform.gameObject;
+                        if (unitUnderCursor.Changed(target.GetInstanceID()))
+                            unitUnderCursor.Set(target);
+                        
                     }
+                    else
+                    {
+              //          target = CursorRayHit.collider.gameObject.transform.parent.gameObject;
+                        if (unitUnderCursor.Changed(-2))
+                            unitUnderCursor.Set(Ground.Current.collider.gameObject);
+                    }
+
+
                 }
                 else
                 {
-                    if (unitUnderCursor.Changed(-2))
-                        unitUnderCursor.Set(Ground.Current.collider.gameObject);
+                    if (unitUnderCursor.Changed(-3))
+                        unitUnderCursor.Set(GUIScript.main.gameObject);
                 }
 
             }
@@ -202,7 +253,7 @@ public class MouseEvents
 
     //------private variables...
     static private GUIScript gameObject;
-    static private bool MapClick;
+    static private bool MapClick,MiniMapClick,GUIclick;
     static private bool[] ButtonDown = new bool[3];
     static private bool[] hold = new bool[3];
     static private bool[] trigger = new bool[3];
@@ -220,9 +271,6 @@ public class MouseEvents
     {
         // The main funktion which retrives the Mouseinput... 
         State.Position.SetNewMousePosition(Input.mousePosition);
-
-        // checks if the click was on the Main-Map or if it was on other GUI elements...
-        MapClick = gameObject.MapViewArea.Contains(State);
 
         // Each Mouse Key
         for (int i = 0; i < 3; i++)
@@ -289,19 +337,19 @@ public class MouseEvents
     static private void triggerEvents(bool[] trigger)
     {
         /* Left Click */
-        if (trigger[0] && ButtonDown[0] && MapClick)
+        if (trigger[0] && ButtonDown[0] && !GUIclick)
             LEFTCLICK(State.Position, hold[0]);
         else if (release[0] && LEFTRELEASE != null)
             LEFTRELEASE();
 
         /* Middle Click */
-        if (trigger[2] && ButtonDown[2] && MapClick)
+        if (trigger[2] && ButtonDown[2] && !GUIclick)
             MIDDLECLICK(State.Position, hold[2]);
         else if (release[2] && MIDDLERELEASE != null)
             MIDDLERELEASE();
 
         /* Right Click */
-        if (trigger[1] && ButtonDown[1] && MapClick)
+        if (trigger[1] && ButtonDown[1] && !GUIclick)
             RIGHTCLICK(State.Position, hold[1]);
         else if (release[1] && RIGHTRELEASE != null)
             RIGHTRELEASE();

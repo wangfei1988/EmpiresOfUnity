@@ -124,22 +124,22 @@ public class AnimatedCursor : MonoBehaviour
     /* Check if an Building / Unit or Nothing [Standard] is at Mouse*/
     private CURSOR CheckWhatIsUnderCursor()
     {
-        if (MapViewArea.Contains((Vector2)MouseEvents.State.Position))
+        if (MouseEvents.State.Position.IsOverMainMapArea||MouseEvents.State.Position.IsOverMiniMapArea)
         {
            
             if (MouseEvents.State.Position.AsUnitUnderCursor)
             {
-                //this.guiText.text = UnitUnderCursor.gameObject.name + " at: " + MouseEvents.State.Position.AsWorldPointOnMap.ToString() + "\nID: " + UnitUnderCursor.gameObject.GetInstanceID().ToString();
+                this.guiText.text = UnitUnderCursor.gameObject.name + " at: " + MouseEvents.State.Position.AsWorldPointOnMap.ToString() + "\nID: " + UnitUnderCursor.gameObject.GetInstanceID().ToString();
                 return CURSOR.OVER_CLICKABLE_OBJECT;
             }
             else
             {
-                //this.guiText.text = MouseEvents.State.Position.AsWorldPointOnMap.ToString();
+                this.guiText.text = MouseEvents.State.Position.AsWorldPointOnMap.ToString();
             }
         }
         else
         {
-            //this.guiText.text = "";
+            this.guiText.text = "";
         }
         return CURSOR.STANDARD;
     }

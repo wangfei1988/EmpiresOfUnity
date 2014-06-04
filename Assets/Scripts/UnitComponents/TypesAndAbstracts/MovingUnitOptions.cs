@@ -37,15 +37,15 @@ abstract public class MovingUnitOptions : UnitOptions
      //   IsMovingAsGroup = true;
         movement.SetKinematic();
    //     UnitState = OPTIONS.MoveTo;
-        unitstateint = (int)OPTIONS.MoveTo;
+        
         movement.MoveToPoint = worldPoint;
         movement.MovingDirection = worldPoint;
    //     gameObject.transform.position += (Movement.MovingDirection * Movement.Speed);
         IsAttacking = false;
         Target = null;
-        standardOrder = false;
         IsMoving = true;
-        //Debug.Log("MovingUnitOptions->FocussedLeftOnGround");
+        unitstateint = (int)OPTIONS.MoveTo;
+        standardOrder = false;
     }
 
 
@@ -281,7 +281,7 @@ abstract public class MovingUnitOptions : UnitOptions
         //        OptionalStatesOrder.Add(KeyValue, ((OPTIONS)KeyValue).ToString());
         RegisterInheridedOrderStateOptions(typeof(OPTIONS));
         standardYPosition = gameObject.transform.position.y;
-        MoveToPoint = gameObject.transform.position;
+   //     MoveToPoint = gameObject.transform.position;
         //unitstateint = 20;
         //movingUnitState = (OPTIONS)unitstateint;
         //UnitState = movingUnitState;

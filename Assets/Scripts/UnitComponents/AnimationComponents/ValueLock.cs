@@ -20,8 +20,7 @@ public class ValueLock : UnitAnimation
     public bool PositionX, PositionY, PositionZ;
     public bool lockRotation;
     public Vector3 rotation;
-    public float rotationW;
-    public bool RotationX, RotationY, RotationZ, RotationW;
+    public bool RotationX, RotationY, RotationZ;
     public bool lockScale;
     public Vector3 scale;
     public bool ScaleX, ScaleY, ScaleZ;
@@ -33,8 +32,8 @@ public class ValueLock : UnitAnimation
     }
     private bool LockRotation
     {
-        get { return lockRotation = RotationX | RotationY | RotationZ | RotationW; }
-        set { lockRotation = RotationX = RotationY = RotationZ = RotationW = value; }
+        get { return lockRotation = RotationX | RotationY | RotationZ; }
+        set { lockRotation = RotationX = RotationY = RotationZ = value; }
     }
     private bool LockScale
     {
@@ -50,7 +49,7 @@ public class ValueLock : UnitAnimation
     internal override void Animate()
     {
         if (LockPosition) target.position = new Vector3(PositionX ? position.x : target.position.x, PositionY ? position.y : target.position.y, PositionZ ? position.z : target.position.z);
-        if (LockRotation) target.rotation = new Quaternion(RotationX ? rotation.x : target.rotation.x, RotationY ? rotation.y : target.rotation.y, RotationZ ? rotation.z : target.rotation.z, RotationW ? rotationW : target.rotation.w);
+        if (LockRotation) target.eulerAngles = new Vector3(RotationX ? rotation.x : target.eulerAngles.x, RotationY ? rotation.y : target.eulerAngles.y, RotationZ ? rotation.z : target.eulerAngles.z);
         if (LockScale) target.localScale = new Vector3(ScaleX ? scale.x : target.localScale.x, ScaleY ? scale.y : target.localScale.y, ScaleZ ? scale.z : target.localScale.z);
     }
 
