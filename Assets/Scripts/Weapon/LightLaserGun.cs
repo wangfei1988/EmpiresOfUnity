@@ -19,6 +19,11 @@ public class LightLaserGun : UnitWeapon
     [SerializeField]
     public static float MAXIMUM_DISTANCE = 50;  //-------------Maximum Range...
 
+    public override UnitWeapon.WEAPON ID
+    {
+        get { return WEAPON.RayGun; }
+    }
+
     public override bool IsOutOfAmu
     {
         get { return LaserEnergie < MINIMUM_POWER; }

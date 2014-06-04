@@ -1,8 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NoWeapon : UnitWeapon {
+public class NoWeapon : UnitWeapon 
+{
 
+    public override UnitWeapon.WEAPON ID
+    {
+        get { return WEAPON.None; }
+    }
     public override bool IsOutOfAmu
     {
         get { return true; }

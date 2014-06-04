@@ -159,6 +159,8 @@ public class GUIScript : MonoBehaviour
         MouseEvents.LEFTRELEASE += MouseEvents_LEFTRELEASE;
 
         UpdateManager.GUIUPDATE += UpdateManager_GUIUPDATE;
+
+        
     }
 
     void UpdateManager_GUIUPDATE()
