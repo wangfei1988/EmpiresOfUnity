@@ -10,12 +10,12 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 64: {fileID: 6400000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
-  - 64: {fileID: 6400000}
-  - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
   - 54: {fileID: 5400000}
+  - 114: {fileID: 11400004}
   - 114: {fileID: 11400008}
   m_Layer: 10
   m_Name: EnemyFabrik
@@ -47,7 +47,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.8548889, y: 0, z: 31.9784851}
+  m_LocalPosition: {x: -28.9943848, y: -5.61000013, z: 37.5846558}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -93,7 +93,7 @@ MeshFilter:
   m_Mesh: {fileID: 4300000, guid: 0aaf575707a4cfc4fae53b1d9eeb122b, type: 3}
 --- !u!54 &5400000
 Rigidbody:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
@@ -116,7 +116,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_SmoothSphereCollisions: 1
+  m_SmoothSphereCollisions: 0
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 0aaf575707a4cfc4fae53b1d9eeb122b, type: 3}
 --- !u!114 &11400000
@@ -153,14 +153,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400000}
+  SettingFile: {fileID: 11400000, guid: 08f15d20ab3da154bbf4f93729736c3d, type: 2}
   baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
   optionalStateStrings: []
   optionalstateIDs: 
   optionalStates: 
-  PluggedStateExtendingComponents: []
+  ColliderContainingChildObjects: []
   unitState: 101
+  AnimationReleasePoints:
+  - {fileID: 0}
+  - {fileID: 0}
   CurrentFabrikatNumber: 0
   CurrentFabrikat: {fileID: 100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
   typename: Fabrik
@@ -169,7 +173,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: e7c50471ce3ecd34c8ab09871541ab7b, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
@@ -195,13 +199,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  NextUnitAnimation: {fileID: 11400004}
+  NextUnitAnimation: {fileID: 0}
   targetYps: 0
-  GrowingTime: 1
-  startGrowing: 1
+  GrowingTime: 10
+  startGrowing: 0
 --- !u!114 &11400008
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}

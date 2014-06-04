@@ -161,7 +161,7 @@ abstract public class UnitOptions : MonoBehaviour
         if (UNIT.weapon.HasArsenal)
             UNIT.weapon.prefabSlot = returned as WeaponObject;
     }
-    protected bool standardOrder = false;
+    internal bool standardOrder = false;
 
     //- ChainedOrders   ...  (not in use yet, and even not tested well...)
     //- will give posibillity to put several orders in one package.

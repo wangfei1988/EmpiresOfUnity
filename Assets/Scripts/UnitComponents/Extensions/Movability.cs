@@ -45,10 +45,12 @@ public class Movability : UnitExtension
     {
         //Debug.Log("OnUnitStateChange called!!!!!!!!!!!!!!!");
         movingUnitState = (OPTIONS)stateorder;
-        if (System.Enum.IsDefined(typeof(OPTIONS), (int)stateorder))
+        if (!UNIT.Options.standardOrder)
         {
-            switch (movingUnitState)
+            if (System.Enum.IsDefined(typeof(OPTIONS), (int)stateorder))
             {
+                switch (movingUnitState)
+                {
                 case OPTIONS.MoveTo:
                     SetKinematic();
                     WayPoints.Clear();
@@ -75,6 +77,7 @@ public class Movability : UnitExtension
                     SetKinematic();
                     StayOrder();
                     return stateorder;
+                }
             }
         }
         return stateorder;
@@ -409,7 +412,7 @@ public class Movability : UnitExtension
                     MoveToPoint = WayPoints[0];
                     MovingDirection = MoveToPoint;
                 }
-                else { StayOrder(); }
+        //        else { StayOrder(); }
             }
         
         KeepStandardYpsPosition();

@@ -146,8 +146,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: -4.37113883e-08}
-  m_LocalPosition: {x: 124.983276, y: -1.52587891e-05, z: -10.7544708}
+  m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: -.707106829}
+  m_LocalPosition: {x: 101.46524, y: -1.52587891e-05, z: -10.1501923}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 400006}
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400016}
-  movingUnitState: 100
+  movingUnitState: 0
   standardYPosition: .100000001
   AlwaysKeepStandardYpsPosition: 0
   IsGroupLeader: 0
@@ -386,7 +386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400016}
   SettingFile: {fileID: 11400000, guid: eccce3cfbb76fb94b8207419ed74c89c, type: 2}
-  baseUnitState: 102
+  baseUnitState: 0
   moveToPoint: {x: 0, y: 0, z: 0}
   Target: {fileID: 0}
   optionalStateStrings: []
@@ -398,7 +398,7 @@ MonoBehaviour:
   fdObj: {fileID: 100004}
   turnDistance: 50
   movement: {fileID: 11400012}
-  airUnitState: 102
+  airUnitState: 0
 --- !u!114 &11400016
 MonoBehaviour:
   m_ObjectHideFlags: 1

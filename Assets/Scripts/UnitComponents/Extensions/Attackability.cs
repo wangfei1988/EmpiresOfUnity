@@ -44,20 +44,22 @@ public class Attackability : UnitExtension
     protected override EnumProvider.ORDERSLIST on_UnitStateChange(EnumProvider.ORDERSLIST stateorder)
     {
         attackState = (OPTIONS)stateorder;
-        if (System.Enum.IsDefined(typeof(OPTIONS), (int)stateorder))
+        if (!UNIT.Options.standardOrder)
         {
-
-            switch (attackState)
+            if (System.Enum.IsDefined(typeof(OPTIONS), (int)stateorder))
             {
+
+                switch (attackState)
+                {
                 case OPTIONS.Attack:
                     if (!UNIT.IsABuilding)
                     {
-                        
+
                         this.GetComponent<Movability>().SetKinematic();
                         this.GetComponent<Movability>().WayPoints.Clear();
                         UNIT.Options.MoveToPoint = this.gameObject.transform.position;
                         this.GetComponent<Movability>().IsMoving = false;
-                       
+
                     }
                     Debug.Log("ATTACKE!!!");
                     UNIT.Options.LockOnFocus();
@@ -66,7 +68,7 @@ public class Attackability : UnitExtension
                     if (!GetComponent<Gunner>())
                         this.gameObject.AddComponent<Gunner>();
                     UNIT.Options.UnitState = EnumProvider.ORDERSLIST.Stay;
-                    if(!UNIT.IsABuilding)
+                    if (!UNIT.IsABuilding)
                         UNIT.Options.LockOnFocus();
                     GetComponent<Gunner>().FireAtWill = true;
                     return stateorder;
@@ -75,6 +77,7 @@ public class Attackability : UnitExtension
                         this.gameObject.AddComponent<Gunner>();
 
                     return stateorder;
+                }
             }
         }
         return stateorder;

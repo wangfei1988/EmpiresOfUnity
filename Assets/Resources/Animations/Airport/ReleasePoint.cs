@@ -14,6 +14,8 @@ public class ReleasePoint : MonoBehaviour
     public Vector3 Release()
     {
          UNIT.GetComponent<Animator>().SetBool(this.gameObject.name, false);
-         return this.gameObject.transform.TransformPoint(this.transform.localPosition);
+         Vector3 buffer = this.transform.position;
+         buffer.y = 0f;
+         return buffer;
     }
 }

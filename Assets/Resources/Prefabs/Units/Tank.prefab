@@ -270,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UNIT: {fileID: 11400010}
   movingUnitState: 0
-  standardYPosition: -1.39999998
+  standardYPosition: -.140000001
   AlwaysKeepStandardYpsPosition: 1
   IsGroupLeader: 0
   speed: .200000003

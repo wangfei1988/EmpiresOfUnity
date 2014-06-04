@@ -177,6 +177,7 @@ public class Pilot : UnitComponent
             return MAXIMUM_SPEED.Value;
         }
     }
+    private bool ok=false;
 
     /* Start & Awake & Update */
     void Awake()
@@ -188,7 +189,7 @@ public class Pilot : UnitComponent
         if(!mySpace)
             if ((!this.gameObject.GetComponent<SphereCollider>())&&(!this.gameObject.GetComponentInChildren<SphereCollider>()))
                this.gameObject.AddComponent<SphereCollider>().isTrigger = true;
-        mySpace = this.gameObject.GetComponent<SphereCollider>();
+
             
      
     }
@@ -218,7 +219,8 @@ public class Pilot : UnitComponent
         Throttle = 0;
 
         this.PflongeOnUnit();
-
+        if (mySpace!=null)
+            ok=true;
     }
 
     private bool SlowDown(float distance)
@@ -236,32 +238,34 @@ public class Pilot : UnitComponent
     
     public override void DoUpdate()
     {
-        Distance = Controlls.Distance;
-      //  Distance -= this.transform.position.y;
-        //if (My.IsAnAirUnit)
-        //    Distance -= 5;
-        //    Controlls.standardYPosition = this.transform.parent.position.y;
-        if (IsAcselerating)
-            IsAcselerating = ((Throttle += Accselerator) < 1);
-
-        
-
-        if (IsSlowingDown)
-            IsSlowingDown = SlowDown(Distance);
-        else if ((Distance < mySpace.radius) && (Distance < Controlls.Speed * 15))
-            IsSlowingDown = SlowDown(Distance);
-
-        if (IsHeadin)
-            IsHeadin = WatchTarget();
-        if (!Triggerd)
+        if (ok)
         {
-            if (LookAheadDistance > LOOKAHEAD)
-                SetRadius(LOOKAHEAD);
-            else
-                SetRadius(LookAheadDistance + 0.1f);
-        }
-        Triggerd = false;
+            Distance = Controlls.Distance;
+            //  Distance -= this.transform.position.y;
+            //if (My.IsAnAirUnit)
+            //    Distance -= 5;
+            //    Controlls.standardYPosition = this.transform.parent.position.y;
+            if (IsAcselerating)
+                IsAcselerating = ((Throttle += Accselerator) < 1);
 
+
+
+            if (IsSlowingDown)
+                IsSlowingDown = SlowDown(Distance);
+            else if ((Distance < mySpace.radius) && (Distance < Controlls.Speed * 15))
+                IsSlowingDown = SlowDown(Distance);
+
+            if (IsHeadin)
+                IsHeadin = WatchTarget();
+            if (!Triggerd)
+            {
+                if (LookAheadDistance > LOOKAHEAD)
+                    SetRadius(LOOKAHEAD);
+                else
+                    SetRadius(LookAheadDistance + 0.1f);
+            }
+            Triggerd = false;
+        }
     }
 
     private void ShrinkRadius(float lookAhead)
@@ -304,7 +308,8 @@ public class Pilot : UnitComponent
             && (other.gameObject.layer != 9)
             && (!My.InteractingUnits.Contains(other.gameObject.GetInstanceID())))
             {
-                Controlls.Rudder += ((My.transform.position - other.transform.position).normalized / (mySpace.radius ));
+                if (mySpace)
+                    Controlls.Rudder += ((My.transform.position - other.transform.position).normalized / (mySpace.radius));
                 //    Controlls.MovingDirection.Normalize();
                 Triggerd = true;
                 ShrinkRadius(Vector3.Distance(other.ClosestPointOnBounds(gameObject.transform.position), gameObject.transform.position) * 0.95f);

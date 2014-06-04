@@ -43,7 +43,7 @@ public class BuildingGrower : UnitAnimation
         timer = 0f;
         startYps = gameObject.transform.position.y;
         growingFactor = -1f;
-        //GrowingTime = gameObject.GetComponent<UnitScript>().Settings.ProductionTime;
+ 
 	}
 
     private bool Grow()
@@ -83,14 +83,13 @@ public class BuildingGrower : UnitAnimation
             gameObject.GetComponent<Shaker>().speed.z = 0.0001f;
             gameObject.GetComponent<Shaker>().sineRooting = Shaker.ROOTING.mainPosition;
             gameObject.GetComponent<Shaker>().mainTargetTransform = this.gameObject.transform;
-
-            
-            
-            this.gameObject.GetComponent<BuildingGrower>().NextUnitAnimation.HookOnUpdata(this.gameObject.GetComponent<Shaker>());
-            this.gameObject.GetComponent<Shaker>().HookOnUpdata(this.gameObject.GetComponent<UnitScript>());
             gameObject.GetComponent<Shaker>().IsActive = true;
-            gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            gameObject.GetComponent<Shaker>().HookOnUpdata(this.gameObject.GetComponent<UnitScript>());
+            if (NextUnitAnimation)
+                this.gameObject.GetComponent<BuildingGrower>().NextUnitAnimation.HookOnUpdata(gameObject.GetComponent<Shaker>());
+            
 
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
 
             // Build Finished
             if (this.gameObject.GetComponent<AbstractBuilding>())

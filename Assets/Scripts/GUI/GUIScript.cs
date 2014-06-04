@@ -28,9 +28,14 @@ public class GUIScript : MonoBehaviour
     private Scrolling scrolling;
 
     new public Camera camera;
+ //   public MiniMapControll miniMapControll;
 
     public Rect MapViewArea;
     public Rect MainGuiArea;
+    public Rect MiniMapArea
+    {
+        get { return MiniMap.Area; }
+    }
 
     public GUIText secondGUIText;
     private Vector2? mousePosition;
@@ -171,44 +176,36 @@ public class GUIScript : MonoBehaviour
         //FocusSprite.DoUpdate();
         GroupSprite.DoUpdate();
     }
-
-
-    //private GameObject ClickHitUnit(Ray ray)
-    //{
-    //    RaycastHit hit;
-    //    if (Physics.Raycast(ray, out hit))
-    //        return hit.collider.gameObject;
-    //    else return null;
-    //}
-
-  //  public static UnitScript GetUnitUnderCursor()
-  //  {
-  /////      return main.animatedCursor.UnitUnderCursor.GetComponent<UnitScript>(); 
-  //     /* RaycastHit hit;
-  //      if (Physics.Raycast(ray, out hit))
-  //          return hit.collider.gameObject;
-  //      return null;*/
-  //  }
-
-    //public GameObject UnitUnderCursor
-    //{
-    //    get
-    //    {
-    //        return animatedCursor.UnitUnderCursor;
-    //    }
-    //}
     
     void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
     {
-        if (hold)
+        if (MouseEvents.State.Position.IsOverMainMapArea)
         {
-            SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, MousePosition.x - SelectionRectangle.x,SelectionRectangle.y - MousePosition.y);
+            if (hold)
+            {
+                SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, MousePosition.x - SelectionRectangle.x, SelectionRectangle.y - MousePosition.y);
+            }
+            else
+            {
+                SelectionRectangle = new Rect(MousePosition.x, MousePosition.y, 0, 0);
+                FocusUnit();
+            }
         }
-        else
+        else if (MouseEvents.State.Position.IsOverMiniMapArea)
         {
-            SelectionRectangle = new Rect(MousePosition.x, MousePosition.y, 0, 0);
-            FocusUnit();
+            if (!hold)
+            {
+                FocusUnit();
+            }
         }
+        //else if (MiniMapArea.Contains(MousePosition))
+        //{
+        //    RaycastHit groundclick;
+        //    if (Ground.Current.collider.Raycast(MiniMap.camera.ScreenPointToRay(MousePosition), out groundclick, 400))
+        //    {
+
+        //    }
+        //}
     }
 
     /* if the SlectionRectangle was drawn over 10 (x or y) it will create a UnitGroup from the selection */
@@ -225,18 +222,29 @@ public class GUIScript : MonoBehaviour
     {
         if (!hold)
         {
-            /* Try Focus the unit thats clicked, or release Focus if clicked on ground...*/
-            if (!FocusUnit())
+            if (MouseEvents.State.Position.IsOverMainMapArea)
             {
-                if (MouseEvents.State.Position.AsObjectUnderCursor.layer == (int)EnumProvider.LAYERNAMES.Ignore_Raycast
+                /* Try Focus the unit thats clicked, or release Focus if clicked on ground...*/
+                if (!FocusUnit())
+                {
+                    if (MouseEvents.State.Position.AsObjectUnderCursor.layer == (int)EnumProvider.LAYERNAMES.Ignore_Raycast
                     && UnitFocused
                     && !Focus.IsLocked)
-                {
-                    Component.Destroy(Focus.masterGameObject.GetComponent<Focus>());
-                    if (SelectedGroup)
-                        ScriptableObject.DestroyObject(SelectedGroup);
-                    SelectedGroup = ScriptableObject.CreateInstance<UnitGroup>();
+                    {
+                        Component.Destroy(Focus.masterGameObject.GetComponent<Focus>());
+                        if (SelectedGroup)
+                            ScriptableObject.DestroyObject(SelectedGroup);
+                        SelectedGroup = ScriptableObject.CreateInstance<UnitGroup>();
+                    }
                 }
+            }
+            else if (MouseEvents.State.Position.IsOverMiniMapArea)
+            {
+
+                Vector3 buffer = MouseEvents.State.Position;
+                buffer.y = Camera.main.transform.position.y;
+                Camera.main.transform.position=buffer;
+
             }
         }
     }
