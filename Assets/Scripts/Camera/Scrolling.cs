@@ -18,6 +18,7 @@ public class Scrolling : MonoBehaviour
     public bool scrollingAllowed = true;
     private GUIScript mainGUI;
     public MouseMovement MouseMove;
+    private SelectorScript SelectionSprite;
 
     /* Properties */
 
@@ -27,6 +28,16 @@ public class Scrolling : MonoBehaviour
         mainGUI = this.GetComponent<GUIScript>();
         MouseMove = this.gameObject.AddComponent<MouseMovement>();
         UpdateManager.OnUpdate += DoUpdate;
+
+        // Get SelectionRectangle
+        foreach (GameObject rectangle in GameObject.FindGameObjectsWithTag("Rectangles"))
+        {
+            if (rectangle.gameObject.name == "SelectionRectangle")
+            {
+                SelectionSprite = rectangle.GetComponent<SelectorScript>();
+                break;
+            }
+        }
     }
 
     void DoUpdate()
@@ -140,6 +151,9 @@ public class Scrolling : MonoBehaviour
             {
                 Vector3 camPoint = hit.point;
                 Camera.main.transform.RotateAround(camPoint, new Vector3(0.0f, 1.0f * status, 0.0f), Time.deltaTime * this.SpeedRotate);
+
+                // rotate SelectionRectangle
+                //this.SelectionSprite.RotateRectangleToCamera();
             }
         }
 

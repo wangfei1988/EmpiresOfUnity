@@ -35,4 +35,9 @@ public class SelectorScript : MonoBehaviour
         gameObject.collider.enabled = false;
         return group;
     }
+
+    public void RotateRectangleToCamera()
+    {
+        //this.transform.rotation = Camera.main.transform.rotation;
+    }
 }

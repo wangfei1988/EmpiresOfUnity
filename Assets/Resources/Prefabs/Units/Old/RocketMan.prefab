@@ -12,10 +12,8 @@ GameObject:
   - 65: {fileID: 6500000}
   - 54: {fileID: 5400000}
   - 114: {fileID: 11400008}
-  - 114: {fileID: 11400006}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400010}
-  - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
   m_Layer: 10
   m_Name: RocketMan
@@ -104,20 +102,6 @@ MonoBehaviour:
   Arsenal:
   - {fileID: 0}
   - {fileID: 0}
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e487801e6f167184b8b614c08f89a761, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 0}
-  hasArsenal: 1
-  countdown: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,26 +121,7 @@ MonoBehaviour:
   faceOtherTransform: 0
   forwardIs: 4
   direction: {x: 0, y: 0, z: 0}
---- !u!114 &11400006
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cdbcffe449cab44286aec3139397a06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UNIT: {fileID: 11400008}
-  moveToPoint: {x: 0, y: 0, z: 0}
-  Target: {fileID: 0}
-  PluggedStateExtendingComponents: []
-  _speed: .100000001
-  standardYPosition: .200000003
-  WayPoints: []
-  IsGroupLeader: 0
-  unitstateint: 0
+  UNIT: {fileID: 0}
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,11 +164,9 @@ MonoBehaviour:
   PositionZ: 0
   lockRotation: 0
   rotation: {x: 0, y: 0, z: 0}
-  rotationW: 0
   RotationX: 0
   RotationY: 0
   RotationZ: 0
-  RotationW: 0
   lockScale: 0
   scale: {x: 0, y: 0, z: 0}
   ScaleX: 0

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public class Settings : MonoBehaviour 
@@ -17,10 +16,6 @@ public class Settings : MonoBehaviour
         float width = Screen.width / size.x * 400f;
         float height = Screen.width / size.x * 80f;
 
-        if (GUI.Button(new Rect(left, top + topPlus * 1, width, height), "Credits"))
-        {
-
-        }
         if (GUI.Button(new Rect(left, top + topPlus * 2, width, height), "Save Settings"))
         {
             settingsData = ScriptableObject.CreateInstance<ControllSettings>();
