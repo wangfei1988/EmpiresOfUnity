@@ -29,6 +29,25 @@ public class Cheats : MonoBehaviour {
                 ResourceManager.AddResouce(ResourceManager.Resource.LABORER, 500);
             }
 	    }
+        if (Input.GetKey(KeyCode.K))
+        {
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                ResourceManager.SubtractResouce(ResourceManager.Resource.NANITEN, 500);
+            }
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                ResourceManager.SubtractResouce(ResourceManager.Resource.MATTER, 500);
+            }
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                ResourceManager.SubtractResouce(ResourceManager.Resource.ENERGY, 500);
+            }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                ResourceManager.SubtractResouce(ResourceManager.Resource.LABORER, 500);
+            }
+        }
 	}
 
     void OnDestroy()
