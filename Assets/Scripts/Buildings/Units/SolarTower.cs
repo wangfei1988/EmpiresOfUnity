@@ -7,8 +7,7 @@ public class SolarTower : AbstractBuilding
 {
     //private Dictionary<uint, uint> SolarWork = new Dictionary<uint, uint>();
     private uint CurrentEnergy = 100;
-
-    private bool firstStart = true;
+    private bool builded = false;
 
     public override EnumProvider.UNITCLASS UNIT_CLASS
     {
@@ -25,24 +24,25 @@ public class SolarTower : AbstractBuilding
 
     internal override void DoStart()
     {
-       
     }
 
     public override void BuildFinished()
     {
+        this.builded = true;
+        ResourceManager.AddResouce(ResourceManager.Resource.ENERGY, CurrentEnergy);
+        ResourceManager.AddResouce(ResourceManager.Resource.MAXENERGY, CurrentEnergy);
     }
 
     internal override void DoUpdate()
     {
-        if (firstStart)
-        {
-            ResourceManager.AddResouce(ResourceManager.Resource.ENERGY, CurrentEnergy);
-            firstStart = false;
-        }
     }
 
     private void OnDestroy()
     {
-        ResourceManager.SubtractResouce(ResourceManager.Resource.ENERGY, CurrentEnergy);
+        if (this.builded)
+        {
+            ResourceManager.SubtractResouce(ResourceManager.Resource.ENERGY, CurrentEnergy);
+            ResourceManager.SubtractResouce(ResourceManager.Resource.MAXENERGY, CurrentEnergy);
+        }
     }
 }

@@ -23,6 +23,7 @@ public class Cheats : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.O))
             {
                 ResourceManager.AddResouce(ResourceManager.Resource.ENERGY, 500);
+                ResourceManager.AddResouce(ResourceManager.Resource.MAXENERGY, 500);
             }
             if (Input.GetKeyDown(KeyCode.P))
             {
@@ -42,6 +43,7 @@ public class Cheats : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.O))
             {
                 ResourceManager.SubtractResouce(ResourceManager.Resource.ENERGY, 500);
+                ResourceManager.SubtractResouce(ResourceManager.Resource.MAXENERGY, 500);
             }
             if (Input.GetKeyDown(KeyCode.P))
             {

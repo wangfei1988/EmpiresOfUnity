@@ -18,7 +18,7 @@ public class Scrolling : MonoBehaviour
     public bool scrollingAllowed = true;
     private GUIScript mainGUI;
     public MouseMovement MouseMove;
-    private SelectorScript SelectionSprite;
+    //private SelectorScript SelectionSprite;
 
     /* Properties */
 
@@ -30,14 +30,14 @@ public class Scrolling : MonoBehaviour
         UpdateManager.OnUpdate += DoUpdate;
 
         // Get SelectionRectangle
-        foreach (GameObject rectangle in GameObject.FindGameObjectsWithTag("Rectangles"))
+        /*foreach (GameObject rectangle in GameObject.FindGameObjectsWithTag("Rectangles"))
         {
             if (rectangle.gameObject.name == "SelectionRectangle")
             {
                 SelectionSprite = rectangle.GetComponent<SelectorScript>();
                 break;
             }
-        }
+        }*/
     }
 
     void DoUpdate()

@@ -8,6 +8,7 @@ public class ResourceManager : MonoBehaviour
     {
         NANITEN,
         MATTER,
+        MAXENERGY,
         ENERGY,
         LABORER // Einheiten-Count
     }
@@ -19,6 +20,7 @@ public class ResourceManager : MonoBehaviour
     {
         resourceList.Add(Resource.NANITEN, 100);
         resourceList.Add(Resource.MATTER, 100);
+        resourceList.Add(Resource.MAXENERGY, 100);
         resourceList.Add(Resource.ENERGY, 100);
         resourceList.Add(Resource.LABORER, 0);
     }
