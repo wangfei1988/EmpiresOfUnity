@@ -3667,7 +3667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon_nanite: {fileID: 2800000, guid: 443f889c14715b8488de56d534e2e973, type: 3}
-  icon_matter: {fileID: 2800000, guid: 2615c86b233967c40a660f6e6abacac5, type: 3}
+  icon_matter: {fileID: 2800000, guid: 78d6a54f8a349c24abaa56c4c362897e, type: 3}
   icon_energy: {fileID: 2800000, guid: 5b6ccbd05bf179a4c8cf67fbc1885f0b, type: 3}
   icon_laborer: {fileID: 2800000, guid: b10e2f726c2072d4aa94d32245414e3f, type: 3}
 --- !u!114 &358951608
@@ -4142,7 +4142,7 @@ Transform:
   m_GameObject: {fileID: 452613910}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
   m_LocalPosition: {x: 0, y: .200000003, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 1278975562}
 --- !u!212 &452613912
