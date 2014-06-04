@@ -1,9 +1,9 @@
-﻿using System.Diagnostics;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public abstract class ProductionBuilding : AbstractBuilding
 {
+
     protected float workTimer;
     protected bool firstStart = false;
 
@@ -12,6 +12,11 @@ public abstract class ProductionBuilding : AbstractBuilding
 
     protected static int MatterCount = 0;
     protected static int NaniteCount = 0;
+
+    public static bool EnoughEnergy;
+    public static int EnergyConsumption;
+
+    public bool EnergyUse = false;
 
     protected void UpdateProduction(UnitScript.UNITTYPE type)
     {
@@ -39,13 +44,16 @@ public abstract class ProductionBuilding : AbstractBuilding
         // If Player has several Miner -> only execute the first miner for counting all
         if (allowed)
         {
-            //Timer for Resources per Time (ProductionTime)
-            workTimer += Time.deltaTime;
-
-            if (workTimer >= (float)1 / (float)this.CurrentResource / dividier)
+            if (allowed)
             {
-                workTimer = 0;
-                this.MineWork();
+                //Timer for Resources per Time (ProductionTime)
+                this.workTimer += Time.deltaTime;
+
+                if (this.workTimer >= (float)1 / (float)this.CurrentResource / dividier)
+                {
+                    this.workTimer = 0;
+                    this.MineWork();
+                }
             }
         }
         //calls the method only once
@@ -62,5 +70,6 @@ public abstract class ProductionBuilding : AbstractBuilding
 
     protected abstract void MineWork();
 
+   
 }
 

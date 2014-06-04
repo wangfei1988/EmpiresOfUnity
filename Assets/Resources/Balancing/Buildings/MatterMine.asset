@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: MatterMine
   m_EditorClassIdentifier: 
   Level: 1
-  UsedEnergy: 0
+  UsedEnergy: 10
+  EnergyUse: 0
   MatterCost: 10
   NaniteCost: 10
   IsBuildable: 0

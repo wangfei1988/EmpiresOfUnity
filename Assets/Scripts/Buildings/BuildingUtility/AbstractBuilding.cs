@@ -55,8 +55,6 @@ public abstract class AbstractBuilding : UnitOptions
         return true;
     }
 
-
-
     public override System.Enum UnitState
     {
         get
@@ -91,4 +89,6 @@ public abstract class AbstractBuilding : UnitOptions
              //Show MaxLevel Reached
         }
     }
+
+   
 }

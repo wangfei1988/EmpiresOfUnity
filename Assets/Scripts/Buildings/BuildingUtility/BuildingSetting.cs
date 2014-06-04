@@ -8,6 +8,7 @@ public class BuildingSetting : ScriptableObject
     // Main
     public int Level;
     public int UsedEnergy;
+    public bool EnergyUse;
     
     // Build
     public int MatterCost;

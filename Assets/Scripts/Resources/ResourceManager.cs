@@ -19,7 +19,7 @@ public class ResourceManager : MonoBehaviour
     {
         resourceList.Add(Resource.NANITEN, 100);
         resourceList.Add(Resource.MATTER, 100);
-        resourceList.Add(Resource.ENERGY, 0);
+        resourceList.Add(Resource.ENERGY, 100);
         resourceList.Add(Resource.LABORER, 0);
     }
 
