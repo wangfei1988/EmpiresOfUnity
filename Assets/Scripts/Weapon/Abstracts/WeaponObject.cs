@@ -9,9 +9,9 @@ public abstract class WeaponObject : MonoBehaviour
         Missiles = 1,
         Rocket = 2,
         Laser = 3,
-        smallMGbullets = 4,
+        PowerLaser = 4
     }
-    public UnitScript UNIT;
+
     public virtual AMUNITONTYPE amunition
     { 
       get { return AMUNITONTYPE.None; } 
@@ -28,7 +28,7 @@ public abstract class WeaponObject : MonoBehaviour
 
     public void SetShooter(GameObject unit)
     {
-        UNIT = unit.GetComponent<UnitScript>();
+     //   UNIT = unit.GetComponent<UnitScript>();
         GoodOrEvil = unit.GetComponent<UnitScript>().GoodOrEvil;
     }
 

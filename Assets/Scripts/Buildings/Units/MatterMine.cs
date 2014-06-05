@@ -8,6 +8,8 @@ public class MatterMine : ProductionBuilding
 
     private OPTIONS MatterMineState;
 
+    
+
     public override Enum UnitState {
         get
         {
@@ -53,7 +55,10 @@ public class MatterMine : ProductionBuilding
 
     protected override void MineWork()
     {
-        ResourceManager.AddResouce(ResourceManager.Resource.MATTER, 1);
+        if (EnoughEnergy)
+        {
+            ResourceManager.AddResouce(ResourceManager.Resource.MATTER, 1);
+        }
     }
 
     void OnDestroy()

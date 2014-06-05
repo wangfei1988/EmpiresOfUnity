@@ -46,7 +46,10 @@ public class NaniteMine : ProductionBuilding
     //Main Method for Mine
     protected override void MineWork()
     {
-        ResourceManager.AddResouce(ResourceManager.Resource.NANITEN, 1);
+        if (EnoughEnergy)
+        {
+            ResourceManager.AddResouce(ResourceManager.Resource.NANITEN, 1);
+        }
     }
 
     internal override void DoStart()
@@ -66,5 +69,8 @@ public class NaniteMine : ProductionBuilding
 
     void OnDestroy()
     {
+        
     }
+
+    
 }

@@ -8,10 +8,7 @@ abstract public class UnitWeapon : MonoBehaviour
         None=0,
         RayGun,
         RocketLauncher,
-        MachineGun
     }
-    abstract public WEAPON ID
-    { get; }
     public WeaponObject prefabSlot;
     [SerializeField]
     private bool hasArsenal = false;
@@ -22,12 +19,8 @@ abstract public class UnitWeapon : MonoBehaviour
         {
             if(value!=hasArsenal)
             {
-                if (value) 
-                    this.gameObject.AddComponent<WeaponArsenal>();
-                else 
-                    Component.Destroy(this.gameObject.GetComponent<WeaponArsenal>());
-
-                hasArsenal = value;
+                if (value) this.gameObject.AddComponent<WeaponArsenal>();
+                else Component.Destroy(this.gameObject.GetComponent<WeaponArsenal>());
             }
     }
     }

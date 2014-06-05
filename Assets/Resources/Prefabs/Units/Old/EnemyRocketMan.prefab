@@ -15,7 +15,6 @@ GameObject:
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400006}
-  - 114: {fileID: 11400002}
   m_Layer: 9
   m_Name: EnemyRocketMan
   m_TagString: Clickable
@@ -111,20 +110,6 @@ MonoBehaviour:
   sightWidth: 30
   resourceFactor: 0
   interactingUnits: 
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e487801e6f167184b8b614c08f89a761, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabSlot: {fileID: 11400004, guid: 2c761ba5dc15c4349a6325326d45f4ba, type: 2}
-  hasArsenal: 0
-  countdown: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -144,6 +129,7 @@ MonoBehaviour:
   faceOtherTransform: 0
   forwardIs: 4
   direction: {x: 0, y: 0, z: 0}
+  UNIT: {fileID: 0}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -178,11 +164,9 @@ MonoBehaviour:
   PositionZ: 0
   lockRotation: 0
   rotation: {x: 0, y: 0, z: 0}
-  rotationW: 0
   RotationX: 0
   RotationY: 0
   RotationZ: 0
-  RotationW: 0
   lockScale: 0
   scale: {x: 0, y: 0, z: 0}
   ScaleX: 0

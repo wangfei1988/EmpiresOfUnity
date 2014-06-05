@@ -9,10 +9,7 @@
 [AddComponentMenu("Program-X/Weapons/Rocket Launcher")]
 public class RocketLauncher : UnitWeapon
 {
-    public override UnitWeapon.WEAPON ID
-    {
-        get { return WEAPON.RocketLauncher; }
-    }
+
     public int NumberOfRockets;
     public override bool IsOutOfAmu
     {

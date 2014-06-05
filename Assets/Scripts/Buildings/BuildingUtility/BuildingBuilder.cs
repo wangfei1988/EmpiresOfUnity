@@ -1,5 +1,4 @@
 ﻿using System;
-
 using UnityEngine;
 using System.Collections;
 
@@ -23,6 +22,9 @@ public class BuildingBuilder : ProductionBuilding
     private int solutionNaniten;
     private int BuildingCostMatter;
     private int BuildingCostNanite;
+    //Energy
+    private int TempEnergy;
+    private int CurrentEnergy;
 
     private string ResourceFeedBack;
     
@@ -47,7 +49,6 @@ public class BuildingBuilder : ProductionBuilding
         UpdateManager.OnMouseUpdate += DoUpdate;
         this.Cursor = GUIScript.main.GetComponent<AnimatedCursor>();
         //throw new System.NotImplementedException();
-       
     }
 
     internal override void DoUpdate ()
@@ -87,7 +88,10 @@ public class BuildingBuilder : ProductionBuilding
             }
         }
         this.BuildingCheck();
-    }
+        this.CheckUsedEnergy();
+        CurrentEnergy = (int)ResourceManager.GetResourceCount(ResourceManager.Resource.ENERGY);
+        //Debug.Log(EnoughEnergy);
+	}
 
     /* Methods */
     public void CreatePrefab(int index)
@@ -98,6 +102,10 @@ public class BuildingBuilder : ProductionBuilding
         IsBuildable = ((GameObject)this.BuildableBuildings[index]).GetComponent<UnitOptions>().SettingFile.IsBuildable;
         solutionMatter = (int)ResourceManager.GetResourceCount(ResourceManager.Resource.MATTER) -this.BuildingCostMatter;
         solutionNaniten = (int)(ResourceManager.GetResourceCount(ResourceManager.Resource.NANITEN) - this.BuildingCostNanite);
+        //Energy
+        TempEnergy = ((GameObject)this.BuildableBuildings[index]).GetComponent<UnitOptions>().SettingFile.UsedEnergy;
+
+        
 
         this.curIndex = index;
 
@@ -157,6 +165,7 @@ public class BuildingBuilder : ProductionBuilding
         this.Grid.ShowGrid = false;
         this.dragNow = false;
 
+        EnergyConsumption += TempEnergy;
 
         IsBuildable = false;
     }
@@ -186,6 +195,18 @@ public class BuildingBuilder : ProductionBuilding
     {
         ResourceManager.SubtractResouce(ResourceManager.Resource.MATTER, (uint)this.BuildingCostMatter);
         ResourceManager.SubtractResouce(ResourceManager.Resource.NANITEN, (uint)this.BuildingCostNanite);
+        ResourceManager.SubtractResouce(ResourceManager.Resource.ENERGY,(uint)this.TempEnergy);
+    }
+
+    //public static void GiveEnergyBack()
+    //{
+    //    ResourceManager.AddResouce(ResourceManager.Resource.ENERGY, (uint)TempEnergy);
+    //}
+
+    public void CheckUsedEnergy()
+    {
+        EnergyConsumption = CurrentEnergy - TempEnergy;
+        EnoughEnergy = EnergyConsumption >= 0;
     }
 
     public override void BuildFinished()

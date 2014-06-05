@@ -3,11 +3,22 @@
 
 			Scrolling							W A S D							Arrow-Keys
 			Scrolling faster					Scrolling + ShiftLeft
-			Rotate Camera						Q E								Middle-Mouse Press & MouseMove
+			Rotate Camera around center			Q E								Middle-Mouse Press & MouseMove
+			Rotate Camera around itself			[X C - coming soon]
 			Zoom Camera							R F								Mouse-Wheel
 			Camera Switch						Space
 			(de)activate Scrolling				Y
 			Move Units							Left-Mouse
 			Deactivate Focus					Right-Mouse
 			ESC									Menu
-			Map	open/close						M
+			MiniMap		open/close				M
+			MiniMap		MoveUnits				Left-Mouse
+			MiniMap		MoveCamera				Right-Mouse
+			Plus 500 Naniten					L + U
+			Plus 500 Matter						L + I
+			Plus 500 Energy						L + O
+			Plus 500 Laborer					L + P
+			Minus 500 Naniten					K + U
+			Minus 500 Matter					K + I
+			Minus 500 Energy					K + O
+			Minus 500 Laborer					K + P

@@ -245,7 +245,6 @@ public class Focus : MonoBehaviour
         if (firststart)
         {
             firststart = false;
-            Ground.Switch(0);
         }
         else
         {
