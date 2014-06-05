@@ -209,7 +209,7 @@ public class Focus : MonoBehaviour
         {
             KeyObject = this.gameObject;
 
-           InGameText.AddTextLine("FOCUS HAS LOCKED to: " +KeyObject.name + " " +KeyObject.GetInstanceID().ToString());
+           // Debug.Log("FOCUS HAS LOCKED to: " +KeyObject.name + " " +KeyObject.GetInstanceID().ToString());
 
             return true;
         }
@@ -225,7 +225,7 @@ public class Focus : MonoBehaviour
             if (unlockKey.GetInstanceID() == KeyObject.GetInstanceID())
             {
                 KeyObject = null;
-                InGameText.AddTextLine("FOCUS UNLOCKED !!!");
+                //Debug.Log("FOCUS UNLOCKED !!!");
             }
         }
 

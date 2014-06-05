@@ -26,7 +26,6 @@ public class UpdateManager : MonoBehaviour
 
     void Update()
     {
-        
         UpdateMouse();
         UpdateGUI();
         UpdateUnits();

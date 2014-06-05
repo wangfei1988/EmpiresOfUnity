@@ -125,7 +125,9 @@ public class Movability : UnitExtension
                 {
                     Target = MouseEvents.State.Position.AsUnitUnderCursor.SetInteracting(this.gameObject);
                     MoveToPoint = Target.transform.position;
-                    IsGuarding=true;
+                    IsMoving = true;
+
+
                     UNIT.Options.UnlockAndDestroyFocus();
                 }
             }
@@ -349,31 +351,14 @@ public class Movability : UnitExtension
     }
     private Vector3 attackDirection = Vector3.zero;
     private bool anflug = false;
-
-    private bool _isGuarding=false;
-    public bool IsGuarding
-    {
-        get 
-        {
-            if (_isGuarding)
-                return IsMoving = _isGuarding;
-            return _isGuarding;
-        }
-        set 
-        {
-            if (value)
-                IsMoving = true;
-            _isGuarding=value;
-        }
-    }
     private bool Move()
     {
-        bool stopMoving=false;
+        
         if (pilot) pilot.DoUpdate();
 
 
        
-            if (IsGuarding)
+            if (movingUnitState == OPTIONS.Guard)
             {
                 MoveToPoint = Target.transform.position;
 
@@ -411,34 +396,28 @@ public class Movability : UnitExtension
             }
             else if (Distance >= 0.5f)
             {
-                this.gameObject.transform.position += (MovingDirection * Speed);
+                this.gameObject.transform.position += MovingDirection * Speed;
             }
             else
             {
                 SetKinematic();
                 gameObject.transform.position = MoveToPoint;
-                stopMoving=true;
 
-                if (IsGroupLeader) 
-                    GUIScript.SelectedGroup.GroupState = UnitGroup.GROUPSTATE.Waiting;
-
-                if (movingUnitState == OPTIONS.Patrol
-                && WayPoints.Count>0)
+                if (IsGroupLeader) GUIScript.SelectedGroup.GroupState = UnitGroup.GROUPSTATE.Waiting;
+                if (movingUnitState == OPTIONS.Patrol)
                 {
                     MoveToPoint = WayPoints[0];
                     WayPoints.RemoveAt(0);
                     WayPoints.Add(gameObject.transform.position);
                     MoveToPoint = WayPoints[0];
                     MovingDirection = MoveToPoint;
-                    stopMoving=false;
                 }
-              //  else { StayOrder(); }
+        //        else { StayOrder(); }
             }
         
         KeepStandardYpsPosition();
 
-        return gameObject.transform.position != MoveToPoint;
-        ;
+        return this.gameObject.transform.position != MoveToPoint;
     }
 
     public override void DoUpdate()

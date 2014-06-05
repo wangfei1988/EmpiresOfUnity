@@ -11,42 +11,44 @@ public class StaticExploader : MonoBehaviour
    public AudioClip[] audioClips = new AudioClip[2];
 
   //list of Ordered Explosions for next frame...
-   private static List<ExplosionAudioClipPair> ExploadingExplosions = new List<ExplosionAudioClipPair>();
+   private static Dictionary<Vector3, ExplosionAudioClipPair> ExploadingExplosions = new Dictionary<Vector3, ExplosionAudioClipPair>();
 
    public GameObject ExplosionAudioObject;
 
    void Start()
    {
-       UpdateManager.OnUpdate+=UpdateManager_On_LASTUPDATES;
+       UpdateManager.WEAPONUPDATES+=UpdateManager_WEAPONUPDATES;
        ExplosionAudioObject = this.transform.FindChild("ExplosionAudioSource").gameObject;
    }
 
    public static void Exploade(int explosionID, Vector3 location)
    {
-       ExploadingExplosions.Add(new ExplosionAudioClipPair(location,explosionID, -2));
+       ExploadingExplosions.Add(location,new ExplosionAudioClipPair(explosionID,-2));
    }
    public static void Exploade(int explosionID, Vector3 location, int audioID)
    {
-       ExploadingExplosions.Add(new ExplosionAudioClipPair(location, explosionID,audioID));
+       ExploadingExplosions.Add(location,new ExplosionAudioClipPair( explosionID,audioID));
    }
    public static void Exploade(Vector3 location, int audioID)
    {
-       ExploadingExplosions.Add(new ExplosionAudioClipPair(location, -1, audioID));
+       ExploadingExplosions.Add(location, new ExplosionAudioClipPair(-1, audioID));
    }
    
-    private void UpdateManager_On_LASTUPDATES()
+    private void UpdateManager_WEAPONUPDATES()
    {
-       foreach (ExplosionAudioClipPair explosion in ExploadingExplosions)
+       int explosionID,audioID;
+       foreach (Vector3 explosionLocation in ExploadingExplosions.Keys)
        {
-           if (explosion.Explosion >= 0)
+           if ((explosionID = ExploadingExplosions[explosionLocation].Explosion) >= 0)
            {
-               Explosions[explosion.Explosion].transform.position = explosion.Position;
-               Explosions[explosion.Explosion].particleSystem.Play();
+
+               Explosions[explosionID].transform.position = explosionLocation;
+               Explosions[explosionID].particleSystem.Play();
            }
-           if (explosion.Audio >= 0)
+           if ((audioID = ExploadingExplosions[explosionLocation].Audio) >= 0)
            {
-               ExplosionAudioObject.transform.position = explosion.Position;
-               ExplosionAudioObject.audio.PlayOneShot(audioClips[explosion.Audio]);
+               ExplosionAudioObject.transform.position = explosionLocation;
+               ExplosionAudioObject.audio.PlayOneShot(audioClips[audioID]);
            }
        }
        ExploadingExplosions.Clear();
@@ -54,11 +56,9 @@ public class StaticExploader : MonoBehaviour
 
    public struct ExplosionAudioClipPair
    {
-       public Vector3 Position;
        public int Explosion, Audio;
-       public ExplosionAudioClipPair(Vector3 position , int explosionID, int audioID)
+       public ExplosionAudioClipPair(int explosionID, int audioID)
        {
-           Position = position;
            Explosion = explosionID;
            Audio = audioID;
        }

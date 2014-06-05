@@ -289,7 +289,7 @@ public class Pilot : UnitComponent
                 mySpace.radius = lookAheadDistance / My.gameObject.transform.localScale.x;
                 if (My.IsAnAirUnit)
                     Controlls.standardYPosition = mySpace.radius * 2;
-                  //  if (IsAForwarder) mySpace.center = new Vector3(mySpace.center.x, mySpace.center.y, mySpace.radius - 0.5f);
+                 //   if (IsAForwarder) mySpace.center = new Vector3(mySpace.center.x, mySpace.center.y, mySpace.radius - 0.5f);
             }
         }
         else
@@ -309,10 +309,10 @@ public class Pilot : UnitComponent
             && (!My.InteractingUnits.Contains(other.gameObject.GetInstanceID())))
             {
                 if (mySpace)
-                    Controlls.Rudder += ((My.transform.position - other.transform.position).normalized / (mySpace.radius * 3));
+                    Controlls.Rudder += ((My.transform.position - other.transform.position).normalized / (mySpace.radius));
                 //    Controlls.MovingDirection.Normalize();
                 Triggerd = true;
-                ShrinkRadius(Vector3.Distance(other.ClosestPointOnBounds(gameObject.transform.position), gameObject.transform.position));// * 0.95f);
+                ShrinkRadius(Vector3.Distance(other.ClosestPointOnBounds(gameObject.transform.position), gameObject.transform.position) * 0.95f);
             }
         }
     }
@@ -332,7 +332,7 @@ public class Pilot : UnitComponent
 
               //  Controlls.Rudder += directionbuffer.normalized;
                 Controlls.NormalizedRudder = false;
-                Controlls.Rudder += ((My.transform.position - other.gameObject.transform.position).normalized / (LookAheadDistance *4));
+                Controlls.Rudder += ((My.transform.position - other.gameObject.transform.position).normalized / (LookAheadDistance *2));
             //    Controlls.Rudder.Normalize();
                 //      (My.Options as MovingUnitOptions).MovingDirection.Normalize();
                 Triggerd = true;
@@ -353,8 +353,8 @@ public class Pilot : UnitComponent
 
     private bool WatchTarget()
     {
-        Vector3 targetDirection = ((this.Controlls.MoveToPoint - My.transform.position).normalized / (Vector3.Distance(My.transform.position, this.Controlls.MoveToPoint) / 3f));
-        if (Vector3.Distance(Controlls.MovingDirection, targetDirection) > 0.8f)
+        Vector3 targetDirection = ((this.Controlls.MoveToPoint - My.transform.position).normalized / (Vector3.Distance(My.transform.position, this.Controlls.MoveToPoint) / 10));
+        if (Vector3.Distance(Controlls.MovingDirection, targetDirection) > 0.005f)
         {
             this.Controlls.Rudder += (targetDirection);
             this.Controlls.Rudder.Normalize();

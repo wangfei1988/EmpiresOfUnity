@@ -24,7 +24,7 @@ Material:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 2800000, guid: 50d862418c959fa4fb67b4fff9b3a81e, type: 3}
+          m_Texture: {fileID: 2800000, guid: 27970ddf86c1e48488a1b146eadf5679, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -64,23 +64,23 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Illum
+          name: _Detail
         second:
-          m_Texture: {fileID: 2800000, guid: ec0706517d1cb7d438baa65ae93925b1, type: 3}
+          m_Texture: {fileID: 2800000, guid: 2dd3788f8589b40bf82a92d76ffc5091, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _ParallaxMap
+          name: _Illum
         second:
           m_Texture: {fileID: 2800000, guid: 50d862418c959fa4fb67b4fff9b3a81e, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Detail
+          name: _ParallaxMap
         second:
-          m_Texture: {fileID: 2800000, guid: 2dd3788f8589b40bf82a92d76ffc5091, type: 3}
+          m_Texture: {fileID: 2800000, guid: e0aff3713849d7d4c8952114b3c21ef1, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -91,11 +91,11 @@ Material:
       data:
         first:
           name: _Shininess
-        second: .442471534
+        second: .194231689
       data:
         first:
           name: _Parallax
-        second: .0799999982
+        second: .0572321415
       data:
         first:
           name: _EmissionLM
