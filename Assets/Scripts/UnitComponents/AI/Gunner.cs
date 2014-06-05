@@ -25,7 +25,9 @@ public class Gunner : UnitComponent
         }
         set
         {
-            _battle = this.GetComponent<Pilot>().PerceptionIsGunnerControlled = value;
+            _battle = value;
+            if (this.gameObject.GetComponent<Pilot>())
+                this.GetComponent<Pilot>().PerceptionIsGunnerControlled = _battle;
         }
     }
     public float MAXIMUM_ATTACK_RANGE

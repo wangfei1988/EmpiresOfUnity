@@ -161,7 +161,7 @@ public class UnitGroup : ScriptableObject
             {
                 UNIT.gameObject.GetComponent<Movability>().IsMovingAsGroup = false;
                 UNIT.gameObject.GetComponent<Movability>().IsGroupLeader = false;
-                UNIT.Options.FocussedLeftOnGround(member.transform.position);
+        //        UNIT.Options.FocussedLeftOnGround(member.transform.position);
             }
 
         }
@@ -206,18 +206,18 @@ public class UnitGroup : ScriptableObject
 
     void OnDestroy()
     {
-        // ResetGroup();
-        foreach (GameObject unit in MemberUnit)
-        {
-            unit.GetComponent<UnitScript>().InteractingUnits.Clear();
-            unit.GetComponent<UnitScript>().HideLifebar();
-            if (!unit.GetComponent<UnitScript>().IsABuilding)
-            {
-                unit.GetComponent<Movability>().IsMovingAsGroup = false;
-                unit.GetComponent<Movability>().IsGroupLeader = false;
-            }
-        }
-        MemberUnit.Clear();
+        ResetGroup();
+        //foreach (GameObject unit in MemberUnit)
+        //{
+        //    unit.GetComponent<UnitScript>().InteractingUnits.Clear();
+        //    unit.GetComponent<UnitScript>().HideLifebar();
+        //    if (!unit.GetComponent<UnitScript>().IsABuilding)
+        //    {
+        //        unit.GetComponent<Movability>().IsMovingAsGroup = false;
+        //        unit.GetComponent<Movability>().IsGroupLeader = false;
+        //    }
+        //}
+        //MemberUnit.Clear();
 
     }
 

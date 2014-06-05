@@ -34,7 +34,7 @@ public class MiniMapControll : MonoBehaviour
                     GUIScript.main.guiTexture.texture = GuiTextureBuffer;
                     Area = new Rect(scale.x * 1800, scale.y * 0, scale.x * 120, scale.y * 80);
                 }
-                this.camera.enabled = value;
+                InGameText.ShowInfo = this.camera.enabled = value;
             }
         }
     }

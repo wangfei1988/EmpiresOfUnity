@@ -16,7 +16,7 @@ public class GUIScript : MonoBehaviour
 
     public GUITexture SellectionGUITexture;
     public GameObject lastClickedUnit;
-    private string textField = "";
+ 
     public static bool DebugText = false;
 
     private Scrolling scrolling;
@@ -219,7 +219,6 @@ public class GUIScript : MonoBehaviour
     {
         if (!hold)
         {
-            InGameText.AddTextLine("rightclick!!");
             if (MouseEvents.State.Position.IsOverMainMapArea)
             {
                 /* Try Focus the unit thats clicked, or release Focus if clicked on ground...*/
@@ -228,7 +227,6 @@ public class GUIScript : MonoBehaviour
                     if (MouseEvents.State.Position.AsObjectUnderCursor.layer == (int)EnumProvider.LAYERNAMES.Ignore_Raycast
                     && !Focus.IsLocked)
                     {
-                        InGameText.AddTextLine("GuiScript ok !");
                         if (UnitFocused)
                             Component.Destroy(Focus.masterGameObject.GetComponent<Focus>());
                         if (SelectedGroup)

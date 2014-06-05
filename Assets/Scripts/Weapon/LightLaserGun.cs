@@ -45,26 +45,30 @@ public class LightLaserGun : UnitWeapon
     }
     public override void Engage(Vector3 targetPoint)
     {
-        if ((!IsLoadedt)&&(Vector3.Distance(gameObject.transform.position,targetPoint)<MAXIMUM_DISTANCE))
+        if ((Vector3.Distance(gameObject.transform.position, targetPoint)<MAXIMUM_DISTANCE))
         {
-            int Power;
-
-            if (LaserEnergie < MAXIMUM_POWER && LaserEnergie > MINIMUM_POWER)
+            if (!IsLoadedt)
             {
-                Power = LaserEnergie;
-                LaserEnergie = 0;
+                int Power;
+
+                if (LaserEnergie < MAXIMUM_POWER && LaserEnergie > MINIMUM_POWER)
+                {
+                    Power = LaserEnergie;
+                    LaserEnergie = 0;
+                }
+                else
+                {
+                    Power = MAXIMUM_POWER;
+                    LaserEnergie -= MAXIMUM_POWER;
+                }
+                laser = (GameObject.Instantiate(prefabSlot, gameObject.transform.position, gameObject.transform.rotation) as WeaponObject).GetComponent<LaserObject>();
+                laser.gameObject.name = "Laser " + this.gameObject.GetInstanceID();
+                laser.GoodOrEvil = this.gameObject.GetComponent<UnitScript>().GoodOrEvil;
+                IsLoadedt = laser.Load((targetPoint-this.gameObject.transform.position).normalized, Power, MAXIMUM_DISTANCE);
             }
             else
-            {
-                Power = MAXIMUM_POWER;
-                LaserEnergie -= MAXIMUM_POWER;
-            }
-            laser = (GameObject.Instantiate(prefabSlot, gameObject.transform.position, gameObject.transform.rotation) as WeaponObject).GetComponent<LaserObject>();
-            laser.gameObject.name = "Laser " + this.gameObject.GetInstanceID();
-            laser.GoodOrEvil = this.gameObject.GetComponent<UnitScript>().GoodOrEvil;
-            IsLoadedt = laser.Load((targetPoint-this.gameObject.transform.position).normalized, Power, MAXIMUM_DISTANCE);  
+                laser.Engage();
         }
-        laser.Engage();
     }
 
     public override float GetMaximumRange()

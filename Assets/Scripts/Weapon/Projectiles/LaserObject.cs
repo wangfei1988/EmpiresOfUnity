@@ -56,7 +56,10 @@ public class LaserObject : WeaponObject
             if (value)
             {
                 this.gameObject.light.intensity = 1f;
+                this.gameObject.audio.PlayOneShot(sound2);
                 StaticExploader.Exploade(2, hitpoint);
+                HasHitAUnit = true;
+                
             }
             hit = value;
         }
@@ -103,15 +106,15 @@ public class LaserObject : WeaponObject
         Direction = this.gameObject.transform.forward;
         originPosition = this.gameObject.transform.position;
         beamPosition = 0.5f;
-        UpdateManager.UNITUPDATE += UpdateManager_UNITUPDATE;
+        UpdateManager.WEAPONUPDATES += UpdateManager_WEAPONUPDATES;
     }
 
 
 
     internal override void Engage()
     {
-        if(IsLoadedt)       
-        Visible = true;
+        if (IsLoadedt)
+            Visible = true;
     }
 
     public bool Load(Vector3 direction, int power, float maximumdistance)
@@ -126,7 +129,8 @@ public class LaserObject : WeaponObject
             Step = MAX_POSITION / SPEED;
             return IsLoadedt = true;
         }
-        else return false;
+        else
+            return false;
     }
 
     private void Beam()
@@ -140,8 +144,9 @@ public class LaserObject : WeaponObject
             this.gameObject.transform.Rotate(YAxis, rotation);
             if (++count >= SPEED * 2)
             {
-                UpdateManager.UNITUPDATE -= UpdateManager_UNITUPDATE;
-                GameObject.Destroy(this.gameObject);
+                
+                UnitDestructionManagement.SignInForDestruction(this.gameObject);
+       //         GameObject.Destroy(this.gameObject);
             }
         }
     }
@@ -151,16 +156,32 @@ public class LaserObject : WeaponObject
         if((other.gameObject.layer==(int)EnumProvider.LAYERNAMES.Units))
         if (other.gameObject.GetComponent<UnitScript>().IsEnemy(this.GoodOrEvil))
         {
-            this.gameObject.audio.PlayOneShot(sound2);
-            hitpoint = other.gameObject.transform.position;
-            HIT = true;
-            other.gameObject.GetComponent<UnitScript>().Hit(this.Power); 
+            if (!HasHitAUnit)
+            {
+                hitpoint = other.gameObject.transform.position;
+                HIT = true;
+                other.gameObject.GetComponent<UnitScript>().Hit(this.Power);
+            }
         }
     }
 
-    void UpdateManager_UNITUPDATE()
+    private bool HasHitAUnit = false;
+
+    void UpdateManager_WEAPONUPDATES()
     {
+        if (HasHitAUnit)
+        {
+            if (!this.gameObject.audio.isPlaying)
+                UnitDestructionManagement.SignInForDestruction(this.gameObject);
+        }
+        
         Beam();
+     
+
     }
 
+    void OnDestroy()
+    {
+        UpdateManager.WEAPONUPDATES -= UpdateManager_WEAPONUPDATES;
+    }
 }

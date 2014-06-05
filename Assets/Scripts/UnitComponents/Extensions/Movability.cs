@@ -74,8 +74,13 @@ public class Movability : UnitExtension
                     //todo:-----------------
                     return stateorder;
                 case OPTIONS.Stay:
-                    SetKinematic();
-                    StayOrder();
+                            SetKinematic();
+        WayPoints.Clear();
+        MoveToPoint = gameObject.transform.position;
+        MovingDirection = MoveToPoint;
+        // cleard interactingunits....
+        UNIT.InteractingUnits.Clear();
+        
                     return stateorder;
                 }
             }
@@ -85,13 +90,8 @@ public class Movability : UnitExtension
 
     public void StayOrder()
     {
-        SetKinematic();
-        WayPoints.Clear();
-        MoveToPoint = gameObject.transform.position;
-        MovingDirection = MoveToPoint;
-        // cleard interactingunits....
-        UNIT.InteractingUnits.Clear();
-        movingUnitState = OPTIONS.Stay;
+        UNIT.Options.standardOrder=false;
+        UNIT.Options.UnitState=OPTIONS.Stay;
     }
 
     public float standardYPosition=0.1f;
@@ -415,14 +415,17 @@ public class Movability : UnitExtension
 
 
         }
-        else if (Distance >= 0.5f)
+        else if (Distance >= 1f)
         {
             this.gameObject.transform.position += (MovingDirection * Speed);
         }
         else
         {
-            SetKinematic();
-            gameObject.transform.position = MoveToPoint;
+            //SetKinematic();
+            //gameObject.transform.position = MoveToPoint;
+            
+
+            UNIT.Options.FocussedLeftOnGround(gameObject.transform.position);
             stopMoving=true;
 
             if (IsGroupLeader)

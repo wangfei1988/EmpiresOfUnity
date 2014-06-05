@@ -16,7 +16,27 @@ public class InGameText : MonoBehaviour
         StaticTextLines.Add(line);
 
     }
+
+    private static bool _showInfo = false;
+    public static bool ShowInfo
+    {
+        get 
+        {
+            return (ShowDebugText)? ShowDebugText : _showInfo;
+        }
+        set
+        {
+            if (value!=_showInfo)
+            {
+                _showInfo = value;
+                if(!value)
+                    GUIScript.main.guiText.text="";
+            }
+        }
+    }
     public static bool ShowDebugText = false;
+
+
     private string TextUpdate()
     {
         while (StaticTextLines.Count>=NumberOfLinesShown)
