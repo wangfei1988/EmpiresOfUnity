@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-abstract public class MovingUnitOptions : UnitOptions 
+abstract public class MovingUnitOptions : UnitOptions
 {
-    
+
     new public enum OPTIONS : int
     {
         MoveTo = EnumProvider.ORDERSLIST.MoveTo,
@@ -34,17 +34,17 @@ abstract public class MovingUnitOptions : UnitOptions
     internal override void FocussedLeftOnGround(Vector3 worldPoint)
     {
         standardOrder = true;
-     //   IsMovingAsGroup = true;
+        //   IsMovingAsGroup = true;
         movement.SetKinematic();
-   //     UnitState = OPTIONS.MoveTo;
-        
+        //     UnitState = OPTIONS.MoveTo;
+
         movement.MoveToPoint = worldPoint;
         movement.MovingDirection = worldPoint;
-   //     gameObject.transform.position += (Movement.MovingDirection * Movement.Speed);
+        //     gameObject.transform.position += (Movement.MovingDirection * Movement.Speed);
         IsAttacking = false;
         Target = null;
         IsMoving = true;
-        unitstateint = (int)OPTIONS.MoveTo;
+        UnitState = OPTIONS.MoveTo;
         standardOrder = false;
     }
 
@@ -67,11 +67,11 @@ abstract public class MovingUnitOptions : UnitOptions
         }
     }
 
-    public  bool IsMoving
+    public bool IsMoving
     {
         get
         {
-           return movement.IsMoving;
+            return movement.IsMoving;
         }
         set
         {
@@ -85,7 +85,7 @@ abstract public class MovingUnitOptions : UnitOptions
             //_ismooving = value;
         }
     }
-  //  public List<Vector3> WayPoints;
+    //  public List<Vector3> WayPoints;
 
     //protected Vector3 CalculateDirection()
     //{
@@ -104,7 +104,7 @@ abstract public class MovingUnitOptions : UnitOptions
         get
         {
             return movement.Distance;
-          //  return Vector3.Distance(gameObject.transform.position, MoveToPoint);
+            //  return Vector3.Distance(gameObject.transform.position, MoveToPoint);
         }
         protected set
         {
@@ -200,45 +200,45 @@ abstract public class MovingUnitOptions : UnitOptions
             //                }
             //        }
             //    }
-                unitstateint = (int)(EnumProvider.ORDERSLIST)value;
-                //movingUnitState = (OPTIONS)value;
-    
+            unitstateint = (int)(EnumProvider.ORDERSLIST)value;
+            //movingUnitState = (OPTIONS)value;
+
         }
     }
 
     //internal override void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
     //{
-        //if (movingUnitState == OPTIONS.MoveTo)
-        //{
-        //    MoveToPoint = standardOrder ? ActionPoint ?? gameObject.transform.position : MouseEvents.State.Position.AsWorldPointOnMap;
-        //    CalculateDirection();
-        //    IsMoving = true;
-        //    if (!standardOrder)
-        //    {
-        //        UnlockFocus();
-        //    }
-        //}
-        //else if (movingUnitState == OPTIONS.Guard)
-        //{
-        //        if (UNIT.IsAllied(MouseEvents.State.Position.AsUnitUnderCursor.gameObject))
-        //        {
-        //            Target = UnitUnderCursor.UNIT.SetInteracting(this.gameObject);
-        //            MoveToPoint = Target.transform.position;
-        //            IsMoving = true;
-        //        }
+    //if (movingUnitState == OPTIONS.MoveTo)
+    //{
+    //    MoveToPoint = standardOrder ? ActionPoint ?? gameObject.transform.position : MouseEvents.State.Position.AsWorldPointOnMap;
+    //    CalculateDirection();
+    //    IsMoving = true;
+    //    if (!standardOrder)
+    //    {
+    //        UnlockFocus();
+    //    }
+    //}
+    //else if (movingUnitState == OPTIONS.Guard)
+    //{
+    //        if (UNIT.IsAllied(MouseEvents.State.Position.AsUnitUnderCursor.gameObject))
+    //        {
+    //            Target = UnitUnderCursor.UNIT.SetInteracting(this.gameObject);
+    //            MoveToPoint = Target.transform.position;
+    //            IsMoving = true;
+    //        }
 
-        //    DestroyFocus();
-        //}
-        //else if (movingUnitState == OPTIONS.Patrol)
-        //{
-        //    WayPoints.Add(standardOrder ? ActionPoint ?? gameObject.transform.position : MouseEvents.State.Position.AsWorldPointOnMap);
-        //    IsMoving = true;
+    //    DestroyFocus();
+    //}
+    //else if (movingUnitState == OPTIONS.Patrol)
+    //{
+    //    WayPoints.Add(standardOrder ? ActionPoint ?? gameObject.transform.position : MouseEvents.State.Position.AsWorldPointOnMap);
+    //    IsMoving = true;
 
-        //    if (!standardOrder)
-        //        UnlockFocus();
-        //    else
-        //        DestroyFocus();
-        //}
+    //    if (!standardOrder)
+    //        UnlockFocus();
+    //    else
+    //        DestroyFocus();
+    //}
     //}
 
     //internal override void MouseEvents_RIGHTCLICK(Ray qamRay, bool hold)
@@ -275,24 +275,25 @@ abstract public class MovingUnitOptions : UnitOptions
 
     internal override void DoStart()
     {
-        
+
         //foreach (int KeyValue in System.Enum.GetValues(typeof(OPTIONS)))
         //    if (!OptionalStatesOrder.ContainsKey(KeyValue))
         //        OptionalStatesOrder.Add(KeyValue, ((OPTIONS)KeyValue).ToString());
         RegisterInheridedOrderStateOptions(typeof(OPTIONS));
         standardYPosition = gameObject.transform.position.y;
-   //     MoveToPoint = gameObject.transform.position;
+        //     MoveToPoint = gameObject.transform.position;
         //unitstateint = 20;
         //movingUnitState = (OPTIONS)unitstateint;
         //UnitState = movingUnitState;
         IsMoving = true;
-   //     Movement = this.gameObject.GetComponent<Movability>();
+        //     Movement = this.gameObject.GetComponent<Movability>();
     }
 
     internal override void DoUpdate()
     {
-      //  Movement.DoUpdate();
+        //  Movement.DoUpdate();
 
     }
 
 }
+

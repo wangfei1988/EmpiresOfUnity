@@ -5,14 +5,8 @@ using System.Collections.Generic;
 public class GUIScript : MonoBehaviour
 {
     public static GUIScript main;
-    private static List<string> StaticTextLines = new List<string>();
-    public static MiniMapControll MiniMap;
-    public static void AddTextLine(string line)
-    {
-        if (StaticTextLines != null)
-            StaticTextLines.Insert(0,line);
-    }
 
+    public static MiniMapControll MiniMap;
     public static UnitGroup SelectedGroup;
     public int GroupCount;
     public RightClickMenu RightclickGUI;
@@ -23,7 +17,7 @@ public class GUIScript : MonoBehaviour
     public GUITexture SellectionGUITexture;
     public GameObject lastClickedUnit;
     private string textField = "";
-    public bool DebugText = false;
+    public static bool DebugText = false;
 
     private Scrolling scrolling;
 
@@ -159,16 +153,18 @@ public class GUIScript : MonoBehaviour
         MouseEvents.LEFTRELEASE += MouseEvents_LEFTRELEASE;
 
         UpdateManager.GUIUPDATE += UpdateManager_GUIUPDATE;
+
+        
     }
 
-    void UpdateManager_GUIUPDATE()
+    private void UpdateManager_GUIUPDATE()
     {
         mousePosition = null;
+        GetKeyboardInput();
         GroupCount = SelectedGroup.Count;
 
         UpdateRectangles();
-        if (DebugText)
-            guiText.text = TextUpdate();
+
     }
 
     private void UpdateRectangles()
@@ -179,6 +175,7 @@ public class GUIScript : MonoBehaviour
     
     void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
     {
+        
         if (MouseEvents.State.Position.IsOverMainMapArea)
         {
             if (hold)
@@ -222,19 +219,25 @@ public class GUIScript : MonoBehaviour
     {
         if (!hold)
         {
+            InGameText.AddTextLine("rightclick!!");
             if (MouseEvents.State.Position.IsOverMainMapArea)
             {
                 /* Try Focus the unit thats clicked, or release Focus if clicked on ground...*/
                 if (!FocusUnit())
                 {
                     if (MouseEvents.State.Position.AsObjectUnderCursor.layer == (int)EnumProvider.LAYERNAMES.Ignore_Raycast
-                    && UnitFocused
                     && !Focus.IsLocked)
                     {
-                        Component.Destroy(Focus.masterGameObject.GetComponent<Focus>());
+                        InGameText.AddTextLine("GuiScript ok !");
+                        if (UnitFocused)
+                            Component.Destroy(Focus.masterGameObject.GetComponent<Focus>());
                         if (SelectedGroup)
-                            ScriptableObject.DestroyObject(SelectedGroup);
-                        SelectedGroup = ScriptableObject.CreateInstance<UnitGroup>();
+                        {
+                            SelectedGroup.ResetGroup();
+                            //ScriptableObject.DestroyObject(SelectedGroup);
+                            //SelectedGroup = ScriptableObject.CreateInstance<UnitGroup>();
+                        }
+
                     }
                 }
             }
@@ -256,8 +259,9 @@ public class GUIScript : MonoBehaviour
             if (!UnitFocused && GroupCount == 0)
             {
                 if (SelectedGroup)
-                    ScriptableObject.DestroyObject(SelectedGroup);
-                SelectedGroup = ScriptableObject.CreateInstance<UnitGroup>();
+                    SelectedGroup.ResetGroup();
+                //    ScriptableObject.DestroyObject(SelectedGroup);
+                //SelectedGroup = ScriptableObject.CreateInstance<UnitGroup>();
                 MouseEvents.State.Position.AsObjectUnderCursor.AddComponent<Focus>();
                 //   UnitUnderCursor.gameObject.AddComponent<Focus>();
                 //UnitUnderCursor.UNIT.ShowLifebar();
@@ -294,43 +298,43 @@ public class GUIScript : MonoBehaviour
         SelectionRectangle = new Rect(SelectionRectangle.x, SelectionRectangle.y, 0f, 0f);
     }
 
-    void OnGUI()
-    {
-        //GUI.BeginGroup(new Rect((1718 / Scale.x), (24 / Scale.y), (180 / Scale.x), (100 / Scale.y)));
-        //if (GUI.Button(new Rect((0 / Scale.x), (0 / Scale.y), (180 / Scale.x), (40 / Scale.y)), guiContent[0])) { Application.Quit(); }
-        //if (GUI.Button(new Rect((0 / Scale.x), (60 / Scale.y), (80 / Scale.x), (40 / Scale.y)), guiContent[2])) { }
-        //if (GUI.Button(new Rect((100 / Scale.x), (60 / Scale.y), (80 / Scale.x), (40 / Scale.y)), guiContent[4])) { }
-        
-        GUI.BeginGroup(new Rect((1718*Scale.x ), (24*Scale.y ), (180 * Scale.x), (160 * Scale.y)));
-        if (GUI.Button(new Rect((0*Scale.x), (0*Scale.y), (180*Scale.x), (40*Scale.y)), MainGuiContent[0]) || Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.LoadLevel("MainMenu");
-        }
-        
-        if (GUI.Button(new Rect((0 * Scale.x), (60 * Scale.y), (80 * Scale.x), (40 * Scale.y)), MainGuiContent[1])) 
-        {
-            scrolling.SwitchScrollingStatus();
-        }
-        if (GUI.Button(new Rect((100 * Scale.x), (60 * Scale.y), (80 * Scale.x), (40 * Scale.y)), MainGuiContent[2])) 
-        {
-            //Camera.main.GetComponent<Cam>().SwitchCam();
-            MiniMap.SwitchActive();
-        }
+    //void OnGUI()
+    //{
 
-        if (GUI.Button(new Rect((0 * Scale.x), (120 * Scale.y), (47 * Scale.x), (40 * Scale.y)), MainGuiContent[3]))
-        {
-            Ground.Switch(0);
-        }
-        if (GUI.Button(new Rect((68 * Scale.x), (120 * Scale.y), (47 * Scale.x), (40 * Scale.y)), MainGuiContent[4]))
-        {
-            Ground.Switch(1);
-        }
-        if (GUI.Button(new Rect((134 * Scale.x), (120 * Scale.y), (47 * Scale.x), (40 * Scale.y)), MainGuiContent[5]))
-        {
-            Ground.Switch(2);
-        }
-        GUI.enabled = true;
-        GUI.EndGroup();
+    //    GUI.BeginGroup(new Rect((1718*Scale.x ), (24*Scale.y ), (180 * Scale.x), (160 * Scale.y)));
+    //    if (GUI.Button(new Rect((0*Scale.x), (0*Scale.y), (180*Scale.x), (40*Scale.y)), MainGuiContent[0]) || Input.GetKeyDown(KeyCode.Escape))
+    //    {
+    //        Application.LoadLevel("MainMenu");
+    //    }
+        
+    //    if (GUI.Button(new Rect((0 * Scale.x), (60 * Scale.y), (80 * Scale.x), (40 * Scale.y)), MainGuiContent[1])) 
+    //    {
+    //        scrolling.SwitchScrollingStatus();
+    //    }
+    //    if (GUI.Button(new Rect((100 * Scale.x), (60 * Scale.y), (80 * Scale.x), (40 * Scale.y)), MainGuiContent[2])) 
+    //    {
+    //        MiniMap.SwitchActive();
+    //    }
+
+    //    if (GUI.Button(new Rect((0 * Scale.x), (120 * Scale.y), (47 * Scale.x), (40 * Scale.y)), MainGuiContent[3]))
+    //    {
+    //        Ground.Switch(0);
+    //    }
+    //    if (GUI.Button(new Rect((68 * Scale.x), (120 * Scale.y), (47 * Scale.x), (40 * Scale.y)), MainGuiContent[4]))
+    //    {
+    //        Ground.Switch(1);
+    //    }
+    //    if (GUI.Button(new Rect((134 * Scale.x), (120 * Scale.y), (47 * Scale.x), (40 * Scale.y)), MainGuiContent[5]))
+    //    {
+    //        Ground.Switch(2);
+    //    }
+    //    GUI.enabled = true;
+    //    GUI.EndGroup();
+
+    //}
+
+    private void GetKeyboardInput()
+    {
         if (Input.GetKey(KeyCode.Alpha1))
         {
             Ground.Switch(0);
@@ -347,21 +351,20 @@ public class GUIScript : MonoBehaviour
         {
             MiniMap.SwitchActive();
         }
+        if (Input.GetKey(KeyCode.T))
+        {
+            InGameText.ShowDebugText = true;
+        }
+        if (Input.GetKey(KeyCode.U))
+        {
+            InGameText.ShowDebugText = false;
+            guiText.text = "";
+        }
         /* Space Key Switch Camera */
         if (Input.GetKeyDown(KeyCode.Space))
             Camera.main.GetComponent<Cam>().SwitchCam();
     }
 
-    private string TextUpdate()
-    {
-        textField = guiText.text;
-        int listlength = StaticTextLines.Count - 1;
-        for (int i = listlength; i >= 0; i--)
-        {
-            textField += StaticTextLines[i] + "\n";
-            if (i < 6) StaticTextLines.RemoveAt(i);
-        }
-        return textField;
-    }
+
 
 }

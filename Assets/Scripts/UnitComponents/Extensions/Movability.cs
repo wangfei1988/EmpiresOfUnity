@@ -20,23 +20,23 @@ public class Movability : UnitExtension
         Stay = EnumProvider.ORDERSLIST.Stay
     }
     public OPTIONS movingUnitState = OPTIONS.Stay;
- 
-	void Start()
+
+    void Start()
     {
         this.PflongeOnUnit(typeof(OPTIONS));
         MoveToPoint = this.gameObject.transform.position;
         WayPoints = new List<Vector3>();
         IsMoving = true;
         Speed = 1;
-	}
+    }
 
     public Pilot pilot
     {
-        get 
+        get
         {
             if (!this.GetComponent<Pilot>())
                 this.gameObject.AddComponent<Pilot>();
-            return this.GetComponent<Pilot>(); 
+            return this.GetComponent<Pilot>();
         }
 
     }
@@ -125,9 +125,7 @@ public class Movability : UnitExtension
                 {
                     Target = MouseEvents.State.Position.AsUnitUnderCursor.SetInteracting(this.gameObject);
                     MoveToPoint = Target.transform.position;
-                    IsMoving = true;
-
-
+                    IsGuarding=true;
                     UNIT.Options.UnlockAndDestroyFocus();
                 }
             }
@@ -177,7 +175,7 @@ public class Movability : UnitExtension
             else if (!__moving)
             {
                 Throttle = 1;
-                
+
             }
 
             __moving = value;
@@ -226,12 +224,12 @@ public class Movability : UnitExtension
     public Vector3 MoveToPoint
     {
         get { return UNIT.Options.MoveToPoint; }
-        set 
+        set
         {
             //if (UNIT.IsAnAirUnit)
             //    value.y = this.transform.parent.transform.position.y;
             //else
-                value.y = standardYPosition;
+            value.y = standardYPosition;
 
             UNIT.Options.MoveToPoint = value;
         }
@@ -244,7 +242,7 @@ public class Movability : UnitExtension
     public bool NormalizedRudder = true;
     public Vector3 MovingDirection
     {
-        get 
+        get
         {
             if (pilot)
             {
@@ -262,7 +260,7 @@ public class Movability : UnitExtension
             }
         }
         set
-        { 
+        {
             movingDirection = (value - this.gameObject.transform.position).normalized;
         }
     }
@@ -298,7 +296,7 @@ public class Movability : UnitExtension
                 if (kinematicFrames <= 0)
                 {
                     foreach (GameObject subUnitPart in UNIT.Options.ColliderContainingChildObjects)
-                            subUnitPart.rigidbody.isKinematic = false;
+                        subUnitPart.rigidbody.isKinematic = false;
                 }
             }
             else
@@ -337,7 +335,8 @@ public class Movability : UnitExtension
                         MoveToPoint = Target.transform.position;
                         gameObject.transform.position += (MovingDirection * Speed);
                     }
-                    else IsGroupLeader = true;
+                    else
+                        IsGroupLeader = true;
                 }
             }
         }
@@ -351,80 +350,109 @@ public class Movability : UnitExtension
     }
     private Vector3 attackDirection = Vector3.zero;
     private bool anflug = false;
+
+    private bool _isGuarding=false;
+    public bool IsGuarding
+    {
+        get
+        {
+            if (_isGuarding)
+                return IsMoving = _isGuarding;
+            return _isGuarding;
+        }
+        set
+        {
+            if (value)
+                IsMoving = true;
+            _isGuarding=value;
+        }
+    }
     private bool Move()
     {
-        
-        if (pilot) pilot.DoUpdate();
+        bool stopMoving=false;
+        if (pilot)
+            pilot.DoUpdate();
 
 
-       
-            if (movingUnitState == OPTIONS.Guard)
+
+        if (IsGuarding)
+        {
+            MoveToPoint = Target.transform.position;
+
+            if (Distance >= 20)
+                gameObject.transform.position += (MovingDirection * Speed);
+            else if (Distance <= 15)
+                gameObject.transform.position -= (MovingDirection * Speed);
+        }
+        else if (IsMovingAsGroup)
+        {
+            if (IsGroupLeader)
+                IsMovingAsGroup = false;
+            else
+                Distance = Vector3.Distance(gameObject.transform.position, MoveToPoint);
+        }
+        else if ((UNIT.Options.IsAttacking))
+        {
+            if (Distance >= (UNIT.AttackRange / 2))
             {
-                MoveToPoint = Target.transform.position;
-
-                if (Distance >= 20) gameObject.transform.position += (MovingDirection * Speed);
-                else if (Distance <= 15) gameObject.transform.position -= (MovingDirection * Speed);
+                this.gameObject.transform.position += MovingDirection * Speed;
+                anflug = false;
             }
-            else if (IsMovingAsGroup)
+            else
             {
-                if (IsGroupLeader) IsMovingAsGroup = false;
-                else Distance = Vector3.Distance(gameObject.transform.position, MoveToPoint);
-            }
-            else if ((UNIT.Options.IsAttacking))
-            {
-                if (Distance >= (UNIT.AttackRange / 2))
+                if (UNIT.IsAnAirUnit)
                 {
-                    this.gameObject.transform.position += MovingDirection * Speed;
-                    anflug = false;
-                }
-                else
-                {
-                    if (UNIT.IsAnAirUnit)
-                    {
-                        if(Distance<10)
+                    if (Distance<10)
                         if (!anflug)
                         {
                             attackDirection = MovingDirection * (Speed + 0.1f);
                             anflug = true;
                         }
-                        this.gameObject.transform.position += attackDirection;
+                    this.gameObject.transform.position += attackDirection;
 
-                    }
                 }
-                
+            }
 
-            }
-            else if (Distance >= 0.5f)
-            {
-                this.gameObject.transform.position += MovingDirection * Speed;
-            }
-            else
-            {
-                SetKinematic();
-                gameObject.transform.position = MoveToPoint;
 
-                if (IsGroupLeader) GUIScript.SelectedGroup.GroupState = UnitGroup.GROUPSTATE.Waiting;
-                if (movingUnitState == OPTIONS.Patrol)
-                {
-                    MoveToPoint = WayPoints[0];
-                    WayPoints.RemoveAt(0);
-                    WayPoints.Add(gameObject.transform.position);
-                    MoveToPoint = WayPoints[0];
-                    MovingDirection = MoveToPoint;
-                }
-        //        else { StayOrder(); }
+        }
+        else if (Distance >= 0.5f)
+        {
+            this.gameObject.transform.position += (MovingDirection * Speed);
+        }
+        else
+        {
+            SetKinematic();
+            gameObject.transform.position = MoveToPoint;
+            stopMoving=true;
+
+            if (IsGroupLeader)
+                GUIScript.SelectedGroup.GroupState = UnitGroup.GROUPSTATE.Waiting;
+
+            if (movingUnitState == OPTIONS.Patrol
+                && WayPoints.Count>0)
+            {
+                MoveToPoint = WayPoints[0];
+                WayPoints.RemoveAt(0);
+                WayPoints.Add(gameObject.transform.position);
+                MoveToPoint = WayPoints[0];
+                MovingDirection = MoveToPoint;
+                stopMoving=false;
             }
-        
+            //  else { StayOrder(); }
+        }
+
         KeepStandardYpsPosition();
 
-        return this.gameObject.transform.position != MoveToPoint;
+        return gameObject.transform.position != MoveToPoint;
+        ;
     }
 
     public override void DoUpdate()
     {
-         checkKinematic();
-         if (IsMoving) IsMoving = Move();
-         KeepStandardYpsPosition();
+        checkKinematic();
+        if (IsMoving)
+            IsMoving = Move();
+        KeepStandardYpsPosition();
     }
 
 }

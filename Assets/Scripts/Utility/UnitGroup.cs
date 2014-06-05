@@ -116,13 +116,13 @@ public class UnitGroup : ScriptableObject
         GroupState = GROUPSTATE.UnderConstruction;
         AddUnit(firstUnit);
     }
-    
+
     public void BeginGroupFill(FoE side)
     {
         if (this.GoodOrEvil != side)
             ResetGroup();
         GroupState = GROUPSTATE.UnderConstruction;
-        GoodOrEvil = side; 
+        GoodOrEvil = side;
     }
 
     public void EndGroupFill()
@@ -140,7 +140,7 @@ public class UnitGroup : ScriptableObject
 
     private void fillGroup(List<GameObject> units)
     {
-        for (int i = units.Count-1; i >= 0; i--) // changes i++ to i--
+        for (int i = units.Count-1;i >= 0;i--) // changes i++ to i--
         {
             if (units[i].GetComponent<UnitScript>().GoodOrEvil != this.GoodOrEvil)
                 units.RemoveAt(i);
@@ -163,7 +163,7 @@ public class UnitGroup : ScriptableObject
                 UNIT.gameObject.GetComponent<Movability>().IsGroupLeader = false;
                 UNIT.Options.FocussedLeftOnGround(member.transform.position);
             }
-            
+
         }
 
         MemberUnit.Clear();
@@ -175,8 +175,9 @@ public class UnitGroup : ScriptableObject
 
         MemberUnit[0].GetComponent<UnitScript>().Options.FocussedLeftOnGround(MouseEvents.State.Position.AsWorldPointOnMap);
 
-        for (int i = 1; i < MemberUnit.Count; i++)
-            MemberUnit[i].GetComponent<UnitOptions>().MoveAsGroup(MemberUnit[0]);
+        for (int i = 1;i < MemberUnit.Count;i++)
+            MemberUnit[i].GetComponent<UnitScript>().Options.FocussedLeftOnGround(MouseEvents.State.Position+(MemberUnit[0].transform.position-MemberUnit[i].transform.position));
+        //   MemberUnit[i].GetComponent<UnitOptions>().MoveAsGroup(MemberUnit[0]);
 
         GroupState = GROUPSTATE.Moving;
     }
@@ -205,19 +206,19 @@ public class UnitGroup : ScriptableObject
 
     void OnDestroy()
     {
-        ResetGroup();
-        //foreach (GameObject unit in MemberUnit)
-        //{
-        //    unit.GetComponent<UnitScript>().InteractingUnits.Clear();
-        //    unit.GetComponent<UnitScript>().HideLifebar();
-        //    if (!unit.GetComponent<UnitScript>().IsABuilding)
-        //    {
-        //        unit.GetComponent<Movability>().IsMovingAsGroup = false;
-        //        unit.GetComponent<Movability>().IsGroupLeader = false;
-        //    }
-        //}
-        //MemberUnit.Clear();
-            
+        // ResetGroup();
+        foreach (GameObject unit in MemberUnit)
+        {
+            unit.GetComponent<UnitScript>().InteractingUnits.Clear();
+            unit.GetComponent<UnitScript>().HideLifebar();
+            if (!unit.GetComponent<UnitScript>().IsABuilding)
+            {
+                unit.GetComponent<Movability>().IsMovingAsGroup = false;
+                unit.GetComponent<Movability>().IsGroupLeader = false;
+            }
+        }
+        MemberUnit.Clear();
+
     }
 
 }

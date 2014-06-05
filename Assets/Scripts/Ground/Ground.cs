@@ -4,9 +4,9 @@ using System.Collections;
 
 public class Ground : MonoBehaviour
 {
+    
     public delegate void LightSwitch(bool OnOff,int lightID);
     public static event LightSwitch SWITCH;
-
     private const int MINIMUM_NUMBER_OF_GROUNGS = 3;
 
     public static GameObject masterGround;

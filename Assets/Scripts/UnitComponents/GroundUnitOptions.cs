@@ -16,19 +16,19 @@ public class GroundUnitOptions : MovingUnitOptions
         Seek = EnumProvider.ORDERSLIST.Seek,
     }
 
-     private OPTIONS unitState;
-     protected override bool GotToDoPrimaryOrders
-     {
-         get
-         {
-             return !standardOrder;
-         }
-         set
-         {
-             
-         }
-     }
-   public override System.Enum UnitState
+    private OPTIONS unitState;
+    protected override bool GotToDoPrimaryOrders
+    {
+        get
+        {
+            return !standardOrder;
+        }
+        set
+        {
+
+        }
+    }
+    public override System.Enum UnitState
     {
         get
         {
@@ -38,107 +38,108 @@ public class GroundUnitOptions : MovingUnitOptions
         }
         set
         {
-             OPTIONS order;
-             if (System.Enum.IsDefined(typeof(OPTIONS), (OPTIONS)value))
-             {
-                 order = (OPTIONS)value;
-                 if (unitstateint != (int)order)
-                 {
+            OPTIONS order;
+            if (System.Enum.IsDefined(typeof(OPTIONS), (OPTIONS)value))
+            {
+                order = (OPTIONS)value;
+                if (unitstateint != (int)order)
+                {
 
-                     if (!standardOrder)
-                     {
-                         switch (order)
-                         {
-                             case OPTIONS.Attack:
-                                 {
-                                     this.GetComponent<Movability>().SetKinematic();
-                                     this.GetComponent<Movability>().WayPoints.Clear();
-                                     LockOnFocus();
-                                     break;
-                                 }
-                         }
-                     }
-                     unitstateint = (int)order;
-                     unitState = order;
-                 }
-             }
+                    if (!standardOrder)
+                    {
+                        switch (order)
+                        {
+                        case OPTIONS.Attack:
+                            {
+                                this.GetComponent<Movability>().SetKinematic();
+                                this.GetComponent<Movability>().WayPoints.Clear();
+                                LockOnFocus();
+                                break;
+                            }
+                        }
+                    }
+                    unitstateint = (int)order;
+                    unitState = order;
+                }
+            }
 
-             base.UnitState = value;
+            base.UnitState = value;
         }
     }
 
 
-   internal override void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
-   {
-       if (!hold)
-       {
-           if ((standardOrder) && (!gameObject.GetComponent<Focus>()))
-               gameObject.AddComponent<Focus>();
+    internal override void MouseEvents_LEFTCLICK(Ray qamRay, bool hold)
+    {
+        if (!hold)
+        {
+            if ((standardOrder) && (!gameObject.GetComponent<Focus>()))
+                gameObject.AddComponent<Focus>();
 
-           if (gameObject.GetComponent<Focus>())
-           {
-               if(!standardOrder)
-                   base.MouseEvents_LEFTCLICK(qamRay, hold);
+            if (gameObject.GetComponent<Focus>())
+            {
+                if (!standardOrder)
+                    base.MouseEvents_LEFTCLICK(qamRay, hold);
 
-               if (unitState == OPTIONS.Attack)
-               {
-                   UnitScript unit = MouseEvents.State.Position.AsUnitUnderCursor;
-                   if (unit != null)
-                   {
-                       if (UNIT.IsEnemy(unit.GoodOrEvil))
-                       {
-                           Target = MouseEvents.State.Position.AsUnitUnderCursor.gameObject;
-                           MoveToPoint = standardOrder ? ActionPoint ?? gameObject.transform.position : Target.transform.position;
-                           IsMoving = true;
-                           IsAttacking = true;
-                       }
-                       else if (UNIT.IsAllied(MouseEvents.State.Position.AsUnitUnderCursor.gameObject))
-                       {
-                           //Target = UnitUnderCursor.UNIT.SetInteracting(this.gameObject);
-                           //if (UnitUnderCursor.UNIT.Options.IsAttacking) Target = UnitUnderCursor.UNIT.Options.Target;
-                           //IsAttacking = true;
-                           //MoveAsGroup(UnitUnderCursor.gameObject);
-                       }
-                   }
+                if (unitState == OPTIONS.Attack)
+                {
+                    UnitScript unit = MouseEvents.State.Position.AsUnitUnderCursor;
+                    if (unit != null)
+                    {
+                        if (UNIT.IsEnemy(unit.GoodOrEvil))
+                        {
+                            Target = MouseEvents.State.Position.AsUnitUnderCursor.gameObject;
+                            MoveToPoint = standardOrder ? ActionPoint ?? gameObject.transform.position : Target.transform.position;
+                            IsMoving = true;
+                            IsAttacking = true;
+                        }
+                        else if (UNIT.IsAllied(MouseEvents.State.Position.AsUnitUnderCursor.gameObject))
+                        {
+                            //Target = UnitUnderCursor.UNIT.SetInteracting(this.gameObject);
+                            //if (UnitUnderCursor.UNIT.Options.IsAttacking) Target = UnitUnderCursor.UNIT.Options.Target;
+                            //IsAttacking = true;
+                            //MoveAsGroup(UnitUnderCursor.gameObject);
+                        }
+                    }
 
-                   UnlockFocus();
-               }
+                    UnlockFocus();
+                }
 
-               
-           }
-       }
 
-       base.MouseEvents_LEFTCLICK(qamRay, hold);
-   }
+            }
+        }
 
-   protected bool toDoToDo;
-   protected override bool ProcessAllOrders()
-   {
-       bool toDoToDo = base.ProcessAllOrders();
-       if (stillWorkDoDo)
-       {
-           if (ActionPoint != null) MouseEvents_LEFTCLICK(MouseEvents.State.Position.AsRay, false);
-       }
-       return toDoToDo;
-   }
+        base.MouseEvents_LEFTCLICK(qamRay, hold);
+    }
 
-   internal override void FocussedLeftOnEnemy(GameObject enemy)
-   {
-       standardOrder = true;
-       unitState = OPTIONS.Attack;
-       MoveToPoint = enemy.transform.position;
-       Target = enemy;
-       IsAttacking = true;
-       IsMoving = true;
-       standardOrder = false;
-   }
+    protected bool toDoToDo;
+    protected override bool ProcessAllOrders()
+    {
+        bool toDoToDo = base.ProcessAllOrders();
+        if (stillWorkDoDo)
+        {
+            if (ActionPoint != null)
+                MouseEvents_LEFTCLICK(MouseEvents.State.Position.AsRay, false);
+        }
+        return toDoToDo;
+    }
+
+    internal override void FocussedLeftOnEnemy(GameObject enemy)
+    {
+        standardOrder = true;
+        unitState = OPTIONS.Attack;
+        MoveToPoint = enemy.transform.position;
+        Target = enemy;
+        IsAttacking = true;
+        IsMoving = true;
+        standardOrder = false;
+    }
 
     private bool __attacking=false;
     public override bool IsAttacking
     {
         get
         {
-            if (__attacking) 
+            if (__attacking)
             {
                 if (Target == null)
                     __attacking = false;
@@ -149,15 +150,17 @@ public class GroundUnitOptions : MovingUnitOptions
                     UNIT.weapon.Reload();
                     UNIT.weapon.Engage(Target);
                 }
-                return IsMoving = true; 
+                return IsMoving = true;
             }
             else { return false; }
 
         }
         protected set
         {
-            if ((Target!=null)&&(unitState == OPTIONS.Attack)) __attacking = value;
-            else __attacking = false;
+            if ((Target!=null)&&(unitState == OPTIONS.Attack))
+                __attacking = value;
+            else
+                __attacking = false;
 
         }
     }
@@ -180,8 +183,8 @@ public class GroundUnitOptions : MovingUnitOptions
     {
         if (IsAttacking)
         {
-            if(Target)
-            MoveToPoint = Target.transform.position;
+            if (Target)
+                MoveToPoint = Target.transform.position;
 
         }
         base.DoUpdate();

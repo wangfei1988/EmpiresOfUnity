@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class GroundLayer : MonoBehaviour {
-
+    
     public Vector2 groundSize
     {
         get;
@@ -19,15 +19,20 @@ public class GroundLayer : MonoBehaviour {
         }
         set
         {
+            SetGroundVisible(value);
             this.light.enabled = lightSwitch = value;
         }
     }
     new public Light light;
     public Ground Control;
+    public bool IsATerrain
+    {
+        get { return this.gameObject.transform.GetChild(0).gameObject.GetComponent<TerrainCollider>(); }
+    }
 
     void Awake()
     {
-        if (this.gameObject.transform.GetChild(0).gameObject.GetComponent<TerrainCollider>())
+        if (this.IsATerrain)
             groundSize = new Vector2(this.gameObject.transform.GetChild(0).GetComponent<Terrain>().terrainData.size.x, this.gameObject.transform.GetChild(0).GetComponent<Terrain>().terrainData.size.z);
         else
             groundSize = new Vector2(this.gameObject.transform.GetChild(0).lossyScale.x, this.gameObject.transform.GetChild(0).lossyScale.z);
@@ -41,7 +46,13 @@ public class GroundLayer : MonoBehaviour {
         light = this.gameObject.transform.GetChild(0).transform.FindChild("GroundLight").light;
         //IsActiveGround = false;
 	}
-	
 
+    private void SetGroundVisible(bool value)
+    { 
+            if (this.IsATerrain)
+                this.gameObject.transform.GetChild(0).GetComponent<Terrain>().enabled = value;
+            else
+                this.gameObject.transform.GetChild(0).GetComponent<Renderer>().enabled = value;
+    }
 
 }

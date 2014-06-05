@@ -40,7 +40,7 @@ public class Attackability : UnitExtension
             UNIT.Options.Target = value;
         }
     }
-    
+
     protected override EnumProvider.ORDERSLIST on_UnitStateChange(EnumProvider.ORDERSLIST stateorder)
     {
         attackState = (OPTIONS)stateorder;
@@ -85,8 +85,8 @@ public class Attackability : UnitExtension
 
     void Start()
     {
-        
-     //   UNIT = this.gameObject.GetComponent<UnitScript>();
+
+        //   UNIT = this.gameObject.GetComponent<UnitScript>();
         PflongeOnUnit(typeof(OPTIONS));
         IsDefending = IsAttacking = IsConquering = false;
     }
@@ -95,17 +95,17 @@ public class Attackability : UnitExtension
     {
         get
         {
-          
-                if (UNIT.Options.Target == null)
-                    States[(byte)STATES.IsAttacking] = false;
-             
+
+            if (UNIT.Options.Target == null)
+                States[(byte)STATES.IsAttacking] = false;
+
             return States[(byte)STATES.IsAttacking];
         }
         internal set
         {
-            if ((UNIT.Options.Target != null) && ((OPTIONS)UNIT.Options.UnitState == OPTIONS.Attack)) 
+            if ((UNIT.Options.Target != null) && ((OPTIONS)UNIT.Options.UnitState == OPTIONS.Attack))
                 States[(byte)STATES.IsAttacking] = value;
-            else 
+            else
                 States[(byte)STATES.IsAttacking] = false;
         }
     }
@@ -115,7 +115,7 @@ public class Attackability : UnitExtension
         get { return States[(byte)STATES.IsDefending] = UNIT.Options.UnitState == (System.Enum)EnumProvider.ORDERSLIST.Guard; }
         set
         {
-            if(value)
+            if (value)
                 IsAttacking = !value;
             States[(byte)STATES.IsDefending] = value;
         }
@@ -128,8 +128,8 @@ public class Attackability : UnitExtension
     {
         get
         {
-            return States[(byte)STATES.IsConquering] = (( UNIT.Options.UnitState == (System.Enum)EnumProvider.ORDERSLIST.Seek)
-                                                       || UNIT.Options.UnitState == (System.Enum)EnumProvider.ORDERSLIST.Conquer); 
+            return States[(byte)STATES.IsConquering] = ((UNIT.Options.UnitState == (System.Enum)EnumProvider.ORDERSLIST.Seek)
+                                                       || UNIT.Options.UnitState == (System.Enum)EnumProvider.ORDERSLIST.Conquer);
         }
         set { States[(byte)STATES.IsConquering] = value; }
     }
@@ -162,7 +162,7 @@ public class Attackability : UnitExtension
                         }
                     }
 
-                    UNIT.Options.UnlockFocus();    
+                    UNIT.Options.UnlockFocus();
                 }
             }
             else if (attackState == OPTIONS.Conquer)
@@ -194,8 +194,10 @@ public class Attackability : UnitExtension
 
     public override void DoUpdate()
     {
-        if (IsAttacking) IsAttacking = Attack();
-        if (IsConquering) IsDefending = Conquere();
+        if (IsAttacking)
+            IsAttacking = Attack();
+        if (IsConquering)
+            IsDefending = Conquere();
     }
 
     private bool Attack()
@@ -228,7 +230,7 @@ public class Attackability : UnitExtension
                     UNIT.weapon.Reload();
                     UNIT.weapon.Engage(UNIT.Options.Target);
                 }
-                
+
             }
             return (bool)UNIT.Options.Target;
         }

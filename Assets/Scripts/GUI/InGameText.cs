@@ -1,0 +1,38 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class InGameText : MonoBehaviour 
+{
+    void Start()
+    {
+        UpdateManager.OnUpdate+=UpdateManager_OnUpdate;
+    }
+    private static List<string> StaticTextLines = new List<string>();
+    public int NumberOfLinesShown=4;
+    public static void AddTextLine(string line)
+    {
+      //  if (StaticTextLines != null)
+        StaticTextLines.Add(line);
+
+    }
+    public static bool ShowDebugText = false;
+    private string TextUpdate()
+    {
+        while (StaticTextLines.Count>=NumberOfLinesShown)
+            StaticTextLines.RemoveAt(0);
+
+        string textField = guiText.text;
+        for (int i = 0;i < StaticTextLines.Count;i++)
+        {
+            textField += ("\n" + StaticTextLines[i]);
+        }
+        return textField;
+    }
+
+    void UpdateManager_OnUpdate()
+    {
+        if (ShowDebugText)
+            guiText.text=TextUpdate();
+    }
+}

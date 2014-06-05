@@ -3,6 +3,7 @@ using System.Collections;
 
 public class SwitchLight : MonoBehaviour
 {
+    [SerializeField]
     private int lightSwitchID;
     
     void Start()
@@ -14,12 +15,18 @@ public class SwitchLight : MonoBehaviour
         lightSwitchID = id;
     }
 
-    void Ground_SWITCH(bool OnOff,int id)
+    void Ground_SWITCH(bool OnOff, int id)
     {
         if (lightSwitchID == id)
+        {
             this.light.enabled = OnOff;
+            this.transform.parent.gameObject.SetActive(OnOff);          
+        }
         else
+        {
             this.light.enabled = false;
+            this.transform.parent.gameObject.SetActive(false);
+        }
     }
 
 

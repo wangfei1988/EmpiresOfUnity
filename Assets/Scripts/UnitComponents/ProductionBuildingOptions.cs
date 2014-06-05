@@ -23,8 +23,10 @@ public class ProductionBuildingOptions : UnitOptions
         //UNIT.Settings = ScriptableObject.CreateInstance(typename) as BuildingSetting;
         fabrikatNames = new string[Fabrikat.Count + 1];
         foreach (int option in System.Enum.GetValues(typeof(OPTIONS)))
-            if (!OptionalStatesOrder.ContainsKey(option)) OptionalStatesOrder.Add(option, ((OPTIONS)option).ToString());
-        for (int i = 0; i < Fabrikat.Count; i++) fabrikatNames[i] = Fabrikat[i].name;
+            if (!OptionalStatesOrder.ContainsKey(option))
+                OptionalStatesOrder.Add(option, ((OPTIONS)option).ToString());
+        for (int i = 0;i < Fabrikat.Count;i++)
+            fabrikatNames[i] = Fabrikat[i].name;
         fabrikatNames[Fabrikat.Count] = "StopProduction";
         UnitState = unitState = OPTIONS.StopProduction;
         MoveToPoint = new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z - 5f);
@@ -43,7 +45,7 @@ public class ProductionBuildingOptions : UnitOptions
         }
     }
 
-  //  internal Vector3[] SpawnPoints = new Vector3[2];
+    //  internal Vector3[] SpawnPoints = new Vector3[2];
 
     internal override void DoUpdate()
     {
@@ -59,97 +61,97 @@ public class ProductionBuildingOptions : UnitOptions
         }
     }
 
-     private GameObject TheNewOne = null;
-     public OPTIONS unitState;
+    private GameObject TheNewOne = null;
+    public OPTIONS unitState;
 
-     string[] fabrikatNames;
-     public GameObject[] AnimationReleasePoints = new GameObject[2];
-     void OnFabrikatReleased()
-     {
+    string[] fabrikatNames;
+    public GameObject[] AnimationReleasePoints = new GameObject[2];
+    void OnFabrikatReleased()
+    {
 
-         if (this.GetComponent<Animator>())
-         {
-             this.GetComponent<Animator>().SetBool(CurrentFabrikat.name, false);
-             TheNewOne = (GameObject.Instantiate(CurrentFabrikat, AnimationReleasePoints[CurrentFabrikatNumber].GetComponent<ReleasePoint>().Release(), (CurrentFabrikat as GameObject).transform.rotation) as GameObject);
-         }
-         else
-             GameObject.Instantiate(Fabrikat[CurrentFabrikatNumber], MoveToPoint, (Fabrikat[CurrentFabrikatNumber] as GameObject).transform.rotation);
+        if (this.GetComponent<Animator>())
+        {
+            this.GetComponent<Animator>().SetBool(CurrentFabrikat.name, false);
+            TheNewOne = (GameObject.Instantiate(CurrentFabrikat, AnimationReleasePoints[CurrentFabrikatNumber].GetComponent<ReleasePoint>().Release(), (CurrentFabrikat as GameObject).transform.rotation) as GameObject);
+        }
+        else
+            GameObject.Instantiate(Fabrikat[CurrentFabrikatNumber], MoveToPoint, (Fabrikat[CurrentFabrikatNumber] as GameObject).transform.rotation);
 
-     }
+    }
 
-     private void ReleaseFabrikat(string fabrikatname)
-     {
-         if (this.GetComponent<Animator>())
-         {
-             this.GetComponent<Animator>().SetBool(fabrikatname, true);
-         }
-         else
-             OnFabrikatReleased();
-     }
+    private void ReleaseFabrikat(string fabrikatname)
+    {
+        if (this.GetComponent<Animator>())
+        {
+            this.GetComponent<Animator>().SetBool(fabrikatname, true);
+        }
+        else
+            OnFabrikatReleased();
+    }
 
-     internal override Object[] GetUnitsSIDEMenuObjects()
-     {
-         if (UNIT.weapon.HasArsenal)
-         {
+    internal override Object[] GetUnitsSIDEMenuObjects()
+    {
+        if (UNIT.weapon.HasArsenal)
+        {
 
-             Object[] objBuffer = new Object[Fabrikat.Count + UNIT.weapon.arsenal.Count];
-             int index = 0;
-             
-             // Add buildable Buildings
-             foreach (Object fabrikat in Fabrikat)
-                 objBuffer[index++] = fabrikat;
+            Object[] objBuffer = new Object[Fabrikat.Count + UNIT.weapon.arsenal.Count];
+            int index = 0;
 
-             // Add Weapon Arsenal
-             for (int i = 0; i < UNIT.weapon.arsenal.Count; i++)
-                 objBuffer[index + i] = UNIT.weapon.arsenal[i];
+            // Add buildable Buildings
+            foreach (Object fabrikat in Fabrikat)
+                objBuffer[index++] = fabrikat;
 
-             return objBuffer;
-         }
-         return Fabrikat.ToArray();
-     }
+            // Add Weapon Arsenal
+            for (int i = 0;i < UNIT.weapon.arsenal.Count;i++)
+                objBuffer[index + i] = UNIT.weapon.arsenal[i];
 
-     public override void GiveOrder(int orderNumber)
-     {
-         int i = -1;
-         foreach (var entry in OptionalStatesOrder)
-         {
-             if (++i == orderNumber)
-             {
-                 UnitState = (OPTIONS)entry.Key;
-                 return;
-             }
-         }
-     }
-     public override void SetSIDEOption(int SIDEoptionNumber)
-     {
-         CurrentFabrikatNumber = SIDEoptionNumber;
-         UnitState = (OPTIONS)0;
+            return objBuffer;
+        }
+        return Fabrikat.ToArray();
+    }
 
-     }
+    public override void GiveOrder(int orderNumber)
+    {
+        int i = -1;
+        foreach (var entry in OptionalStatesOrder)
+        {
+            if (++i == orderNumber)
+            {
+                UnitState = (OPTIONS)entry.Key;
+                return;
+            }
+        }
+    }
+    public override void SetSIDEOption(int SIDEoptionNumber)
+    {
+        CurrentFabrikatNumber = SIDEoptionNumber;
+        UnitState = (OPTIONS)0;
 
-     internal override void SetSIDEObject(Object returned)
-     {
-         if (returned is WeaponObject)
-             UNIT.weapon.prefabSlot = returned as WeaponObject;
-         else
-         {
-             CurrentFabrikat = returned;
-             CurrentFabrikatNumber = Fabrikat.IndexOf(CurrentFabrikat);
-             UnitState = EnumProvider.ORDERSLIST.Produce;
-         }
-     }
+    }
 
-     protected override bool GotToDoPrimaryOrders
-     {
-         get
-         {
-             return !standardOrder;
-         }
-         set
-         {
+    internal override void SetSIDEObject(Object returned)
+    {
+        if (returned is WeaponObject)
+            UNIT.weapon.prefabSlot = returned as WeaponObject;
+        else
+        {
+            CurrentFabrikat = returned;
+            CurrentFabrikatNumber = Fabrikat.IndexOf(CurrentFabrikat);
+            UnitState = EnumProvider.ORDERSLIST.Produce;
+        }
+    }
 
-         }
-     }
+    protected override bool GotToDoPrimaryOrders
+    {
+        get
+        {
+            return !standardOrder;
+        }
+        set
+        {
+
+        }
+    }
 
     public override System.Enum UnitState
     {
@@ -165,27 +167,27 @@ public class ProductionBuildingOptions : UnitOptions
             unitState = (OPTIONS)value;
             if (System.Enum.IsDefined(typeof(OPTIONS), unitState))
             {
-                
+
                 switch (unitState)
                 {
-                    case OPTIONS.Produce:
-                        {
-                            if(UNIT.unitType==UnitScript.UNITTYPE.Airport)
+                case OPTIONS.Produce:
+                    {
+                        if (UNIT.unitType==UnitScript.UNITTYPE.Airport)
                             ReleaseFabrikat(CurrentFabrikat.name);
-                            
-                            // TODO Let they Spawn within the Building and then let they so to "MoveToPoint"
-                            break;
-                        }
-                    case OPTIONS.StopProduction:
-                        {
-                            break;
-                        }
-                    case OPTIONS.MoveUnitsTo:
-                        {
-                            LockOnFocus();
-                            MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
-                            break;
-                        }
+
+                        // TODO Let they Spawn within the Building and then let they so to "MoveToPoint"
+                        break;
+                    }
+                case OPTIONS.StopProduction:
+                    {
+                        break;
+                    }
+                case OPTIONS.MoveUnitsTo:
+                    {
+                        LockOnFocus();
+                        MouseEvents.LEFTCLICK += MouseEvents_LEFTCLICK;
+                        break;
+                    }
                 }
                 baseUnitState = (EnumProvider.ORDERSLIST)value;
             }
@@ -199,17 +201,17 @@ public class ProductionBuildingOptions : UnitOptions
         MouseEvents.LEFTCLICK -= MouseEvents_LEFTCLICK;
         UnlockFocus();
     }
-   
+
     internal override void FocussedLeftOnGround(Vector3 worldPoint)
     {
         MoveToPoint = MouseEvents.State.Position.AsWorldPointOnMap;
-     //   UnlockAndDestroyFocus();
+        //   UnlockAndDestroyFocus();
         //DestroyFocus();
     }
 
     internal override void MoveAsGroup(GameObject leader)
     {
-        
+
     }
 
     internal override void FocussedLeftOnEnemy(GameObject enemy)
@@ -233,4 +235,6 @@ public class ProductionBuildingOptions : UnitOptions
     public List<Object> Fabrikat;
 
 }
+
+
 

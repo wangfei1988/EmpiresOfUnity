@@ -110,6 +110,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400012}
   - 108: {fileID: 10800002}
+  - 114: {fileID: 11400018}
   m_Layer: 2
   m_Name: GroundLight
   m_TagString: Ground
@@ -194,6 +195,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400022}
   - 108: {fileID: 10800004}
+  - 114: {fileID: 11400020}
   m_Layer: 0
   m_Name: GroundLight
   m_TagString: Untagged
@@ -219,7 +221,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_LocalRotation: {x: .408217937, y: -.234569728, z: .109381661, w: .875426114}
+  m_LocalRotation: {x: .458133399, y: .281308979, z: .0198503304, w: .842962086}
   m_LocalPosition: {x: 268.408234, y: 161.330353, z: 245.310608}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -450,7 +452,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.10000002
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -553,11 +555,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55f54deb15c8b934caa563d91eb398cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e831fa45dcdff84aa2301f9902654e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 6500000}
-  lightSwitch: 0
+  lightSwitch: 1
   light: {fileID: 10800002}
   Control: {fileID: 11400014}
 --- !u!114 &11400002
@@ -568,9 +570,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c446942b9f3580d4f9f000c0a79b2a3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8dab026ad72c0894782c0413a708aff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightSwitchID: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -600,11 +603,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55f54deb15c8b934caa563d91eb398cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e831fa45dcdff84aa2301f9902654e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 15400000}
-  lightSwitch: 0
+  lightSwitch: 1
   light: {fileID: 10800004}
   Control: {fileID: 11400014}
 --- !u!114 &11400008
@@ -615,7 +618,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55f54deb15c8b934caa563d91eb398cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e831fa45dcdff84aa2301f9902654e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 15400002}
@@ -677,7 +680,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7e3979b9d742d14982ae9d446af2dbf, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d19c1aab1a32994ab7e626a7403df23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GroundPreFab: {fileID: 100000}
@@ -708,6 +711,30 @@ MonoBehaviour:
   m_LightmapSize: 1024
   m_DrawTreesAndFoliage: 1
   m_MaterialTemplate: {fileID: 0}
+--- !u!114 &11400018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dab026ad72c0894782c0413a708aff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSwitchID: 0
+--- !u!114 &11400020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dab026ad72c0894782c0413a708aff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSwitchID: 0
 --- !u!154 &15400000
 TerrainCollider:
   m_ObjectHideFlags: 1

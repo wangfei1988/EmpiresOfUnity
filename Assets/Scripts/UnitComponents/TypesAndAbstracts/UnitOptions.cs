@@ -38,7 +38,7 @@ abstract public class UnitOptions : MonoBehaviour
     public bool TargetUnderAttack
     {
         get { return CheckedAllert = __targetunderattack; }
-        set 
+        set
         {
             if (value)
             {
@@ -99,14 +99,14 @@ abstract public class UnitOptions : MonoBehaviour
     { friend.AddComponent<Focus>(); }
     virtual internal void FocussedRightOnAllied(GameObject friend)
     { friend.AddComponent<Focus>(); }
-    
+
     //- stateorders:
     [SerializeField]
     protected EnumProvider.ORDERSLIST baseUnitState;
     virtual public System.Enum UnitState
     {
         get { return baseUnitState; }
-        set 
+        set
         {
             EnumProvider.ORDERSLIST order = (EnumProvider.ORDERSLIST)value;
             if ((PRIMARY_STATE_CHANGE!=null))
@@ -123,7 +123,7 @@ abstract public class UnitOptions : MonoBehaviour
     virtual internal string[] GetUnitsMenuOptions()
     {
         string[] buffer = new string[optionalstateIDs.Length];
-        for (int i = 0; i < optionalstateIDs.Length; i++)
+        for (int i = 0;i < optionalstateIDs.Length;i++)
             buffer[i] = OptionalStatesOrder[optionalstateIDs[i]];
 
         return buffer;
@@ -137,11 +137,12 @@ abstract public class UnitOptions : MonoBehaviour
         if (UNIT.weapon.HasArsenal)
         {
             Object[] objectArray = new Object[UNIT.weapon.arsenal];
-            for (int i = 0; i < UNIT.weapon.arsenal; i++)
+            for (int i = 0;i < UNIT.weapon.arsenal;i++)
                 objectArray[i] = UNIT.weapon.arsenal[i];
             return objectArray;
         }
-        else return new Object[0];
+        else
+            return new Object[0];
     }
     virtual public void GiveOrder(int orderNumber)
     {
@@ -179,7 +180,7 @@ abstract public class UnitOptions : MonoBehaviour
     protected bool CheckedAllert
     {
         get { return IsUnderAttack | TargetUnderAttack; }
-        set 
+        set
         {
             if (value)
             {
@@ -190,7 +191,7 @@ abstract public class UnitOptions : MonoBehaviour
     protected virtual bool ProcessAllOrders()
     {
         ActionPoint = null;
-        if((!CheckedAllert)&&(!GotToDoPrimaryOrders))
+        if ((!CheckedAllert)&&(!GotToDoPrimaryOrders))
         {
             while (!OrdersInMind.AllDone)
             {
@@ -198,25 +199,25 @@ abstract public class UnitOptions : MonoBehaviour
                 UnitState = OrdersInMind.Next().order;
                 switch ((int)((EnumProvider.ORDERSLIST)UnitState))
                 {
-                    case 0:  //---------------------------  OneClick Vector3 Orders
-                    case 1:
-                    case 2:
-                    case 3:
-                        {
-                            ActionPoint = OrdersInMind.Current().Vector;
-                            CurrentSIDEMENUoption = OrdersInMind.Current().data;
-                            break;
-                        }
-                    case 10: //---------------------------  MultiRightclick Orders;
+                case 0:  //---------------------------  OneClick Vector3 Orders
+                case 1:
+                case 2:
+                case 3:
+                    {
+                        ActionPoint = OrdersInMind.Current().Vector;
+                        CurrentSIDEMENUoption = OrdersInMind.Current().data;
+                        break;
+                    }
+                case 10: //---------------------------  MultiRightclick Orders;
 
-                        break;
-                    case 20:  //--------------------------  Other Unit Click Orders;
-                        break;
+                    break;
+                case 20:  //--------------------------  Other Unit Click Orders;
+                    break;
                 }
             }
             //for (int i = ChainedOrders.Count-1; i >=0; i--)
             //{
-                
+
             //    standardOrder = true;
             //    UnitState = ChainedOrders[i].order;
             //    switch ((int)((EnumProvider.ORDERSLIST)UnitState))
@@ -237,7 +238,7 @@ abstract public class UnitOptions : MonoBehaviour
             //            break;
             //    }
             //    ChainedOrders.RemoveAt(i);
- 
+
             //}
             GotToDoWhatGotToDo = true;
         }
@@ -261,7 +262,7 @@ abstract public class UnitOptions : MonoBehaviour
 
     abstract internal void MoveAsGroup(GameObject leader);
 
-    
+
     public GameObject Target;
 
 
@@ -274,7 +275,7 @@ abstract public class UnitOptions : MonoBehaviour
     protected int[] optionalstateIDs;
     [SerializeField]
     protected EnumProvider.ORDERSLIST[] optionalStates;
-    
+
     void Start()
     {
         DoStart();
@@ -302,7 +303,7 @@ abstract public class UnitOptions : MonoBehaviour
         DoUpdate();
 
         foreach (UnitComponent component in PluggedStateExtendingComponents.Values)
-            component.DoUpdate();  
+            component.DoUpdate();
     }
 
     [SerializeField]
@@ -339,7 +340,7 @@ abstract public class UnitOptions : MonoBehaviour
                     Component.Destroy(component);
                     return UCcompID;
                 }
-            } 
+            }
         }
         else
         {
@@ -361,17 +362,17 @@ abstract public class UnitOptions : MonoBehaviour
             if (add)
             {
                 UCcompID = PluggedStateExtendingComponents.Count;
-                PluggedStateExtendingComponents.Add(UCcompID,component);
+                PluggedStateExtendingComponents.Add(UCcompID, component);
 
                 optionalstateIDs = RefreshStatelist();
             }
         }
-        return UCcompID; 
+        return UCcompID;
     }
-    public void UnRegister(int componentID,System.Enum[] extensions)
+    public void UnRegister(int componentID, System.Enum[] extensions)
     {
         bool NeedRefreshList = true;
-        for (int i = extensions.Length-1; i >= 0 ; i--)
+        for (int i = extensions.Length-1;i >= 0;i--)
         {
             EnumProvider.ORDERSLIST KEY = (EnumProvider.ORDERSLIST)extensions[i];
             //string VALUE = System.Enum.GetName(typeof(EnumProvider.ORDERSLIST), extensions[i]);
@@ -387,13 +388,13 @@ abstract public class UnitOptions : MonoBehaviour
                 }
             }
             else
-                NeedRefreshList = false;  
+                NeedRefreshList = false;
         }
         if (NeedRefreshList)
             optionalstateIDs = RefreshStatelist();
         if (componentID >= 0)
             PluggedStateExtendingComponents.Remove(componentID);
-        
+
     }
 
 
@@ -423,7 +424,8 @@ abstract public class UnitOptions : MonoBehaviour
 
             return gameObject.GetComponent<Focus>().Lock();
         }
-        else return true;
+        else
+            return true;
     }
 
     public bool UnlockFocus()
@@ -432,7 +434,8 @@ abstract public class UnitOptions : MonoBehaviour
         {
             return GetComponent<Focus>().Unlock(this.gameObject);
         }
-        else return true;
+        else
+            return true;
     }
     public bool UnlockAndDestroyFocus()
     {
@@ -441,7 +444,8 @@ abstract public class UnitOptions : MonoBehaviour
             Component.Destroy(this.gameObject.GetComponent<Focus>());
             return true;
         }
-        else return false;
+        else
+            return false;
     }
 
 

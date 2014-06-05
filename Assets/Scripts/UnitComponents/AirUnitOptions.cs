@@ -19,14 +19,15 @@ public class AirUnitOptions : UnitOptions
         movement = this.GetComponent<Movability>();
         this.gameObject.GetComponent<Pilot>().mySpace = this.gameObject.GetComponent<SphereCollider>();
         GetComponent<Pilot>().Controlls = movement;
-      //  GetComponent<SphereCollider>().isTrigger = true;
+        //  GetComponent<SphereCollider>().isTrigger = true;
         //movement.WayPoints.Add(new Vector3(120, 0, 25));
         //movement.WayPoints.Add(new Vector3(70, 0, -25));
     }
     internal override void DoUpdate()
     {
         fdObj.GetComponent<FaceDirection>().IsActive = movement.IsMoving;
-        if (IsFlying) IsFlying = Flight();
+        if (IsFlying)
+            IsFlying = Flight();
     }
     private bool _isflying = false;
     public bool IsFlying
@@ -54,13 +55,14 @@ public class AirUnitOptions : UnitOptions
                     movement.Throttle += 0.01f;
                     return true;
                 }
-                else return false;
+                else
+                    return false;
             }
 
             else
                 return base.IsAttacking;
 
-            
+
         }
         protected set
         {
@@ -162,7 +164,7 @@ public class AirUnitOptions : UnitOptions
                         break;
                     }
                 }
-                
+
             }
             base.UnitState = value;
         }
@@ -175,26 +177,26 @@ public class AirUnitOptions : UnitOptions
         {
             switch (airUnitState)
             {
-                    case OPTIONS.MoveTo:
-                        MoveToPoint = MouseEvents.State.Position;
-                        Vector3 point = Random.onUnitSphere * (turnDistance / 2);
-                        movement.WayPoints.Add((this.transform.position + point));
-                        movement.WayPoints.Add((this.transform.position - point));
-                        movement.IsMoving = true;
-                        UnlockFocus();
-                        break;
-                    case OPTIONS.LandOnGround:
-                        movement.WayPoints.Clear();
-                        MoveToPoint = MouseEvents.State.Position;
-                        movement.IsMoving = true;
-                        UnlockFocus();
-                        break;
-                    case OPTIONS.Patrol:
-                        movement.WayPoints.Clear();
-                        movement.WayPoints.Add(MouseEvents.State.Position);
-                        movement.IsMoving = true;
-                        UnlockFocus();
-                        break;
+            case OPTIONS.MoveTo:
+                MoveToPoint = MouseEvents.State.Position;
+                Vector3 point = Random.onUnitSphere * (turnDistance / 2);
+                movement.WayPoints.Add((this.transform.position + point));
+                movement.WayPoints.Add((this.transform.position - point));
+                movement.IsMoving = true;
+                UnlockFocus();
+                break;
+            case OPTIONS.LandOnGround:
+                movement.WayPoints.Clear();
+                MoveToPoint = MouseEvents.State.Position;
+                movement.IsMoving = true;
+                UnlockFocus();
+                break;
+            case OPTIONS.Patrol:
+                movement.WayPoints.Clear();
+                movement.WayPoints.Add(MouseEvents.State.Position);
+                movement.IsMoving = true;
+                UnlockFocus();
+                break;
             }
         }
         base.MouseEvents_LEFTCLICK(qamRay, hold);
@@ -228,8 +230,8 @@ public class AirUnitOptions : UnitOptions
                 movement.IsMoving = true;
             }
             IsAttacking = true;
-        //    GetComponent<Movability>().IsMoving = true;
-       //     airUnitState = (OPTIONS)EnumProvider.ORDERSLIST.Attack;
+            //    GetComponent<Movability>().IsMoving = true;
+            //     airUnitState = (OPTIONS)EnumProvider.ORDERSLIST.Attack;
             standardOrder = false;
         }
     }
@@ -239,13 +241,13 @@ public class AirUnitOptions : UnitOptions
         standardOrder = true;
         //   IsMovingAsGroup = true;
         movement.SetKinematic();
-        
+
         movement.MoveToPoint = worldPoint;
         movement.MovingDirection = worldPoint;
         //     gameObject.transform.position += (Movement.MovingDirection * Movement.Speed);
         IsAttacking = false;
         Target = null;
-        
+
         movement.IsMoving = true;
         UnitState = OPTIONS.MoveTo;
         standardOrder = false;
@@ -253,6 +255,7 @@ public class AirUnitOptions : UnitOptions
 
     internal override void MoveAsGroup(GameObject leader)
     {
-        
+
     }
 }
+
