@@ -191,7 +191,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 120.434174, y: -1.52587891e-05, z: -7.45143127}
+  m_LocalPosition: {x: 115.283745, y: -10.8599997, z: -36.6018219}
   m_LocalScale: {x: .899999976, y: .899999976, z: .899999976}
   m_Children:
   - {fileID: 400012}
@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e425f0cf7c0cc4a94bf78b341d4315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UNIT: {fileID: 0}
+  UNIT: {fileID: 11400000}
   prefabSlot: {fileID: 11400008, guid: e4d0eb844cac7ab45961c1fa3685b6e8, type: 2}
   hasArsenal: 1
   NumberOfRockets: 100
@@ -495,9 +495,7 @@ MonoBehaviour:
   - {fileID: 100004}
   - {fileID: 100002}
   unitState: 101
-  AnimationReleasePoints:
-  - {fileID: 0}
-  - {fileID: 0}
+  AnimationReleasePoints: []
   CurrentFabrikatNumber: 1
   CurrentFabrikat: {fileID: 100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
   typename: MainBuilding
@@ -521,8 +519,8 @@ MonoBehaviour:
   isActive: 1
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
-  GrowingTime: 30
-  startGrowing: 0
+  GrowingTime: 15
+  startGrowing: 1
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -548,12 +546,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774c60f133e0e704d81259ff9e12f9b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UNIT: {fileID: 0}
-  FireAtWill: 0
-  _battle: 0
+  UNIT: {fileID: 11400000}
+  FireAtWill: 1
+  _battle: 1
   weapon: {fileID: 11400004}
   MySpace: {fileID: 13500000}
-  BattleState: 20
+  BattleState: 30
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
