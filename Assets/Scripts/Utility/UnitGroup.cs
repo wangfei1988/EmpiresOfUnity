@@ -175,8 +175,9 @@ public class UnitGroup : ScriptableObject
 
         MemberUnit[0].GetComponent<UnitScript>().Options.FocussedLeftOnGround(MouseEvents.State.Position.AsWorldPointOnMap);
 
-        for (int i = 1; i < MemberUnit.Count; i++)
-            MemberUnit[i].GetComponent<UnitOptions>().MoveAsGroup(MemberUnit[0]);
+        for (int i = 1;i < MemberUnit.Count;i++)
+            MemberUnit[i].GetComponent<UnitScript>().Options.FocussedLeftOnGround(MouseEvents.State.Position+(MemberUnit[0].transform.position-MemberUnit[i].transform.position));
+         //   MemberUnit[i].GetComponent<UnitOptions>().MoveAsGroup(MemberUnit[0]);
 
         GroupState = GROUPSTATE.Moving;
     }
@@ -205,18 +206,18 @@ public class UnitGroup : ScriptableObject
 
     void OnDestroy()
     {
-        ResetGroup();
-        //foreach (GameObject unit in MemberUnit)
-        //{
-        //    unit.GetComponent<UnitScript>().InteractingUnits.Clear();
-        //    unit.GetComponent<UnitScript>().HideLifebar();
-        //    if (!unit.GetComponent<UnitScript>().IsABuilding)
-        //    {
-        //        unit.GetComponent<Movability>().IsMovingAsGroup = false;
-        //        unit.GetComponent<Movability>().IsGroupLeader = false;
-        //    }
-        //}
-        //MemberUnit.Clear();
+       // ResetGroup();
+        foreach (GameObject unit in MemberUnit)
+        {
+            unit.GetComponent<UnitScript>().InteractingUnits.Clear();
+            unit.GetComponent<UnitScript>().HideLifebar();
+            if (!unit.GetComponent<UnitScript>().IsABuilding)
+            {
+                unit.GetComponent<Movability>().IsMovingAsGroup = false;
+                unit.GetComponent<Movability>().IsGroupLeader = false;
+            }
+        }
+        MemberUnit.Clear();
             
     }
 

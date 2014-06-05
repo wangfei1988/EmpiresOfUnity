@@ -44,7 +44,7 @@ abstract public class MovingUnitOptions : UnitOptions
         IsAttacking = false;
         Target = null;
         IsMoving = true;
-        unitstateint = (int)OPTIONS.MoveTo;
+        UnitState = OPTIONS.MoveTo;
         standardOrder = false;
     }
 

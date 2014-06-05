@@ -85,7 +85,8 @@ public class AnimatedCursor : MonoBehaviour
     {
         mainGUI = this.GetComponent<GUIScript>();
         this.CurrentCursor = CURSOR.STANDARD;
-        UpdateManager.OnUpdate += DoUpdate;
+    //    UpdateManager.OnUpdate += DoUpdate;
+        UpdateManager.OnMouseUpdate += DoUpdate;
     }
 
     void DoUpdate()
@@ -129,17 +130,20 @@ public class AnimatedCursor : MonoBehaviour
            
             if (MouseEvents.State.Position.AsUnitUnderCursor)
             {
-                this.guiText.text = UnitUnderCursor.gameObject.name + " at: " + MouseEvents.State.Position.AsWorldPointOnMap.ToString() + "\nID: " + UnitUnderCursor.gameObject.GetInstanceID().ToString();
+                if (InGameText.ShowDebugText)
+                    this.guiText.text = UnitUnderCursor.gameObject.name + " at: " + MouseEvents.State.Position.AsWorldPointOnMap.ToString() + "  - ID: " + UnitUnderCursor.gameObject.GetInstanceID().ToString();
                 return CURSOR.OVER_CLICKABLE_OBJECT;
             }
             else
             {
-                this.guiText.text = MouseEvents.State.Position.AsWorldPointOnMap.ToString();
+                if (InGameText.ShowDebugText)
+                    this.guiText.text = MouseEvents.State.Position.AsWorldPointOnMap.ToString();
             }
         }
         else
         {
-            this.guiText.text = "";
+            if (InGameText.ShowDebugText)
+                this.guiText.text = "";
         }
         return CURSOR.STANDARD;
     }
