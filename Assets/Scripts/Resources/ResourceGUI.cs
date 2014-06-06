@@ -24,9 +24,9 @@ public class ResourceGUI : MonoBehaviour
         // TODO Only Update these Values at ResolutionChange
         left = Screen.width / size.x * 30f;
         top = Screen.height / size.y * 30f;
-        leftPlus = Screen.width / size.y * 75f;
-        width = Screen.width / size.x * 130f;
-        height = Screen.width / size.x * 50f;
+        leftPlus = Screen.width / size.x * 215f;
+        width = Screen.width / size.x * 200f;
+        height = Screen.width / size.x * 70f;
 
         GUI.Box(new Rect(left + leftPlus * 0, top, width, height), new GUIContent(" " + ResourceManager.GetResourceCount(ResourceManager.Resource.NANITEN), icon_nanite));
         GUI.Box(new Rect(left + leftPlus * 1, top, width, height), new GUIContent(" " + ResourceManager.GetResourceCount(ResourceManager.Resource.MATTER), icon_matter));
