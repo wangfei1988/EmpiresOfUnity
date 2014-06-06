@@ -168,15 +168,22 @@ public class UnitGroup : ScriptableObject
 
         MemberUnit.Clear();
     }
-
+    private const float GRID = 10f;
     public void GroupedLeftOnGround()
     {
-        //Debug.Log(MemberUnit.Count);
 
-        MemberUnit[0].GetComponent<UnitScript>().Options.FocussedLeftOnGround(MouseEvents.State.Position.AsWorldPointOnMap);
+        Vector3 click = MouseEvents.State.Position.AsWorldPointOnMap;
+        MemberUnit[0].GetComponent<UnitScript>().Options.FocussedLeftOnGround(click);
 
         for (int i = 1;i < MemberUnit.Count;i++)
-            MemberUnit[i].GetComponent<UnitScript>().Options.FocussedLeftOnGround(MouseEvents.State.Position+(MemberUnit[0].transform.position-MemberUnit[i].transform.position));
+        {
+            Vector3 distanceVector;
+        //    float distance = Vector3.Distance(MemberUnit[i].transform.position , MemberUnit[0].transform.position);
+            distanceVector = MemberUnit[i].transform.position - MemberUnit[0].transform.position;
+            InGameText.AddTextLine(distanceVector.ToString());
+       //     distanceVector = (distance>15)? distanceVector*0.66f : (distance<15)? distanceVector*2f : distanceVector;
+            MemberUnit[i].GetComponent<UnitScript>().Options.FocussedLeftOnGround(click+distanceVector);
+        }
         //   MemberUnit[i].GetComponent<UnitOptions>().MoveAsGroup(MemberUnit[0]);
 
         GroupState = GROUPSTATE.Moving;

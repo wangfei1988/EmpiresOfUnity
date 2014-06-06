@@ -34,9 +34,6 @@ public class ProductionBuildingOptions : UnitOptions
         CurrentFabrikat = Fabrikat[CurrentFabrikatNumber];
         if (UNIT.unitType==UnitScript.UNITTYPE.Airport)
         {
-            //SpawnPoints[0] = new Vector3(gameObject.transform.position.x-92.35f, 6.3f, gameObject.transform.position.z-8.413759f);
-            //SpawnPoints[1] = new Vector3(gameObject.transform.position.x-2.9717f, -0.15f, gameObject.transform.position.z -15.628006f);
-
             AnimationReleasePoints = new GameObject[2];
             AnimationReleasePoints[0]=this.gameObject.GetComponentsInChildren<ReleasePoint>()[0].gameObject;
             AnimationReleasePoints[1]=this.gameObject.GetComponentsInChildren<ReleasePoint>()[1].gameObject;
@@ -65,7 +62,7 @@ public class ProductionBuildingOptions : UnitOptions
     public OPTIONS unitState;
 
     string[] fabrikatNames;
-    public GameObject[] AnimationReleasePoints = new GameObject[2];
+    public GameObject[] AnimationReleasePoints;
     void OnFabrikatReleased()
     {
 

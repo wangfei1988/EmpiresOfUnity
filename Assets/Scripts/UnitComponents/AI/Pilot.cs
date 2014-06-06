@@ -13,6 +13,10 @@ public class Pilot : UnitComponent
         get { return "Pilot"; }
     }
     private const float MIN_LOOKAHEAD = 4f;
+    private float Min_LookAhead
+    {
+        get { return MIN_LOOKAHEAD * Throttle; }
+    }
     private const float MAX_LOOKAHEAD = 20f;
     private float Accselerator = 0.01f;
     public bool IsSlowingDown = false;
@@ -27,8 +31,8 @@ public class Pilot : UnitComponent
             {
 
 
-                if (Controlls.Distance < MIN_LOOKAHEAD)
-                    return MIN_LOOKAHEAD;
+                if (Controlls.Distance < Min_LookAhead)
+                    return Min_LookAhead;
 
             }
 
@@ -41,14 +45,14 @@ public class Pilot : UnitComponent
     public bool IsPermanent = false;
 
     [SerializeField]
-    private float lookAheadDistance = MIN_LOOKAHEAD;
+    private float lookAheadDistance = 4;
 
     public float LookAheadDistance
     {
         get
         {
-            if (lookAheadDistance < MIN_LOOKAHEAD)
-                return lookAheadDistance = MIN_LOOKAHEAD;
+            if (lookAheadDistance < Min_LookAhead)
+                return lookAheadDistance = Min_LookAhead;
             else if (lookAheadDistance > LOOKAHEAD)
                 return lookAheadDistance = LOOKAHEAD;
             return lookAheadDistance;
@@ -57,8 +61,8 @@ public class Pilot : UnitComponent
         {
             if (value != lookAheadDistance)
             {
-                if (value < MIN_LOOKAHEAD)
-                    lookAheadDistance = MIN_LOOKAHEAD;
+                if (value < Min_LookAhead)
+                    lookAheadDistance = Min_LookAhead;
                 else if (value > LOOKAHEAD)
                     lookAheadDistance = LOOKAHEAD;
                 else
@@ -137,7 +141,7 @@ public class Pilot : UnitComponent
             else
                 return _throttle;
         }
-        set { this.GetComponent<Movability>().Speed = _throttle = value; }
+        set { Controlls.Speed = _throttle = value; }
     }
     public Vector3 Rudder = Vector3.zero;
     public bool IsAcselerating
@@ -157,7 +161,7 @@ public class Pilot : UnitComponent
             if (value)
             {
                 IsSlowingDown = false;
-                if (!this.gameObject.GetComponent<Movability>().IsMoving)
+                if (!Controlls.IsMoving)
                     Controlls.IsMoving = true;
             }
         }
@@ -211,7 +215,7 @@ public class Pilot : UnitComponent
         IsAcselerating = true;
         IsSlowingDown = false;
         mySpace.isTrigger = true;
-        SetRadius(MIN_LOOKAHEAD);
+        SetRadius(Min_LookAhead);
 
         if (My.GetComponent<FaceDirection>())
             IsAForwarder = My.GetComponent<FaceDirection>().faceMovingDirection;
@@ -265,7 +269,7 @@ public class Pilot : UnitComponent
                 if (LookAheadDistance > LOOKAHEAD)
                     SetRadius(LOOKAHEAD);
                 else
-                    SetRadius(LookAheadDistance + 0.1f);
+                    SetRadius(LookAheadDistance + 0.01f);
             }
             Triggerd = false;
         }
@@ -307,16 +311,23 @@ public class Pilot : UnitComponent
     {
         if ((other.gameObject.layer != 2))// || (My.IsAnAirUnit))
         {
-            if ((!other.isTrigger)
-            && (other.gameObject.layer != 9)
-            && (!My.InteractingUnits.Contains(other.gameObject.GetInstanceID())))
+            if (!other.isTrigger)
             {
-                if (mySpace)
-                    Controlls.Rudder += ((My.transform.position - other.transform.position).normalized / (mySpace.radius * 3));
-                //    Controlls.MovingDirection.Normalize();
-                Triggerd = true;
-                ShrinkRadius(Vector3.Distance(other.ClosestPointOnBounds(gameObject.transform.position), gameObject.transform.position));// * 0.95f);
+                if ((other.gameObject.layer != 9)
+                && (!My.InteractingUnits.Contains(other.gameObject.GetInstanceID())))
+                {
+                    if (mySpace)
+                        Controlls.Rudder += ((My.transform.position - other.transform.position).normalized / (mySpace.radius * 3));
+                    //    Controlls.MovingDirection.Normalize();
+                    Triggerd = true;
+                    ShrinkRadius(Vector3.Distance(other.ClosestPointOnBounds(gameObject.transform.position), gameObject.transform.position));// * 0.95f);
+                }
             }
+            else if (My.InteractingUnits.Contains(other.gameObject.GetInstanceID()))
+            {
+                triggerd=99;
+            }
+
         }
     }
 
@@ -339,7 +350,7 @@ public class Pilot : UnitComponent
                 //    Controlls.Rudder.Normalize();
                 //      (My.Options as MovingUnitOptions).MovingDirection.Normalize();
                 Triggerd = true;
-                ShrinkRadius(Vector3.Distance(other.ClosestPointOnBounds(gameObject.transform.position), gameObject.transform.position));
+                ShrinkRadius(Vector3.Distance(other.ClosestPointOnBounds(gameObject.transform.position), gameObject.transform.position)* 0.95f);
                 IsHeadin = false;
             }
         }

@@ -26,7 +26,8 @@ public class Movability : UnitExtension
         this.PflongeOnUnit(typeof(OPTIONS));
         MoveToPoint = this.gameObject.transform.position;
         WayPoints = new List<Vector3>();
-        IsMoving = true;
+        standardYPosition=this.gameObject.transform.position.y;
+     //   IsMoving = true;
         Speed = 1;
     }
 
@@ -34,11 +35,14 @@ public class Movability : UnitExtension
     {
         get
         {
-            if (!this.GetComponent<Pilot>())
-                this.gameObject.AddComponent<Pilot>();
             return this.GetComponent<Pilot>();
         }
+    }
 
+    public void AddPilot()
+    {
+        if (!pilot)
+            this.gameObject.AddComponent<Pilot>();
     }
 
     protected override EnumProvider.ORDERSLIST on_UnitStateChange(EnumProvider.ORDERSLIST stateorder)
@@ -74,12 +78,11 @@ public class Movability : UnitExtension
                     //todo:-----------------
                     return stateorder;
                 case OPTIONS.Stay:
-                            SetKinematic();
-        WayPoints.Clear();
-        MoveToPoint = gameObject.transform.position;
-        MovingDirection = MoveToPoint;
-        // cleard interactingunits....
-        UNIT.InteractingUnits.Clear();
+                    SetKinematic();
+                    WayPoints.Clear();
+                    MoveToPoint = gameObject.transform.position;
+                    MovingDirection = MoveToPoint;
+                    UNIT.InteractingUnits.Clear();
         
                     return stateorder;
                 }
@@ -175,7 +178,7 @@ public class Movability : UnitExtension
             else if (!__moving)
             {
                 Throttle = 1;
-
+                AddPilot();
             }
 
             __moving = value;
@@ -370,10 +373,9 @@ public class Movability : UnitExtension
     private bool Move()
     {
         bool stopMoving=false;
+
         if (pilot)
             pilot.DoUpdate();
-
-
 
         if (IsGuarding)
         {
@@ -415,24 +417,25 @@ public class Movability : UnitExtension
 
 
         }
-        else if (Distance >= 1f)
+        else if (Distance >= 0.75f)
         {
             this.gameObject.transform.position += (MovingDirection * Speed);
         }
         else
         {
-            //SetKinematic();
-            //gameObject.transform.position = MoveToPoint;
-            
-
-            UNIT.Options.FocussedLeftOnGround(gameObject.transform.position);
+            SetKinematic();
+            gameObject.transform.position = MoveToPoint;
             stopMoving=true;
+            StayOrder();
+
+         //   UNIT.Options.FocussedLeftOnGround(gameObject.transform.position);
+         //   
 
             if (IsGroupLeader)
                 GUIScript.SelectedGroup.GroupState = UnitGroup.GROUPSTATE.Waiting;
 
             if (movingUnitState == OPTIONS.Patrol
-                && WayPoints.Count>0)
+            && WayPoints.Count>0)
             {
                 MoveToPoint = WayPoints[0];
                 WayPoints.RemoveAt(0);
@@ -446,8 +449,8 @@ public class Movability : UnitExtension
 
         KeepStandardYpsPosition();
 
-        return gameObject.transform.position != MoveToPoint;
-        ;
+        return !stopMoving;
+        
     }
 
     public override void DoUpdate()
