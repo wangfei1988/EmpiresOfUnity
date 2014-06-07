@@ -7,14 +7,13 @@
 using UnityEngine;
 using System.Collections;
 
-[AddComponentMenu("Program-X/Buildings/Building Grower (Grow from Ground)")]
+[AddComponentMenu("Program-X/Buildings/Building Grower")]
 public class BuildingGrower : UnitAnimation 
 {
 
     public float targetYps;
     private float startYps;
     private float growingFactor;
-    [SerializeField]
     private float GrowingTime=0;
     private float timer;
     [SerializeField]
@@ -46,27 +45,22 @@ public class BuildingGrower : UnitAnimation
         this.GrowingTime = this.GetComponent<UnitOptions>().SettingFile.GrowingTime;
     }
 
-    private bool Grow()
+    private void Grow()
     {
-        if (startGrowing)
-        {
-            timer += Time.deltaTime;
-            growingFactor = Mathf.Clamp((timer / GrowingTime), 0f, 1f);
-            growState = Mathf.SmoothStep(startYps, targetYps, growingFactor);
-            //growState = ((startYps - targetYps) * (1 - growingFactor)) + targetYps;
-            transform.position = new Vector3(gameObject.transform.position.x,  growState, gameObject.transform.position.z);
-            if (growingFactor == 1)
-                return false;
-            return true;
-        }
-        return false;
+        timer += Time.deltaTime;
+        growingFactor = Mathf.Clamp((timer / GrowingTime), 0f, 1f);
+        growState = Mathf.SmoothStep(startYps, targetYps, growingFactor);
+
+        transform.position = new Vector3(gameObject.transform.position.x,  growState, gameObject.transform.position.z);
+        if (growingFactor == 1)
+            StartGrowing = false;
     }
 
     internal override void Animate()
     {
         if (StartGrowing)
         {
-            StartGrowing = Grow();
+            Grow();
         }
         else if (growingFactor == 1)
         {

@@ -162,7 +162,7 @@ public class GroundBuilderOptions : MovingUnitOptions
     }
     internal override void FocussedLeftOnAllied(GameObject friend)
     {
-        //todo---------------------------repair
+        // TODO Kalle repair
     }
     internal override void FocussedLeftOnEnemy(GameObject enemy)
     {

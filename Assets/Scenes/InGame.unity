@@ -2795,7 +2795,6 @@ MonoBehaviour:
   isActive: 1
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
-  GrowingTime: 0
   startGrowing: 0
 --- !u!23 &286388421
 Renderer:
@@ -2870,7 +2869,6 @@ MonoBehaviour:
   isActive: 1
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
-  GrowingTime: 10
   startGrowing: 1
 --- !u!1 &299760237
 GameObject:
@@ -3594,11 +3592,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CursorList:
-  - {fileID: 11400000, guid: 78a2483ac84fb9442aed26cd4caf9553, type: 2}
-  - {fileID: 11400000, guid: e45aa6fa6550666419e0a226dc42864d, type: 2}
-  - {fileID: 11400000, guid: 6fbb72926e21cc64fa56d492df72255b, type: 2}
-  - {fileID: 11400000, guid: 8213a0dfcc00a0f468f48af91f48e43b, type: 2}
-  - {fileID: 11400000, guid: 42916b118a9989641b203bc73751d139, type: 2}
+  - {fileID: 11400000, guid: 496d70a43ac8d0143bd75917f447338d, type: 2}
+  - {fileID: 11400000, guid: 13ef76094f4858940b27ee6de9b89e79, type: 2}
+  - {fileID: 11400000, guid: e4efcd57daa66894b96f7773180da6d2, type: 2}
+  - {fileID: 11400000, guid: afe6c84801f00924f9fac401d40603dd, type: 2}
+  - {fileID: 11400000, guid: b2d09b7eca5571a4dab6474defdcd799, type: 2}
   LockCursor: 0
 --- !u!114 &358951607
 MonoBehaviour:
@@ -5367,7 +5365,6 @@ MonoBehaviour:
   isActive: 1
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
-  GrowingTime: 0
   startGrowing: 0
 --- !u!64 &724636361
 MeshCollider:
@@ -5456,7 +5453,6 @@ MonoBehaviour:
   isActive: 1
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
-  GrowingTime: 10
   startGrowing: 1
 --- !u!1001 &770720875
 Prefab:
@@ -7223,7 +7219,6 @@ MonoBehaviour:
   isActive: 1
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
-  GrowingTime: 0
   startGrowing: 0
 --- !u!54 &963226628
 Rigidbody:
@@ -7256,7 +7251,6 @@ MonoBehaviour:
   isActive: 1
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
-  GrowingTime: 10
   startGrowing: 1
 --- !u!1 &1018683941
 GameObject:
@@ -8606,7 +8600,6 @@ MonoBehaviour:
   isActive: 1
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
-  GrowingTime: 15
   startGrowing: 1
 --- !u!114 &1278975569
 MonoBehaviour:
@@ -9173,7 +9166,6 @@ MonoBehaviour:
   isActive: 1
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
-  GrowingTime: 0
   startGrowing: 0
 --- !u!54 &1450582017
 Rigidbody:
@@ -9206,7 +9198,6 @@ MonoBehaviour:
   isActive: 1
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
-  GrowingTime: 10
   startGrowing: 1
 --- !u!114 &1450582019
 MonoBehaviour:
@@ -13441,6 +13432,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11400004, guid: b6a4a96e0dc12d740aacdb73f6876ef6, type: 2}
+      propertyPath: CursorList.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: b6a4a96e0dc12d740aacdb73f6876ef6, type: 2}
       propertyPath: m_LocalPosition.x
       value: .5
@@ -13509,6 +13504,31 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 23.9786873
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: b6a4a96e0dc12d740aacdb73f6876ef6, type: 2}
+      propertyPath: CursorList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 496d70a43ac8d0143bd75917f447338d,
+        type: 2}
+    - target: {fileID: 11400004, guid: b6a4a96e0dc12d740aacdb73f6876ef6, type: 2}
+      propertyPath: CursorList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 13ef76094f4858940b27ee6de9b89e79,
+        type: 2}
+    - target: {fileID: 11400004, guid: b6a4a96e0dc12d740aacdb73f6876ef6, type: 2}
+      propertyPath: CursorList.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: e4efcd57daa66894b96f7773180da6d2,
+        type: 2}
+    - target: {fileID: 11400004, guid: b6a4a96e0dc12d740aacdb73f6876ef6, type: 2}
+      propertyPath: CursorList.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: afe6c84801f00924f9fac401d40603dd,
+        type: 2}
+    - target: {fileID: 11400004, guid: b6a4a96e0dc12d740aacdb73f6876ef6, type: 2}
+      propertyPath: CursorList.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: b2d09b7eca5571a4dab6474defdcd799,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b6a4a96e0dc12d740aacdb73f6876ef6, type: 2}
   m_RootGameObject: {fileID: 358951600}
@@ -13634,7 +13654,6 @@ MonoBehaviour:
   isActive: 1
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
-  GrowingTime: 0
   startGrowing: 0
 --- !u!54 &2146023036
 Rigidbody:
@@ -13667,7 +13686,6 @@ MonoBehaviour:
   isActive: 1
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
-  GrowingTime: 10
   startGrowing: 1
 --- !u!114 &2146023038
 MonoBehaviour:
