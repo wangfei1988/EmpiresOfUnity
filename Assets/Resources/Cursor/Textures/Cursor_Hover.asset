@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14eea4f7616775546b9fcc7dc898fe89, type: 3}
+  m_Name: Cursor_Hover
+  m_EditorClassIdentifier: 
+  CursorType: 3
+  ClickPoint: {x: 1, y: 1}
+  AnimationFps: 15
+  TextureList:
+  - {fileID: 2800000, guid: 41d7b68c7650b5c4d84536defb32274f, type: 3}
+  - {fileID: 2800000, guid: 2bb47e4df6dd55140bc50e06d6f5a7f4, type: 3}
+  - {fileID: 2800000, guid: 09714b71f4a64cd4aa1827bb95e3fe27, type: 3}
+  - {fileID: 2800000, guid: 81d5cde184daf924fb0840f4d8737236, type: 3}
+  - {fileID: 2800000, guid: bdde05f8ce9267447a114805c60509e0, type: 3}
+  - {fileID: 2800000, guid: 617ba15560dcafa40bea0acd19531ee2, type: 3}
+  - {fileID: 2800000, guid: a49b1ab1047298944bf5bb27c2cdab85, type: 3}

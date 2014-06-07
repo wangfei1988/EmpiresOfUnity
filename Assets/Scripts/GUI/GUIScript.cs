@@ -63,7 +63,7 @@ public class GUIScript : MonoBehaviour
             selectionRectangle = value;
 
             // TODO Width & Height isn't the size. The width/height position a value in world coordinates!
-            snapingAlowed = ((selectionRectangle.width >= 10) || (selectionRectangle.height >= 10));
+            snapingAlowed = ((selectionRectangle.width >= 10) || (selectionRectangle.height >= 10) || (selectionRectangle.width <= -10) || (selectionRectangle.height <= -10));
 
             Vector3 w1;
             /* Get Mouse Position At Start (Left/Top Corner of Rect) */

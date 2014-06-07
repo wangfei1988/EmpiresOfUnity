@@ -26,7 +26,7 @@ public class MouseEvents
     public delegate void LeftRelease();
     public delegate void MiddleRelease();
     public delegate void RightRelease();
-    public delegate void MouseWheelUPDOWN(MOUSEWHEELSTATE state);
+    public delegate void MouseWheelUPDOWN(MouseState.MOUSEWHEELSTATE state);
 
     public static event LeftClick LEFTCLICK;
     public static event MiddleClick MIDDLECLICK;
@@ -225,6 +225,13 @@ public class MouseEvents
             }
         }
 
+        public enum MOUSEWHEELSTATE : sbyte
+        {
+            NONE = 0,
+            WHEEL_UP = 1,
+            WHEEL_DOWN = -1
+        }
+
         //-class for holding actual Mousewheel state and data....
         public struct MouseWheelState
         {
@@ -245,6 +252,7 @@ public class MouseEvents
         #endregion
 
     }
+
 
 
     //the "State" property...    use it's "Position"-property for getting accses to Rays,Points,Cursors...
@@ -355,7 +363,7 @@ public class MouseEvents
             RIGHTRELEASE();
 
         /* Mouse Wheel */
-        if (MOUSEWHEEL != null && State.WHEEL != MOUSEWHEELSTATE.NONE)
+        if (MOUSEWHEEL != null && State.WHEEL != MouseState.MOUSEWHEELSTATE.NONE)
             MOUSEWHEEL(State.WHEEL);
 
     }
@@ -366,12 +374,7 @@ public class MouseEvents
         GetMouseState();
     }
 
-    public enum MOUSEWHEELSTATE : sbyte
-    {
-        NONE = 0,
-        WHEEL_UP = 1,
-        WHEEL_DOWN = -1
-    }
+
 }
 
 

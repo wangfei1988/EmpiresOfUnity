@@ -68,7 +68,7 @@ public class MiniMapControll : MonoBehaviour
        scale = GUIScript.main.Scale;
        if (this.ActiveButton == false)
        {
-           if (Area.Contains((Vector2)MouseEvents.State.Position))
+           if (MouseEvents.State.Position.IsOverMiniMapArea)
                IsActive = true;
            else
                IsActive = false;

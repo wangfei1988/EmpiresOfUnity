@@ -68,7 +68,7 @@ public class ProductionBuildingOptions : UnitOptions
 
         if (this.GetComponent<Animator>())
         {
-            this.GetComponent<Animator>().SetBool(CurrentFabrikat.name, false);
+            this.GetComponent<Animator>().SetBool((CurrentFabrikat as GameObject).GetComponent<UnitScript>().unitType.ToString(), false);
             TheNewOne = (GameObject.Instantiate(CurrentFabrikat, AnimationReleasePoints[CurrentFabrikatNumber].GetComponent<ReleasePoint>().Release(), (CurrentFabrikat as GameObject).transform.rotation) as GameObject);
         }
         else
@@ -170,7 +170,7 @@ public class ProductionBuildingOptions : UnitOptions
                 case OPTIONS.Produce:
                     {
                         if (UNIT.unitType==UnitScript.UNITTYPE.Airport)
-                            ReleaseFabrikat(CurrentFabrikat.name);
+                            ReleaseFabrikat((CurrentFabrikat as GameObject).GetComponent<UnitScript>().unitType.ToString());
 
                         // TODO Let they Spawn within the Building and then let they so to "MoveToPoint"
                         break;

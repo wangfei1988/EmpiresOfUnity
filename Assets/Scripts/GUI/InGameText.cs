@@ -15,6 +15,10 @@ public class InGameText : MonoBehaviour
         StaticTextLines.Add(line);
     }
 
+    [SerializeField]
+    private bool _showInfoDEBUGFIELD = false;
+    [SerializeField]
+    private bool _showDebugText_DEBUGFIELD = false; 
     private static bool _showInfo = false;
     public static bool ShowInfo
     {
@@ -50,6 +54,8 @@ public class InGameText : MonoBehaviour
 
     void UpdateManager_OnUpdate()
     {
+        _showDebugText_DEBUGFIELD = ShowDebugText;
+        _showInfoDEBUGFIELD = ShowInfo;
         if (ShowDebugText)
             guiText.text=TextUpdate();
     }

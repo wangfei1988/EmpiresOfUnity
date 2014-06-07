@@ -88,7 +88,7 @@ public class Cam : MonoBehaviour {
 	}
 
     //private Vector3 oldDirection = Vector3.zero;
-    public void MouseEvents_MQUSEWHEEL(MouseEvents.MOUSEWHEELSTATE wheelstate)
+    public void MouseEvents_MQUSEWHEEL(MouseEvents.MouseState.MOUSEWHEELSTATE wheelstate)
     {
         if (CamMode==CAMERAMODE.ORTHOGRAFIC)
         {

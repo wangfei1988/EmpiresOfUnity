@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: BluePoint
-  m_Shader: {fileID: 4800000, guid: 436d5a1d3b570a34ab044b2b546b003c, type: 3}
+  m_Name: SoloarTowerMaterial
+  m_Shader: {fileID: 16, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -17,42 +17,53 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: ecbcb920e8ae8e548a601597788a4a1e, type: 3}
+          m_Texture: {fileID: 2800000, guid: 152d425f0a817b44fbe6dc7d472bbd08, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 2800000, guid: 009f09fc2ee7dd84197ba058442d5420, type: 3}
-          m_Scale: {x: 1, y: 1}
+          m_Texture: {fileID: 2800000, guid: 6a0ac084ea5c7b94c9880ddb68317c15, type: 3}
+          m_Scale: {x: 1, y: 4}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _ParallaxMap
         second:
-          m_Texture: {fileID: 2800000, guid: 225c2ea221f63ec4baafc2fecc5bc17c, type: 3}
+          m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
           m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Illum
+        second:
+          m_Texture: {fileID: 2800000, guid: 909c1c30b1b30654fb5f40476959cb79, type: 3}
+          m_Scale: {x: 1, y: 2}
           m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _Shininess
-        second: .306901753
+        second: .142800689
       data:
         first:
           name: _Parallax
-        second: .821428597
+        second: .0692857131
+      data:
+        first:
+          name: _EmissionLM
+        second: .550000012
       data:
         first:
           name: _EdgeLength
-        second: 10
+        second: 33.5
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: .360294104, g: .360294104, b: .360294104, a: 1}
       data:
         first:
           name: _SpecColor
-        second: {r: .5, g: .5, b: .5, a: 1}
+        second: {r: .441176474, g: .33477509, b: .175173014, a: 1}
