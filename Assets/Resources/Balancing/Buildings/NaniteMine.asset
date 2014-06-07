@@ -17,7 +17,7 @@ MonoBehaviour:
   NaniteCost: 5
   MatterCost: 20
   IsBuildable: 0
-  GrowingTime: 10
+  GrowingTime: 3
   UpgradeCostNanite: 
   UpgradeCostMatter: 
   LevelResource: 0100000002000000

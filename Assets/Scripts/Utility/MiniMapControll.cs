@@ -16,6 +16,7 @@ public class MiniMapControll : MonoBehaviour
     public Texture GuiTextureBuffer;
     public Rect Area = new Rect(1800, 0, 120, 80);
     public bool ActiveButton = false;
+    public bool ActiveAtStart = true;
     public bool IsActive
     {
         get { return this.camera.enabled; }
@@ -52,6 +53,8 @@ public class MiniMapControll : MonoBehaviour
        Area = new Rect(scale.x*1800,scale.y*0,scale.x*120,scale.y*80);
        GUIScript.MiniMap = this;
        UpdateManager.GUIUPDATE += UpdateManager_GUIUPDATE;
+       if (this.ActiveAtStart)
+           SwitchActive();
    }
 
     public void SwitchActive()
@@ -70,12 +73,5 @@ public class MiniMapControll : MonoBehaviour
            else
                IsActive = false;
        }
-
-       // Input -> Key M to (de)activate Map
-       if (Input.GetKeyDown(KeyCode.M))
-       {
-            SwitchActive();
-       }
-
    }
 }

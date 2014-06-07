@@ -16,6 +16,7 @@
 			MiniMap		MoveCamera				Right-Mouse into MiniMap
 			(de)activate Debug Text				T
 			Map-Change							1, 2, 3
+			(de)activate FPS Counter			G
 			Plus 500 Naniten					L + U
 			Plus 500 Matter						L + I
 			Plus 500 Energy						L + O

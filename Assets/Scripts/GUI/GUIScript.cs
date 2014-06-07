@@ -160,7 +160,7 @@ public class GUIScript : MonoBehaviour
     private void UpdateManager_GUIUPDATE()
     {
         mousePosition = null;
-        GetKeyboardInput();
+        CheckKeyboardInput();
         GroupCount = SelectedGroup.Count;
 
         UpdateRectangles();
@@ -331,7 +331,7 @@ public class GUIScript : MonoBehaviour
 
     //}
 
-    private void GetKeyboardInput()
+    private void CheckKeyboardInput()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
