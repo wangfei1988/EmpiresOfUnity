@@ -19,6 +19,7 @@ public class Scrolling : MonoBehaviour
     private GUIScript mainGUI;
     public MouseMovement MouseMove;
     //private SelectorScript SelectionSprite;
+    //public static bool CameraChanged = false;
 
     /* Properties */
 

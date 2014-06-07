@@ -130,7 +130,7 @@ public class RightClickMenu : MonoBehaviour {
                 {
                     // Code for Build-Action
 
-                    // TODO Lucas
+                    // TODO Upgrade Building / Unit
 
                     this.buildingBuilder.CreatePrefab(i);
                 }
