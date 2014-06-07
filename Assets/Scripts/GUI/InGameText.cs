@@ -12,9 +12,7 @@ public class InGameText : MonoBehaviour
     public int NumberOfLinesShown=4;
     public static void AddTextLine(string line)
     {
-      //  if (StaticTextLines != null)
         StaticTextLines.Add(line);
-
     }
 
     private static bool _showInfo = false;
@@ -22,7 +20,7 @@ public class InGameText : MonoBehaviour
     {
         get 
         {
-            return (ShowDebugText)? ShowDebugText : _showInfo;
+            return (ShowDebugText) ? ShowDebugText : _showInfo;
         }
         set
         {
@@ -42,7 +40,7 @@ public class InGameText : MonoBehaviour
         while (StaticTextLines.Count>=NumberOfLinesShown)
             StaticTextLines.RemoveAt(0);
 
-        string textField = guiText.text;
+        string textField = "";
         for (int i = 0;i < StaticTextLines.Count;i++)
         {
             textField += ("\n" + StaticTextLines[i]);

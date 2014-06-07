@@ -7,8 +7,8 @@ public class MatterMine : ProductionBuilding
     new private enum OPTIONS { Upgrade = EnumProvider.ORDERSLIST.Upgrade }
 
     private OPTIONS MatterMineState;
-
-    
+    private bool buildFinished = false;
+    private bool buildFinishedLastFrame = false;
 
     public override Enum UnitState {
         get
@@ -31,8 +31,6 @@ public class MatterMine : ProductionBuilding
 
     internal override void DoStart()
     {
-        MatterMineCount++;
-
         foreach (int value in System.Enum.GetValues(typeof(OPTIONS)))
         {
             OptionalStatesOrder.Add(value, ((OPTIONS)value).ToString());
@@ -41,12 +39,21 @@ public class MatterMine : ProductionBuilding
 
     public override void BuildFinished()
     {
-
+        this.buildFinished = true;
+        this.buildFinishedLastFrame = true;
     }
    
     internal override void DoUpdate()
     {
-        this.UpdateProduction(UnitScript.UNITTYPE.MatterMine);
+        if (this.buildFinishedLastFrame)
+        {
+            this.buildFinishedLastFrame = false;
+            MatterMineCount++;
+        }
+        if (this.buildFinished)
+        {
+            this.UpdateProduction(UnitScript.UNITTYPE.MatterMine);
+        }
     }
 
     internal override void MoveAsGroup(GameObject leader)
@@ -63,5 +70,6 @@ public class MatterMine : ProductionBuilding
 
     void OnDestroy()
     {
+        MatterMineCount--;
     }
 }

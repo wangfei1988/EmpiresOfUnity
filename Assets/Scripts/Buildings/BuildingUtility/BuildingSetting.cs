@@ -11,9 +11,10 @@ public class BuildingSetting : ScriptableObject
     public bool EnergyUse;
     
     // Build
-    public int MatterCost;
     public int NaniteCost;
+    public int MatterCost;
     public bool IsBuildable;
+    public int GrowingTime = 1;
     
     // Upgrade
     public List<int> UpgradeCostNanite = new List<int>();

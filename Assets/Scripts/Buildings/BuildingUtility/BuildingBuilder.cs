@@ -71,7 +71,8 @@ public class BuildingBuilder : ProductionBuilding
                         }
                         else
                         {
-                            Debug.Log("Need more Resources");
+                            // Not enough Resources
+                            this.NotEnoughResourcesMessage();
                         }
                 }
                 else
@@ -180,7 +181,7 @@ public class BuildingBuilder : ProductionBuilding
 
     private void BuildingCheck()
     {
-        if (solutionMatter >= 0 &&  solutionNaniten >= 0)
+        if (solutionMatter >= 0 && solutionNaniten >= 0)
         {
             IsBuildable = true;
         }
@@ -215,5 +216,10 @@ public class BuildingBuilder : ProductionBuilding
 
     protected override void MineWork()
     {
+    }
+
+    private void NotEnoughResourcesMessage()
+    {
+        InGameText.AddTextLine("You need more Resources");
     }
 }

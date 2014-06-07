@@ -26,15 +26,15 @@ public class BuildingGrower : UnitAnimation
             if ((startGrowing)&&(growingFactor== -1f))
             {
                 growingFactor = 0f;
-                Grow();
+                //Grow();
             }
             return startGrowing;
         }
         set 
         {
             startGrowing = value;
-            if (startGrowing)
-                startYps = gameObject.transform.position.y;
+            //if (startGrowing)
+            //    startYps = gameObject.transform.position.y;
         }
     }
     private float growState;
@@ -43,17 +43,17 @@ public class BuildingGrower : UnitAnimation
         timer = 0f;
         startYps = gameObject.transform.position.y;
         growingFactor = -1f;
- 
-	}
+        this.GrowingTime = this.GetComponent<UnitOptions>().SettingFile.GrowingTime;
+    }
 
     private bool Grow()
     {
         if (startGrowing)
         {
             timer += Time.deltaTime;
-
             growingFactor = Mathf.Clamp((timer / GrowingTime), 0f, 1f);
             growState = Mathf.SmoothStep(startYps, targetYps, growingFactor);
+            //growState = ((startYps - targetYps) * (1 - growingFactor)) + targetYps;
             transform.position = new Vector3(gameObject.transform.position.x,  growState, gameObject.transform.position.z);
             if (growingFactor == 1)
                 return false;
@@ -87,7 +87,6 @@ public class BuildingGrower : UnitAnimation
             gameObject.GetComponent<Shaker>().HookOnUpdata(this.gameObject.GetComponent<UnitScript>());
             if (NextUnitAnimation)
                 this.gameObject.GetComponent<BuildingGrower>().NextUnitAnimation.HookOnUpdata(gameObject.GetComponent<Shaker>());
-            
 
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
 

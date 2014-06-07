@@ -18,10 +18,10 @@ public class ResourceManager : MonoBehaviour
     //static ResourceManager()
     void Start()
     {
-        resourceList.Add(Resource.NANITEN, 100);
-        resourceList.Add(Resource.MATTER, 100);
-        resourceList.Add(Resource.MAXENERGY, 100);
-        resourceList.Add(Resource.ENERGY, 100);
+        resourceList.Add(Resource.NANITEN, 50);
+        resourceList.Add(Resource.MATTER, 50);
+        resourceList.Add(Resource.MAXENERGY, 50);
+        resourceList.Add(Resource.ENERGY, 50);
         resourceList.Add(Resource.LABORER, 0);
     }
 

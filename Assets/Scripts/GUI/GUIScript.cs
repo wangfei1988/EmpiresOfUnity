@@ -17,9 +17,9 @@ public class GUIScript : MonoBehaviour
     public GUITexture SellectionGUITexture;
     public GameObject lastClickedUnit;
  
-    public static bool DebugText = false;
+    //public static bool DebugText = false;
 
-    private Scrolling scrolling;
+    //private Scrolling scrolling;
 
     new public Camera camera;
  //   public MiniMapControll miniMapControll;
@@ -122,7 +122,7 @@ public class GUIScript : MonoBehaviour
         SelectedGroup = ScriptableObject.CreateInstance<UnitGroup>();
         SelectedGroup.startGroup();
 
-        scrolling = (GetComponent<Scrolling>()) ? GetComponent<Scrolling>() : null;
+        //scrolling = (GetComponent<Scrolling>()) ? GetComponent<Scrolling>() : null;
         
         //if (camera.name == null)
         //{
@@ -333,30 +333,33 @@ public class GUIScript : MonoBehaviour
 
     private void GetKeyboardInput()
     {
-        if (Input.GetKey(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Ground.Switch(0);
         }
-        if (Input.GetKey(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             Ground.Switch(1);
         }
-        if (Input.GetKey(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             Ground.Switch(2);
         }
-        if (Input.GetKey(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             MiniMap.SwitchActive();
         }
-        if (Input.GetKey(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T))
         {
-            InGameText.ShowDebugText = true;
-        }
-        if (Input.GetKey(KeyCode.U))
-        {
-            InGameText.ShowDebugText = false;
-            guiText.text = "";
+            if (InGameText.ShowDebugText)
+            {
+                InGameText.ShowDebugText = false;
+                guiText.text = "";
+            }
+            else
+            {
+                InGameText.ShowDebugText = true;
+            }
         }
         /* Space Key Switch Camera */
         if (Input.GetKeyDown(KeyCode.Space))

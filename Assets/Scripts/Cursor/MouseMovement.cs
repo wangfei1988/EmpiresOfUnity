@@ -17,15 +17,15 @@ public class MouseMovement : MonoBehaviour
                 if (value)
                 {
                     UpdateManager.OnMouseUpdate += UpdateManager_OnMouseUpdate;
-                    MouseEvents.MIDDLECLICK -= MouseEvents_MIDDLECLICK;
-                    MouseEvents.MIDDLERELEASE -= MouseEvents_MIDDLERELEASE;
+                    MouseEvents.RIGHTCLICK -= MouseEvents_CLICK;
+                    MouseEvents.RIGHTRELEASE -= MouseEvents_RELEASE;
                     lastMousePosition = MouseEvents.State.Position;
                 }
                 else
                 {
                     UpdateManager.OnMouseUpdate -= UpdateManager_OnMouseUpdate;
-                    MouseEvents.MIDDLECLICK += MouseEvents_MIDDLECLICK;
-                    MouseEvents.MIDDLERELEASE += MouseEvents_MIDDLERELEASE;
+                    MouseEvents.RIGHTCLICK += MouseEvents_CLICK;
+                    MouseEvents.RIGHTRELEASE += MouseEvents_RELEASE;
                     Speed = Vector2.zero;
                 }
             }
@@ -41,11 +41,11 @@ public class MouseMovement : MonoBehaviour
 
     void Start()
     {
-        MouseEvents.MIDDLECLICK += MouseEvents_MIDDLECLICK;
-        MouseEvents.MIDDLERELEASE += MouseEvents_MIDDLERELEASE;
+        MouseEvents.RIGHTCLICK += MouseEvents_CLICK;
+        MouseEvents.RIGHTRELEASE += MouseEvents_RELEASE;
     }
 
-    void MouseEvents_MIDDLECLICK(Ray qamRay, bool hold)
+    void MouseEvents_CLICK(Ray qamRay, bool hold)
     {
         if (!hold)
         {
@@ -54,7 +54,7 @@ public class MouseMovement : MonoBehaviour
         else
             UpdateManager_OnMouseUpdate();
     }
-    void MouseEvents_MIDDLERELEASE()
+    void MouseEvents_RELEASE()
     {
         Speed = Vector2.zero;
     }

@@ -14,8 +14,8 @@ MonoBehaviour:
   Level: 1
   UsedEnergy: 10
   EnergyUse: 0
-  MatterCost: 10
-  NaniteCost: 10
+  NaniteCost: 5
+  MatterCost: 30
   IsBuildable: 0
   UpgradeCostNanite: 
   UpgradeCostMatter: 

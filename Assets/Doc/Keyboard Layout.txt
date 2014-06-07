@@ -1,19 +1,21 @@
 
 			FUNCTIONALITY						PRIMARY							SECONDARY
 
-			Scrolling							W A S D							Arrow-Keys
+			Scrolling							W, A, S, D						Arrow-Keys
 			Scrolling faster					Scrolling + ShiftLeft
-			Rotate Camera around center			Q E								Middle-Mouse Press & MouseMove
+			Rotate Camera around center			Q, E							Right-Mouse Press & MouseMove
 			Rotate Camera around itself			[X C - coming soon]
-			Zoom Camera							R F								Mouse-Wheel
-			Camera Switch						Space
+			Zoom Camera							R, F							Mouse-Wheel
+			Switch Camera						Space
 			(de)activate Scrolling				Y
 			Move Units							Left-Mouse
 			Deactivate Focus					Right-Mouse
 			ESC									Menu
 			MiniMap		open/close				M
-			MiniMap		MoveUnits				Left-Mouse
-			MiniMap		MoveCamera				Right-Mouse
+			MiniMap		MoveUnits				Left-Mouse into MiniMap
+			MiniMap		MoveCamera				Right-Mouse into MiniMap
+			(de)activate Debug Text				T
+			Map-Change							1, 2, 3
 			Plus 500 Naniten					L + U
 			Plus 500 Matter						L + I
 			Plus 500 Energy						L + O

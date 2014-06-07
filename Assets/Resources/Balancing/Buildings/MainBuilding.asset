@@ -14,9 +14,10 @@ MonoBehaviour:
   Level: 1
   UsedEnergy: 10
   EnergyUse: 0
-  MatterCost: 100
   NaniteCost: 100
+  MatterCost: 200
   IsBuildable: 0
+  GrowingTime: 5
   UpgradeCostNanite: 
   UpgradeCostMatter: 
   LevelResource: 

@@ -8,6 +8,8 @@ public class NaniteMine : ProductionBuilding
     new private enum OPTIONS { Upgrade = EnumProvider.ORDERSLIST.Upgrade }
 
     private OPTIONS NaniteMineState;
+    private bool buildFinished = false;
+    private bool buildFinishedLastFrame = false;
 
     public override Enum UnitState
     {
@@ -31,12 +33,12 @@ public class NaniteMine : ProductionBuilding
 
     void Start()
     {
-        NaniteMineCount++;
     }
 
     public override void BuildFinished()
     {
-
+        this.buildFinished = true;
+        this.buildFinishedLastFrame = true;
     }
 
     internal override void MoveAsGroup(GameObject leader)
@@ -54,8 +56,6 @@ public class NaniteMine : ProductionBuilding
 
     internal override void DoStart()
     {
-        NaniteMineCount++;
-
         foreach (int value in System.Enum.GetValues(typeof(OPTIONS)))
         {
             OptionalStatesOrder.Add(value, ((OPTIONS)value).ToString());
@@ -64,7 +64,15 @@ public class NaniteMine : ProductionBuilding
 
     internal override void DoUpdate()
     {
-        this.UpdateProduction(UnitScript.UNITTYPE.NaniteMine);
+        if (this.buildFinishedLastFrame)
+        {
+            this.buildFinishedLastFrame = false;
+            NaniteMineCount++;
+        }
+        if (this.buildFinished)
+        {
+            this.UpdateProduction(UnitScript.UNITTYPE.NaniteMine);
+        }
     }
 
     void OnDestroy()

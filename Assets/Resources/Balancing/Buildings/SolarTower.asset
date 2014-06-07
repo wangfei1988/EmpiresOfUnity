@@ -13,9 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Level: 1
   UsedEnergy: 0
+  EnergyUse: 0
   MatterCost: 10
   NaniteCost: 10
   IsBuildable: 0
   UpgradeCostNanite: 
   UpgradeCostMatter: 
-  LevelResource: 64000000c8000000
+  LevelResource: 3200000050000000
