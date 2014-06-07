@@ -7,7 +7,7 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 400000}
+  - 4: {fileID: 400002}
   - 212: {fileID: 21200000}
   m_Layer: 12
   m_Name: Blib
@@ -23,7 +23,7 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 400002}
+  - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 65: {fileID: 6500000}
@@ -45,7 +45,7 @@ GameObject:
   - 33: {fileID: 3300002}
   - 23: {fileID: 2300002}
   - 64: {fileID: 6400000}
-  - 114: {fileID: 11400006}
+  - 114: {fileID: 11400000}
   - 135: {fileID: 13500000}
   m_Layer: 10
   m_Name: JetAndHeck
@@ -62,7 +62,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400006}
-  - 114: {fileID: 11400008}
+  - 114: {fileID: 11400004}
   - 114: {fileID: 11400002}
   m_Layer: 10
   m_Name: pCubeShape1_AST
@@ -84,10 +84,10 @@ GameObject:
   - 114: {fileID: 11400014}
   - 114: {fileID: 11400012}
   - 114: {fileID: 11400010}
-  - 114: {fileID: 11400004}
-  - 114: {fileID: 11400000}
+  - 114: {fileID: 11400008}
+  - 114: {fileID: 11400006}
   m_Layer: 10
-  m_Name: JetWing
+  m_Name: EnemyJetWing
   m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,23 +98,23 @@ Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: .707106829, z: -.707106829, w: 0}
-  m_LocalPosition: {x: 0, y: -2.14000058, z: -.399999619}
-  m_LocalScale: {x: 10, y: 11.0347767, z: 1.10347795}
-  m_Children: []
-  m_Father: {fileID: 400006}
---- !u!4 &400002
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: -.147205308, w: -.989105999}
   m_LocalPosition: {x: 1, y: .119999997, z: 0}
   m_LocalScale: {x: .899999976, y: .300000012, z: -.0199999996}
   m_Children: []
   m_Father: {fileID: 400004}
+--- !u!4 &400002
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: .707106829, z: -.707106829, w: 0}
+  m_LocalPosition: {x: 0, y: -2.14000058, z: -.399999619}
+  m_LocalScale: {x: 10, y: 11.0347767, z: 1.10347795}
+  m_Children: []
+  m_Father: {fileID: 400006}
 --- !u!4 &400004
 Transform:
   m_ObjectHideFlags: 1
@@ -125,7 +125,7 @@ Transform:
   m_LocalPosition: {x: 0, y: .5, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
-  - {fileID: 400002}
+  - {fileID: 400000}
   m_Father: {fileID: 400006}
 --- !u!4 &400006
 Transform:
@@ -138,7 +138,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
-  - {fileID: 400000}
+  - {fileID: 400002}
   m_Father: {fileID: 400008}
 --- !u!4 &400008
 Transform:
@@ -147,7 +147,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: -.707106829}
-  m_LocalPosition: {x: 101.774506, y: -1.52587891e-05, z: 2.47860718}
+  m_LocalPosition: {x: 101.591736, y: -1.52587891e-05, z: 8.45254517}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 400006}
@@ -164,7 +164,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 6241b229da566074d83745683b8805e2, type: 2}
+  - {fileID: 2100000, guid: f1f0b7fae2dc156468b1f36bbe2757d6, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -253,23 +253,21 @@ MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100008}
+  m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13e32734abd778843ae976acaf93ccaf, type: 3}
+  m_Script: {fileID: 11500000, guid: cbd8ff9797310d64b911dca02750f618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
+  NextUnitAnimation: {fileID: 11400010}
+  TransformToFace: {fileID: 0}
+  faceMovingDirection: 1
+  faceCamera: 0
+  faceOtherTransform: 0
+  forwardIs: 1
+  direction: {x: 0, y: 0, z: 0}
   UNIT: {fileID: 11400016}
-  IsSlowingDown: 0
-  slopeDistance: 0
-  IsPermanent: 1
-  lookAheadDistance: 4
-  mySpace: {fileID: 13500000}
-  Controlls: {fileID: 11400012}
-  triggerd: 0
-  IsAForwarder: 0
-  Rudder: {x: 0, y: 0, z: 0}
-  Distance: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -291,6 +289,44 @@ MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e11f7df2e02154f950b7b340f33fe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fd: {fileID: 11400000}
+  MAXIMUM_FLIGHT_HEIGHT: 7.5
+  CYCLE: 2
+  Z_ROTATION: 33
+  faceDirection: 0
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13e32734abd778843ae976acaf93ccaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UNIT: {fileID: 11400016}
+  IsSlowingDown: 0
+  slopeDistance: 0
+  IsPermanent: 1
+  lookAheadDistance: 4
+  mySpace: {fileID: 13500000}
+  Controlls: {fileID: 11400012}
+  triggerd: 0
+  IsAForwarder: 0
+  Rudder: {x: 0, y: 0, z: 0}
+  Distance: 0
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -300,42 +336,6 @@ MonoBehaviour:
   UNIT: {fileID: 11400016}
   attackState: 30
   AttackPoint: {x: 0, y: 0, z: 0}
---- !u!114 &11400006
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbd8ff9797310d64b911dca02750f618, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isActive: 0
-  NextUnitAnimation: {fileID: 11400010}
-  TransformToFace: {fileID: 0}
-  faceMovingDirection: 1
-  faceCamera: 0
-  faceOtherTransform: 0
-  forwardIs: 1
-  direction: {x: 0, y: 0, z: 0}
-  UNIT: {fileID: 11400016}
---- !u!114 &11400008
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35e11f7df2e02154f950b7b340f33fe5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fd: {fileID: 11400006}
-  MAXIMUM_FLIGHT_HEIGHT: 7.5
-  CYCLE: 2
-  Z_ROTATION: 33
-  faceDirection: 0
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -349,7 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   NextUnitAnimation: {fileID: 0}
-  aviator: {fileID: 11400008}
+  aviator: {fileID: 11400004}
   landingHeight: 0
 --- !u!114 &11400012
 MonoBehaviour:
@@ -411,10 +411,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitType: 202
-  goodOrEvil: 1
+  goodOrEvil: -1
   ALARM: 0
   Options: {fileID: 11400014}
-  unitAnimation: {fileID: 11400006}
+  unitAnimation: {fileID: 11400000}
   weapon: {fileID: 11400002}
   life: 800
   level: 1

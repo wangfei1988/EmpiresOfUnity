@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Blue
-  m_Shader: {fileID: 4800000, guid: 436d5a1d3b570a34ab044b2b546b003c, type: 3}
+  m_Shader: {fileID: 13, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -24,7 +24,7 @@ Material:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 2800000, guid: 6a0ac084ea5c7b94c9880ddb68317c15, type: 3}
+          m_Texture: {fileID: 2800000, guid: 225c2ea221f63ec4baafc2fecc5bc17c, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -34,25 +34,36 @@ Material:
           m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Illum
+        second:
+          m_Texture: {fileID: 2800000, guid: 2e5e476757cac17408296be3a8f345ae, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _Shininess
-        second: .0973410755
+        second: .259516507
       data:
         first:
           name: _Parallax
-        second: .839285731
+        second: 1
       data:
         first:
           name: _EdgeLength
-        second: 10
+        second: 21.75
+      data:
+        first:
+          name: _EmissionLM
+        second: 0
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: .477941155, g: .503143907, b: 1, a: 1}
+        second: {r: .22010164, g: .233968899, b: .507352948, a: 1}
       data:
         first:
           name: _SpecColor
-        second: {r: .0656898841, g: .0894657001, b: .33088237, a: 1}
+        second: {r: .0439013913, g: .0584237836, b: .20588237, a: 1}
