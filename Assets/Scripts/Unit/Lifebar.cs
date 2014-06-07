@@ -6,7 +6,6 @@ using System.Collections;
 public class Lifebar : ScriptableObject
 {
 
-    private Vector3 position;
     private Vector3 Offset = new Vector3(0f, 0f, 3f);
 
     public Transform LifebarObject;
@@ -72,37 +71,27 @@ public class Lifebar : ScriptableObject
         }
     }
 
+    private Vector3 position;
     public Vector3 Position
     {
+        get { return this.position; }
         set
         {
-            this.position = value + Offset;
-            //if(cam == null)
-            //    cam = Camera.main;
+            this.position = value;
+            Vector3 tempPos = this.position + Offset;
             if (this.Activated)
             {
-                //this.LifebarObject.position = this.position;
-
-
-                Vector3 screenPos = Camera.main.WorldToViewportPoint(this.position);
+                Vector3 screenPos = Camera.main.WorldToViewportPoint(tempPos);
                 screenPos.z = 0;
                 this.LifebarObject.position = screenPos;
-
-                
-
-                //float camDistance = Vector3.Distance(cam.transform.position, this.position);
-                //if(initialScale == Vector3.zero)
-                //    initialScale = Prefab.localScale;
-                //this.LifebarObject.localScale = initialScale * camDistance / 1000 * Scale;
             }
         }
-        get { return this.position; }
     }
 
     /* Methods */
     private void CreateObject()
     {
-        this.LifebarObject = GameObject.Instantiate(Prefab, Position, Quaternion.identity) as Transform;
+        this.LifebarObject = GameObject.Instantiate(Prefab, Vector3.zero, Quaternion.identity) as Transform;
         this.LifebarObject.parent = ParentContainer;
 
         this.LifebarObjectInner = this.LifebarObject.FindChild("LifebarInner").transform;

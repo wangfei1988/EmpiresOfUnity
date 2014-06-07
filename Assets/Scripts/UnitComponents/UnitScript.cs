@@ -149,13 +149,11 @@ public class UnitScript : MonoBehaviour
     {
         this.DefaultLife = Life;
         UpdateManager.UNITUPDATE += UpdateManager_UNITUPDATE;
-        UpdateManager.OnUpdate += UpdateLifebar;
     }
 
     void OnDestroy()
     {
         UpdateManager.UNITUPDATE -= UpdateManager_UNITUPDATE;
-        UpdateManager.OnUpdate -= UpdateLifebar;
     }
 
     // Update function:  
@@ -205,9 +203,12 @@ public class UnitScript : MonoBehaviour
     {
         if (LifebarScript != null)
         {
-            if (this.gameObject.transform.position != LifebarScript.Position)
+            //if (Vector3.Distance(this.gameObject.transform.position, LifebarScript.Position) > 0.1f)
+            // TODO Here check if Building / Unit moved manuelly (one line above) OR Camera / Map Changed (must build it)
+            if(true)
+            {
                 LifebarScript.Position = gameObject.transform.position;
-            UpdateLifebarLife();
+            }
         }
     }
     private void UpdateLifebarLife()
@@ -222,12 +223,13 @@ public class UnitScript : MonoBehaviour
     {
         if (LifebarScript != null)
         {
-            LifebarScript.Position = gameObject.transform.position;
             LifebarScript.LifeDefault = this.DefaultLife;
             LifebarScript.Life = this.Life;
             if (GoodOrEvil == FoE.GOODorEVIL.Evil)
                 LifebarScript.IsEnemy = true;
             LifebarScript.Activated = true;
+            LifebarScript.Position = gameObject.transform.position;
+            UpdateManager.OnUpdate += UpdateLifebar;
         }
     }
     /* LIFEBAR END */
@@ -236,6 +238,7 @@ public class UnitScript : MonoBehaviour
         if (LifebarScript != null)
         {
             LifebarScript.Activated = false;
+            UpdateManager.OnUpdate -= UpdateLifebar;
         }
     }
 
