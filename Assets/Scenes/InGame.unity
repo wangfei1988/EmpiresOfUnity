@@ -10602,6 +10602,7 @@ GameObject:
   - 114: {fileID: 1113168590}
   - 114: {fileID: 1113168594}
   - 114: {fileID: 1113168593}
+  - 114: {fileID: 1113168591}
   m_Layer: 0
   m_Name: ScriptContainer
   m_TagString: ScriptContainer
@@ -10664,6 +10665,17 @@ MonoBehaviour:
   DebugLines: 0
   objectPivot: {x: 0, y: 0, z: 0}
   ShowGrid: 0
+--- !u!114 &1113168591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1113168586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da8a635d070bb2141b002ff9e3eb4540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1113168593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15383,6 +15395,7 @@ GameObject:
   - 124: {fileID: 1647307439}
   - 81: {fileID: 1647307438}
   - 114: {fileID: 1647307443}
+  - 114: {fileID: 1647307444}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -15468,6 +15481,18 @@ MonoBehaviour:
   Orthografic_Size_Inclusive: 10
   Orthografic_Y_MaxSize: 70
   PERSPECTIVE_VIEW_SIZE: 20
+--- !u!114 &1647307444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1647307437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4efbff245e2696348b4e027b64ae733f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ZoomSpeed: .5
 --- !u!1 &1652556088
 GameObject:
   m_ObjectHideFlags: 0
