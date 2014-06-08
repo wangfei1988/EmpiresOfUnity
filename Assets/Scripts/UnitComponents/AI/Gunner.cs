@@ -100,26 +100,26 @@ public class Gunner : UnitComponent
     {
         if (UNIT.IsEnemy(other.gameObject))
         {
-            Debug.Log("Enemy entered Trigger !");
+            //Debug.Log("Enemy entered Trigger !");
             MaximizePerseptionRadius();
-            Debug.Log(weapon.GetMaximumRange().ToString());
+            //Debug.Log(weapon.GetMaximumRange().ToString());
 
             if (UNIT.ALARM < UnitScript.ALLERT_LEVEL.A)
                 UNIT.ALARM++;
-            Debug.Log("Alarm ok");
-            Debug.Log(UNIT.ALARM.ToString());
+            //Debug.Log("Alarm ok");
+            //Debug.Log(UNIT.ALARM.ToString());
             if (FireAtWill)
             {
-                Debug.Log("IfFireAtWill");
+                //Debug.Log("IfFireAtWill");
                 if (weapon.IsOutOfAmu)
                 {
-                    Debug.Log("out of amu");
+                    //Debug.Log("out of amu");
                     UNIT.Options.UnitState = EnumProvider.ORDERSLIST.Hide;
                     if (!UNIT.IsABuilding)
                         UNIT.Options.FocussedLeftOnGround(-(other.gameObject.transform.position - this.transform.position));
                 }
 
-                Debug.Log("WeaponEngaged");
+                //Debug.Log("WeaponEngaged");
                 weapon.Engage(other.gameObject);
                     
               
@@ -127,7 +127,6 @@ public class Gunner : UnitComponent
 
             switch ((EnumProvider.ORDERSLIST)OrderState)
             {
-                    
                 case EnumProvider.ORDERSLIST.Attack:
                     
                     break;
@@ -135,20 +134,20 @@ public class Gunner : UnitComponent
 
                     break;
                 case EnumProvider.ORDERSLIST.Patrol:
-                    Debug.Log("PatrolCase");
+                    //Debug.Log("PatrolCase");
                     UNIT.ALARM = UnitScript.ALLERT_LEVEL.A;
                     break;
                 case EnumProvider.ORDERSLIST.Seek:
 
                     break;
                 case EnumProvider.ORDERSLIST.Hide:
-                    Debug.Log("HideCase");
+                    //Debug.Log("HideCase");
                     if (!UNIT.IsABuilding)
                         UNIT.Options.FocussedLeftOnGround(-(other.gameObject.transform.position - this.transform.position));
                     break;
 
             }
-            Debug.Log("after switch");
+            //Debug.Log("after switch");
         }
     }
 

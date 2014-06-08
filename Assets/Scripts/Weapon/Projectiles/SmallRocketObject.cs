@@ -220,8 +220,6 @@ public class SmallRocketObject : RocketObject
         return (this.transform.forward * Mathf.SmoothStep(1f, 0f, Mathf.Clamp(timer / Duration, 0, 1)) + (targetPosition - this.gameObject.transform.position).normalized * Mathf.SmoothStep(0f, 1f, Mathf.Clamp(timer / Duration, 0f, 1f))).normalized;
     }
 
-
-
     public override UnitWeapon.WEAPON WEAPON
     {
         get

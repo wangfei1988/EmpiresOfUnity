@@ -64,20 +64,26 @@ public class LaserObject : WeaponObject
             hit = value;
         }
     }
+
     private float BeamPosition
     {
         get 
         {
-            
-            if (beamPosition >= MAX_POSITION) { hit = true; Step = -Step; }
-            else if(!hit) this.gameObject.light.range = beamPosition;
-
+            if (beamPosition >= MAX_POSITION)
+            {
+                hit = true;
+                Step = -Step;
+            }
+            else if(!hit)
+                this.gameObject.light.range = beamPosition;
             return this.gameObject.light.range;
         }
         set 
         {
-            if (value <= 0f) Object.Destroy(this);
-            else if (!hit) beamPosition = value;
+            if (value <= 0f)
+                Object.Destroy(this);
+            else if (!hit)
+                beamPosition = value;
             else
             {
                 if (value < this.gameObject.light.range) this.gameObject.light.range = value; ;
@@ -108,8 +114,6 @@ public class LaserObject : WeaponObject
         beamPosition = 0.5f;
         UpdateManager.WEAPONUPDATES += UpdateManager_WEAPONUPDATES;
     }
-
-
 
     internal override void Engage()
     {
@@ -144,23 +148,28 @@ public class LaserObject : WeaponObject
             this.gameObject.transform.Rotate(YAxis, rotation);
             if (++count >= SPEED * 2)
             {
-                
                 UnitDestructionManagement.SignInForDestruction(this.gameObject);
-       //         GameObject.Destroy(this.gameObject);
             }
         }
     }
     private Vector3 hitpoint;
     void OnTriggerEnter(Collider other)
     {
-        if((other.gameObject.layer==(int)EnumProvider.LAYERNAMES.Units))
-        if (other.gameObject.GetComponent<UnitScript>().IsEnemy(this.GoodOrEvil))
+        if ((other.gameObject.layer == (int)EnumProvider.LAYERNAMES.Units))
         {
-            if (!HasHitAUnit)
+            bool isEnemy = false;
+            if (other.gameObject.GetComponent<UnitScript>())
+                isEnemy = other.gameObject.GetComponent<UnitScript>().IsEnemy(this.GoodOrEvil);
+            else if (other.gameObject.transform.parent.GetComponent<UnitScript>())
+                isEnemy = other.gameObject.transform.parent.GetComponent<UnitScript>().IsEnemy(this.GoodOrEvil);
+            if (isEnemy)
             {
-                hitpoint = other.gameObject.transform.position;
-                HIT = true;
-                other.gameObject.GetComponent<UnitScript>().Hit(this.Power);
+                if (!HasHitAUnit)
+                {
+                    hitpoint = other.gameObject.transform.position;
+                    HIT = true;
+                    other.gameObject.GetComponent<UnitScript>().Hit(this.Power);
+                }
             }
         }
     }
@@ -174,10 +183,7 @@ public class LaserObject : WeaponObject
             if (!this.gameObject.audio.isPlaying)
                 UnitDestructionManagement.SignInForDestruction(this.gameObject);
         }
-        
         Beam();
-     
-
     }
 
     void OnDestroy()

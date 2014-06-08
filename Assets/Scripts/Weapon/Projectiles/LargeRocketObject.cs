@@ -181,17 +181,19 @@ public class LargeRocketObject : RocketObject {
     {
         if (!other.isTrigger)
         {
+            bool isEnemy = false;
             if (other.gameObject.GetComponent<UnitScript>())
+                isEnemy = other.gameObject.GetComponent<UnitScript>().IsEnemy(this.GoodOrEvil);
+            else if (other.gameObject.transform.parent.GetComponent<UnitScript>())
+                isEnemy = other.gameObject.transform.parent.GetComponent<UnitScript>().IsEnemy(this.GoodOrEvil);
+            if (isEnemy)
             {
-                if (other.gameObject.GetComponent<UnitScript>().IsEnemy(this.GoodOrEvil))
-                {
-                 //   HitInfo = "RocketHit at: " + other.gameObject.name + " " + other.gameObject.GetInstanceID();
-                    other.gameObject.GetComponent<UnitScript>().Hit(1000);
-                    gameObject.GetComponent<TimedObjectDestructorCS>().DestroyImmideate();
-                }
+                other.gameObject.GetComponent<UnitScript>().Hit(1000);
+                gameObject.GetComponent<TimedObjectDestructorCS>().DestroyImmideate();
             }
             else
-            {//-------------------------------------------Groundhit!
+            {
+                // Groundhit -> Destroy Rocket
                 GameObject.Destroy(this.gameObject);
             }
         }

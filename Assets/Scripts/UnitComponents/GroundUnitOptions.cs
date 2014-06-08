@@ -168,10 +168,7 @@ public class GroundUnitOptions : MovingUnitOptions
                 UNIT.weapon.Engage(Target);
             }
         }
-
     }
-
-
 
     internal override void DoStart()
     {
@@ -184,7 +181,6 @@ public class GroundUnitOptions : MovingUnitOptions
         IsMoving = true;
     }
 
-
     internal override void DoUpdate()
     {
         if (IsAttacking)
@@ -194,7 +190,6 @@ public class GroundUnitOptions : MovingUnitOptions
                 MoveToPoint = Target.transform.position;
         }
         //base.DoUpdate();
-
     }
 
 }
