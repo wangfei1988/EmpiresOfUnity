@@ -145,15 +145,10 @@ public class GroundUnitOptions : MovingUnitOptions
                     __attacking = false;
                 else
                     MovingDirection = MoveToPoint;
-                if (Distance < UNIT.AttackRange)
-                {
-                    UNIT.weapon.Reload();
-                    UNIT.weapon.Engage(Target);
-                }
+
                 return IsMoving = true;
             }
             else { return false; }
-
         }
         protected set
         {
@@ -161,8 +156,19 @@ public class GroundUnitOptions : MovingUnitOptions
                 __attacking = value;
             else
                 __attacking = false;
-
         }
+    }
+    private void Attack()
+    {
+        if (__attacking)
+        {
+            if (Distance <= UNIT.AttackRange)
+            {
+                UNIT.weapon.Reload();
+                UNIT.weapon.Engage(Target);
+            }
+        }
+
     }
 
 
@@ -183,11 +189,11 @@ public class GroundUnitOptions : MovingUnitOptions
     {
         if (IsAttacking)
         {
+            Attack();
             if (Target)
                 MoveToPoint = Target.transform.position;
-
         }
-        base.DoUpdate();
+        //base.DoUpdate();
 
     }
 

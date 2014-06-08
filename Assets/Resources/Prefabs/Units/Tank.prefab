@@ -163,11 +163,9 @@ MonoBehaviour:
   PositionZ: 0
   lockRotation: 0
   rotation: {x: 0, y: 0, z: 0}
-  rotationW: 0
   RotationX: 0
   RotationY: 0
   RotationZ: 0
-  RotationW: 0
   lockScale: 0
   scale: {x: 0, y: 0, z: 0}
   ScaleX: 0
@@ -233,7 +231,7 @@ MonoBehaviour:
   UNIT: {fileID: 0}
   prefabSlot: {fileID: 11400004, guid: ca1694cc6c149864cb1dea6d9588277a, type: 2}
   hasArsenal: 0
-  NumberOfRockets: 1000
+  NumberOfRockets: 400
   countdown: 0
 --- !u!114 &11400010
 MonoBehaviour:
@@ -273,7 +271,7 @@ MonoBehaviour:
   standardYPosition: -.140000001
   AlwaysKeepStandardYpsPosition: 1
   IsGroupLeader: 0
-  speed: .200000003
+  speed: .400000006
   Throttle: 0
   Target: {fileID: 0}
   WayPoints: []

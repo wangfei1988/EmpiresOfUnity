@@ -30,8 +30,7 @@ public class RocketLauncher : UnitWeapon
             UNIT = GetComponent<UnitScript>();
         else if (transform.parent.gameObject.GetComponent<UnitScript>())
             UNIT = transform.parent.gameObject.GetComponent<UnitScript>();
-
-        NumberOfRockets = (prefabSlot.amunition == WeaponObject.AMUNITONTYPE.Missiles) ? 100 : 15;
+        //NumberOfRockets = (prefabSlot.amunition == WeaponObject.AMUNITONTYPE.Missiles) ? 100 : 15;
 	}
 
     public override void Engage(GameObject targetUnit)
@@ -53,12 +52,12 @@ public class RocketLauncher : UnitWeapon
 
     public override void Reload()
     {
-        if (!rocket&&NumberOfRockets>0)
+        if (!rocket && NumberOfRockets > 0)
         {
             float offset = 1f;
             if (prefabSlot.amunition == WeaponObject.AMUNITONTYPE.Rocket)
                 offset = 15f;
-            if ((countdown -= Time.deltaTime) < 0f)
+            if ((countdown -= Time.deltaTime) <= 0f)
             {
                 rocket = (GameObject.Instantiate(prefabSlot, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + offset, this.gameObject.transform.position.z), this.gameObject.transform.rotation) as RocketObject).GetComponent<RocketObject>();
 

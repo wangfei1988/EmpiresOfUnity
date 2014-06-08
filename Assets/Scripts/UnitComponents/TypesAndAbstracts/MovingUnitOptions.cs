@@ -289,11 +289,10 @@ abstract public class MovingUnitOptions : UnitOptions
         //     Movement = this.gameObject.GetComponent<Movability>();
     }
 
-    internal override void DoUpdate()
-    {
+    //internal override void DoUpdate()
+    //{
         //  Movement.DoUpdate();
-
-    }
+    //}
 
 }
 

@@ -226,7 +226,7 @@ public class GroundBuilderOptions : MovingUnitOptions
 
     internal override void DoUpdate()
     {
-        base.DoUpdate();
+        //base.DoUpdate();
         if (IsBuildingABuildDing) IsBuildingABuildDing = BuildDing();
     }
 }
