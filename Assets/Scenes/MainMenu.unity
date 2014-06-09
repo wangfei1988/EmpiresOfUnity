@@ -318,3 +318,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Controls: {fileID: 1041232112}
   Credits: {fileID: 1061590691}
+  background: {fileID: 2800000, guid: c72e675270150e6409b02ec31b956022, type: 3}
