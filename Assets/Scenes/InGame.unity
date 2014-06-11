@@ -4736,7 +4736,7 @@ MonoBehaviour:
   SpeedZoom: 25
   SpeedRotate: 100
   ShiftKeyMulti: 3
-  scrollingAllowed: 0
+  scrollingAllowed: 1
   MouseMove: {fileID: 0}
 --- !u!114 &358951609
 MonoBehaviour:
@@ -18655,6 +18655,10 @@ Prefab:
       propertyPath: m_Texture
       value: 
       objectReference: {fileID: 2800000, guid: 0f22e2e198160134ca0df1b91fe00dd9, type: 3}
+    - target: {fileID: 11400006, guid: b6a4a96e0dc12d740aacdb73f6876ef6, type: 2}
+      propertyPath: scrollingAllowed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b6a4a96e0dc12d740aacdb73f6876ef6, type: 2}
   m_RootGameObject: {fileID: 358951600}
