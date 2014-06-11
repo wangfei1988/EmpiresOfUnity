@@ -19,8 +19,8 @@ public class UnitScript : MonoBehaviour
         Worker = EnumProvider.UNITCLASS.CONSTRUCTION_UNIT + 1,
         Medic,
         //--- All Flying Units:
-        JetFighter = EnumProvider.UNITCLASS.AIR_UNIT + 1,
-        JetWing,
+        JetWing = EnumProvider.UNITCLASS.AIR_UNIT + 1,
+        //JetWing,
 
         //--- All Non-Production Buildings:
         NaniteMine = EnumProvider.UNITCLASS.BUILDING + 1,

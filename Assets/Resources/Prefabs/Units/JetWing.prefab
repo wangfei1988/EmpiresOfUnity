@@ -411,7 +411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbf96ea742e5eb45b1c852aedfaa2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifebarcarrier: {fileID: 400004}
   unitType: 201
   goodOrEvil: 1
   ALARM: 0
