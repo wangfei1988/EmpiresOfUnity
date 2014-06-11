@@ -206,6 +206,7 @@ MonoBehaviour:
   NextUnitAnimation: {fileID: 921938023}
   targetYps: 0
   startGrowing: 1
+  AudioGrow: {fileID: 0}
 --- !u!95 &20226801
 Animator:
   serializedVersion: 2
@@ -3748,6 +3749,7 @@ MonoBehaviour:
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
   startGrowing: 0
+  AudioGrow: {fileID: 0}
 --- !u!23 &286388421
 Renderer:
   m_ObjectHideFlags: 0
@@ -3822,6 +3824,7 @@ MonoBehaviour:
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
   startGrowing: 1
+  AudioGrow: {fileID: 0}
 --- !u!1001 &294954866
 Prefab:
   m_ObjectHideFlags: 0
@@ -7389,6 +7392,7 @@ MonoBehaviour:
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
   startGrowing: 0
+  AudioGrow: {fileID: 0}
 --- !u!64 &724636361
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7477,6 +7481,7 @@ MonoBehaviour:
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
   startGrowing: 1
+  AudioGrow: {fileID: 0}
 --- !u!1 &742815794
 GameObject:
   m_ObjectHideFlags: 0
@@ -10329,6 +10334,7 @@ MonoBehaviour:
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
   startGrowing: 0
+  AudioGrow: {fileID: 0}
 --- !u!54 &963226628
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10361,6 +10367,7 @@ MonoBehaviour:
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
   startGrowing: 1
+  AudioGrow: {fileID: 0}
 --- !u!1001 &964080704
 Prefab:
   m_ObjectHideFlags: 0
@@ -12319,6 +12326,7 @@ MonoBehaviour:
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
   startGrowing: 1
+  AudioGrow: {fileID: 8300000, guid: 960a0525d3eaddf409d67f02e54b90bd, type: 3}
 --- !u!114 &1278975569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13220,6 +13228,7 @@ MonoBehaviour:
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
   startGrowing: 0
+  AudioGrow: {fileID: 0}
 --- !u!54 &1450582017
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13252,6 +13261,7 @@ MonoBehaviour:
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
   startGrowing: 1
+  AudioGrow: {fileID: 0}
 --- !u!114 &1450582019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18806,6 +18816,7 @@ MonoBehaviour:
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
   startGrowing: 0
+  AudioGrow: {fileID: 0}
 --- !u!54 &2146023036
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18838,6 +18849,7 @@ MonoBehaviour:
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
   startGrowing: 1
+  AudioGrow: {fileID: 0}
 --- !u!114 &2146023038
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -496,6 +496,8 @@ MonoBehaviour:
   - {fileID: 100002}
   unitState: 101
   AnimationReleasePoints: []
+  AudioJet: {fileID: 0}
+  AudioTank: {fileID: 0}
   CurrentFabrikatNumber: 1
   CurrentFabrikat: {fileID: 100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
   typename: MainBuilding
@@ -519,8 +521,8 @@ MonoBehaviour:
   isActive: 1
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
-  GrowingTime: 15
   startGrowing: 0
+  AudioGrow: {fileID: 8300000, guid: 960a0525d3eaddf409d67f02e54b90bd, type: 3}
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1

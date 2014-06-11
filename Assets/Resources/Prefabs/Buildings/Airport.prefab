@@ -206,7 +206,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 127.690582, y: -15, z: -8.01667786}
+  m_LocalPosition: {x: 127.690582, y: -10, z: -8.01667786}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 400006}
@@ -704,6 +704,7 @@ MonoBehaviour:
   NextUnitAnimation: {fileID: 11400002}
   targetYps: 0
   startGrowing: 0
+  AudioGrow: {fileID: 8300000, guid: 960a0525d3eaddf409d67f02e54b90bd, type: 3}
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
