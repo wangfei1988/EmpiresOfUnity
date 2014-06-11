@@ -213,7 +213,10 @@ public class UnitScript : MonoBehaviour
             // TODO Here check if Building / Unit moved manuelly (one line above) OR Camera / Map Changed (must build it)
             if(true)
             {
-                LifebarScript.Position = gameObject.transform.position;
+                if (LifebarHook == null)
+                    LifebarScript.Position = gameObject.transform.position;
+                else
+                    LifebarScript.Position = LifebarHook.position;
             }
         }
     }
@@ -225,6 +228,7 @@ public class UnitScript : MonoBehaviour
         }
     }
     /* LIFEBAR START */
+    public Transform LifebarHook;
     public void ShowLifebar()
     {
         if (LifebarScript != null)
@@ -234,7 +238,11 @@ public class UnitScript : MonoBehaviour
             if (GoodOrEvil == FoE.GOODorEVIL.Evil)
                 LifebarScript.IsEnemy = true;
             LifebarScript.Activated = true;
-            LifebarScript.Position = gameObject.transform.position;
+
+            if (LifebarHook == null)
+                LifebarScript.Position = gameObject.transform.position;
+            else
+                LifebarScript.Position = LifebarHook.position;
             UpdateManager.OnUpdate += UpdateLifebar;
         }
     }

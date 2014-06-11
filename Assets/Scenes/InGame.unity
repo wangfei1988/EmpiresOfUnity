@@ -274,6 +274,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 20226800}
   weapon: {fileID: 20226799}
   life: 1500
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 100
   resourceFactor: 0
@@ -429,6 +430,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 48475773}
   weapon: {fileID: 48475767}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 50
   resourceFactor: 0
@@ -1057,6 +1059,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 122472954}
   weapon: {fileID: 122472948}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 50
   resourceFactor: 0
@@ -2737,6 +2740,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 189096296}
   weapon: {fileID: 189096290}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 50
   resourceFactor: 0
@@ -3173,6 +3177,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 669672815}
   weapon: {fileID: 789630342}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 150
   resourceFactor: 0
@@ -3439,6 +3444,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 424326883}
   weapon: {fileID: 1695494557}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 150
   resourceFactor: 0
@@ -3690,6 +3696,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 286388425}
   weapon: {fileID: 0}
   life: 3000
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 20
   resourceFactor: 0
@@ -4000,6 +4007,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 311706550}
   weapon: {fileID: 311706545}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 50
   resourceFactor: 0
@@ -4969,6 +4977,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 379654368}
   weapon: {fileID: 379654362}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 50
   resourceFactor: 0
@@ -6056,6 +6065,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 775203106}
   weapon: {fileID: 589664115}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 150
   resourceFactor: 0
@@ -7132,6 +7142,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 716948115}
   weapon: {fileID: 716948109}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 50
   resourceFactor: 0
@@ -7347,6 +7358,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 724636366}
   weapon: {fileID: 0}
   life: 3000
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 20
   resourceFactor: 0
@@ -8273,6 +8285,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 769511972}
   weapon: {fileID: 203492696}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 150
   resourceFactor: 0
@@ -10272,6 +10285,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 963226629}
   weapon: {fileID: 0}
   life: 3000
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 20
   resourceFactor: 0
@@ -10527,6 +10541,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 1018683949}
   weapon: {fileID: 1018683943}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 50
   resourceFactor: 0
@@ -10834,6 +10849,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 357760833}
   weapon: {fileID: 602261185}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 150
   resourceFactor: 0
@@ -11444,6 +11460,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 1215178866}
   weapon: {fileID: 570625898}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 150
   resourceFactor: 0
@@ -11595,6 +11612,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 1235893394}
   weapon: {fileID: 1235893388}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 50
   resourceFactor: 0
@@ -11930,6 +11948,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 1257729277}
   weapon: {fileID: 1257729271}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 50
   resourceFactor: 0
@@ -12361,6 +12380,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 1278975568}
   weapon: {fileID: 1278975566}
   life: 2000
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 100
   resourceFactor: 0
@@ -13016,6 +13036,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 1575878230}
   weapon: {fileID: 1802077988}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 150
   resourceFactor: 0
@@ -13314,6 +13335,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 1450582018}
   weapon: {fileID: 0}
   life: 3000
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 20
   resourceFactor: 0
@@ -13481,6 +13503,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 1460555431}
   weapon: {fileID: 1460555425}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 50
   resourceFactor: 0
@@ -14869,6 +14892,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 1515755372}
   weapon: {fileID: 1515755366}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 50
   resourceFactor: 0
@@ -15839,6 +15863,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 1652556096}
   weapon: {fileID: 1652556090}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 50
   resourceFactor: 0
@@ -16557,6 +16582,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 160402443}
   weapon: {fileID: 804749412}
   life: 800
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 150
   resourceFactor: 0
@@ -18906,6 +18932,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 2146023037}
   weapon: {fileID: 0}
   life: 3000
+  LifebarHook: {fileID: 0}
   level: 1
   sightWidth: 20
   resourceFactor: 0
