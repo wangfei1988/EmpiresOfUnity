@@ -27,7 +27,7 @@ public class Movability : UnitExtension
         MoveToPoint = this.gameObject.transform.position;
         WayPoints = new List<Vector3>();
         standardYPosition=this.gameObject.transform.position.y;
-     //   IsMoving = true;
+        //   IsMoving = true;
         Speed = 1;
     }
 
@@ -83,7 +83,7 @@ public class Movability : UnitExtension
                     MoveToPoint = gameObject.transform.position;
                     MovingDirection = MoveToPoint;
                     UNIT.InteractingUnits.Clear();
-        
+
                     return stateorder;
                 }
             }
@@ -428,8 +428,8 @@ public class Movability : UnitExtension
             stopMoving=true;
             StayOrder();
 
-         //   UNIT.Options.FocussedLeftOnGround(gameObject.transform.position);
-         //   
+            //   UNIT.Options.FocussedLeftOnGround(gameObject.transform.position);
+            //   
 
             if (IsGroupLeader)
                 GUIScript.SelectedGroup.GroupState = UnitGroup.GROUPSTATE.Waiting;
@@ -450,7 +450,7 @@ public class Movability : UnitExtension
         KeepStandardYpsPosition();
 
         return !stopMoving;
-        
+
     }
 
     public override void DoUpdate()
