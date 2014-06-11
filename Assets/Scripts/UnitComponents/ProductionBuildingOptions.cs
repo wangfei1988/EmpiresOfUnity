@@ -72,8 +72,9 @@ public class ProductionBuildingOptions : UnitOptions
             TheNewOne = (GameObject.Instantiate(CurrentFabrikat, AnimationReleasePoints[CurrentFabrikatNumber].GetComponent<ReleasePoint>().Release(), (CurrentFabrikat as GameObject).transform.rotation) as GameObject);
         }
         else
+        {
             GameObject.Instantiate(Fabrikat[CurrentFabrikatNumber], MoveToPoint, (Fabrikat[CurrentFabrikatNumber] as GameObject).transform.rotation);
-
+        }
     }
 
     private void ReleaseFabrikat(string fabrikatname)
