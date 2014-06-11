@@ -72,14 +72,27 @@ public class ProductionBuildingOptions : UnitOptions
             TheNewOne = (GameObject.Instantiate(CurrentFabrikat, AnimationReleasePoints[CurrentFabrikatNumber].GetComponent<ReleasePoint>().Release(), (CurrentFabrikat as GameObject).transform.rotation) as GameObject);
         }
         else
+        {
             GameObject.Instantiate(Fabrikat[CurrentFabrikatNumber], MoveToPoint, (Fabrikat[CurrentFabrikatNumber] as GameObject).transform.rotation);
-
+        }
     }
+
+    // Audio Sources for buildable Units
+    public AudioSource AudioJet;
+    public AudioSource AudioTank;
 
     private void ReleaseFabrikat(string fabrikatname)
     {
         if (this.GetComponent<Animator>())
         {
+
+            // Play Audio for buildable Units
+            if (AudioJet != null && fabrikatname == UnitScript.UNITTYPE.JetWing.ToString())
+                AudioJet.Play();
+            else if (AudioTank != null && fabrikatname == UnitScript.UNITTYPE.Tank.ToString())
+                AudioTank.Play();
+
+
             this.GetComponent<Animator>().SetBool(fabrikatname, true);
         }
         else
@@ -172,7 +185,7 @@ public class ProductionBuildingOptions : UnitOptions
                         if (UNIT.unitType==UnitScript.UNITTYPE.Airport)
                             ReleaseFabrikat((CurrentFabrikat as GameObject).GetComponent<UnitScript>().unitType.ToString());
 
-                        // TODO Let they Spawn within the Building and then let they so to "MoveToPoint"
+                        // TODO Let they Spawn within the Building and then let they go to "MoveToPoint"
                         break;
                     }
                 case OPTIONS.StopProduction:

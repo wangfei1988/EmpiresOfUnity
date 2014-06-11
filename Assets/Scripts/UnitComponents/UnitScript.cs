@@ -143,12 +143,18 @@ public class UnitScript : MonoBehaviour
             weapon = gameObject.AddComponent<NoWeapon>();
         else
             weapon = gameObject.GetComponentInChildren<UnitWeapon>();
+
+	    if (!IsABuilding && this.GoodOrEvil == FoE.GOODorEVIL.Good)
+	    {
+            ResourceManager.AddResouce(ResourceManager.Resource.LABORER, 1);
+	    }
 	}
 
     void Start()
     {
         this.DefaultLife = Life;
         UpdateManager.UNITUPDATE += UpdateManager_UNITUPDATE;
+       
     }
 
     void OnDestroy()

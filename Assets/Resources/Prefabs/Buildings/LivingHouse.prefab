@@ -135,8 +135,8 @@ MonoBehaviour:
   isActive: 1
   NextUnitAnimation: {fileID: 0}
   targetYps: 0
-  GrowingTime: 10
   startGrowing: 0
+  AudioGrow: {fileID: 8300000, guid: 960a0525d3eaddf409d67f02e54b90bd, type: 3}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

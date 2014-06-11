@@ -18,8 +18,12 @@ public class BuildingGrower : UnitAnimation
     private float timer;
     [SerializeField]
     private bool startGrowing = false;
+    [SerializeField]
+    private AudioClip AudioGrow;
     public bool StartGrowing
     {
+        
+
         get 
         {
             if ((startGrowing)&&(growingFactor== -1f))
@@ -32,6 +36,9 @@ public class BuildingGrower : UnitAnimation
         set 
         {
             startGrowing = value;
+            if (startGrowing)
+                PlaySound();
+
             //if (startGrowing)
             //    startYps = gameObject.transform.position.y;
         }
@@ -43,6 +50,19 @@ public class BuildingGrower : UnitAnimation
         startYps = gameObject.transform.position.y;
         growingFactor = -1f;
         this.GrowingTime = this.GetComponent<UnitOptions>().SettingFile.GrowingTime;
+
+        // let MainBuilding Play sound at init
+        if (startGrowing)
+            PlaySound();
+    }
+
+    private void PlaySound()
+    {
+
+        AudioSource mySource = this.gameObject.AddComponent<AudioSource>();
+        mySource.clip = AudioGrow;
+        mySource.rolloffMode = AudioRolloffMode.Linear;
+        mySource.Play();
     }
 
     private void Grow()

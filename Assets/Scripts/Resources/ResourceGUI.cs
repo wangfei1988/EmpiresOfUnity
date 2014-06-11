@@ -31,6 +31,6 @@ public class ResourceGUI : MonoBehaviour
         GUI.Box(new Rect(left + leftPlus * 0, top, width, height), new GUIContent(" " + ResourceManager.GetResourceCount(ResourceManager.Resource.NANITEN), icon_nanite));
         GUI.Box(new Rect(left + leftPlus * 1, top, width, height), new GUIContent(" " + ResourceManager.GetResourceCount(ResourceManager.Resource.MATTER), icon_matter));
         GUI.Box(new Rect(left + leftPlus * 2, top, width, height), new GUIContent(" " + ResourceManager.GetResourceCount(ResourceManager.Resource.ENERGY) + " / " + ResourceManager.GetResourceCount(ResourceManager.Resource.MAXENERGY), icon_energy));
-        GUI.Box(new Rect(left + leftPlus * 3, top, width, height), new GUIContent(" " + ResourceManager.GetResourceCount(ResourceManager.Resource.LABORER), icon_laborer));
+        GUI.Box(new Rect(left + leftPlus * 3, top, width, height), new GUIContent(" " + ResourceManager.GetResourceCount(ResourceManager.Resource.LABORER) + " / " + ResourceManager.GetResourceCount(ResourceManager.Resource.MAXLABORER), icon_laborer));
     }
 }
