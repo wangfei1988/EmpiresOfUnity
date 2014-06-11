@@ -130,20 +130,20 @@ public class AnimatedCursor : MonoBehaviour
            
             if (MouseEvents.State.Position.AsUnitUnderCursor)
             {
-                if (InGameText.ShowInfo)
-                    this.guiText.text = UnitUnderCursor.gameObject.name + " at: " + MouseEvents.State.Position.AsWorldPointOnMap.ToString() + "  - ID: " + UnitUnderCursor.gameObject.GetInstanceID().ToString();
+                //if (InGameText.ShowInfo)
+                //this.guiText.text = UnitUnderCursor.gameObject.name + " at: " + MouseEvents.State.Position.AsWorldPointOnMap.ToString() + "  - ID: " + UnitUnderCursor.gameObject.GetInstanceID().ToString();
                 return CURSOR.OVER_CLICKABLE_OBJECT;
             }
             else
             {
-                if (InGameText.ShowInfo)
-                    this.guiText.text = MouseEvents.State.Position.AsWorldPointOnMap.ToString();
+                //if (InGameText.ShowInfo)
+                //this.guiText.text = MouseEvents.State.Position.AsWorldPointOnMap.ToString();
             }
         }
         else
         {
-            if (InGameText.ShowInfo)
-                this.guiText.text = "";
+            //if (InGameText.ShowInfo)
+            //this.guiText.text = "";
         }
         return CURSOR.STANDARD;
     }

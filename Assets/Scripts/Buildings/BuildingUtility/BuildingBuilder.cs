@@ -181,15 +181,9 @@ public class BuildingBuilder : ProductionBuilding
 
     private void BuildingCheck()
     {
-        if (solutionMatter >= 0 && solutionNaniten >= 0)
-        {
-            IsBuildable = true;
-        }
-        else
-        {
-            IsBuildable = false;
-        }
+        IsBuildable = solutionMatter >= 0 && solutionNaniten >= 0;
     }
+
 
     //Subtract Resources for Building
     public void BuildingCost()
