@@ -195,10 +195,10 @@ MonoBehaviour:
   Target: {x: 0, y: 0, z: 0}
   DAMAGE: 30
   _mAX_RANGE: 50
-  wobbleFactor: 6.23999977
+  wobbleFactor: 15
   BOOMsound: {fileID: 8300000, guid: a6628622fc5e0e44a97b8401a0f4c014, type: 3}
   launch: 0
-  Duration: 1.14999998
+  Duration: 2
   speed: .5
   SPEED_FACTOR: 1.04999995
   MAXIMUM_SPEED: 2
