@@ -3177,7 +3177,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 669672815}
   weapon: {fileID: 789630342}
   life: 800
-  LifebarHook: {fileID: 0}
+  LifebarHook: {fileID: 669672819}
   level: 1
   sightWidth: 150
   resourceFactor: 0
@@ -3444,7 +3444,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 424326883}
   weapon: {fileID: 1695494557}
   life: 800
-  LifebarHook: {fileID: 0}
+  LifebarHook: {fileID: 424326882}
   level: 1
   sightWidth: 150
   resourceFactor: 0
@@ -3867,6 +3867,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -.707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 11400016, guid: 39709e67772ff2749a066b93edd66267, type: 2}
+      propertyPath: LifebarHook
+      value: 
+      objectReference: {fileID: 1575878228}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39709e67772ff2749a066b93edd66267, type: 2}
   m_RootGameObject: {fileID: 1373744548}
@@ -6019,6 +6023,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -.707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 11400016, guid: 39709e67772ff2749a066b93edd66267, type: 2}
+      propertyPath: LifebarHook
+      value: 
+      objectReference: {fileID: 669672819}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39709e67772ff2749a066b93edd66267, type: 2}
   m_RootGameObject: {fileID: 253533357}
@@ -6065,7 +6073,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 775203106}
   weapon: {fileID: 589664115}
   life: 800
-  LifebarHook: {fileID: 0}
+  LifebarHook: {fileID: 775203110}
   level: 1
   sightWidth: 150
   resourceFactor: 0
@@ -7601,6 +7609,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -.707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 11400016, guid: 39709e67772ff2749a066b93edd66267, type: 2}
+      propertyPath: LifebarHook
+      value: 
+      objectReference: {fileID: 769511973}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39709e67772ff2749a066b93edd66267, type: 2}
   m_RootGameObject: {fileID: 812913725}
@@ -8188,6 +8200,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -.707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 11400016, guid: 39709e67772ff2749a066b93edd66267, type: 2}
+      propertyPath: LifebarHook
+      value: 
+      objectReference: {fileID: 775203110}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39709e67772ff2749a066b93edd66267, type: 2}
   m_RootGameObject: {fileID: 566408604}
@@ -8285,7 +8301,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 769511972}
   weapon: {fileID: 203492696}
   life: 800
-  LifebarHook: {fileID: 0}
+  LifebarHook: {fileID: 769511973}
   level: 1
   sightWidth: 150
   resourceFactor: 0
@@ -10049,6 +10065,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -.707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 11400016, guid: 39709e67772ff2749a066b93edd66267, type: 2}
+      propertyPath: LifebarHook
+      value: 
+      objectReference: {fileID: 357760834}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39709e67772ff2749a066b93edd66267, type: 2}
   m_RootGameObject: {fileID: 1132694952}
@@ -10417,6 +10437,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -.707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 11400016, guid: 39709e67772ff2749a066b93edd66267, type: 2}
+      propertyPath: LifebarHook
+      value: 
+      objectReference: {fileID: 160402442}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39709e67772ff2749a066b93edd66267, type: 2}
   m_RootGameObject: {fileID: 1800387298}
@@ -10849,7 +10873,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 357760833}
   weapon: {fileID: 602261185}
   life: 800
-  LifebarHook: {fileID: 0}
+  LifebarHook: {fileID: 357760834}
   level: 1
   sightWidth: 150
   resourceFactor: 0
@@ -11460,7 +11484,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 1215178866}
   weapon: {fileID: 570625898}
   life: 800
-  LifebarHook: {fileID: 0}
+  LifebarHook: {fileID: 1215178867}
   level: 1
   sightWidth: 150
   resourceFactor: 0
@@ -12420,6 +12444,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -.707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 11400016, guid: 39709e67772ff2749a066b93edd66267, type: 2}
+      propertyPath: LifebarHook
+      value: 
+      objectReference: {fileID: 424326882}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39709e67772ff2749a066b93edd66267, type: 2}
   m_RootGameObject: {fileID: 264541521}
@@ -13036,7 +13064,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 1575878230}
   weapon: {fileID: 1802077988}
   life: 800
-  LifebarHook: {fileID: 0}
+  LifebarHook: {fileID: 1575878228}
   level: 1
   sightWidth: 150
   resourceFactor: 0
@@ -15569,6 +15597,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -.707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 11400016, guid: 39709e67772ff2749a066b93edd66267, type: 2}
+      propertyPath: LifebarHook
+      value: 
+      objectReference: {fileID: 1215178867}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39709e67772ff2749a066b93edd66267, type: 2}
   m_RootGameObject: {fileID: 1225857811}
@@ -16582,7 +16614,7 @@ MonoBehaviour:
   unitAnimation: {fileID: 160402443}
   weapon: {fileID: 804749412}
   life: 800
-  LifebarHook: {fileID: 0}
+  LifebarHook: {fileID: 160402442}
   level: 1
   sightWidth: 150
   resourceFactor: 0
