@@ -10,7 +10,8 @@ public class ResourceManager : MonoBehaviour
         MATTER,
         MAXENERGY,
         ENERGY,
-        LABORER // Einheiten-Count
+        LABORER, // Einheiten-Count
+        MAXLABORER
     }
 
     public static Dictionary<Resource, uint> resourceList = new Dictionary<Resource, uint>();
@@ -23,6 +24,7 @@ public class ResourceManager : MonoBehaviour
         resourceList.Add(Resource.MAXENERGY, 50);
         resourceList.Add(Resource.ENERGY, 50);
         resourceList.Add(Resource.LABORER, 0);
+        resourceList.Add(Resource.MAXLABORER, 0);
     }
 
     public static uint GetResourceCount(Resource resourceType)

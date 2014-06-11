@@ -31,7 +31,6 @@ public class LivingHouse : AbstractBuilding
 
     void Start()
     {
-        //LivingHouseWork();
     }
 
     public override void BuildFinished()
@@ -56,13 +55,13 @@ public class LivingHouse : AbstractBuilding
     private void LivingHouseWork()
     {
         uint resValue = this.CurrentResource;
-        ResourceManager.AddResouce(ResourceManager.Resource.LABORER, resValue);
+        ResourceManager.AddResouce(ResourceManager.Resource.MAXLABORER, resValue);
         currentResidentHuman = resValue;
     }
 
     public void SubtractLaborer()
     {
-        ResourceManager.SubtractResouce(ResourceManager.Resource.LABORER, currentResidentHuman);
+        ResourceManager.SubtractResouce(ResourceManager.Resource.MAXLABORER, currentResidentHuman);
     }
 
     void OnDestroy()
