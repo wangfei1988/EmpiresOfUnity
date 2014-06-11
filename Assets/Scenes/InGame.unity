@@ -246,6 +246,8 @@ MonoBehaviour:
   AnimationReleasePoints:
   - {fileID: 0}
   - {fileID: 0}
+  AudioJet: {fileID: 0}
+  AudioTank: {fileID: 0}
   CurrentFabrikatNumber: 0
   CurrentFabrikat: {fileID: 100008, guid: 39709e67772ff2749a066b93edd66267, type: 2}
   typename: Airport
@@ -3660,6 +3662,8 @@ MonoBehaviour:
   AnimationReleasePoints:
   - {fileID: 0}
   - {fileID: 0}
+  AudioJet: {fileID: 0}
+  AudioTank: {fileID: 0}
   CurrentFabrikatNumber: 0
   CurrentFabrikat: {fileID: 100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
   typename: Fabrik
@@ -7313,6 +7317,8 @@ MonoBehaviour:
   AnimationReleasePoints:
   - {fileID: 0}
   - {fileID: 0}
+  AudioJet: {fileID: 0}
+  AudioTank: {fileID: 0}
   CurrentFabrikatNumber: 0
   CurrentFabrikat: {fileID: 100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
   typename: Fabrik
@@ -10234,6 +10240,8 @@ MonoBehaviour:
   AnimationReleasePoints:
   - {fileID: 0}
   - {fileID: 0}
+  AudioJet: {fileID: 0}
+  AudioTank: {fileID: 0}
   CurrentFabrikatNumber: 0
   CurrentFabrikat: {fileID: 100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
   typename: Fabrik
@@ -12284,6 +12292,8 @@ MonoBehaviour:
   - {fileID: 1899577153}
   unitState: 101
   AnimationReleasePoints: []
+  AudioJet: {fileID: 0}
+  AudioTank: {fileID: 0}
   CurrentFabrikatNumber: 1
   CurrentFabrikat: {fileID: 100000, guid: 567673cbfea58614aa8ec0843ea49d51, type: 2}
   typename: MainBuilding
@@ -13267,6 +13277,8 @@ MonoBehaviour:
   AnimationReleasePoints:
   - {fileID: 0}
   - {fileID: 0}
+  AudioJet: {fileID: 0}
+  AudioTank: {fileID: 0}
   CurrentFabrikatNumber: 0
   CurrentFabrikat: {fileID: 100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
   typename: Fabrik
@@ -18851,6 +18863,8 @@ MonoBehaviour:
   AnimationReleasePoints:
   - {fileID: 0}
   - {fileID: 0}
+  AudioJet: {fileID: 0}
+  AudioTank: {fileID: 0}
   CurrentFabrikatNumber: 0
   CurrentFabrikat: {fileID: 100000, guid: 929dde19bee56aa4a813a0cbc8b7a75e, type: 2}
   typename: Fabrik
