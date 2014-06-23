@@ -1,9 +1,9 @@
-﻿Empires Of Unity
+Empires Of Unity: GIT Conflicts
 ==============
 
 Empires Of Unity - An Epic Real Time Strategy (RTS) Game
 
-Info
+Credits
 ======
 
 * Name: Empires of Unity
@@ -17,22 +17,19 @@ Info
 Credits
 ======
 
-Development by
+Development & Programming by
   * Kalle Münster (kalle.muenster@gmx.de)
   * Lucas Nowak (lucas.n@live.de)
   * Dario D. Müller (moin@game-coding.com)
 
 Artwork by
-  * artist 1	
-  * artist 2
-  * z
-  * w
+  * ...
 
 Sound-Design by
-  * ?
+  * ...
 
-Engine Infos
+Infos
 ===
 
-  * Unity Engine
-  * Version 4.3.4
+  * Engine: Unity v4.3.4
+  * Asset Store Free-Package: SimpleParticlePack
